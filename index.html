@@ -624,6 +624,15 @@
   .wish-travel-hint{font-size:10.5px;color:var(--rust-deep);background:rgba(200,73,42,.06);padding:4px 7px;border-left:2px solid var(--rust)}
   .wish-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:5px 14px;background:var(--rust);color:#fff;border:none;cursor:pointer;font-weight:700;flex-shrink:0}
   .wish-empty{font-size:12px;color:var(--slate);opacity:.6;padding:8px 0;font-style:italic}
+  /* 3DoD 기간 토글 */
+  .wish-fest-toggle{display:flex;align-items:center;gap:7px;margin:5px 0 2px;cursor:pointer;user-select:none;width:fit-content}
+  .wish-fest-toggle input[type=checkbox]{width:14px;height:14px;accent-color:var(--rust);cursor:pointer;flex-shrink:0}
+  .wish-fest-toggle span{font-size:11.5px;color:var(--ink)}
+  .wish-fest-toggle span b{color:var(--rust)}
+  /* 3DoD 뱃지 */
+  .wish-fest-badge{display:inline-flex;align-items:center;gap:3px;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.04em;padding:1px 6px;border-radius:2px;background:var(--rust);color:#fff;margin-right:4px;vertical-align:middle}
+  /* 날짜 패널에서 페스티벌 날짜 강조 */
+  .wish-day-select option.fest-day{font-weight:700;color:var(--rust)}
   /* 장소 검색 — 모드 탭 */
   .wish-input-wrap{position:relative;flex:1;min-width:0}
   .wish-mode-tabs{display:flex;gap:0;margin-bottom:6px}
@@ -3415,6 +3424,10 @@ function renderAdd(){
       <input class="wish-note-input" id="wishNote" placeholder="메모 (선택)" maxlength="80">
       <button class="wish-add-btn" id="wishAddBtn">＋ 추가</button>
     </div>
+    <label class="wish-fest-toggle">
+      <input type="checkbox" id="wishFestOnly">
+      <span>🎪 <b>3 Days of Design</b> 기간(6/10~12)에만 방문 가능한 곳</span>
+    </label>
     <div class="wish-list" id="wishList"></div>`;
   el.querySelector('.add-wrap').insertAdjacentElement('afterend', wishWrap);
 
@@ -3474,24 +3487,36 @@ function renderAdd(){
         : '';
       // 주소: 좌표 문자열이면 숨김, 실제 주소명만 표시
       const addrText = w.address && !/^\d{2}\.\d/.test(w.address) ? w.address : '';
+      const FEST_DI = [2,3,4]; // 6/10, 6/11, 6/12
+      // _festOnly 토글 상태: item에서 변경 가능하도록 let
+      let isFestOnly = !!w._festOnly;
+
       item.innerHTML=`
         <div class="wish-item-body">
-          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;flex-wrap:wrap">
             <span class="wish-item-cat" style="background:${cat.color}">${cat.icon} ${cat.label}</span>
+            ${isFestOnly?`<span class="wish-fest-badge">🎪 3DoD 전용</span>`:''}
           </div>
           <div class="wish-item-title">${w.title}${gmapLink}</div>
           ${addrText?`<div class="wish-item-addr">📌 ${addrText}</div>`:''}
           ${w.note?`<div class="wish-item-note">${w.note}</div>`:''}
+          <label class="wish-fest-toggle" style="margin-top:5px">
+            <input type="checkbox" class="wish-fest-cb" ${isFestOnly?'checked':''}>
+            <span style="font-size:10.5px;color:var(--slate)">🎪 3DoD 기간(6/10~12)에만 방문 가능</span>
+          </label>
           <div class="wish-item-actions">
             <button class="wish-to-plan-btn">→ 일정에 추가</button>
             <button class="wish-del-btn">삭제</button>
           </div>
           <div class="wish-day-row" id="wish-day-row-${idx}">
             <div>
-              <div class="wish-day-row-label">날짜 선택</div>
+              <div class="wish-day-row-label">날짜 선택 ${isFestOnly?'<span style="color:var(--rust);font-size:9px">· 3DoD 날짜 우선 표시</span>':''}</div>
               <div class="wish-day-row-row">
                 <select class="wish-day-select" id="wish-day-sel-${idx}">
-                  ${plan.map((d,di)=>`<option value="${di}">${d.date} · ${d.tag}</option>`).join('')}
+                  ${plan.map((d,di)=>{
+                    const isFest=FEST_DI.includes(di);
+                    return `<option value="${di}"${isFestOnly&&di===FEST_DI[0]?' selected':''}${!isFestOnly&&di===2?' selected':''}>${isFest?'🎪 ':''}${d.date} · ${d.tag}</option>`;
+                  }).join('')}
                 </select>
               </div>
             </div>
@@ -3536,6 +3561,23 @@ function renderAdd(){
           } else { travelEl.style.display='none'; }
         } else { travelEl.style.display='none'; }
       }
+
+      // _festOnly 체크박스 토글 (저장 + 뱃지 즉시 반영)
+      item.querySelector('.wish-fest-cb').addEventListener('change', function(){
+        isFestOnly = this.checked;
+        wishlist[idx]._festOnly = isFestOnly;
+        saveWishlist();
+        // 뱃지 업데이트
+        const badgeWrap = item.querySelector('.wish-item-body > div:first-child');
+        const existing = badgeWrap.querySelector('.wish-fest-badge');
+        if(isFestOnly && !existing){
+          const b=document.createElement('span'); b.className='wish-fest-badge'; b.textContent='🎪 3DoD 전용';
+          badgeWrap.appendChild(b);
+        } else if(!isFestOnly && existing){ existing.remove(); }
+        // 날짜 셀렉트 옵션 기본값 변경
+        const sel=document.getElementById(`wish-day-sel-${idx}`);
+        if(sel && isFestOnly) sel.value=String(FEST_DI[0]);
+      });
 
       item.querySelector('.wish-to-plan-btn').addEventListener('click',()=>{
         const row=document.getElementById(`wish-day-row-${idx}`);
@@ -3676,13 +3718,15 @@ function renderAdd(){
     }
     if(!title) return;
     const note=document.getElementById('wishNote').value.trim();
-    wishlist.unshift({title,note,addedBy:currentUser||'',addedAt:Date.now(),...confirmed});
+    const festOnly = document.getElementById('wishFestOnly')?.checked || false;
+    wishlist.unshift({title,note,addedBy:currentUser||'',addedAt:Date.now(),...confirmed,...(festOnly&&{_festOnly:true})});
     saveWishlist();
     wishTitleEl.value='';
     document.getElementById('wishGmapsUrl').value='';
     document.getElementById('wishNote').value='';
     document.getElementById('wishSuggest').style.display='none';
     document.getElementById('wishLinkPreview').style.display='none';
+    const festEl=document.getElementById('wishFestOnly'); if(festEl) festEl.checked=false;
     _wishConfirmed=null;
     renderWishList();
   });
