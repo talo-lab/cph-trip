@@ -182,6 +182,15 @@
   }
   .fest-event:hover{background:rgba(0,0,0,.03)}
   .fest-event.checked{background:rgba(200,73,42,.06)}
+  .fest-search-wrap{padding:6px 12px;border-bottom:1px solid var(--line);background:#fff}
+  .fest-search-input{
+    width:100%;box-sizing:border-box;padding:5px 10px 5px 28px;
+    border:1.5px solid var(--line);border-radius:20px;font-size:12px;
+    font-family:'Space Mono',monospace;outline:none;background:var(--cream);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:8px center;transition:.15s;
+  }
+  .fest-search-input:focus{border-color:var(--sage);background-color:#fff}
   .fest-cb{width:16px;height:16px;flex-shrink:0;accent-color:var(--rust);margin-top:2px;cursor:pointer}
   .fest-body{flex:1;min-width:0}
   .fest-title{font-size:13px;font-weight:600;line-height:1.25;margin-bottom:2px}
@@ -1250,11 +1259,14 @@ let festDateFilter = 'June 10';
 let festDistFilter = 'all';
 let festCatFilter = 'all';
 let festChecked = new Set();
+let festSearchQuery = '';
 const evDetailCache = {};
 
 /* ---------- EVENT DETAIL MODAL ---------- */
 function openEvModal(ev, id){
-  const existing = document.getElementById('evOverlay');
+  // 모든 기존 오버레이 제거 (중복 방지)
+  document.querySelectorAll('.ev-overlay').forEach(el=>el.remove());
+  const existing = null;
   if(existing){
     existing.remove();
     // 같은 이벤트 재클릭이면 닫기만 (토글)
@@ -1365,7 +1377,14 @@ async function loadEvDetail(ev, id){
     evDetailCache[id] = obj;
     if(document.getElementById('evDetail')) renderEvDetail(obj, document.getElementById('evDetail'));
   } catch(e){
-    if(detailEl) detailEl.innerHTML=`<div style="font-size:12px;color:var(--slate);opacity:.7">상세 정보를 불러올 수 없어요. (${e.message})</div>`;
+    if(detailEl){
+      detailEl.innerHTML=`<div style="font-size:12px;color:var(--slate)">상세 정보를 불러올 수 없어요.</div>`;
+      const retryBtn = document.createElement('button');
+      retryBtn.textContent='↻ 다시 시도';
+      retryBtn.style.cssText='margin-top:6px;font-size:11px;padding:3px 10px;border:1px solid var(--line);background:none;cursor:pointer;border-radius:3px;color:var(--sage)';
+      retryBtn.onclick=()=>loadEvDetail(ev, id);
+      detailEl.appendChild(retryBtn);
+    }
   }
 }
 
@@ -1475,21 +1494,81 @@ function renderFest(){
   favBtn.onclick = ()=>{ festFavFilter=!festFavFilter; renderFest(); };
   filters.appendChild(favBtn);
 
+  // ── 검색창
+  const searchWrap = document.createElement('div');
+  searchWrap.className = 'fest-search-wrap';
+  searchWrap.innerHTML = `<input class="fest-search-input" id="festSearchInput" type="text" placeholder="행사·장소 검색..." value="${festSearchQuery.replace(/"/g,'&quot;')}">`;
+  wrap.appendChild(searchWrap);
   wrap.appendChild(filters);
 
-  // ── 이벤트 목록
+  // ── 이벤트 목록 컨테이너 (renderFestList로 채움)
   const list = document.createElement('div');
   list.className = 'fest-list';
+  list.id = 'festList';
 
-  const filtered = FESTIVAL_EVENTS.filter(e=>
-    e.date===festDateFilter &&
-    (festCatFilter==='all' || e.category===festCatFilter) &&
-    (festDistFilter==='all' || e.district===festDistFilter) &&
-    (!festFavFilter || favorites.has(`fest-${e.date}-${e.title}`))
-  );
+  wrap.appendChild(list);
+
+  // 하단 추가 바
+  const bar = document.createElement('div');
+  bar.className = 'fest-add-bar';
+  bar.id = 'festBar';
+  const cnt = document.createElement('span');
+  cnt.className = 'fest-count';
+  cnt.id = 'festCount';
+  const btn = document.createElement('button');
+  btn.className = 'fest-add-btn';
+  btn.id = 'festAddBtn';
+  btn.onclick = addFestSelected;
+  bar.appendChild(cnt);
+  bar.appendChild(btn);
+  wrap.appendChild(bar);
+
+  el.appendChild(wrap);
+  el.style.overflow = 'hidden';
+  el.style.padding = '0';
+
+  // 검색 리스너 (DOM 삽입 후)
+  const searchEl = document.getElementById('festSearchInput');
+  if(searchEl){
+    let searchTimer;
+    searchEl.addEventListener('input', e=>{
+      festSearchQuery = e.target.value;
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(renderFestList, 200);
+    });
+    // Escape → 검색 초기화
+    searchEl.addEventListener('keydown', e=>{
+      if(e.key==='Escape'){ festSearchQuery=''; searchEl.value=''; renderFestList(); }
+    });
+  }
+
+  updateFestBar();
+  renderFestList(); // 리스트 최초 렌더
+}
+
+/* 행사 리스트만 재렌더 (검색/필터 변경 시) */
+function renderFestList(){
+  const list = document.getElementById('festList');
+  if(!list) return;
+  list.innerHTML = '';
+
+  const q = festSearchQuery.toLowerCase().trim();
+  const filtered = FESTIVAL_EVENTS.filter(e=>{
+    if(e.date !== festDateFilter) return false;
+    if(festCatFilter!=='all' && e.category!==festCatFilter) return false;
+    if(festDistFilter!=='all' && e.district!==festDistFilter) return false;
+    if(festFavFilter && !favorites.has(`fest-${e.date}-${e.title}`)) return false;
+    if(q && !e.title.toLowerCase().includes(q) &&
+           !e.venue.toLowerCase().includes(q) &&
+           !(e.desc||'').toLowerCase().includes(q)) return false;
+    return true;
+  });
 
   if(filtered.length===0){
-    list.innerHTML = `<div style="padding:24px;text-align:center;color:var(--slate);font-size:13px">해당 날짜/지구에 등록된 행사가 없습니다</div>`;
+    list.innerHTML=`<div style="padding:24px;text-align:center;color:var(--slate);font-size:13px">${
+      q?`"${festSearchQuery}" 검색 결과가 없습니다`:'해당 날짜/지구에 등록된 행사가 없습니다'
+    }</div>`;
+    return;
   }
 
   filtered.forEach((ev)=>{
@@ -1514,63 +1593,30 @@ function renderFest(){
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;align-items:center;flex-shrink:0">
         <button class="fav-btn" title="즐겨찾기">${isFav?'♥':'♡'}</button>
-        <a href="${gMapsUrl((ev.venue||ev.title) + ' ' + (ev.address||'Copenhagen'))}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
+        <a href="${gMapsUrl((ev.venue||ev.title)+' '+(ev.address||'Copenhagen'))}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
       </div>`;
     const cb = row.querySelector('.fest-cb');
     const titleEl = row.querySelector('.fest-title-link');
-
     cb.onchange = ()=>{
       if(cb.checked){ festChecked.add(id); showFestMarker(ev, id); }
       else { festChecked.delete(id); hideFestMarker(id); }
       row.classList.toggle('checked', cb.checked);
       updateFestBar();
     };
-    // 이미 체크된 항목은 렌더 시 마커 복원
     if(isChecked) showFestMarker(ev, id);
-
-    // 즐겨찾기 토글
-    const favBtnEl = row.querySelector('.fav-btn');
-    favBtnEl.addEventListener('click', e=>{
+    row.querySelector('.fav-btn').addEventListener('click', e=>{
       e.stopPropagation();
-      if(favorites.has(id)){ favorites.delete(id); favBtnEl.textContent='♡'; }
-      else { favorites.add(id); favBtnEl.textContent='♥'; }
+      if(favorites.has(id)){ favorites.delete(id); row.querySelector('.fav-btn').textContent='♡'; }
+      else { favorites.add(id); row.querySelector('.fav-btn').textContent='♥'; }
       saveFavs();
     });
-
-    // 제목 클릭 → 상세 팝업
-    titleEl.addEventListener('click', e=>{
-      e.stopPropagation();
-      openEvModal(ev, id);
-    });
-
-    // 행 나머지 클릭 → 체크박스 토글
+    titleEl.addEventListener('click', e=>{ e.stopPropagation(); openEvModal(ev, id); });
     row.addEventListener('click', e=>{
       if(e.target===cb || e.target===titleEl) return;
       cb.checked=!cb.checked; cb.onchange();
     });
     list.appendChild(row);
   });
-  wrap.appendChild(list);
-
-  // 하단 추가 바
-  const bar = document.createElement('div');
-  bar.className = 'fest-add-bar';
-  bar.id = 'festBar';
-  const cnt = document.createElement('span');
-  cnt.className = 'fest-count';
-  cnt.id = 'festCount';
-  const btn = document.createElement('button');
-  btn.className = 'fest-add-btn';
-  btn.id = 'festAddBtn';
-  btn.onclick = addFestSelected;
-  bar.appendChild(cnt);
-  bar.appendChild(btn);
-  wrap.appendChild(bar);
-
-  el.appendChild(wrap);
-  el.style.overflow = 'hidden';
-  el.style.padding = '0';
-  updateFestBar();
 }
 
 function updateFestBar(){
@@ -2914,6 +2960,15 @@ function setTab(t){
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 
+// Escape 키: 모달·드로어 닫기
+document.addEventListener('keydown', e=>{
+  if(e.key !== 'Escape') return;
+  const evOverlay = document.querySelector('.ev-overlay');
+  if(evOverlay){ evOverlay.remove(); return; }
+  if(document.getElementById('itemDrawer')?.classList.contains('open')){ closeDrawer(); return; }
+  if(document.getElementById('loginOverlay')?.style.display !== 'none'){ document.getElementById('loginOverlay').style.display='none'; }
+});
+
 // 사용자 선택 (미주 / 상효)
 document.querySelectorAll('.user-sel-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -3133,7 +3188,9 @@ async function fetchWeather(){
       + '&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode'
       + '&timezone=Europe%2FCopenhagen'
       + `&start_date=${TRIP_DATES[0]}&end_date=${TRIP_DATES[TRIP_DATES.length-1]}`;
-    const res = await fetch(url);
+    const ctrl = new AbortController();
+    const tId = setTimeout(()=>ctrl.abort(), 4000);
+    const res = await fetch(url, {signal: ctrl.signal}).finally(()=>clearTimeout(tId));
     if(!res.ok) return null;
     const data = await res.json();
     // {dayIdx → {icon, label, max, min, rain}}
