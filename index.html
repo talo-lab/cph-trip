@@ -3632,6 +3632,10 @@ function filterExhibitions(){
 }
 
 function renderExhibitionsList(listEl, statEl){
+  if(typeof EXHIBITIONS === 'undefined' || !EXHIBITIONS.length){
+    listEl.innerHTML = '<div style="padding:20px 14px;font-size:12px;color:var(--slate);font-family:Space Mono,monospace">전시 데이터를 불러오는 중... 페이지를 새로고침해 주세요.</div>';
+    return;
+  }
   const q = exhSearchQ.toLowerCase().trim();
   const filtered = filterExhibitions();
   const withEvs  = filtered.filter(x=>x.events.length > 0);

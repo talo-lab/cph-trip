@@ -1,10 +1,11 @@
 // Service Worker — CPH Trip Planner
 // 전략: Network First (배포 즉시 반영) + 오프라인 폴백
-const VERSION = 'cph-v4';
+const VERSION = 'cph-v5';
 const STATIC = [
   '/',
   '/index.html',
   '/events-data.js',
+  '/exhibitions-data.js',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
   'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap',
