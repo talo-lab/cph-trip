@@ -3271,7 +3271,7 @@ function renderDist(){
   wrap.innerHTML=`<div style="font-size:11px;color:var(--slate);font-family:'Space Mono',monospace;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid var(--line)">8 DESIGN DISTRICTS — 행사별 규모 & 바로가기</div>`;
 
   DISTRICTS.forEach(d=>{
-    // 이 지구의 행사 수 (날짜별)
+    // 행사 카운트
     const counts = {'June 10':0,'June 11':0,'June 12':0};
     FESTIVAL_EVENTS.forEach(e=>{ if(e.district===d.name && counts[e.date]!==undefined) counts[e.date]++; });
     const total = Object.values(counts).reduce((a,b)=>a+b,0);
@@ -3281,6 +3281,12 @@ function renderDist(){
       FESTIVAL_EVENTS.filter(e=>e.district===d.name).map(e=>e.venue)
     )].slice(0,4);
 
+    // 전시 브랜드
+    const exhBrands = (typeof EXHIBITIONS!=='undefined') ? EXHIBITIONS.filter(ex=>ex.district===d.name) : [];
+    const exhTotal = exhBrands.length;
+    const exhEvTotal = exhBrands.reduce((s,ex)=>s+ex.events.length,0);
+    const topBrands = exhBrands.filter(ex=>ex.events.length>0).slice(0,4).map(ex=>ex.brand);
+
     const card = document.createElement('div');
     card.style.cssText=`border:1.5px solid var(--line);border-radius:6px;overflow:hidden`;
     card.innerHTML=`
@@ -3289,27 +3295,41 @@ function renderDist(){
           <div style="font-size:13px;font-weight:700">${d.name}</div>
           <div style="font-size:10px;opacity:.85;margin-top:1px">${d.when}</div>
         </div>
-        <div style="text-align:right;font-family:'Space Mono',monospace;font-size:10px">
-          <div style="font-size:18px;font-weight:700;line-height:1">${total}</div>
-          <div style="opacity:.85">이벤트</div>
+        <div style="display:flex;gap:10px;font-family:'Space Mono',monospace;font-size:10px;text-align:right">
+          ${total>0?`<div><div style="font-size:17px;font-weight:700;line-height:1">${total}</div><div style="opacity:.85">행사</div></div>`:''}
+          ${exhTotal>0?`<div><div style="font-size:17px;font-weight:700;line-height:1">${exhTotal}</div><div style="opacity:.85">브랜드</div></div>`:''}
         </div>
       </div>
       <div style="padding:8px 12px;background:var(--cream)">
         <div style="font-size:11px;color:var(--slate);margin-bottom:6px">${d.desc}</div>
-        ${total>0?`<div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap">
-          ${['June 10','June 11','June 12'].map(date=>counts[date]>0
-            ?`<span style="font-size:10px;font-family:'Space Mono',monospace;background:rgba(0,0,0,.06);padding:1px 6px;border-radius:2px">${date.replace('June ','6/')} · ${counts[date]}개</span>`
-            :'').join('')}
+
+        ${total>0?`<div style="margin-bottom:8px">
+          <div style="font-size:9px;font-weight:700;font-family:'Space Mono',monospace;color:var(--slate);margin-bottom:4px;letter-spacing:.06em">EVENTS</div>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px">
+            ${['June 10','June 11','June 12'].map(date=>counts[date]>0
+              ?`<span style="font-size:10px;font-family:'Space Mono',monospace;background:rgba(0,0,0,.06);padding:1px 6px;border-radius:2px">${date.replace('June ','6/')} · ${counts[date]}개</span>`
+              :'').join('')}
+          </div>
+          ${venues.length?`<div style="font-size:10px;color:var(--slate);opacity:.8;line-height:1.5">${venues.join(' · ')}</div>`:''}
         </div>`:''}
-        ${venues.length?`<div style="font-size:10px;color:var(--slate);opacity:.8;margin-bottom:8px;line-height:1.5">${venues.join(' · ')}</div>`:''}
-        <div style="display:flex;gap:6px">
+
+        ${exhTotal>0?`<div style="margin-bottom:8px${total>0?';padding-top:7px;border-top:1px solid var(--line)':''}">
+          <div style="font-size:9px;font-weight:700;font-family:'Space Mono',monospace;color:var(--teal);margin-bottom:4px;letter-spacing:.06em">EXHIBITIONS · ${exhEvTotal}개 이벤트 포함</div>
+          ${topBrands.length?`<div style="font-size:10px;color:var(--slate);opacity:.85;line-height:1.6">${topBrands.join(' · ')}${exhTotal>4?` <span style="opacity:.6">외 ${exhTotal-4}개</span>`:''}</div>`:''}
+        </div>`:''}
+
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
           <a href="${gMapsUrl(d.name+' Copenhagen')}" target="_blank"
-            style="flex:1;text-align:center;padding:5px;background:var(--sage);color:#fff;border-radius:4px;text-decoration:none;font-size:11px;font-family:'Space Mono',monospace">
-            📍 Google Maps
+            style="padding:5px 8px;background:var(--sage);color:#fff;border-radius:4px;text-decoration:none;font-size:10.5px;font-family:'Space Mono',monospace">
+            📍 Maps
           </a>
           ${total>0?`<button onclick="setTab('fest');festDistFilter='${d.name}';renderFest()"
-            style="flex:1;padding:5px;background:${d.color};color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Space Mono',monospace">
-            행사 ${total}개 보기 ▸
+            style="flex:1;padding:5px;background:${d.color};color:#fff;border:none;border-radius:4px;font-size:10.5px;cursor:pointer;font-family:'Space Mono',monospace">
+            행사 ${total}개 ▸
+          </button>`:''}
+          ${exhTotal>0?`<button onclick="exhDistFilter='${d.name}';setTab('exh')"
+            style="flex:1;padding:5px;background:var(--teal);color:#fff;border:none;border-radius:4px;font-size:10.5px;cursor:pointer;font-family:'Space Mono',monospace">
+            전시 ${exhTotal}개 ▸
           </button>`:''}
         </div>
       </div>`;
