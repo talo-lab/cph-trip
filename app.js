@@ -4002,7 +4002,8 @@ function showConflictCard(st, place, result, conflictItem){
   st.querySelector('#cfAddAnyway').onclick = async()=>{
     plan[result.day].items.push(result._item);
     sortDayByTime(result.day);
-    await savePlan(); addUserMarker(place);
+    await savePlan();
+    currentVisDay=result.day; updateDayViz(result.day);
     if(place.lat) map.flyTo([place.lat,place.lng],14,{duration:1});
     st.innerHTML=`<div class="status show"><b>✓ "${place.title}"</b> 추가 완료! → <b>${plan[result.day].date}</b></div>`;
   };
@@ -4016,7 +4017,8 @@ function showConflictCard(st, place, result, conflictItem){
     result._item.time = suggestTime(di);
     plan[di].items.push(result._item);
     sortDayByTime(di);
-    await savePlan(); addUserMarker(place);
+    await savePlan();
+    currentVisDay=di; updateDayViz(di);
     if(place.lat) map.flyTo([place.lat,place.lng],14,{duration:1});
     st.innerHTML=`<div class="status show"><b>✓ "${place.title}"</b> → <b>${plan[di].date}</b>에 추가됐어요!</div>`;
   };
@@ -4085,7 +4087,7 @@ Rules: never delete _fixed:true items; preserve _user,_fixed,_lat,_lng,_dk field
         plan[result.day].items.push(result._item);
         sortDayByTime(result.day);
         await savePlan();
-        addUserMarker(place, result.day);
+        currentVisDay=result.day; updateDayViz(result.day);
         const distName = result.districtKey?(DISTRICTS.find(d=>d.key===result.districtKey)?.name||''):'';
         input.value='';
         st.innerHTML=`<div class="status show">
@@ -5282,9 +5284,6 @@ async function initApp(){
   patchRunningCourses();
   patchFlightCoords();
   patchPlanGeodata();
-  plan.forEach(day=>day.items.forEach(it=>{
-    if(it._user&&it._lat&&it._lng) addUserMarker({title:it.title,note:it.note,lat:it._lat,lng:it._lng});
-  }));
   updateUserSelector();
   setTab('plan');
 }
