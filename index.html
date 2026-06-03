@@ -844,9 +844,66 @@
 </div>
 
 <script>
-/* Google Maps Places Search URL — POI 매칭 최적화 */
+/* Google Maps Places Search URL */
 function gMapsUrl(query) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+/* Google Maps 경로 URL (이동 항목용) */
+function gMapsDir(origin, destination, mode) {
+  return `https://www.google.com/maps/dir/?api=1`
+    + `&origin=${encodeURIComponent(origin)}`
+    + `&destination=${encodeURIComponent(destination)}`
+    + `&travelmode=${mode}`;
+}
+
+/* 이동수단 감지 (note 텍스트 기반) */
+function detectTravelMode(note) {
+  const n = (note || '').toLowerCase();
+  if (/도보|걸어|walk/.test(n))                              return 'walking';
+  if (/자전거|bike|cycling/.test(n))                         return 'bicycling';
+  if (/메트로|지하철|s-tog|기차|버스|transit|대중교통/.test(n)) return 'transit';
+  return 'transit';
+}
+
+/* 한글 장소명 → Google Maps 검색어 */
+const PLACE_MAP = {
+  '숙소':'Vesterbro Airbnb Copenhagen', '호텔':'Vesterbro Copenhagen',
+  '공항':'Copenhagen Airport CPH', '코펜하겐 공항':'Copenhagen Airport CPH',
+  '중앙역':'Copenhagen Central Station', '코펜하겐 중앙역':'Copenhagen Central Station',
+  '벨뷰 해변':'Bellevue Beach Klampenborg', '뉘하운':'Nyhavn Copenhagen',
+  '티볼리':'Tivoli Gardens Copenhagen', 'klub':'KLUB Linnésgade 25 Copenhagen',
+};
+function normPlace(raw) {
+  const k = raw.trim().toLowerCase();
+  for(const [key, val] of Object.entries(PLACE_MAP)){
+    if(k.includes(key.toLowerCase())) return val;
+  }
+  return raw.trim() + ' Copenhagen';
+}
+
+/* 항목에 맞는 Google Maps URL 반환
+ * - 이동 항목 (제목에 →) → 경로 URL
+ * - 일반 항목 → 장소 검색 URL */
+function gMapsUrlForItem(it) {
+  const title = it.title || '';
+  const note  = it.note  || '';
+  const tag   = it.dist  || '';
+
+  // 이동 항목 감지: 제목에 "→" 포함 or 태그에 "이동"
+  const isMove = title.includes('→') || tag.includes('이동');
+
+  if (isMove && title.includes('→')) {
+    const idx = title.indexOf('→');
+    // "숙소 출발 → 벨뷰 해변으로 이동" 파싱
+    const fromRaw = title.slice(0, idx).replace(/\s*(출발|에서|에서의)?\s*$/, '').trim();
+    const toRaw   = title.slice(idx + 1).replace(/\s*(으로|로)?\s*이동.*$/, '').trim();
+    const mode    = detectTravelMode(note);
+    return gMapsDir(normPlace(fromRaw), normPlace(toRaw), mode);
+  }
+
+  // 일반 장소 검색
+  return gMapsUrl(gMapsQuery(it));
 }
 
 /* 일정 항목에서 최적 검색어 추출
@@ -855,11 +912,10 @@ function gMapsQuery(it) {
   const title = it.title || '';
   const note  = it.note  || '';
 
-  // 1순위: 제목에서 영문 장소명 (괄호 제외, 3자 이상 연속 영문)
+  // 1순위: 제목에서 영문 장소명 (3자 이상 연속 영문)
   const titleEng = title.match(/[A-Z][A-Za-z\s&'.-]{3,}/);
   if (titleEng) return titleEng[0].trim() + ' Copenhagen';
 
-  // note를 · — – 로 분리
   const parts = note.split(/\s*[·—–·]\s*/).map(p => p.trim()).filter(Boolean);
 
   // 2순위: note에서 숫자+영문 구절 (도로명 주소)
@@ -870,7 +926,6 @@ function gMapsQuery(it) {
   const engPart = parts.find(p => /[a-zA-Z]{4,}/.test(p));
   if (engPart) return engPart + ' Copenhagen';
 
-  // 최후: 제목 그대로
   return title + ' Copenhagen';
 }
 
@@ -1732,7 +1787,7 @@ function renderPlan(){
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${tagsHtml}
         </div>
-        <a class="item-gmap" href="${gMapsUrl(gMapsQuery(it))}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">📍</a>
+        <a class="item-gmap" href="${gMapsUrlForItem(it)}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${it.title&&it.title.includes('→')?'🧭':'📍'}</a>
         <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
       // 완료 체크박스
@@ -2862,7 +2917,7 @@ function openDrawer(di, ii, title){
   const it = plan[di]?.items[ii];
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn && it){
-    gmapBtn.href = gMapsUrl(gMapsQuery(it));
+    gmapBtn.href = gMapsUrlForItem(it);
     gmapBtn.style.display = 'inline';
   }
   setTimeout(()=>document.getElementById('drawerInput').focus(), 250);
