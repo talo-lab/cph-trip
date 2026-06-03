@@ -1984,10 +1984,17 @@ async function addFestSelected(){
   });
 
   const hoursWarnings = [];
+  let addedCount = 0;
+  let firstDi = null;
+  const skippedTitles = [];
+
   toAdd.forEach(ev=>{
     const di = FEST_DATE_MAP[ev.date];
     if(di==null) return;
-    if(plan[di].items.some(it=>it.title===ev.title)) return;
+    if(plan[di].items.some(it=>it.title===ev.title)){
+      skippedTitles.push(ev.title.slice(0,16));
+      return;
+    }
     const newIt = {
       time: ev.time.split('-')[0],
       title: ev.title,
@@ -1998,24 +2005,44 @@ async function addFestSelected(){
     };
     plan[di].items.push(newIt);
     sortDayByTime(di);
-    // 영업시간 체크
+    addedCount++;
+    if(firstDi===null) firstDi=di;
     const w = getVenueWarning(newIt, di);
     if(w) hoursWarnings.push(`⚠ ${ev.title.slice(0,20)}: ${w.msg}`);
   });
+
   if(hoursWarnings.length) showHoursToast(hoursWarnings);
 
   await savePlan();
   festChecked.clear();
   clearFestMarkers();
 
-  // 피드백 + 일정 탭 갱신 (백그라운드)
-  const btn = document.getElementById('festAddBtn');
-  if(btn){ btn.textContent=`✓ ${toAdd.length}개 일정에 추가됨`; btn.disabled=true; }
-  // plan 인메모리는 이미 업데이트됨 → 일정 탭으로 이동 시 즉시 반영
-  setTimeout(()=>{
-    if(activeTab==='fest') renderFest();
-    else if(activeTab==='plan') renderPlan();
-  }, 1200);
+  if(addedCount===0 && skippedTitles.length>0){
+    // 전부 중복 — 이미 있다고 알려주고 탭 이동
+    const btn=document.getElementById('festAddBtn');
+    if(btn){ btn.textContent='이미 일정에 있어요'; btn.disabled=true; }
+    setTimeout(()=>{ setTab('plan'); },800);
+    return;
+  }
+
+  // 성공 — 일정 탭으로 이동 후 해당 날짜 스크롤
+  setTab('plan');
+  if(firstDi!==null){
+    requestAnimationFrame(()=>{
+      const dayEl=document.getElementById(`body-${firstDi}`)?.closest('.day');
+      if(dayEl) dayEl.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  }
+
+  // 추가 완료 토스트
+  const msg = skippedTitles.length
+    ? `✓ ${addedCount}개 추가 · ${skippedTitles.length}개는 이미 있음`
+    : `✓ ${addedCount}개 일정에 추가됐어요`;
+  const t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2e6b2e;color:#fff;padding:10px 18px;border-radius:6px;font-size:12px;font-family:Space Mono,monospace;z-index:9999;pointer-events:none';
+  t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
 }
 
 /* ---------- RENDER: PLAN ---------- */
