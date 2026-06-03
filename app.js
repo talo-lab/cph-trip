@@ -332,6 +332,36 @@ const STAY = {
   url:'https://www.airbnb.co.kr/rooms/1565348100263330857'
 };
 
+/* ---------- 달리기 코스 경로 데이터 ---------- */
+// _routePts → Leaflet 폴리라인 웨이포인트 [[lat,lng],...]
+// gmaps → Google Maps 걷기 경로 URL
+const RUNNING_ROUTES = {
+  2:{ // 6/10 호수 이스트 루프 5km
+    pts:[[55.6671,12.5519],[55.6748,12.5541],[55.6812,12.5600],[55.6855,12.5638],[55.6870,12.5692],[55.6830,12.5700],[55.6760,12.5568],[55.6671,12.5519]],
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=55.6671,12.5519&waypoints=55.6812,12.5600|55.6855,12.5638|55.6870,12.5692|55.6760,12.5568&destination=55.6671,12.5519&travelmode=walking'
+  },
+  3:{ // 6/11 3대 호수 풀 루프 7km
+    pts:[[55.6671,12.5519],[55.6748,12.5541],[55.6855,12.5638],[55.6950,12.5618],[55.7038,12.5580],[55.7038,12.5525],[55.6950,12.5525],[55.6810,12.5530],[55.6671,12.5519]],
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=55.6671,12.5519&waypoints=55.6855,12.5638|55.6950,12.5618|55.7038,12.5580|55.6950,12.5525|55.6810,12.5530&destination=55.6671,12.5519&travelmode=walking'
+  },
+  4:{ // 6/12 프레데릭스베르 공원 루프 5km
+    pts:[[55.6671,12.5519],[55.6720,12.5412],[55.6750,12.5280],[55.6754,12.5158],[55.6812,12.5202],[55.6828,12.5290],[55.6780,12.5368],[55.6710,12.5390],[55.6671,12.5519]],
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=55.6671,12.5519&waypoints=55.6750,12.5280|55.6754,12.5158|55.6812,12.5202|55.6828,12.5290|55.6710,12.5390&destination=55.6671,12.5519&travelmode=walking'
+  },
+  5:{ // 6/13 하버&운하 루프 7km
+    pts:[[55.6671,12.5519],[55.6697,12.5626],[55.6690,12.5742],[55.6667,12.5818],[55.6710,12.5884],[55.6743,12.5893],[55.6773,12.5877],[55.6800,12.5826],[55.6755,12.5693],[55.6671,12.5519]],
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=55.6671,12.5519&waypoints=55.6690,12.5742|55.6710,12.5884|55.6773,12.5877|55.6800,12.5826&destination=55.6671,12.5519&travelmode=walking'
+  },
+  6:{ // 6/14 베스테르브로&시청광장 루프 5km
+    pts:[[55.6671,12.5519],[55.6715,12.5578],[55.6753,12.5655],[55.6759,12.5682],[55.6791,12.5726],[55.6792,12.5765],[55.6735,12.5731],[55.6695,12.5640],[55.6671,12.5519]],
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=55.6671,12.5519&waypoints=55.6759,12.5682|55.6791,12.5726|55.6792,12.5765|55.6695,12.5640&destination=55.6671,12.5519&travelmode=walking'
+  },
+  7:{ // 6/15 프레데릭스베르 확장 루프 7km
+    pts:[[55.6671,12.5519],[55.6720,12.5412],[55.6755,12.5332],[55.6754,12.5158],[55.6830,12.5210],[55.6840,12.5320],[55.6810,12.5390],[55.6762,12.5355],[55.6700,12.5338],[55.6671,12.5519]],
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=55.6671,12.5519&waypoints=55.6755,12.5332|55.6754,12.5158|55.6830,12.5210|55.6840,12.5320|55.6700,12.5338&destination=55.6671,12.5519&travelmode=walking'
+  }
+};
+
 const DEFAULT_PLAN = [
   // DAY 0 — 6/8
   {date:'6/8 (월)', tag:'인천 출발', fest:false, items:[
@@ -351,30 +381,30 @@ const DEFAULT_PLAN = [
   ]},
   // DAY 2 — 6/10 (Festival Day 1)
   {date:'6/10 (수)', tag:'페스티벌 1일차', fest:true, items:[
-    {time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true},
+    {time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true, ...RUNNING_ROUTES[2]},
     {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _fixed:true},
   ]},
   // DAY 3 — 6/11 (Festival Day 2)
   {date:'6/11 (목)', tag:'페스티벌 2일차', fest:true, items:[
-    {time:'07:00', title:'🏃 아침 달리기 — 3대 호수 풀 루프 7km', note:'숙소 → 상트요르겐스 → 페블링에 → 소르테담 호수 끝까지 → 반대편 돌아 귀숙 · 약 42분 · 코펜하겐 최고 인기 러닝 코스', dist:'', _lat:55.6855, _lng:12.5686, _runningCourse:true},
+    {time:'07:00', title:'🏃 아침 달리기 — 3대 호수 풀 루프 7km', note:'숙소 → 상트요르겐스 → 페블링에 → 소르테담 호수 끝까지 → 반대편 돌아 귀숙 · 약 42분 · 코펜하겐 최고 인기 러닝 코스', dist:'', _lat:55.6855, _lng:12.5686, _runningCourse:true, ...RUNNING_ROUTES[3]},
   ]},
   // DAY 4 — 6/12 (Festival Day 3)
   {date:'6/12 (금)', tag:'페스티벌 3일차', fest:true, items:[
-    {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 공원 루프 5km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have 메인게이트 → 공원 내부 루프 → 귀숙 · 약 30분 · 왕실 정원 자갈길', dist:'', _lat:55.6762, _lng:12.5265, _runningCourse:true},
+    {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 공원 루프 5km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have 메인게이트 → 공원 내부 루프 → 귀숙 · 약 30분 · 왕실 정원 자갈길', dist:'', _lat:55.6762, _lng:12.5265, _runningCourse:true, ...RUNNING_ROUTES[4]},
   ]},
   // DAY 5 — 6/13
   {date:'6/13 (토)', tag:'자유 관광', fest:false, items:[
-    {time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true},
+    {time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true, ...RUNNING_ROUTES[5]},
     {time:'미정', title:'벨뷰 해변 (아르네 야콥센 비치)', note:'Bellevue Strand, Klampenborg — 야콥센 설계 라이프가드 타워 · 북유럽 모더니즘 해변', dist:'', _lat:55.7766, _lng:12.5780},
     {time:'미정', title:'루이지애나 현대미술관', note:'GL Strandvej 13, Humlebæk — 해안절벽 위 건축 · 북유럽 최고 미술관 · 토–일 11:00–18:00', dist:'', _lat:55.9695, _lng:12.5430},
   ]},
   // DAY 6 — 6/14
   {date:'6/14 (일)', tag:'근교 / 미술관', fest:false, items:[
-    {time:'07:00', title:'🏃 아침 달리기 — 베스테르브로 & 시청광장 루프 5km', note:'숙소 → Vesterbrogade → Rådhuspladsen 시청광장 → H.C. Andersens Blvd → Istedgade → 귀숙 · 약 30분 · 아침 코펜하겐 도심 분위기', dist:'', _lat:55.6757, _lng:12.5680, _runningCourse:true},
+    {time:'07:00', title:'🏃 아침 달리기 — 베스테르브로 & 시청광장 루프 5km', note:'숙소 → Vesterbrogade → Rådhuspladsen 시청광장 → H.C. Andersens Blvd → Istedgade → 귀숙 · 약 30분 · 아침 코펜하겐 도심 분위기', dist:'', _lat:55.6757, _lng:12.5680, _runningCourse:true, ...RUNNING_ROUTES[6]},
   ]},
   // DAY 7 — 6/15
   {date:'6/15 (월)', tag:'자유 일정', fest:false, items:[
-    {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true},
+    {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true, ...RUNNING_ROUTES[7]},
     {time:'미정', title:'프리타운 크리스티아니아', note:'Christiania, Christianshavn — 자유 공동체 마을 · 그래피티·갤러리·카페 산책 · 매일 24시간', dist:'', _lat:55.6729, _lng:12.5946},
   ]},
   // DAY 8 — 6/16
@@ -453,10 +483,16 @@ function saveFavs(){
 let routeLayer = null;
 let planPinLayer = [];
 let selRouteLayer = null;
+let runRouteLayers = [];   // 달리기 코스 폴리라인 (날짜 전환 시 초기화)
 let planSelItems = []; // [{di,ii,lat,lng,title}] max 2
 let selectedPlanKey = null; // 현재 지도 선택된 plan item "di-ii"
 let exhPinLayer = null;     // 전시탭 지도 핀
 const exhGeoCache = {};     // address -> {lat,lng}
+
+function clearRunRouteLayers(){
+  runRouteLayers.forEach(l=>map.removeLayer(l));
+  runRouteLayers=[];
+}
 
 /* ---------- 공통 Nominatim 지오코딩 (서버 프록시 경유) ---------- */
 async function nominatimGeocode(query){
@@ -604,6 +640,16 @@ function renderPlanMarkers(di){
     const m = L.marker([coords.lat,coords.lng],{icon}).addTo(map);
     m.bindPopup(`<div class="pop-name">${catIcon} ${it.title}</div><div class="pop-desc">${it.time?`<b>${it.time}</b> · `:''}${it.note||''}<br><span style="display:inline-block;margin-top:4px;background:${pinColor};color:#fff;padding:1px 6px;font-family:'Space Mono',monospace;font-size:10px;border-radius:1px">${plan[di].date}</span></div>`);
     planPinLayer.push(m);
+  });
+
+  // 달리기 코스 경로 폴리라인 자동 표시
+  clearRunRouteLayers();
+  plan[di].items.forEach(it=>{
+    if(!it._runningCourse || !it.pts) return;
+    const line = L.polyline(it.pts, {color:'#e05c2a', weight:3, opacity:.75, dashArray:'8 5'}).addTo(map);
+    const startM = L.circleMarker(it.pts[0], {radius:6, color:'#e05c2a', fillColor:'#fff', fillOpacity:1, weight:2}).addTo(map);
+    const endM   = L.circleMarker(it.pts[it.pts.length-1], {radius:5, color:'#e05c2a', fillColor:'#e05c2a', fillOpacity:.7, weight:2}).addTo(map);
+    runRouteLayers.push(line, startM, endM);
   });
 }
 
@@ -1353,6 +1399,7 @@ function renderPlan(){
           <div class="item-title" contenteditable spellcheck="false">${it.title||''}</div>
           <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
+          ${it._runningCourse&&it.gmaps?`<a href="${it.gmaps}" target="_blank" rel="noopener" class="item-src run-route-link" onclick="event.stopPropagation()" style="color:var(--teal);text-decoration:none">🗺 Google Maps 경로</a>`:''}
           ${it._user?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${tagsHtml}${warnHtml}
@@ -2268,7 +2315,127 @@ function renderInfo(){
       <li>인기 디자인 토크는 사전 등록 필요할 수 있음</li>
     </ul>
     <p style="margin-top:14px;font-size:11px;opacity:.6">※ 일정·디자인 지구 매칭은 추천안이며, 실제 프로그램은 3daysofdesign.dk에서 확정됩니다. 일정 탭의 모든 항목은 직접 편집·추가·삭제할 수 있고 자동 저장됩니다.</p>
+
+    <h3>🚲 자전거 대여</h3>
+    <p>코펜하겐은 세계 최고의 자전거 도시 — 전용 차선이 촘촘하고 지형이 평탄해 여행 중 이동수단으로 적극 추천합니다.</p>
+    <div class="bike-rental-grid" id="bikeGrid"></div>
+    <p style="font-size:11.5px;color:var(--teal)"><b>팁:</b> Donkey Republic 앱은 구글/애플 계정으로 가입하고 신용카드 등록하면 바로 사용 가능. 첫날 아침 도착 직후 숙소 근처 Bike Mike 또는 Copenhagen Bicycles에서 종일권 빌리는 것도 좋아요.</p>
+
+    <h3>🤖 여행 어시스턴트</h3>
+    <p style="font-size:12px;opacity:.75">코펜하겐 여행 중 궁금한 것을 물어보세요. 대화 내역은 이 기기에 저장됩니다.</p>
+    <div class="qa-wrap" id="qaWrap">
+      <div class="qa-history" id="qaHistory"></div>
+      <div class="qa-input-row">
+        <textarea class="qa-input" id="qaInput" placeholder="예) Reffen street food가 6/10에 여나요?&#10;예) 코펜하겐 슈퍼마켓 위치 알려줘&#10;예) Nørreport역에서 Nordhavn까지 자전거로 얼마나 걸려?" rows="2"></textarea>
+        <button class="qa-send" id="qaSend">전송</button>
+      </div>
+      <div class="qa-status" id="qaStatus"></div>
+    </div>
   </div>`;
+
+  // ── 자전거 대여소 카드 렌더링 ──
+  const BIKE_SPOTS = [
+    {name:'Donkey Republic (앱)', type:'app', icon:'📱', color:'#2f6b6b',
+     desc:'스마트폰 앱으로 QR 잠금 해제. 코펜하겐 전역 수백 곳의 랙. 시간당 요금 (하루 약 180–250 DKK).',
+     addr:'앱 설치 후 주변 자전거 찾기', lat:55.6727, lng:12.5645,
+     gmaps:'https://www.google.com/maps/search/Donkey+Republic+Copenhagen/@55.6727,12.5645,14z',
+     appUrl:'https://www.donkeyrepublic.com'},
+    {name:'Bycyklen (전동 시티바이크)', type:'station', icon:'⚡', color:'#d99021',
+     desc:'터치스크린 잠금장치 내장 전동 자전거 (최대 20km/h). 앱 또는 카드 결제. 시작 요금 25 DKK + 5 DKK/10분.',
+     addr:'Rådhuspladsen (시청광장)', lat:55.6759, lng:12.5682,
+     gmaps:'https://www.google.com/maps/place/55.6759,12.5682'},
+    {name:'Copenhagen Bicycles', type:'shop', icon:'🏪', color:'#c8492a',
+     desc:'중앙역 인근 대여점. 시티바이크·카고바이크 완비. 하루 대여 약 100–150 DKK. 헬멧 포함.',
+     addr:'Nørre Voldgade 44, 1358 København', lat:55.6763, lng:12.5622,
+     gmaps:'https://www.google.com/maps/place/Copenhagen+Bicycles,+N%C3%B8rre+Voldgade+44,+1358+K%C3%B8benhavn'},
+    {name:'Bike Mike', type:'shop', icon:'🔧', color:'#5d7456',
+     desc:'숙소(베스테르브로)에서 도보 8분. 수리+대여 겸용. 직원이 친절하고 저렴. 하루 대여 약 80–120 DKK.',
+     addr:'Vester Søgade 2, 1601 København', lat:55.6740, lng:12.5530,
+     gmaps:'https://www.google.com/maps/search/Bike+Mike+Vester+Søgade+Copenhagen'},
+    {name:'Cykler til Leje & Salg', type:'shop', icon:'🛒', color:'#9b7ab5',
+     desc:'코펜하겐 중심부 대여점. 다양한 자전거 보유. 하루 대여 약 100 DKK. 다국어 서비스.',
+     addr:'Gothersgade 157, 1123 København', lat:55.6831, lng:12.5782,
+     gmaps:'https://www.google.com/maps/search/Cykler+til+Leje+Gothersgade+Copenhagen'},
+  ];
+
+  const bikeGrid = document.getElementById('bikeGrid');
+  if(bikeGrid){
+    bikeGrid.innerHTML = BIKE_SPOTS.map(s=>`
+      <div class="bike-card">
+        <div class="bike-card-hd" style="color:${s.color}">${s.icon} ${s.name}</div>
+        <div class="bike-card-desc">${s.desc}</div>
+        <div class="bike-card-addr">📍 ${s.addr}</div>
+        <div class="bike-card-links">
+          <a href="${s.gmaps}" target="_blank" rel="noopener" class="bike-link">🗺 지도 보기</a>
+          ${s.appUrl?`<a href="${s.appUrl}" target="_blank" rel="noopener" class="bike-link">↗ 앱/사이트</a>`:''}
+          <button class="bike-link bike-pin-btn" data-lat="${s.lat}" data-lng="${s.lng}" data-name="${s.name}">📌 맵에 핀</button>
+        </div>
+      </div>`).join('');
+
+    bikeGrid.querySelectorAll('.bike-pin-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const lat=+btn.dataset.lat, lng=+btn.dataset.lng, name=btn.dataset.name;
+        map.flyTo([lat,lng],16,{duration:.7});
+        L.marker([lat,lng],{icon:L.divIcon({className:'',
+          html:`<div style="background:#2f6b6b;color:#fff;padding:3px 8px;border-radius:4px;font-size:10px;font-family:'Space Mono',monospace;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.3)">🚲 ${name}</div>`,
+          iconAnchor:[0,0]})}).addTo(map)
+          .bindPopup(`<div class="pop-name">🚲 ${name}</div>`).openPopup();
+      });
+    });
+  }
+
+  // ── AI 여행 어시스턴트 Q&A ──
+  const QA_KEY = 'cph_qa_history';
+  let qaHistory = JSON.parse(localStorage.getItem(QA_KEY)||'[]');
+
+  function renderQaHistory(){
+    const el = document.getElementById('qaHistory');
+    if(!el) return;
+    if(!qaHistory.length){
+      el.innerHTML='<div style="font-size:11.5px;opacity:.5;padding:8px 0">아직 질문이 없어요. 무엇이든 물어보세요!</div>';
+      return;
+    }
+    el.innerHTML = qaHistory.slice().reverse().map((qa,i)=>`
+      <div class="qa-item">
+        <div class="qa-q">❓ ${qa.q}</div>
+        <div class="qa-a">${qa.a}</div>
+        <div class="qa-meta">${new Date(qa.ts).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
+      </div>`).join('');
+  }
+  renderQaHistory();
+
+  const qaSend = document.getElementById('qaSend');
+  const qaInput = document.getElementById('qaInput');
+  const qaStatus = document.getElementById('qaStatus');
+  if(qaSend && qaInput){
+    const doAsk = async ()=>{
+      const q = qaInput.value.trim();
+      if(!q) return;
+      qaSend.disabled=true; qaSend.textContent='...';
+      qaStatus.textContent='AI가 답변 중...'; qaStatus.style.opacity='1';
+      try{
+        const sys = `You are a helpful travel assistant for a Korean couple (미주 and 상효) visiting Copenhagen for 3 Days of Design festival, June 10-12 2026. They are staying at Sommerstedgade 26, Vesterbro. Answer in Korean, concisely and practically. Include specific addresses, opening hours, prices (DKK) when relevant.`;
+        const r = await fetch('/api/extract',{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({system:sys, input:q, max_tokens:600})});
+        if(!r.ok) throw new Error(r.status);
+        const d = await r.json();
+        const a = (d.text||'').trim();
+        if(!a) throw new Error('빈 응답');
+        qaHistory.push({q, a, ts:Date.now()});
+        if(qaHistory.length>30) qaHistory=qaHistory.slice(-30);
+        localStorage.setItem(QA_KEY, JSON.stringify(qaHistory));
+        qaInput.value='';
+        qaStatus.textContent='';
+        renderQaHistory();
+      }catch(e){
+        qaStatus.textContent=`오류: ${e.message}. 다시 시도해주세요.`;
+      }finally{
+        qaSend.disabled=false; qaSend.textContent='전송';
+      }
+    };
+    qaSend.addEventListener('click', doAsk);
+    qaInput.addEventListener('keydown', e=>{ if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){ e.preventDefault(); doAsk(); } });
+  }
 }
 
 /* ---------- EXHIBITION EVENT DETAIL MODAL ---------- */
@@ -4772,15 +4939,16 @@ if('serviceWorker' in navigator){
   });
 }
 
+
 /* 기존 저장 플랜에 달리기 코스 주입 (없는 날에만) */
 function patchRunningCourses(){
   const RUNS = [
-    {di:2, item:{time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true}},
-    {di:3, item:{time:'07:00', title:'🏃 아침 달리기 — 3대 호수 풀 루프 7km', note:'숙소 → 상트요르겐스 → 페블링에 → 소르테담 호수 끝까지 → 반대편 돌아 귀숙 · 약 42분 · 코펜하겐 최고 인기 러닝 코스', dist:'', _lat:55.6855, _lng:12.5686, _runningCourse:true}},
-    {di:4, item:{time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 공원 루프 5km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have 메인게이트 → 공원 내부 루프 → 귀숙 · 약 30분 · 왕실 정원 자갈길', dist:'', _lat:55.6762, _lng:12.5265, _runningCourse:true}},
-    {di:5, item:{time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true}},
-    {di:6, item:{time:'07:00', title:'🏃 아침 달리기 — 베스테르브로 & 시청광장 루프 5km', note:'숙소 → Vesterbrogade → Rådhuspladsen 시청광장 → H.C. Andersens Blvd → Istedgade → 귀숙 · 약 30분 · 아침 코펜하겐 도심 분위기', dist:'', _lat:55.6757, _lng:12.5680, _runningCourse:true}},
-    {di:7, item:{time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true}},
+    {di:2, item:{time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true, ...RUNNING_ROUTES[2]}},
+    {di:3, item:{time:'07:00', title:'🏃 아침 달리기 — 3대 호수 풀 루프 7km', note:'숙소 → 상트요르겐스 → 페블링에 → 소르테담 호수 끝까지 → 반대편 돌아 귀숙 · 약 42분 · 코펜하겐 최고 인기 러닝 코스', dist:'', _lat:55.6855, _lng:12.5686, _runningCourse:true, ...RUNNING_ROUTES[3]}},
+    {di:4, item:{time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 공원 루프 5km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have 메인게이트 → 공원 내부 루프 → 귀숙 · 약 30분 · 왕실 정원 자갈길', dist:'', _lat:55.6762, _lng:12.5265, _runningCourse:true, ...RUNNING_ROUTES[4]}},
+    {di:5, item:{time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true, ...RUNNING_ROUTES[5]}},
+    {di:6, item:{time:'07:00', title:'🏃 아침 달리기 — 베스테르브로 & 시청광장 루프 5km', note:'숙소 → Vesterbrogade → Rådhuspladsen 시청광장 → H.C. Andersens Blvd → Istedgade → 귀숙 · 약 30분 · 아침 코펜하겐 도심 분위기', dist:'', _lat:55.6757, _lng:12.5680, _runningCourse:true, ...RUNNING_ROUTES[6]}},
+    {di:7, item:{time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true, ...RUNNING_ROUTES[7]}},
   ];
   let changed = false;
   RUNS.forEach(({di, item})=>{
