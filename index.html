@@ -182,6 +182,7 @@
   }
   .fest-event:hover{background:rgba(0,0,0,.03)}
   .fest-event.checked{background:rgba(200,73,42,.06)}
+  @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
   .fest-search-wrap{padding:6px 12px;border-bottom:1px solid var(--line);background:#fff}
   .fest-search-input{
     width:100%;box-sizing:border-box;padding:5px 10px 5px 28px;
@@ -1810,6 +1811,8 @@ function renderPlan(){
         plan[toDi].items.splice(toIdx,0,planItem);
         savePlan();
         renderPlan();
+        // 시간 순서 검증 → 경고 토스트
+        checkDragOrder(toDi, planItem);
       }
     });
   });
@@ -2212,18 +2215,58 @@ async function applyRecItems(){
 /* ---------- RENDER: DISTRICTS ---------- */
 function renderDist(){
   const el=document.getElementById('scroll'); el.innerHTML='';
-  const wrap=document.createElement('div'); wrap.className='dist-list';
+  el.style.cssText='';
+
+  const wrap=document.createElement('div');
+  wrap.style.cssText='padding:12px 14px;display:flex;flex-direction:column;gap:12px';
+
+  // 헤더
+  wrap.innerHTML=`<div style="font-size:11px;color:var(--slate);font-family:'Space Mono',monospace;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid var(--line)">8 DESIGN DISTRICTS — 행사별 규모 & 바로가기</div>`;
+
   DISTRICTS.forEach(d=>{
-    const row=document.createElement('div'); row.className='dist';
-    row.innerHTML=`
-      <span class="dist-swatch" style="background:${d.color}"></span>
-      <div class="dist-info">
-        <div class="dist-name">${d.name}</div>
-        <div class="dist-desc">${d.desc} · ${d.when}</div>
+    // 이 지구의 행사 수 (날짜별)
+    const counts = {'June 10':0,'June 11':0,'June 12':0};
+    FESTIVAL_EVENTS.forEach(e=>{ if(e.district===d.name && counts[e.date]!==undefined) counts[e.date]++; });
+    const total = Object.values(counts).reduce((a,b)=>a+b,0);
+
+    // 대표 베뉴 (상위 4개, 중복 제거)
+    const venues = [...new Set(
+      FESTIVAL_EVENTS.filter(e=>e.district===d.name).map(e=>e.venue)
+    )].slice(0,4);
+
+    const card = document.createElement('div');
+    card.style.cssText=`border:1.5px solid var(--line);border-radius:6px;overflow:hidden`;
+    card.innerHTML=`
+      <div style="background:${d.color};color:#fff;padding:8px 12px;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:13px;font-weight:700">${d.name}</div>
+          <div style="font-size:10px;opacity:.85;margin-top:1px">${d.when}</div>
+        </div>
+        <div style="text-align:right;font-family:'Space Mono',monospace;font-size:10px">
+          <div style="font-size:18px;font-weight:700;line-height:1">${total}</div>
+          <div style="opacity:.85">이벤트</div>
+        </div>
       </div>
-      <span class="dist-go">지도 ▸</span>`;
-    row.addEventListener('click',()=>{ map.flyTo([d.lat,d.lng],14.5,{duration:1}); markers[d.key].openPopup(); });
-    wrap.appendChild(row);
+      <div style="padding:8px 12px;background:var(--cream)">
+        <div style="font-size:11px;color:var(--slate);margin-bottom:6px">${d.desc}</div>
+        ${total>0?`<div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap">
+          ${['June 10','June 11','June 12'].map(date=>counts[date]>0
+            ?`<span style="font-size:10px;font-family:'Space Mono',monospace;background:rgba(0,0,0,.06);padding:1px 6px;border-radius:2px">${date.replace('June ','6/')} · ${counts[date]}개</span>`
+            :'').join('')}
+        </div>`:''}
+        ${venues.length?`<div style="font-size:10px;color:var(--slate);opacity:.8;margin-bottom:8px;line-height:1.5">${venues.join(' · ')}</div>`:''}
+        <div style="display:flex;gap:6px">
+          <a href="${gMapsUrl(d.name+' Copenhagen')}" target="_blank"
+            style="flex:1;text-align:center;padding:5px;background:var(--sage);color:#fff;border-radius:4px;text-decoration:none;font-size:11px;font-family:'Space Mono',monospace">
+            📍 Google Maps
+          </a>
+          ${total>0?`<button onclick="setTab('fest');festDistFilter='${d.name}';renderFest()"
+            style="flex:1;padding:5px;background:${d.color};color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Space Mono',monospace">
+            행사 ${total}개 보기 ▸
+          </button>`:''}
+        </div>
+      </div>`;
+    wrap.appendChild(card);
   });
   el.appendChild(wrap);
 }
@@ -2355,6 +2398,68 @@ function placeOptimally(place){
 }
 
 // 시간 문자열을 분으로 (정렬용). "오전/오후/종일" 등은 적당히 매핑
+/* ── 드래그 후 시간 역순 경고 ── */
+function checkDragOrder(di, movedItem){
+  const items = plan[di].items;
+  const warnings = [];
+  const movedT = timeToMin(movedItem.time);
+  const movedIdx = items.indexOf(movedItem);
+
+  // 앞뒤 항목과 시간 비교
+  const prev = items[movedIdx - 1];
+  const next = items[movedIdx + 1];
+  const pt = prev ? timeToMin(prev.time) : -1;
+  const nt = next ? timeToMin(next.time) : 9999;
+
+  if(movedT < 9000 && pt < 9000 && movedT < pt)
+    warnings.push(`⏰ <b>${movedItem.time}</b> "${clip(movedItem.title)}"이 앞 일정 <b>${prev.time}</b> 보다 이릅니다`);
+  if(movedT < 9000 && nt < 9000 && movedT > nt)
+    warnings.push(`⏰ <b>${movedItem.time}</b> "${clip(movedItem.title)}"이 뒤 일정 <b>${next.time}</b> 보다 늦습니다`);
+
+  // 고정 항목 30분 이내
+  items.forEach((it,i)=>{
+    if(!it._fixed || i===movedIdx) return;
+    const gap = Math.abs(timeToMin(it.time) - movedT);
+    if(movedT < 9000 && gap < 30)
+      warnings.push(`🔒 고정 일정 "${clip(it.title)}" (${it.time})과 ${gap}분 간격 — 빠듯합니다`);
+  });
+
+  // 같은 날 전체 시간 역순 개수
+  let inversions = 0;
+  for(let i=0;i<items.length-1;i++){
+    const a=timeToMin(items[i].time), b=timeToMin(items[i+1].time);
+    if(a<9000 && b<9000 && a>b) inversions++;
+  }
+  if(inversions > 0 && warnings.length === 0)
+    warnings.push(`⚠ 이 날 시간 순서가 맞지 않는 항목이 ${inversions}개 있습니다`);
+
+  if(warnings.length) showDragToast(warnings, di);
+}
+
+function clip(s){ return (s||'').length > 12 ? s.slice(0,12)+'…' : s; }
+
+function showDragToast(warnings, di){
+  document.getElementById('dragToast')?.remove();
+  const t = document.createElement('div');
+  t.id = 'dragToast';
+  t.style.cssText = `
+    position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--cream);
+    padding:12px 16px;border-radius:8px;max-width:320px;width:90%;
+    z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.35);
+    font-size:12px;line-height:1.55;animation:slideUp .2s ease`;
+  t.innerHTML = `
+    <div style="margin-bottom:8px">${warnings.join('<br>')}</div>
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button id="toastSort" style="flex:1;padding:5px;background:var(--sage);color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Space Mono',monospace">⇅ 시간순 정렬</button>
+      <button id="toastKeep" style="flex:1;padding:5px;background:rgba(255,255,255,.15);color:var(--cream);border:none;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Space Mono',monospace">순서 유지</button>
+    </div>`;
+  document.body.appendChild(t);
+  t.querySelector('#toastSort').onclick = ()=>{ sortDayByTime(di); savePlan(); renderPlan(); t.remove(); };
+  t.querySelector('#toastKeep').onclick = ()=>t.remove();
+  setTimeout(()=>t?.remove(), 7000);
+}
+
 function timeToMin(t){
   if(!t) return 9999;
   t=t.trim();
