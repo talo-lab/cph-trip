@@ -834,10 +834,9 @@
 </div>
 
 <script>
-/* Google Maps 딥링크 URL 생성 */
-function gMapsUrl(lat, lng, fallback) {
-  if (lat && lng) return `https://maps.google.com/?q=${lat},${lng}`;
-  return `https://maps.google.com/?q=${encodeURIComponent((fallback||'') + ' Copenhagen')}`;
+/* Google Maps 딥링크 URL 생성 — 장소명 검색 방식 */
+function gMapsUrl(query) {
+  return `https://maps.google.com/?q=${encodeURIComponent(query + ', Copenhagen')}`;
 }
 
 /* 터치 기기 감지: CSS 미디어쿼리가 오작동하는 기기 대비 */
@@ -1490,7 +1489,7 @@ function renderFest(){
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;align-items:center;flex-shrink:0">
         <button class="fav-btn" title="즐겨찾기">${isFav?'♥':'♡'}</button>
-        <a href="${gMapsUrl(null,null,ev.address||ev.venue)}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
+        <a href="https://maps.google.com/?q=${encodeURIComponent(ev.address||ev.venue)}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
       </div>`;
     const cb = row.querySelector('.fest-cb');
     const titleEl = row.querySelector('.fest-title-link');
@@ -1661,7 +1660,7 @@ function renderPlan(){
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${tagsHtml}
         </div>
-        <a class="item-gmap" href="${gMapsUrl(it._lat,it._lng,it.title)}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">📍</a>
+        <a class="item-gmap" href="${gMapsUrl(it.title)}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">📍</a>
         <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
       // 완료 체크박스
@@ -2687,7 +2686,7 @@ function openDrawer(di, ii, title){
   const it = plan[di]?.items[ii];
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn && it){
-    gmapBtn.href = gMapsUrl(it._lat, it._lng, it.title);
+    gmapBtn.href = gMapsUrl(it.title);
     gmapBtn.style.display = 'inline';
   }
   setTimeout(()=>document.getElementById('drawerInput').focus(), 250);
