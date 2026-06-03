@@ -3994,7 +3994,36 @@ function timeToMin(t){
   if(t.startsWith('~')){const mm=t.match(/(\d{1,2}):(\d{2})/);return mm?(+mm[1])*60+(+mm[2]):9999;}
   return 9999;
 }
-function sortDayByTime(di){ plan[di].items.sort((a,b)=>timeToMin(a.time)-timeToMin(b.time)); }
+function sortDayByTime(di){
+  plan[di].items.sort((a,b)=>timeToMin(a.time)-timeToMin(b.time));
+  recalcTransitNotes(di);
+}
+
+// ← 이동 note 자동 재계산
+// note가 "← [이전제목]에서 ..." 패턴이면 실제 이전 항목 기준으로 갱신
+const TRANSIT_NOTE_RE = /^←\s*.+에서\s*/;
+function recalcTransitNotes(di){
+  const items = plan[di].items;
+  for(let i=1; i<items.length; i++){
+    const it = items[i];
+    if(!it.note || !TRANSIT_NOTE_RE.test(it.note)) continue;
+    // 좌표 있는 이전 항목 탐색
+    let prevIt = null;
+    for(let j=i-1; j>=0; j--){ if(getItemCoords(items[j])){ prevIt=items[j]; break; } }
+    if(!prevIt) continue;
+    const prevCoords = getItemCoords(prevIt);
+    // 현재 항목 좌표 (숙소복귀 등은 좌표 없을 수 있음 → 숙소 기본값)
+    let myCoords = getItemCoords(it);
+    if(!myCoords){
+      // 숙소복귀류 → 숙소 좌표 사용
+      const isHome = /숙소|복귀|호텔|airbnb/i.test(it.title);
+      if(isHome) myCoords = {lat:55.6671, lng:12.5519};
+      else continue;
+    }
+    const t = transportBetween(prevCoords, myCoords);
+    it.note = `← ${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분`;
+  }
+}
 // 빈 시간 슬롯 추천: 마지막 구체 시간 +2시간
 function suggestTime(di){
   const times=plan[di].items.map(it=>timeToMin(it.time)).filter(v=>v<9999&&v>=8*60&&v<22*60);
@@ -4832,22 +4861,35 @@ async function _drawerQuestion(raw,di,ii,item,input,btn,st,resp){
   const sys=`You are a warm, practical travel assistant for a Korean couple (미주 and 상효) visiting Copenhagen for 3 Days of Design festival, June 8–16 2026.
 Always respond in Korean. Be specific and concise.
 
-## 응답 규칙
+## 응답 형식 규칙 (엄격히 준수)
 
-추천/제안이 2–4개일 때 → 반드시 <options> 태그 사용:
+### ✅ <options> 필수 사용 케이스 (반드시 태그 사용):
+- 식당/카페/바 추천 (저녁식사, 점심, 커피, 술집 등)
+- 관광지/장소 추천
+- 쇼핑/마켓 추천
+- 활동/체험 추천
+- "어디", "추천", "좋은 곳" 등 장소를 묻는 모든 질문
+
+<options> 형식:
 <options>[
   {"title":"장소명","time":"HH:MM","note":"한 줄 핵심 정보 (위치·가격·특징)","day_index":${di},"tags":["태그1","태그2"],"tip":"예약 권장"},
   {"title":"장소명2","time":"HH:MM","note":"...","day_index":${di},"tags":["태그"],"tip":""}
 ]</options>
+옵션 수: 2–4개. time은 선택 일정의 마지막 시간 이후로 자연스럽게 설정. 모를 경우 "".
 
-추천이 딱 1개일 때 → <add> 태그:
+### ✅ <add> 사용 케이스 (단 1개 추천):
 <add>{"title":"장소명","time":"HH:MM","note":"한 줄 설명","day_index":${di}}</add>
 
-일반 답변(장소 추가 불필요) → 태그 없이 텍스트만.
+### ✅ 텍스트만 사용 케이스 (장소 추가가 전혀 불필요한 경우만):
+- 순수 정보 질문: 영업시간, 가격, 교통편 정보 등
+- 이미 일정에 있는 항목에 대한 세부 정보
+- "~해줘" 명령이 아닌 사실 확인 질문
 
-time은 24h HH:MM 형식. 모를 경우 "" 로 두기. day_index ${di} = ${plan[di]?.date}.
-tags는 핵심 특징 2–3개 (예: "도보 10분", "예약 권장", "가성비", "뷰 맛집").
-서두 텍스트는 1–2문장으로 간결하게.`;
+⚠️ 식사·카페·장소 추천은 예외 없이 <options> 사용. 절대로 텍스트만으로 추천하지 말 것.
+
+day_index ${di} = ${plan[di]?.date}.
+tags는 핵심 특징 2–3개 (예: "도보 10분", "예약 권장", "가성비", "뷰 맛집", "현지인 맛집").
+서두 텍스트는 1문장으로만.`;
 
   const ctx=`선택 일정: "${item.title}" (${dayLabel})
 ${gpsStr}
