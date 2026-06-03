@@ -5818,10 +5818,28 @@ function isRecInPlan(di, title){
 
 /* ---------- FEST MAP MARKERS ---------- */
 const festMarkers = {};
+const festGeoCache = {}; // cacheKey -> {lat, lng}
 
 function strHash(s){
   let h=0; for(let i=0;i<s.length;i++) h=(Math.imul(31,h)+s.charCodeAt(i))|0; return h;
 }
+
+async function geocodeFestEvent(ev){
+  const cacheKey = ev.address || (ev.venue + '_' + ev.district);
+  if(festGeoCache[cacheKey]) return festGeoCache[cacheKey];
+  const queries = [];
+  if(ev.address) queries.push(ev.address);
+  if(ev.venue && ev.address) queries.push(ev.venue + ' ' + ev.address);
+  if(ev.venue) queries.push(ev.venue);
+  for(const q of queries){
+    try{
+      const c = await nominatimGeocode(q);
+      if(c){ festGeoCache[cacheKey]=c; return c; }
+    }catch(e){}
+  }
+  return null;
+}
+
 function showFestMarker(ev, id){
   if(festMarkers[id]) return;
   const dist = DISTRICTS.find(d=>d.name===ev.district);
@@ -5829,19 +5847,43 @@ function showFestMarker(ev, id){
   const dkColor = districtColor(ev.district);
   const catKeyM2 = (ev.category==='lunch'||ev.category==='afternoon') ? 'brunch' : ev.category;
   const catInfo = FEST_CATEGORIES.find(c=>c.key===catKeyM2)||FEST_CATEGORIES[0];
-  const h = strHash(ev.title);
-  const lat = dist.lat + ((h%100)/100-0.5)*0.004;
-  const lng = dist.lng + (((h>>8)%100)/100-0.5)*0.006;
   const icon = L.divIcon({
     className:'',
     html:`<div class="plan-pin" style="background:${dkColor};box-shadow:0 0 0 3px #fff,0 0 0 5px ${dkColor}"><span style="font-size:11px">${catInfo.icon}</span></div>`,
     iconSize:[28,28], iconAnchor:[14,28], popupAnchor:[0,-30]
   });
-  const m = L.marker([lat,lng],{icon,zIndexOffset:300}).addTo(map);
-  m.bindPopup(`<div class="pop-name">${ev.title}</div><div class="pop-desc">${ev.time} · ${ev.venue}<br><b style="color:${dkColor}">${ev.district}</b></div>`);
+  const makePopup = (lat, lng) =>
+    `<div class="pop-name">${ev.title}</div><div class="pop-desc">${ev.time} · ${ev.venue}<br><b style="color:${dkColor}">${ev.district}</b></div>`;
+
+  const cacheKey = ev.address || (ev.venue + '_' + ev.district);
+  const cached = festGeoCache[cacheKey];
+  if(cached){
+    // 캐시 히트: 실제 좌표로 즉시 표시
+    const m = L.marker([cached.lat, cached.lng],{icon,zIndexOffset:300}).addTo(map);
+    m.bindPopup(makePopup());
+    festMarkers[id]=m;
+    map.flyTo([cached.lat, cached.lng],16,{duration:.6});
+    m.openPopup();
+    return;
+  }
+
+  // 캐시 미스: 지구 중심에 먼저 표시 후 실제 좌표로 이동
+  const h = strHash(ev.title);
+  const initLat = dist.lat + ((h%100)/100-0.5)*0.004;
+  const initLng = dist.lng + (((h>>8)%100)/100-0.5)*0.006;
+  const m = L.marker([initLat, initLng],{icon,zIndexOffset:300}).addTo(map);
+  m.bindPopup(makePopup());
   festMarkers[id]=m;
-  map.flyTo([lat,lng],15,{duration:.6});
+  map.flyTo([initLat, initLng],15,{duration:.6});
   m.openPopup();
+
+  geocodeFestEvent(ev).then(c=>{
+    if(!c || !festMarkers[id]) return;
+    const wasOpen = festMarkers[id].isPopupOpen();
+    festMarkers[id].setLatLng([c.lat, c.lng]);
+    if(wasOpen){ festMarkers[id].openPopup(); }
+    map.flyTo([c.lat, c.lng],16,{duration:.4});
+  });
 }
 function hideFestMarker(id){
   if(festMarkers[id]){ map.removeLayer(festMarkers[id]); delete festMarkers[id]; }
