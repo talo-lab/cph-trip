@@ -1769,10 +1769,11 @@ function _placeExhPin(ex, lat, lng, color){
   map.flyTo([lat,lng], 15, {duration:.5});
 }
 
-/* 일정 아이템 백그라운드 지오코딩 */
+/* 일정 아이템 백그라운드 지오코딩 — 다중 전략 순차 시도 */
 async function geocodePlanItem(item, di){
   if(item._lat && item._lng) return;
-  // 숙소 키워드 감지 → STAY 좌표 즉시 사용
+
+  // 1. 숙소/복귀 키워드 → STAY 좌표 즉시
   const stayKw = /숙소|체크인|체크아웃|airbnb|에어비앤비|호텔|hotel|check.?in|check.?out/i;
   if(stayKw.test(item.title) || stayKw.test(item.note||'')){
     item._lat = STAY.lat; item._lng = STAY.lng;
@@ -1780,15 +1781,43 @@ async function geocodePlanItem(item, di){
     if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
     return;
   }
-  const titlePart = item.title.replace(/\[.*?\]/g,'').replace(/\(.*?\)/g,'').trim();
-  const notePart = (item.note||'').split('·')[0].split('·')[0].trim();
-  const query = titlePart + (notePart&&notePart.length<60 ? ' '+notePart : '');
+
+  // 2. 헬퍼: 한국어 및 이모지·이동시간 표현 제거
+  const clean = s => s
+    .replace(/←[^·\n]*/g,'')          // "← X에서 🚌 ~15분" 제거
+    .replace(/[가-힣]+/g,' ')          // 한국어 제거
+    .replace(/[\u{1F300}-\u{1FFFF}]/gu,' ') // 이모지 제거
+    .replace(/~\d+분/g,' ')            // ~15분 제거
+    .replace(/\s{2,}/g,' ').trim();
+
+  // 3. note에서 덴마크 주소 패턴 추출 (도로명+번지+우편번호+도시)
+  const rawNote = (item.note||'').split('·')[0];
+  const addrM = rawNote.match(/([A-Za-zÆØÅæøåÉé\s]+\s+\d+[A-Za-z]?[,\s]+\d{4}\s+[A-Za-zÆØÅæøå]+)/);
+  const addrOnly = addrM ? addrM[1].trim() : null;
+
+  // 4. 제목 클린 (괄호·태그 제거 + 한국어 제거)
+  const cleanTitle = clean(item.title.replace(/\[.*?\]/g,'').replace(/\(.*?\)/g,''));
+  const cleanNote  = clean(rawNote);
+
+  // 5. 쿼리 후보 목록 (빈 것 제외, 중복 제외)
+  const seen = new Set();
+  const queries = [
+    addrOnly,                                         // 주소만 (가장 정확)
+    cleanTitle + (addrOnly?' '+addrOnly:''),          // 이름 + 주소
+    cleanTitle + (cleanNote?' '+cleanNote:''),         // 이름 + 정제 노트
+    cleanTitle,                                       // 이름만
+  ].filter(q=>{ if(!q||!q.trim()) return false; const k=q.trim(); if(seen.has(k))return false; seen.add(k); return true; });
+
   try{
-    const c = await nominatimGeocode(query);
-    if(!c) return;
-    item._lat = c.lat; item._lng = c.lng;
-    savePlan();
-    if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
+    for(const query of queries){
+      const c = await nominatimGeocode(query);
+      if(c){
+        item._lat = c.lat; item._lng = c.lng;
+        savePlan();
+        if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
+        return;
+      }
+    }
   }catch(e){}
 }
 
