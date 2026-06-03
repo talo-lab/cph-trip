@@ -1,3 +1,23 @@
+/* ---------- 데이터 파일 지연 로딩 ----------
+ * events-data.js, exhibitions-data.js는 탭 진입 시에만 로드
+ * (index.html 에서 <script> 태그 제거, prefetch 링크로 대체)
+ */
+const _dataLoaded = {};
+function loadDataScript(src) {
+  if (_dataLoaded[src]) return _dataLoaded[src];
+  _dataLoaded[src] = new Promise((resolve, reject) => {
+    // 이미 실행된 스크립트라면 즉시 resolve
+    if (src.includes('events-data') && typeof FESTIVAL_EVENTS !== 'undefined') return resolve();
+    if (src.includes('exhibitions-data') && typeof EXHIBITIONS !== 'undefined') return resolve();
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('데이터 로드 실패: ' + src));
+    document.body.appendChild(s);
+  });
+  return _dataLoaded[src];
+}
+
 /* Google Maps Places Search URL */
 function gMapsUrl(query) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
@@ -2335,14 +2355,15 @@ function renderDist(){
   wrap.innerHTML=`<div style="font-size:11px;color:var(--slate);font-family:'Space Mono',monospace;letter-spacing:.05em;padding-bottom:4px;border-bottom:1px solid var(--line)">8 DESIGN DISTRICTS — 행사별 규모 & 바로가기</div>`;
 
   DISTRICTS.forEach(d=>{
-    // 행사 카운트
+    // 행사 카운트 (events-data.js 미로드 시 0으로 처리)
     const counts = {'June 10':0,'June 11':0,'June 12':0};
-    FESTIVAL_EVENTS.forEach(e=>{ if(e.district===d.name && counts[e.date]!==undefined) counts[e.date]++; });
+    const _fevts = typeof FESTIVAL_EVENTS!=='undefined' ? FESTIVAL_EVENTS : [];
+    _fevts.forEach(e=>{ if(e.district===d.name && counts[e.date]!==undefined) counts[e.date]++; });
     const total = Object.values(counts).reduce((a,b)=>a+b,0);
 
     // 대표 베뉴 (상위 4개, 중복 제거)
     const venues = [...new Set(
-      FESTIVAL_EVENTS.filter(e=>e.district===d.name).map(e=>e.venue)
+      _fevts.filter(e=>e.district===d.name).map(e=>e.venue)
     )].slice(0,4);
 
     // 전시 브랜드
@@ -4614,6 +4635,13 @@ function addUserMarker(place, di){
 
 /* ---------- TABS ---------- */
 let activeTab='plan';
+function _tabLoading(msg){
+  const el=document.getElementById('scroll');
+  el.style.cssText='display:flex;align-items:center;justify-content:center;padding:40px 20px';
+  el.innerHTML=`<div style="text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:var(--slate);letter-spacing:.08em;opacity:.7">
+    <div style="font-size:22px;margin-bottom:10px">⏳</div>${msg}</div>`;
+}
+
 function setTab(t){
   if(activeTab==='rec'  && t!=='rec')  clearRecMapSel();
   if(activeTab==='fest' && t!=='fest') clearFestMarkers();
@@ -4627,9 +4655,19 @@ function setTab(t){
     document.getElementById('scroll').style.cssText='';
     renderRecommend();
   } else if(t==='fest'){
-    renderFest();
+    if(typeof FESTIVAL_EVENTS==='undefined'){
+      _tabLoading('3DoD 행사 데이터 로드 중...');
+      loadDataScript('/events-data.js').then(()=>renderFest()).catch(()=>{
+        document.getElementById('scroll').innerHTML='<div style="padding:20px;color:var(--rust)">데이터 로드 실패. 새로고침해 주세요.</div>';
+      });
+    } else { renderFest(); }
   } else if(t==='exh'){
-    renderExhibitions();
+    if(typeof EXHIBITIONS==='undefined'){
+      _tabLoading('쇼룸 데이터 로드 중...');
+      loadDataScript('/exhibitions-data.js').then(()=>renderExhibitions()).catch(()=>{
+        document.getElementById('scroll').innerHTML='<div style="padding:20px;color:var(--rust)">데이터 로드 실패. 새로고침해 주세요.</div>';
+      });
+    } else { renderExhibitions(); }
   } else if(t==='add'){
     document.getElementById('scroll').style.cssText='';
     renderAdd();

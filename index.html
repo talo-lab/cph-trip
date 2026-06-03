@@ -16,6 +16,9 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
 <link rel="stylesheet" href="/styles.css">
+<!-- 데이터 파일: 탭 진입 시 지연 로드. prefetch로 백그라운드 다운로드만 선행 -->
+<link rel="prefetch" href="/events-data.js" as="script">
+<link rel="prefetch" href="/exhibitions-data.js" as="script">
 </head>
 <body>
 <div class="app">
@@ -119,10 +122,6 @@
     <div class="map-title">10–12 JUN · 8 DISTRICTS · 460+ BRANDS</div>
   </main>
 </div>
-
-<!-- 행사 이벤트 데이터 (796개) -->
-<script src="/events-data.js"></script>
-<script src="/exhibitions-data.js"></script>
 
 <!-- LOGIN MODAL -->
 <div class="login-overlay" id="loginOverlay" style="display:none">
