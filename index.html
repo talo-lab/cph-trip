@@ -974,9 +974,9 @@ function detectTravelMode(note) {
 /* 장소명 정규화 매핑 — 한글/약어 → Google Maps 검색어 */
 const PLACE_MAP = [
   // 숙소 / 이동 기점
-  ['숙소',                'Sommerstedgade 26, 1717 Copenhagen'],
-  ['airbnb',              'Sommerstedgade 26, 1717 Copenhagen'],
-  ['sommerstedgade',      'Sommerstedgade 26, 1717 Copenhagen'],
+  ['숙소',                'Sommerstedgade 26, 1718 København'],
+  ['airbnb',              'Sommerstedgade 26, 1718 København'],
+  ['sommerstedgade',      'Sommerstedgade 26, 1718 København'],
   // 공항
   ['공항',                'Copenhagen Airport, Kastrup'],
   ['코펜하겐 공항',        'Copenhagen Airport CPH'],
@@ -1039,7 +1039,7 @@ const PLACE_MAP = [
   // 디자인 페스티벌 장소
   ['klub',                'KLUB, Linnésgade 25, Copenhagen'],
   ['designmuseum',        'Designmuseum Danmark, Bredgade 68, Copenhagen'],
-  ['folkehuset absalon',  'Folkehuset Absalon, Sønder Blvd 73, Copenhagen'],
+  ['folkehuset absalon',  'Folkehuset Absalon, Sønder Blvd. 73, 1720 København'],
   ['pp møbler',           'PP Møbler, Bryggernes Plads 11, Copenhagen'],
   ['fritz hansen',        'Fritz Hansen Store, Bredgade 95, Copenhagen'],
   ['fanzi',               'FANZI, Posten 6, 1577 Copenhagen'],
@@ -1278,7 +1278,7 @@ const DISTRICTS = [
 const STAY = {
   name:'우리 숙소 (Airbnb)',
   lat:55.6671, lng:12.5519,
-  desc:'베스테르브로 · Sommerstedgade 26, 1717 Copenhagen · 코펜하겐 중앙역 도보 15분',
+  desc:'베스테르브로 · Sommerstedgade 26, 1718 København · 코펜하겐 중앙역 도보 15분',
   meta:'체크인 6/9 15:00~ · 체크아웃 6/16 11:00 전',
   url:'https://www.airbnb.co.kr/rooms/1565348100263330857'
 };
@@ -1293,16 +1293,16 @@ const DEFAULT_PLAN = [
   {date:'6/9 (화)', tag:'코펜하겐 도착', fest:false, items:[
     {time:'06:00', title:'[상효] CPH(T3) 도착', note:'SAS 직항 · 메트로 M2로 도심 이동', dist:'', _fixed:true},
     {time:'08:30', title:'[미주] CPH(T2) 도착', note:'KE5925 → KL1267 환승 후 도착 · 터미널2 · 공항에서 합류', dist:'', _fixed:true},
-    {time:'11:00', title:'숙소 이동 및 짐 보관', note:'Sommerstedgade 26, 1717 Copenhagen · 체크인은 15:00부터', dist:'', _lat:55.6671, _lng:12.5519},
+    {time:'11:00', title:'숙소 이동 및 짐 보관', note:'Sommerstedgade 26, 1718 København · 체크인은 15:00부터', dist:'', _lat:55.6671, _lng:12.5519},
     {time:'11:30', title:'Hart Bageri', note:'카다멈 크로아상 · Gammel Kongevej 109, Frederiksberg', tag:'🍽 식사', dist:'', _lat:55.6755, _lng:12.5436, _fixed:true},
     {time:'13:30', title:'디자인뮤지엄 덴마크 — 상설 전시', note:'Bredgade 68 · 페스티벌 기간 행사도 다수 · 미주', dist:'', _lat:55.6866, _lng:12.5928, _fixed:true},
-    {time:'15:00', title:'Airbnb 체크인', note:'Sommerstedgade 26, 1717 Copenhagen · 베스테르브로', dist:'', _lat:55.6671, _lng:12.5519},
-    {time:'16:00', title:'The Mechanics of Scent — Frama (예약 완료)', note:'Gammel Strand 32, 1202 Copenhagen · 16:00–16:30 · 미주 예약 완료', dist:'', _lat:55.6761, _lng:12.5765, _fixed:true},
+    {time:'15:00', title:'Airbnb 체크인', note:'Sommerstedgade 26, 1718 København · 베스테르브로', dist:'', _lat:55.6671, _lng:12.5519},
+    {time:'16:00', title:'The Mechanics of Scent — Frama @ Apotek 57 (예약 완료)', note:'Fredericiagade 57, 1310 København (Apotek 57) · 16:00–16:30 · 미주 예약 완료', dist:'', _lat:55.6844, _lng:12.5903, _fixed:true},
     {time:'오후', title:'시차 적응 산책 · 뉘하운(Nyhavn)', note:'무리하지 않기 · 가벼운 도심 워킹', dist:''},
   ]},
   // DAY 2 — 6/10 (Festival Day 1)
   {date:'6/10 (수)', tag:'페스티벌 1일차', fest:true, items:[
-    {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73 · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _fixed:true},
+    {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _fixed:true},
   ]},
   // DAY 3 — 6/11 (Festival Day 2)
   {date:'6/11 (목)', tag:'페스티벌 2일차', fest:true, items:[]},
@@ -2741,7 +2741,7 @@ function renderInfo(){
       <li><b>체크아웃</b> 6/16(화) 11:00 전</li>
       <li><b>위치 장점</b> 중앙역 도보권 → 공항·근교 이동 편리, 지구별 메트로/자전거 접근 양호</li>
     </ul>
-    <p style="font-size:11px;opacity:.7">📍 숙소 주소: <b>Sommerstedgade 26, 1717 Copenhagen</b> (베스테르브로 · 코펜하겐 중앙역 도보 15분)</p>
+    <p style="font-size:11px;opacity:.7">📍 숙소 주소: <b>Sommerstedgade 26, 1718 København</b> (베스테르브로 · 코펜하겐 중앙역 도보 15분)</p>
     <h3>고정 예약</h3>
     <ul>
       <li><b>Food & Music with SALU</b> (소셜 다이닝, 3명) · 6/10(수) 17:00–20:00</li>
@@ -3887,7 +3887,7 @@ markers['stay']=stayMarker;
 // SALU 고정 마커
 const saluIcon=L.divIcon({className:'',html:`<div class="plan-pin" style="background:${DAY_COLORS[2]}"><span>🍽</span></div>`,iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-32]});
 const saluMarker=L.marker([55.665398,12.550298],{icon:saluIcon}).addTo(map);
-saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73</div>`);
+saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73, 1720 København</div>`);
 markers['salu']=saluMarker;
 
 // ── 범례: 날짜별 색상 + 숙소/SALU
