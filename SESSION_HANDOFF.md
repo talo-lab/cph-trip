@@ -9,31 +9,34 @@ _2026-06-03 세션 기준_
 - **GitHub**: `talo-lab/cph-trip` (public)
 - **로컬 경로**: `C:\Users\DOJO_001\Documents\GitHub\cph-trip`
 - **미배포 커밋**: 없음 (모두 push 완료)
-- **최신 커밋**: `ebc3485 feat: 위치 수동 설정 + 영업시간 경고`
+- **최신 커밋**: `6a4523a fix: 모바일 반응형 개선`
 
 ---
 
 ## 이번 세션에서 완료한 작업
 
-### 버그픽스
+### 데이터 업데이트
 | 커밋 | 내용 |
 |---|---|
-| `b3c3286` | 모바일 × 버튼 3중 방어 (hover:hover + pointer:coarse + JS is-touch 클래스) |
-| `78218be` | SW 캐시 cph-v3 업그레이드 — events-data.js 53개로 고정되던 버그 수정 |
-| `1747f88` | SW Network First 전략 전환 — 배포 후 브라우저 캐시 수동 삭제 불필요 |
-| `6b59208` | 행사 카테고리 재분류 109개 (웰니스 0→33, 다이닝 376→323) |
+| `c0c0bad` | PLACE_MAP 40개 항목 추가 (지하철역, 코펜하겐 명소, 3DoD 장소, 식당) |
+| `c0c0bad` | VENUE_HOURS 7개 장소 추가 (로젠보르, 아마리엔보르, 크리스티안스보르 등) |
+| `0379e21` | CSV 일정 전체 반영 — 숙소 확정 + 미주 관심 장소 |
+| `d82095e` | 날짜 확정 항목 고정 일정 이동 (오전 12:00 = 날짜만 확정, 시간 미정) |
+| `836e527` | 주소 3건 수정 (숙소 1718, Frama→Apotek57, SALU 1720) |
 
 ### 신기능
 | 커밋 | 내용 |
 |---|---|
-| `4f15c75` | 행사 데이터 777개 전체 한글 번역 (translate_events.py 스크립트) |
-| `f46ad28~467bf38` | Google Maps 딥링크 📍/🧭 추가 (일정·행사·드로어) |
-| `3c8fc93` | 이동 항목(→) 자동 감지 → Google Maps 경로(Directions) URL 생성 |
-| `e7b587a` | PLACE_MAP 확장 + "역에서 도보" 감지 → 도보경로 자동 생성 |
-| `ca99e30` | 드래그 시간 역순 경고 토스트 + 지구 탭 가이드 개편 |
-| `8f0b8a1` | UI/UX 개선 6종 (행사 검색, Escape 키, 모달 버그, 날씨 타임아웃 등) |
-| `94fd289` | API 레이어 리팩토링 — lib/redis-session.js 공유 helper 추출 |
-| `ebc3485` | 위치 수동 설정 + 영업시간 경고 (VENUE_HOURS 9개 장소) |
+| `f005f92` | AI 재조율 버튼 — 일정 탭 날짜 헤더에 `✦ 재조율` 버튼 |
+| `e6d422e` | 추천탭 plan 동기화 — plan에 있는 항목 자동 제외, 삭제 시 복원 |
+| `e6d422e` | +장소 탭 위시리스트 — 날짜 미정 장소 저장/관리 |
+| `150a81d` | 위시리스트 Redis 서버 동기화 (기기간 공유) |
+
+### 버그픽스
+| 커밋 | 내용 |
+|---|---|
+| `50ce036` | 행사 일정추가 후 자동으로 일정탭 이동 + 중복 피드백 |
+| `6a4523a` | 모바일 반응형 개선 — 범례 토글, overflow 보정 |
 
 ---
 
@@ -41,90 +44,105 @@ _2026-06-03 세션 기준_
 
 ```
 cph-trip/
-├── index.html          ← 앱 본체 (CSS+HTML+JS 통합, ~3600줄)
+├── index.html          ← 앱 본체 (~4100줄)
 ├── events-data.js      ← 777개 이벤트 (한글 번역 완료)
 ├── sw.js               ← Network First SW (cph-v4)
 ├── api/
-│   ├── auth.js         ← lib/redis-session.js 사용 (리팩토링 완료)
-│   ├── plan.js         ← lib/redis-session.js 사용 (리팩토링 완료)
+│   ├── auth.js
+│   ├── plan.js         ← GET/POST plan+favs+wishlist (Redis)
 │   ├── extract.js      ← Claude API 프록시
-│   ├── events.js       ← 3dod 스크레이핑
-│   └── transit.js      ← Rejseplanen 대중교통
+│   ├── events.js
+│   └── transit.js
 ├── lib/
-│   └── redis-session.js ← ★ 이번 세션 신설 — Redis+세션 공유 helper
-├── translate_events.py ← 행사 한글 번역 스크립트 (로컬용)
-├── reclassify_events.py← 행사 카테고리 재분류 스크립트 (로컬용)
-├── package.json        ← npm run check 추가 (API 신택스 검증)
-├── manifest.json, sw.js, generate_events.py
-└── CLAUDE.md           ← 프로젝트 컨텍스트 (이전 세션 작성)
+│   └── redis-session.js
+├── translate_events.py
+├── reclassify_events.py
+└── SESSION_HANDOFF.md
 ```
 
 ---
 
-## 핵심 코드 위치 (index.html)
+## 핵심 데이터 구조 (index.html)
 
-| 기능 | 함수/변수 | 줄 (대략) |
+| 기능 | 위치 | 비고 |
 |---|---|---|
-| Google Maps URL 생성 | `gMapsUrlForItem()`, `gMapsQuery()`, `PLACE_MAP` | ~850 |
-| 영업시간 데이터/체크 | `VENUE_HOURS`, `getVenueWarning()` | ~830 |
-| 드래그 시간 경고 | `checkDragOrder()`, `showDragToast()` | ~2600 |
-| 행사 검색 | `festSearchQuery`, `renderFestList()` | ~1500 |
-| 드로어 위치편집 | `drawerLocToggle`, `drawerLocSave` | ~2870 |
-| SW 캐시 버전 | `cph-v4` | sw.js line 2 |
+| 숙소 | `STAY` 객체 ~1277줄 | Sommerstedgade 26, 1718 København |
+| Google Maps 매핑 | `PLACE_MAP` ~977줄 | 70개 항목 |
+| 영업시간 | `VENUE_HOURS` ~1060줄 | 15개 장소 |
+| 고정 일정 | `DEFAULT_PLAN` ~1290줄 | 9일치 |
+| 추천 일정 | `RECOMMEND` ~2185줄 | DAY1–DAY7 |
+| 위시리스트 | `WISH_KEY`, `wishlist` ~3955줄 | localStorage + Redis |
+| AI 재조율 | `triggerReschedule()` ~3510줄 | 날짜 헤더 ✦ 버튼 |
+| 행사 추가 | `addFestSelected()` ~2045줄 | 추가 후 자동 일정탭 이동 |
+| 추천 추가 | `applyRecItems()` ~2650줄 | plan 동기화, 추가 후 이동 |
 
 ---
 
-## 알려진 미완성 / 잠재적 이슈
+## 확정된 고정 일정
 
-### Google Maps 위치 정확도
-- 일부 한글 제목 항목은 PLACE_MAP 매핑이 없어 "한글 제목 + Copenhagen" 으로 검색됨
-- 사용자가 직접 📍 편집 기능으로 수동 보정 가능 (드로어 → 📍 버튼)
-- `PLACE_MAP` 배열 (~850줄)에 항목 추가하면 즉시 반영
-
-### 영업시간 데이터
-- 현재 9개 장소만 커버 (Louisiana, Designmuseum, Torvehallerne, Tivoli, Reffen 등)
-- 더 추가하려면 `VENUE_HOURS` 배열에 동일한 형식으로 추가
-- 페스티벌 기간(6/10~12) 행사 이벤트는 별도 체크 없음 (이벤트 자체 시간 기준)
-
-### cph-trip-v2 (리팩토링 레포)
-- 경로: `C:\Users\DOJO_001\Documents\GitHub\cph-trip-v2`
-- `codex/api-session-refactor` 브랜치 → main 병합 대기 중
-- v2에서 작업하다가 v1(cph-trip)에 같은 내용 적용 요청 시: `MAIN_MIGRATION_GUIDE.md` 참조
-- Redis 키 분리: v1 = `plan/session:*`, v2 = `v2:plan/v2:session:*` (같은 Redis 공유)
+| 날짜 | 시간 | 내용 | 상태 |
+|---|---|---|---|
+| 6/8 | 22:25 | [미주] ICN→AMS 출발 KE5925 | `_fixed` |
+| 6/8 | 23:35 | [상효] ICN→CPH 직항 출발 SAS SK0988 | `_fixed` |
+| 6/9 | 06:00 | [상효] CPH(T3) 도착 | `_fixed` |
+| 6/9 | 08:30 | [미주] CPH(T2) 도착 KE5925→KL1267 | `_fixed` |
+| 6/9 | 11:30 | Hart Bageri (카다멈 크로아상) | `_fixed` |
+| 6/9 | 13:30 | 디자인뮤지엄 덴마크 상설 전시 | `_fixed` |
+| 6/9 | 16:00 | The Mechanics of Scent — Frama @ Apotek 57 (예약완료) | `_fixed` |
+| 6/10 | 17:00 | Food & Music with SALU (QR코드 보유) | `_fixed` |
+| 6/13 | 미정 | 벨뷰 해변 (아르네 야콥센 비치) | 날짜 확정 |
+| 6/13 | 미정 | 루이지애나 현대미술관 | 날짜 확정 |
+| 6/15 | 미정 | 프리타운 크리스티아니아 | 날짜 확정 |
+| 6/16 | 16:40 | [미주] CPH→LHR 출발 SK1517 | `_fixed` |
+| 6/16 | 23:55 | [상효] CPH→ICN 직항 출발 SAS SK0987 | `_fixed` |
 
 ---
 
-## Git 계정 설정 (중요)
+## Redis 저장 구조
 
-```
-로컬 git config: talo-lab (sanghyo@taloryyppy.kr)
-Credential Manager: github-talo SSH alias로 push 성공 중
+| 키 | 내용 | 공유 방식 |
+|---|---|---|
+| `plan` | 전체 일정 JSON | 미주·상효 공유 |
+| `favs:miju` / `favs:sanghyo` | 즐겨찾기 | 개인별 |
+| `wishlist:miju` / `wishlist:sanghyo` | 가고싶은 곳 | 개인별 |
 
-push 명령어:
-  git push origin main   # origin = git@github-talo:talo-lab/cph-trip.git
-  (또는 git push talo main → github-dojo 계정, 권한 없을 수 있음)
-```
+> SW unregister는 localStorage 데이터에 영향 없음
+
+---
+
+## 알려진 이슈 / 미완성
+
+- 모바일 범례 토글은 구현됐으나 데스크탑에서는 항상 열림 (정상)
+- 위시리스트는 "→ 일정에 추가" 시 날짜만 선택 가능, 시간 입력 없음 (추후 개선 가능)
+- PLACE_MAP에 없는 한글 장소명은 "제목 + Copenhagen"으로 fallback 검색
+- 6/14(일) 추천 일정은 아직 Louisiana 흔적이 일부 남아있을 수 있음
 
 ---
 
 ## 다음 세션 추천 작업
 
-1. **Google Maps 위치 정확도 개선** — 자주 쓰는 장소 PLACE_MAP 추가
-2. **영업시간 데이터 확충** — 식당, 관광지 등 추가
-3. **cph-trip-v2 main 병합** — `MAIN_MIGRATION_GUIDE.md` 체크리스트 따라 PR 생성
-4. **여행 전 최종 점검** — 출발 6/8 전 일정 확정, 고정 항목 검토
-5. **미주 디바이스 테스트** — 미주 폰에서 로그인 + 일정 공유 동작 확인
+1. **미주 디바이스 테스트** — 미주 폰에서 로그인 + 일정 공유 동작 확인
+2. **시간 미정 항목 일괄 확정** — 6/13 벨뷰·Louisiana, 6/15 크리스티아니아 시간 배정
+3. **여행 전 최종 점검** — 출발 6/8까지 일정 확정, 예약 필요 항목 확인
+4. **cph-trip-v2 병합** — v2 리팩토링 레포 main 병합 (`MAIN_MIGRATION_GUIDE.md` 참조)
+
+---
+
+## Git / 배포
+
+```bash
+git push origin main   # origin = git@github-talo:talo-lab/cph-trip.git
+```
 
 ---
 
 ## 빠른 참조
 
 ```bash
-# 앱 상태 확인
+# 상태 확인
 git log --oneline -5
-npm run check          # API 파일 신택스 검증
 
-# 행사 데이터 재번역 (API 키 필요)
+# 행사 데이터 재번역
 $env:ANTHROPIC_API_KEY = "sk-ant-..."
 python translate_events.py
 
