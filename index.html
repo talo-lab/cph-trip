@@ -1747,7 +1747,8 @@ function renderPlanMarkers(di){
 
 function updateDayViz(di){
   if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
-  const pts = plan[di].items.filter(it=>it._lat&&it._lng).map(it=>[it._lat,it._lng]);
+  // _dk 좌표(지구 기반)까지 포함
+  const pts = plan[di].items.map(it=>getItemCoords(it)).filter(Boolean).map(c=>[c.lat,c.lng]);
   if(pts.length>=2){
     routeLayer = L.polyline(pts,{color:'#c8492a',weight:3,opacity:.7,dashArray:'6 5'}).addTo(map);
     map.fitBounds(routeLayer.getBounds(),{padding:[40,40],maxZoom:15});
@@ -1773,6 +1774,8 @@ function transportBetween(coordA, coordB){
 /* ---------- ITEM ROUTE VISUALIZATION (click) ---------- */
 function showItemRoute(di, ii){
   if(selRouteLayer){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
+  // 다른 날 선택 시 해당 날짜 핀으로 전환
+  if(di !== currentVisDay){ currentVisDay=di; updateDayViz(di); }
   const items = plan[di].items;
   const coords = getItemCoords(items[ii]);
 
