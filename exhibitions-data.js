@@ -358,7 +358,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Holbergsgade 20, 1057 Copenhagen',
     slug:'a-poc-able-issey-miyake',
-    desc:'A–POC는 혁신적인 디자인 철학을 담은 약어입니다.'A Piece Of Cloth\', is the name of the integrated design and manufacturing system first…',
+    desc:'A–POC는 혁신적인 디자인 철학을 담은 약어입니다. \'A Piece Of Cloth\', is the name of the integrated design and manufacturing system first…',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb1c739aee95a40cfe0f'},
       {day:10,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb6266221f136d1dc1e7'},
@@ -915,7 +915,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Nikolaj Plads 25A, 1067 Copenhagen',
     slug:'finarte',
-    desc:'Finarte는 핀란드의 대표적인 브랜드입니다.'s leading design house for rugs and soft accessories, creating award–winning interior items for…',
+    desc:'Finarte는 핀란드의 대표적인 디자인 하우스로, 러그 및 소프트 액세서리 분야의 수상 경력을 보유한 인테리어 아이템을 만듭니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'Durat, Harri Koskinen 디자인 Palapeli 선반 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch'],joint:true},
       {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
@@ -1315,7 +1315,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'openhouse',
-    desc:'Openhouse Studio는 크리에이티브 프로젝트를 주도하고 브랜드를 육성합니다.' messages in a comprehensive and unique way. The studio…',
+    desc:'Openhouse Studio는 크리에이티브 프로젝트를 주도하고 브랜드를 육성합니다.\' messages in a comprehensive and unique way. The studio…',
     events:[
       {day:10,start:'10:30',end:'11:00',title:'Mike Hausmann과 함께하는 커피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103cf94e8237b8a7ed9097'},
       {day:10,start:'15:30',end:'16:00',title:'"When Objects Change Meaning" with Saba Italia & JOV',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103c7c6cdc32fa1ab72c65'},
@@ -1838,7 +1838,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 12, 1151 Copenhagen',
     slug:'normann-copenhagen',
-    desc:'1999년 Normann Copenhagen이 설립된 이래, 이 브랜드는 계속 발전해왔습니다.'s ambition has been to challenge conventional thinking and…',
+    desc:'1999년 Normann Copenhagen이 설립된 이래, 이 브랜드는 계속 발전해왔습니다.\'s ambition has been to challenge conventional thinking and…',
     events:[
       {day:10,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83899ee93ad13c27b8ac'},
       {day:11,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83eb546890ab08a86594'},
@@ -1936,7 +1936,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 71, 1260 Copenhagen',
     slug:'sancal',
-    desc:'50년 전 스페인의 태양 아래 설립된 Sancal은 지속적으로 성장해왔습니다.'s passionate, open, and respectful identity in each of…',
+    desc:'50년 전 스페인의 태양 아래 설립된 Sancal은 지속적으로 성장해왔습니다.\'s passionate, open, and respectful identity in each of…',
     events:[
       {day:11,start:'17:00',end:'20:00',title:'Paper Collective x Sancal — 상그리아 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b295a5ef494ff0cd9ce03',joint:true},
       {day:11,start:'9:00',end:'10:30',title:'Mentsen — 콜라주 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0b1c6b1f16bb5c1637d9f5',joint:true},
@@ -2217,7 +2217,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Garde Hvalsøe, Esplanaden 8D, 1263 Copenhagen',
     slug:'de-la-espada',
-    desc:'Portugal의 작업장에서 그들은 작업합니다.'s Silver Coast, De La Espada combines artisanal furniture making savoir faire with…',
+    desc:'Portugal의 작업장에서 그들은 작업합니다.\'s Silver Coast, De La Espada combines artisanal furniture making savoir faire with…',
     events:[
       {day:10,start:'8:30',end:'11:00',title:'조찬 — 최고의 시간은 천천히 시작된다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
       {day:12,start:'16:00',end:'20:00',title:'프라이데이 바 — 머물 가치가 있는 것들',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
@@ -3494,7 +3494,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'panzeri',
-    desc:'Panzeri는'Made in Italy\' manufacture tradition with high–quality decorative and architectural lighting.…',
+    desc:'Panzeri는\'Made in Italy\' manufacture tradition with high–quality decorative and architectural lighting.…',
     events:[
       {day:10,start:'11:00',end:'15:00',title:'빛을 감각적 경험으로_Panzeri의 Scent 공개',icon:'🚀',color:'#d99021',label:'런칭',id:'6a057bce1cd29733aaec3eb3'},
     ],
@@ -4836,7 +4836,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'frilund-furniture',
-    desc:'Frilund's foundation is built on respect. Respect for the craft, for the materials, for the Danish tradition of design…',
+    desc:'Frilund\'s foundation is built on respect. Respect for the craft, for the materials, for the Danish tradition of design…',
     events:[],
   },
   {
@@ -4846,7 +4846,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 10, 1153 Copenhagen',
     slug:'fripon',
-    desc:'2025년에 설립된 FIRPON's first endeavour is to bring the light back to the somewhat mythical Filosof Lamp,…',
+    desc:'2025년에 설립된 FIRPON\'s first endeavour is to bring the light back to the somewhat mythical Filosof Lamp,…',
     events:[],
   },
   {
@@ -5276,7 +5276,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 18A, 1255 Copenhagen',
     slug:'libratone',
-    desc:'2009년 코펜하겐에서 설립된 LIBRATONE은 디자인 중심의 라이프스타일 브랜드입니다. Hans Christian Andersen에서 영감을 받았습니다.'s The…',
+    desc:'2009년 코펜하겐에서 설립된 LIBRATONE은 디자인 중심의 라이프스타일 브랜드입니다. Hans Christian Andersen에서 영감을 받았습니다.\'s The…',
     events:[],
   },
   {
@@ -5336,7 +5336,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'lundhs-real-stone',
-    desc:'Lundhs Real Stone은 Lundhs에서 신중하게 선별한 100% 천연석의 고급 컬렉션입니다.' quarries in…',
+    desc:'Lundhs Real Stone은 Lundhs에서 신중하게 선별한 100% 천연석의 고급 컬렉션입니다.\' quarries in…',
     events:[],
   },
   {
@@ -5576,7 +5576,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'nanimarquina',
-    desc:'nanimarquina는 사람들을 사로잡는 시각적으로 멋진 러그를 만들고자 하는 독특한 열망에서 탄생했습니다.'s senses.…',
+    desc:'nanimarquina는 사람들을 사로잡는 시각적으로 멋진 러그를 만들고자 하는 독특한 열망에서 탄생했습니다.\'s senses.…',
     events:[],
   },
   {
@@ -6196,7 +6196,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'swedese-mobler-ab',
-    desc:'Swedese는 공공 공간과 가정 영역 모두에서 강력한 입지를 가진 클래식 스웨덴 가구 생산업체입니다.'s…',
+    desc:'Swedese는 공공 공간과 가정 영역 모두에서 강력한 입지를 가진 클래식 스웨덴 가구 생산업체입니다.\'s…',
     events:[],
   },
   {
