@@ -20,21 +20,24 @@ export default async function handler(req, res) {
     const redis = getRedis();
 
     if (req.method === 'GET') {
-      const [planData, favsData] = await Promise.all([
+      const [planData, favsData, wishData] = await Promise.all([
         getJson(redis, 'plan'),
         getJson(redis, `favs:${user}`),
+        getJson(redis, `wishlist:${user}`),
       ]);
       return res.json({
         plan: planData,
         favs: favsData || [],
+        wishlist: wishData || [],
       });
     }
 
     if (req.method === 'POST') {
-      const { plan, favs } = req.body || {};
+      const { plan, favs, wishlist } = req.body || {};
       await Promise.all([
-        plan !== undefined ? redis.set('plan', JSON.stringify(plan)) : Promise.resolve(),
-        favs !== undefined ? redis.set(`favs:${user}`, JSON.stringify(favs)) : Promise.resolve(),
+        plan     !== undefined ? redis.set('plan',              JSON.stringify(plan))     : Promise.resolve(),
+        favs     !== undefined ? redis.set(`favs:${user}`,     JSON.stringify(favs))     : Promise.resolve(),
+        wishlist !== undefined ? redis.set(`wishlist:${user}`, JSON.stringify(wishlist)) : Promise.resolve(),
       ]);
       return res.json({ ok: true });
     }

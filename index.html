@@ -4043,7 +4043,10 @@ let festFavFilter = false;
 /* ---------- WISHLIST (가고싶은 곳) ---------- */
 const WISH_KEY = 'cph_wishlist_v1';
 let wishlist = JSON.parse(localStorage.getItem(WISH_KEY)||'[]');
-function saveWishlist(){ localStorage.setItem(WISH_KEY, JSON.stringify(wishlist)); }
+function saveWishlist(){
+  localStorage.setItem(WISH_KEY, JSON.stringify(wishlist));
+  queueServerSave({wishlist});
+}
 
 /* 추천 항목이 현재 plan에 있는지 확인 */
 function isRecInPlan(di, title){
@@ -4224,6 +4227,10 @@ async function initApp(){
     if(d?.favs){
       favorites=new Set(d.favs);
       try{ localStorage.setItem(FAV_KEY,JSON.stringify(d.favs)); }catch(e){}
+    }
+    if(d?.wishlist){
+      wishlist=d.wishlist;
+      try{ localStorage.setItem(WISH_KEY,JSON.stringify(d.wishlist)); }catch(e){}
     }
   }
   plan.forEach(day=>day.items.forEach(it=>{
