@@ -1,4 +1,4 @@
-/* exhibitions-data.js — 3 Days of Design 2026 브랜드·전시 데이터 (한국어 번역) */
+/* exhibitions-data.js — 3 Days of Design 2026 브랜드·전시 데이터 (한국어 번역 완료) */
 /* 자동 생성: generate_exhibitions.py (2026-06-03) */
 /* 총 552개 브랜드, 870개 이벤트 */
 
@@ -10,7 +10,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Posten 6, 1577 Copenhagen',
     slug:'fanzi',
-    desc:'FANZI is a spatial practice based in Copenhagen, working across art, design and architecture. Projects move between…',
+    desc:'FANZI는 Copenhagen에 기반을 둔 공간 실험 스튜디오로, 예술, 디자인, 건축 전반에 걸쳐 작업합니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c41005bfaf60bca91bdd0'},
       {day:10,start:'11:00',end:'11:45',title:'Stack by studio MOTO - 변화하는 삶을 위한 시스템 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0daa48d7a2bc74493fcca8',cats:['talk','workshop']},
@@ -47,7 +47,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Kristen Bernikows Gade 8, 1105 Copenhagen',
     slug:'Technogym',
-    desc:'Technogym is a global fitness and wellness industry leader. Their innovative & high–quality equipment, technologies,…',
+    desc:'Technogym은 글로벌 피트니스 및 웰니스 산업의 선두주자입니다. 혁신적이고 고품질의 장비와 기술을 제공합니다.',
     events:[
       {day:10,start:'10:00',end:'10:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b1de4ecf529ee8b3e5e1',location:'Posten 10C, 1577 Copenhagen'},
       {day:10,start:'12:00',end:'12:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b457cff7d863ec98fbf0',location:'Posten 10C, 1577 Copenhagen'},
@@ -82,7 +82,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 68, 1260 Copenhagen',
     slug:'designmuseum-danmark',
-    desc:'Located in the heart of central Copenhagen, Designmuseum Danmark is Denmark’s leading museum of Danish and…',
+    desc:'Copenhagen 중심부에 위치한 Designmuseum Danmark은 덴마크 및 국제 디자인을 선도하는 덴마크 최고의 박물관입니다.',
     events:[
       {day:10,start:'11:00',end:'11:15',title:'Vibskov Pavilion 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f084b68b6334d9ea963ae6',cats:['drinks','talk']},
       {day:10,start:'11:30',end:'12:30',title:'디자인으로 만드는 소속감: 미래 소비의 형태',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b48589aa4ee0f56dc9fe'},
@@ -110,7 +110,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 11, 1434 Copenhagen',
     slug:'cosentino',
-    desc:'To inspire people through innovative and sustainable spaces. Cosentino is a global manufacturer of eco–friendly and…',
+    desc:'혁신적이고 지속 가능한 공간을 통해 사람들에게 영감을 주는 것. Cosentino는 친환경 소재를 생산하는 글로벌 제조업체입니다.',
     events:[
       {day:10,start:'10:00',end:'10:30',title:'ECLOS 런칭 | 표면 혁신의 재정의',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05b651f969067d0a686fc',cats:['drinks','launch']},
       {day:10,start:'11:00',end:'12:00',title:'Cosentino x Gaggenau – 주방의 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f065ffcc152f4f9f2d0ff0',cats:['drinks','talk']},
@@ -137,7 +137,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Embassy of Portugal, Toldbodgade 31, 1253 Copenhagen',
     slug:'aicep-portugal-global',
-    desc:'Portugal’s participation at 3daysofdesign under the Made in Portugal Naturally brand—presents Momentum, a curatorial…',
+    desc:'Portugal의 3daysofdesign 참가는 Made in Portugal Naturally 브랜드로 진행되며, Momentum이라는 큐레이토리얼 프로젝트를 선보입니다.',
     events:[
       {day:10,start:'11:00',end:'11:20',title:'"From the Ocean\'s Point of View" 영화 & 포르투',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b5b948d3b57831e82179',cats:['drinks','tour']},
       {day:10,start:'13:30',end:'14:15',title:'Portugal Space: 메이킹 오브',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bbcb987639b0b98a9a66'},
@@ -162,7 +162,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Frederiksholms Kanal 30, 1473 Copenhagen',
     slug:'ocee-four-design',
-    desc:'Ocee & Four Design creates contemporary furniture shaped by Scandinavian design and British craftsmanship. The…',
+    desc:'Ocee & Four Design은 스칸디나비아 디자인과 영국 장인정신이 결합된 현대적인 가구를 만듭니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'보트로 도착하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79579b41ade4d673d242f',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
       {day:10,start:'12:00',end:'13:00',title:'가볍게 즐기는 런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198f849ba4d7a67cd1c4c1',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
@@ -186,7 +186,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Løvstræde 5, 1152 Copenhagen',
     slug:'fritz-hansen',
-    desc:'Founded in Denmark in 1872, Fritz Hansen plays an active role in the evolution of Danish design, shaping a legacy of…',
+    desc:'1872년 덴마크에서 설립된 Fritz Hansen은 덴마크 디자인의 진화에 적극적으로 참여하며 유산을 만들어가고 있습니다.',
     events:[
       {day:10,start:'10:00',end:'18:00',title:'Fritz Hansen 리스닝 라운지',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46f264ea0f0aa35030413',cats:['talk','workshop']},
       {day:10,start:'10:00',end:'12:00',title:'Wilone (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d771dcd8ec3aa6387da15'},
@@ -209,7 +209,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 14, 2nd Floor, 1265 Copenhagen',
     slug:'nuura',
-    desc:'Founded in 2017 with a vision to create sensuous lighting designs that enhances ambiance and transform spaces. Nuura…',
+    desc:'2017년에 설립된 Nuura는 분위기를 고조시키고 공간을 변화시키는 감각적인 조명 디자인을 창조한다는 비전을 가지고 있습니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'빛 테라피',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f987c267f99f903a18cb0d'},
       {day:10,start:'13:00',end:'13:45',title:'디자인토크 w/ Christian Flindt',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f9a43bf81bb59c66e9bcc4'},
@@ -232,7 +232,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Christianshavns Kanal 4, 1406 Copenhagen',
     slug:'stelton',
-    desc:'Based in Copenhagen, Stelton is a family–owned design house rooted in the Scandinavian design tradition. Since its…',
+    desc:'Copenhagen에 기반을 둔 Stelton은 스칸디나비아 디자인 전통에 뿌리를 둔 가족 소유의 디자인 하우스입니다.',
     events:[
       {day:10,start:'10:00',end:'10:30',title:'완벽한 커피 한 잔',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8b2bbfb1f28a5a9593ebc',cats:['drinks','talk']},
       {day:10,start:'13:00',end:'13:30',title:'디자인토크: 색채, 그리고 색채가 할 수 있는 것',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b0fc0e2fc34d0c8c2eb2'},
@@ -254,7 +254,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Havnegade 29, 1058 Copenhagen',
     slug:'umage',
-    desc:'UMAGE takes its name from a Danish word meaning “making an effort,” reflecting the care and attention they put into…',
+    desc:'UMAGE는 "노력하다"를 뜻하는 덴마크어에서 이름을 따왔으며, 그들이 작업에 쏟는 정성과 관심을 반영합니다.',
     events:[
       {day:10,start:'12:00',end:'13:00',title:'운하 투어: 건축 크루즈',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f470c0d70593dafc1895b9'},
       {day:10,start:'16:00',end:'16:30',title:'UMAGE x DI: AI와 내일의 형태',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1c37487373e77a9a78ff'},
@@ -276,7 +276,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 73, 1260 Copenhagen',
     slug:'arturel',
-    desc:'Arturel is a Danish brand redefining interiors through innovative wall–hanging acoustic art. By seamlessly blending…',
+    desc:'Arturel은 혁신적인 벽걸이형 음향 아트를 통해 인테리어를 재정의하는 덴마크 브랜드입니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'Silence by Design 포커스는 여기서 시작된다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4ae04ffde48b570c4e8cb'},
       {day:10,start:'14:00',end:'15:00',title:'나만의 자투리 조각 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4afe3199914ce01857428'},
@@ -297,7 +297,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Sundkaj 163, 2150 Copenhagen',
     slug:'rockfon',
-    desc:'The world’s leading acoustic company. Rockfon, founded in Denmark in 1962 as part of ROCKWOOL Group, is built on the…',
+    desc:'세계 최고의 음향 전문 기업. Rockfon은 1962년 덴마크에서 ROCKWOOL Group의 일부로 설립되었습니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'적응형 음향 & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a071658592a61cc76b7620a',cats:['talk','workshop']},
       {day:10,start:'14:00',end:'14:45',title:'HubTalks & Drinks with Michel Rojkind',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d8116be63c01756808e27',cats:['drinks','talk']},
@@ -318,7 +318,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Papirøen 5, 1436 Copenhagen',
     slug:'blond',
-    desc:'With the aim of creating beautiful spaces through lighting design and a holistic approach, BLOND exists to evoke…',
+    desc:'조명 디자인과 전체론적 접근을 통해 아름다운 공간을 창조한다는 목표로, BLOND는 감동을 불러일으키기 위해 존재합니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a159352aca87993d5e46786'},
       {day:10,start:'14:00',end:'15:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593789aaf489eb16db10c'},
@@ -338,7 +338,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Frederiksholms Kanal 28A, 1220 Copenhagen',
     slug:'homo-faber-fellowship',
-    desc:'Homo Faber Fellowship is presented by the Michelangelo Foundation for Creativity and Craftsmanship, a non–profit…',
+    desc:'Homo Faber Fellowship은 비영리 재단인 Michelangelo Foundation for Creativity and Craftsmanship이 제공합니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'Homo Faber Fellowship 전시 가이드 관람',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f461ea36bc16ea5171444e'},
       {day:10,start:'14:00',end:'15:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f462df94ee947208f2ddc9'},
@@ -358,7 +358,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Holbergsgade 20, 1057 Copenhagen',
     slug:'a-poc-able-issey-miyake',
-    desc:'A–POC, the acronym of \'A Piece Of Cloth\', is the name of the integrated design and manufacturing system first…',
+    desc:'A–POC는 혁신적인 디자인 철학을 담은 약어입니다.'A Piece Of Cloth\', is the name of the integrated design and manufacturing system first…',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb1c739aee95a40cfe0f'},
       {day:10,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb6266221f136d1dc1e7'},
@@ -377,7 +377,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Posten 2, 1577 Copenhagen',
     slug:'foyos-gmbh',
-    desc:'Foyos is a modular work furniture system that bridges living and working spaces. Launched in March 2026, it is built…',
+    desc:'Foyos는 생활 공간과 업무 공간을 연결하는 모듈형 업무용 가구 시스템입니다. 2026년 3월에 출시되었습니다.',
     events:[
       {day:10,start:'10:30',end:'11:30',title:'Tortus의 Eric Landon이 보여주는 물레의 즐거움',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa19f420538b4a33a4e1ec'},
       {day:10,start:'14:30',end:'15:30',title:'CEO Paul Gummert & 디자이너 Mark Braun—Foyos의 탄생',icon:'🚀',color:'#d99021',label:'런칭',id:'69fa1bf94136602c2201461f'},
@@ -396,7 +396,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Politikens Forhal, Vester Voldgade 33, 1552 Copenhagen',
     slug:'softline',
-    desc:'SOFTLINE is a leading Danish furniture manufacturer with a proud history in craftsmanship and upholstery. Since 1979,…',
+    desc:'SOFTLINE은 장인정신과 실내장식에 자랑스러운 역사를 가진 덴마크의 선도적인 가구 제조업체입니다. 1979년부터 이어져 왔습니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'공식 오프닝 - 디자이너 Javier Moreno와의 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044127a78db694fca089f4',cats:['drinks','talk','launch']},
       {day:10,start:'11:00',end:'14:00',title:'푸드 & 드링크 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195c322bc6b0841a71f45a',cats:['drinks','talk']},
@@ -415,7 +415,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Østergade 17—19, 1100 Copenhagen',
     slug:'tom-rossau',
-    desc:'What began over 20 years ago as a spontaneous experiment in Tom Rossau’s Copenhagen workshop has evolved into a…',
+    desc:'20여 년 전 Tom Rossau의 Copenhagen 작업실에서 즉흥적인 실험으로 시작된 것이 지금은 발전했습니다.',
     events:[
       {day:10,start:'12:00',end:'13:00',title:'디자이너를 만나다: Tom Rossau',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f33ff5bcb4b5cc3b93410d'},
       {day:10,start:'15:00',end:'16:00',title:'ST906 XS 램프 경품 이벤트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f351b867c6b04615e9b564',cats:['workshop','launch']},
@@ -434,7 +434,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Snorresgade 22, 2300 Copenhagen',
     slug:'vipp',
-    desc:'Vipp is a Danish, 3rd generation family–owned design company. Founded by metalsmith Holger Nielsen in the small town…',
+    desc:'Vipp은 덴마크의 3대째 이어지는 가족 소유 디자인 기업입니다. 금속공예가 Holger Nielsen이 작은 마을에서 설립했습니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db87b93eb583c21bce074'},
       {day:10,start:'13:00',end:'14:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0dc05820d2771f1f840f7b'},
@@ -453,7 +453,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 65, 1260 Copenhagen',
     slug:'wendelbo',
-    desc:'Founded in 1955 in Denmark as a small family workshop specialising in upholstery, Wendelbo began its journey with an…',
+    desc:'1955년 덴마크에서 실내장식을 전문으로 하는 소규모 가족 공방으로 설립된 Wendelbo는 이러한 여정을 시작했습니다.',
     events:[
       {day:10,start:'10:00',end:'13:00',title:'커피와 페이스트리',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045a5c2cd2c1cd99e3d53b'},
       {day:10,start:'16:00',end:'16:30',title:'John Astbury: 나의 가장 좋아하는 시간',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a045af48031d6c10ceff1fa'},
@@ -472,7 +472,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Strandgade 26, 1401 Copenhagen',
     slug:'bang-olufsen',
-    desc:'Bang & Olufsen is a luxury audio brand founded in 1925 in Struer, Denmark, by Peter Bang and Svend Olufsen whose…',
+    desc:'Bang & Olufsen은 1925년 덴마크 Struer에서 Peter Bang과 Svend Olufsen에 의해 설립된 럭셔리 오디오 브랜드입니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'DJ 세트 & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a185e0e364fe29265312a82'},
       {day:11,start:'11:00',end:'13:00',title:'라이브 재즈 듀오',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a185ff3680e223ff0f28840'},
@@ -490,7 +490,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Århusgade 128D, 1st—2nd Floor, 2150 Copenhagen',
     slug:'formarkivet',
-    desc:'FORMARKIVET is a multi–disciplinary design house redefining contemporary living by merging classic design principles…',
+    desc:'FORMARKIVET은 클래식 디자인 원칙을 현대적으로 재해석하여 현대적 생활을 재정의하는 다분야 디자인 하우스입니다.',
     events:[
       {day:10,start:'15:30',end:'18:00',title:'FORMARKIVET 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b112d08ad924d23e09d'},
       {day:10,start:'9:00',end:'11:00',title:'FORM BAR에서의 조찬',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a53e259b22cf2140411'},
@@ -508,7 +508,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Orientkaj 18—20, 2150 Copenhagen',
     slug:'gubi',
-    desc:'Creativity and playfulness are what GUBI does. By blending design eras, materials, textures, colours, and patterns,…',
+    desc:'창의성과 유쾌함이 GUBI가 하는 일입니다. 디자인 시대, 소재, 질감, 색상, 패턴을 혼합합니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'그랜드 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a13efb36421aded1ac64'},
       {day:10,start:'12:00',end:'13:00',title:'가이드 쇼룸 투어',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a019ac348e21df3976fdfa7'},
@@ -526,7 +526,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 9, 1123 Copenhagen',
     slug:'house-of-finn-juhl',
-    desc:'Trained as an architect, Finn Juhl approached furniture as an artistic discipline rather than a purely functional…',
+    desc:'건축가로 훈련받은 Finn Juhl은 가구를 순수한 기능보다는 예술적 분야로 접근했습니다.',
     events:[
       {day:10,start:'10:00',end:'10:30',title:'전시 오프닝 및 굿즈백 증정',icon:'🚀',color:'#d99021',label:'런칭',id:'69f3488ad033eda9e62a4b34'},
       {day:10,start:'14:30',end:'16:30',title:'Stauning Whisky와 함께하는 애프터눈 칵테일 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f348fcd5217db3b6dc874c'},
@@ -544,7 +544,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 14, 1123 Copenhagen',
     slug:'light-point',
-    desc:'LIGHT–POINT designs more than just lamps—they design light. This is the essence of their brand slogan: CREATING LIGHT.…',
+    desc:'LIGHT–POINT는 단순한 램프 이상을 디자인합니다—그들은 빛을 디자인합니다. 이것이 그들의 브랜드 슬로건 \'CREATING LIGHT\'의 본질입니다.',
     events:[
       {day:10,start:'10:00',end:'13:00',title:'잠깐의 여유가 필요하신가요? 무료 바리스타 커피를 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61da0b352df4deb8377f5'},
       {day:10,start:'12:00',end:'15:00',title:'고메 크리에이션을 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e6220ef2e91cf6cc2c8ab1'},
@@ -562,7 +562,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Århusgade 126, 2150 Copenhagen',
     slug:'velux',
-    desc:'"The most important prerequisite for all life and work is light." These are the words of the Danish VELUX founder,…',
+    desc:'"모든 삶과 일을 위한 가장 중요한 전제조건은 빛입니다." 이것은 덴마크 VELUX 창립자의 말입니다.',
     events:[
       {day:10,start:'10:30',end:'11:30',title:'자연광의 힘: Christina Augustesen 아티스트 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f324f0df9fa4f159cb9762'},
       {day:10,start:'11:30',end:'14:30',title:'디자인에 자연광 더하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31238db54b6caba571daf'},
@@ -580,7 +580,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'woud',
-    desc:'WOUD is a Danish design brand founded with the vision of establishing a harmonious collective that blends the talents…',
+    desc:'WOUD는 재능 있는 이들의 조화로운 집합체를 구축한다는 비전으로 설립된 덴마크 디자인 브랜드입니다.',
     events:[
       {day:10,start:'10:00',end:'14:00',title:'WOUD가 선보이는 아이스 커피와 말차',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f15650a72935610577a'},
       {day:10,start:'16:30',end:'18:00',title:'WOUD가 선사하는 올리브와 버블',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef2014648f0f019db7adec'},
@@ -598,7 +598,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Trommesalen 5, 1614 Copenhagen',
     slug:'asko',
-    desc:'ASKO, a premium Scandinavian brand, known for its high-quality appliances with designs based on Scandinavian…',
+    desc:'ASKO는 스칸디나비아 디자인을 기반으로 한 고품질 가전제품으로 유명한 프리미엄 스칸디나비아 브랜드입니다.',
     events:[
       {day:10,start:'12:00',end:'14:00',title:'굴과 샴페인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18015f07d94be476fbb473'},
       {day:10,start:'9:00',end:'10:00',title:'모닝 커피 & 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b41ed59714a45a89cac5'},
@@ -615,7 +615,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 33, 1260 Copenhagen',
     slug:'carl-hansen-son',
-    desc:'Carl Hansen & Søn represents more than 115 years of Danish furniture history infused with respect and passion for…',
+    desc:'Carl Hansen & Søn은 덴마크 가구 역사 115년 이상을 존중과 열정으로 이어온 브랜드입니다.',
     events:[
       {day:10,start:'11:00',end:'12:30',title:'Mentsen 잉여 소재 모바일 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eed31e5306b3bf9f6ca11',location:'Flaskehalsen 2, 1799 Copenhagen'},
       {day:10,start:'14:00',end:'15:30',title:'Mentsen 잉여 소재 모바일 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eedb81a3bf7882c0b33ca'},
@@ -632,7 +632,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 108, 1264 Copenhagen',
     slug:'ester-erik',
-    desc:'ester & erik is a family-owned company that has been making high-quality candles since 1987. Since then, the logo with…',
+    desc:'ester & erik은 1987년부터 고품질 캔들을 제작해온 가족 소유 기업입니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afdba25cb565c484b7e25'},
       {day:10,start:'15:00',end:'16:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afde1384de1ffd265ef00'},
@@ -649,7 +649,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kuglegårdsvej 1—5, 1434 Copenhagen',
     slug:'ferm-living',
-    desc:'Based on a passion for authentic design and with responsibility at the forefront, Ferm Living creates honest products…',
+    desc:'진정성 있는 디자인에 대한 열정과 책임감을 최우선으로, Ferm Living은 정직한 제품을 만들어냅니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'Taarnet의 Kiosk Café',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4332143884c067f230f68',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen'},
       {day:10,start:'14:00',end:'16:00',title:'정원에서 즐기는 그라니타',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4343eea6b88260d4c1cc8'},
@@ -666,7 +666,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 67, 1260 Copenhagen',
     slug:'gessi',
-    desc:'Founded in Valsesia, Gessi represents an excellence of Made in Italy, internationally recognised in wellness,…',
+    desc:'Valsesia에서 설립된 Gessi는 웰니스 분야에서 국제적으로 인정받는 Made in Italy의 우수성을 대표합니다.',
     events:[
       {day:10,start:'17:30',end:'20:00',title:'아페리티보 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19aaf2fb4fa0c3fe2f55dc'},
       {day:10,start:'9:00',end:'11:00',title:'커피 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abb158a9e8e42f9a0721'},
@@ -683,7 +683,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 34A, 1263 Copenhagen',
     slug:'hjemstavn',
-    desc:'HJEMSTAVN is a high–end brand specialising in bespoke kitchens and interior solutions, with a strong emphasis on…',
+    desc:'HJEMSTAVN은 맞춤형 주방과 인테리어 솔루션을 전문으로 하는 하이엔드 브랜드로, 특별한 강조점을 두고 있습니다.',
     events:[
       {day:10,start:'11:00',end:'13:00',title:'빵과 버터',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1a8e01d7dadb6f85309'},
       {day:10,start:'15:30',end:'18:30',title:'Forest 진토닉 아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda32f3f53f75c4a542c5e'},
@@ -700,7 +700,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 66, 1401 Copenhagen',
     slug:'edition-x-house-of-finn-juhl',
-    desc:'For this year’s 3daysofdesign, House of Finn Juhl collaborates with Edition Copenhagen, one of the leading…',
+    desc:'올해 3daysofdesign을 맞아 House of Finn Juhl은 선도적인 Edition Copenhagen과 협업합니다.',
     events:[
       {day:10,start:'11:00',end:'13:00',title:'장인정신의 예술성',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f33fac5771b2162831476a'},
       {day:10,start:'14:00',end:'16:30',title:'와인 아워 & 장인정신의 예술성',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3426971537ea29721577a',cats:['drinks','workshop']},
@@ -717,7 +717,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Lille Kirkestræde 3, 1072 Copenhagen',
     slug:'id-collective',
-    desc:'Iteration Collective is a newly established design collective of young designers. The community has emerged from a…',
+    desc:'Iteration Collective는 젊은 디자이너들로 구성된 새롭게 설립된 디자인 집단입니다. 이 커뮤니티는 다음에서 탄생했습니다.',
     events:[
       {day:10,start:'12:00',end:'15:00',title:'가구 크로키 & 디자이너 만남',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4c2fb3c400f9091072931'},
       {day:10,start:'17:00',end:'20:00',title:'전시 베르니사주: Bright Future',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c6258b17bc84387eba9b'},
@@ -734,7 +734,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 6, 1260 Copenhagen',
     slug:'kanttari',
-    desc:'KANTTARI creates bespoke luxury furniture defined by bold architectural forms, refined detailing, and exceptional…',
+    desc:'KANTTARI는 대담한 건축적 형태, 세련된 디테일, 그리고 탁월한 품질로 정의되는 맞춤형 럭셔리 가구를 제작합니다.',
     events:[
       {day:10,start:'12:00',end:'13:00',title:'매일 샴페인 & 라이브 음악 공연',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d671fa747c766f15c84d6',cats:['drinks','talk','launch']},
       {day:10,start:'17:00',end:'17:30',title:'라이브 뮤직 & 샴페인 익스피리언스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d676fa2744feeab27cde6',cats:['drinks','talk','launch']},
@@ -751,7 +751,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 108, 1264 Copenhagen',
     slug:'kvik',
-    desc:'Kvik’s originality comes from redefining how people live in their kitchens. Since 1983, Kvik has focused on human…',
+    desc:'Kvik의 독창성은 사람들이 주방에서 생활하는 방식을 재정의하는 데서 비롯됩니다. 1983년 이래 Kvik은 인간에 초점을 맞춰왔습니다.',
     events:[
       {day:10,start:'11:30',end:'12:30',title:'Copenhagen Brief — 덴마크 디자인에 대한 유럽의 시각',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db0cfc3a3936feb41ee06'},
       {day:10,start:'14:00',end:'15:00',title:'Kasper Meldgaard, Says Who와의 만남',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db439eb6fcdcab5b8ea5e'},
@@ -768,7 +768,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Holbergsgade 16, 1057 Copenhagen',
     slug:'mette-ditmer-denmark',
-    desc:'Mette Ditmer Denmark has been a voice within Scandinavian design since 1995, creating timeless collections grounded in…',
+    desc:'Mette Ditmer Denmark는 1995년부터 스칸디나비아 디자인의 목소리로 자리하며, 깊이 있는 시대를 초월한 컬렉션을 선보이고 있습니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'만들기의 예술: 선과 실',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bec2233ffa99a1d6f917'},
       {day:10,start:'14:00',end:'15:00',title:'만들기의 예술: 점토와 색',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c07300c30e5be044c4b0'},
@@ -785,7 +785,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Rigensgade 28, 1316 Copenhagen',
     slug:'nosou',
-    desc:'Nosou is a contemporary Japanese design brand rooted in natural materials and traditional craftsmanship. Guided by the…',
+    desc:'Nosou는 자연 소재와 전통 장인정신에 뿌리를 둔 현대적인 일본 디자인 브랜드입니다.',
     events:[
       {day:10,start:'13:00',end:'14:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70eb1c5d885ba5468693b'},
       {day:10,start:'16:00',end:'17:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70fd8feb35cd66a7f1876'},
@@ -802,7 +802,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Pakhus 47, Sundkaj 125, 2150 Copenhagen',
     slug:'romo-ltd',
-    desc:'Founded in 1902, Romo is a British family–run business now in its fifth generation. With decades of experience, an…',
+    desc:'1902년에 설립된 Romo는 현재 5세대째 이어지는 영국의 가족 경영 기업입니다. 수십 년의 경험과 함께합니다.',
     events:[
       {day:10,start:'12:00',end:'15:00',title:'여름의 맛: 풍성한 아이스크림',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0d75434b9488e9f6db766f'},
       {day:10,start:'14:00',end:'15:00',title:'스칸디나비아 디자인이 만난 120년 영국 가족 유산',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0d7524f405dab26775d5e3'},
@@ -819,7 +819,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Papirøen 5, 1436 Copenhagen',
     slug:'baux',
-    desc:'BAUX was founded with the belief that building materials should be sustainable, surprisingly functional and remarkably…',
+    desc:'BAUX는 건축 자재가 지속 가능하고, 놀랍도록 기능적이며, 탁월하게 아름다워야 한다는 믿음으로 설립되었습니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fb2dd65e21d8d4f90131e0'},
       {day:10,start:'14:00',end:'15:00',title:'가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fb2dfe34110dfe66dc1cde'},
@@ -835,7 +835,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 63, 1260 Copenhagen',
     slug:'bruun-rasmussen',
-    desc:'Since 1948, Bruun Rasmussen Auctioneers has brought art, design, and antiques to passionate collectors across the…',
+    desc:'1948년부터 Bruun Rasmussen Auctioneers는 예술, 디자인, 골동품을 열정적인 수집가들에게 선보여왔습니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'Copenhagen Design Paper 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4988f6cd6593fbe493e49'},
       {day:10,start:'9:00',end:'11:00',title:'오프닝 — Collector\'s Edit',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49770303c2f31631b8773'},
@@ -851,7 +851,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Galionsvej 33, 1437 Copenhagen',
     slug:'dornbracht',
-    desc:'Dornbracht provides exclusive designer fittings and accessories for bathrooms, spas, and kitchens. The brand combines…',
+    desc:'Dornbracht는 욕실, 스파, 주방을 위한 독점 디자이너 피팅과 액세서리를 제공합니다. 이 브랜드는 결합합니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'모닝 모멘트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16a9805acbc9d760a20cdb'},
       {day:10,start:'15:00',end:'18:00',title:'애프터눈 칵테일 & 두 개의 새로운 디자인 아이콘',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aa30c5b884c61866cb19',cats:['drinks','launch']},
@@ -867,7 +867,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Nikolaj Plads 25A, 1067 Copenhagen',
     slug:'durat',
-    desc:'Finnish Durat is a unique solid surface material which contains recycled post–industrial plastics and is 100%…',
+    desc:'핀란드의 Durat는 재활용된 산업 후 플라스틱을 포함하고 있으며 100% 재활용 가능한 독특한 솔리드 서페이스 소재입니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'Durat, Harri Koskinen 디자인 Palapeli 선반 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch']},
       {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
@@ -883,7 +883,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 66, 1264 Copenhagen',
     slug:'estonian-embassy-in-copenhagen',
-    desc:'Estonia’s national story is simple: succeeding at change is its superpower; in design, that means future ready…',
+    desc:'Estonia의 국가적 이야기는 간단합니다: 변화에서 성공하는 것이 그들의 초능력이며, 디자인에서 이는 미래 준비를 의미합니다.',
     events:[
       {day:10,start:'10:30',end:'11:30',title:'Figure & Furniture — 디자이너 Loreida Hein과 함께하는 스케치',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a02ebff65c40b7931b93373'},
       {day:10,start:'14:00',end:'15:00',title:'RoomDiplomacy by Estonian Association of Interior Architects',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02e3e2ba1e0334e4dd9ed2'},
@@ -899,7 +899,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 4A, 1437 Copenhagen',
     slug:'emfima-collection-aps',
-    desc:'EMFIMA Collection is a Nordic agency established in September 2016 and today represent the well-known Italian…',
+    desc:'EMFIMA Collection은 2016년 9월에 설립된 북유럽 에이전시로, 현재 유명한 이탈리아 브랜드를 대표하고 있습니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'소리가 중요하다: 건축을 위한 음향 쾌적성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f35c7054635eb33166fab9',joint:true},
       {day:10,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32',joint:true},
@@ -915,7 +915,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Nikolaj Plads 25A, 1067 Copenhagen',
     slug:'finarte',
-    desc:'Finarte is Finland\'s leading design house for rugs and soft accessories, creating award–winning interior items for…',
+    desc:'Finarte는 핀란드의 대표적인 브랜드입니다.'s leading design house for rugs and soft accessories, creating award–winning interior items for…',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'Durat, Harri Koskinen 디자인 Palapeli 선반 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch'],joint:true},
       {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
@@ -931,7 +931,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Løvstræde 1, 1152 Copenhagen',
     slug:'fredericia',
-    desc:'Since its foundation in 1911, the family–owned company Fredericia has proudly built a strong tradition of beautiful…',
+    desc:'1911년 설립 이래, 가족 소유 기업인 Fredericia는 아름다운 전통을 자랑스럽게 구축해왔습니다.',
     events:[
       {day:10,start:'10:00',end:'10:30',title:'전시 오프닝 스피치',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f491d1ffac3ff136ca0786'},
       {day:10,start:'13:00',end:'14:00',title:'디자인 토크: 누가 덴마크 디자인을 만들어가는가?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0b1d03627ba9c8f246a635'},
@@ -947,7 +947,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Christian IX\'s Gade 5, 1111 Copenhagen',
     slug:'frost',
-    desc:'The story began with a vision of creating a new generation of interior design accessories where Danish design…',
+    desc:'이야기는 덴마크 디자인의 새로운 세대 인테리어 디자인 액세서리를 창조하려는 비전에서 시작되었습니다.',
     events:[
       {day:10,start:'14:00',end:'14:30',title:'새로운 시대: 믹서 수전, 샤워 세트, 욕실 가구 & 세면대',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f457e0703823a20e9b499d',cats:['talk','launch']},
       {day:10,start:'17:00',end:'17:30',title:'FROST 팀과 함께하는 스낵과 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f458d89d180006b0ba80bc'},
@@ -963,7 +963,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Christianshavns Kanal 4, 1406 Copenhagen',
     slug:'gabriel-a-s',
-    desc:'Specialists in fabrics. At Gabriel, fabrics are the foundation of exceptional design, performance, and craftsmanship.…',
+    desc:'원단 전문가. Gabriel에서 원단은 탁월한 디자인, 성능, 그리고 장인정신의 기초입니다.',
     events:[
       {day:10,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e',joint:true},
       {day:11,start:'14:00',end:'14:30',title:'Savak NU - 크리에이티브 디렉터 Cenk Kivrikoglu 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4651ee232d7996d0806f5',cats:['talk','launch']},
@@ -979,7 +979,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Bryggernes Plads 11, 1799 Copenhagen',
     slug:'pp-mobler',
-    desc:'PP Møbler is a family owned furniture workshop with a strong tradition for advanced craftsmanship made to the highest…',
+    desc:'PP Møbler는 최고 수준의 고급 장인정신에 대한 강한 전통을 지닌 가족 소유 가구 공방입니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'커피와 크루아상으로 시작하는 고요한 아침',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33f57a22433b5c32a17e3'},
       {day:10,start:'16:00',end:'17:00',title:'Circle Chair 위빙 과정 체험',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f342d535bb5a9c6c1b70e9'},
@@ -995,7 +995,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Nikolaj Plads 32, 1067 Copenhagen',
     slug:'reevein-studios',
-    desc:'Reevein Studios is a Danish high–end design company dedicated to crafting collectible floral and botanical objects…',
+    desc:'Reevein Studios는 수집 가능한 꽃과 식물 오브제를 제작하는 데 전념하는 덴마크 하이엔드 디자인 회사입니다.',
     events:[
       {day:10,start:'13:00',end:'15:00',title:'Seed Dating — B2B 밋업 & 오픈 콜',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0489465794494c758f76d7'},
       {day:10,start:'16:00',end:'21:00',title:'전설적인 뒷마당 파티 - 디자인 숙취와 시차 극복',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a04783a6dc14ea1de8de7e0'},
@@ -1011,7 +1011,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Illums Bolighus, Amagertorv 10, 1160 Copenhagen',
     slug:'rezas',
-    desc:'Rezas is a renowned rug brand that combines Nordic design with traditional craftsmanship and modern elegance. With…',
+    desc:'Rezas는 북유럽 디자인과 전통 장인정신, 현대적 우아함을 결합한 유명 러그 브랜드입니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'Rezas에서 맞이하는 고요한 시작',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48df60774c9889b74b7cd'},
       {day:10,start:'16:30',end:'19:00',title:'장인정신과 개성이 있는 저녁',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48f0a6659a2172dfedd9a'},
@@ -1027,7 +1027,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 20, 1255 Copenhagen',
     slug:'sibast-furniture',
-    desc:'Sibast Furniture is a Danish family company with a proud heritage of fine furniture craftsmanship dating back to 1908.…',
+    desc:'Sibast Furniture는 1908년으로 거슬러 올라가는 정교한 가구 장인정신의 자랑스러운 유산을 지닌 덴마크 가족 기업입니다.',
     events:[
       {day:10,start:'10:00',end:'11:30',title:'그랜드 오프닝: DESIGNED TO MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b0f54982a1d4b2c7da3e',cats:['drinks','launch']},
       {day:10,start:'15:00',end:'16:00',title:'새로운 SIBAST를 만나다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b2fd401cdafa657d516c'},
@@ -1043,7 +1043,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Café Niko, Papirøen 81, 1436 Copenhagen',
     slug:'the-form-follows',
-    desc:'The Form Follows creates furniture and design objects that balance clarity of form with a distinct sense of character.…',
+    desc:'The Form Follows는 형태의 명확성과 뚜렷한 개성의 감각이 균형을 이루는 가구와 디자인 오브제를 제작합니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'밖으로 나가자 – XD 아웃도어 시리즈 소개',icon:'🚀',color:'#d99021',label:'런칭',id:'69f35b4bdd07f495624e0c5d'},
       {day:10,start:'11:00',end:'13:00',title:'Café Niko에서 커피 해피아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35c118898abaa5faeb809'},
@@ -1059,7 +1059,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Designmuseum Danmark, Bredgade 68, 1260 Copenhagen',
     slug:'verner-panton-design-ag',
-    desc:'Verner Panton Design AG is a family-run company based in Basel, Switzerland. As the sole custodian and exclusive owner…',
+    desc:'Verner Panton Design AG는 스위스 Basel에 본사를 둔 가족 경영 회사입니다. 유일한 관리자이자 독점 소유자로서입니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe0a9bd2f58a69dd5c565',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
       {day:10,start:'13:00',end:'14:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe14b50e5684e29733005',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
@@ -1075,7 +1075,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1401 Copenhagen',
     slug:'birdmind',
-    desc:'BIRDMIND is a Spanish company developing circular materials for architecture and interior design. Based in Galicia, it…',
+    desc:'BIRDMIND는 건축과 인테리어 디자인을 위한 순환 소재를 개발하는 스페인 회사입니다. Galicia에 기반을 두고 있습니다.',
     events:[
       {day:10,start:'17:30',end:'18:00',title:'Ignacio Ciocchini X BIRDMIND',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d385470b0391bd0106155',location:'Gammel Dok, Strandgade D3&D5, 1401 Copenhagen'},
       {day:11,start:'15:00',end:'15:30',title:'Ignacio Ciocchini X BIRDMIND',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d38acef04627154a34807',location:'Gammel Dok, Strandgade D3&D5, 1401 Copenhagen'},
@@ -1090,7 +1090,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Ny Østergade 7, 1101 Copenhagen',
     slug:'carpe-diem-beds',
-    desc:'Unwind in bespoke luxury with Carpe Diem Beds: a harmonious blend of comfort, innovation and Scandinavian design.…',
+    desc:'Carpe Diem Beds와 함께 맞춤형 럭셔리 속에서 휴식을 취하세요: 편안함, 혁신, 스칸디나비아 디자인의 조화로운 조합입니다.',
     events:[
       {day:10,start:'13:00',end:'16:00',title:'DJ, 음료와 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3156f4047ede426b84a8f'},
       {day:11,start:'13:00',end:'16:00',title:'DJ, 음료 & 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31916b6ef9caacec370b6'},
@@ -1105,7 +1105,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'danish-art-workshop',
-    desc:'Danish Art Workshops contributes to the field of art and design in Denmark by offering professionals a unique platform…',
+    desc:'Danish Art Workshops는 전문가들에게 독특한 플랫폼을 제공함으로써 덴마크의 예술과 디자인 분야에 기여합니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'30분 안에 13명의 디자이너 만나기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d645053a48b306ea7b49'},
       {day:10,start:'14:00',end:'14:45',title:'토크: Mentze Ottenstein & Alberte Svendsen',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d730e1888e053bcb594a'},
@@ -1120,7 +1120,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Christianshavns Kanal 4, 1406 Copenhagen',
     slug:'ege-carpets',
-    desc:'With intention over trend, Ege Carpets weave life into spaces. Elegant, distinctive, deeply familiar. With extensive…',
+    desc:'트렌드보다 의도를 우선하는 Ege Carpets는 공간에 생명을 불어넣습니다. 우아하고, 독특하며, 깊이 친숙합니다. 광범위한 경험과 함께입니다.',
     events:[
       {day:10,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e'},
       {day:11,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af'},
@@ -1135,7 +1135,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 7, 1153 Copenhagen',
     slug:'eilersen',
-    desc:'“From coach to couch” – Founded in 1895, Eilersen has focused on craftsmanship, quality, and innovation. The journey…',
+    desc:'"코치에서 카우치로" – 1895년 설립된 Eilersen은 장인정신, 품질, 혁신에 집중해왔습니다. 그 여정은…',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'Eilersen House 애프터눈 라운지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3122695016946a0c04cb2'},
       {day:10,start:'8:00',end:'9:30',title:'Morning Moments: Eilersen House에서의 조식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5ac5096e5873139b5331'},
@@ -1150,7 +1150,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Badstuestræde 17, 1209 Copenhagen',
     slug:'form-portfolios',
-    desc:'Form Portfolios champions the legacies of designers through partnerships with brands, cultural institutions, and…',
+    desc:'Form Portfolios는 브랜드, 문화 기관과의 파트너십을 통해 디자이너들의 유산을 옹호합니다…',
     events:[
       {day:10,start:'12:30',end:'14:30',title:'Dansk Bistro',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f534edf5fa82f674b63240'},
       {day:11,start:'12:30',end:'14:30',title:'Dansk Bistro',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f53c8af912c1ba508bc454'},
@@ -1165,7 +1165,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 8—10, 1153 Copenhagen',
     slug:'galleri-sonja',
-    desc:'Galleri Sonja is visiting from Bornholm. Once a saddle maker’s shop from the early 1800s, Galleri Sonja is now a place…',
+    desc:'Galleri Sonja는 Bornholm에서 방문합니다. 1800년대 초 마구 제작소였던 Galleri Sonja는 이제…',
     events:[
       {day:10,start:'12:00',end:'14:00',title:'Galleri Sonja에서 티 브레이크 함께하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f89e1547c676c6807f3c48'},
       {day:10,start:'15:00',end:'16:00',title:'Hedestrik 주관 Dogmestrik 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a048048237f232959aa5131'},
@@ -1180,7 +1180,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 91, 5th Floor, 1401 Copenhagen',
     slug:'hdk-valand-goteborgs-universitet',
-    desc:'HDK–Valand—Academy of Art and Design, at the University of Gothenburg, is one of the Nordic region’s leading…',
+    desc:'University of Gothenburg의 HDK–Valand—Academy of Art and Design은 북유럽 지역 최고의…',
     events:[
       {day:10,start:'12:00',end:'14:00',title:'드림 캐처',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049bb2d4c60ee943aac619'},
       {day:10,start:'16:00',end:'18:00',title:'음료 & 스낵',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc'},
@@ -1195,7 +1195,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Nikolaj Plads 25A, 1067 Copenhagen',
     slug:'johanna-gullichsen-42427',
-    desc:'Discover Johanna Gullichsen’s distinctive textiles, where tradition meets modern design. Since 1989, Johanna…',
+    desc:'전통과 현대 디자인이 만나는 Johanna Gullichsen의 독특한 텍스타일을 만나보세요. 1989년부터 Johanna는…',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994'},
       {day:10,start:'17:00',end:'20:00',title:'PLAYROOM 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf',joint:true},
@@ -1210,7 +1210,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Pakhus 48, Klubiensvej 22, 2150 Copenhagen',
     slug:'kvadrat',
-    desc:'Kvadrat was established in Denmark in 1968 and has deep roots in Scandinavia’s world–famous design tradition. A leader…',
+    desc:'Kvadrat은 1968년 덴마크에서 설립되었으며 스칸디나비아의 세계적으로 유명한 디자인 전통에 깊은 뿌리를 두고 있습니다. 선도적인…',
     events:[
       {day:10,start:'16:30',end:'17:00',title:'THREE, Isa Glink과의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01b3fa73e4f29d08a949ef'},
       {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra 런치 파티',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a01ae73d72ebd402c2ccb21'},
@@ -1225,7 +1225,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Orient Plads 1, 2nd Floor, 2150 Copenhagen',
     slug:'kvadrat-acoustics',
-    desc:'Kvadrat Acoustics creates fully customisable, high–performance acoustic solutions characterised by aesthetic…',
+    desc:'Kvadrat Acoustics는 미적 완성도로 특징지어지는 완전 맞춤형 고성능 음향 솔루션을 제작합니다…',
     events:[
       {day:10,start:'13:00',end:'13:45',title:'시연: 음향 실험',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f8dd411de8dd0acbd72f'},
       {day:10,start:'14:00',end:'14:45',title:'워크숍: 분해와 재사용을 위한 디자인',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1f9e6f9c32ba7ba62b9cc'},
@@ -1240,7 +1240,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 7, Ground Floor, 1265 Copenhagen',
     slug:'magnus-olesen',
-    desc:'Magnus Olesen develops and manufactures high quality furniture in cooperation with leading designers and architects.…',
+    desc:'Magnus Olesen은 선도적인 디자이너 및 건축가와 협력하여 고품질 가구를 개발하고 제조합니다…',
     events:[
       {day:10,start:'10:00',end:'16:00',title:'MAGNUS OLESEN에서 만나는 HANS CAFÉ 팝업',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a158051ccf0d0520913571d'},
       {day:11,start:'10:00',end:'16:00',title:'MAGNUS OLESEN에서 만나는 HANS CAFÉ 팝업',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1580a17f30eb3ad4bf35c2'},
@@ -1255,7 +1255,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Valkendorfsgade 13B, 1151 Copenhagen',
     slug:'moebe',
-    desc:'MOEBE is a Danish design studio creating furniture, lighting, and objects defined by a relentless pursuit of…',
+    desc:'MOEBE는 끊임없는 추구로 정의되는 가구, 조명, 오브제를 만드는 덴마크 디자인 스튜디오입니다…',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'프레스 모닝: 종이, 도자기 그리고 빛',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69eb70bdf4bf8b3eeafbb39a',cats:['drinks','talk','launch']},
       {day:10,start:'16:00',end:'19:00',title:'Golden Hour: 종이와 도자기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69eb71480c61afbe486e9d7f',cats:['drinks','launch']},
@@ -1270,7 +1270,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 42, 2nd Floor, 1260 Copenhagen',
     slug:'new-works',
-    desc:'New Works presents a collection at the intersection between old and new. Light and dark. Design and art. The…',
+    desc:'New Works는 옛것과 새것의 교차점에 있는 컬렉션을 선보입니다. 빛과 어둠. 디자인과 예술…',
     events:[
       {day:10,start:'14:00',end:'14:15',title:'New Works Residence에서의 몰입형 리스닝 경험',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4941be8776f88cd94b329'},
       {day:11,start:'10:00',end:'11:00',title:'오브제, 공간 그리고 지각',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4961040f9aaa181bb5ced'},
@@ -1285,7 +1285,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Sankt Peders Stræde 26, 1453 Copenhagen',
     slug:'nordal',
-    desc:'Nordal is a Danish interior design brand, but it’s much more than that. Home is an important part of life—perhaps more…',
+    desc:'Nordal은 덴마크 인테리어 디자인 브랜드이지만, 그 이상의 의미를 지닙니다. 집은 삶의 중요한 부분이며, 어쩌면 더욱…',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'나만의 스크럽 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f48ce104622bc1b7f29b42'},
       {day:10,start:'14:00',end:'16:00',title:'아이스크림과 스파클링',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48d8628e6f67fa737ee63'},
@@ -1300,7 +1300,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 12, 1123 Copenhagen',
     slug:'norrvik',
-    desc:'Norrvik is a Danish brand, dedicated to redefining the essence of outdoor living with its outdoor kitchens.…',
+    desc:'Norrvik은 아웃도어 키친으로 야외 생활의 본질을 재정의하는 데 전념하는 덴마크 브랜드입니다…',
     events:[
       {day:10,start:'13:00',end:'14:00',title:'여름 샴페인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69df291a13e25ae8236660ad'},
       {day:11,start:'11:00',end:'12:00',title:'Bo Franch-Mærkedahl: 야외 공간의 미래',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ebcab710394c1bb657f9a'},
@@ -1315,7 +1315,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'openhouse',
-    desc:'Openhouse Studio leads creative projects and bears brands\' messages in a comprehensive and unique way. The studio…',
+    desc:'Openhouse Studio는 크리에이티브 프로젝트를 주도하고 브랜드를 육성합니다.' messages in a comprehensive and unique way. The studio…',
     events:[
       {day:10,start:'10:30',end:'11:00',title:'Mike Hausmann과 함께하는 커피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103cf94e8237b8a7ed9097'},
       {day:10,start:'15:30',end:'16:00',title:'"When Objects Change Meaning" with Saba Italia & JOV',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103c7c6cdc32fa1ab72c65'},
@@ -1330,7 +1330,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 71, 1260 Copenhagen',
     slug:'paper-collective',
-    desc:'Paper Collective is a Copenhagen–based curator and creator of exclusive collections across art, craft and design.…',
+    desc:'Paper Collective는 예술, 공예, 디자인에 걸친 독점 컬렉션을 큐레이팅하고 창작하는 코펜하겐 기반 기업입니다…',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'Paper Collective x Zilenzio, Lolita Pelegrime 라이브 페인팅',icon:'🚀',color:'#d99021',label:'런칭',id:'6a15960efdafb7173aaec656'},
       {day:10,start:'9:00',end:'10:30',title:'디자이너 패널 토크: 예술과 디자인에 대한 통합적 접근',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1592eb87791cf8dad66ff3'},
@@ -1345,7 +1345,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 51, 1436 Copenhagen',
     slug:'the-royal-danish-academy',
-    desc:'The Royal Danish Academy—Architecture, Design, Conservation strives to be an active, creative and leading actor in…',
+    desc:'The Royal Danish Academy—Architecture, Design, Conservation은 능동적이고 창의적이며 선도적인 주체가 되기 위해 노력합니다…',
     events:[
       {day:10,start:'10:30',end:'11:30',title:'의자 컬렉션 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fa4b289c73f9767afe7488',location:'Fabrikmestervej 10, København, Danmark'},
       {day:10,start:'16:00',end:'18:00',title:'도서관에서의 Here & Now 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3c1461045ee69d009f41d',location:'Danneskiold-Samsøes Allé 50, København, Danmark'},
@@ -1360,7 +1360,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Papirøen 25, 1436 Copenhagen',
     slug:'stride',
-    desc:'STRIDE is an emerging material-led design platform reimagining how waste streams and overlooked resources can shape…',
+    desc:'STRIDE는 폐기물 흐름과 간과된 자원이 어떻게 미래를 형성할 수 있는지 재상상하는 신흥 소재 중심 디자인 플랫폼입니다…',
     events:[
       {day:10,start:'14:00',end:'15:00',title:'천연 염색 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d8f5ce5953935ca59fc7'},
       {day:11,start:'15:00',end:'16:00',title:'천연 염색 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d939e03fe68e66590228'},
@@ -1375,7 +1375,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Sankt Annæ Plads 1, 1250 Copenhagen',
     slug:'vermland',
-    desc:'Vermland creates high-quality kitchens and furniture crafted from solid wood frames built to endure for generations.…',
+    desc:'Vermland는 여러 세대에 걸쳐 사용할 수 있도록 제작된 원목 프레임으로 만든 고품질 키친과 가구를 제작합니다…',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'런치 & 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d598f22b81ed42649b619',cats:['drinks','talk']},
       {day:11,start:'15:00',end:'17:00',title:'와인 & 음악',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7ce37de6f2ab1f7ffcd4'},
@@ -1390,7 +1390,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 13, 2100 Copenhagen',
     slug:'anker-co',
-    desc:'Anker & Co brings together a thoughtfully curated mix of lighting brands, blending timeless craftsmanship with…',
+    desc:'Anker & Co는 시대를 초월한 장인정신과 현대적 감각이 조화를 이루는 신중하게 선별된 조명 브랜드를 한데 모았습니다…',
     events:[
       {day:10,start:'8:30',end:'9:30',title:'모닝 토크: 공예와 기술의 융합',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9e6f8e400d0d461aa51ee',cats:['drinks','talk']},
       {day:11,start:'8:30',end:'9:30',title:'모닝 토크: 공예와 기술의 융합. 특별 게스트: Justine Kegels',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d08983163bc891f0a30',cats:['drinks','talk']},
@@ -1404,7 +1404,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 28A, 1260 Copenhagen',
     slug:'anour',
-    desc:'ANOUR is a handcrafted contemporary lighting design studio inspired by tradition, driven by creativity, obsession for…',
+    desc:'ANOUR는 전통에서 영감을 받고 창의성과 완벽에 대한 집착으로 추동되는 수작업 현대 조명 디자인 스튜디오입니다…',
     events:[
       {day:10,start:'9:30',end:'11:00',title:'모닝 커피 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b166e282383c65f2ed58f'},
       {day:11,start:'9:30',end:'11:00',title:'모닝 커피 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b169b0228239c83f754fa'},
@@ -1418,7 +1418,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 3, 1263 Copenhagen',
     slug:'baenue',
-    desc:'Founded by MIT PhD Jinwoo Bae, the Korean lighting brand BAENUE traces its roots to supplying millions of custom LED…',
+    desc:'MIT 박사 Jinwoo Bae가 설립한 한국 조명 브랜드 BAENUE는 수백만 개의 맞춤형 LED 공급에서 그 뿌리를 찾습니다…',
     events:[
       {day:10,start:'12:00',end:'12:30',title:'테크 토크: Dim2Amber™— 빛의 미래를 설계하다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06e214bebd8d25a55eb8aa',cats:['drinks','talk']},
       {day:10,start:'17:00',end:'19:00',title:'그랜드 오프닝: SHIIM 독점 프리뷰 & MINI 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c33bd291162a7bd761bc7',cats:['drinks','launch']},
@@ -1432,7 +1432,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Badstuestræde 12, 1209 Copenhagen',
     slug:'birdie-scandinavia',
-    desc:'Birdie is a Danish brand redefining indoor climate & health through intuitive design and storytelling. Founded in…',
+    desc:'Birdie는 직관적인 디자인과 스토리텔링을 통해 실내 환경과 건강을 재정의하는 덴마크 브랜드입니다…',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'Birdie: \'신선한 공기의 집\'',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f49b3d07f21da769978d39',cats:['talk','launch']},
       {day:10,start:'16:00',end:'18:00',title:'신선한 공기 & 무료 드링크 (!)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49c1870e13aeaeeda5044'},
@@ -1446,7 +1446,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 4A, 1437 Copenhagen',
     slug:'tfurniture',
-    desc:'BIRKEBAEK is a Danish distributor and agent specialising in international brands for the contract market, all united…',
+    desc:'BIRKEBAEK은 계약 시장을 위한 국제 브랜드를 전문으로 하는 덴마크 유통업체이자 에이전트로, 모두가 하나로…',
     events:[
       {day:10,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32',joint:true},
       {day:11,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a',joint:true},
@@ -1460,7 +1460,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 69, 1264 Copenhagen',
     slug:'bla-station',
-    desc:'Blå Station is a family business based in a former sewing factory in Åhus, on the south–east coast of Sweden, where…',
+    desc:'Blå Station은 스웨덴 남동부 해안 Åhus의 옛 재봉 공장에 기반을 둔 가족 기업으로…',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'창립 40주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1c77b43ecf22b0b881649c',location:'Store Kongensgade 69, 1264 Copenhagen, Danmark'},
       {day:11,start:'16:00',end:'19:00',title:'SKG81 - 진 앤 토닉',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1c7898377ea9c7ad4a677c',location:'Store Kongensgade 81, 1264 Copenhagen, Danmark'},
@@ -1474,7 +1474,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Ny Østergade 10, 1101 Copenhagen',
     slug:'bodum',
-    desc:'The Bodum story began in Copenhagen, Denmark, where Peter Bodum founded the company in 1944. Today, the Bodum Group…',
+    desc:'Bodum의 이야기는 Peter Bodum이 1944년 회사를 설립한 덴마크 코펜하겐에서 시작되었습니다. 오늘날 Bodum Group은…',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'Bodum의 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef67dcf050d766542130d7'},
       {day:11,start:'10:00',end:'11:00',title:'Bodum의 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef6813aaa363586ef7b4cd'},
@@ -1488,7 +1488,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Højbro Plads 21, 1200 Copenhagen',
     slug:'botane',
-    desc:'Botané is building a new category at the intersection of interior design, sustainability and modern aesthetics.…',
+    desc:'Botané는 인테리어 디자인, 지속가능성, 현대 미학의 교차점에서 새로운 카테고리를 구축하고 있습니다…',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'Botané와 함께하는 드롭인 플라워 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9d4ee5b9513336926eb3'},
       {day:11,start:'15:00',end:'16:00',title:'Botané와 함께하는 드롭인 플라워 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9de217a8cca2e87662b1'},
@@ -1502,7 +1502,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Frederiksgade 17A, 1265 Copenhagen',
     slug:'dignitydesign',
-    desc:'Dignity Design is a collaborative platform and movement exploring how design can restore dignity in vulnerable stages…',
+    desc:'Dignity Design은 디자인이 어떻게 취약한 단계에서 존엄성을 회복할 수 있는지 탐구하는 협업 플랫폼이자 운동입니다…',
     events:[
       {day:10,start:'9:00',end:'9:45',title:'디자인 원칙으로서의 존엄성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a161202c524d6ac525bd527'},
       {day:11,start:'9:00',end:'9:45',title:'전환기와 노화를 위한 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1613a06c0fb9b0d4d421b4'},
@@ -1516,7 +1516,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 41B, 1260 Copenhagen',
     slug:'dk3',
-    desc:'dk3 is a Danish design furniture brand creating exclusive classic and contemporary furniture from acclaimed Danish and…',
+    desc:'dk3는 저명한 덴마크 및 국제 디자이너들의 독점적인 클래식 및 현대 가구를 제작하는 덴마크 디자인 가구 브랜드입니다…',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'커피와 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e8cbcf166730af15e4875b'},
       {day:10,start:'14:00',end:'17:00',title:'Kensaku Oshiro와의 만남',icon:'🚀',color:'#d99021',label:'런칭',id:'69e8cfee8c77b4092deb1acc'},
@@ -1530,7 +1530,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 89, 1401 Copenhagen',
     slug:'embassy-of-iceland-copenhagen',
-    desc:'Copenhagen based Icelandic designer Dögg Guðmundsdóttir creates nature inspired products with emotional appeal and a…',
+    desc:'코펜하겐에 기반을 둔 아이슬란드 디자이너 Dögg Guðmundsdóttir는 자연에서 영감을 받은 감성적 매력과 독특한 특성을 지닌 제품을 만듭니다…',
     events:[
       {day:10,start:'16:30',end:'18:30',title:'상태 사이의 공간—자연과 대화하는 디자인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f86c3aa0864e120ed708b9'},
       {day:11,start:'10:30',end:'12:00',title:'디자이너와 현지 전문가 간의 대화에 대한 당신의 애정은 얼마나 깊은가요?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f5b01b1e75127190baf6b2'},
@@ -1544,7 +1544,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 110, 1401 Copenhagen',
     slug:'fatboy-the-original-b-v',
-    desc:'The Dutch brand Fatboy redefines the boundaries of everyday design. What began with the iconic beanbag in 1998 has…',
+    desc:'네덜란드 브랜드 Fatboy는 일상 디자인의 경계를 재정의합니다. 1998년 상징적인 빈백으로 시작된 이래…',
     events:[
       {day:10,start:'12:00',end:'14:00',title:'Fatboy & Martyna Brechelke의 라이브 포트레이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46ba94a1ffd0c4b5ac801'},
       {day:11,start:'12:00',end:'14:00',title:'Fatboy & Martyna Brechelke의 라이브 포트레이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46bd94492844902494fb6'},
@@ -1558,7 +1558,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 19, 1260 Copenhagen',
     slug:'fdb-mobler',
-    desc:'Furniture ought to make room for people. This has been the philosophy of FDB Møbler since its founding in 1942, when…',
+    desc:'가구는 사람을 위한 공간을 만들어야 합니다. 이것은 1942년 창립 이래 FDB Møbler의 철학이었습니다…',
     events:[
       {day:10,start:'12:00',end:'13:00',title:'Tapet Café의 Jannik-Martensen Larsen과의 토크',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a20124483c76d63f5e52bcc'},
       {day:10,start:'12:00',end:'15:00',title:'달콤한 간식과 커피',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a20127376a3464518c3cd99'},
@@ -1572,7 +1572,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 122, 1264 Copenhagen',
     slug:'form-refine',
-    desc:'Formed by Nature. Refined for Life. Form & Refine celebrates form, refines with care, and honours the materials that…',
+    desc:'자연이 빚고, 삶을 위해 다듬다. Form & Refine은 형태를 기념하고, 세심하게 다듬으며, 그 소재를 존중합니다.',
     events:[
       {day:10,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091265a7ca034487dc325'},
       {day:11,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091460c7c11d693177da5'},
@@ -1586,7 +1586,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Sankt Peders Stræde 35, 1453 Copenhagen',
     slug:'fucina-frammenti',
-    desc:'Fucina Frammenti is a sustainable brand with an online shop focused on contemporary designs that prioritise material…',
+    desc:'Fucina Frammenti는 소재를 우선시하는 현대적 디자인에 집중하는 온라인 숍을 갖춘 지속가능한 브랜드입니다.',
     events:[
       {day:10,start:'18:00',end:'20:00',title:'아페리티프',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31d315eaff10504c8a809',cats:['drinks','launch']},
       {day:11,start:'18:00',end:'21:00',title:'규칙은 없다, 오직 파스타만',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31f61ecc2316f106322ec',cats:['drinks','launch']},
@@ -1600,7 +1600,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Amagertorv 4, 1160 Copenhagen',
     slug:'georg-jensen',
-    desc:'Founded in Copenhagen in 1904, Georg Jensen is a heritage Danish design house rooted in its founder’s curious spirit…',
+    desc:'1904년 Copenhagen에서 설립된 Georg Jensen은 창립자의 호기심 넘치는 정신에 뿌리를 둔 덴마크 디자인 하우스입니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'플레이데이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc93f4c619007e907d2a5c'},
       {day:11,start:'11:00',end:'12:00',title:'플레이데이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc94f41d73abe45c1f11fd'},
@@ -1614,7 +1614,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 22, 1260 Copenhagen',
     slug:'grid-system',
-    desc:'GRID is a flexible, modular interior design system based on the original cube by Peter J. Lassen. Weighing just 800…',
+    desc:'GRID는 Peter J. Lassen의 오리지널 큐브를 기반으로 한 유연하고 모듈형인 인테리어 디자인 시스템입니다. 무게는 단 800g에 불과합니다.',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'칵테일과 큐브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4aa711fa15255ce72b3'},
       {day:11,start:'15:00',end:'16:00',title:'칵테일과 큐브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4cd29f3aabac4ed1144'},
@@ -1628,7 +1628,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 4A, 1437 Copenhagen',
     slug:'hubbub',
-    desc:'HUBBUB develops 100% natural acoustic materials for architecture, replacing synthetic layers in acoustic systems. Made…',
+    desc:'HUBBUB은 건축을 위한 100% 천연 흡음 소재를 개발하여 기존 흡음 시스템의 합성 레이어를 대체합니다.',
     events:[
       {day:10,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32'},
       {day:11,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a'},
@@ -1642,7 +1642,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 45, 1260 Copenhagen',
     slug:'hyletech',
-    desc:'HYLEtech is both a company and a product: a multi-patented technology that uniquely combines recycled aluminum and…',
+    desc:'HYLEtech는 회사인 동시에 제품입니다. 재활용 알루미늄과 다른 소재를 독특하게 결합한 다중 특허 기술입니다.',
     events:[
       {day:10,start:'17:00',end:'18:30',title:'TASTE - 기술, 건축, 공간, 투스카니, 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19894f63fcdf4724083df8',location:'Bredgade 45, Copenaghen, Danimarca'},
       {day:11,start:'17:00',end:'18:30',title:'TASTE - 기술, 건축, 공간, 투스카니, 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19898f30292e96e55d2af3',location:'Bredgade 45, Copenaghen, Danimarca'},
@@ -1656,7 +1656,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 34, 1401 Copenhagen',
     slug:'indalo',
-    desc:'INDALO has two meanings in siSwati: “nature” and “to create.” This collective of craft artisans from Eswatini and…',
+    desc:'INDALO는 siSwati어로 "자연"과 "창조하다"라는 두 가지 의미를 지닙니다. Eswatini 출신의 공예 장인들로 구성된 이 집단은 자연과 창작을 실천합니다.',
     events:[
       {day:10,start:'14:00',end:'15:00',title:'장인을 만나다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e883ab2d41e3859e428724'},
       {day:11,start:'14:00',end:'15:00',title:'장인을 만나다',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1ba8d7e91282f2f2ec80e'},
@@ -1670,7 +1670,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 91, 1401 Copenhagen',
     slug:'isaksen-design',
-    desc:'Greenlandic designer Nickie Isaksen presents her brand Isaksen Design at the Greenland Representation during…',
+    desc:'Greenland 출신 디자이너 Nickie Isaksen이 3daysofdesign 기간 동안 Greenland Representation에서 자신의 브랜드 Isaksen Design을 선보입니다.',
     events:[
       {day:11,start:'11:00',end:'12:00',title:'그린란드 가면 무용',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f4820fbc5cfcaaea801ad4'},
       {day:12,start:'11:00',end:'12:00',title:'그린란드 가면 무용',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f481bd3df736e2af426d91'},
@@ -1684,7 +1684,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsessegade 3, 1306 Copenhagen',
     slug:'j-adams-co',
-    desc:'J. Adams & Co is a British lighting manufacturer known for elegant, enduring luminaires that balance beauty, clarity…',
+    desc:'J. Adams & Co는 아름다움, 명료함을 균형 있게 담아낸 우아하고 지속적인 조명기구로 유명한 영국 조명 제조업체입니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'파빌리온에서 즐기는 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef741bff7c39842bfe879a'},
       {day:11,start:'16:00',end:'18:00',title:'파빌리온에서 즐기는 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b3e02f86ddfe1c3934ff',location:'Møller & Rothe Pavillonen, Kronprinsessegade 3, 1306 Copenhagen'},
@@ -1698,7 +1698,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Møntergade 19, 1116 Copenhagen',
     slug:'karimoku-furniture',
-    desc:'Emerging from shared design values, Karimoku Case is a contemporary lifestyle brand based in Japan and born out of…',
+    desc:'공유된 디자인 가치에서 탄생한 Karimoku Case는 일본에 기반을 둔 현대적 라이프스타일 브랜드입니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'코펜하겐에서 만나는 일본의 정신—말차 티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02dffc4f9e6133c6aac0af'},
       {day:11,start:'15:00',end:'16:00',title:'코펜하겐에서 만나는 일본의 정신—말차 티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06e7fe5d5188468d0ce8e4'},
@@ -1712,7 +1712,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'kasthall',
-    desc:'Kasthall is a maker of beautiful rugs and a creator of design culture, crafting rugs in its own mill in Kinna, Sweden.…',
+    desc:'Kasthall은 아름다운 러그 제조업체이자 디자인 문화의 창조자로, 스웨덴 Kinna에 위치한 자체 공장에서 러그를 제작합니다.',
     events:[
       {day:10,start:'9:00',end:'9:45',title:'조찬 대화 – 하나됨',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18448d84489af36c19c38f',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
       {day:11,start:'9:00',end:'9:45',title:'조찬 대화 – 장기적 관점 취하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a184515f49ddc9ebf05e88b',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
@@ -1726,7 +1726,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 122, 1264 Copenhagen',
     slug:'kurage',
-    desc:'Kurage is a Danish design brand offering bold, recycled fabrics to visionary designers and architects. Since 1990,…',
+    desc:'Kurage는 비전 있는 디자이너와 건축가들에게 대담한 재활용 원단을 제공하는 덴마크 디자인 브랜드입니다. 1990년부터 이어져온 브랜드입니다.',
     events:[
       {day:10,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091265a7ca034487dc325',joint:true},
       {day:11,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091460c7c11d693177da5',joint:true},
@@ -1740,7 +1740,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Århusgade 118X, 2150 Copenhagen',
     slug:'la-cabra',
-    desc:'Shaped by a growing exploration of space, craft, and hospitality, La Cabra continues to explore how coffee is…',
+    desc:'공간, 공예, 환대에 대한 탐구가 깊어지면서, La Cabra는 커피가 어떻게 경험되는지를 지속적으로 탐구합니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'Kasper Würtz와 함께 탐구하는 형태와 소재가 맛에 미치는 영향',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb41423ddac887e588706e'},
       {day:11,start:'10:00',end:'12:00',title:'디자인과 물성이 공간 인식에 미치는 영향',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb415d5b318ff6767ecbe2'},
@@ -1754,7 +1754,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kuglegårdsvej 19—23, 1434 Copenhagen',
     slug:'louis-poulsen',
-    desc:'Founded in 1874, the Danish lighting manufacturer Louis Poulsen creates products that encompass the duality of design…',
+    desc:'1874년에 설립된 덴마크 조명 제조업체 Louis Poulsen은 디자인의 이중성을 아우르는 제품을 만듭니다.',
     events:[
       {day:10,start:'9:15',end:'10:00',title:'디자인 토크: Mads Wille과 함께 PH를 찾아서',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f308c5231583637f2a7617'},
       {day:11,start:'14:00',end:'14:45',title:'디자인 토크: Jan Gehl과 함께하는 미래 도시',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f30bbff1e4399677df17ff'},
@@ -1768,7 +1768,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Nyhavn 26, 1051 Copenhagen',
     slug:'made-by-hand',
-    desc:'Made by Hand is a contemporary Danish design brand celebrating fine craftsmanship and understated luxury. Founded in…',
+    desc:'Made by Hand는 정교한 장인정신과 절제된 럭셔리를 기념하는 현대 덴마크 디자인 브랜드입니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'오프닝 조식 + 패널',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc409e2aa32faaac7cd508',cats:['drinks','talk']},
       {day:10,start:'16:00',end:'19:00',title:'칵테일 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34f4c6cf8bb70fb90ff58'},
@@ -1782,7 +1782,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 77, 1260 Copenhagen',
     slug:'mizetto',
-    desc:'Mizetto is a Swedish design brand creating bold, adaptable furniture for contemporary public and professional spaces.…',
+    desc:'Mizetto는 현대 공공 및 전문 공간을 위한 대담하고 적응력 있는 가구를 제작하는 스웨덴 디자인 브랜드입니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'음료, 디자인 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1980ec4b02a1d052992117'},
       {day:11,start:'16:00',end:'18:00',title:'음료, 디자인 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19816c9e77f8341c76d8f7'},
@@ -1796,7 +1796,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Wildersgade 51, 1408 Copenhagen',
     slug:'moifani',
-    desc:'Where attachment begins. "moifani" is a furniture brand launched in 2021 by SHIKI, an Okawa-based manufacturer in…',
+    desc:'애착이 시작되는 곳. "moifani"는 일본 Okawa에 기반을 둔 제조업체 SHIKI가 2021년에 론칭한 가구 브랜드입니다.',
     events:[
       {day:10,start:'14:00',end:'16:00',title:'pombo collection과 함께하는 일본식 휘게 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35b5b62c72943943edf9b',cats:['drinks','launch']},
       {day:11,start:'14:00',end:'16:00',title:'pombo collection과 함께하는 일본식 휘게 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35b918aba6883a755eaac',cats:['drinks','launch']},
@@ -1810,7 +1810,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 8B, 1263 Copenhagen',
     slug:'motarasu',
-    desc:'MOTARASU crafts design objects within lighting, furniture and interior that unites the clean, functional elegance of…',
+    desc:'MOTARASU는 조명, 가구, 인테리어 분야에서 스칸디나비아의 깔끔하고 기능적인 우아함을 결합한 디자인 오브제를 제작합니다.',
     events:[
       {day:10,start:'9:30',end:'11:30',title:'COMPOSED MATTER에서 Norm Architects와의 단독 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark',joint:true},
       {day:11,start:'16:00',end:'18:00',title:'COMPOSED MATTER에서 즐기는 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch']},
@@ -1824,7 +1824,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 8—10, 1153 Copenhagen',
     slug:'maerk',
-    desc:'MÆRK is a Copenhagen–based curatorial platform that examines contemporary design through material, tactility and form.…',
+    desc:'MÆRK는 소재, 촉각성, 형태를 통해 현대 디자인을 탐구하는 Copenhagen 기반 큐레토리얼 플랫폼입니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'오프닝 리셉션. MÆRK — 디자인을 통한 지각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01ea260f5b01084d4cc7a0'},
       {day:10,start:'9:00',end:'9:45',title:'디자인 토크: 북유럽 전역의 물성에 대한 인식',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01c35a96ffd550dfafe602'},
@@ -1838,7 +1838,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 12, 1151 Copenhagen',
     slug:'normann-copenhagen',
-    desc:'Since Normann Copenhagen’s foundation in 1999, the brand\'s ambition has been to challenge conventional thinking and…',
+    desc:'1999년 Normann Copenhagen이 설립된 이래, 이 브랜드는 계속 발전해왔습니다.'s ambition has been to challenge conventional thinking and…',
     events:[
       {day:10,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83899ee93ad13c27b8ac'},
       {day:11,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83eb546890ab08a86594'},
@@ -1852,7 +1852,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Kongensgade 1, 1264 Copenhagen',
     slug:'ochre',
-    desc:'Established in 2020 in Armenia, OCHRE merges artistic ideas with artisanal expertise to craft objects for everyday…',
+    desc:'2020년 Armenia에서 설립된 OCHRE는 예술적 아이디어와 장인의 전문성을 결합하여 일상을 위한 오브제를 제작합니다.',
     events:[
       {day:10,start:'11:00',end:'12:00',title:'아르메니아의 디자인 실천: Anush Zeinalian과 함께하는 연속성의 제스처',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1000fa0ce879fe87d7b9e9',cats:['drinks','talk']},
       {day:11,start:'14:00',end:'15:00',title:'아티스트 토크: Aleksey Manukyan과 함께하는 소재를 통한 방법론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1563439cb317fa6dedb995'},
@@ -1866,7 +1866,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Ny Østergade 10, 1101 Copenhagen',
     slug:'ordning-reda',
-    desc:'A new chapter of clarity and craftsmanship. Ordning&Reda, the iconic stationery brand, is entering a new chapter. With…',
+    desc:'명료함과 장인정신의 새로운 장. 상징적인 문구 브랜드 Ordning&Reda가 새로운 장을 열고 있습니다.',
     events:[
       {day:10,start:'14:00',end:'15:00',title:'나만의 Ordning&Reda 노트북 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef5d9b8dc77b83434e4267'},
       {day:11,start:'14:00',end:'15:00',title:'나만의 Ordning&Reda 노트북 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef5f3309c02ca0c5dd2d0c'},
@@ -1880,7 +1880,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 17, 1265 Copenhagen',
     slug:'pap-deco',
-    desc:'PAP DECO is a family–run Polish manufactory that has become a pioneer in creating hand–carved furniture handles and…',
+    desc:'PAP DECO는 가족 운영 폴란드 공방으로, 손으로 조각한 가구 손잡이와 장식품 제작의 선구자가 되었습니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'황동의 본질—PAP DECO의 장인정신에 대한 사랑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef4349d587341a3198fa86'},
       {day:10,start:'14:00',end:'15:00',title:'황동의 본질—PAP DECO의 장인정신에 대한 사랑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef4400415f43616236ea29'},
@@ -1894,7 +1894,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 37, 1260 Copenhagen',
     slug:'pbj-desginhouse',
-    desc:'PBJ Designhouse was founded in 1968 and has been Danish–owned ever since. PBJ is known for making modern home…',
+    desc:'PBJ Designhouse는 1968년에 설립되어 그 이후로 줄곧 덴마크 소유로 운영되어 왔습니다. PBJ는 모던한 홈 제품으로 유명합니다.',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'아이디어에서 완성품까지',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc7f4fd01aa673971acb52'},
       {day:11,start:'15:00',end:'16:00',title:'우리의 B2B 컨셉 둘러보기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc7fc7d69ec79cbb15e573'},
@@ -1908,7 +1908,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Posten 4, 1577 Copenhagen',
     slug:'postbyen',
-    desc:'Postbyen, Copenhagen’s new urban district, is hosting events and exhibitions during 3daysofdesign. Once the hub of…',
+    desc:'Copenhagen의 새로운 도시 지구인 Postbyen이 3daysofdesign 기간 동안 이벤트와 전시를 개최합니다. 한때 중심지였던 이곳은...',
     events:[
       {day:12,start:'15:00',end:'15:30',title:'Jeppe Hein의 작품 공개, Something Between Us',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d5057d7d5cc4b651a074',cats:['talk','launch']},
       {day:12,start:'15:30',end:'16:00',title:'아트 토크: 공공 공간 속 예술',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1e58bf81bf8de73bb7473'},
@@ -1922,7 +1922,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Købmagergade 3, 1150 Copenhagen',
     slug:'project-materia',
-    desc:'Project Materia is an evolving platform dedicated to the exploration of materiality - its histories, processes, and…',
+    desc:'Project Materia는 소재성, 그 역사, 프로세스, 그리고 가능성의 탐구에 전념하는 진화하는 플랫폼입니다.',
     events:[
       {day:10,start:'14:00',end:'15:00',title:'소재를 컬렉션할 가치가 있게 만드는 것은 무엇인가?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1985db070207b8951fe234'},
       {day:11,start:'14:00',end:'15:00',title:'소재를 컬렉션할 가치가 있게 만드는 것은 무엇인가?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a198621b108c210ffc274b9'},
@@ -1936,7 +1936,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 71, 1260 Copenhagen',
     slug:'sancal',
-    desc:'Founded under the Spanish sun more than fifty years ago, Sancal\'s passionate, open, and respectful identity in each of…',
+    desc:'50년 전 스페인의 태양 아래 설립된 Sancal은 지속적으로 성장해왔습니다.'s passionate, open, and respectful identity in each of…',
     events:[
       {day:11,start:'17:00',end:'20:00',title:'Paper Collective x Sancal — 상그리아 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b295a5ef494ff0cd9ce03',joint:true},
       {day:11,start:'9:00',end:'10:30',title:'Mentsen — 콜라주 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0b1c6b1f16bb5c1637d9f5',joint:true},
@@ -1950,7 +1950,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'savo',
-    desc:'Scandinavian office chair pioneer Savo has spent over half a century raising the bar for workspace seating standards.…',
+    desc:'스칸디나비아 오피스 체어의 선구자 Savo는 반세기 넘게 업무 공간 좌석 기준을 높여왔습니다.',
     events:[
       {day:10,start:'10:00',end:'10:40',title:'Savo의 가이드 조찬 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0ef0193309693b1e30c304',cats:['drinks','talk']},
       {day:11,start:'10:00',end:'10:45',title:'Savo의 가이드 조찬 세션',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1ffca4f85e4d25ea41b371'},
@@ -1964,7 +1964,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 8B, 1263 Copenhagen',
     slug:'sould',
-    desc:'Søuld is an innovative Danish material manufacturer committed to providing carbon-storing and recyclable acoustic…',
+    desc:'Søuld는 탄소를 저장하고 재활용 가능한 흡음 솔루션을 제공하는 혁신적인 덴마크 소재 제조업체입니다.',
     events:[
       {day:10,start:'9:30',end:'11:30',title:'COMPOSED MATTER에서 Norm Architects와의 단독 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark'},
       {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],joint:true},
@@ -1978,7 +1978,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Galleri Susanne Ottesen, Gothersgade 49, 1123 Copenhagen',
     slug:'tarkett',
-    desc:'Tarkett is a global leader in flooring and sports surfaces, designing solutions that are better for people—and for the…',
+    desc:'Tarkett은 바닥재 및 스포츠 표면 분야의 글로벌 리더로, 사람들과 지구 모두에게 더 나은 솔루션을 디자인합니다.',
     events:[
       {day:10,start:'10:30',end:'12:00',title:'디자이너와 함께하는 브런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c0b3cd74d50458e0b292'},
       {day:10,start:'18:30',end:'20:00',title:'토크 이벤트: Tarkett과 함께하는 시작과 끝',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bf6c3aef5cbbeb3a190c'},
@@ -1992,7 +1992,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Købmagergade 55, 1st Floor, 1150 Copenhagen',
     slug:'the-poster-club',
-    desc:'The Poster Club is a Copenhagen–based art platform offering a carefully curated selection of premium art prints and…',
+    desc:'The Poster Club은 Copenhagen에 기반을 둔 아트 플랫폼으로, 엄선된 프리미엄 아트 프린트를 제공합니다.',
     events:[
       {day:10,start:'14:00',end:'17:00',title:'아티스트 밍글',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f499e1d8ca60d4e50677cf',cats:['drinks','launch']},
       {day:11,start:'12:00',end:'15:00',title:'오픈 워크숍 & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49b15262795c6c3141901',cats:['drinks','workshop']},
@@ -2006,7 +2006,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Orientkaj 22, 2150 Copenhagen',
     slug:'time-style',
-    desc:'Founded in 1992, Time & Style is a Japanese interior brand that designs and manufactures a wide range of products,…',
+    desc:'1992년 설립된 Time & Style은 다양한 제품을 디자인하고 제조하는 일본 인테리어 브랜드입니다.',
     events:[
       {day:10,start:'9:00',end:'10:00',title:'모닝 디자인 토크: OEO Studio',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04e4d4f334eefe43f262a6'},
       {day:11,start:'9:00',end:'10:00',title:'모닝 디자인 토크: Claesson Koivisto Rune',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04e83064f6394975bf2dd8'},
@@ -2020,7 +2020,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Søtorvet 1, 1371 Copenhagen',
     slug:'uno-form-nobia-danmark',
-    desc:'Ever since Danish designer Arne Munch designed the original Classic kitchen in 1968, uno form has been dedicated to…',
+    desc:'덴마크 디자이너 Arne Munch가 1968년 오리지널 Classic 키친을 디자인한 이래, uno form은 헌신적으로 노력해왔습니다.',
     events:[
       {day:10,start:'13:00',end:'15:00',title:'이 순간을 의미있게 — 목재로 남기는 살아있는 유산',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1bdcb1c0013b106d25388'},
       {day:11,start:'13:00',end:'15:00',title:'이 순간을 의미있게 — 목재로 남기는 살아있는 유산',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1be2180768a3bc5f75a7f'},
@@ -2034,7 +2034,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Oslo Plads 1, 2100 Copenhagen',
     slug:'vaarnii',
-    desc:'Vaarnii is a furniture & lighting company making brutal and sophisticated objects from a single and plentiful natural…',
+    desc:'Vaarnii는 풍부한 단일 천연 소재로 강렬하면서도 세련된 오브제를 만드는 가구 및 조명 회사입니다.',
     events:[
       {day:10,start:'9:00',end:'9:45',title:'조찬 대화 – 하나됨',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18448d84489af36c19c38f'},
       {day:11,start:'9:00',end:'9:45',title:'조찬 대화 – 장기적 관점 취하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a184515f49ddc9ebf05e88b'},
@@ -2048,7 +2048,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 15, 1434 Copenhagen',
     slug:'abstracta-interior',
-    desc:'Abstracta creates better soundscapes since 1972—making them acoustics pioneers. Today, the brand offers a wide variety…',
+    desc:'Abstracta는 1972년부터 더 나은 음향 환경을 만들어온 어쿠스틱 분야의 선구자입니다. 오늘날 이 브랜드는 다양한 제품을 제공합니다.',
     events:[
       {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
       {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
@@ -2061,7 +2061,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1st Floor, 1265 Copenhagen',
     slug:'agape-srl',
-    desc:'For more than 50 years, Agape has been synonymous with design culture. Founded by the Benedini family, the brand…',
+    desc:'50년 이상 Agape는 디자인 문화의 대명사였습니다. Benedini 가문이 설립한 이 브랜드는 계속해서 발전하고 있습니다.',
     events:[
       {day:10,start:'10:00',end:'10:30',title:'예술과 함께 살아가기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0af5a55a51ce7f08ca1e3f',location:'Frederiksgade 1, 1st Floor, 1263 Copenhagen'},
       {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
@@ -2074,7 +2074,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Sundkaj 163, 2150 Copenhagen',
     slug:'akuart',
-    desc:'Akuart is a Danish acoustic design brand developing sound absorbing systems for professional environments. Based on…',
+    desc:'Akuart는 전문 환경을 위한 흡음 시스템을 개발하는 덴마크 어쿠스틱 디자인 브랜드입니다.',
     events:[
       {day:10,start:'14:00',end:'15:00',title:'토크 & 드링크: "상상력의 전염"',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a16cdada043d7c68850becf'},
       {day:10,start:'17:00',end:'20:00',title:'Akuart 하버사이드 파티: CTRL:OFF',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d4b48438f4dbaca9299c4'},
@@ -2087,7 +2087,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 116B, 1264 Copenhagen',
     slug:'anglepoise',
-    desc:'Since 1935, Anglepoise has been a pioneer in lighting design, known for crafting innovative, spring–balanced lamps…',
+    desc:'1935년부터 Anglepoise는 혁신적인 스프링 밸런스 램프를 제작하는 것으로 알려진 조명 디자인의 선구자입니다.',
     events:[
       {day:10,start:'17:30',end:'19:00',title:'Anglepoise 소셜',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69cd030b1334679e4ec91085',cats:['drinks','launch']},
       {day:11,start:'17:30',end:'19:00',title:'Anglepoise 소셜',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69cd0fc17a246f107284987c',cats:['drinks','launch']},
@@ -2100,7 +2100,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Århusgade 64, 2100 Copenhagen',
     slug:'architectmade',
-    desc:'For over 20 years, ARCHITECTMADE has carefully crafted designs from Denmark’s most visionary architects. Rejecting…',
+    desc:'20년 이상 ARCHITECTMADE는 덴마크의 가장 비전 있는 건축가들의 디자인을 정성스럽게 제작해왔습니다.',
     events:[
       {day:11,start:'14:00',end:'15:00',title:'Hirayama-nichiyo-ten과 함께하는 매듭 & 커피',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fba34571296fe87ad50658'},
       {day:12,start:'16:00',end:'18:00',title:'한 모금. 나눔. 연결.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d685b729c555748b16f55'},
@@ -2113,7 +2113,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 6, 1263 Copenhagen',
     slug:'astep',
-    desc:'Astep is a young, contemporary design company with a rich legacy. Founded in 2014 by Alessandro Sarfatti with the…',
+    desc:'Astep은 풍부한 유산을 지닌 젊고 현대적인 디자인 회사입니다. 2014년 Alessandro Sarfatti가 설립했습니다.',
     events:[
       {day:10,start:'15:00',end:'17:00',title:'Astep 커피 레이브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc94c9e24e5bce34bd134'},
       {day:11,start:'17:00',end:'20:00',title:'Astep 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc87fee2e3a32775b8648'},
@@ -2126,7 +2126,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 18A, 1255 Copenhagen',
     slug:'audio-magic-lab',
-    desc:'Discovering the artefacts, interfaces and rituals through which sound is experienced, Audio Magic Lab is a collective…',
+    desc:'Audio Magic Lab은 사운드를 경험하는 인공물, 인터페이스, 의식을 탐구하는 집단입니다.',
     events:[
       {day:10,start:'13:08',end:'15:08',title:'우리 연구실에 오신 것을 환영합니다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199a7a4d4900ad562c6904'},
       {day:11,start:'13:08',end:'15:08',title:'우리 연구실에 오신 것을 환영합니다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199acee04bac2dc850d11f'},
@@ -2139,7 +2139,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Audo House, Århusgade 130, 2150 Copenhagen',
     slug:'audo-copenhagen',
-    desc:'Audo Copenhagen brings together a century of Danish design values with a global outlook. At the heart of every Audo…',
+    desc:'Audo Copenhagen은 한 세기에 걸친 덴마크 디자인 가치와 글로벌 관점을 결합합니다. 모든 Audo 제품의 중심에는 그 철학이 담겨 있습니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'Audo House 안뜰 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c719696d76fb175b1857c'},
       {day:12,start:'16:00',end:'18:00',title:'Audo House 안뜰 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c71c1025d2d50ccb83e49'},
@@ -2152,7 +2152,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kuglegårdsvej 12, 1434 Copenhagen',
     slug:'bolia-com',
-    desc:'BOLIA is a Danish design company with close to a hundred concept stores across Europe, Australia, and Singapore. Known…',
+    desc:'BOLIA는 유럽, 호주, 싱가포르에 약 100개의 콘셉트 스토어를 둔 덴마크 디자인 회사입니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b5394905a85bc0df5763'},
       {day:11,start:'16:00',end:'19:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b6e5f260a3270cd3cc43'},
@@ -2165,7 +2165,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Sankt Peders Stræde 35A, 1453 Copenhagen',
     slug:'eob',
-    desc:'Bread and Butter is an itinerant exhibition platform that explores everyday rituals through the concept of paired…',
+    desc:'Bread and Butter는 짝을 이루는 개념을 통해 일상의 의식을 탐구하는 순회 전시 플랫폼입니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'오프닝 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199100dc65a617454ad7b0',location:'Sankt Peders Stræde 35A 코펜하겐 덴마크'},
       {day:12,start:'17:00',end:'21:00',title:'석양 맥주 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1991e024bb901c62f8bcfd',location:'Sandkaj 30 코펜하겐 덴마크'},
@@ -2178,7 +2178,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Palægade 4, 1261 Copenhagen',
     slug:'bretz',
-    desc:'Bretz combines two essentially contrary, but fundamental desires in life: On the one hand, the creations take you on…',
+    desc:'Bretz는 본질적으로 상반되지만 삶의 근본적인 두 가지 욕구를 결합합니다. 한편으로 이들의 창작물은 당신을 여행으로 이끕니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'최신 Bretz 컬렉션 업데이트 살펴보기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c75a13c9975666a2c2ebf',cats:['drinks','launch']},
       {day:11,start:'16:00',end:'18:00',title:'최신 Bretz 컬렉션 업데이트 살펴보기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c766378be7ec6411df29a',cats:['drinks','launch']},
@@ -2191,7 +2191,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 11, 1434 Copenhagen',
     slug:'crevin',
-    desc:'Crevin is a Barcelona–based textile brand that has designed and manufactured premium upholstery fabrics since 1976.…',
+    desc:'Crevin은 1976년부터 프리미엄 실내장식용 원단을 디자인하고 제조해온 Barcelona 기반의 텍스타일 브랜드입니다.',
     events:[
       {day:10,start:'15:00',end:'15:45',title:'나만의 견본 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69dcf60adffe9c0d31e532e2'},
       {day:12,start:'14:00',end:'14:45',title:'순환하는 텍스처',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69dcf7c5bf410fc7ceaf6109',cats:['drinks','workshop']},
@@ -2204,7 +2204,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Bryghuspladsen 10, 1473 Copenhagen',
     slug:'danish-architecture-center',
-    desc:'Danish Architecture Center (DAC) is an international cultural attraction for everyone who wants to experience and…',
+    desc:'Danish Architecture Center (DAC)는 건축과 디자인을 경험하고 탐구하고자 하는 모든 이를 위한 국제적 문화 명소입니다.',
     events:[
       {day:11,start:'17:00',end:'20:00',title:'전시 오프닝: This is Not a Forrest',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1c1a04728a03522251786',location:'Danish Architecture Center, Bryghuspladsen 10, 1473 Copenhagen K'},
       {day:11,start:'18:00',end:'19:00',title:'AfterDAC — 토크: This Is Not a Forest',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f48668ac57d99f8bfba128',location:'Danish Architecture Center, Bryghuspladsen 10, 1473 Copenhagen K'},
@@ -2217,7 +2217,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Garde Hvalsøe, Esplanaden 8D, 1263 Copenhagen',
     slug:'de-la-espada',
-    desc:'At their workshop on Portugal\'s Silver Coast, De La Espada combines artisanal furniture making savoir faire with…',
+    desc:'Portugal의 작업장에서 그들은 작업합니다.'s Silver Coast, De La Espada combines artisanal furniture making savoir faire with…',
     events:[
       {day:10,start:'8:30',end:'11:00',title:'조찬 — 최고의 시간은 천천히 시작된다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
       {day:12,start:'16:00',end:'20:00',title:'프라이데이 바 — 머물 가치가 있는 것들',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
@@ -2230,7 +2230,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Herman K, Bremerholm 6, 1069 Copenhagen',
     slug:'duni-lighting-solutions',
-    desc:'Duni Lighting Solutions a Swedish design brand aiming to become the global leader in cordless ambience lighting. The…',
+    desc:'Duni Lighting Solutions는 무선 분위기 조명 분야의 글로벌 리더가 되는 것을 목표로 하는 스웨덴 디자인 브랜드입니다.',
     events:[
       {day:10,start:'16:30',end:'17:30',title:'디자인 토크: 사회적 자력(磁力)',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ec20ab79e6ed28e2be0fb',location:'Herman K, Bremerholm 6, København K, Danmark'},
       {day:10,start:'19:00',end:'22:00',title:'글로벌 런칭 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a072e28efc2482e43600478',cats:['drinks','launch'],location:'Bremerholm 6, 1069 Copenhagen'},
@@ -2243,7 +2243,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'eldvarm',
-    desc:'A fireplace is often the centrepiece of a room and Eldvarm was founded on the belief that the objects alongside it…',
+    desc:'벽난로는 종종 공간의 중심이 되며, Eldvarm은 그 주변의 오브제들도 중요하다는 믿음으로 설립되었습니다.',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'Louise Varre & Paul Bennett과의 토크—I BELONG',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01a5c5669961614bdf01f1'},
       {day:10,start:'16:00',end:'18:00',title:'음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01a62c66a9ed7ae3817f67'},
@@ -2256,7 +2256,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'elis-monsport',
-    desc:'Elis Monsport is a Czech multidisciplinary designer and visionary glass engraver working at the intersection of fine…',
+    desc:'Elis Monsport는 순수 예술의 경계에서 작업하는 체코의 다분야 디자이너이자 비전 있는 유리 조각가입니다.',
     events:[
       {day:10,start:'13:30',end:'14:30',title:'Elis Monsport × Tokio.: 빛, 유리, 소재',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f37a1c77d6a19a0a8ccf12'},
       {day:11,start:'13:00',end:'14:00',title:'Elis Monsport × Tokio.: 유리와 빛의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f37ad5e8b8f997d54f5fa7'},
@@ -2269,7 +2269,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gothersgade 109, 1123 Copenhagen',
     slug:'escential-cph',
-    desc:'ESCENTIAL CPH is a Copenhagen–based perfume composition house led by perfumer Emmanuel Martini. They design bespoke…',
+    desc:'ESCENTIAL CPH는 조향사 Emmanuel Martini가 이끄는 Copenhagen 기반의 향수 조합 하우스입니다. 그들은 맞춤형 향수를 디자인합니다.',
     events:[
       {day:12,start:'11:00',end:'12:00',title:'Emmanuel Martini, Escential CPH x Foyos : 공간으로서의 향기',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e0cec62046a43968e4a04'},
       {day:12,start:'15:00',end:'16:00',title:'Emmanuel Martini, Escential CPH x Foyos : 공간으로서의 향기',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e0d3424f2e7b63cf296ad'},
@@ -2282,7 +2282,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'expormim-f7be4',
-    desc:'Since its inception in 1960, Expormim has consistently embraced a global perspective in design, craftsmanship and…',
+    desc:'1960년 설립 이래 Expormim은 디자인, 장인정신, 그리고 혁신에서 일관되게 글로벌 관점을 수용해왔습니다.',
     events:[
       {day:10,start:'15:30',end:'16:30',title:'오브제의 의미가 변화할 때',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f34752a16cbd2db24dca7f'},
       {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
@@ -2295,7 +2295,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 4A, 1437 Copenhagen',
     slug:'fantoni-spa',
-    desc:'Fantoni Group specialises in the manufacture of office furniture, partition walls, sound–absorbent systems, MDF,…',
+    desc:'Fantoni Group은 사무용 가구, 파티션 월, 흡음 시스템, MDF 제조를 전문으로 합니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'소리가 중요하다: 건축을 위한 음향 쾌적성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f35c7054635eb33166fab9'},
       {day:11,start:'10:00',end:'10:30',title:'순환 경제 디자인하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f361c00f12ad18a50e685d'},
@@ -2308,7 +2308,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1st Floor, 1265 Copenhagen',
     slug:'file-under-pop',
-    desc:'File Under Pop shapes interiors through surface and feeling. Bringing colour and texture to walls, floors, and…',
+    desc:'File Under Pop은 표면과 감각을 통해 인테리어를 형성합니다. 벽, 바닥에 색상과 질감을 더합니다.',
     events:[
       {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3'},
       {day:12,start:'15:00',end:'18:00',title:'Papirøen 36 오픈 하우스',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f491b3283b1ad8ea77a9dc',location:'Papirøen 36, 1436 Copenhagen'},
@@ -2321,7 +2321,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 15, 1434 Copenhagen',
     slug:'fora-form',
-    desc:'Fora Form is a Norwegian contract furniture manufacturer for areas wherever people meet. Fora Form manufactures…',
+    desc:'Fora Form은 사람들이 만나는 모든 공간을 위한 노르웨이 계약 가구 제조업체입니다.',
     events:[
       {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230'},
       {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1'},
@@ -2334,7 +2334,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 14, 1263 Copenhagen',
     slug:'foscarini',
-    desc:'Foscarini imagines, develops, and produces decorative lighting that seduces, surprises, and inspires—by day and by…',
+    desc:'Foscarini는 낮과 밤 모두 매혹하고, 놀라게 하며, 영감을 주는 장식 조명을 상상하고, 개발하고, 생산합니다.',
     events:[
       {day:10,start:'17:00',end:'18:00',title:'Marc Sadler와 Twiggy: 조명 디자인 아이콘의 20년',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31d618817c1b3377620b7'},
       {day:11,start:'10:00',end:'11:00',title:'Marc Sadler와 Twiggy: 조명 디자인 아이콘의 20년',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31da3695203fa404023f6'},
@@ -2347,7 +2347,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 4, 2100 Copenhagen',
     slug:'framery',
-    desc:'Framery enables people to focus on what truly matters and get things done. With soundproof smart pods and intelligent…',
+    desc:'Framery는 사람들이 진정으로 중요한 것에 집중하고 일을 완수할 수 있도록 합니다. 방음 스마트 포드와 지능형 기술로 가능합니다.',
     events:[
       {day:10,start:'15:00',end:'18:00',title:'Out of Office | DJ & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb4b34b9229b8132c4ce2e'},
       {day:11,start:'15:00',end:'18:00',title:'Out of Office | DJ & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb4b88a2290ce0e14eb1d6'},
@@ -2360,7 +2360,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 108, 1264 Copenhagen',
     slug:'folk',
-    desc:'With deep respect for design and acknowledging the urgent need for a circular transformation, FÓLK creates objects and…',
+    desc:'디자인에 대한 깊은 존중과 순환 전환의 긴급한 필요성을 인식하며, FÓLK는 오브제와 공간을 창조합니다.',
     events:[
       {day:11,start:'15:00',end:'15:30',title:'순환적 미래를 위한 디자인: 전환의 이야기들',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1438d6c2a5552fc3ff298a'},
       {day:11,start:'16:00',end:'18:00',title:'FÓLK 오프닝 파티: Remixed by Martin Kechayas',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a143e7275e9aa9bf69da696'},
@@ -2373,7 +2373,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 8D, 1263 Copenhagen',
     slug:'garde-hvalsoe',
-    desc:'Garde Hvalsøe has, since 1990, created kitchens and interiors shaped by hand, material, and architectural intent. Each…',
+    desc:'Garde Hvalsøe는 1990년부터 손, 재료, 건축적 의도로 형성된 키친과 인테리어를 만들어왔습니다.',
     events:[
       {day:10,start:'8:30',end:'11:00',title:'조찬 — 최고의 시간은 천천히 시작된다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f'},
       {day:12,start:'16:00',end:'20:00',title:'프라이데이 바 — 머물 가치가 있는 것들',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902'},
@@ -2386,7 +2386,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Papirøen 5, 1436 Copenhagen',
     slug:'hem',
-    desc:'Progressive by nature, Hem creates contemporary furniture for architectural spaces, combining experimentation with…',
+    desc:'본질적으로 진보적인 Hem은 실험과 건축적 공간을 위한 현대적인 가구를 창조합니다.',
     events:[
       {day:11,start:'16:00',end:'17:00',title:'Max Lamb 디자인 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fae50f06cfb121800d1c76',cats:['drinks','talk']},
       {day:11,start:'16:00',end:'17:00',title:'Max Lamb과의 대화 후 음료',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a182e37d4461022aaf48892',location:'Papirøen 5, 1436 Copenhagen, Danmark'},
@@ -2399,7 +2399,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14D, 2300 Copenhagen',
     slug:'hevea-house',
-    desc:'Hévéa House is a French design house rooted in a cultural dialogue between Europe and Southeast Asia. Inspired by a…',
+    desc:'Hévéa House는 유럽과 동남아시아 간의 문화적 대화에 뿌리를 둔 프랑스 디자인 하우스입니다.',
     events:[
       {day:10,start:'10:00',end:'12:00',title:'제품 런칭—Le Bureau de Biarritz 데스크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdbd1b3135ee461470bd02',cats:['drinks','launch']},
       {day:11,start:'14:00',end:'16:00',title:'Mini Hévéa와 함께하는 즐거운 순간',icon:'🚀',color:'#d99021',label:'런칭',id:'69fd9fcef4eec82dd5e90536'},
@@ -2412,7 +2412,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Alice Folker Gallery, Esplanaden 14, 1263 Copenhagen',
     slug:'ingo-maurer',
-    desc:'For 60 years, Ingo Maurer has been designing and manufacturing exceptional designer lamps that bridge the gap between…',
+    desc:'60년 동안 Ingo Maurer는 예술과 기능 사이의 간극을 연결하는 탁월한 디자이너 조명을 디자인하고 제작해왔습니다.',
     events:[
       {day:11,start:'17:00',end:'18:00',title:'디자인 속 믹스매시: Axel Schmid 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f359b6d3db5727c737071e'},
       {day:12,start:'10:00',end:'11:00',title:'디자인 속 믹스매시: Axel Schmid 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f359fbe49f82b590c357b4'},
@@ -2425,7 +2425,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Dronningens Tværgade 52, 1302 Copenhagen',
     slug:'kinto',
-    desc:'Encouraging warmth, balance, and connection, KINTO is a Japanese tableware and lifestyle brand that creates thoughtful…',
+    desc:'따뜻함, 균형, 그리고 연결을 장려하는 KINTO는 사려 깊은 디자인을 창조하는 일본 테이블웨어 및 라이프스타일 브랜드입니다.',
     events:[
       {day:10,start:'15:00',end:'16:30',title:'studio x kitchen에서의 오프닝 드링크 & 시즌 바이트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32a6c137c9fc94b4cfa69',location:'studio x kitchen, Dronningens Tværgade 52, 1302 Copenhagen'},
       {day:12,start:'15:00',end:'16:30',title:'studio x kitchen에서 io いほ와 함께하는 콜드브루 티 테이스팅',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32b44912a2d0f890de64a',location:'studio x kitchen, Dronningens Tværgade 52, 1302 Copenhagen'},
@@ -2438,7 +2438,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Christianshavns Kanal 4, 1406 Copenhagen',
     slug:'knabstrup-keramik',
-    desc:'For more than a century, Knabstrup Keramik has been a place where ceramists and designers meet around the material,…',
+    desc:'한 세기 이상 동안 Knabstrup Keramik은 도예가와 디자이너들이 소재를 중심으로 만나는 공간이었습니다.',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'라이브 장인정신: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b735344bbbe3e092a90f',joint:true},
       {day:12,start:'11:00',end:'13:00',title:'라이브 장인정신: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b7679b4bded9d77d59d2',joint:true},
@@ -2451,7 +2451,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Dronningens Tværgade 2, 1302 Copenhagen',
     slug:'kobenhavns-snedkerlaug',
-    desc:'Copenhagen Cabinetmakers’ Guild represents the legacy and future of Danish craftsmanship. Founded on centuries of…',
+    desc:'Copenhagen Cabinetmakers\' Guild는 덴마크 장인정신의 유산과 미래를 대표합니다. 수세기에 걸친 전통 위에 설립되었습니다.',
     events:[
       {day:11,start:'14:30',end:'15:30',title:'목수가 예술을 창조할 때',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ac1476fcb274c8f6b2846'},
       {day:11,start:'16:00',end:'17:00',title:'Snedkerprisen 2026',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0abf88720eb65c5116921b',cats:['drinks','launch']},
@@ -2464,7 +2464,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 15, 1434 Copenhagen',
     slug:'lammhults',
-    desc:'Lammhults convinces design as a great potential to improve everyday lives and to contribute to more meaningful and…',
+    desc:'Lammhults는 디자인이 일상을 개선하고 더 의미 있고 지속 가능한 삶에 기여할 수 있는 큰 잠재력을 가지고 있다고 확신합니다.',
     events:[
       {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
       {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
@@ -2477,7 +2477,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Amaliegade 6, 1256 Copenhagen',
     slug:'layered',
-    desc:'LAYERED bridges creativity, culture, and art into the physical space. From their studio in Stockholm, they design…',
+    desc:'LAYERED는 창의성, 문화, 예술을 물리적 공간으로 연결합니다. Stockholm의 스튜디오에서 그들은 디자인합니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'오프닝 나이트—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f369a88514cb63d9449b20'},
       {day:10,start:'9:00',end:'11:00',title:'프레스 뷰잉—인더스트리얼 코레오그래피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f36860fdfe8f74b3895ae8',cats:['drinks','talk','launch']},
@@ -2490,7 +2490,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Palægade 2, 1261 Copenhagen',
     slug:'linie-design',
-    desc:'Established in 1980, Linie Design is a Danish design house with traditions deeply rooted in Scandinavian design.…',
+    desc:'1980년 설립된 Linie Design은 스칸디나비아 디자인에 깊이 뿌리내린 전통을 지닌 덴마크 디자인 하우스입니다.',
     events:[
       {day:10,start:'14:00',end:'15:00',title:'다채로운 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9aabae977d88fa24f4390'},
       {day:11,start:'14:00',end:'15:00',title:'다채로운 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9aae9523e2caee83d022a'},
@@ -2503,7 +2503,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palæet, Bredgade 28, 1260 Copenhagen',
     slug:'hjelle',
-    desc:'You’re not like everyone else. Neither are we. You won’t find us in every home, in every store, or in every office.…',
+    desc:'당신은 다른 사람들과 다릅니다. 우리도 마찬가지입니다. 모든 가정, 모든 상점, 모든 사무실에서 우리를 찾을 수는 없을 것입니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'오프닝 파티',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe370e6f4a41c1c1901ac',location:'Odd Fellow Palæet, Bredgade, København, Indre By, Danmark'},
       {day:11,start:'15:00',end:'17:00',title:'디자이너를 만나다',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe3bde5f472f4c4549fc5',location:'Odd Fellow Palæet, Bredgade, København, Indre By, Danmark'},
@@ -2516,7 +2516,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Amaliegade 6, 1256 Copenhagen',
     slug:'massproductions',
-    desc:'Massproductions creates furniture and accessories that enrich design culture, drawing inspiration from the factory as…',
+    desc:'Massproductions는 공장에서 영감을 받아 디자인 문화를 풍요롭게 하는 가구와 액세서리를 창조합니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'오프닝 나이트—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f369a88514cb63d9449b20',joint:true},
       {day:10,start:'9:00',end:'11:00',title:'프레스 뷰잉—인더스트리얼 코레오그래피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f36860fdfe8f74b3895ae8',cats:['drinks','talk','launch'],joint:true},
@@ -2529,7 +2529,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Skindergade 38, 1159 Copenhagen',
     slug:'montana-furniture',
-    desc:'Montana Furniture is committed to creating playful spaces and making room for personality. Since 1982, the Danish…',
+    desc:'Montana Furniture는 유쾌한 공간을 만들고 개성을 위한 공간을 제공하는 데 전념합니다. 1982년부터 이 덴마크 브랜드는 계속되어 왔습니다.',
     events:[
       {day:11,start:'11:00',end:'12:00',title:'영원한 색의 신화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8792ba9a86da50661fe8a'},
       {day:11,start:'19:00',end:'21:00',title:'DJ & 라운지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f87bfdf3d88b17cfcaa5bb'},
@@ -2542,7 +2542,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'nau',
-    desc:'Founded by Richard Munao in 2017, NAU is a leading Australian design brand known for its commitment to original design…',
+    desc:'2017년 Richard Munao가 설립한 NAU는 독창적인 디자인에 대한 헌신으로 알려진 호주의 선도적인 디자인 브랜드입니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'Nau, Later',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3fd16f05bed5a6d2cfa99'},
       {day:12,start:'10:00',end:'12:00',title:'유산과 현재 사이의 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3f877f05bed5a6d2cbacc'},
@@ -2555,7 +2555,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Landemærket 29, 1119 Copenhagen',
     slug:'porcelanosa',
-    desc:'Combining Spanish heritage with modern design, Porcelanosa redefines the home with timeless elegance. Known worldwide…',
+    desc:'스페인 유산과 현대 디자인을 결합한 Porcelanosa는 시대를 초월한 우아함으로 가정을 재정의합니다. 전 세계적으로 알려진 브랜드입니다.',
     events:[
       {day:10,start:'10:00',end:'13:00',title:'Porcelanosa Copenhagen 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d336990adee1bcf78583f'},
       {day:11,start:'16:00',end:'18:00',title:'UNDORA® 소재 체험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a14553e2a77f87a2ea12b67',cats:['drinks','launch']},
@@ -2568,7 +2568,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 15, 1434 Copenhagen',
     slug:'ragnars-inredningar',
-    desc:'Ragnars is a Swedish furniture company based in Forserum, Småland, that specialises in high–end office furniture for…',
+    desc:'Ragnars는 Småland의 Forserum에 본사를 둔 스웨덴 가구 회사로, 고급 사무용 가구를 전문으로 합니다.',
     events:[
       {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
       {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
@@ -2581,7 +2581,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Njalsgade 17A, 2300 Copenhagen',
     slug:'rosti',
-    desc:'Rosti is a Danish brand, founded in 1944 by Rolf Fahrenholz and Stig Jørgensen, and known for its functional kitchen…',
+    desc:'Rosti는 1944년 Rolf Fahrenholz와 Stig Jørgensen이 설립한 덴마크 브랜드로, 기능적인 주방용품으로 유명합니다.',
     events:[
       {day:11,start:'12:00',end:'14:00',title:'Rosti의 맛있는 한입 요리',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f313a14a7581738b2ade80'},
       {day:11,start:'15:00',end:'17:00',title:'Rosti의 맛있는 시식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f316db00e8e5598e39a335'},
@@ -2594,7 +2594,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'saba',
-    desc:'Saba is a female-led company with a design philosophy rooted in strong, thoughtful concepts. The mission is to…',
+    desc:'Saba는 강력하고 사려 깊은 컨셉에 뿌리를 둔 디자인 철학을 가진 여성 주도 회사입니다. 그들의 사명은 다음과 같습니다.',
     events:[
       {day:10,start:'15:30',end:'16:00',title:'"When Objects Change Meaning" with Saba Italia & JOV',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0f257db40b0b765a9b09e2'},
       {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
@@ -2607,7 +2607,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 12R, 2300 Copenhagen',
     slug:'service-projects',
-    desc:'Service Projects is a tableware brand that creates enduring, timeless pieces designed for everyday use. Inspired by…',
+    desc:'Service Projects는 일상적인 사용을 위해 디자인된 지속 가능하고 시대를 초월한 작품을 창조하는 테이블웨어 브랜드입니다.',
     events:[
       {day:11,start:'12:00',end:'15:00',title:'SP Caffe 테이크오버',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01ac4057bc3122bec07bef',location:'Sturlasgade 14M, 2300 Copenhagen'},
       {day:11,start:'15:00',end:'17:30',title:'l\'Alsace의 마티니 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a193ed513fb6abb5d5a1ce3',location:'Ny Østergade 9, 1101 København, Danmark'},
@@ -2620,7 +2620,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'stellar-works',
-    desc:'Stellar Works is a Japanese furniture brand with its heart in Shanghai but with a global presence. It blends tradition…',
+    desc:'Stellar Works는 Shanghai에 본거지를 두고 있지만 글로벌한 존재감을 지닌 일본 가구 브랜드입니다. 전통을 현대와 혼합합니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'THOUGHT / FUL—골든 아워 칵테일',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0acd8ccc97496300a30f55'},
       {day:11,start:'15:00',end:'16:00',title:'적게 가지고 더 많이 하기—절제를 통한 사려 깊은 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ace6ad0126dcea7dc40ea'},
@@ -2633,7 +2633,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 22, 1260 Copenhagen',
     slug:'stilling-a-s',
-    desc:'Stilling® is a renowned Danish design company specialising in bespoke curtain track systems for projects of all sizes,…',
+    desc:'Stilling®은 모든 규모의 프로젝트를 위한 맞춤형 커튼 트랙 시스템을 전문으로 하는 유명한 덴마크 디자인 회사입니다.',
     events:[
       {day:10,start:'15:00',end:'17:00',title:'Hvass&Hannibal과 함께하는 음료 & 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f37ef05bf2888f714885eb',cats:['drinks','talk']},
       {day:11,start:'10:00',end:'12:00',title:'Stilling과 함께하는 조찬 및 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3813989bbaf5e190cebc7',cats:['drinks','talk']},
@@ -2646,7 +2646,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 8B, 1263 Copenhagen',
     slug:'sumum-bv',
-    desc:'Sumum is a Belgian brand, originated in a switch, designed simply. It became a product pure as can be. We are…',
+    desc:'Sumum은 벨기에 브랜드로, 단순하게 디자인된 스위치에서 시작되었습니다. 가능한 한 순수한 제품이 되었습니다.',
     events:[
       {day:10,start:'9:30',end:'11:30',title:'COMPOSED MATTER에서 Norm Architects와의 단독 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark',joint:true},
       {day:11,start:'16:00',end:'18:00',title:'COMPOSED MATTER에서 즐기는 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch'],joint:true},
@@ -2659,7 +2659,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'teixidors',
-    desc:'In Terrassa, 30 km from Barcelona, Teixidors creates unique pieces of cashmere, wool and linen using 19th–century…',
+    desc:'Barcelona에서 30km 떨어진 Terrassa에서 Teixidors는 19세기 직조기를 사용하여 캐시미어, 울, 리넨으로 독특한 작품을 만듭니다.',
     events:[
       {day:10,start:'11:00',end:'13:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0f06236e94936662af3309',location:'Frederiksgade 1, 3rd Floor, 1265 Copenhagen'},
       {day:12,start:'11:00',end:'17:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef',joint:true},
@@ -2672,7 +2672,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'tokio',
-    desc:'Tokio. is a design brand founded by Gorazd Malačič in 2011, blending Japanese design principles with advanced…',
+    desc:'Tokio.는 2011년 Gorazd Malačič가 설립한 디자인 브랜드로, 일본 디자인 원칙과 첨단 기술을 결합합니다.',
     events:[
       {day:10,start:'13:00',end:'14:00',title:'Tokio. × Elis Monsport: 빛, 소재, 형태',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3287978d4bf614c12f341'},
       {day:11,start:'13:30',end:'14:30',title:'Tokio. x Elis Monsport: 빛과 소재의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f32a5f4e7235e3299e3aca'},
@@ -2685,7 +2685,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sundholmsvej 46, 2150 Copenhagen',
     slug:'ukurant-a4e5b',
-    desc:'Ukurant celebrates experimental approaches to craft, material and tradition, offering young designers a platform and…',
+    desc:'Ukurant는 공예, 소재, 전통에 대한 실험적 접근을 기념하며, 젊은 디자이너들에게 플랫폼과 기회를 제공합니다.',
     events:[
       {day:10,start:'16:00',end:'20:00',title:'Ukurant 오프닝 & 애프터파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0f0f97d1fea0034132f056'},
       {day:10,start:'20:00',end:'23:59',title:'Ukurant 애프터파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a17fd611233c6f295ff2596'},
@@ -2698,7 +2698,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'viefe',
-    desc:'Viefe goes beyond the design and manufacture of architectural hardware, transforming interior spaces through…',
+    desc:'Viefe는 건축 하드웨어의 디자인과 제조를 넘어 내부 공간을 변화시킵니다.',
     events:[
       {day:11,start:'11:00',end:'13:00',title:'지중해 대화: Isern Serra와의 만남과 공유',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc024cc335f46dabf3c97',cats:['drinks','talk']},
       {day:12,start:'11:00',end:'17:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef',joint:true},
@@ -2711,7 +2711,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Pakhus 48, Klubiensvej 22, 2150 Copenhagen',
     slug:'vitra',
-    desc:'Vitra believes that environments shape thoughts and feelings, be it at home, work, or on the go. Vitra, a family…',
+    desc:'Vitra는 환경이 집에서든, 직장에서든, 이동 중이든 생각과 감정을 형성한다고 믿습니다. 가족 기업인 Vitra는 계속됩니다.',
     events:[
       {day:10,start:'16:00',end:'16:30',title:'Tailored to Move, Studio Œ와의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0720f7a1ab6e406ec25a72'},
       {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra 런치 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0721ce54c70231ff807312',cats:['drinks','talk']},
@@ -2724,7 +2724,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 13, 2100 Copenhagen',
     slug:'wever-ducre',
-    desc:'Life is too short for boring lighting. At Wever & Ducré, they know it—the familiar glimpse at the ceiling during which…',
+    desc:'인생은 지루한 조명을 위해 너무 짧습니다. Wever & Ducré는 그것을 알고 있습니다—천장을 올려다보는 익숙한 순간 동안.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'JEMMA, 무대에 오르다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f87a0d330b0464403340b6'},
       {day:11,start:'16:00',end:'18:00',title:'음료, 음식 & 흥미로운 조명',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f87a5e6e506b416780fdf6'},
@@ -2737,7 +2737,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vesterbrogade 75, 1620 Copenhagen',
     slug:'white-label-project',
-    desc:'White Label Project is a curated platform dedicated to bringing emerging women designers and artists from around the…',
+    desc:'White Label Project는 전 세계의 신진 여성 디자이너와 아티스트를 소개하는 데 전념하는 큐레이션 플랫폼입니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'베르니사주: 여성 디자인 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044c513f0ea13c7fc501b6',cats:['drinks','talk']},
       {day:11,start:'10:00',end:'11:30',title:'인테리어 디자인 브런치: 여성 디자인의 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044e63abfd5bc2ba5544d1',cats:['drinks','talk']},
@@ -2750,7 +2750,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsessegade 4, 1306 Copenhagen',
     slug:'tradition',
-    desc:'Founded in 2010 in Copenhagen, &Tradition is an international brand, built on a Danish legacy of craftsmanship and…',
+    desc:'2010년 Copenhagen에서 설립된 &Tradition은 덴마크 장인정신의 유산 위에 세워진 국제적인 브랜드입니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'와인 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c116e41da013eb93cead4'},
     ],
@@ -2762,7 +2762,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Christian IX\'s Gade 1, 4th floor, 1111 Copenhagen',
     slug:'aarticles',
-    desc:'Conceived as part gallery, part archive, and part marketplace, aarticles is a place to encounter crafted design…',
+    desc:'갤러리이자 아카이브이자 마켓플레이스로 구상된 aarticles는 공예 디자인을 만나는 공간입니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'Another Aspect에서 열리는 aarticles 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a149acb71f772cf439777d7',location:'Møntergade 3A, 1116 København, Denmark'},
     ],
@@ -2774,7 +2774,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Kronprinsensgade 4, 1114 Copenhagen',
     slug:'aesop',
-    desc:'Aesop was established in Melbourne in 1987, and has since been developing efficacious and aromatic formulations for…',
+    desc:'Aesop은 1987년 Melbourne에서 설립되어 이후 효과적이고 향기로운 제품을 개발해왔습니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'Aesop Enduring Forms',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16f93d7f8c19bc52dc2b9c',location:'Store Strandstræde 8, 1255 Copenhagen'},
     ],
@@ -2786,7 +2786,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'ahec',
-    desc:'An international creative collaborator and invaluable material resource, The American Hardwood Export Council (AHEC)…',
+    desc:'국제적인 창작 협력자이자 귀중한 소재 자원인 The American Hardwood Export Council (AHEC)은 디자인 산업에 중요한 역할을 하고 있습니다.',
     events:[
       {day:10,start:'11:00',end:'11:30',title:'나무를 위한 숲: 포레스트 투어',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a16a9d86a16c4af7cc1aefd'},
     ],
@@ -2798,7 +2798,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'aifunghi-bv',
-    desc:'Aifunghi is a newly established company founded by experienced design professionals, driven by a commitment to…',
+    desc:'Aifunghi는 경험 많은 디자인 전문가들이 설립한 신생 기업으로, 확고한 신념을 바탕으로 운영되고 있습니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'Material Matters에서 Aifunghi와 함께하는 레이트 나이트 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0ac25cf8d87feb8dce4ef0',cats:['drinks','launch']},
     ],
@@ -2810,7 +2810,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Holbergsgade 19, 1057 Copenhagen',
     slug:'alternative-artefacts-danto',
-    desc:'Tiles as objects of possibility. Tiles that leave a sensory imprint. Tiles connecting future and past, design and…',
+    desc:'가능성의 대상으로서의 타일. 감각적 인상을 남기는 타일. 미래와 과거, 디자인을 연결하는 타일입니다.',
     events:[
       {day:10,start:'15:00',end:'17:00',title:'디자이너 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a197284aa9ef0d741d12a1a',cats:['drinks','launch']},
     ],
@@ -2822,7 +2822,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Harsdorffs Hus, Kongens Nytorv 3—5, 1050 Copenhagen',
     slug:'anna-von-lipa',
-    desc:'Anna von Lipa unites Danish design with centuries–old Czech glassmaking traditions. Founded by Danish designer Jytte…',
+    desc:'Anna von Lipa는 덴마크 디자인과 수세기 전통의 체코 유리 제작 기술을 결합합니다. 덴마크 디자이너 Jytte가 설립했습니다.',
     events:[
       {day:11,start:'14:00',end:'17:00',title:'Laura Kjær를 만나다 - Anna von Lipa의 새로운 디자인 목소리',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a2004bf60f5461c275cb871',location:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen Municipality, Dánsko'},
     ],
@@ -2834,7 +2834,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Asia House, Indiakaj 16, 2100 Copenhagen',
     slug:'ariake',
-    desc:'Ariake is a Japanese furniture brand founded by Legnatec and Hirata Chair, two manufacturers from the…',
+    desc:'Ariake는 일본의 가구 브랜드로, Legnatec과 Hirata Chair라는 두 제조업체가 공동으로 설립했습니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'"The Art of Making" 라운드 테이블 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a13c82b4f1ddcdd7a8df54f'},
     ],
@@ -2846,7 +2846,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Admiralgade 26, 1066 Copenhagen',
     slug:'asahiyaki',
-    desc:'Based in Uji, Kyoto, Asahiyaki is among the oldest ceramic kilns in Japan, having crafted tea wares in the same family…',
+    desc:'교토 우지에 본사를 둔 Asahiyaki는 일본에서 가장 오래된 도자기 가마 중 하나로, 같은 가문에서 대를 이어 다기를 제작해왔습니다.',
     events:[
       {day:12,start:'18:30',end:'22:00',title:'Asahiyaki의 Osaa Collection 런칭 디너',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2361afd7ad072838400ae',cats:['drinks','launch']},
     ],
@@ -2858,7 +2858,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 34, 1260 Copenhagen',
     slug:'astrid-ab',
-    desc:'Astrid was launched in 2003, founded on Anna Boustedt’s genuine love for textiles. This passion continues to guide…',
+    desc:'Astrid는 Anna Boustedt의 텍스타일에 대한 진정한 사랑을 바탕으로 2003년에 설립되었습니다. 이러한 열정은 지금도 브랜드를 이끌고 있습니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'BRANDT & ASTRID와 함께하는 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3270660e4fcd1111867ab',joint:true},
     ],
@@ -2870,7 +2870,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Søtorvet 5, 1371 Copenhagen',
     slug:'axor',
-    desc:'AXOR conceives and manufactures iconic objects for luxurious bathrooms. Developed in collaboration with world-renowned…',
+    desc:'AXOR는 럭셔리 욕실을 위한 상징적인 제품을 기획하고 제조합니다. 세계적으로 유명한 디자이너들과의 협업을 통해 개발되었습니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'Barber Osgerby와의 디자인 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c0cea74df473728757aa6',cats:['talk','launch']},
     ],
@@ -2882,7 +2882,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Borgergade 91, 1300 Copenhagen',
     slug:'baina',
-    desc:'BAINA is an Antipodean brand of considered bathing essentials, founded in 2019. Distinctly modern and consciously…',
+    desc:'BAINA는 2019년에 설립된 오세아니아 지역의 세심하게 고려된 목욕 필수품 브랜드입니다. 뚜렷한 현대성과 의식적인 접근이 특징입니다.',
     events:[
       {day:10,start:'15:00',end:'17:00',title:'애프터눈 아페리티프',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2e50f4be8099772af2301'},
     ],
@@ -2894,7 +2894,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gammel Mønt 2, 1117 Copenhagen',
     slug:'bankston',
-    desc:'At the heart of Bankston is the aspiration to be a thoughtful and consistent lab of design incubation. Guided by this…',
+    desc:'Bankston의 핵심은 사려 깊고 일관된 디자인 인큐베이션 랩이 되고자 하는 열망입니다. 이러한 비전을 바탕으로 운영되고 있습니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'다루는 법',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4329c412ab1268573a3c7'},
     ],
@@ -2906,7 +2906,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 108, 1401 Copenhagen',
     slug:'beckmans-college-of-design',
-    desc:'A lab for creative diversity. Stockholm-based Beckmans College of Design offers BA-programs in Fashion, Product Design…',
+    desc:'창의적 다양성을 위한 실험실. Stockholm에 위치한 Beckmans College of Design은 패션, 제품 디자인 분야의 학사 과정을 제공합니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'음료 & 스낵',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc',location:'Strandgade 91, 5th Floor, 1401 Copenhagen',joint:true},
     ],
@@ -2918,7 +2918,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Christiansborg Ridebane 16, 1218 Copenhagen',
     slug:'bomma',
-    desc:'BOMMA is a Czech design lighting brand, manufacturing handcrafted sculptural lighting. Each piece is unique, combining…',
+    desc:'BOMMA는 수작업으로 제작된 조각적 조명을 생산하는 체코 디자인 조명 브랜드입니다. 각 제품은 고유하며 전통과 현대를 결합합니다.',
     events:[
       {day:10,start:'17:00',end:'21:00',title:'Hofteatret에서 선보이는 \'Fragments of Light\' 그랜드 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c8bb836e1132c9b0bc66a'},
     ],
@@ -2930,7 +2930,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsessegade 8, 1306 Copenhagen',
     slug:'bongusta',
-    desc:'BONGUSTA is a crossover brand founded in 2021, shaped by a shared love of fashion, interior design, and bold colors.…',
+    desc:'BONGUSTA는 패션, 인테리어 디자인, 대담한 색상에 대한 공통된 사랑으로 탄생한 크로스오버 브랜드로 2021년에 설립되었습니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'BONGUSTA x Ebeltoft Gårdbryg: 로컬 크래프트의 오후',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4e994ae3c26ef1c414868',cats:['drinks','talk']},
     ],
@@ -2942,7 +2942,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 34, 1260 Copenhagen',
     slug:'brandt-collective',
-    desc:'BRANDT Copenhagen is a Danish design–driven brand founded by renowned designer Julie Brandt. With a holistic approach…',
+    desc:'BRANDT Copenhagen은 저명한 디자이너 Julie Brandt가 설립한 덴마크의 디자인 중심 브랜드입니다. 전체론적 접근 방식을 추구합니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'BRANDT & ASTRID와 함께하는 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3270660e4fcd1111867ab'},
     ],
@@ -2954,7 +2954,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Danneskiold—Samsøes Allé 11, 1434 Copenhagen',
     slug:'cane-line',
-    desc:'Cane–line is a Danish design company with more than 35 years of experience in designing and manufacturing functional…',
+    desc:'Cane-line은 35년 이상 기능적인 가구를 디자인하고 제조해온 경험을 보유한 덴마크 디자인 회사입니다.',
     events:[
       {day:10,start:'15:00',end:'16:00',title:'토크: 디자이너 Johannes Foersom',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69ea21e2f9153bd18eee4dcf'},
     ],
@@ -2966,7 +2966,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Grønningen 5, 1270 Copenhagen',
     slug:'claire-delmar-of-studio-cd-228de',
-    desc:'Claire Delmar is a Sydney based commercial and residential interior stylist working across interiors, editorial and…',
+    desc:'Claire Delmar는 Sydney에 기반을 둔 상업 및 주거 인테리어 스타일리스트로, 인테리어, 에디토리얼 분야에서 활동하고 있습니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'음료와 디자이너 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f432c8526c319d3eff35a6',cats:['drinks','talk']},
     ],
@@ -2978,7 +2978,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'cumellas',
-    desc:'Cumellas designs and produces contemporary handmade rugs. Based in Barcelona since 1992, its work reflects a deep…',
+    desc:'Cumellas는 현대적인 수제 러그를 디자인하고 생산합니다. 1992년부터 Barcelona에 본사를 두고 있으며, 작업에는 깊은 장인정신이 반영되어 있습니다.',
     events:[
       {day:12,start:'11:00',end:'17:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef'},
     ],
@@ -2990,7 +2990,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 108, 1264 Copenhagen',
     slug:'danish-industry',
-    desc:'Danish Industry (DI) is Denmark’s largest business and employers’ organisation, representing over 20.000…',
+    desc:'Danish Industry (DI)는 덴마크 최대의 기업 및 고용주 단체로, 20,000개 이상의 기업을 대표합니다.',
     events:[
       {day:10,start:'13:00',end:'14:00',title:'Rocks & Drops - 대리석과 유지관리',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a16f22aad0f1b7330cf3135'},
     ],
@@ -3002,7 +3002,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1st Floor, 1265 Copenhagen',
     slug:'davide-groppi',
-    desc:'Founded in the late 1980s, Davide Groppi is an Italian lighting company recognised worldwide for original and…',
+    desc:'1980년대 후반에 설립된 Davide Groppi는 독창적이고 혁신적인 조명으로 전 세계적으로 인정받는 이탈리아 조명 회사입니다.',
     events:[
       {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
     ],
@@ -3014,7 +3014,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsessegade 6, 1306 Copenhagen',
     slug:'dencon',
-    desc:'With more than half a century of experience and deep roots in Danish traditions, Dencon was established in 1964 with a…',
+    desc:'반세기 이상의 경험과 덴마크 전통에 깊은 뿌리를 둔 Dencon은 1964년에 설립되었습니다.',
     events:[
       {day:11,start:'15:00',end:'16:00',title:'Bent Erik Myrvoll과 함께하는 색의 공예',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e8db6c1cb99b8e150ac03a',joint:true},
     ],
@@ -3026,7 +3026,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Dronningens Tværgade 19, 1302 Copenhagen',
     slug:'designbythem',
-    desc:'Established in 2007, Design By Them was founded by industrial designers Sarah Gibson and Nicholas Karlovasitis. Based…',
+    desc:'2007년에 설립된 Design By Them은 산업 디자이너 Sarah Gibson과 Nicholas Karlovasitis가 공동 설립했습니다. 호주에 기반을 두고 있습니다.',
     events:[
       {day:11,start:'14:00',end:'16:00',title:'디자이너를 만나다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d7ce894e6f63745869a34'},
     ],
@@ -3038,7 +3038,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Pilestræde 6, 1112 Copenhagen',
     slug:'design-studio-lars-vejen',
-    desc:'Design Studio Lars Vejen is a multidisciplinary design practice based in Denmark and Japan. His work spans a broad…',
+    desc:'Design Studio Lars Vejen은 덴마크와 일본에 기반을 둔 다학제적 디자인 스튜디오입니다. 그의 작업은 폭넓은 영역을 아우릅니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],location:'Esplanaden 8B, 1263 Copenhagen'},
     ],
@@ -3050,7 +3050,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Prolog Coffee Bar, Papirøen 87, 1432 Copenhagen',
     slug:'eetal-project',
-    desc:'EETAL is a project launched in 2021 by Japan Benex Corporation, a company specialising in precision sheet metal…',
+    desc:'EETAL은 정밀 판금 가공을 전문으로 하는 Japan Benex Corporation이 2021년에 시작한 프로젝트입니다.',
     events:[
       {day:11,start:'18:00',end:'20:00',title:'＜A Prologue to EETAL＞ 일본 맥주 & 에그 샌도 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f28758d896f4c7535d5a93'},
     ],
@@ -3062,7 +3062,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Sundkaj 165, 2150 Copenhagen',
     slug:'everyday',
-    desc:'Everyday^ reimagins and builds the essential systems that power everyday life at home—designed to be healthier, more…',
+    desc:'Everyday^는 가정에서의 일상을 지원하는 필수 시스템을 재구상하고 구축합니다. 더 건강하고 지속 가능하도록 디자인되었습니다.',
     events:[
       {day:11,start:'17:00',end:'20:00',title:'공기 중에 무언가가 있다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69da2ebac999940f36194dd0',cats:['drinks','talk','launch']},
     ],
@@ -3074,7 +3074,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Sundkaj 153, 2150 Copenhagen',
     slug:'extremis-nv',
-    desc:'Extremis is a Belgian design brand that creates “tools for togetherness.” Founded in 1994 by designer Dirk Wynants,…',
+    desc:'Extremis는 "함께함을 위한 도구"를 만드는 벨기에 디자인 브랜드입니다. 1994년 디자이너 Dirk Wynants가 설립했습니다.',
     events:[
       {day:10,start:'15:00',end:'18:00',title:'물가에서 즐기는 퇴근 후 한때',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d3e255c530abcdaf1f927'},
     ],
@@ -3086,7 +3086,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Etage Projects, Borgergade 15E, 1300 Copenhagen',
     slug:'flatpoint',
-    desc:'Guided by the philosophy “Flatness is the Point”, Flat Point creates interior pieces that integrate seamlessly with…',
+    desc:'"평면성이 핵심이다"라는 철학을 바탕으로, Flat Point는 공간과 자연스럽게 통합되는 인테리어 제품을 만듭니다.',
     events:[
       {day:10,start:'17:00',end:'19:00',title:'한국인의 삶의 초상—오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch']},
     ],
@@ -3098,7 +3098,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 3rd Floor, 1265 Copenhagen',
     slug:'gejst',
-    desc:'Gejst was founded with a passion for making attractive, sustainable design that will last the test of time. Gejst…',
+    desc:'Gejst는 시간의 시험을 견딜 수 있는 매력적이고 지속 가능한 디자인을 만들고자 하는 열정으로 설립되었습니다.',
     events:[
       {day:10,start:'19:00',end:'21:00',title:'공식 쇼룸 오프닝 파티 & 신제품 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef6e3f34cdfba1212750b0',cats:['drinks','launch']},
     ],
@@ -3110,7 +3110,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 81, 1264 Copenhagen',
     slug:'glimakra-of-sweden',
-    desc:'The Home of Acoustic Design – Glimakra of Sweden takes great pride in collaborating with local suppliers, always with…',
+    desc:'어쿠스틱 디자인의 본고장 – Glimakra of Sweden은 항상 지속 가능성을 염두에 두고 지역 공급업체와 협력하는 것을 자랑스럽게 여깁니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
     ],
@@ -3122,7 +3122,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'hausmann---furniture-and-friends',
-    desc:'HAUSMANN Furniture is a design studio dedicated to solid wood furniture and interior objects, operating between…',
+    desc:'HAUSMANN Furniture는 원목 가구와 인테리어 오브제를 전문으로 하는 디자인 스튜디오로, 전통과 현대를 넘나들며 활동합니다.',
     events:[
       {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
     ],
@@ -3134,7 +3134,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Amaliegade 35, 1256 Copenhagen',
     slug:'holmris-b8',
-    desc:'Holmris B8 creates room for people through turnkey solutions that fit people, space, and purpose. Rooted in insight…',
+    desc:'Holmris B8은 사람, 공간, 목적에 맞는 턴키 솔루션을 통해 사람들을 위한 공간을 창조합니다. 통찰력에 기반을 두고 있습니다.',
     events:[
       {day:11,start:'14:00',end:'16:00',title:'Amaliegade 35 오픈 하우스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b28baa117cf655c22e421',cats:['drinks','launch']},
     ],
@@ -3146,7 +3146,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 81, 1264 Copenhagen',
     slug:'horreds',
-    desc:'Horreds designs, manufactures, and sells office and meeting furniture built on enduring values. Summed up by the term…',
+    desc:'Horreds는 지속적인 가치를 바탕으로 구축된 사무실 및 회의용 가구를 디자인, 제조, 판매합니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
     ],
@@ -3158,7 +3158,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Ofelia Plads, Kvæsthusbroen, 1250 Copenhagen',
     slug:'hydro',
-    desc:'Founded in 1905, Hydro is a leading aluminium and renewable energy company committed to a sustainable future. Based in…',
+    desc:'1905년에 설립된 Hydro는 지속 가능한 미래를 위해 헌신하는 선도적인 알루미늄 및 재생 에너지 기업입니다.',
     events:[
       {day:10,start:'15:00',end:'19:00',title:'Iittala Aalto 90',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6981c77d6502f7304839eb8a',cats:['drinks','launch'],joint:true},
     ],
@@ -3170,7 +3170,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Ofelia Plads, Kvæsthusbroen, 1250 Copenhagen',
     slug:'iittala',
-    desc:'Iittala’s design story began in 1881 and continues to thrive at the glass factory in Iittala village, Finland. With a…',
+    desc:'Iittala의 디자인 스토리는 1881년에 시작되었으며, Finland의 Iittala 마을에 위치한 유리 공장에서 지금도 계속되고 있습니다.',
     events:[
       {day:10,start:'15:00',end:'19:00',title:'Iittala Aalto 90',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6981c77d6502f7304839eb8a',cats:['drinks','launch']},
     ],
@@ -3182,7 +3182,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Etage Projects, Borgergade 15E, 1300 Copenhagen',
     slug:'ilkw',
-    desc:'Founded in 1962 as a specialist in incandescent bulb production, ILKW by Ilkwang Lighting has built its lighting…',
+    desc:'1962년 백열전구 생산 전문업체로 설립된 ILKW by Ilkwang Lighting은 조명 분야에서 입지를 구축해왔습니다.',
     events:[
       {day:10,start:'17:00',end:'19:00',title:'한국인의 삶의 초상—오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch'],joint:true},
     ],
@@ -3194,7 +3194,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 25E, 1260 Copenhagen',
     slug:'jakobsen-copenhagen',
-    desc:'Jakobsen Copenhagen is a Danish furniture brand rooted in the heritage of Scandinavian design and inspired by the…',
+    desc:'Jakobsen Copenhagen은 스칸디나비아 디자인의 유산에 뿌리를 두고 그 전통에서 영감을 받은 덴마크 가구 브랜드입니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'라이브 음악과 함께하는 애프터눈 샴페인 & 와인 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a159500a8f676ac9d0bdf0f'},
     ],
@@ -3206,7 +3206,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'japan-form',
-    desc:'JAPAN FORM is a Stockholm–based curatorial platform presenting contemporary Japanese craftsmanship in Europe.…',
+    desc:'JAPAN FORM은 유럽에서 현대 일본 장인정신을 소개하는 Stockholm 기반의 큐레이토리얼 플랫폼입니다.',
     events:[
       {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
     ],
@@ -3218,7 +3218,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Frederiksholms Kanal 24, 1220 Copenhagen',
     slug:'johan-borups-hojskole',
-    desc:'On the occasion of 3daysofdesign, Johan Borups Højskole opens the doors to its historic mansion in Copenhagen’s…',
+    desc:'3daysofdesign을 맞아 Johan Borups Højskole이 Copenhagen 시내 역사적인 저택의 문을 엽니다.',
     events:[
       {day:11,start:'16:00',end:'17:00',title:'베르니사주 | 디자인 학생 졸업 전시',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33e02207c1acf44b26a39'},
     ],
@@ -3230,7 +3230,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'kateha',
-    desc:'Kateha is a Swedish family–owned company designing and creating rugs. At Kateha, a rug is the beginning of a room. A…',
+    desc:'Kateha는 러그를 디자인하고 제작하는 스웨덴 가족 기업입니다. Kateha에게 러그는 공간의 시작입니다.',
     events:[
       {day:10,start:'18:00',end:'20:00',title:'오프닝 나이트 드링크 환영 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b65299668ab1d74e0a82'},
     ],
@@ -3242,7 +3242,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gammel Kongevej 74D, 1850 Frederiksberg',
     slug:'kilzi',
-    desc:'Kilzi means many things to its founder: it is his family name, weird in his context and a symbol of other lands, Kilzi…',
+    desc:'Kilzi는 창립자에게 여러 의미를 지닙니다. 그것은 그의 성이자, 그의 맥락에서는 낯선 이름이며, 다른 땅을 상징하는 기호입니다.',
     events:[
       {day:11,start:'14:00',end:'17:00',title:'BAR AMORE x KILZI에서 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f334daf59058c0d7c4fc9d',location:'Gl. Kongevej 74D, 1850 Frederiksberg, Denmark'},
     ],
@@ -3254,7 +3254,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 91, 5th Floor, 1401 Copenhagen',
     slug:'kolding-school-of-design',
-    desc:'The world needs change—more sustainability, stronger communities, and a better life for all. That’s why design isn’t…',
+    desc:'세상은 변화가 필요합니다. 더 많은 지속가능성, 더 강한 공동체, 모두를 위한 더 나은 삶. 그래서 디자인은 단순히...',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15e77712d18c1ee1bd42a7'},
     ],
@@ -3266,7 +3266,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 73, 1260 Copenhagen',
     slug:'kristalia',
-    desc:'Founded by entrepreneurs with a passion for innovation, Kristalia is a "Made in Italy" brand defined by over 30 years…',
+    desc:'혁신에 대한 열정을 가진 기업가들이 설립한 Kristalia는 30년 이상의 경험으로 정의되는 "Made in Italy" 브랜드입니다.',
     events:[
       {day:11,start:'13:00',end:'14:00',title:'Kristalia에서 FORM US WITH LOVE와 나누는 편안한 대화',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0dbd73d7d44c709a0953b4',location:'Bredgade 73, 1260 Copenaghen'},
     ],
@@ -3278,7 +3278,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 25E, 1260 Copenhagen',
     slug:'kristina-dam-studio',
-    desc:'Founded in 2012, Kristina Dam Studio creates furniture, accessories and art objects shaped through an architectural…',
+    desc:'2012년에 설립된 Kristina Dam Studio는 건축적 관점으로 형성된 가구, 액세서리, 아트 오브제를 제작합니다.',
     events:[
       {day:11,start:'13:00',end:'14:00',title:'린넨 자수에 페인팅',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f09bde49194594a5a2f6ce'},
     ],
@@ -3290,7 +3290,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Asia House, Indiakaj 16, 2100 Copenhagen',
     slug:'ladies-gentlemen-studio',
-    desc:'Ladies & Gentlemen Studio is a multi–faceted design studio with an approach to create and inspire a sense of…',
+    desc:'Ladies & Gentlemen Studio는 감각과 영감을 창조하는 접근 방식을 지닌 다면적 디자인 스튜디오입니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'만들기의 예술: 라운드 테이블 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a076b7468c0f7e59e0a9296'},
     ],
@@ -3302,7 +3302,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Gammel Strand 48, 1202 Copenhagen',
     slug:'lokal-gallery',
-    desc:'Lokal is a Helsinki–based concept gallery bringing forth local artwork and collectible design. Inspired by a blend of…',
+    desc:'Lokal은 지역 예술 작품과 수집 가능한 디자인을 선보이는 Helsinki 기반의 컨셉 갤러리입니다. 다양한 혼합에서 영감을 받았습니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'A Prima Vista — 오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32174771db557a2618259'},
     ],
@@ -3314,7 +3314,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 91, 1401 Copenhagen',
     slug:'lund-university',
-    desc:'Lasting change begins at the smallest scale. No detail is too little, no problem too small, no emotion trivial and no…',
+    desc:'지속적인 변화는 가장 작은 규모에서 시작됩니다. 너무 작은 디테일도, 너무 사소한 문제도, 하찮은 감정도, 작은 것도 없습니다.',
     events:[
       {day:10,start:'16:00',end:'18:00',title:'음료 & 스낵',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc',location:'Strandgade 91, 5th Floor, 1401 Copenhagen',joint:true},
     ],
@@ -3326,7 +3326,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 73, 1260 Copenhagen',
     slug:'lyfa',
-    desc:'LYFA is a visionary home of iconic classics from some of Denmark’s most influential lighting designers. Their enduring…',
+    desc:'LYFA는 덴마크의 가장 영향력 있는 조명 디자이너들의 상징적 클래식을 품은 비전 있는 공간입니다. 그들의 지속적인 작품들은...',
     events:[
       {day:11,start:'14:00',end:'15:00',title:'GamFratesi의 디자인 소개',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0b166c6a937e3ed9bb2bce'},
     ],
@@ -3338,7 +3338,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Klareboderne 16, 1115 Copenhagen',
     slug:'marokk',
-    desc:'Experts in sourcing and curating handmade and exclusive tiles from small local producers worldwide, MAROKK is…',
+    desc:'전 세계 소규모 현지 생산자로부터 수제 타일과 독점 타일을 소싱하고 큐레이팅하는 전문가인 MAROKK은...',
     events:[
       {day:11,start:'11:00',end:'12:00',title:'인도에서 온 사랑과 핸드메이드 타일',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fce8921745868143fef32e',cats:['drinks','talk','launch']},
     ],
@@ -3350,7 +3350,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 2, 2100 Copenhagen',
     slug:'mas',
-    desc:'Introducing MAS, a woodworking furniture brand born from a dialogue with various woods spread across Japan. By…',
+    desc:'일본 전역에 퍼져 있는 다양한 목재와의 대화에서 탄생한 목공 가구 브랜드 MAS를 소개합니다.',
     events:[
       {day:11,start:'10:00',end:'11:30',title:'일본 / 북유럽 디자인 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a051fc57ca914d7925848b5',location:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen'},
     ],
@@ -3362,7 +3362,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'material-matters',
-    desc:'Material Matters is a platform dedicated to exploring the role of material intelligence in architecture and design.…',
+    desc:'Material Matters는 건축과 디자인에서 재료 지능의 역할을 탐구하는 데 전념하는 플랫폼입니다.',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'레이트 나이트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aef878d4a4e7840681c7'},
     ],
@@ -3374,7 +3374,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vognmagergade 9, 1120 Copenhagen',
     slug:'matias-moellenbach',
-    desc:'Matias Moellenbach is a Copenhagen–based furniture and interior design brand driven by a commitment to producing…',
+    desc:'Matias Moellenbach는 생산에 대한 헌신으로 움직이는 Copenhagen 기반의 가구 및 인테리어 디자인 브랜드입니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'OBA Collection 소개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38ef2a191410da56084f6'},
     ],
@@ -3386,7 +3386,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Dronningens Tværgade 50, 1302 Copenhagen',
     slug:'mazo',
-    desc:'Mazo takes a thoughtful, hands–on approach to design, focusing on creativity, quality, and the small details that make…',
+    desc:'Mazo는 창의성, 품질, 그리고 차이를 만드는 작은 디테일에 집중하며 사려 깊고 실질적인 디자인 접근 방식을 취합니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'오픈 에어 재즈',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16a51d29e4d51e63db5bd1'},
     ],
@@ -3398,7 +3398,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gammel Mønt 9, 1107 Copenhagen',
     slug:'miele-a-s',
-    desc:'It all started more than 125 years ago, with two families—the Miele and Zinkann families. The engineer Carl Miele and…',
+    desc:'모든 것은 125년 전, 두 가족 Miele 가문과 Zinkann 가문에서 시작되었습니다. 엔지니어 Carl Miele과...',
     events:[
       {day:11,start:'12:00',end:'15:00',title:'라이브 베이킹과 맞춤 케이크',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a185112a922b1ab937665a4'},
     ],
@@ -3410,7 +3410,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Møntergade 16, 1116 Copenhagen',
     slug:'natural-material-studio',
-    desc:'Natural Material Studio is an award-winning, Copenhagen-based design and research studio redefining material…',
+    desc:'Natural Material Studio는 재료 혁신을 재정의하는 수상 경력의 Copenhagen 기반 디자인 및 리서치 스튜디오입니다.',
     events:[
       {day:10,start:'16:00',end:'20:00',title:'코펜하겐의 감성—축제',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1819a0b1ff1a468c639148',cats:['drinks','launch']},
     ],
@@ -3422,7 +3422,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsessegade 6, 1306 Copenhagen',
     slug:'nevotex-danmark-aps',
-    desc:'Nevotex is Europe’s leading supplier of fabrics, leather, technical materials and tools for the interior design and…',
+    desc:'Nevotex는 인테리어 디자인 업계를 위한 직물, 가죽, 기술 소재 및 도구 분야에서 유럽 최고의 공급업체입니다.',
     events:[
       {day:11,start:'15:00',end:'16:00',title:'Bent Erik Myrvoll과 함께하는 색의 공예',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e8db6c1cb99b8e150ac03a'},
     ],
@@ -3434,7 +3434,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 2, 2100 Copenhagen',
     slug:'new-light-pottery',
-    desc:'New Light Pottery is a lighting manufacturer based in the ancient former Japanese capital of Nara. Founded in 2015 by…',
+    desc:'New Light Pottery는 일본의 고대 옛 수도 Nara에 위치한 조명 제조업체입니다. 2015년에 설립되었습니다.',
     events:[
       {day:11,start:'10:00',end:'11:30',title:'Japan/Nordic 디자인 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69ef952da232e413031ed01e',location:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen'},
     ],
@@ -3446,7 +3446,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Nygårdsvej 19, 2100 Copenhagen',
     slug:'objects-may-vary',
-    desc:'Objects May Vary is an cross–disciplinary collaborative exhibition platform dedicated to experimental design . It…',
+    desc:'Objects May Vary는 실험적 디자인에 전념하는 학제간 협업 전시 플랫폼입니다.',
     events:[
       {day:11,start:'15:00',end:'17:00',title:'Objects May Vary — 데이타임 리셉션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a048796bb9177c29c847d0d'},
     ],
@@ -3458,7 +3458,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Bertel Thorvaldsens Plads 2, 1213 Copenhagen',
     slug:'objects-of-desire',
-    desc:'United by a focus on material awareness, production quality, and design integrity, the Objects of Desire exhibition…',
+    desc:'재료에 대한 인식, 생산 품질, 디자인 무결성에 대한 집중으로 하나가 된 Objects of Desire 전시는...',
     events:[
       {day:10,start:'15:00',end:'16:30',title:'오프닝 리셉션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc992a1d51f03fe347b158',cats:['drinks','talk']},
     ],
@@ -3470,7 +3470,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Asia House, Indiakaj 16, 2100 Copenhagen',
     slug:'origin-made',
-    desc:'Origin Made is a Porto–based craft–focused design brand founded in 2019 by Gabriel Tan and Cherie Er, built on the…',
+    desc:'Origin Made는 2019년 Gabriel Tan과 Cherie Er가 설립한 Porto 기반의 공예 중심 디자인 브랜드입니다.',
     events:[
       {day:10,start:'10:00',end:'11:00',title:'"The Art of Making" 라운드 테이블 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a13c6f29b7b63ab7078a17d'},
     ],
@@ -3482,7 +3482,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'oslomet-product-design',
-    desc:'Founded in 1917 as a handicraft college (husflidskole), OsloMet Product Design is rooted in a strong tradition of…',
+    desc:'1917년 수공예 대학(husflidskole)으로 설립된 OsloMet Product Design은 강력한 전통에 뿌리를 두고 있습니다.',
     events:[
       {day:12,start:'10:00',end:'11:00',title:'제품 디자인 교육은 어디로 향하는가?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04485b3b7a2f4e00b78421'},
     ],
@@ -3494,7 +3494,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'panzeri',
-    desc:'Panzeri represents the \'Made in Italy\' manufacture tradition with high–quality decorative and architectural lighting.…',
+    desc:'Panzeri는'Made in Italy\' manufacture tradition with high–quality decorative and architectural lighting.…',
     events:[
       {day:10,start:'11:00',end:'15:00',title:'빛을 감각적 경험으로_Panzeri의 Scent 공개',icon:'🚀',color:'#d99021',label:'런칭',id:'6a057bce1cd29733aaec3eb3'},
     ],
@@ -3506,7 +3506,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Borgergade 15D, 1300 Copenhagen',
     slug:'raawii',
-    desc:'raawii was founded in 2017 by Bo Raahauge Rasmussen and Nicholai Wiig–Hansen in Copenhagen, Denmark. Their ambition is…',
+    desc:'raawii는 2017년 덴마크 코펜하겐에서 Bo Raahauge Rasmussen과 Nicholai Wiig-Hansen에 의해 설립되었습니다. 이들의 목표는',
     events:[
       {day:12,start:'16:00',end:'18:00',title:'SHAPE & COLOR: SO LONG 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a048ed3ef44a96897ca5e5e'},
     ],
@@ -3518,7 +3518,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Etage Projects, Borgergade 15E, 1300 Copenhagen',
     slug:'rareraw',
-    desc:'RARERAW is a modular furniture brand that moves beyond fixed forms, allowing its systems to be flexibly interpreted in…',
+    desc:'RARERAW는 고정된 형태를 넘어서는 모듈형 가구 브랜드로, 시스템을 유연하게 해석할 수 있도록 합니다.',
     events:[
       {day:10,start:'17:00',end:'19:00',title:'한국인의 삶의 초상—오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch'],joint:true},
     ],
@@ -3530,7 +3530,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 18, 1260 Copenhagen',
     slug:'rosendahl-design-group',
-    desc:'Rosendahl Design Group is a Danish design house uniting eight renowned Danish design brands—Kähler, Holmegaard, Lyngby…',
+    desc:'Rosendahl Design Group은 Kähler, Holmegaard, Lyngby 등 8개의 유명한 덴마크 디자인 브랜드를 하나로 묶은 덴마크 디자인 하우스입니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'Mingle: 디자인과 연결의 오후',icon:'🚀',color:'#d99021',label:'런칭',id:'69f4a445845319264929fbd4'},
     ],
@@ -3542,7 +3542,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Amagertorv 6, 1160 Copenhagen',
     slug:'royal-copenhagen',
-    desc:'Royal Copenhagen was founded in 1775 under patronage of the Danish monarchy. For more than two centuries, the company…',
+    desc:'Royal Copenhagen은 1775년 덴마크 왕실의 후원 아래 설립되었습니다. 2세기 이상 동안 이 회사는',
     events:[
       {day:10,start:'17:00',end:'20:00',title:'Royal Copenhagen x Griegst 칵테일 아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f477180774c9889b724f66'},
     ],
@@ -3554,7 +3554,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'rytsola',
-    desc:'Born in Rome—Refined in Helsinki—Designed for Generations. RYTSOLA, a Finnish–Italian family company, makes its…',
+    desc:'로마에서 태어나 헬싱키에서 다듬어진, 세대를 위한 디자인. 핀란드-이탈리아 가족 기업 RYTSOLA가 선보이는',
     events:[
       {day:12,start:'16:00',end:'19:00',title:'RYTSOLA — 클로징 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c96f27ee237d95eddc8b1',cats:['drinks','launch']},
     ],
@@ -3566,7 +3566,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Løvstræde 1, 1152 Copenhagen',
     slug:'santa-cole',
-    desc:'Founded in 1985, Santa & Cole is an independent editor of thoughtful design objects, art and books headquartered in…',
+    desc:'1985년에 설립된 Santa & Cole은 사려 깊은 디자인 오브제, 예술 작품, 그리고 책을 출판하는 독립 에디터로 본사는',
     events:[
       {day:11,start:'17:00',end:'19:00',title:'Light Reading, 챕터 2',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1d4352e55c0cc0b180572d'},
     ],
@@ -3578,7 +3578,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'scandinavian-design-embassy',
-    desc:'Scandinavian Design Embassy is an initiative aimed at promoting Nordic design companies internationally at Nordic…',
+    desc:'Scandinavian Design Embassy는 북유럽 디자인 기업들을 국제적으로 홍보하기 위한 이니셔티브입니다.',
     events:[
       {day:11,start:'16:00',end:'17:00',title:'움직이는 스칸디나비아 디자인 – 메이커를 만나다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15d9cd1c412d05c989e2a4'},
     ],
@@ -3590,7 +3590,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Silkegade 11, 2nd Floor, 1113 Copenhagen',
     slug:'sestra',
-    desc:'SESTRÁ develops visually restrained objects and furniture informed by research into everyday homemaking practices.…',
+    desc:'SESTRÁ는 일상적인 가사 실천에 대한 연구를 바탕으로 시각적으로 절제된 오브제와 가구를 개발합니다.',
     events:[
       {day:10,start:'15:00',end:'17:00',title:'차와 디저트를 곁들인 컬렉션 워크스루',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3ce87b8bc626791ef408c',cats:['drinks','talk','launch']},
     ],
@@ -3602,7 +3602,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'sfso',
-    desc:'SF–SO is an industrial design studio operating between San Francisco and Seoul, founded in 2019 by Jaehoon Jung and…',
+    desc:'SF-SO는 Jaehoon Jung이 2019년에 설립한 샌프란시스코와 서울을 기반으로 운영되는 산업 디자인 스튜디오입니다.',
     events:[
       {day:12,start:'15:00',end:'15:40',title:'구조 풀어내기: 얇은 형태, 가득한 하중',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1a0466270efdb7e045175'},
     ],
@@ -3614,7 +3614,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsensgade 16, 1114 Copenhagen',
     slug:'s-k-u-l-t-u-n-a',
-    desc:'Founded in 1607 by King Karl IX of Sweden, Skultuna has been creating objects of lasting beauty for over 400 years.…',
+    desc:'1607년 스웨덴의 King Karl IX에 의해 설립된 Skultuna는 400년 이상 지속되는 아름다움을 지닌 오브제를 창조해 왔습니다.',
     events:[
       {day:11,start:'17:00',end:'20:00',title:'라이브 재즈 • 촛불 • 신작 컬렉션 • 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c25d45d316ec938e103f5',cats:['drinks','launch']},
     ],
@@ -3626,7 +3626,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Trelleborggade 5, 2150 Copenhagen',
     slug:'st-leo-interiors',
-    desc:'St. Leo is an interior company creating tactile wall finishes, furniture and lighting designed to elevate the…',
+    desc:'St. Leo는 촉각적인 벽 마감재, 가구, 조명을 제작하는 인테리어 회사로, 공간을 한층 더 높이기 위해 디자인되었습니다.',
     events:[
       {day:11,start:'16:00',end:'18:00',title:'와인 라운지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f45c7762a42365c500f658'},
     ],
@@ -3638,7 +3638,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Frederiksborggade 22, 1360 Copenhagen',
     slug:'stillark',
-    desc:'Stillark is an architecture studio focused on the home and life within it. The studio’s mission is to enhance everyday…',
+    desc:'Stillark는 가정과 그 안에서의 삶에 초점을 맞춘 건축 스튜디오입니다. 스튜디오의 사명은 일상을 향상시키는 것입니다.',
     events:[
       {day:10,start:'14:00',end:'16:00',title:'수납과 가구에 대한 새로운 시각 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38de38feee940beb3a083',location:'Frederiksborggade 22, Copenhagen, Denmark'},
     ],
@@ -3650,7 +3650,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 81, 1264 Copenhagen',
     slug:'stolab-mobel-ab',
-    desc:'Stolab strives to create solid wood furniture with soul and character. The focus lies in crafting pieces that are both…',
+    desc:'Stolab은 영혼과 개성을 지닌 원목 가구를 만들기 위해 노력합니다. 초점은 다음과 같은 작품을 제작하는 데 있습니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
     ],
@@ -3662,7 +3662,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'studio-about',
-    desc:'Studio About wants to inspire more creative and experimental self–expression, therefore they keep pushing boundaries…',
+    desc:'Studio About은 더 창의적이고 실험적인 자기표현을 영감하고자 하며, 따라서 끊임없이 경계를 확장합니다.',
     events:[
       {day:11,start:'13:00',end:'15:00',title:'DESIGN & KIMCHI: STUDIO ABOUT X KALA\'S KIMCHI',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0edcf55bf7ed7790fa5af3',cats:['drinks','talk']},
     ],
@@ -3674,7 +3674,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Nansensgade 86, 1366 Copenhagen',
     slug:'studio-byhaa',
-    desc:'Studio ByHAA is an architectural design studio working in the intersection of craft, design, architecture and…',
+    desc:'Studio ByHAA는 공예, 디자인, 건축의 교차점에서 작업하는 건축 디자인 스튜디오입니다.',
     events:[
       {day:12,start:'17:00',end:'20:00',title:'Contemporary Cairo Nights',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e5d25ee939144d392f4639'},
     ],
@@ -3686,7 +3686,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vimmelskaftet 41A, 1161 Copenhagen',
     slug:'tableau-73bf8',
-    desc:'TABLEAU is a Copenhagen-based design studio founded in 2018 by Julius Værnes Iversen. Operating at the intersection of…',
+    desc:'TABLEAU는 2018년 Julius Værnes Iversen이 설립한 코펜하겐 기반 디자인 스튜디오입니다. 다음의 교차점에서 운영됩니다.',
     events:[
       {day:10,start:'15:00',end:'19:00',title:'Iittala Aalto 90',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6981c77d6502f7304839eb8a',cats:['drinks','launch'],location:'Ofelia Plads, Kvæsthusbroen, 1250 Copenhagen',joint:true},
     ],
@@ -3698,7 +3698,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Silkegade 11, 2nd Floor, 1113 Copenhagen',
     slug:'tadaima',
-    desc:'Tadaima is a Copenhagen–based design studio and concept store founded in 2021 by Hanne Berzant and her daughters,…',
+    desc:'Tadaima는 2021년 Hanne Berzant과 그녀의 딸들이 설립한 코펜하겐 기반 디자인 스튜디오이자 컨셉 스토어입니다.',
     events:[
       {day:11,start:'11:00',end:'11:45',title:'패션에서 인테리어로: Gergei Erdei x Porta Romana',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0acfeb1209fe98c1a1d160'},
     ],
@@ -3710,7 +3710,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Kunsthal Charlottenborg, Nyhavn 2, 1051 Copenhagen',
     slug:'tekla',
-    desc:'Established in Copenhagen in 2017, Tekla creates elevated yet functional homeware pieces that centre a timeless,…',
+    desc:'2017년 코펜하겐에서 설립된 Tekla는 시대를 초월한 감성을 중심으로 한 고급스러우면서도 기능적인 홈웨어 제품을 만듭니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'Tekla Heart of Living I 오프닝 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef41ad95d5d70b25d83f96'},
     ],
@@ -3722,7 +3722,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Nikolaj Plads 10, 1067 Copenhagen',
     slug:'tf-design---tina-frey-designs',
-    desc:'Tina Frey Designs, based in San Francisco, California, specializes in timeless, functional objects, furniture, and…',
+    desc:'캘리포니아 샌프란시스코에 기반을 둔 Tina Frey Designs는 시대를 초월하고 기능적인 오브제, 가구를 전문으로 합니다.',
     events:[
       {day:10,start:'10:30',end:'12:30',title:'Tina Frey Designs x Pinch Food Design: 소프트 아이스크림 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a07028b3ba26db7a4779392'},
     ],
@@ -3734,7 +3734,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 81, 1264 Copenhagen',
     slug:'trece',
-    desc:'TreCe is one of the leading Nordic suppliers of storage and recycling furniture. The company has reached this position…',
+    desc:'TreCe는 북유럽의 선도적인 수납 및 재활용 가구 공급업체 중 하나입니다. 회사는 이러한 입지를 확보했습니다.',
     events:[
       {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0'},
     ],
@@ -3746,7 +3746,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14A, 2300 Copenhagen',
     slug:'toseibo',
-    desc:'Tōseibo is a Copenhagen–based ceramic studio that specialises in handcrafted tea and coffee ware, flower and incense…',
+    desc:'Tōseibo는 코펜하겐 기반의 세라믹 스튜디오로, 수작업으로 만든 차 및 커피 용기, 꽃병, 향 관련 제품을 전문으로 합니다.',
     events:[
       {day:12,start:'14:00',end:'16:00',title:'Tōseibo에서의 일본 다도 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06cbca9e5e93805d4836ea'},
     ],
@@ -3758,7 +3758,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 8, 1437 Copenhagen',
     slug:'udrb',
-    desc:'Uderbekov Daniyar is a design brand where ancient heritage meets future technology. Founded by Daniyar Uderbekov, it…',
+    desc:'Uderbekov Daniyar는 고대 유산과 미래 기술이 만나는 디자인 브랜드입니다. Daniyar Uderbekov이 설립했으며',
     events:[
       {day:11,start:'11:00',end:'11:30',title:'카자흐스탄의 컬렉터블 디자인 경험',icon:'🚀',color:'#d99021',label:'런칭',id:'69e6e1788279cdaeab86ec98',location:'Kanalhuset, Overgaden Oven Vandet 62A, København, Dania'},
     ],
@@ -3770,7 +3770,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 9, 1255 Copenhagen',
     slug:'vandra-rugs-ab',
-    desc:'Vandra Rugs crafts handmade rugs that blend contemporary design with exceptional craftsmanship. Made from high-quality…',
+    desc:'Vandra Rugs는 현대적인 디자인과 뛰어난 장인정신을 결합한 수제 러그를 제작합니다. 고품질 소재로 만들어집니다.',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'칵테일',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15865bc484f256b6a976e1',location:'MKDT Studio, Store Strandstræde 9, Copenhagen, Denmark'},
     ],
@@ -3782,7 +3782,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1st Floor, 1265 Copenhagen',
     slug:'v-zug',
-    desc:'V–ZUG, the leading Swiss household appliance brand, has been developing and manufacturing kitchen and laundry…',
+    desc:'스위스의 선도적인 가전 브랜드 V-ZUG는 주방 및 세탁 기기를 개발하고 제조해 왔습니다.',
     events:[
       {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
     ],
@@ -3794,7 +3794,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 85, 1264 Copenhagen',
     slug:'wastberg',
-    desc:'Wastberg+ creates well–being through good light. Working closely with leading architects and designers, W+ develops…',
+    desc:'Wastberg+는 좋은 조명을 통해 웰빙을 창조합니다. 선도적인 건축가 및 디자이너들과 긴밀히 협력하여 W+는 개발합니다.',
     events:[
       {day:11,start:'10:00',end:'12:00',title:'W+ 브런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f83e648d68390c630c89ed',cats:['drinks','talk']},
     ],
@@ -3806,7 +3806,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 2nd Floor, 1265 Copenhagen',
     slug:'drape-f0134',
-    desc:'Founded in 2018, the curtain studio &Drape creates atmosphere and well-being through made-to-measure curtains in…',
+    desc:'2018년에 설립된 커튼 스튜디오 &Drape는 맞춤 제작 커튼을 통해 분위기와 웰빙을 창조합니다.',
     events:[],
   },
   {
@@ -3816,7 +3816,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kattesundet 4, Strøget 24, 1st Floor, 1458 Copenhagen',
     slug:'halle',
-    desc:'+Halle® exists to develop a different type of furniture, designed to make a difference to people’s daily lives,…',
+    desc:'+Halle®은 사람들의 일상에 변화를 주기 위해 디자인된 다른 유형의 가구를 개발하기 위해 존재합니다.',
     events:[],
   },
   {
@@ -3826,7 +3826,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Østergade 17, 1100 Copenhagen',
     slug:'101-copenhagen',
-    desc:'101 Copenhagen is a Danish design brand founded in 2017. Committed to exquisite quality and craftsmanship, the brand…',
+    desc:'101 Copenhagen은 2017년에 설립된 덴마크 디자인 브랜드입니다. 뛰어난 품질과 장인정신을 추구하는 이 브랜드는',
     events:[],
   },
   {
@@ -3836,7 +3836,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'2050-furniture',
-    desc:'2050 Furniture is a gentle rebellion for nature, people, and the future. Today’s conventional furniture industry is…',
+    desc:'2050 Furniture는 자연, 사람, 그리고 미래를 위한 부드러운 반항입니다. 오늘날의 기존 가구 산업은',
     events:[],
   },
   {
@@ -3846,7 +3846,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Kronprinsessegade 11, 1306 Copenhagen',
     slug:'22-system',
-    desc:'22 System is a patented innovation in the field of electrical products and accessories, conceptualised by Omer Arbel…',
+    desc:'22 System은 Omer Arbel이 구상한 전기 제품 및 액세서리 분야의 특허 혁신 기술입니다.',
     events:[],
   },
   {
@@ -3856,7 +3856,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 8, 1437 Copenhagen',
     slug:'3xn-gxn',
-    desc:'3XN GXN is a Danish architecture studio founded in 1986, driven by the belief that architecture shapes behaviour.…',
+    desc:'3XN GXN은 1986년에 설립된 덴마크 건축 스튜디오로, 건축이 행동을 형성한다는 신념을 바탕으로 운영됩니다.',
     events:[],
   },
   {
@@ -3866,7 +3866,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Møntergade 6, 1116 Copenhagen',
     slug:'a-petersen-2f8e2',
-    desc:'There is something really nice about getting up close—to the furniture, the makers, the production process. A.…',
+    desc:'가구, 제작자, 생산 과정을 가까이에서 들여다보는 것에는 뭔가 특별한 매력이 있습니다.',
     events:[],
   },
   {
@@ -3876,7 +3876,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 1255 Copenhagen',
     slug:'amaresh-anand-designs',
-    desc:'AAD is the creative vision of multidisciplinary designer, Amaresh Anand. Rooted in the belief that design transforms…',
+    desc:'AAD는 다분야 디자이너 Amaresh Anand의 창의적 비전입니다. 디자인이 변화를 만든다는 믿음에 뿌리를 두고 있습니다.',
     events:[],
   },
   {
@@ -3886,7 +3886,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'intarsia-furniture',
-    desc:'Aakjaer Furniture (formerly Intarsia Furniture) represents a remarkable fusion of Danish design heritage and…',
+    desc:'Aakjaer Furniture(구 Intarsia Furniture)는 덴마크 디자인 유산의 놀라운 융합을 보여줍니다.',
     events:[],
   },
   {
@@ -3896,7 +3896,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'acerbis',
-    desc:'One of the most enduring furniture companies in Italy, Acerbis stands as a connoisseur’s benchmark of Italian design —…',
+    desc:'이탈리아에서 가장 오래 지속되어 온 가구 회사 중 하나인 Acerbis는 이탈리아 디자인의 감식안 기준으로 자리매김하고 있습니다.',
     events:[],
   },
   {
@@ -3906,7 +3906,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'ahare',
-    desc:'AHARE is a product brand that brings subtle richness to everyday life through scent. They see scent not merely as an…',
+    desc:'AHARE는 향을 통해 일상에 은은한 풍요로움을 더하는 제품 브랜드입니다. 향을 단순한 것이 아닌 특별한 감각으로 봅니다.',
     events:[],
   },
   {
@@ -3916,7 +3916,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'aisti',
-    desc:'Aisti is a Finnish material technology company manufacturing suspended ceiling acoustic tiles from renewable wood…',
+    desc:'Aisti는 재생 가능한 목재로 흡음 천장 타일을 제조하는 핀란드 소재 기술 회사입니다.',
     events:[],
   },
   {
@@ -3926,7 +3926,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 8B, 1123 Copenahgen',
     slug:'akua-objects',
-    desc:'Akua Objects was founded in 2022 by Annika Zobel Agerled and Josefine Arthur in Copenhagen, driven by a desire to…',
+    desc:'Akua Objects는 2022년 Copenhagen에서 Annika Zobel Agerled와 Josefine Arthur가 설립했으며, 특별한 창작 욕구에서 시작되었습니다.',
     events:[],
   },
   {
@@ -3936,7 +3936,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'al2',
-    desc:'AL2 has created distinctive, timeless design pieces since 2013, drawing on a woodworking heritage that dates back to…',
+    desc:'AL2는 2013년부터 독특하고 시대를 초월하는 디자인 작품을 선보여 왔으며, 그 뿌리는 과거로 거슬러 올라가는 목공예 유산에 있습니다.',
     events:[],
   },
   {
@@ -3946,7 +3946,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 67, 1260 Copenhagen',
     slug:'alpi',
-    desc:'ALPI is a leading manufacturer of decorative surfaces made of reconstituted wood. Being the first to industrialise…',
+    desc:'ALPI는 재구성 목재로 만든 장식 표면재의 선도적인 제조업체입니다. 이 분야를 최초로 산업화한 기업으로서 자리매김하고 있습니다.',
     events:[],
   },
   {
@@ -3956,7 +3956,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Godthåbsvej 24, 2000 Frederiksberg',
     slug:'ancher',
-    desc:'Ancher creates handmade tableware for restaurants, coffee shops, canteens, and interior projects—made to be used every…',
+    desc:'Ancher는 레스토랑, 커피숍, 구내식당 및 인테리어 프로젝트를 위한 수제 식기를 제작합니다. 매일 사용하기 위해 만들어진 제품입니다.',
     events:[],
   },
   {
@@ -3966,7 +3966,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'andrea-tsang',
-    desc:'ANDREA TSANG is a Stockholm–based design studio creating objects defined by sculptural restraint, tactile presence,…',
+    desc:'ANDREA TSANG은 Stockholm에 기반을 둔 디자인 스튜디오로, 조각적 절제미와 촉각적 존재감으로 정의되는 오브제를 창조합니다.',
     events:[],
   },
   {
@@ -3976,7 +3976,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Antonigade 10, 1106 Copenhagen',
     slug:'andreu-world',
-    desc:'Andreu World presents a curated selection of new collections within the By Malene Birger showroom in central…',
+    desc:'Andreu World는 Copenhagen 중심부 By Malene Birger 쇼룸에서 엄선된 신규 컬렉션을 선보입니다.',
     events:[],
   },
   {
@@ -3986,7 +3986,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Højbro Plads 6, 1200 Copenhagen',
     slug:'anno-studio',
-    desc:'Anno Studio was founded in 2021 with the vision of relaunching older design classics in a sustainable and updated…',
+    desc:'Anno Studio는 2021년 설립되었으며, 과거 디자인 클래식을 지속 가능하고 현대적인 방식으로 재출시하는 비전을 가지고 있습니다.',
     events:[],
   },
   {
@@ -3996,7 +3996,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 1255 Copenhagen',
     slug:'arper',
-    desc:'Arper is a global design brand that envisions products for the way we live. Founded in Italy in 1989 by the Feltrin…',
+    desc:'Arper는 우리가 살아가는 방식을 위한 제품을 구상하는 글로벌 디자인 브랜드입니다. 1989년 이탈리아에서 Feltrin 가문에 의해 설립되었습니다.',
     events:[],
   },
   {
@@ -4006,7 +4006,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 77, 1260 Copenhagen',
     slug:'artemide-scandinavia',
-    desc:'Artemide is one of the most well-known illumination brands in the world. Known for its "The Human Light" philosophy,…',
+    desc:'Artemide는 세계에서 가장 잘 알려진 조명 브랜드 중 하나입니다. "인간을 위한 빛(The Human Light)" 철학으로 유명합니다.',
     events:[],
   },
   {
@@ -4016,7 +4016,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'MACA Museum, Toldbodgade 12, 1253 Copenhagen',
     slug:'arthur-rottier',
-    desc:'Arthur Rottier is a designer and product developer based in Arnhem, the Netherlands. His practice moves between…',
+    desc:'Arthur Rottier는 네덜란드 Arnhem에 기반을 둔 디자이너이자 제품 개발자입니다. 그의 작업은 다양한 영역을 넘나듭니다.',
     events:[],
   },
   {
@@ -4026,7 +4026,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'artisan',
-    desc:'Artisan is internationally recognised for its refined approach to furniture design and exceptional craftsmanship.…',
+    desc:'Artisan은 세련된 가구 디자인 접근 방식과 탁월한 장인정신으로 국제적으로 인정받고 있습니다.',
     events:[],
   },
   {
@@ -4036,7 +4036,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Snorresgade 22, 2300 Copenhagen',
     slug:'atelier-vierkant',
-    desc:'Atelier Vierkant is a Belgian family–run ceramics studio, founded in 1992 in Ostend and recognised for its handcrafted…',
+    desc:'Atelier Vierkant는 벨기에의 가족 운영 도자기 스튜디오로, 1992년 Ostend에서 설립되었으며 수작업 제작으로 유명합니다.',
     events:[],
   },
   {
@@ -4046,7 +4046,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Esplanaden 12, 1263 Copenhagen',
     slug:'avolt',
-    desc:'AVOLT is a Swedish design studio that develops, designs, and markets objects that extend electricity to devices,…',
+    desc:'AVOLT는 기기에 전기를 전달하는 오브제를 개발, 디자인, 마케팅하는 스웨덴 디자인 스튜디오입니다.',
     events:[],
   },
   {
@@ -4056,7 +4056,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 35, 1260 Copenhagen',
     slug:'aytm',
-    desc:'The idiom of AYTM is characterised by simple and stylish shapes, complemented by the sculptural structures of…',
+    desc:'AYTM의 언어는 단순하고 스타일리시한 형태가 특징이며, 조각적 구조로 보완됩니다.',
     events:[],
   },
   {
@@ -4066,7 +4066,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Sankt Peders Stræde 45B, 1453 Copenhagen',
     slug:'and',
-    desc:'A–N–D is a decorative luminaire design studio and manufacturer where original collections are conceptualised, built,…',
+    desc:'A–N–D는 독창적인 컬렉션을 구상하고 제작하는 장식 조명 디자인 스튜디오이자 제조업체입니다.',
     events:[],
   },
   {
@@ -4076,7 +4076,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 13, 2100 Copenhagen',
     slug:'basalte',
-    desc:'Basalte, design for your intelligent home. Founded in 2008, Basalte creates refined solutions where timeless design…',
+    desc:'Basalte, 지능형 주거를 위한 디자인. 2008년에 설립된 Basalte는 시대를 초월한 디자인의 세련된 솔루션을 만듭니다.',
     events:[],
   },
   {
@@ -4086,7 +4086,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'bassamfellows',
-    desc:'BassamFellows is a Furniture & Design House renowned for its exceptional craftsmanship and distinctive creativity and…',
+    desc:'BassamFellows는 탁월한 장인정신과 독특한 창의성으로 유명한 가구 및 디자인 하우스입니다.',
     events:[],
   },
   {
@@ -4096,7 +4096,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14B, 2300 Copenhagen',
     slug:'before-vintage-furniture-7d9c1',
-    desc:'BEFORE VINTAGE FURNITURE is a Japanese furniture brand based in Hokkaido, Japan, creating furniture from valuable wood…',
+    desc:'BEFORE VINTAGE FURNITURE는 일본 Hokkaido에 기반을 둔 일본 가구 브랜드로, 귀중한 목재로 가구를 제작합니다.',
     events:[],
   },
   {
@@ -4106,7 +4106,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 4A, 2100 Copenhagen',
     slug:'belgium-is-design',
-    desc:'Belgium is Design is an initiative created to promote Belgian design on the international stage. Active since 2011, it…',
+    desc:'Belgium is Design은 국제 무대에서 벨기에 디자인을 홍보하기 위해 만들어진 이니셔티브입니다. 2011년부터 활동하고 있습니다.',
     events:[],
   },
   {
@@ -4116,7 +4116,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 28B, 1260 Copenhagen',
     slug:'bergs-potter',
-    desc:'Bergs Potter is a lifestyle brand set out to bring more life and greenery to our human spaces. By providing timeless…',
+    desc:'Bergs Potter는 우리의 인간 공간에 더 많은 생명과 녹색을 가져오기 위한 라이프스타일 브랜드입니다. 시대를 초월한 제품을 제공합니다.',
     events:[],
   },
   {
@@ -4126,7 +4126,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'bernh-pedersen-son',
-    desc:'Bernh. Pedersen & Søn is a Danish furniture maker established in 1902, representing four generations of family–owned…',
+    desc:'Bernh. Pedersen & Søn은 1902년에 설립된 덴마크 가구 제조업체로, 4대째 이어져 온 가족 기업입니다.',
     events:[],
   },
   {
@@ -4136,7 +4136,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'bernstorffsminde',
-    desc:'Since 1837, Bernstorffsminde has produced quality furniture, building a strong heritage and commitment to creating…',
+    desc:'1837년부터 Bernstorffsminde는 고품질 가구를 생산해 왔으며, 강력한 유산과 창조에 대한 헌신을 쌓아왔습니다.',
     events:[],
   },
   {
@@ -4146,7 +4146,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gothersgade 109, 1123 Copenhagen',
     slug:'birgitte-due-madsen',
-    desc:'Birgitte Due Madsen is a Copenhagen-based artist and designer working across furniture, objects, and sculptural form.…',
+    desc:'Birgitte Due Madsen은 코펜하겐을 기반으로 활동하는 아티스트이자 디자이너로, 가구, 오브제, 조각적 형태를 아우르는 작업을 하고 있습니다.',
     events:[],
   },
   {
@@ -4156,7 +4156,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Amaliegade 15, 1256 Copenhagen',
     slug:'boconcept-a-s',
-    desc:'Epitomising Danish design values of purpose–driven aesthetics, simplicity and craftsmanship, BoConcept has evolved…',
+    desc:'목적 지향적 미학, 단순함, 장인정신이라는 덴마크 디자인 가치를 대표하는 BoConcept는 지속적으로 발전해왔습니다.',
     events:[],
   },
   {
@@ -4166,7 +4166,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 32, 1260 Copenhagen',
     slug:'boffi',
-    desc:'The Boffi|DePadova Way of Living is made up of details, customs and practices woven together into a rich tapestry. The…',
+    desc:'Boffi|DePadova의 생활 방식은 디테일, 관습, 그리고 실천들이 하나의 풍성한 태피스트리로 엮여 만들어집니다.',
     events:[],
   },
   {
@@ -4176,7 +4176,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 28B, 1260 Copenhagen',
     slug:'brdr-kruger',
-    desc:'Established in 1886, Brdr. Krüger spans five generations of quality furniture craftsmanship in Denmark. Collaborating…',
+    desc:'1886년에 설립된 Brdr. Krüger는 덴마크에서 5세대에 걸쳐 고품질 가구 장인정신을 이어오고 있습니다.',
     events:[],
   },
   {
@@ -4186,7 +4186,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'brokis',
-    desc:'The Czech premium lighting brand BROKIS stands for the synthesis of exquisite design, superior quality, and the…',
+    desc:'체코의 프리미엄 조명 브랜드 BROKIS는 정교한 디자인, 우수한 품질, 그리고 장인정신의 결합을 상징합니다.',
     events:[],
   },
   {
@@ -4196,7 +4196,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'by-eve-b-v',
-    desc:'BY EVE, founded by designer Sandra Peters, explores light through the purity of mouth-blown glass and timeless form.…',
+    desc:'디자이너 Sandra Peters가 설립한 BY EVE는 입으로 불어 만든 유리의 순수함과 시대를 초월한 형태를 통해 빛을 탐구합니다.',
     events:[],
   },
   {
@@ -4206,7 +4206,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Borgergade 15B, 1300 Copenhagen',
     slug:'caia-leifsdotter',
-    desc:'Sculptural, bold, and refined. CAIA LEIFSDOTTER is a Scandinavian Design House redefining tradition with an…',
+    desc:'조각적이고 대담하며 세련된. CAIA LEIFSDOTTER는 스칸디나비아 디자인 하우스로, 전통을 새롭게 재정의하고 있습니다.',
     events:[],
   },
   {
@@ -4216,7 +4216,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 3rd Floor, 1265 Copenhagen',
     slug:'casagent',
-    desc:'CASAgent is a contemporary ceramics brand rooted in Scandinavian simplicity and Mediterranean craftsmanship. Designed…',
+    desc:'CASAgent는 스칸디나비아의 단순함과 지중해의 장인정신에 뿌리를 둔 현대 도자기 브랜드입니다.',
     events:[],
   },
   {
@@ -4226,7 +4226,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'cassina',
-    desc:'Cassina, founded in Meda, northern Italy, in 1927, embraced industrial production in the 1950s, shifting from…',
+    desc:'1927년 이탈리아 북부 Meda에서 설립된 Cassina는 1950년대에 산업 생산을 도입하며 변화를 시작했습니다.',
     events:[],
   },
   {
@@ -4236,7 +4236,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'cc-tapis',
-    desc:'Founded in 2011, cc–tapis is a contemporary rug company based in Milan, focused on an imaginative approach, bespoke…',
+    desc:'2011년에 설립된 cc-tapis는 밀라노에 기반을 둔 현대 러그 회사로, 상상력 넘치는 접근과 맞춤 제작에 중점을 두고 있습니다.',
     events:[],
   },
   {
@@ -4246,7 +4246,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'chat-board',
-    desc:'Since launching the world’s first magnetic glass board in 2004, CHAT BOARD has been dedicated to creating products…',
+    desc:'2004년 세계 최초의 마그네틱 유리 보드를 출시한 이래, CHAT BOARD는 혁신적인 제품 제작에 전념해왔습니다.',
     events:[],
   },
   {
@@ -4256,7 +4256,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'chen-min-office',
-    desc:'Chen Min Office is a multi-faceted design practice established by designer Chen Min whose production ranges from the…',
+    desc:'Chen Min Office는 디자이너 Chen Min이 설립한 다방면의 디자인 스튜디오로, 다양한 범위의 작품을 선보입니다.',
     events:[],
   },
   {
@@ -4266,7 +4266,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'tuki-dsgnstudio',
-    desc:'CLDW (CL Design Works) is an emerging design studio based in Denmark, creating furniture and objects in an…',
+    desc:'CLDW(CL Design Works)는 덴마크에 기반을 둔 신진 디자인 스튜디오로, 가구와 오브제를 창조하고 있습니다.',
     events:[],
   },
   {
@@ -4276,7 +4276,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 4, 1265 Copenhagen',
     slug:'confluentia-colorum',
-    desc:'Confluentia Colorum is a site–specific installation presented by File Under Pop in Marmorkirken. It explores colour…',
+    desc:'Confluentia Colorum은 Marmorkirken에서 File Under Pop이 선보이는 장소 특정적 설치 작품으로, 색채를 탐구합니다.',
     events:[],
   },
   {
@@ -4286,7 +4286,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'cor-sitzmobel-helmut-lubke-gmbh-co-kg',
-    desc:'COR Sitzmöbel stands for interior design culture, aesthetic appeal and excellent seating comfort. The premium brand…',
+    desc:'COR Sitzmöbel은 인테리어 디자인 문화, 미적 매력, 그리고 탁월한 좌석 안락함을 대표합니다. 이 프리미엄 브랜드는...',
     events:[],
   },
   {
@@ -4296,7 +4296,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'crafting-plastics-x-loop-loop',
-    desc:'Crafting Plastics! x Studio LoopLoop brings together expertise in biomaterial innovation and circular production to…',
+    desc:'Crafting Plastics! x Studio LoopLoop은 바이오 소재 혁신과 순환 생산에 대한 전문성을 결합합니다.',
     events:[],
   },
   {
@@ -4306,7 +4306,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 33C, 1260 Copenhagen',
     slug:'cube-design-a-s',
-    desc:'Since the 1980s, Cube Design has been a leading player on the contract market for quality office furniture. The…',
+    desc:'1980년대부터 Cube Design은 고품질 오피스 가구 계약 시장의 선두주자로 자리매김해왔습니다.',
     events:[],
   },
   {
@@ -4316,7 +4316,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Dronningens Tværgade 2, 1302 Copenhagen',
     slug:'crafting-nature',
-    desc:'Cyprus Handicraft was established in 1975 to record and preserve various traditional sectors and techniques of Cypriot…',
+    desc:'Cyprus Handicraft는 1975년에 설립되어 키프로스의 다양한 전통 분야와 기법을 기록하고 보존하고 있습니다.',
     events:[],
   },
   {
@@ -4326,7 +4326,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'d-line',
-    desc:'d line was established in Denmark in 1971 and is rooted in a design tradition defined by simplicity, honest materials…',
+    desc:'d line은 1971년 덴마크에서 설립되었으며, 단순함과 정직한 소재로 정의되는 디자인 전통에 뿌리를 두고 있습니다.',
     events:[],
   },
   {
@@ -4336,7 +4336,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Galleri Christoffer Egelund, Bredgade 75, 1260 Copenhagen',
     slug:'dagmar',
-    desc:'Dagmar has over a decade of expertise in restoring and working with classic 20th–century Scandinavian furniture.…',
+    desc:'Dagmar는 20세기 클래식 스칸디나비아 가구를 복원하고 작업하는 분야에서 10년 이상의 전문성을 보유하고 있습니다.',
     events:[],
   },
   {
@@ -4346,7 +4346,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 19, 1260 Copenhagen',
     slug:'damixa',
-    desc:'Damixa is rooted in Danish design and creates refined, built–to–last kitchen and bathroom tap–ware. Part of FM…',
+    desc:'Damixa는 덴마크 디자인에 뿌리를 두고, 세련되고 오래 사용할 수 있는 주방 및 욕실 수전을 만듭니다. FM의 일부입니다.',
     events:[],
   },
   {
@@ -4356,7 +4356,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Sundkaj 153, 2150 Copenhagen',
     slug:'dauphin-humandesign-group',
-    desc:'Dauphin HumanDesign® Group is an international provider of forward–thinking office solutions, placing people and their…',
+    desc:'Dauphin HumanDesign® Group은 미래지향적인 오피스 솔루션을 제공하는 국제 기업으로, 사람과 그들의 필요를 최우선으로 합니다.',
     events:[],
   },
   {
@@ -4366,7 +4366,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 1255 Copenhagen',
     slug:'david-valner-studio',
-    desc:'David Valner has a background in glass design, sculpture, fine arts, and interactive media. David has grown up in a…',
+    desc:'David Valner는 유리 디자인, 조각, 미술, 인터랙티브 미디어 분야의 배경을 가지고 있습니다. David는 유리 공예 환경에서 성장했습니다.',
     events:[],
   },
   {
@@ -4376,7 +4376,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 28b, 1260 Copenhagen',
     slug:'davidpompa',
-    desc:'Davidpompa is a Mexican lighting studio focused on materiality, research and craftsmanship, creating collections that…',
+    desc:'Davidpompa는 소재성, 연구, 장인정신에 중점을 둔 멕시코 조명 스튜디오로, 독창적인 컬렉션을 제작합니다.',
     events:[],
   },
   {
@@ -4386,7 +4386,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Dronningens Tværgade 50, 1302 Copenhagen',
     slug:'dcw-editions',
-    desc:'DCW éditions creates lighting objects that are thoughtfully conceived, well designed and well made. Whether they are…',
+    desc:'DCW éditions는 세심하게 구상되고, 잘 디자인되며, 잘 만들어진 조명 오브제를 창조합니다.',
     events:[],
   },
   {
@@ -4396,7 +4396,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Papirøen 21, 1436 Copenhagen',
     slug:'deoron',
-    desc:'Founded in 2021, DEORON is an independent curatorial platform positioned at the crossroads of design, research, and…',
+    desc:'2021년에 설립된 DEORON은 디자인, 리서치, 그리고 큐레이션의 교차점에 위치한 독립 큐레이토리얼 플랫폼입니다.',
     events:[],
   },
   {
@@ -4406,7 +4406,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'design-dialogue-de7c9',
-    desc:'Ark Journal presents the third edition of DESIGN / DIALOGUE, an exclusive exhibition during 3daysofdesign bringing…',
+    desc:'Ark Journal은 3daysofdesign 기간 동안 DESIGN / DIALOGUE 3회 에디션을 선보입니다. 이는 독점적인 전시로...',
     events:[],
   },
   {
@@ -4416,7 +4416,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'design-house-stockholm',
-    desc:'Design House Stockholm defines itself as a publishing house rather than a conventional producer. Since 1992, it has…',
+    desc:'Design House Stockholm은 스스로를 전통적인 제조사가 아닌 출판사로 정의합니다. 1992년부터 지속해왔습니다.',
     events:[],
   },
   {
@@ -4426,7 +4426,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Langelinie Allé 16, 2100 Copenhagen',
     slug:'designpreowned',
-    desc:'It’s all about furniture heritage and family heritage. Founded in 2024 by Edward Gubi, a third–generation member of…',
+    desc:'가구 유산과 가족 유산에 관한 이야기입니다. Gubi 3세대인 Edward Gubi가 2024년에 설립했습니다.',
     events:[],
   },
   {
@@ -4436,7 +4436,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Oslo Plads 1, 2100 Copenhagen',
     slug:'designs-of-the-time',
-    desc:'Designs Of The Time is a Belgian company founded in 1998 by the Puylaert family. In their interior textiles, they…',
+    desc:'Designs Of The Time은 1998년 Puylaert 가문이 설립한 벨기에 회사입니다. 인테리어 텍스타일 작업에서...',
     events:[],
   },
   {
@@ -4446,7 +4446,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'devon-liedtke',
-    desc:'Barcelona–based design studio, Devon Liedtke, is a collection of objects for the here and there, thoughtfully designed…',
+    desc:'Barcelona에 기반을 둔 디자인 스튜디오 Devon Liedtke는 일상의 여기저기를 위한 오브제 컬렉션으로, 세심하게 디자인되었습니다.',
     events:[],
   },
   {
@@ -4456,7 +4456,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 2nd Floor, 1255 Copenhagen',
     slug:'die-stoffmacher-gmbh',
-    desc:'Die Stoffmacher is a German design agency dedicated to textile living culture. With a deep passion for textiles,…',
+    desc:'Die Stoffmacher는 텍스타일 생활 문화에 전념하는 독일 디자인 에이전시입니다. 텍스타일에 대한 깊은 열정으로…',
     events:[],
   },
   {
@@ -4466,7 +4466,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Søtorvet 5, 1371 Copenhagen',
     slug:'dinesen',
-    desc:'Founded in 1898, Dinesen is a family–run Danish company with 128 years of experience crafting high–quality wooden…',
+    desc:'1898년에 설립된 Dinesen은 128년간 고품질 목재 제작 경험을 보유한 덴마크 가족 기업입니다.',
     events:[],
   },
   {
@@ -4476,7 +4476,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Simone Book Services, Vester Voldgade 106, 1552 Copenhagen',
     slug:'displayed',
-    desc:'Introducing Display / Displayed, a group exhibition for 3daysofdesign in collaboration with Simone Book Services that…',
+    desc:'Display / Displayed를 소개합니다. Simone Book Services와 협업하여 3daysofdesign을 위해 선보이는 그룹 전시입니다.',
     events:[],
   },
   {
@@ -4486,7 +4486,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1401 Copenhagen',
     slug:'droppaper-aps',
-    desc:'Rethinking paper for architecture and exhibition design. Drop Paper sits somewhere between material innovation and…',
+    desc:'건축과 전시 디자인을 위한 종이의 재해석. Drop Paper는 소재 혁신과 디자인의 경계에 위치합니다.',
     events:[],
   },
   {
@@ -4496,7 +4496,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'marta-los-angeles',
-    desc:'Marta is a Los Angeles–based, globally–engaged gallery for art and design. Founded by partners and designers Benjamin…',
+    desc:'Marta는 Los Angeles에 기반을 둔 글로벌 아트 앤 디자인 갤러리입니다. 파트너이자 디자이너인 Benjamin이 설립했습니다.',
     events:[],
   },
   {
@@ -4506,7 +4506,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 36, 1401 Copenhagen',
     slug:'dusty-deco',
-    desc:'Edin and Lina Kjellvertz launched Dusty Deco as a platform for curating vintage furniture, interior accessories and…',
+    desc:'Edin과 Lina Kjellvertz는 빈티지 가구, 인테리어 액세서리를 큐레이팅하는 플랫폼으로 Dusty Deco를 런칭했습니다.',
     events:[],
   },
   {
@@ -4516,7 +4516,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 110A, 1264 Copenhagen',
     slug:'duus-moller',
-    desc:'Good quality, craftsmanship and Danish production were the key principles that Duus & Møller was founded upon, and the…',
+    desc:'우수한 품질, 장인정신, 덴마크 생산은 Duus & Møller가 설립된 핵심 원칙이며, 지금까지도…',
     events:[],
   },
   {
@@ -4526,7 +4526,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Hotel D\'Angleterre, Kongens Nytorv 34, 1050 Copenhagen',
     slug:'dux',
-    desc:'DUX High-Performance Sleep Systems are the result of nearly nine decades of research and testing. Four generations of…',
+    desc:'DUX High-Performance Sleep Systems는 거의 90년에 걸친 연구와 테스트의 결과물입니다. 4세대에 걸쳐…',
     events:[],
   },
   {
@@ -4536,7 +4536,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Møntergade 19, 1116 Copenhagen',
     slug:'dynaudio',
-    desc:'In the very heart of Copenhagen, Dynaudio’s first permanent European flagship, designed by Norm Architects, is…',
+    desc:'Copenhagen 중심부에 위치한 Dynaudio의 첫 번째 유럽 상설 플래그십 스토어는 Norm Architects가 디자인했습니다.',
     events:[],
   },
   {
@@ -4546,7 +4546,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'editora',
-    desc:'The name EDITORA means "editor."​ Based in Japan—a nation far from where the great masters of design once lived—they…',
+    desc:'EDITORA라는 이름은 "편집자"를 의미합니다. 위대한 디자인 거장들이 살았던 곳에서 멀리 떨어진 일본에 기반을 두고 있습니다.',
     events:[],
   },
   {
@@ -4556,7 +4556,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'eggersmann-kuechen-gmbh-co-kg',
-    desc:'Sophisticated since 1908. Every detail counts and has a great impact on the overall appearance of an eggersmann: every…',
+    desc:'1908년부터 이어온 세련미. 모든 디테일이 중요하며 eggersmann의 전체적인 외관에 큰 영향을 미칩니다.',
     events:[],
   },
   {
@@ -4566,7 +4566,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'ekornes-as',
-    desc:'Ekornes AS and Ekornes Interior Solutions is a leading Norwegian furniture manufacturer, renowned for its…',
+    desc:'Ekornes AS와 Ekornes Interior Solutions는 노르웨이의 선도적인 가구 제조업체로 잘 알려져 있습니다.',
     events:[],
   },
   {
@@ -4576,7 +4576,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 45, 1260 Copenhagen',
     slug:'elmo-leather',
-    desc:'Elmo lives and breathes the art and craftsmanship of natural leather. A combination of quality, passion and a…',
+    desc:'Elmo는 천연 가죽의 예술과 장인정신을 살아 숨쉬게 합니다. 품질, 열정, 그리고…',
     events:[],
   },
   {
@@ -4586,7 +4586,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'elvang',
-    desc:'Elvang creates responsibly produced textiles which combine timeless Nordic design with exquisite Peruvian…',
+    desc:'Elvang은 시대를 초월한 북유럽 디자인과 정교한 페루 장인정신을 결합한 책임감 있는 텍스타일을 제작합니다.',
     events:[],
   },
   {
@@ -4596,7 +4596,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'elvo-1923',
-    desc:'ELVO was founded in 1923 by Valdemar Martin Ørstrup, who named the company after four of his children: Ellen, Leo,…',
+    desc:'ELVO는 1923년 Valdemar Martin Ørstrup에 의해 설립되었으며, 그의 네 자녀인 Ellen, Leo의 이름을 따서 명명되었습니다.',
     events:[],
   },
   {
@@ -4606,7 +4606,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Møntergade 22, 1116 Copenhagen',
     slug:'emanuele-pantanella-design',
-    desc:'Emanuele Pantanella was an artist and designer inspired by his travels across the Eastern Mediterranean, where he…',
+    desc:'Emanuele Pantanella는 동지중해를 가로지르는 여행에서 영감을 받은 아티스트이자 디자이너였습니다.',
     events:[],
   },
   {
@@ -4616,7 +4616,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Kongens Nytorv 4, 1050 Copenhagen',
     slug:'the-french-embassy-in-denmark-institut-francais-du-danemark',
-    desc:'The French Embassy in Denmark is located in the Thott Palace, a remarkable 17th century historical building on Kongens…',
+    desc:'덴마크 주재 프랑스 대사관은 Kongens Nytorv에 위치한 17세기 역사적 건물인 Thott Palace에 자리하고 있습니다.',
     events:[],
   },
   {
@@ -4626,7 +4626,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Italian Residence, Fredericiagade 2, 1310 Copenhagen',
     slug:'italian-ambassador-in-denmark',
-    desc:'The Italian Embassy in Denmark is located in an elegant historic residence in the heart of Copenhagen, reflecting both…',
+    desc:'덴마크 주재 이탈리아 대사관은 Copenhagen 중심부의 우아한 역사적 저택에 위치하며, 두 나라의 문화를 반영합니다.',
     events:[],
   },
   {
@@ -4636,7 +4636,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'emu',
-    desc:'EMU celebrates Design as a characteristic feature of its creative and inspirational work. Rooted in Italian heritage…',
+    desc:'EMU는 창의적이고 영감을 주는 작업의 특징으로 디자인을 기념합니다. 이탈리아 유산에 뿌리를 두고 있습니다.',
     events:[],
   },
   {
@@ -4646,7 +4646,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'ethimo',
-    desc:'Ethimo is an Italian company founded in 2009 that specialised in high–end outdoor furnishings that express…',
+    desc:'Ethimo는 2009년에 설립된 이탈리아 회사로, 고급 아웃도어 가구를 전문으로 합니다.',
     events:[],
   },
   {
@@ -4656,7 +4656,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'evaristti-studio',
-    desc:'Slow Extraction / Dimora Circolare / Wasted / La Mesure. Marco Evaristti is an artist and architect trained in the…',
+    desc:'Slow Extraction / Dimora Circolare / Wasted / La Mesure. Marco Evaristti는 아티스트이자 건축가로 훈련받았습니다.',
     events:[],
   },
   {
@@ -4666,7 +4666,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'exakt-mfg',
-    desc:'Exakt MFG is a brand combining artisanry and state of the art industrial technology. The design principle is based on…',
+    desc:'Exakt MFG는 장인정신과 최첨단 산업 기술을 결합한 브랜드입니다. 디자인 원칙은 다음을 기반으로 합니다.',
     events:[],
   },
   {
@@ -4676,7 +4676,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'fast',
-    desc:'FAST is an Italian outdoor furniture manufacturer based in Valle Sabbia, between Lake Idro and Lake Garda. Designed…',
+    desc:'FAST는 Lake Idro와 Lake Garda 사이 Valle Sabbia에 기반을 둔 이탈리아 아웃도어 가구 제조업체입니다.',
     events:[],
   },
   {
@@ -4686,7 +4686,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Noura Residency, Sankt Peders Stræde 35A, Copenhagen',
     slug:'home-from-home-curated-by-charlotte-taylor-x-noura-residency',
-    desc:'An installation by Imogen Kwok featuring KØGE, and MARLOT BAUS hosted by Noura Residency. Craftsmanship, design, and…',
+    desc:'Noura Residency가 주최하고 KØGE와 MARLOT BAUS가 참여하는 Imogen Kwok의 설치 작업. 장인정신, 디자인, 그리고…',
     events:[],
   },
   {
@@ -4696,7 +4696,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Dampfærgevej 13, 2100 Copenhagen',
     slug:'fiorinitrading',
-    desc:'Fiorini Trading represents a curated selection of leading furniture brands such as Living Divani, Desalto, Extremis,…',
+    desc:'Fiorini Trading은 Living Divani, Desalto, Extremis 등 선도적인 가구 브랜드의 엄선된 컬렉션을 대표합니다.',
     events:[],
   },
   {
@@ -4706,7 +4706,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Højbro Plads 10, 1200 Copenhagen',
     slug:'flokk',
-    desc:'Flokk is a family of design–led brands creating workspaces where people and organisations thrive. Rooted in…',
+    desc:'Flokk은 사람과 조직이 번영하는 업무 공간을 창조하는 디자인 주도 브랜드 패밀리입니다. 뿌리는…',
     events:[],
   },
   {
@@ -4716,7 +4716,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'flokk-fjell',
-    desc:'Flokk & Fjell is a Norwegian design brand operating at the intersection of nature, craftsmanship, and architecture.…',
+    desc:'Flokk & Fjell은 자연, 장인정신, 건축의 교차점에서 활동하는 노르웨이 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -4726,7 +4726,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Martin Asbæk Gallery, Bredgade 23, 1260 Copenhagen',
     slug:'flos-scandinavia',
-    desc:'Since its founding in Merano, Italy, in 1962, Flos has long been recognised as a company of excellence, creating…',
+    desc:'1962년 이탈리아 Merano에서 설립된 이래, Flos는 오랫동안 탁월한 조명을 창조하는 우수 기업으로 인정받아 왔습니다.',
     events:[],
   },
   {
@@ -4736,7 +4736,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Sølvgade 5, 1307 Copenhagen',
     slug:'fogia-collection',
-    desc:'Fogia’s mission as a furniture maker is to turn exceptional ideas into well–crafted pieces. At its centre is the…',
+    desc:'가구 제작자로서 Fogia의 사명은 탁월한 아이디어를 정교하게 제작된 작품으로 전환하는 것입니다. 그 중심에는…',
     events:[],
   },
   {
@@ -4746,7 +4746,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'formei',
-    desc:'Crossing temporal boundaries—sculptural, yet inherently functional. Designed to enrich everyday life, each piece…',
+    desc:'시간의 경계를 넘나드는 조각적이면서도 본질적으로 기능적인 디자인. 일상을 풍요롭게 하기 위해 디자인된 각각의 제품…',
     events:[],
   },
   {
@@ -4756,7 +4756,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'forming-function',
-    desc:'Make the essential beautiful. Forming Function turns everyday necessities into designed centrepieces; power, charging,…',
+    desc:'본질을 아름답게 만듭니다. Forming Function은 일상의 필수품을 디자인의 중심으로 변화시킵니다. 전력, 충전…',
     events:[],
   },
   {
@@ -4766,7 +4766,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'fornace-brioni',
-    desc:'Fornace Brioni was founded in 1920, following the acquisition of the so-called “Fornacione” (according to certain…',
+    desc:'Fornace Brioni는 1920년 이른바 "Fornacione"의 인수에 따라 설립되었습니다…',
     events:[],
   },
   {
@@ -4776,7 +4776,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'frame-studio',
-    desc:'With a Scandinavian heritage and an uncompromising approach to design and aesthetic, Frame Studios strive to offer…',
+    desc:'Scandinavian 헤리티지와 디자인 및 미학에 대한 타협 없는 접근 방식을 바탕으로, Frame Studios는 최고의 경험을 제공하기 위해 노력합니다…',
     events:[],
   },
   {
@@ -4786,7 +4786,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Lindencrone Mansion, Bredgade 26, 1260 Copenhagen',
     slug:'frandsen',
-    desc:'For more than 55 years, FRANDSEN has worked with light and lighting, and this is still a cornerstone in the heritage.…',
+    desc:'55년 이상 FRANDSEN은 빛과 조명을 연구해왔으며, 이는 여전히 브랜드 헤리티지의 핵심입니다…',
     events:[],
   },
   {
@@ -4796,7 +4796,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'freifrau-manufaktur-gmbh',
-    desc:'What started back in 2012 as a one–man show has now, in little more than a decade, become an established European…',
+    desc:'2012년 1인 브랜드로 시작한 이래, 10여 년 만에 확고한 유럽 브랜드로 자리잡았습니다…',
     events:[],
   },
   {
@@ -4806,7 +4806,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 1255 Copenhagen',
     slug:'freistil-rolf-benz',
-    desc:'FOR COMFORT IN THE COMMUNITY. freistil redefines premium by breaking free from rigid stereotypes and creating a fresh,…',
+    desc:'커뮤니티 속 편안함을 위하여. freistil은 경직된 고정관념에서 벗어나 신선한 방식으로 프리미엄을 재정의합니다…',
     events:[],
   },
   {
@@ -4816,7 +4816,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Store Kongensgade 128, 1264 Copenhagen',
     slug:'freitag-lab-ag',
-    desc:'FREITAG makes bags and accessories from used and, increasingly, circular materials. What began in Zurich in 1993 with…',
+    desc:'FREITAG는 재사용 소재와 점차 순환 가능한 소재로 가방과 액세서리를 만듭니다. 1993년 Zurich에서 시작된 이래…',
     events:[],
   },
   {
@@ -4826,7 +4826,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 36, 1401 Copenhagen',
     slug:'friends-founders',
-    desc:'FRIENDS & FOUNDERS creates contemporary design with strong focuses on architecture, art, and craft. A sculptural…',
+    desc:'FRIENDS & FOUNDERS는 건축, 예술, 공예에 강력히 집중하는 현대적 디자인을 창조합니다. 조각적인…',
     events:[],
   },
   {
@@ -4836,7 +4836,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'frilund-furniture',
-    desc:'Frilund\'s foundation is built on respect. Respect for the craft, for the materials, for the Danish tradition of design…',
+    desc:'Frilund's foundation is built on respect. Respect for the craft, for the materials, for the Danish tradition of design…',
     events:[],
   },
   {
@@ -4846,7 +4846,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Niels Hemmingsens Gade 10, 1153 Copenhagen',
     slug:'fripon',
-    desc:'Established in 2025, FIRPON\'s first endeavour is to bring the light back to the somewhat mythical Filosof Lamp,…',
+    desc:'2025년에 설립된 FIRPON's first endeavour is to bring the light back to the somewhat mythical Filosof Lamp,…',
     events:[],
   },
   {
@@ -4856,7 +4856,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 8, 1437 Copenhagen',
     slug:'front',
-    desc:'FRONT is a curated platform for sustainable building materials. Working closely with innovative producers, such as…',
+    desc:'FRONT는 지속 가능한 건축 자재를 위한 큐레이션 플랫폼입니다. 혁신적인 생산자들과 긴밀히 협력하며…',
     events:[],
   },
   {
@@ -4866,7 +4866,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vestergade 20C, 1456 Copenhagen',
     slug:'frostline',
-    desc:'Frostline is created, designed, and handcrafted in Denmark. Explore the range of uncompromising frost–free outdoor…',
+    desc:'Frostline은 Denmark에서 창조, 디자인, 수작업으로 제작됩니다. 타협 없는 서리 방지 야외용 제품 라인을 만나보세요…',
     events:[],
   },
   {
@@ -4876,7 +4876,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 128, 1264 Copenhagen',
     slug:'Geberit',
-    desc:'Geberit is a specialist in mastering water and creating advanced bathroom solutions that unite reliable…',
+    desc:'Geberit은 물 관리 전문 기업으로, 신뢰할 수 있는 고급 욕실 솔루션을 만듭니다…',
     events:[],
   },
   {
@@ -4886,7 +4886,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'gemla-fabrikers-ab',
-    desc:'Gemla is a contemporary furniture maker—and always has been. Yet at the same time, they verge on being an anachronism.…',
+    desc:'Gemla는 현대적인 가구 제작자이며, 언제나 그래왔습니다. 그러면서도 동시에 시대착오적인 면모를 지니고 있습니다…',
     events:[],
   },
   {
@@ -4896,7 +4896,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'sverige',
-    desc:'With a love for timeless design. G.A.D creates furniture in solid wood and Nordic natural materials, rooted in Swedish…',
+    desc:'시대를 초월한 디자인에 대한 애정으로. G.A.D는 Swedish 전통에 뿌리를 둔 원목과 Nordic 천연 소재로 가구를 제작합니다…',
     events:[],
   },
   {
@@ -4906,7 +4906,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'aktiebolaget-grythyttans-stalmobler',
-    desc:'Grythyttan Stålmöbler is one of Sweden’s oldest furniture manufacturers, with a long tradition of craftsmanship and…',
+    desc:'Grythyttan Stålmöbler는 Sweden에서 가장 오래된 가구 제조업체 중 하나로, 장인정신의 긴 전통을 자랑합니다…',
     events:[],
   },
   {
@@ -4916,7 +4916,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'gudbrandsdalens-uldvarefabrik',
-    desc:'Gudbrandsdalens Uldvarefabrik (GU) is a Norwegian textile manufacturer based in Lillehammer, known for its…',
+    desc:'Gudbrandsdalens Uldvarefabrik(GU)은 Lillehammer에 기반을 둔 노르웨이 텍스타일 제조업체로, 뛰어난 품질로 알려져 있습니다…',
     events:[],
   },
   {
@@ -4926,7 +4926,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Nikolaj Plads 9—11, 1067 Copenhagen',
     slug:'h-skjalm-p',
-    desc:'A Danish design brand, and concept store founded in 1953 in the heart of Copenhagen by Hagbarth Skjalm Petersen and…',
+    desc:'1953년 Copenhagen 중심부에서 Hagbarth Skjalm Petersen이 설립한 덴마크 디자인 브랜드이자 편집숍입니다…',
     events:[],
   },
   {
@@ -4936,7 +4936,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Overgaden Neden Vandet 17, 1414 Copenhagen',
     slug:'hay',
-    desc:'HAY is a design brand that creates high–quality furniture, lighting, and accessories that are long–lasting and…',
+    desc:'HAY는 오래 지속되는 고품질 가구, 조명, 액세서리를 만드는 디자인 브랜드입니다…',
     events:[],
   },
   {
@@ -4946,7 +4946,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'hege',
-    desc:'HEGE is both a cooking utensil for direct flame use and elegant tableware for the dining table. By combining cooking…',
+    desc:'HEGE는 직화 조리 도구이자 식탁을 위한 우아한 테이블웨어입니다. 조리와 식사를 결합하여…',
     events:[],
   },
   {
@@ -4956,7 +4956,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 17, 1260 Copenhagen',
     slug:'helle-mardahl-studio',
-    desc:'Helle Mardahl Studio operates at the intersection of art and functionality to create a dreamy universe of richly…',
+    desc:'Helle Mardahl Studio는 예술과 기능성의 교차점에서 작업하며, 풍부한 색채의 꿈같은 세계를 창조합니다…',
     events:[],
   },
   {
@@ -4966,7 +4966,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palæet, Bredgade 28, 1260 Copenhagen',
     slug:'hind-rabii-lighting-studio',
-    desc:'Hind Rabii places emotion at the heart of design, conceiving light as both expression and experience. Founded in 2005,…',
+    desc:'Hind Rabii는 감성을 디자인의 중심에 두고, 빛을 표현이자 경험으로 인식합니다. 2005년에 설립되어…',
     events:[],
   },
   {
@@ -4976,7 +4976,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'hollis-morris',
-    desc:'Hollis+Morris proudly established its roots in Toronto, Canada, where its designs are inspired, materials are sourced,…',
+    desc:'Hollis+Morris는 캐나다 Toronto에 뿌리를 두고 있으며, 이곳에서 영감을 받고 소재를 조달하여 디자인합니다…',
     events:[],
   },
   {
@@ -4986,7 +4986,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Århusgade 131, 2150 Copenhagen',
     slug:'houe',
-    desc:'HOUE is a Danish design house established in 2007 and rooted in the Scandinavian design tradition. HOUE creates…',
+    desc:'HOUE는 2007년에 설립된 덴마크 디자인 하우스로, Scandinavian 디자인 전통에 뿌리를 두고 있습니다. HOUE는…',
     events:[],
   },
   {
@@ -4996,7 +4996,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'ekbacken-studios',
-    desc:'Hyfer Objects is a Stockholm–based design studio dedicated to pushing the boundaries of artistic expression through…',
+    desc:'Hyfer Objects는 Stockholm에 기반을 둔 디자인 스튜디오로, 예술적 표현의 경계를 확장하는 데 전념합니다…',
     events:[],
   },
   {
@@ -5006,7 +5006,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Posten 10D, 1577 Copenhagen',
     slug:'hostbo',
-    desc:'Høstbo is a Copenhagen–based gallery dedicated to contemporary design at the intersection of objects, space, and lived…',
+    desc:'Høstbo는 Copenhagen에 기반을 둔 갤러리로, 오브제, 공간, 삶의 경험이 교차하는 현대 디자인을 선보입니다…',
     events:[],
   },
   {
@@ -5016,7 +5016,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'interface-denmark',
-    desc:'Interface is a global leader in modular flooring, offering an integrated collection of carpet tiles and resilient…',
+    desc:'Interface는 모듈형 바닥재 분야의 글로벌 리더로, 카펫 타일과 탄성 바닥재의 통합 컬렉션을 제공합니다…',
     events:[],
   },
   {
@@ -5026,7 +5026,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Århusgade 128, 2150 Copenhagen',
     slug:'ishinomaki-laboratory',
-    desc:'Ishinomaki Laboratory is a furniture brand founded in Ishinomaki City, Miyagi Prefecture after the Great East Japan…',
+    desc:'Ishinomaki Laboratory는 동일본 대지진 이후 Miyagi Prefecture Ishinomaki City에서 설립된 가구 브랜드입니다…',
     events:[],
   },
   {
@@ -5036,7 +5036,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'jakobsdals',
-    desc:'Rooted in Sweden and shaped by a long–standing love for textiles since 1910, Jakobsdals creates interior where…',
+    desc:'Sweden에 뿌리를 두고 1910년부터 이어온 텍스타일에 대한 오랜 사랑으로, Jakobsdals는 인테리어를 창조합니다…',
     events:[],
   },
   {
@@ -5046,7 +5046,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen',
     slug:'jan-kath-design-gmbh',
-    desc:'Jan Kath Design has revolutionised the world of rugs. For nearly 30 years, the brand has been shaping the…',
+    desc:'Jan Kath Design은 러그의 세계를 혁신해왔습니다. 약 30년 동안 이 브랜드는 업계를 선도해왔습니다.',
     events:[],
   },
   {
@@ -5056,7 +5056,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 22, 1401 Copenhagen',
     slug:'japan-creative',
-    desc:'Japan Creative is a non–profit organisation composed of members who are involved in the field of design and engaged in…',
+    desc:'Japan Creative는 디자인 분야에 종사하며 관련 활동에 참여하는 회원들로 구성된 비영리 단체입니다.',
     events:[],
   },
   {
@@ -5066,7 +5066,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'jensen-beds',
-    desc:'For generations, Jensen has been committed to the belief that no one should be held back because their tired. With…',
+    desc:'여러 세대에 걸쳐 Jensen은 피곤함 때문에 누구도 방해받아서는 안 된다는 신념을 지켜왔습니다.',
     events:[],
   },
   {
@@ -5076,7 +5076,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'jeroen-de-ruddere',
-    desc:'Jeroen De Ruddere is a Belgian designer creating sculptural lighting objects rooted in material, proportion and…',
+    desc:'Jeroen De Ruddere는 소재, 비율, 그리고 조형성에 뿌리를 둔 조각적인 조명 오브제를 창작하는 벨기에 디자이너입니다.',
     events:[],
   },
   {
@@ -5086,7 +5086,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Harsdorffs Hus, Kongens Nytorv 3—5, 1050 Copenhagen',
     slug:'jess-desing',
-    desc:'Let’s create. Welcome to the intriguing world of Jess, where striking individual pieces come together to form one…',
+    desc:'함께 창조합시다. 개성 있는 작품들이 모여 하나를 이루는 Jess의 매혹적인 세계에 오신 것을 환영합니다.',
     events:[],
   },
   {
@@ -5096,7 +5096,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'jo-andersson-studios',
-    desc:'Jo Andersson Studios is a contemporary glass art and design studio based in Sweden. Exploring light, colour and form,…',
+    desc:'Jo Andersson Studios는 스웨덴에 기반을 둔 현대 유리 예술 및 디자인 스튜디오입니다. 빛, 색상, 형태를 탐구합니다.',
     events:[],
   },
   {
@@ -5106,7 +5106,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 45, 1260 Copenhagen',
     slug:'johanson-design-ab',
-    desc:'Johanson has captivated an international audience with its distinctive Scandinavian design. The brand’s production is…',
+    desc:'Johanson은 독특한 스칸디나비아 디자인으로 전 세계 관객을 사로잡아 왔습니다. 이 브랜드의 제품은 뛰어난 품질을 자랑합니다.',
     events:[],
   },
   {
@@ -5116,7 +5116,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 3, 1260 Copenhagen',
     slug:'jotun',
-    desc:'For almost a century, Jotun has protected property—from iconic buildings to beautiful homes. As one of the world’s…',
+    desc:'거의 한 세기 동안 Jotun은 상징적인 건물부터 아름다운 가정까지 다양한 공간을 보호해왔습니다. 세계적인 기업 중 하나로서 이들은 지속적으로 발전하고 있습니다.',
     events:[],
   },
   {
@@ -5126,7 +5126,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Harsdorffs Hus, Kongens Nytorv 3—5, 1050 Copenhagen',
     slug:'mihel-architects-ab',
-    desc:'Kaikale is an India-based furniture brand rooted in local craftsmanship and people-driven making. In collaboration…',
+    desc:'Kaikale은 지역 장인 정신과 사람 중심의 제작 방식에 뿌리를 둔 인도 기반의 가구 브랜드입니다. 협업을 통해 독특한 작품을 선보입니다.',
     events:[],
   },
   {
@@ -5136,7 +5136,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'kast',
-    desc:'Kast is an award-winning British brand known for its sculptural concrete basins, combining architectural form with…',
+    desc:'Kast는 건축적 형태와 기능성을 결합한 조각적인 콘크리트 세면대로 유명한 수상 경력의 영국 브랜드입니다.',
     events:[],
   },
   {
@@ -5146,7 +5146,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Residence, Store Strandstræde 21, 1255 Copenhagen',
     slug:'kettal-s-l',
-    desc:'Founded in 1966, Kettal is an internationally recognised design brand specialising in innovative furniture and…',
+    desc:'1966년에 설립된 Kettal은 혁신적인 가구와 디자인을 전문으로 하는 국제적으로 인정받는 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -5156,7 +5156,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Højbro Plads 6, 1200 Copenhagen',
     slug:'kjellerup-vaeveri',
-    desc:'Kjellerup Væveri has been producing upholstery fabrics, curtain textiles, and interior textiles in Kjellerup, Denmark,…',
+    desc:'Kjellerup Væveri는 덴마크 Kjellerup에서 실내 장식용 직물, 커튼 직물, 인테리어 텍스타일을 생산해왔습니다.',
     events:[],
   },
   {
@@ -5166,7 +5166,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Hammerensgade 4, 1267 Copenhagen',
     slug:'koukos-de-lab',
-    desc:'Koukos de Lab is a material–driven design studio based in Lesvos, Greece, exploring sustainable design through…',
+    desc:'Koukos de Lab은 그리스 Lesvos에 기반을 둔 소재 중심의 디자인 스튜디오로, 지속 가능한 디자인을 탐구합니다.',
     events:[],
   },
   {
@@ -5176,7 +5176,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'kreon-nv',
-    desc:'kreon is a Belgium–based lighting brand specialising in architectural illumination, defined by purity in light,…',
+    desc:'kreon은 벨기에 기반의 조명 브랜드로, 빛의 순수함과 건축적 조명을 전문으로 합니다.',
     events:[],
   },
   {
@@ -5186,7 +5186,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Skoubogade 1, 1158 Copenhagen',
     slug:'kunstindustrien',
-    desc:'KunstIndustrien values supreme quality, aiming for the highest standards in everything they do. Their handcrafted…',
+    desc:'KunstIndustrien은 최고의 품질을 중시하며, 모든 작업에서 최고 수준을 추구합니다. 그들의 수작업 제품은 탁월한 완성도를 보여줍니다.',
     events:[],
   },
   {
@@ -5196,7 +5196,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 2nd Floor, 1265 Copenhagen',
     slug:'kusch-co',
-    desc:'Kusch+Co is a German furniture manufacturer with 85 years of tradition. As a design-driven brand owned by Nowy Styl,…',
+    desc:'Kusch+Co는 85년 전통의 독일 가구 제조업체입니다. Nowy Styl이 소유한 디자인 중심 브랜드로서 혁신을 이어가고 있습니다.',
     events:[],
   },
   {
@@ -5206,7 +5206,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Bredgade 69, 1260 Copenhagen',
     slug:'collection-kallemo-aktiebolag',
-    desc:'Furniture is understood as a concept with a will of its own, conveying a distinct expression. Källemo’s ambition is to…',
+    desc:'가구는 고유한 의지를 지닌 개념으로 이해되며, 뚜렷한 표현을 전달합니다. Källemo의 목표는 독창적인 디자인을 선보이는 것입니다.',
     events:[],
   },
   {
@@ -5216,7 +5216,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 35, 1260 Copenhagen',
     slug:'la-cividina',
-    desc:'A unique way of doing things. Every laCividina sofa and armchair tells a story of manufacturing tradition and Italian…',
+    desc:'독특한 방식의 작업. 모든 laCividina 소파와 안락의자는 제조 전통과 이탈리아 장인정신의 이야기를 담고 있습니다.',
     events:[],
   },
   {
@@ -5226,7 +5226,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'lapalma',
-    desc:'Lapalma’s story began over 40 years ago in Padua, Italy, rooted in a heritage of craftsmanship. As the company evolved…',
+    desc:'Lapalma의 이야기는 40년 전 이탈리아 Padua에서 시작되었으며, 장인 정신의 유산에 뿌리를 두고 있습니다. 회사가 발전하면서 현대적인 디자인을 선보이고 있습니다.',
     events:[],
   },
   {
@@ -5236,7 +5236,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'lapuan-kankurit',
-    desc:'Lapuan Kankurit is a linen and wool weaving mill based in Lapua, Finland. Their roots go all the way back to 1917, and…',
+    desc:'Lapuan Kankurit는 핀란드 Lapua에 기반을 둔 린넨 및 울 직조 공장입니다. 그들의 뿌리는 1917년까지 거슬러 올라갑니다.',
     events:[],
   },
   {
@@ -5246,7 +5246,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palæet, Bredgade 28, 1260 Copenhagen',
     slug:'layers-of-light',
-    desc:'Layers of Light creates sculptural wall lamps where art and precise engineered illumination merge. Each piece is built…',
+    desc:'Layers of Light는 예술과 정밀한 공학적 조명이 결합된 조각적인 벽 램프를 제작합니다. 각 작품은 세심하게 제작됩니다.',
     events:[],
   },
   {
@@ -5256,7 +5256,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Store Kirkestræde 1, 1073 Copenhagen',
     slug:'le-klint',
-    desc:'Powered by Passion, Le Klint has been crafting timeless lighting since 1943, blending unique aesthetics with…',
+    desc:'열정으로 움직이는 Le Klint는 1943년부터 독특한 미학과 뛰어난 품질이 조화를 이루는 시대를 초월한 조명을 제작해왔습니다.',
     events:[],
   },
   {
@@ -5266,7 +5266,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'libeco-home',
-    desc:'Libeco is a Belgian family company established in 1858. The main business division focuses on weaving and selling…',
+    desc:'Libeco는 1858년에 설립된 벨기에 가족 기업입니다. 주요 사업 부문은 직조 및 판매에 중점을 두고 있습니다.',
     events:[],
   },
   {
@@ -5276,7 +5276,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 18A, 1255 Copenhagen',
     slug:'libratone',
-    desc:'Founded in 2009 in Copenhagen, LIBRATONE is a design-driven lifestyle brand. Inspired by Hans Christian Andersen\'s The…',
+    desc:'2009년 코펜하겐에서 설립된 LIBRATONE은 디자인 중심의 라이프스타일 브랜드입니다. Hans Christian Andersen에서 영감을 받았습니다.'s The…',
     events:[],
   },
   {
@@ -5286,7 +5286,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Farvergade 17, 1463 Copenhagen',
     slug:'lintex',
-    desc:'LINTEX redefines writing boards with Scandinavian design, blending function, aesthetics, and innovation. Designed for…',
+    desc:'LINTEX는 기능, 미학, 혁신을 결합한 스칸디나비아 디자인으로 화이트보드를 재정의합니다. 현대적인 공간을 위해 디자인되었습니다.',
     events:[],
   },
   {
@@ -5296,7 +5296,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Officinet, Bredgade 66, 1260 Copenhagen',
     slug:'lise-vester-studio',
-    desc:'Lise Vester Studio is a Copenhagen–based design practice working at the intersection of craft, design and atmosphere.…',
+    desc:'Lise Vester Studio는 공예, 디자인, 분위기의 교차점에서 작업하는 코펜하겐 기반의 디자인 스튜디오입니다.',
     events:[],
   },
   {
@@ -5306,7 +5306,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vognmagergade 9, 1120 Copenhagen',
     slug:'louise-roe',
-    desc:'LOUISE ROE, the Danish designer, has shaped her eponymous brand with a strong artistic vision and a deep appreciation…',
+    desc:'덴마크 디자이너 LOUISE ROE는 강력한 예술적 비전과 깊은 미적 감각으로 자신의 이름을 건 브랜드를 만들어왔습니다.',
     events:[],
   },
   {
@@ -5316,7 +5316,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 95, 1264 Copenhagen',
     slug:'luiz',
-    desc:'German Excellence since 1969—LUIZ has been creating home textiles and bespoke beds in its atelier in Cologne. The…',
+    desc:'1969년부터 이어온 독일의 우수성—LUIZ는 쾰른의 아틀리에에서 홈 텍스타일과 맞춤형 침대를 제작해왔습니다.',
     events:[],
   },
   {
@@ -5326,7 +5326,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14G, 2300 Copenhagen',
     slug:'luna-metal',
-    desc:'Luna Metal is a metal workshop specialised in custom–made solutions, offering both small–batch production and one–off…',
+    desc:'Luna Metal은 맞춤형 솔루션을 전문으로 하는 금속 공방으로, 소량 생산과 일회성 프로젝트를 모두 제공합니다.',
     events:[],
   },
   {
@@ -5336,7 +5336,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'lundhs-real-stone',
-    desc:'Lundhs Real Stone is an exclusive collection of 100% natural stone, thoughtfully sourced from Lundhs\' quarries in…',
+    desc:'Lundhs Real Stone은 Lundhs에서 신중하게 선별한 100% 천연석의 고급 컬렉션입니다.' quarries in…',
     events:[],
   },
   {
@@ -5346,7 +5346,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'magis',
-    desc:'Magis was founded in 1976 in Northern Italy and since then it has developed to become a global design player staying…',
+    desc:'Magis는 1976년 이탈리아 북부에서 설립되었으며, 이후 글로벌 디자인 브랜드로 발전해왔습니다.',
     events:[],
   },
   {
@@ -5356,7 +5356,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Fredericiagade 15E, 1310 Copenhagen',
     slug:'magniberg',
-    desc:'Magniberg is a Stockholm–based design brand founded in 2016 by Bengt Thornefors and Nina Norgren. Bringing a…',
+    desc:'Magniberg는 Bengt Thornefors와 Nina Norgren이 2016년에 설립한 Stockholm 기반의 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -5366,7 +5366,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'maharam',
-    desc:'Founded in New York in 1902, Maharam is a leading creator of textiles for commercial and residential interiors whose…',
+    desc:'1902년 New York에서 설립된 Maharam은 상업 및 주거 인테리어용 텍스타일 분야를 선도하는 브랜드입니다.',
     events:[],
   },
   {
@@ -5376,7 +5376,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Bertel Thorvaldsens Plads 2, 1213 Copenhagen',
     slug:'maison-arpelli',
-    desc:'Maison Arpelli brings powerful aesthetic appeal to your living spaces with designer furniture that is visually…',
+    desc:'Maison Arpelli는 시각적으로 강렬한 디자이너 가구를 통해 여러분의 생활 공간에 강력한 미적 매력을 선사합니다.',
     events:[],
   },
   {
@@ -5386,7 +5386,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'malai',
-    desc:'Malai.eco is a biomaterial design studio from India/Slovakia developing sustainable alternatives to leather and…',
+    desc:'Malai.eco는 인도/슬로바키아의 바이오 소재 디자인 스튜디오로, 가죽을 대체할 수 있는 지속가능한 소재를 개발합니다.',
     events:[],
   },
   {
@@ -5396,7 +5396,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'malte-gormsen',
-    desc:'The Malte Gormsen Kollektion is a carefully curated selection of furniture and objects, crafted with an uncompromising…',
+    desc:'Malte Gormsen Kollektion은 타협 없는 장인정신으로 제작된 가구와 오브제를 엄선한 컬렉션입니다.',
     events:[],
   },
   {
@@ -5406,7 +5406,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Silkegade 11, 1113 Copenhagen',
     slug:'mano-design-creative',
-    desc:'MANO design studio is a Seoul-based studio founded in 2016 by Bo Ah Kim. With a background in interior design in Korea…',
+    desc:'MANO design studio는 Kim Bo Ah가 2016년에 설립한 Seoul 기반의 스튜디오입니다. 한국에서 인테리어 디자인 경력을 쌓은 후 설립되었습니다.',
     events:[],
   },
   {
@@ -5416,7 +5416,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kuglegårdsvej 2, 1434 Copenhagen',
     slug:'marazzi',
-    desc:'Present in more than 140 countries, Marazzi is widely recognised as a synonym for high-quality ceramic tiles for…',
+    desc:'140개국 이상에 진출한 Marazzi는 고품질 세라믹 타일의 대명사로 널리 인정받고 있습니다.',
     events:[],
   },
   {
@@ -5426,7 +5426,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'marrimor',
-    desc:'Marrimor objects are made to be as delightful as they are purposeful, a touch provocative too. Each piece comes into…',
+    desc:'Marrimor의 오브제는 실용적이면서도 즐거움을 주고, 약간의 도발성도 지닌 제품으로 만들어집니다.',
     events:[],
   },
   {
@@ -5436,7 +5436,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Sundkaj 153, 2150 Copenhagen',
     slug:'martela-0e020',
-    desc:'Martela is a Nordic expert in designing better workplaces and learning environments, combining user insight,…',
+    desc:'Martela는 사용자 인사이트를 결합하여 더 나은 업무 공간과 학습 환경을 디자인하는 북유럽의 전문 기업입니다.',
     events:[],
   },
   {
@@ -5446,7 +5446,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Købmagergade 3, 1150 Copenhagen',
     slug:'mater',
-    desc:'Founded in Copenhagen in 2006, Mater is a pioneering green–tech design brand with sustainability and circularity at…',
+    desc:'2006년 Copenhagen에서 설립된 Mater는 지속가능성과 순환성을 핵심으로 하는 선구적인 그린테크 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -5456,7 +5456,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 73, 1260 Copenhagen',
     slug:'matre',
-    desc:'Matre is a Norwegian furniture and design brand committed to reviving Norway’s rich design heritage through timeless,…',
+    desc:'Matre는 시대를 초월하는 디자인을 통해 노르웨이의 풍부한 디자인 유산을 되살리는 데 전념하는 노르웨이 가구 및 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -5466,7 +5466,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'mdf-italia',
-    desc:'Founded by Bruno Fattorini in 1992, MDF Italia has always stood at the forefront of creativity, innovation and design.…',
+    desc:'Bruno Fattorini가 1992년에 설립한 MDF Italia는 창의성, 혁신, 디자인의 최전선에 서 있습니다.',
     events:[],
   },
   {
@@ -5476,7 +5476,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Rue Verte, Ny Østergade 11, 1101 Copenhagen',
     slug:'meridiani',
-    desc:'Meridiani is a Made in Italy furniture brand founded in Brianza, north of Milan, in 1996. Under the art direction of…',
+    desc:'Meridiani는 1996년 Milan 북부 Brianza에서 설립된 Made in Italy 가구 브랜드입니다.',
     events:[],
   },
   {
@@ -5486,7 +5486,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'mifuko',
-    desc:'Where Nordic design meets traditional African craftsmanship, Mifuko creates timeless baskets and decorative pieces…',
+    desc:'북유럽 디자인과 전통 아프리카 장인정신이 만나는 곳에서, Mifuko는 시대를 초월한 바구니와 장식 작품을 만들어냅니다.',
     events:[],
   },
   {
@@ -5496,7 +5496,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Sømod Bolcher, Nørregade 36, 1165 Copenhagen',
     slug:'mikkel-nielsen',
-    desc:'Mikkel Nielsen is a Copenhagen–based design studio producing architectural lamps through 3D printing in bioplast. Each…',
+    desc:'Mikkel Nielsen은 바이오플라스틱 3D 프린팅을 통해 건축적 조명을 제작하는 Copenhagen 기반의 디자인 스튜디오입니다.',
     events:[],
   },
   {
@@ -5506,7 +5506,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'mindo-group-international',
-    desc:'Mindo is a Danish–based outdoor furniture brand with an eco–conscious perspective on outdoor living. With a strong…',
+    desc:'Mindo는 야외 생활에 대한 친환경적 관점을 가진 덴마크 기반의 아웃도어 가구 브랜드입니다.',
     events:[],
   },
   {
@@ -5516,7 +5516,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Kronprinsensgade 9, 1114 Copenhagen',
     slug:'modern-metier',
-    desc:'Modern Metier is a French design platform with a curated selection of contemporary brands and progressive designers.…',
+    desc:'Modern Metier는 현대적인 브랜드와 진보적인 디자이너를 엄선한 프랑스 디자인 플랫폼입니다.',
     events:[],
   },
   {
@@ -5526,7 +5526,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'molteni-c-4y5k9',
-    desc:'Molteni&C is a market–leading company specialising in the production of indoor and outdoor furniture, kitchens, and…',
+    desc:'Molteni&C는 실내외 가구, 주방 생산을 전문으로 하는 시장을 선도하는 기업입니다.',
     events:[],
   },
   {
@@ -5536,7 +5536,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'moroso',
-    desc:'Moroso is an independent, family–run managerial company founded in 1952 and built around a corporate model that, in…',
+    desc:'Moroso는 1952년에 설립된 독립적인 가족 경영 기업으로, 기업 모델을 중심으로 구축되었습니다.',
     events:[],
   },
   {
@@ -5546,7 +5546,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Valkendorfsgade 15, 1153 Copenhagen',
     slug:'mug',
-    desc:'Headquartered in Milan, MUG leverages the finest Italian craftsmanship to ensure optimal quality and appearance of its…',
+    desc:'Milan에 본사를 둔 MUG는 최고의 이탈리아 장인정신을 활용하여 제품의 최적 품질과 외관을 보장합니다.',
     events:[],
   },
   {
@@ -5556,7 +5556,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Borgergade 17E, 1300 Copenhagen',
     slug:'mutina',
-    desc:'Founded in 2005, Mutina has built its identity through collaborations with some of the most influential designers of…',
+    desc:'2005년에 설립된 Mutina는 시대를 대표하는 영향력 있는 디자이너들과의 협업을 통해 정체성을 구축해왔습니다.',
     events:[],
   },
   {
@@ -5566,7 +5566,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Østergade 36—38, 3rd, 4th Floor, 1100 Copenhagen',
     slug:'muuto',
-    desc:'Based in Copenhagen, Muuto is a contemporary design company committed to expanding on the Scandinavian design…',
+    desc:'Copenhagen에 기반을 둔 Muuto는 스칸디나비아 디자인을 확장하는 데 전념하는 현대 디자인 기업입니다.',
     events:[],
   },
   {
@@ -5576,7 +5576,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'nanimarquina',
-    desc:'nanimarquina was born from a singular desire: to create visually stunning rugs that would captivate people\'s senses.…',
+    desc:'nanimarquina는 사람들을 사로잡는 시각적으로 멋진 러그를 만들고자 하는 독특한 열망에서 탄생했습니다.'s senses.…',
     events:[],
   },
   {
@@ -5586,7 +5586,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'Nardi',
-    desc:'Nardi designs and produces designer furniture for outdoor spaces to ensure the utmost comfort and relaxation in the…',
+    desc:'Nardi는 야외 공간에서 최상의 편안함과 휴식을 보장하기 위해 디자이너 가구를 디자인하고 생산합니다.',
     events:[],
   },
   {
@@ -5596,7 +5596,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Papirøen 25, 1436 Copenhagen',
     slug:'narvi',
-    desc:'Narvi is a Finnish sauna stove brand with more than 80 years of history, operating at the intersection of tradition…',
+    desc:'Narvi는 80년 이상의 역사를 지닌 핀란드 사우나 스토브 브랜드로, 전통의 교차점에서 운영되고 있습니다.',
     events:[],
   },
   {
@@ -5606,7 +5606,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 28A, 1260 Copenhagen',
     slug:'naver-collection',
-    desc:'Naver Collection is proudly crafted in Denmark through a collaboration between Aksel Kjersgaard (est. 1952) and…',
+    desc:'Naver Collection은 Aksel Kjersgaard(1952년 설립)와의 협업을 통해 덴마크에서 자랑스럽게 제작됩니다.',
     events:[],
   },
   {
@@ -5616,7 +5616,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 73, 1260 Copenhagen',
     slug:'nichba',
-    desc:'NICHBA is a Danish design brand rooted in architectural thinking and uncompromising minimalism. The collection is…',
+    desc:'NICHBA는 건축적 사고와 타협 없는 미니멀리즘에 뿌리를 둔 덴마크 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -5626,7 +5626,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'nikari',
-    desc:'Nikari, established in 1967, is a Finnish design studio and furniture manufacturer advocating a harmonious way of…',
+    desc:'1967년에 설립된 Nikari는 조화로운 방식을 지향하는 핀란드 디자인 스튜디오이자 가구 제조업체입니다.',
     events:[],
   },
   {
@@ -5636,7 +5636,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 2nd floor, 1265 Copenhagen',
     slug:'nobodinoz',
-    desc:'Timeless design inspired by and for families. Thought to transmit the best, Nobodinoz is for the ones who love design…',
+    desc:'가족에서 영감을 받고 가족을 위한 시대를 초월한 디자인. 최고를 전하고자 하는 Nobodinoz는 디자인을 사랑하는 이들을 위한 브랜드입니다.',
     events:[],
   },
   {
@@ -5646,7 +5646,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'nordicmodern',
-    desc:'NORDICMODERN presents the woven rugs of Danish textile artist Vibeke Klint (1927–2019), reissued in collaboration with…',
+    desc:'NORDICMODERN은 덴마크 텍스타일 아티스트 Vibeke Klint(1927–2019)의 직조 러그를 재발매하며, 협업을 통해...',
     events:[],
   },
   {
@@ -5656,7 +5656,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'nordiska-kok',
-    desc:'Rooted in craftsmanship and architectural principles, Nordiska Kök continues to push the boundaries of design, always…',
+    desc:'장인정신과 건축적 원칙에 뿌리를 둔 Nordiska Kök은 끊임없이 디자인의 경계를 확장하며...',
     events:[],
   },
   {
@@ -5666,7 +5666,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Grønningen 23, 1270 Copenhagen',
     slug:'nordst',
-    desc:'NORDST – Nordic Style, established in 2016 in Copenhagen, expresses a profound admiration for the Danish Design…',
+    desc:'2016년 Copenhagen에 설립된 NORDST – Nordic Style은 Danish Design에 대한 깊은 존경을 표현합니다.',
     events:[],
   },
   {
@@ -5676,7 +5676,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Østergade 17, 2nd Floor, 1100 Copenhagen',
     slug:'norr11',
-    desc:'NORR11 is a Danish design company founded in 2011 with a vision to continuously create design that sparks curiosity.…',
+    desc:'NORR11은 호기심을 불러일으키는 디자인을 지속적으로 창조하겠다는 비전으로 2011년 설립된 덴마크 디자인 회사입니다.',
     events:[],
   },
   {
@@ -5686,7 +5686,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Harsdorffs Hus, Kongens Nytorv 3—5, 1050 Copenhagen',
     slug:'porzellan-manufaktur-nymphenburg',
-    desc:'Nymphenburg is one of the last and purest manufactories of its kind. Since its founding in 1747, the high art of…',
+    desc:'Nymphenburg는 현존하는 가장 순수한 형태의 매뉴팩처 중 하나입니다. 1747년 설립 이래로, 최고의 예술적 기술을...',
     events:[],
   },
   {
@@ -5696,7 +5696,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Palægade 4, 1261 Copenhagen',
     slug:'occhio',
-    desc:'Occhio stands for a new culture of light that places people at its center. Founded in 1999 by designer and…',
+    desc:'Occhio는 사람을 중심에 두는 새로운 빛의 문화를 상징합니다. 1999년 디자이너이자...',
     events:[],
   },
   {
@@ -5706,7 +5706,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 9, 1123 Copenhagen',
     slug:'onecollection',
-    desc:'Founded in 1990, OneCollection works with interior solutions for public spaces across sectors, including hospitality,…',
+    desc:'1990년 설립된 OneCollection은 호스피탈리티를 포함한 다양한 분야의 공공 공간을 위한 인테리어 솔루션을 제공합니다.',
     events:[],
   },
   {
@@ -5716,7 +5716,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Store Kongensgade 118, 1264 Copenhagen',
     slug:'opinord',
-    desc:'Founded in Denmark, Opinord operates as a collaborative design house focused on creating furniture for retailers…',
+    desc:'덴마크에서 설립된 Opinord는 리테일러를 위한 가구 제작에 중점을 둔 협업 디자인 하우스로 운영되고 있습니다.',
     events:[],
   },
   {
@@ -5726,7 +5726,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'otur',
-    desc:'Otur aims to craft objects that feel as relevant today as they will decades from now. The creations are entirely…',
+    desc:'Otur는 오늘날에도, 그리고 수십 년 후에도 여전히 의미 있는 오브제를 만드는 것을 목표로 합니다. 모든 제품은 전적으로...',
     events:[],
   },
   {
@@ -5736,7 +5736,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 8C, 1123 Copenhagen',
     slug:'our-society',
-    desc:'our society is a young design brand based in Aarhus, Denmark. Driven by a desire to reflect contemporary values and…',
+    desc:'our society는 덴마크 Aarhus에 기반을 둔 젊은 디자인 브랜드입니다. 현대적 가치를 반영하고자 하는 열망으로...',
     events:[],
   },
   {
@@ -5746,7 +5746,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Sankt Peders Stræde 35A, 1453 Copenhagen',
     slug:'ouve',
-    desc:'OUVE is a South Korean lifestyle brand reinterpreting daily routines through fragrance. Transforming functional fabric…',
+    desc:'OUVE는 향기를 통해 일상의 루틴을 재해석하는 한국의 라이프스타일 브랜드입니다. 기능적인 패브릭을 변형하여...',
     events:[],
   },
   {
@@ -5756,7 +5756,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Asia House, Indiakaj 16, 2100 Copenhagen',
     slug:'parachilna',
-    desc:'Parachilna is a Barcelona-based decorative lighting brand founded in 2013, created as a platform for designers to…',
+    desc:'Parachilna는 2013년 설립된 Barcelona 기반의 장식 조명 브랜드로, 디자이너들을 위한 플랫폼으로 탄생했습니다.',
     events:[],
   },
   {
@@ -5766,7 +5766,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 6, 1260 Copenhagen',
     slug:'ph-furniture-ph-pianos',
-    desc:'ToneArt is a Danish design house operating as PH Pianos, PH Furniture and Copenhagen Design House. Under official…',
+    desc:'ToneArt는 PH Pianos, PH Furniture, Copenhagen Design House로 운영되는 덴마크 디자인 하우스입니다. 공식적으로...',
     events:[],
   },
   {
@@ -5776,7 +5776,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 25B, 1260 Copenhagen',
     slug:'piet-hein',
-    desc:'Piet Hein (1905—1996) embodies timeless Scandinavian design, seamlessly blending functionality, mathematics, and…',
+    desc:'Piet Hein(1905—1996)은 기능성, 수학, 그리고... 을 매끄럽게 융합한 시대를 초월한 스칸디나비아 디자인을 구현합니다.',
     events:[],
   },
   {
@@ -5786,7 +5786,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1401 Copenhagen',
     slug:'pit-to-table',
-    desc:'Pit–To–Table is a materials manufacturer transforming agricultural waste into sustainable interior surfaces. Produced…',
+    desc:'Pit–To–Table은 농업 폐기물을 지속 가능한 인테리어 표면재로 변환하는 소재 제조업체입니다. 생산되는...',
     events:[],
   },
   {
@@ -5796,7 +5796,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'potocco-italy',
-    desc:'Italian creativity, artisan tradition and international vocation are the distinctive traits of Potocco, a family–run…',
+    desc:'이탈리아의 창의성, 장인 전통, 그리고 국제적 비전은 가족 경영의 Potocco를 특징짓는 고유한 특성입니다.',
     events:[],
   },
   {
@@ -5806,7 +5806,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 27, 1260 Copenhagen',
     slug:'prado',
-    desc:'prado believes a home should become a place where functionality disappears and only the experience of the space…',
+    desc:'prado는 집이 기능성이 사라지고 오직 공간의 경험만이 남는 곳이 되어야 한다고 믿습니다.',
     events:[],
   },
   {
@@ -5816,7 +5816,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'priestmangoode',
-    desc:'PriestmanGoode is a multidisciplinary design consultancy bridging transport, product and branding design, turning…',
+    desc:'PriestmanGoode는 교통, 제품, 브랜딩 디자인을 연결하는 다학제적 디자인 컨설팅 회사로, 아이디어를 실현합니다.',
     events:[],
   },
   {
@@ -5826,7 +5826,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bremerholm 6, 1069 Copenhagen',
     slug:'prolicht',
-    desc:'PROLICHT is an international manufacturer of architectural lighting, shaped by a shift in perspective: away from the…',
+    desc:'PROLICHT는 관점의 전환에 의해 형성된 국제적인 건축 조명 제조업체입니다. 조명 자체가 아닌...',
     events:[],
   },
   {
@@ -5836,7 +5836,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 36, 1401 Copenhagen',
     slug:'raaw-alchemy',
-    desc:'RAAW Alchemy is a Danish, award–winning clean beauty and home fragrance brand creating sensorial rituals for modern…',
+    desc:'RAAW Alchemy는 현대적 라이프스타일을 위한 감각적 리추얼을 창조하는 덴마크의 수상 경력에 빛나는 클린 뷰티 및 홈 프래그런스 브랜드입니다.',
     events:[],
   },
   {
@@ -5846,7 +5846,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'recraft-design-studio-aps',
-    desc:'ReCraft Design Studio is a Copenhagen-based practice working with reclaimed materials, including demolition waste and…',
+    desc:'ReCraft Design Studio는 철거 폐기물과 재생 자재를 활용하는 Copenhagen 기반의 디자인 스튜디오입니다.',
     events:[],
   },
   {
@@ -5856,7 +5856,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Borgergade 17C, 1300 Copenhagen',
     slug:'resident',
-    desc:'Resident is a visionary design house based in New Zealand, renowned for collaborating with established and emerging…',
+    desc:'Resident는 뉴질랜드에 기반을 둔 비전 있는 디자인 하우스로, 저명한 디자이너들과 신진 디자이너들의 협업으로 유명합니다.',
     events:[],
   },
   {
@@ -5866,7 +5866,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 19E, 1260 Copenhagen',
     slug:'ro-collection',
-    desc:'Ro Collection embraces a contemporary approach to Danish design traditions, rooted in a deep appreciation for…',
+    desc:'Ro Collection은 덴마크 디자인 전통에 대한 깊은 존중에 뿌리를 둔 현대적 접근 방식을 추구합니다.',
     events:[],
   },
   {
@@ -5876,7 +5876,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 1255 Copenhagen',
     slug:'rolf-benz',
-    desc:'Rolf Benz is a global byword for premium upholstered and living room furniture “Made in Germany.” The balance between…',
+    desc:'Rolf Benz는 "Made in Germany" 프리미엄 소파 및 거실 가구의 글로벌 대명사입니다. 균형 잡힌...',
     events:[],
   },
   {
@@ -5886,7 +5886,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'rombachs-glas-gcv',
-    desc:'RERO glass is a public access studio that works exclusively with recycle glass. RERO Glass explores themes of…',
+    desc:'RERO glass는 재활용 유리만을 다루는 공공 접근 스튜디오입니다. RERO Glass는 다양한 주제를 탐구합니다.',
     events:[],
   },
   {
@@ -5896,7 +5896,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'auping-furberg',
-    desc:'Since 1888, Auping have been designing the very best ways of resting. Every bed is crafted with care and attention to…',
+    desc:'1888년 이래로 Auping은 최고의 휴식 방법을 디자인해 왔습니다. 모든 침대는 세심한 배려와 주의를 기울여 제작됩니다.',
     events:[],
   },
   {
@@ -5906,7 +5906,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'royal-mosa',
-    desc:'Mosa is a Dutch ceramic tile company with over 140 years of experience. Since 1883, all tiles have been designed,…',
+    desc:'Mosa는 140년 이상의 경험을 보유한 네덜란드 세라믹 타일 회사입니다. 1883년 이래로 모든 타일은 디자인되고...',
     events:[],
   },
   {
@@ -5916,7 +5916,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Ny Østergade 11, 1101 Copenhagen',
     slug:'rue-verte',
-    desc:'In 1994, Michala Jessen founded RUE VERTE within an historical building dating back to the 1700s located in the…',
+    desc:'1994년 Michala Jessen은 1700년대로 거슬러 올라가는 역사적 건물 내에 RUE VERTE를 설립했습니다.',
     events:[],
   },
   {
@@ -5926,7 +5926,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'3XN GXN, Kanonbådsvej 8, 1437 Copenhagen',
     slug:'russo-betak',
-    desc:'RUSSO BETAK, founded by Stefannia Russo (BR) and Søren Betak (DK), 3D prints biomaterials sourced from waste into…',
+    desc:'Stefannia Russo(BR)와 Søren Betak(DK)이 설립한 RUSSO BETAK은 폐기물에서 추출한 바이오 소재를 3D 프린팅하여...',
     events:[],
   },
   {
@@ -5936,7 +5936,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vognmagergade 5, 1120 Copenhagen',
     slug:'rye',
-    desc:'Since its founding in 2019, RYE has pursued a considered approach to bedroom design. Drawing on historical references…',
+    desc:'2019년 설립 이래로 RYE는 침실 디자인에 대한 사려 깊은 접근 방식을 추구해 왔습니다. 역사적 참조를 바탕으로...',
     events:[],
   },
   {
@@ -5946,7 +5946,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'sackit',
-    desc:'sackit designs furniture with a focus on comfort, quality, and longevity. Each piece is carefully constructed using…',
+    desc:'sackit은 편안함, 품질, 그리고 오래 사용할 수 있는 내구성에 중점을 두고 가구를 디자인합니다. 각 제품은 세심하게 제작됩니다.',
     events:[],
   },
   {
@@ -5956,7 +5956,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Fredericiagade 30, 1310 Copenhagen',
     slug:'hasami-porcelain',
-    desc:'SAIKAIHOP, by Saikai Europe, traces its origins to the Japanese town of Hasami, where the history of porcelain…',
+    desc:'Saikai Europe가 선보이는 SAIKAIHOP는 도자기의 역사가 깃든 일본 Hasami 마을에 그 뿌리를 두고 있습니다.',
     events:[],
   },
   {
@@ -5966,7 +5966,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'salme',
-    desc:'Salme Linen is a textile and interior brand founded in Copenhagen in 2025 by Emilie Kimø. Defined by a calm and…',
+    desc:'Salme Linen은 Emilie Kimø가 2025년 코펜하겐에서 설립한 텍스타일 및 인테리어 브랜드입니다. 고요하고 차분한 감성으로 정의됩니다.',
     events:[],
   },
   {
@@ -5976,7 +5976,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'The Social House, Store Regnegade 12, 1110 Copenhagen',
     slug:'saxo-living-denmark',
-    desc:'Comfort - Quality - Timeless Danish Design. Saxo Living is continuing an exciting transformation under the new…',
+    desc:'편안함 - 품질 - 시대를 초월한 덴마크 디자인. Saxo Living은 새로운 리더십 아래 흥미로운 변화를 이어가고 있습니다.',
     events:[],
   },
   {
@@ -5986,7 +5986,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Harsdorffs Hus, Kongens Nytorv 3-5, 1050 Copenhagen',
     slug:'scandtap',
-    desc:'Scandtap combines durable stainless steel with elegant, timeless forms rooted in Scandinavian design. At the core of…',
+    desc:'Scandtap은 내구성 있는 스테인리스 스틸과 스칸디나비아 디자인에 뿌리를 둔 우아하고 시대를 초월한 형태를 결합합니다.',
     events:[],
   },
   {
@@ -5996,7 +5996,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'secto-design',
-    desc:'Secto Design is a Finnish family–owned company known for its architectural, wooden design lamps. Each lamp is…',
+    desc:'Secto Design은 건축적인 목재 디자인 조명으로 유명한 핀란드의 가족 기업입니다. 모든 조명은 정성스럽게 제작됩니다.',
     events:[],
   },
   {
@@ -6006,7 +6006,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14S, 2300 Copenhagen',
     slug:'seino-takashi-design',
-    desc:'Seino Takashi Design is a design company founded in Chiba, Japan, in 2020 by Takashi Seino. Guided by the theme of…',
+    desc:'Seino Takashi Design은 Takashi Seino가 2020년 일본 Chiba에 설립한 디자인 회사입니다.',
     events:[],
   },
   {
@@ -6016,7 +6016,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Bredgade 25, 1260 Copenhagen',
     slug:'selected-bysecher',
-    desc:'Selected BySecher was launched in 2020 with the aim of reintroducing carefully handpicked furniture by lesser–known…',
+    desc:'Selected BySecher는 2020년에 출범하여 잘 알려지지 않은 디자이너들의 엄선된 가구를 재조명하는 것을 목표로 합니다.',
     events:[],
   },
   {
@@ -6026,7 +6026,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 66, 1264 Copenhagen',
     slug:'silen',
-    desc:'Silen is an Estonian company that designs and manufactures premium office pods. In Estonia, forests cover more than…',
+    desc:'Silen은 프리미엄 오피스 팟(pod)을 디자인하고 제조하는 에스토니아 기업입니다. 에스토니아는 국토의 절반 이상이 숲으로 덮여 있습니다.',
     events:[],
   },
   {
@@ -6036,7 +6036,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 66, 1264 Copenhagen',
     slug:'slept',
-    desc:'Slept begins with the belief that a good day starts with a great night’s rest. Its beds and sofas embody sustainable…',
+    desc:'Slept는 좋은 하루는 편안한 밤의 휴식에서 시작된다는 믿음에서 출발합니다. 이 브랜드의 침대와 소파는 지속가능성을 구현합니다.',
     events:[],
   },
   {
@@ -6046,7 +6046,7 @@ const EXHIBITIONS = [
     districtColor:'#d99021',
     address:'Kanonbådsvej 8, 1437 Copenhagen',
     slug:'smallrevolution',
-    desc:'SMALLrevolution is a Copenhagen–based design and manufacturing studio working exclusively with recycled plastic. The…',
+    desc:'SMALLrevolution은 재활용 플라스틱만을 사용하는 코펜하겐 기반의 디자인 및 제조 스튜디오입니다.',
     events:[],
   },
   {
@@ -6056,7 +6056,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1401 Copenhagen',
     slug:'smile-materials',
-    desc:'At Smile Materials, discarded resources are transformed into beautiful, durable surfaces that proudly reveal their…',
+    desc:'Smile Materials는 버려진 자원을 아름답고 내구성 있는 표면으로 변환하며, 그 출처를 자랑스럽게 드러냅니다.',
     events:[],
   },
   {
@@ -6066,7 +6066,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'soca',
-    desc:'soca—scent of the calm—is a brand rooted in Japan, a land shaped by the ever–changing expressions of its four seasons.…',
+    desc:'soca—scent of the calm—는 사계절의 끊임없이 변화하는 표정이 빚어낸 일본에 뿌리를 둔 브랜드입니다.',
     events:[],
   },
   {
@@ -6076,7 +6076,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'sog',
-    desc:'The story of sog begins in the world of bespoke furniture in Japan, where its creators listened to countless…',
+    desc:'sog의 이야기는 일본의 맞춤 가구 세계에서 시작됩니다. 제작자들은 수많은 고객의 목소리에 귀 기울였습니다.',
     events:[],
   },
   {
@@ -6086,7 +6086,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'solid-space-studio',
-    desc:'Solid Space Studio bridges architecture and furniture design, creating modern, timeless pieces and spaces that…',
+    desc:'Solid Space Studio는 건축과 가구 디자인을 연결하며, 모던하고 시대를 초월한 작품과 공간을 창조합니다.',
     events:[],
   },
   {
@@ -6096,7 +6096,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'sotanaka',
-    desc:'SOTANAKA is a Tokyo–based design studio founded in 2020 by Soichiro Tanaka. Drawing on material research, biology,…',
+    desc:'SOTANAKA는 Soichiro Tanaka가 2020년 설립한 도쿄 기반 디자인 스튜디오입니다. 소재 연구, 생물학 등을 바탕으로 작업합니다.',
     events:[],
   },
   {
@@ -6106,7 +6106,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Borgergade 91, 1300 Copenhagen',
     slug:'spaces-within',
-    desc:'SPACES WITHIN creates sculptural hardware designed as jewellery for spaces. Conceived in Stockholm and crafted in…',
+    desc:'SPACES WITHIN은 공간을 위한 보석과도 같은 조형적 하드웨어를 디자인합니다. Stockholm에서 구상되고 장인의 손으로 제작됩니다.',
     events:[],
   },
   {
@@ -6116,7 +6116,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'string-furniture',
-    desc:'String Furniture is a Swedish design company that produces a number of modern classics and furniture brands. More than…',
+    desc:'String Furniture는 여러 모던 클래식과 가구 브랜드를 생산하는 스웨덴 디자인 회사입니다.',
     events:[],
   },
   {
@@ -6126,7 +6126,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Strandgade 6, 1401 Copenhagen',
     slug:'studio-kajsa-willner',
-    desc:'Studio Kajsa Willner creates bespoke design with a narrative and a strong focus on materiality. Through artistic…',
+    desc:'Studio Kajsa Willner는 서사성과 소재에 대한 강한 집중을 바탕으로 맞춤형 디자인을 창조합니다. 예술적 접근을 통해 작업합니다.',
     events:[],
   },
   {
@@ -6136,7 +6136,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Kongensgade 48, 1264 Copenhagen',
     slug:'kkann',
-    desc:'Based on a belief in culture as the foundation of design, and with context at the forefront, STUDIO KKANN creates…',
+    desc:'문화를 디자인의 기반으로, 맥락을 최우선으로 삼는 믿음을 바탕으로 STUDIO KKANN은 작품을 창조합니다.',
     events:[],
   },
   {
@@ -6146,7 +6146,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'studio-pallavi',
-    desc:'Based in India, the studio is rooted in ancient wisdom, where sustainability and care are integral to everyday living.…',
+    desc:'인도에 기반을 둔 이 스튜디오는 지속가능성과 배려가 일상에 통합된 고대의 지혜에 뿌리를 두고 있습니다.',
     events:[],
   },
   {
@@ -6156,7 +6156,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'The Conary, Dronningens Tværgade 26, 1302 Copenhagen',
     slug:'stylescape',
-    desc:'Stylescape is a design brand rooted in the idea of quiet, timeless living. Founded to bring calm and grounding…',
+    desc:'Stylescape는 고요하고 시대를 초월한 삶이라는 아이디어에 뿌리를 둔 디자인 브랜드입니다. 평온함과 안정감을 선사하기 위해 설립되었습니다.',
     events:[],
   },
   {
@@ -6166,7 +6166,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'New Harbour Gallery, Nyhavn 8, 1051 Copenhagen',
     slug:'sudbrock-mobelhandwerk',
-    desc:'SUDBROCK Möbelhandwerk realises passion for craftsmanship, wood and precision, down to the smallest detail. Making…',
+    desc:'SUDBROCK Möbelhandwerk는 장인정신, 목재, 그리고 가장 작은 디테일까지의 정밀함에 대한 열정을 실현합니다.',
     events:[],
   },
   {
@@ -6176,7 +6176,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gothersgade 109, 1123 Copenhagen',
     slug:'summer-nights',
-    desc:'Summer Nights is a curated spatial installation presented during 3daysofdesign. Located opposite Kongens Have and…',
+    desc:'Summer Nights는 3daysofdesign 기간 동안 선보이는 큐레이션된 공간 설치 작업입니다. Kongens Have 맞은편에 위치합니다.',
     events:[],
   },
   {
@@ -6186,7 +6186,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gothersgade 54, 1123 Copenhagen',
     slug:'susannestormcph',
-    desc:'CONCRETE VESSELS AND RELIEFS BY SUSANNE STORM MERGE ARTISTIC EXPRESSION, MATERIAL KNOWLEDGE, AND FUNCTIONAL PURPOSE.…',
+    desc:'SUSANNE STORM의 콘크리트 용기와 부조 작업은 예술적 표현, 소재에 대한 지식, 그리고 기능적 목적을 결합합니다.',
     events:[],
   },
   {
@@ -6196,7 +6196,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'swedese-mobler-ab',
-    desc:'Swedese is a classic Swedish furniture producer with a strong anchor in both the public and domestic domain. Swedese\'s…',
+    desc:'Swedese는 공공 공간과 가정 영역 모두에서 강력한 입지를 가진 클래식 스웨덴 가구 생산업체입니다.'s…',
     events:[],
   },
   {
@@ -6206,7 +6206,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 110A, 1264 Copenhagen',
     slug:'soren-lund-mobler-a-s-b',
-    desc:'With deep roots in the Scandinavian design tradition, Søren Lund Møbler has been creating furniture for more than 60…',
+    desc:'스칸디나비아 디자인 전통에 깊은 뿌리를 둔 Søren Lund Møbler는 60년 이상 가구를 제작해 왔습니다.',
     events:[],
   },
   {
@@ -6216,7 +6216,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Store Strandstræde 21, 1255 Copenhagen',
     slug:'the-residence',
-    desc:'The Residence is a curated design exhibition taking place during 3daysofdesign in a magnificent apartment in the heart…',
+    desc:'The Residence는 3daysofdesign 기간 동안 코펜하겐 중심부의 멋진 아파트에서 열리는 큐레이션 디자인 전시입니다.',
     events:[],
   },
   {
@@ -6226,7 +6226,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Store Kongensgade 128, 1264 Copenhagen',
     slug:'the-swiss-atelier',
-    desc:'THE SWISS ATELIER is Switzerland’s official presence at 3daysofdesign, celebrating the country’s innovative and…',
+    desc:'THE SWISS ATELIER은 3daysofdesign에서 스위스의 공식 참가관으로, 스위스의 혁신적이고 독창적인 디자인을 선보입니다.',
     events:[],
   },
   {
@@ -6236,7 +6236,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Ny Østergade 25, 1101 Copenhagen',
     slug:'tine-k-home',
-    desc:'Tine K Home, a Danish interior company, founded in 1999 by Tine Kjeldsen and her husband, Jacob Fossum. With respect…',
+    desc:'Tine K Home은 Tine Kjeldsen과 남편 Jacob Fossum이 1999년에 설립한 덴마크 인테리어 회사입니다.',
     events:[],
   },
   {
@@ -6246,7 +6246,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'LIGHT–POINT, Gothersgade 14, 1123 Copenhagen',
     slug:'tolv',
-    desc:'Tolv is a furniture brand founded on the principle that effective design communicates softly yet clearly, crafting…',
+    desc:'Tolv는 효과적인 디자인은 부드러우면서도 명확하게 소통한다는 원칙 위에 설립된 가구 브랜드입니다.',
     events:[],
   },
   {
@@ -6256,7 +6256,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vognmagergade 5, Parking Lot, 1120 Copenhagen',
     slug:'tom-dixon',
-    desc:'Tom Dixon, founded by the eponymous British designer Tom Dixon, stands as a global design powerhouse. Renowned for…',
+    desc:'영국 디자이너 Tom Dixon이 설립한 동명의 브랜드 Tom Dixon은 세계적인 디자인 강자로 자리매김하고 있습니다.',
     events:[],
   },
   {
@@ -6266,7 +6266,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14S, 2300 Copenhagen',
     slug:'tomomi-yokoyama-design',
-    desc:'Founded in 2022, TOMOMI YOKOYAMA DESIGN is led by Japanese designer Tomomi Yokoyama. After years of honing her craft…',
+    desc:'2022년에 설립된 TOMOMI YOKOYAMA DESIGN은 일본 디자이너 Tomomi Yokoyama가 이끌고 있습니다. 수년간 자신의 기술을 연마한 후...',
     events:[],
   },
   {
@@ -6276,7 +6276,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'torri-lana-1885',
-    desc:'Upholstery Jacquard fabrics for furnishing, yarn dyed, made with refined yarns, textures and trendy colours. Founded…',
+    desc:'고급 원사, 질감, 트렌디한 색상으로 제작된 실염색 실내 장식용 자카드 직물 브랜드입니다.',
     events:[],
   },
   {
@@ -6286,7 +6286,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'tribu',
-    desc:'Since 1966, Tribù has grown from a family tradition into a global presence, guided by the care for quality, comfort,…',
+    desc:'1966년부터 Tribù는 품질, 편안함, 그리고 세심한 배려를 바탕으로 가족 전통에서 시작하여 글로벌 브랜드로 성장해왔습니다.',
     events:[],
   },
   {
@@ -6296,7 +6296,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vestergade 20C, 2nd Floor, 1456 Copenhagen',
     slug:'troldtekt',
-    desc:'Troldtekt contributes to good acoustics in most types of buildings in many countries around the world. Since 1935,…',
+    desc:'Troldtekt는 전 세계 여러 국가의 대부분의 건물 유형에 우수한 음향을 제공합니다. 1935년 이래로...',
     events:[],
   },
   {
@@ -6306,7 +6306,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'ubu',
-    desc:'Introducing UBU, a Belgian furniture brand where timeless design meets individuality. UBU is more than furniture; it’s…',
+    desc:'시대를 초월한 디자인과 개성이 만나는 벨기에 가구 브랜드 UBU를 소개합니다. UBU는 단순한 가구 그 이상입니다.',
     events:[],
   },
   {
@@ -6316,7 +6316,7 @@ const EXHIBITIONS = [
     districtColor:'#3a4a5a',
     address:'Gammel Dok, Strandgade 27B, 1410 Copenhagen',
     slug:'ukraine-house-in-denmark',
-    desc:'The Ukraine House in Denmark is a Ukrainian cultural diplomacy institution with a mission to deepen Ukrainian–Danish…',
+    desc:'Ukraine House in Denmark는 우크라이나-덴마크 간의 이해를 심화시키는 것을 사명으로 하는 우크라이나 문화 외교 기관입니다.',
     events:[],
   },
   {
@@ -6326,7 +6326,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'un-common',
-    desc:'Un’common is a Polish design studio creating furniture from the finest materials such as marble, wood, and steel. At…',
+    desc:'Un\'common은 대리석, 목재, 철강과 같은 최고급 소재로 가구를 제작하는 폴란드 디자인 스튜디오입니다.',
     events:[],
   },
   {
@@ -6336,7 +6336,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Gothersgade 109, 1123 Copenhagen',
     slug:'unwonted',
-    desc:'Unwanted fibre becomes an UNWONTED experience. The brand makes alpaca duvets from fibres that would otherwise go…',
+    desc:'버려질 섬유가 UNWONTED 경험으로 재탄생합니다. 이 브랜드는 그렇지 않았다면 폐기되었을 섬유로 알파카 이불을 만듭니다.',
     events:[],
   },
   {
@@ -6346,7 +6346,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'usm-modular-furniture',
-    desc:'Swiss based USM Modular Furniture has been providing timeless and high–quality modular furniture designs suitable for…',
+    desc:'스위스 기반의 USM Modular Furniture는 다양한 공간에 적합한 시대를 초월한 고품질 모듈식 가구 디자인을 제공해왔습니다.',
     events:[],
   },
   {
@@ -6356,7 +6356,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'New Mags, Ny Østergade 28, 1101 Copenhagen',
     slug:'valerie-objects',
-    desc:'valerie_objects is a belgian high–end design label initiated by Axel Van Den Bossche, CEO of renowned design company…',
+    desc:'valerie_objects는 유명 디자인 회사의 CEO인 Axel Van Den Bossche가 시작한 벨기에 하이엔드 디자인 레이블입니다.',
     events:[],
   },
   {
@@ -6366,7 +6366,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'71 Nyhavn Hotel, Nyhavn 71, 1051 Copenhagen',
     slug:'van-rossum',
-    desc:'Van Rossum has been handcrafting solid, sustainable furniture in its Dutch workshop since 1978. Collaborating with…',
+    desc:'Van Rossum은 1978년부터 네덜란드 공방에서 견고하고 지속 가능한 가구를 수작업으로 제작해왔습니다.',
     events:[],
   },
   {
@@ -6376,7 +6376,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Adelgade 108, 1304 Copenhagen',
     slug:'veark',
-    desc:'Veark is a Copenhagen based contemporary kitchenware company dedicated to developing sustainable, honest and high…',
+    desc:'Veark는 지속 가능하고 정직하며 고품질의 제품 개발에 전념하는 Copenhagen 기반의 현대적인 주방용품 회사입니다.',
     events:[],
   },
   {
@@ -6386,7 +6386,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Designmuseum Danmark, Bredgade 68, 1260 Copenhagen',
     slug:'verpan',
-    desc:'VERPAN—for Verner Panton—is a design company working closely with Verner Panton Design AG to preserve, reissue, and…',
+    desc:'VERPAN은 Verner Panton을 의미하며, Verner Panton Design AG와 긴밀히 협력하여 그의 작품을 보존, 재출시하는 디자인 회사입니다.',
     events:[],
   },
   {
@@ -6396,7 +6396,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 1, 1265 Copenhagen',
     slug:'via-university-college',
-    desc:'VIA Design & Business is one of the leading educational institutions in the Nordic region within design and business,…',
+    desc:'VIA Design & Business는 북유럽 지역에서 디자인과 비즈니스 분야를 선도하는 교육 기관 중 하나입니다.',
     events:[],
   },
   {
@@ -6406,7 +6406,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14A, 2300 Copenhagen',
     slug:'vibeke-fonnesberg-schmidt',
-    desc:'Vibeke Fonnesberg Schmidt creates exclusive bespoke lighting pieces. Working with plexiglass and brass, she develops…',
+    desc:'Vibeke Fonnesberg Schmidt는 독점적인 맞춤형 조명 작품을 제작합니다. 플렉시글라스와 황동을 사용하여 작업합니다.',
     events:[],
   },
   {
@@ -6416,7 +6416,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Valkendorfsgade 23, 1151 Copenhagen',
     slug:'vibia',
-    desc:'Vibia exists to create beautiful atmospheres, utilizing lighting design to evoke meaningful responses that positively…',
+    desc:'Vibia는 조명 디자인을 활용하여 사람들에게 긍정적인 영향을 주는 의미 있는 반응을 이끌어내며 아름다운 분위기를 창조합니다.',
     events:[],
   },
   {
@@ -6426,7 +6426,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'viccarbe-a0b2f',
-    desc:'Viccarbe is an international brand of timeless design furniture focused on people’s well–being. Together with leading…',
+    desc:'Viccarbe는 사람들의 웰빙에 초점을 맞춘 시대를 초월한 디자인 가구의 국제적 브랜드입니다. 선도적인 디자이너들과 함께...',
     events:[],
   },
   {
@@ -6436,7 +6436,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 17, 1265 Copenhagen',
     slug:'vintola-studio',
-    desc:'Vintola Studio, founded in Warsaw in 2018 by designer Ola Szewczul, is a Polish design brand focused on collectible…',
+    desc:'디자이너 Ola Szewczul이 2018년 Warsaw에 설립한 Vintola Studio는 수집 가능한 작품에 집중하는 폴란드 디자인 브랜드입니다.',
     events:[],
   },
   {
@@ -6446,7 +6446,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Frederiksgade 17, 1265 Copenhagen',
     slug:'vlad-oganov-objects',
-    desc:'Vlad Oganov Objects is a contemporary lighting studio based in Warsaw, creating sculptural lamps through digital…',
+    desc:'Vlad Oganov Objects는 Warsaw에 기반을 둔 현대 조명 스튜디오로, 디지털 기술을 통해 조각적인 램프를 제작합니다.',
     events:[],
   },
   {
@@ -6456,7 +6456,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Frederiksborggade, Søtorvet 43, 1360 Copenhagen',
     slug:'vola',
-    desc:'Since 1968, VOLA has embodied the essence of Danish design with its perfect proportions and minimalist forms. Designed…',
+    desc:'1968년부터 VOLA는 완벽한 비율과 미니멀리스트 형태로 덴마크 디자인의 본질을 구현해왔습니다.',
     events:[],
   },
   {
@@ -6466,7 +6466,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Gothersgade 30, 1123 Copenhagen',
     slug:'vaerktoej',
-    desc:'Throughout history, tools have been crucial to humanity’s ability to survive and innovate, from primitive stone tools…',
+    desc:'역사를 통틀어 도구는 원시 석기 도구부터 시작하여 인류의 생존과 혁신 능력에 필수적인 요소였습니다.',
     events:[],
   },
   {
@@ -6476,7 +6476,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palæet, Bredgade 28, 1260 Copenhagen',
     slug:'walter-knoll-ag-co-kg',
-    desc:'Quality defines every space and enhances well-being. Walter Knoll furniture engages the senses, conveys appreciation,…',
+    desc:'품질은 모든 공간을 정의하고 웰빙을 향상시킵니다. Walter Knoll 가구는 감각을 자극하고 가치를 전달합니다.',
     events:[],
   },
   {
@@ -6486,7 +6486,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Posten 12B, 1577 Copenhagen',
     slug:'warm-nordic',
-    desc:'At 3daysofdesign 2026, Warm Nordic continues “The Mid–Modern Reunion,” now in its second chapter, in partnership with…',
+    desc:'3daysofdesign 2026에서 Warm Nordic은 이제 두 번째 챕터를 맞이하는 "The Mid–Modern Reunion"을 계속 이어갑니다.',
     events:[],
   },
   {
@@ -6496,7 +6496,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'warp-weft',
-    desc:'Warp & Weft is a boutique design studio based in New York City, renowned for its luxurious, handcrafted rugs that…',
+    desc:'Warp & Weft는 New York City에 기반을 둔 부티크 디자인 스튜디오로, 럭셔리한 수제 러그로 유명합니다.',
     events:[],
   },
   {
@@ -6506,7 +6506,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Amagertorv 6, 1160 Copenhagen',
     slug:'waterford',
-    desc:'Founded in 1783 in Waterford, Ireland, Waterford is recognised for its craftsmanship, sculptural detail and its…',
+    desc:'1783년 아일랜드 Waterford에서 설립된 Waterford는 장인정신, 조각적 디테일로 인정받고 있습니다.',
     events:[],
   },
   {
@@ -6516,7 +6516,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Højbro Plads 6, 1200 Copenhagen',
     slug:'wedowood-aps',
-    desc:'We Do Wood was founded in Copenhagen in 2011, based on the vision that new Danish design and strict sustainability…',
+    desc:'We Do Wood는 새로운 덴마크 디자인과 엄격한 지속 가능성의 비전을 바탕으로 2011년 Copenhagen에서 설립되었습니다.',
     events:[],
   },
   {
@@ -6526,7 +6526,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Amagertorv 6, 1160 Copenhagen',
     slug:'wedgwood',
-    desc:'Wedgwood is an iconic British homeware brand defined by timeless artistry and material mastery. It creates enduring…',
+    desc:'Wedgwood는 시대를 초월한 예술성과 소재 숙련도로 정의되는 상징적인 영국 홈웨어 브랜드입니다. 지속 가능한 제품을 만듭니다.',
     events:[],
   },
   {
@@ -6536,7 +6536,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'woodnotes',
-    desc:'The concept behind Woodnotes est. 1987 products is to combine artistic creativity inspired by Finland’s rugged nature…',
+    desc:'1987년에 설립된 Woodnotes 제품의 콘셉트는 Finland의 거친 자연에서 영감을 받은 예술적 창의성을 결합하는 것입니다.',
     events:[],
   },
   {
@@ -6546,7 +6546,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Embassy of Finland, Grønningen 11, 1270 Copenhagen',
     slug:'wroom',
-    desc:'WROOM, a brand that draws inspiration from the “MotorClassic” universe in the design and development of furniture for…',
+    desc:'WROOM은 "MotorClassic" 세계관에서 영감을 받아 가구를 디자인하고 개발하는 브랜드입니다.',
     events:[],
   },
   {
@@ -6556,7 +6556,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Harsdorffs Hus, Kongens Nytorv 3—5, 1050 Copenhagen',
     slug:'wunder-belgium',
-    desc:'Fresh, inspiring, and unmistakably Belgian. Wünder offers innovative, characteristic outdoor design conceived and…',
+    desc:'신선하고 영감 넘치며 벨기에다운 특색을 지닌 Wünder는 혁신적이고 개성 있는 야외 디자인을 선보입니다.',
     events:[],
   },
   {
@@ -6566,7 +6566,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Købmagergade 40, 1150 Copenhagen',
     slug:'xeo',
-    desc:'XEO is a technology brand designing immersive living environments where hardware, furniture, and spatial experience…',
+    desc:'XEO는 하드웨어, 가구, 공간 경험이 하나로 어우러지는 몰입형 생활 환경을 디자인하는 테크놀로지 브랜드입니다.',
     events:[],
   },
   {
@@ -6576,7 +6576,7 @@ const EXHIBITIONS = [
     districtColor:'#6d3b54',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'yamagiwa',
-    desc:'Founded in Japan, YAMAGIWA has spent more than 100 years creating spaces where lighting is shaped by a deep…',
+    desc:'일본에서 설립된 YAMAGIWA는 100년이 넘는 시간 동안 깊은 통찰력으로 빛을 형성하는 공간을 창조해왔습니다.',
     events:[],
   },
   {
@@ -6586,7 +6586,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Den Frie Udstilling, Oslo Plads 1, 2100 Copenhagen',
     slug:'ykoon-design',
-    desc:'ykoon is a design label by Steven Gosseye built on conscious choice, valued not only for its design, but for the…',
+    desc:'ykoon은 Steven Gosseye가 만든 디자인 레이블로, 의식적인 선택을 기반으로 하며 디자인뿐만 아니라 그 가치로도 인정받고 있습니다.',
     events:[],
   },
   {
@@ -6596,7 +6596,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Sundkaj 153, 2150 Copenhagen',
     slug:'yllw',
-    desc:'Yllw creates spaces designed to last—through circular transformation. Combining high quality design, procurement,…',
+    desc:'Yllw는 순환적 변화를 통해 오래 지속되도록 설계된 공간을 만듭니다. 고품질 디자인, 조달을 결합하여 선보입니다.',
     events:[],
   },
   {
@@ -6606,7 +6606,7 @@ const EXHIBITIONS = [
     districtColor:'#9b7ab5',
     address:'Kompagnistræde 28, 1208 Copenhagen',
     slug:'yobiiro-produced-by-zozo-next',
-    desc:'Yobiiro fuses traditional craftsmanship from regions across Japan with cutting–edge technology, transforming them into…',
+    desc:'Yobiiro는 일본 각 지역의 전통 장인정신과 최첨단 기술을 융합하여 새로운 형태로 변화시킵니다.',
     events:[],
   },
   {
@@ -6616,7 +6616,7 @@ const EXHIBITIONS = [
     districtColor:'#888',
     address:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen',
     slug:'zeitraum',
-    desc:'With experience and passion in working with solid wood, ZEITRAUM stands for a modern, reduced design language and…',
+    desc:'원목 작업에 대한 경험과 열정을 바탕으로, ZEITRAUM은 현대적이고 절제된 디자인 언어를 추구합니다.',
     events:[],
   },
   {
@@ -6626,7 +6626,7 @@ const EXHIBITIONS = [
     districtColor:'#5d7456',
     address:'Asia House, Indiakaj 16, 2100 Copenhagen',
     slug:'zimmer-rohde',
-    desc:'Since 1899, Zimmer + Rohde has combined traditional craftsmanship with modern innovation. From its headquarters in…',
+    desc:'1899년 이래로 Zimmer + Rohde는 전통적인 장인정신과 현대적 혁신을 결합해왔습니다. 본사를 중심으로 활동하고 있습니다.',
     events:[],
   },
   {
@@ -6636,7 +6636,7 @@ const EXHIBITIONS = [
     districtColor:'#c8492a',
     address:'Vognmagergade 2, 1120 Copenhagen',
     slug:'zofia-chylak',
-    desc:'For 3daysofdesign, Chylak presents a series of site–specific works in bobbin lace, developed for the Copenhagen…',
+    desc:'3daysofdesign을 위해 Chylak은 Copenhagen을 위해 개발한 보빈 레이스 작품 시리즈를 선보입니다.',
     events:[],
   },
   {
@@ -6646,7 +6646,7 @@ const EXHIBITIONS = [
     districtColor:'#2f6b6b',
     address:'Bredgade 69, 1260 Copenhagen',
     slug:'orsjo-belysning-ab',
-    desc:'Örsjö is founded on simple values and strong convictions, dedicated to developing and handcrafting premium lighting in…',
+    desc:'Örsjö는 단순한 가치와 확고한 신념을 바탕으로 설립되었으며, 프리미엄 조명을 개발하고 수작업으로 제작하는 데 전념하고 있습니다.',
     events:[],
   },
   {
@@ -6656,7 +6656,7 @@ const EXHIBITIONS = [
     districtColor:'#8b5e3c',
     address:'Sturlasgade 14C, 2300 Copenhagen',
     slug:'odeland',
-    desc:'ØDELAND is a material and design project that transforms overlooked waste streams into new aesthetic possibilities.…',
+    desc:'ØDELAND는 간과된 폐기물 흐름을 새로운 미학적 가능성으로 전환하는 소재 및 디자인 프로젝트입니다.',
     events:[],
   },
 ];
