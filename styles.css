@@ -419,6 +419,33 @@
   .bike-link{font-size:10.5px;padding:2px 7px;border:1px solid var(--line);border-radius:3px;background:none;cursor:pointer;text-decoration:none;color:var(--ink);font-family:'Space Mono',monospace;transition:.12s}
   .bike-link:hover{background:var(--ink);color:var(--cream)}
 
+  /* ── 쇼룸 ＋ 추가 버튼 ── */
+  .exh-venue-add-btn{font-size:11px;padding:2px 7px;border:1.5px solid var(--line);border-radius:3px;background:none;cursor:pointer;font-family:'Space Mono',monospace;color:var(--teal);transition:.12s}
+  .exh-venue-add-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+
+  /* ── 쇼룸 장소 상세 팝업 ── */
+  .exh-venue-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px}
+  .exh-venue-modal{background:#fff;border-radius:8px;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.3)}
+  .exh-venue-header{padding:16px 16px 12px;position:relative}
+  .exh-venue-close{position:absolute;top:10px;right:10px;background:none;border:none;font-size:16px;cursor:pointer;color:var(--slate);line-height:1}
+  .exh-venue-brand{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:6px;padding-right:28px}
+  .exh-venue-meta{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+  .exh-venue-addr{font-size:11px;font-family:'Space Mono',monospace;color:var(--slate);margin-top:4px}
+  .exh-venue-body{padding:12px 16px 16px;border-top:1px solid var(--line)}
+  .exh-venue-desc{font-size:12.5px;line-height:1.6;margin-bottom:10px}
+  .exh-venue-ev-note{font-size:11.5px;background:rgba(47,107,107,.07);border-left:3px solid var(--teal);padding:7px 10px;border-radius:0 4px 4px 0;margin-bottom:12px}
+  .exh-venue-add-section{border:1.5px solid var(--line);border-radius:5px;padding:10px 12px;margin-bottom:12px}
+  .exh-venue-add-label{font-size:11px;font-family:'Space Mono',monospace;color:var(--slate);margin-bottom:6px}
+  .exh-venue-add-row{display:flex;gap:6px;flex-wrap:wrap}
+  .exh-venue-day-sel{flex:1;min-width:0;padding:5px 7px;border:1.5px solid var(--line);border-radius:3px;font-size:11.5px;font-family:'Archivo',sans-serif}
+  .exh-venue-time-inp{width:74px;padding:5px 7px;border:1.5px solid var(--line);border-radius:3px;font-family:'Space Mono',monospace;font-size:11.5px}
+  .exh-venue-confirm-btn{padding:5px 12px;background:var(--teal);color:#fff;border:none;border-radius:3px;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;white-space:nowrap}
+  .exh-venue-confirm-btn:disabled{opacity:.5}
+  .exh-venue-add-status{font-size:11.5px;margin-top:6px;min-height:16px}
+  .exh-venue-links{display:flex;gap:8px;flex-wrap:wrap}
+  .exh-venue-link-btn{font-size:11px;padding:4px 10px;border:1px solid var(--line);border-radius:3px;text-decoration:none;color:var(--ink);font-family:'Space Mono',monospace;transition:.12s}
+  .exh-venue-link-btn:hover{background:var(--ink);color:var(--cream)}
+
   /* ── AI Q&A ── */
   .qa-wrap{margin:10px 0}
   .qa-history{max-height:340px;overflow-y:auto;margin-bottom:10px}

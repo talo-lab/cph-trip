@@ -2822,6 +2822,7 @@ function buildExhCard(ex, q){
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
       <span class="${evCountClass}">${evCountStr}</span>
       ${ex.events.length>0?`<span class="exh-toggle-arrow">▼</span>`:''}
+      <button class="exh-venue-add-btn" title="일정에 추가" onclick="event.stopPropagation()">＋</button>
       ${ex.slug?`<a href="https://www.3daysofdesign.dk/exhibition/${ex.slug}" target="_blank" style="font-size:9px;color:var(--rust);font-family:Space Mono,monospace;text-decoration:none" onclick="event.stopPropagation()">↗ 공식</a>`:''}
     </div>`;
 
@@ -2829,16 +2830,24 @@ function buildExhCard(ex, q){
   const addrPin = head.querySelector('.exh-addr-pin');
   if(addrPin) addrPin.addEventListener('click', e=>{ e.stopPropagation(); showExhPin(ex); });
 
+  // ＋ 버튼 → 날짜 선택 드롭다운
+  head.querySelector('.exh-venue-add-btn').addEventListener('click', e=>{
+    e.stopPropagation();
+    openExhVenueModal(ex);
+  });
+
   // 열린 상태 복원
   if(isOpen) card.classList.add('open');
 
-  // 카드 헤더 클릭 → 이벤트 목록 토글 + 지도 핀
+  // 카드 헤더 클릭 → 상세 팝업 (이벤트 없는 경우) or 이벤트 목록 토글
   head.addEventListener('click',()=>{
     showExhPin(ex);
     if(ex.events.length > 0){
       const key = ex.slug||ex.brand;
       if(exhOpenSet.has(key)) exhOpenSet.delete(key); else exhOpenSet.add(key);
       card.classList.toggle('open');
+    } else {
+      openExhVenueModal(ex);
     }
   });
 
@@ -2953,6 +2962,90 @@ function buildExhCard(ex, q){
   }
 
   return card;
+}
+
+/* ---------- 쇼룸 장소 상세 팝업 + 일정 추가 ---------- */
+function openExhVenueModal(ex){
+  document.querySelectorAll('.exh-venue-overlay').forEach(el=>el.remove());
+
+  const distD = EXH_DISTRICTS.find(d=>d.key===ex.district)||{color:'#888'};
+  const prodCats = getBrandProdCats(ex);
+  const prodBadges = prodCats.map(k=>{ const c=EXH_CATS.find(x=>x.key===k); return c&&c.key!=='all'?`<span style="display:inline-flex;align-items:center;gap:2px;font-size:9.5px;font-family:'Space Mono',monospace;background:${c.color}22;color:${c.color};border:1px solid ${c.color}55;border-radius:2px;padding:2px 6px">${c.icon} ${c.label}</span>`:'' }).join('');
+  const gmapsUrl = ex.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ex.brand+' '+ex.address)}` : '';
+  const officialUrl = ex.slug ? `https://www.3daysofdesign.dk/exhibition/${ex.slug}` : '';
+  const defaultDi = 2; // 기본 6/10
+
+  const overlay = document.createElement('div');
+  overlay.className = 'exh-venue-overlay';
+  overlay.innerHTML = `
+    <div class="exh-venue-modal">
+      <div class="exh-venue-header" style="border-top:4px solid ${distD.color||'#c8492a'}">
+        <button class="exh-venue-close">✕</button>
+        <div class="exh-venue-brand">${ex.brand}</div>
+        <div class="exh-venue-meta">
+          <span class="exh-dist-badge" style="background:${distD.color}">${ex.district||'–'}</span>
+          ${prodBadges}
+        </div>
+        ${ex.address?`<div class="exh-venue-addr">📍 ${ex.address}${gmapsUrl?` <a href="${gmapsUrl}" target="_blank" rel="noopener" style="font-size:10px;color:var(--teal);text-decoration:none">↗ 지도</a>`:''}</div>`:''}
+      </div>
+      <div class="exh-venue-body">
+        ${ex.desc?`<div class="exh-venue-desc">${ex.desc}</div>`:''}
+        ${ex.events.length?`<div class="exh-venue-ev-note">📅 이 장소에서 <b>${ex.events.length}개 이벤트</b>가 열립니다. 쇼룸 탭에서 이벤트별로 추가할 수도 있어요.</div>`:'<div class="exh-venue-ev-note" style="color:var(--slate)">이벤트 없이 전시 공간으로 운영됩니다.</div>'}
+        <div class="exh-venue-add-section">
+          <div class="exh-venue-add-label">📅 일정에 추가</div>
+          <div class="exh-venue-add-row">
+            <select class="exh-venue-day-sel">${plan.map((d,di)=>`<option value="${di}"${di===defaultDi?' selected':''}>${d.date} · ${d.tag}</option>`).join('')}</select>
+            <input class="exh-venue-time-inp" type="text" placeholder="시간 (예: 14:00)" maxlength="5">
+            <button class="exh-venue-confirm-btn">＋ 추가</button>
+          </div>
+          <div class="exh-venue-add-status"></div>
+        </div>
+        <div class="exh-venue-links">
+          ${officialUrl?`<a href="${officialUrl}" target="_blank" rel="noopener" class="exh-venue-link-btn">↗ 3DoD 공식 페이지</a>`:''}
+          ${gmapsUrl?`<a href="${gmapsUrl}" target="_blank" rel="noopener" class="exh-venue-link-btn">🗺 Google Maps</a>`:''}
+        </div>
+      </div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector('.exh-venue-close').addEventListener('click', ()=>overlay.remove());
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
+
+  // 지도에 핀 표시
+  showExhPin(ex);
+
+  // 일정 추가 실행
+  overlay.querySelector('.exh-venue-confirm-btn').addEventListener('click', ()=>{
+    const di = +overlay.querySelector('.exh-venue-day-sel').value;
+    const timeVal = overlay.querySelector('.exh-venue-time-inp').value.trim() || '미정';
+    const statusEl = overlay.querySelector('.exh-venue-add-status');
+
+    if(plan[di].items.some(it=>it.title===ex.brand)){
+      statusEl.textContent='이미 일정에 있어요.'; statusEl.style.color='var(--rust)'; return;
+    }
+    plan[di].items.push({
+      time: timeVal,
+      title: ex.brand,
+      note: `${ex.district||''}${ex.address?' · '+ex.address:''}${ex.desc?' · '+ex.desc.slice(0,60):''}`,
+      dist: ex.district||'',
+      _user: true,
+      _addedBy: currentUser,
+      _personal: false,
+      _with: ['miju','sanghyo'],
+      _dk: EXH_DISTRICTS.find(d=>d.key===ex.district)?.key || null,
+    });
+    sortDayByTime(di);
+    savePlan();
+    // 좌표 백그라운드 지오코딩
+    const newItem = plan[di].items.find(it=>it.title===ex.brand);
+    if(newItem) geocodePlanItem(newItem, di);
+
+    statusEl.innerHTML=`✓ <b>${plan[di].date}</b>에 추가됐어요!`;
+    statusEl.style.color='var(--teal)';
+    overlay.querySelector('.exh-venue-confirm-btn').disabled=true;
+    setTimeout(()=>overlay.remove(), 1500);
+  });
 }
 
 /* ---------- OPTIMIZER ENGINE ---------- */
