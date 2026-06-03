@@ -2427,58 +2427,6 @@ function renderDist(){
 function renderInfo(){
   const el=document.getElementById('scroll');
   el.innerHTML=`<div class="info">
-    <h3>행사 개요</h3>
-    <p><b>3 Days of Design 2026</b> (13회차) · 덴마크 공식 디자인 페스티벌. 단일 장소가 아닌 코펜하겐 전역의 쇼룸·갤러리에서 분산 개최됩니다.</p>
-    <ul>
-      <li><b>일정</b> 6/10(수)~6/12(금) · 매일 10:00–18:00</li>
-      <li><b>규모</b> 460+ 브랜드 · 600+ 이벤트 · 6만+ 방문</li>
-      <li><b>입장</b> 전 행사 무료 · 일반 개방</li>
-      <li><b>테마</b> "Make This Moment Matter"</li>
-    </ul>
-    <h3>숙소</h3>
-    <p><b>베스테르브로(Vesterbro) Airbnb</b> · 상트요르겐스 호수 근처 · 코펜하겐 중앙역에서 900m. 침실 1 / 침대 1 / 욕실 1 (2인) 현대적 아파트.</p>
-    <ul>
-      <li><b>체크인</b> 6/9(화) 15:00 이후</li>
-      <li><b>체크아웃</b> 6/16(화) 11:00 전</li>
-      <li><b>위치 장점</b> 중앙역 도보권 → 공항·근교 이동 편리, 지구별 메트로/자전거 접근 양호</li>
-    </ul>
-    <p style="font-size:11px;opacity:.7">📍 숙소 주소: <b>Sommerstedgade 26, 1718 København</b> (베스테르브로 · 코펜하겐 중앙역 도보 15분)</p>
-    <h3>고정 예약</h3>
-    <ul>
-      <li><b>Food & Music with SALU</b> (소셜 다이닝, 3명) · 6/10(수) 17:00–20:00</li>
-      <li>Folkehuset Absalon · Sønder Blvd. 73, 1720 København (베스테르브로, 숙소 도보권)</li>
-      <li>QR코드 3매 메일 보유 · 숙소 근처에서 만나 함께 도보 이동</li>
-    </ul>
-    <p style="font-size:11.5px;color:var(--teal)"><b>동선 메모:</b> 6/10 페스티벌 일정을 16시경 마무리하고 베스테르브로로 복귀해야 17시 다이닝에 맞출 수 있습니다. 일정 탭에서 이 항목은 🔒로 고정되어 삭제되지 않습니다.</p>
-    <h3>항공편 (2인)</h3>
-    <p><b>박상효</b> · SAS 직항</p>
-    <ul>
-      <li>가는 편 6/8 23:35 ICN(T2) → 6/9 06:00 CPH(T3) · SK0988 · 좌석 31F</li>
-      <li>오는 편 6/16 23:55 CPH(T3) → 6/17 18:35 ICN(T2) · SK0987 · 좌석 31F</li>
-    </ul>
-    <p><b>김미주</b> · KLM/대한항공/SAS 경유</p>
-    <ul>
-      <li>가는 편 6/8 22:25 ICN → AMS 환승(KE5925/KL1267) → 6/9 08:30 CPH(T2)</li>
-      <li>오는 편 6/16 16:40 CPH → LHR 환승(SK1517/KE908) → 6/17 16:15 ICN</li>
-    </ul>
-    <p style="font-size:11.5px;color:var(--rust-deep)"><b>주의:</b> 도착일(6/9) 박상효 06:00 · 김미주 08:30 도착으로 약 2.5시간 차. 출국일(6/16) 김미주가 16:40 먼저 출발(14:30경 공항행), 박상효는 23:55 출발이라 오후~저녁 도심 자유시간이 있습니다.</p>
-    <h3>이동 팁</h3>
-    <p>자전거 대여 · 메트로 · 버스 · 보트 · 도보 모두 가능. 8개 지구가 분산돼 있어 <b>지리적으로 묶어 하루 2~3개 지구</b>를 도는 전략이 효율적입니다.</p>
-    <h3>참가 브랜드 (일부)</h3>
-    <p><span class="chip">Fritz Hansen</span><span class="chip">&Tradition</span><span class="chip">Ferm Living</span><span class="chip">Gubi</span><span class="chip">Louis Poulsen</span><span class="chip">Audo</span><span class="chip">Carl Hansen</span><span class="chip">Georg Jensen</span><span class="chip">Arper</span><span class="chip">Flos</span></p>
-    <h3>준비 체크리스트</h3>
-    <ul>
-      <li>공식 앱 다운로드 → 관심 브랜드·이벤트 즐겨찾기</li>
-      <li>숙소 조기 예약 (6만 명 몰려 가격 급등)</li>
-      <li>6월 코펜하겐은 일조시간이 길고 쌀쌀 → 레이어드 의류</li>
-      <li>인기 디자인 토크는 사전 등록 필요할 수 있음</li>
-    </ul>
-    <p style="margin-top:14px;font-size:11px;opacity:.6">※ 일정·디자인 지구 매칭은 추천안이며, 실제 프로그램은 3daysofdesign.dk에서 확정됩니다. 일정 탭의 모든 항목은 직접 편집·추가·삭제할 수 있고 자동 저장됩니다.</p>
-
-    <h3>🚲 자전거 대여</h3>
-    <p>코펜하겐은 세계 최고의 자전거 도시 — 전용 차선이 촘촘하고 지형이 평탄해 여행 중 이동수단으로 적극 추천합니다.</p>
-    <div class="bike-rental-grid" id="bikeGrid"></div>
-    <p style="font-size:11.5px;color:var(--teal)"><b>팁:</b> Donkey Republic 앱은 구글/애플 계정으로 가입하고 신용카드 등록하면 바로 사용 가능. 첫날 아침 도착 직후 숙소 근처 Bike Mike 또는 Copenhagen Bicycles에서 종일권 빌리는 것도 좋아요.</p>
 
     <h3>🤖 여행 어시스턴트</h3>
     <p style="font-size:12px;opacity:.75">코펜하겐 여행 중 궁금한 것을 물어보세요. 대화 내역은 이 기기에 저장됩니다.</p>
@@ -2490,6 +2438,45 @@ function renderInfo(){
       </div>
       <div class="qa-status" id="qaStatus"></div>
     </div>
+
+    <h3>🚲 자전거 대여</h3>
+    <p>코펜하겐은 세계 최고의 자전거 도시 — 전용 차선이 촘촘하고 지형이 평탄해 여행 중 이동수단으로 적극 추천합니다.</p>
+    <div class="bike-rental-grid" id="bikeGrid"></div>
+    <p style="font-size:11.5px;color:var(--teal)"><b>팁:</b> Donkey Republic 앱은 구글/애플 계정으로 가입하고 신용카드 등록하면 바로 사용 가능. 첫날 아침 도착 직후 숙소 근처 Bike Mike 또는 Copenhagen Bicycles에서 종일권 빌리는 것도 좋아요.</p>
+
+    <h3>🏠 숙소</h3>
+    <p><b>베스테르브로(Vesterbro) Airbnb</b> · 상트요르겐스 호수 근처 · 코펜하겐 중앙역에서 900m. 침실 1 / 침대 1 / 욕실 1 (2인) 현대적 아파트.</p>
+    <ul>
+      <li><b>주소</b> Sommerstedgade 26, 1718 København V</li>
+      <li><b>체크인</b> 6/9(화) 15:00 이후</li>
+      <li><b>체크아웃</b> 6/16(화) 11:00 전</li>
+      <li><b>위치 장점</b> 중앙역 도보 15분 → 공항·근교 이동 편리, 지구별 메트로/자전거 접근 양호</li>
+    </ul>
+
+    <h3>✈️ 항공편 (2인)</h3>
+    <p><b>박상효</b> · SAS 직항</p>
+    <ul>
+      <li>가는 편 6/8(월) 23:35 ICN(T2) → 6/9(화) 06:00 CPH(T3) · SK0988 · 좌석 31F</li>
+      <li>오는 편 6/16(화) 23:55 CPH(T3) → 6/17(수) 18:35 ICN(T2) · SK0987</li>
+    </ul>
+    <p><b>김미주</b> · KLM/대한항공 경유</p>
+    <ul>
+      <li>가는 편 6/8(월) 22:25 ICN → AMS 환승(KE5925/KL1267) → 6/9(화) 08:30 CPH(T2)</li>
+      <li>오는 편 6/16(화) 16:40 CPH → LHR 환승(SK1517/KE908) → 6/17(수) 16:15 ICN</li>
+    </ul>
+    <p style="font-size:11.5px;color:var(--rust-deep)"><b>주의:</b> 출국일(6/16) 김미주 16:40 먼저 출발 → 14:30경 공항 이동. 박상효는 23:55 출발이라 오후~저녁 도심 자유시간 있음.</p>
+
+    <h3>🚇 지하철 · 버스 이용 팁</h3>
+    <ul>
+      <li><b>메트로 (Metro)</b> · M1/M2 24시간 운행 · Rejsekort(교통카드) 또는 티켓 구매 · 2존 기준 편도 26 DKK</li>
+      <li><b>S-tog (광역전철)</b> · 공항·근교(Klampenborg·Humlebæk) 접근 핵심 · CPH 중앙역(Hovedbanegården)에서 출발</li>
+      <li><b>버스</b> · 야간 버스 N-라인 운행 (메트로 대체) · Google Maps 대중교통 검색 추천</li>
+      <li><b>City Pass 24시간</b> 80 DKK · 2존 / 72시간 200 DKK · 공항 포함 시 3존 패스 추천</li>
+      <li><b>공항(CPH) 접근</b> M2 Vanløse 방향 → Christianshavn 환승 → 공항 직통 · 약 15분</li>
+      <li><b>Rejseplanen 앱</b> 덴마크 공식 교통 앱 — 실시간 경로·출발시간 안내 (한국어 없음, 영어 지원)</li>
+    </ul>
+    <p style="font-size:11px;opacity:.65">ℹ️ 이 앱 이동 탭에서 경로 측정 시 Rejseplanen API로 실시간 대중교통 경로를 볼 수 있습니다.</p>
+
   </div>`;
 
   // ── 자전거 대여소 카드 렌더링 ──
@@ -4773,19 +4760,6 @@ const map = L.map('map',{zoomControl:true,attributionControl:false}).setView([55
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
 const markers={};
 
-// ── 지구 라벨 레이어
-DISTRICTS.forEach((d)=>{
-  // 지구명 라벨 마커 (클릭 가능)
-  const lbl = L.divIcon({
-    className:'',
-    html:`<div class="dist-lbl" style="border-color:${d.color};color:${d.color}">${d.name}</div>`,
-    iconAnchor:[0,0]
-  });
-  const m = L.marker([d.lat+0.003,d.lng],{icon:lbl, zIndexOffset:-200}).addTo(map);
-  m.bindPopup(`<div class="pop-name">${d.name}</div><div class="pop-desc">${d.desc}<br><b style="color:${d.color}">${d.when}</b></div>`);
-  markers[d.key]=m;
-});
-
 // 숙소 마커
 const stayIcon=L.divIcon({className:'',html:`<div class="pin home"><span>★</span></div>`,iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-30]});
 const stayMarker=L.marker([STAY.lat,STAY.lng],{icon:stayIcon}).addTo(map);
@@ -4855,7 +4829,7 @@ DISTRICTS.forEach((d,i)=>{
   r.innerHTML=`
     <span class="leg-dist-sq" style="background:${d.color}"></span>
     <span>${i+1}. ${d.name}</span>`;
-  r.onclick=()=>{map.flyTo([d.lat,d.lng],14.5,{duration:1});markers[d.key].openPopup()};
+  r.onclick=()=>{ map.flyTo([d.lat,d.lng],14.5,{duration:1}); };
   leg.appendChild(r);
 });
 
