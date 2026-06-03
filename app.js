@@ -584,18 +584,25 @@ function renderPlanMarkers(di){
     seq++;
     const catIcon = getCategoryIcon(it);
     const isFixed = !!it._fixed;
+    // 색상 우선순위: ①_dk 지구색 → ②좌표 기준 가장 가까운 지구색(5km 이내) → ③날짜색
+    let distObj = it._dk ? DISTRICTS.find(d=>d.key===it._dk) : null;
+    if(!distObj && coords){
+      const nd = nearestDistrict(coords.lat, coords.lng);
+      if(nd.dist_km <= 5) distObj = nd.district;
+    }
+    const pinColor = distObj ? distObj.color : dayColor;
     const borderColor = isFixed ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.3)';
     const numLabel = isFixed ? '🔒' : seq;
     const icon = L.divIcon({
       className:'',
-      html:`<div class="ppv2${isFixed?' fixed-pin':''}" style="--ppbg:${dayColor};background:${dayColor};border-color:${borderColor}">
+      html:`<div class="ppv2${isFixed?' fixed-pin':''}" style="--ppbg:${pinColor};background:${pinColor};border-color:${borderColor}">
         <span class="ppv2-num">${numLabel}</span>
         <span class="ppv2-ico">${catIcon}</span>
       </div>`,
       iconSize:[36,44], iconAnchor:[18,44], popupAnchor:[0,-46]
     });
     const m = L.marker([coords.lat,coords.lng],{icon}).addTo(map);
-    m.bindPopup(`<div class="pop-name">${catIcon} ${it.title}</div><div class="pop-desc">${it.time?`<b>${it.time}</b> · `:''}${it.note||''}<br><span style="display:inline-block;margin-top:4px;background:${dayColor};color:#fff;padding:1px 6px;font-family:'Space Mono',monospace;font-size:10px;border-radius:1px">${plan[di].date}</span></div>`);
+    m.bindPopup(`<div class="pop-name">${catIcon} ${it.title}</div><div class="pop-desc">${it.time?`<b>${it.time}</b> · `:''}${it.note||''}<br><span style="display:inline-block;margin-top:4px;background:${pinColor};color:#fff;padding:1px 6px;font-family:'Space Mono',monospace;font-size:10px;border-radius:1px">${plan[di].date}</span></div>`);
     planPinLayer.push(m);
   });
 }
