@@ -183,6 +183,22 @@
   .fest-event:hover{background:rgba(0,0,0,.03)}
   .fest-event.checked{background:rgba(200,73,42,.06)}
   @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+  /* 드로어 위치 편집 */
+  .drawer-loc-row{display:flex;align-items:center;gap:5px;padding:6px 12px;border-top:1px solid var(--line);background:var(--cream)}
+  .drawer-loc-input{flex:1;font-size:11px;padding:4px 7px;border:1.5px solid var(--line);border-radius:3px;font-family:'Space Mono',monospace;outline:none;min-width:0;background:#fff}
+  .drawer-loc-input:focus{border-color:var(--teal)}
+  .drawer-loc-save{font-size:11px;padding:3px 8px;background:var(--teal);color:#fff;border:none;border-radius:3px;cursor:pointer;flex-shrink:0;font-family:'Space Mono',monospace}
+  .drawer-loc-reset{font-size:13px;background:none;border:none;cursor:pointer;color:var(--slate);flex-shrink:0;padding:0 2px}
+
+  /* 영업시간 경고 뱃지 */
+  .item-hours-warn{
+    display:inline-flex;align-items:center;gap:3px;margin-top:3px;
+    font-size:10px;font-family:'Space Mono',monospace;font-weight:700;
+    padding:1px 6px;border-radius:2px;cursor:default;
+  }
+  .item-hours-warn.closed{background:rgba(200,73,42,.12);color:var(--rust)}
+  .item-hours-warn.early,.item-hours-warn.late{background:rgba(217,144,33,.12);color:var(--ochre)}
   .fest-search-wrap{padding:6px 12px;border-bottom:1px solid var(--line);background:#fff}
   .fest-search-input{
     width:100%;box-sizing:border-box;padding:5px 10px 5px 28px;
@@ -774,6 +790,7 @@
         <span class="drawer-label" id="drawerLabel"></span>
         <button id="drawerMapBtn" title="지도에서 경로 보기" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--teal)">🗺</button>
         <a id="drawerGmapBtn" href="#" target="_blank" title="Google Maps로 열기" style="font-size:12px;padding:2px 6px;background:var(--sage);color:#fff;border-radius:3px;text-decoration:none;font-family:'Space Mono',monospace;display:none">G</a>
+        <button id="drawerLocToggle" title="위치 링크 편집" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--slate)">📍</button>
         <button class="drawer-close" id="drawerClose">✕</button>
       </div>
       <div class="drawer-privacy" id="drawerPrivacy">
@@ -788,6 +805,13 @@
           <button class="drawer-vis-btn" data-vis="shared">공유</button>
           <button class="drawer-vis-btn" data-vis="personal">🔒 나만보기</button>
         </div>
+      </div>
+      <!-- 위치 링크 편집 (토글) -->
+      <div class="drawer-loc-row" id="drawerLocRow" style="display:none">
+        <span style="font-size:10px;color:var(--teal);flex-shrink:0;font-family:'Space Mono',monospace">📍</span>
+        <input class="drawer-loc-input" id="drawerLocInput" type="text" placeholder="Google Maps URL 또는 장소명 붙여넣기...">
+        <button class="drawer-loc-save" id="drawerLocSave">저장</button>
+        <button class="drawer-loc-reset" id="drawerLocReset" title="초기화 (자동 생성으로 복원)">↺</button>
       </div>
       <div class="drawer-row">
         <textarea class="drawer-input" id="drawerInput" rows="2" placeholder="이 일정에 대해 자유롭게 요청하세요..."></textarea>
@@ -920,10 +944,12 @@ function extractStationWalk(note) {
 }
 
 /* 항목에 맞는 Google Maps URL 반환:
+ * _gmapsUrl 수동 지정이 있으면 최우선 사용
  * ① 제목에 "→"      → 경로(origin → dest) URL
  * ② note에 "역에서 도보" → 역 → 목적지 도보 경로
  * ③ 나머지          → 장소 검색 URL */
 function gMapsUrlForItem(it) {
+  if (it._gmapsUrl) return it._gmapsUrl;
   const title = it.title || '';
   const note  = it.note  || '';
 
@@ -973,6 +999,66 @@ function gMapsQuery(it) {
   if (engPart) return engPart + ', Copenhagen';
 
   return title + ', Copenhagen';
+}
+
+/* ── 영업시간 데이터 (closed: 0=일,1=월,...,6=토) ── */
+const VENUE_HOURS = [
+  { keys:['louisiana','루이지애나'],
+    open:'11:00', close:'22:00', closed:[1],
+    note:'월요일 휴관 ⚠ 6/15(월) 방문 불가' },
+  { keys:['designmuseum','디자인뮤지엄'],
+    open:'10:00', close:'20:00', closed:[1],
+    note:'월요일 휴관 ⚠ 6/15(월) 방문 불가' },
+  { keys:['ny carlsberg','니 칼스버그','글립토테크'],
+    open:'10:00', close:'17:00', closed:[1],
+    note:'월요일 휴관' },
+  { keys:['torvehallerne','토르베'],
+    open:'10:00', close:'19:00', closed:[],
+    satClose:'18:00', sunOpen:'11:00', sunClose:'17:00',
+    note:'일요일 단축 운영 (11–17시)' },
+  { keys:['tivoli','티볼리'],
+    open:'11:00', close:'23:00', closed:[],
+    note:'계절 운영 (4–9월)' },
+  { keys:['rundetårn','rundetaarn','둥근탑'],
+    open:'10:00', close:'20:00', closed:[],
+    note:'여름 시즌 운영' },
+  { keys:['reffen','레펜'],
+    open:'12:00', close:'22:00', closed:[1,2,3],
+    note:'목–일요일만 운영 (시즌제)' },
+  { keys:['charlottenlund'],
+    open:'10:00', close:'17:00', closed:[1],
+    note:'월요일 휴관' },
+  { keys:['statens museum','smk'],
+    open:'10:00', close:'18:00', closed:[1],
+    note:'월요일 휴관' },
+];
+
+/* 영업시간 경고 체크 → {type:'closed'|'early'|'late', msg} | null */
+function getVenueWarning(it, di) {
+  const dateStr = TRIP_DATES[di];
+  if (!dateStr) return null;
+  const dow = new Date(dateStr).getDay(); // 0=일,1=월,...
+  const combined = ((it.title||'')+' '+(it.note||'')).toLowerCase();
+
+  for (const v of VENUE_HOURS) {
+    if (!v.keys.some(k => combined.includes(k.toLowerCase()))) continue;
+
+    // 휴관일 체크
+    if (v.closed.includes(dow)) return { type:'closed', msg: v.note };
+
+    // 시간 체크
+    const t = timeToMin(it.time);
+    if (t < 9000) {
+      // 일요일 단축운영
+      const open  = timeToMin(dow===0 && v.sunOpen  ? v.sunOpen  : v.open);
+      const close = timeToMin(dow===6 && v.satClose ? v.satClose :
+                              dow===0 && v.sunClose ? v.sunClose : v.close);
+      if (t < open)       return { type:'early', msg:`개관 전 (${v.open} 개관)` };
+      if (t >= close - 30)return { type:'late',  msg:`마감 임박 (${v.close} 마감)` };
+    }
+    return null;
+  }
+  return null;
 }
 
 /* 터치 기기 감지: CSS 미디어쿼리가 오작동하는 기기 대비 */
@@ -1738,23 +1824,26 @@ async function addFestSelected(){
     if(festChecked.has(id)) toAdd.push(ev);
   });
 
+  const hoursWarnings = [];
   toAdd.forEach(ev=>{
     const di = FEST_DATE_MAP[ev.date];
     if(di==null) return;
-    // 중복 방지
     if(plan[di].items.some(it=>it.title===ev.title)) return;
-    plan[di].items.push({
+    const newIt = {
       time: ev.time.split('-')[0],
       title: ev.title,
       note: `${ev.venue} · ${ev.address} · ${ev.desc}`,
       dist: ev.district,
-      _user: true,
-      _addedBy: currentUser,
-      _personal: false,
-      _with: ['miju','sanghyo'],
-    });
+      _user: true, _addedBy: currentUser,
+      _personal: false, _with: ['miju','sanghyo'],
+    };
+    plan[di].items.push(newIt);
     sortDayByTime(di);
+    // 영업시간 체크
+    const w = getVenueWarning(newIt, di);
+    if(w) hoursWarnings.push(`⚠ ${ev.title.slice(0,20)}: ${w.msg}`);
   });
+  if(hoursWarnings.length) showHoursToast(hoursWarnings);
 
   await savePlan();
   festChecked.clear();
@@ -1820,6 +1909,11 @@ function renderPlan(){
       if(it._personal) tags.push(`<span class="item-tag personal">🔒 나만</span>`);
       else if(it._with?.length===1) tags.push(`<span class="item-tag with-only">${USER_LABELS[it._with[0]]}만</span>`);
       const tagsHtml = tags.length?`<div class="item-tags">${tags.join('')}</div>`:'';
+      const vWarn = getVenueWarning(it, di);
+      const warnHtml = vWarn ? `<span class="item-hours-warn ${vWarn.type}" title="${vWarn.msg}">${vWarn.type==='closed'?'🔴 휴관':'⚠ '+vWarn.msg}</span>` : '';
+
+      const gmapHref = it._gmapsUrl || gMapsUrlForItem(it);
+      const gmapIcon = it._gmapsUrl ? '🔗' : (it.title&&it.title.includes('→')?'🧭':'📍');
 
       row.innerHTML = `
         ${it._fixed?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
@@ -1831,9 +1925,9 @@ function renderPlan(){
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
           ${it._user?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
-          ${tagsHtml}
+          ${tagsHtml}${warnHtml}
         </div>
-        <a class="item-gmap" href="${gMapsUrlForItem(it)}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${it.title&&it.title.includes('→')?'🧭':'📍'}</a>
+        <a class="item-gmap" href="${gmapHref}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${gmapIcon}</a>
         <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
       // 완료 체크박스
@@ -2539,6 +2633,23 @@ function checkDragOrder(di, movedItem){
 
 function clip(s){ return (s||'').length > 12 ? s.slice(0,12)+'…' : s; }
 
+function showHoursToast(warnings){
+  document.getElementById('hoursToast')?.remove();
+  const t = document.createElement('div');
+  t.id = 'hoursToast';
+  t.style.cssText = `
+    position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+    background:#7a4a1e;color:var(--cream);
+    padding:12px 16px;border-radius:8px;max-width:320px;width:90%;
+    z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.35);
+    font-size:12px;line-height:1.55;animation:slideUp .2s ease`;
+  t.innerHTML = `<div style="font-weight:700;margin-bottom:4px">🕐 영업시간 확인 필요</div>
+    <div style="opacity:.9">${warnings.join('<br>')}</div>
+    <button onclick="this.parentElement.remove()" style="margin-top:8px;padding:4px 12px;background:rgba(255,255,255,.2);border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:11px;width:100%">확인</button>`;
+  document.body.appendChild(t);
+  setTimeout(()=>t?.remove(), 9000);
+}
+
 function showDragToast(warnings, di){
   document.getElementById('dragToast')?.remove();
   const t = document.createElement('div');
@@ -2959,15 +3070,67 @@ function openDrawer(di, ii, title){
   document.getElementById('drawerStatus').className = 'drawer-status';
   document.getElementById('itemDrawer').classList.add('open');
   updateDrawerPrivacy();
-  // Google Maps 버튼 업데이트
+
   const it = plan[di]?.items[ii];
+
+  // Google Maps G 버튼
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn && it){
-    gmapBtn.href = gMapsUrlForItem(it);
+    gmapBtn.href = it._gmapsUrl || gMapsUrlForItem(it);
     gmapBtn.style.display = 'inline';
   }
+
+  // 위치편집 입력창: 현재 저장된 URL 표시
+  const locInput = document.getElementById('drawerLocInput');
+  const locRow   = document.getElementById('drawerLocRow');
+  if(locInput && it){
+    locInput.value = it._gmapsUrl || '';
+    locInput.placeholder = gMapsUrlForItem(it); // 자동생성 URL을 플레이스홀더로
+  }
+  if(locRow) locRow.style.display = 'none'; // 열 때마다 닫힘 상태로
+
   setTimeout(()=>document.getElementById('drawerInput').focus(), 250);
 }
+
+// 위치편집 토글
+document.getElementById('drawerLocToggle').addEventListener('click', ()=>{
+  const row = document.getElementById('drawerLocRow');
+  const isOpen = row.style.display !== 'none';
+  row.style.display = isOpen ? 'none' : 'flex';
+  if(!isOpen) document.getElementById('drawerLocInput').focus();
+});
+
+// 위치 저장
+document.getElementById('drawerLocSave').addEventListener('click', ()=>{
+  if(!drawerContext) return;
+  const it = plan[drawerContext.di]?.items[drawerContext.ii];
+  if(!it) return;
+  const val = document.getElementById('drawerLocInput').value.trim();
+  // Google Maps URL이면 그대로, 아니면 Places Search URL로 변환
+  if(val && !val.startsWith('http')){
+    it._gmapsUrl = gMapsUrl(val + (val.toLowerCase().includes('copenhagen')?'':' Copenhagen'));
+  } else {
+    it._gmapsUrl = val || undefined;
+  }
+  savePlan();
+  document.getElementById('drawerLocRow').style.display = 'none';
+  // G 버튼 업데이트
+  const gmapBtn = document.getElementById('drawerGmapBtn');
+  if(gmapBtn) gmapBtn.href = it._gmapsUrl || gMapsUrlForItem(it);
+  renderPlan();
+});
+
+// 위치 초기화 (자동생성으로 복원)
+document.getElementById('drawerLocReset').addEventListener('click', ()=>{
+  if(!drawerContext) return;
+  const it = plan[drawerContext.di]?.items[drawerContext.ii];
+  if(!it) return;
+  delete it._gmapsUrl;
+  savePlan();
+  const locInput = document.getElementById('drawerLocInput');
+  if(locInput){ locInput.value = ''; locInput.placeholder = gMapsUrlForItem(it); }
+  renderPlan();
+});
 
 function closeDrawer(){
   document.getElementById('itemDrawer').classList.remove('open');
