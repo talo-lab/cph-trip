@@ -1,27 +1,11 @@
 // Vercel Serverless: /api/plan
 // GET  (auth) → { plan, favs }
 // POST (auth) → { plan?, favs? }
-import Redis from 'ioredis';
+import { getRedis, getSession } from '../lib/redis-session.js';
 
-let _redis = null;
-function getRedis() {
-  if (_redis && _redis.status !== 'end') return _redis;
-  const url = process.env.REDIS_URL || process.env.STORAGE_URL || process.env.KV_URL;
-  if (!url) throw new Error('Redis URL 환경변수가 없습니다 (REDIS_URL)');
-  _redis = new Redis(url, {
-    maxRetriesPerRequest: 2,
-    connectTimeout: 8000,
-    enableReadyCheck: false,
-    tls: url.startsWith('rediss://') ? { rejectUnauthorized: false } : undefined,
-  });
-  return _redis;
-}
-
-async function getSession(req) {
-  const token = (req.headers.authorization || '').replace('Bearer ', '').trim();
-  if (!token) return null;
-  const val = await getRedis().get(`session:${token}`);
-  return val ? JSON.parse(val) : null;
+async function getJson(redis, key) {
+  const raw = await redis.get(key);
+  return raw ? JSON.parse(raw) : null;
 }
 
 export default async function handler(req, res) {
@@ -36,13 +20,13 @@ export default async function handler(req, res) {
     const redis = getRedis();
 
     if (req.method === 'GET') {
-      const [planRaw, favsRaw] = await Promise.all([
-        redis.get('plan'),
-        redis.get(`favs:${user}`),
+      const [planData, favsData] = await Promise.all([
+        getJson(redis, 'plan'),
+        getJson(redis, `favs:${user}`),
       ]);
       return res.json({
-        plan: planRaw ? JSON.parse(planRaw) : null,
-        favs: favsRaw ? JSON.parse(favsRaw) : [],
+        plan: planData,
+        favs: favsData || [],
       });
     }
 
@@ -58,6 +42,6 @@ export default async function handler(req, res) {
     return res.status(405).end();
   } catch (e) {
     console.error('[plan] error:', e);
-    return res.status(500).json({ error: `서버 오류: ${e.message}` });
+    return res.status(500).json({ error: `server error: ${e.message}` });
   }
 }
