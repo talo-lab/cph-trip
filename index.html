@@ -1926,17 +1926,16 @@ function districtColor(name){ return DISTRICTS.find(d=>d.name===name)?.color||'#
 const FEST_DATE_MAP = {'June 10':2,'June 11':3,'June 12':4};
 
 const FEST_CATEGORIES = [
-  {key:'all',       label:'전체',      icon:'·',  color:'#1a1714'},
-  {key:'morning',   label:'아침·커피', icon:'☕', color:'#8b5e3c'},
-  {key:'lunch',     label:'점심',      icon:'🥗', color:'#5d7456'},
-  {key:'afternoon', label:'오후 음료', icon:'🥂', color:'#9b7ab5'},
+  {key:'all',       label:'전체',       icon:'·',  color:'#1a1714'},
+  {key:'morning',   label:'아침·커피',  icon:'☕', color:'#8b5e3c'},
+  {key:'brunch',    label:'브런치·음료',icon:'🥂', color:'#9b7ab5'},  // lunch + afternoon 통합
   {key:'dining',    label:'저녁 다이닝',icon:'🍽', color:'#c8492a'},
-  {key:'talk',      label:'토크·패널', icon:'💬', color:'#2f6b6b'},
+  {key:'talk',      label:'토크·패널',  icon:'💬', color:'#2f6b6b'},
   {key:'exhibition',label:'전시·오프닝',icon:'🏛', color:'#6d3b54'},
-  {key:'workshop',  label:'워크숍',    icon:'✂️', color:'#5d7456'},
-  {key:'tour',      label:'투어·워크', icon:'🚶', color:'#3a4a5a'},
-  {key:'wellness',  label:'웰니스',    icon:'🧘', color:'#9c3318'},
-  {key:'launch',    label:'런칭',      icon:'🚀', color:'#d99021'},
+  {key:'workshop',  label:'워크숍',     icon:'✂️', color:'#5d7456'},
+  {key:'tour',      label:'투어·워크',  icon:'🚶', color:'#3a4a5a'},
+  {key:'wellness',  label:'웰니스',     icon:'🧘', color:'#9c3318'},
+  {key:'launch',    label:'런칭',       icon:'🚀', color:'#d99021'},
 ];
 
 /* FESTIVAL_EVENTS loaded from /events-data.js */
@@ -2254,7 +2253,14 @@ function renderFestList(){
   const q = festSearchQuery.toLowerCase().trim();
   const filtered = FESTIVAL_EVENTS.filter(e=>{
     if(e.date !== festDateFilter) return false;
-    if(festCatFilter!=='all' && e.category!==festCatFilter) return false;
+    if(festCatFilter!=='all'){
+      // brunch = lunch + afternoon 통합 필터
+      if(festCatFilter==='brunch'){
+        if(e.category!=='lunch' && e.category!=='afternoon') return false;
+      } else {
+        if(e.category!==festCatFilter) return false;
+      }
+    }
     if(festDistFilter!=='all' && e.district!==festDistFilter) return false;
     if(festFavFilter && !favorites.has(`fest-${e.date}-${e.title}`)) return false;
     if(q && !e.title.toLowerCase().includes(q) &&
@@ -2276,7 +2282,9 @@ function renderFestList(){
     const row = document.createElement('div');
     row.className = 'fest-event' + (isChecked?' checked':'');
     const dkColor = districtColor(ev.district);
-    const catInfo = FEST_CATEGORIES.find(c=>c.key===ev.category)||FEST_CATEGORIES[0];
+    // lunch/afternoon → brunch로 통합 표시
+    const catKey = (ev.category==='lunch'||ev.category==='afternoon') ? 'brunch' : ev.category;
+    const catInfo = FEST_CATEGORIES.find(c=>c.key===catKey)||FEST_CATEGORIES[0];
     const isFav = favorites.has(id);
     row.innerHTML = `
       <input type="checkbox" class="fest-cb" ${isChecked?'checked':''}>
@@ -3334,6 +3342,138 @@ function renderInfo(){
   </div>`;
 }
 
+/* ---------- EXHIBITION EVENT DETAIL MODAL ---------- */
+const exhDetailCache = {};
+
+function openExhEvModal(ev, ex){
+  document.querySelectorAll('.ev-overlay').forEach(el=>el.remove());
+
+  const dayColor = EXH_DAY_COLORS[ev.day]||'#888';
+  const distD = EXH_DISTRICTS.find(d=>d.key===ex.district)||{color:'#888'};
+  const overlay = document.createElement('div');
+  overlay.className = 'ev-overlay';
+
+  const catTags = (() => {
+    const allCats = ev.cats || [];
+    if(allCats.length === 0) return `<span class="fest-dk" style="background:${ev.color}">${ev.icon} ${ev.label}</span>`;
+    return allCats.map(c=>{
+      const info = EXH_CATS.find(x=>x.key===c);
+      return info?`<span class="fest-dk" style="background:${c==='talk'?'#2f6b6b':c==='workshop'?'#5d7456':c==='drinks'?'#8b5e3c':c==='launch'?'#d99021':'#3a4a5a'}">${info.icon||''} ${info.label}</span>`:'';
+    }).join('');
+  })();
+
+  const venueAddr = ev.location || ex.address || '';
+  const evUrl = ev.id ? `https://www.3daysofdesign.dk/event/${ev.id}` : '';
+
+  overlay.innerHTML=`
+    <div class="ev-modal" id="evModal">
+      <div class="ev-header">
+        <button class="ev-close" id="evClose">✕</button>
+        <div class="ev-hed-title">${ev.title}</div>
+        <div class="ev-hed-meta">
+          <span class="ev-hed-time">6/${ev.day} ${ev.start}${ev.end?'–'+ev.end:''}</span>
+          <span>${venueAddr}</span>
+          <span class="ev-hed-dk" style="background:${distD.color}">${ex.district}</span>
+          ${catTags}
+        </div>
+      </div>
+      <div class="ev-photo-placeholder" style="background:linear-gradient(135deg,${distD.color}22,${dayColor}22)">
+        <div class="ev-photo-icon">${ev.icon}</div>
+        <div class="ev-photo-vname">${ex.brand.toUpperCase()}</div>
+      </div>
+      <div class="ev-body" id="evBody">
+        <div class="ev-section">
+          <div class="ev-section-label">브랜드</div>
+          <div class="ev-section-body" style="font-weight:600">${ex.brand}</div>
+          ${ex.desc?`<div class="ev-section-body" style="margin-top:4px">${ex.desc}</div>`:''}
+          ${evUrl?`<a href="${evUrl}" target="_blank" rel="noopener" class="ev-booking-link" style="margin-top:6px;display:inline-block">↗ 공식 행사 페이지</a>`:''}
+        </div>
+        <div id="evDetail">
+          <div class="ev-loading"><div class="ev-spin"></div>상세 정보를 불러오는 중...</div>
+        </div>
+      </div>
+      <div class="ev-add-row">
+        <button class="ev-add-btn" id="evAddBtn">＋ 일정에 추가</button>
+      </div>
+    </div>`;
+
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
+  overlay.querySelector('#evClose').onclick = ()=>overlay.remove();
+
+  // 일정 추가
+  overlay.querySelector('#evAddBtn').onclick = ()=>{
+    const btn = overlay.querySelector('#evAddBtn');
+    const festDayIdx = ev.day===10?2:ev.day===11?3:ev.day===12?4:-1;
+    if(festDayIdx<0){ alert('날짜 정보가 없습니다.'); return; }
+    if(plan[festDayIdx].items.some(it=>it.title===ev.title)){
+      btn.textContent='✓ 이미 추가됨'; btn.classList.add('done'); return;
+    }
+    plan[festDayIdx].items.push({
+      time: ev.start||'미정',
+      title: ev.title,
+      note: `${ex.brand}${ex.address?' · '+ex.address:''}`,
+      dist: ex.district||'',
+      _user:true, _addedBy:currentUser, _personal:false, _with:['miju','sanghyo'],
+      _dk: ex.district,
+    });
+    sortDayByTime(festDayIdx); savePlan();
+    btn.textContent='✓ 일정에 추가됨'; btn.classList.add('done');
+    const t=document.createElement('div');
+    t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2e6b2e;color:#fff;padding:9px 16px;border-radius:6px;font-size:12px;font-family:Space Mono,monospace;z-index:9999;pointer-events:none;white-space:nowrap';
+    t.textContent=`✓ ${plan[festDayIdx].date}에 추가됨`;
+    document.body.appendChild(t); setTimeout(()=>t.remove(),2200);
+  };
+
+  document.body.appendChild(overlay);
+  loadExhEvDetail(ev, ex);
+}
+
+async function loadExhEvDetail(ev, ex){
+  const detailEl = document.getElementById('evDetail');
+  if(!detailEl) return;
+  const cacheKey = ev.id || `${ex.brand}-${ev.title}`;
+  if(exhDetailCache[cacheKey]){ renderEvDetail(exhDetailCache[cacheKey], detailEl); return; }
+
+  const sys = `너는 코펜하겐 3 Days of Design 2026 페스티벌 전문가다. 행사 정보를 받아 JSON만 출력한다. 마크다운·설명 절대 금지.
+
+예약 분류 기준:
+- "불필요": 쇼룸 방문, 전시 관람, 브렉퍼스트/커피/토크/워크숍 등 브랜드가 무료로 여는 행사
+- "티켓 필요": 유료 티켓 판매 행사만 (Long Table Dinner, Symposium, 유료 워크숍)
+- "사전등록 권장": 무료이나 인원 제한으로 사전 등록 필요 시
+
+출력 형식:
+{"detail":"3~4문장 상세 설명 (한국어)","reservation":"불필요"|"사전등록 권장"|"티켓 필요","reservationNote":"예약 안내 (불필요이면 빈 문자열)","bookingUrl":"티켓/등록 URL (없으면 빈 문자열)","items":["준비물1",...],"duration":"예상 소요시간","tips":"현장 팁 한 문장"}`;
+
+  const input = `브랜드: ${ex.brand}
+이벤트: ${ev.title}
+장소: ${ev.location||ex.address||''} (${ex.district})
+날짜/시간: 6/${ev.day} ${ev.start}${ev.end?'–'+ev.end:''}
+카테고리: ${ev.label}
+브랜드 소개: ${ex.desc||''}`;
+
+  try{
+    const resp = await fetch('/api/extract',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({system:sys, input, max_tokens:600})
+    });
+    if(!resp.ok) throw new Error(resp.status);
+    const data = await resp.json();
+    const txt = (data.text||'').replace(/```json|```/g,'').trim();
+    const obj = JSON.parse(txt);
+    exhDetailCache[cacheKey] = obj;
+    if(document.getElementById('evDetail')) renderEvDetail(obj, document.getElementById('evDetail'));
+  } catch(e){
+    if(detailEl){
+      detailEl.innerHTML=`<div style="font-size:12px;color:var(--slate)">상세 정보를 불러올 수 없어요.</div>`;
+      const retryBtn = document.createElement('button');
+      retryBtn.textContent='↻ 다시 시도';
+      retryBtn.style.cssText='margin-top:6px;font-size:11px;padding:3px 10px;border:1px solid var(--line);background:none;cursor:pointer;border-radius:3px;color:var(--sage)';
+      retryBtn.onclick=()=>loadExhEvDetail(ev, ex);
+      detailEl.appendChild(retryBtn);
+    }
+  }
+}
+
 /* ---------- RENDER: EXHIBITIONS ---------- */
 let exhDistFilter = 'all';
 let exhCatFilter  = 'all';
@@ -3343,15 +3483,15 @@ let exhOpenSet    = new Set();
 let exhNoEvOpen   = false;
 
 const EXH_DISTRICTS = [
-  {key:'all',          label:'전체 지구'},
-  {key:'Frederiksstaden', label:'프레데릭스타덴', color:'#2f6b6b'},
-  {key:'Kongens Nytorv',  label:'코넨스 뉘토르',  color:'#6d3b54'},
-  {key:'Rosengård',       label:'로센고르',        color:'#c8492a'},
-  {key:'Christianshavn',  label:'크리스티안스하운',color:'#3a4a5a'},
-  {key:'Nordhavn',        label:'노드하운',         color:'#5d7456'},
-  {key:'Holmen',          label:'홀멘',             color:'#d99021'},
-  {key:'Kultur',          label:'쿨투르',           color:'#9b7ab5'},
-  {key:'Islands Brygge',  label:'아일란스 브뤼게',  color:'#8b5e3c'},
+  {key:'all',             label:'All Districts'},
+  {key:'Frederiksstaden', label:'Frederiksstaden', color:'#2f6b6b'},
+  {key:'Kongens Nytorv',  label:'Kongens Nytorv',  color:'#6d3b54'},
+  {key:'Rosengård',       label:'Rosengård',        color:'#c8492a'},
+  {key:'Christianshavn',  label:'Christianshavn',   color:'#3a4a5a'},
+  {key:'Nordhavn',        label:'Nordhavn',         color:'#5d7456'},
+  {key:'Holmen',          label:'Holmen',           color:'#d99021'},
+  {key:'Kultur',          label:'Kultur',           color:'#9b7ab5'},
+  {key:'Islands Brygge',  label:'Islands Brygge',   color:'#8b5e3c'},
 ];
 const EXH_CATS = [
   {key:'all',      label:'전체'},
@@ -3545,7 +3685,7 @@ function buildExhCard(ex, q){
     <div class="exh-card-info">
       <div class="exh-brand">${hl(ex.brand)}</div>
       <div class="exh-meta">
-        <span class="exh-dist-badge" style="background:${distD.color||ex.districtColor}">${ex.districtKo||ex.district}</span>
+        <span class="exh-dist-badge" style="background:${distD.color||ex.districtColor}">${ex.district||'–'}</span>
         ${ex.address ? `<span class="exh-addr" style="margin:0">📍 ${ex.address}</span>` : ''}
       </div>
       ${ex.desc ? `<div class="exh-desc">${ex.desc}</div>` : ''}
@@ -3610,6 +3750,12 @@ function buildExhCard(ex, q){
           ${evUrl?`<a href="${evUrl}" target="_blank" class="exh-link-btn" onclick="event.stopPropagation()">↗</a>`:''}
           <button class="exh-add-btn${alreadyIn?' done':''}" title="${alreadyIn?'이미 일정에 있음':'일정에 추가'}">${alreadyIn?'✓':'+'}</button>
         </div>`;
+
+      // 행 클릭 → AI 팝업 (+ 버튼 클릭은 별도 처리)
+      row.addEventListener('click', e=>{
+        if(e.target.closest('.exh-add-btn,.exh-day-sel,.exh-link-btn')) return;
+        openExhEvModal(ev, ex);
+      });
 
       // 일정 추가 버튼 클릭
       const addBtn = row.querySelector('.exh-add-btn');
@@ -5357,7 +5503,8 @@ function showFestMarker(ev, id){
   const dist = DISTRICTS.find(d=>d.name===ev.district);
   if(!dist) return;
   const dkColor = districtColor(ev.district);
-  const catInfo = FEST_CATEGORIES.find(c=>c.key===ev.category)||FEST_CATEGORIES[0];
+  const catKeyM2 = (ev.category==='lunch'||ev.category==='afternoon') ? 'brunch' : ev.category;
+  const catInfo = FEST_CATEGORIES.find(c=>c.key===catKeyM2)||FEST_CATEGORIES[0];
   const h = strHash(ev.title);
   const lat = dist.lat + ((h%100)/100-0.5)*0.004;
   const lng = dist.lng + (((h>>8)%100)/100-0.5)*0.006;
