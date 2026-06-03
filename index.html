@@ -443,6 +443,16 @@
   .item.fixed{background:linear-gradient(90deg,rgba(45,107,107,.13),transparent);border-left:3px solid var(--teal);padding-left:8px;margin-left:-11px}
   .item-src.lock{color:var(--teal);font-weight:700}
   .item-x[disabled]{cursor:default;opacity:.5}
+  .item-gmap{
+    font-size:13px;flex-shrink:0;text-decoration:none;align-self:center;
+    padding:2px 4px;opacity:0;transition:.15s;
+  }
+  @media(hover:hover){
+    .item:hover .item-gmap{opacity:.55}
+    .item-gmap:hover{opacity:1!important}
+  }
+  @media(hover:none),(pointer:coarse){.item-gmap{opacity:.5!important}}
+  .is-touch .item-gmap{opacity:.5!important}
 
   /* ============ PLAN ITEM SELECT (2-item route) ============ */
   /* ── 진행률 체크 ── */
@@ -753,6 +763,7 @@
         <span class="drawer-icon">✦ AI</span>
         <span class="drawer-label" id="drawerLabel"></span>
         <button id="drawerMapBtn" title="지도에서 경로 보기" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--teal)">🗺</button>
+        <a id="drawerGmapBtn" href="#" target="_blank" title="Google Maps로 열기" style="font-size:12px;padding:2px 6px;background:var(--sage);color:#fff;border-radius:3px;text-decoration:none;font-family:'Space Mono',monospace;display:none">G</a>
         <button class="drawer-close" id="drawerClose">✕</button>
       </div>
       <div class="drawer-privacy" id="drawerPrivacy">
@@ -823,6 +834,12 @@
 </div>
 
 <script>
+/* Google Maps 딥링크 URL 생성 */
+function gMapsUrl(lat, lng, fallback) {
+  if (lat && lng) return `https://maps.google.com/?q=${lat},${lng}`;
+  return `https://maps.google.com/?q=${encodeURIComponent((fallback||'') + ' Copenhagen')}`;
+}
+
 /* 터치 기기 감지: CSS 미디어쿼리가 오작동하는 기기 대비 */
 if('ontouchstart' in window || navigator.maxTouchPoints > 0){
   document.documentElement.classList.add('is-touch');
@@ -1471,7 +1488,10 @@ function renderFest(){
         </div>
         <div class="fest-desc">${ev.desc}</div>
       </div>
-      <button class="fav-btn" title="즐겨찾기">${isFav?'♥':'♡'}</button>`;
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:center;flex-shrink:0">
+        <button class="fav-btn" title="즐겨찾기">${isFav?'♥':'♡'}</button>
+        <a href="${gMapsUrl(null,null,ev.address||ev.venue)}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
+      </div>`;
     const cb = row.querySelector('.fest-cb');
     const titleEl = row.querySelector('.fest-title-link');
 
@@ -1641,6 +1661,7 @@ function renderPlan(){
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${tagsHtml}
         </div>
+        <a class="item-gmap" href="${gMapsUrl(it._lat,it._lng,it.title)}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">📍</a>
         <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
       // 완료 체크박스
@@ -1665,7 +1686,7 @@ function renderPlan(){
 
       // 행 클릭 → 지도 경로 시각화 + 드로어 열기
       row.addEventListener('click', e=>{
-        if(e.target.matches('[contenteditable],[contenteditable] *,.item-x,.item-done-cb')) return;
+        if(e.target.matches('[contenteditable],[contenteditable] *,.item-x,.item-done-cb,.item-gmap')) return;
         openDrawer(di, ii, it.title);
         showItemRoute(di, ii);
       });
@@ -2662,6 +2683,13 @@ function openDrawer(di, ii, title){
   document.getElementById('drawerStatus').className = 'drawer-status';
   document.getElementById('itemDrawer').classList.add('open');
   updateDrawerPrivacy();
+  // Google Maps 버튼 업데이트
+  const it = plan[di]?.items[ii];
+  const gmapBtn = document.getElementById('drawerGmapBtn');
+  if(gmapBtn && it){
+    gmapBtn.href = gMapsUrl(it._lat, it._lng, it.title);
+    gmapBtn.style.display = 'inline';
+  }
   setTimeout(()=>document.getElementById('drawerInput').focus(), 250);
 }
 
