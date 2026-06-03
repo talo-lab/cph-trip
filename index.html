@@ -866,67 +866,113 @@ function detectTravelMode(note) {
   return 'transit';
 }
 
-/* 한글 장소명 → Google Maps 검색어 */
-const PLACE_MAP = {
-  '숙소':'Vesterbro Airbnb Copenhagen', '호텔':'Vesterbro Copenhagen',
-  '공항':'Copenhagen Airport CPH', '코펜하겐 공항':'Copenhagen Airport CPH',
-  '중앙역':'Copenhagen Central Station', '코펜하겐 중앙역':'Copenhagen Central Station',
-  '벨뷰 해변':'Bellevue Beach Klampenborg', '뉘하운':'Nyhavn Copenhagen',
-  '티볼리':'Tivoli Gardens Copenhagen', 'klub':'KLUB Linnésgade 25 Copenhagen',
-};
+/* 장소명 정규화 매핑 — 한글/약어 → Google Maps 검색어 */
+const PLACE_MAP = [
+  // 숙소 / 이동 기점
+  ['숙소',                'Vesterbro, Copenhagen'],
+  ['airbnb',              'Vesterbro, Copenhagen'],
+  // 공항
+  ['공항',                'Copenhagen Airport, Kastrup'],
+  ['코펜하겐 공항',        'Copenhagen Airport CPH'],
+  // 기차역
+  ['중앙역',              'Copenhagen Central Station'],
+  ['코펜하겐 중앙역',      'Copenhagen Central Station'],
+  // 코펜하겐 명소
+  ['뉘하운',              'Nyhavn, Copenhagen'],
+  ['티볼리',              'Tivoli Gardens, Copenhagen'],
+  ['인어공주',            'The Little Mermaid, Copenhagen'],
+  ['둥근탑',              'Rundetårn, Copenhagen'],
+  ['torvehallerne',       'Torvehallerne, Copenhagen'],
+  ['토르베할레너',         'Torvehallerne, Copenhagen'],
+  // 해변
+  ['벨뷰 해변',           'Bellevue Strand, Klampenborg, Denmark'],
+  ['bellevue',            'Bellevue Strand, Klampenborg, Denmark'],
+  ['islands brygge',      'Islands Brygge Harbor Bath, Copenhagen'],
+  ['하버바스',            'Islands Brygge Harbor Bath, Copenhagen'],
+  // 근교
+  ['louisiana',           'Louisiana Museum of Modern Art, Humlebæk, Denmark'],
+  ['루이지애나',           'Louisiana Museum of Modern Art, Humlebæk, Denmark'],
+  ['charlottenlund',      'Charlottenlund Fort Beach, Denmark'],
+  ['찰롯텐룬드',          'Charlottenlund Fort Beach, Denmark'],
+  ['reffen',              'Reffen, Copenhagen Street Food, Copenhagen'],
+  // 디자인 페스티벌 장소
+  ['klub',                'KLUB, Linnésgade 25, Copenhagen'],
+  ['designmuseum',        'Designmuseum Danmark, Bredgade 68, Copenhagen'],
+  ['folkehuset absalon',  'Folkehuset Absalon, Sønder Blvd 73, Copenhagen'],
+  ['pp møbler',           'PP Møbler, Bryggernes Plads 11, Copenhagen'],
+  ['fritz hansen',        'Fritz Hansen Store, Bredgade 95, Copenhagen'],
+];
+
+/* 원시 장소명 → Google Maps 최적 검색어 */
 function normPlace(raw) {
   const k = raw.trim().toLowerCase();
-  for(const [key, val] of Object.entries(PLACE_MAP)){
+  for(const [key, val] of PLACE_MAP){
     if(k.includes(key.toLowerCase())) return val;
   }
-  return raw.trim() + ' Copenhagen';
+  return raw.trim() + ', Copenhagen';
 }
 
-/* 항목에 맞는 Google Maps URL 반환
- * - 이동 항목 (제목에 →) → 경로 URL
- * - 일반 항목 → 장소 검색 URL */
+/* note에서 "X역에서 도보" 패턴 추출 → 역 이름 반환 */
+function extractStationWalk(note) {
+  const m = (note||'').match(/([A-Za-z가-힣ÆæØøÅå]+)\s*역에서\s*도보|([A-Za-z가-힣ÆæØøÅå]+)역\s*하차/i);
+  if (!m) return null;
+  return (m[1]||m[2]).trim();
+}
+
+/* 항목에 맞는 Google Maps URL 반환:
+ * ① 제목에 "→"      → 경로(origin → dest) URL
+ * ② note에 "역에서 도보" → 역 → 목적지 도보 경로
+ * ③ 나머지          → 장소 검색 URL */
 function gMapsUrlForItem(it) {
   const title = it.title || '';
   const note  = it.note  || '';
-  const tag   = it.dist  || '';
 
-  // 이동 항목 감지: 제목에 "→" 포함 or 태그에 "이동"
-  const isMove = title.includes('→') || tag.includes('이동');
-
-  if (isMove && title.includes('→')) {
-    const idx = title.indexOf('→');
-    // "숙소 출발 → 벨뷰 해변으로 이동" 파싱
-    const fromRaw = title.slice(0, idx).replace(/\s*(출발|에서|에서의)?\s*$/, '').trim();
-    const toRaw   = title.slice(idx + 1).replace(/\s*(으로|로)?\s*이동.*$/, '').trim();
-    const mode    = detectTravelMode(note);
-    return gMapsDir(normPlace(fromRaw), normPlace(toRaw), mode);
+  // ① 이동 항목: "A → B" 패턴
+  if (title.includes('→')) {
+    const idx     = title.indexOf('→');
+    const fromRaw = title.slice(0, idx).replace(/\s*(출발|에서의?|에서)?\s*$/, '').trim();
+    const toRaw   = title.slice(idx + 1).replace(/\s*(으로|로)?\s*이동.*$/,'').trim();
+    return gMapsDir(normPlace(fromRaw), normPlace(toRaw), detectTravelMode(note));
   }
 
-  // 일반 장소 검색
+  // ② 역 → 목적지 도보 (note에 "X역에서 도보" 있는 경우)
+  const station = extractStationWalk(note);
+  if (station) {
+    const dest = gMapsQuery(it);
+    return gMapsDir(`${station} Station, Denmark`, dest, 'walking');
+  }
+
+  // ③ 일반 장소 검색
   return gMapsUrl(gMapsQuery(it));
 }
 
 /* 일정 항목에서 최적 검색어 추출
- * 우선순위: 제목 영문 → note 주소 → note 영문 → 제목 */
+ * 우선순위: PLACE_MAP → note 주소 → 제목 영문 → 제목 */
 function gMapsQuery(it) {
   const title = it.title || '';
   const note  = it.note  || '';
+  const all   = (title + ' ' + note).toLowerCase();
 
-  // 1순위: 제목에서 영문 장소명 (3자 이상 연속 영문)
-  const titleEng = title.match(/[A-Z][A-Za-z\s&'.-]{3,}/);
-  if (titleEng) return titleEng[0].trim() + ' Copenhagen';
+  // 1순위: PLACE_MAP 키워드 매칭
+  for(const [key, val] of PLACE_MAP){
+    if(all.includes(key.toLowerCase())) return val;
+  }
 
-  const parts = note.split(/\s*[·—–·]\s*/).map(p => p.trim()).filter(Boolean);
+  const parts = note.split(/\s*[·—–·]\s*/).map(p=>p.trim()).filter(Boolean);
 
-  // 2순위: note에서 숫자+영문 구절 (도로명 주소)
+  // 2순위: note에서 숫자+영문 (도로명 주소)
   const addr = parts.find(p => /\d/.test(p) && /[a-zA-Z]{2,}/.test(p));
-  if (addr) return addr + ' Copenhagen';
+  if (addr) return addr + ', Copenhagen';
 
-  // 3순위: note에서 영문 장소명
+  // 3순위: 제목에서 영문 장소명
+  const titleEng = title.match(/[A-Z][A-Za-z\s&'.-]{3,}/);
+  if (titleEng) return titleEng[0].trim() + ', Copenhagen';
+
+  // 4순위: note에서 영문
   const engPart = parts.find(p => /[a-zA-Z]{4,}/.test(p));
-  if (engPart) return engPart + ' Copenhagen';
+  if (engPart) return engPart + ', Copenhagen';
 
-  return title + ' Copenhagen';
+  return title + ', Copenhagen';
 }
 
 /* 터치 기기 감지: CSS 미디어쿼리가 오작동하는 기기 대비 */
