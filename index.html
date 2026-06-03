@@ -187,6 +187,70 @@
   .fest-event.checked{background:rgba(200,73,42,.06)}
   @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
+  /* ============ EXHIBITIONS TAB ============ */
+  .exh-wrap{display:flex;flex-direction:column;height:100%}
+  .exh-filters{display:flex;gap:5px;padding:10px 14px 6px;flex-wrap:wrap;border-bottom:1px solid var(--line);flex-shrink:0;align-items:center}
+  .exh-filter-btn{
+    font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.04em;
+    padding:3px 9px;border:1.5px solid var(--line);background:none;cursor:pointer;
+    color:var(--slate);transition:.15s;border-radius:2px;
+  }
+  .exh-filter-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .exh-filter-btn.dist-btn.active{background:var(--rust);border-color:var(--rust)}
+  .exh-filter-btn.cat-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+  .exh-search-wrap{padding:6px 14px;border-bottom:1px solid var(--line);background:#fff;flex-shrink:0}
+  .exh-search-input{
+    width:100%;box-sizing:border-box;padding:5px 10px 5px 28px;
+    border:1.5px solid var(--line);border-radius:20px;font-size:12px;
+    font-family:'Space Mono',monospace;outline:none;background:var(--cream);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:8px center;transition:.15s;
+  }
+  .exh-search-input:focus{border-color:var(--sage);background-color:#fff}
+  .exh-stat{font-size:10px;font-family:'Space Mono',monospace;color:var(--slate);margin-left:auto;flex-shrink:0}
+  .exh-list{flex:1;overflow-y:auto;padding:0 0 60px}
+  /* 브랜드 카드 */
+  .exh-card{border-bottom:2px solid var(--line);background:var(--cream);transition:.12s}
+  .exh-card.has-events{background:#fff}
+  .exh-card-head{
+    display:flex;gap:10px;padding:11px 14px 9px;cursor:pointer;align-items:flex-start;
+    user-select:none;
+  }
+  .exh-card-head:hover{background:rgba(0,0,0,.03)}
+  .exh-card.open .exh-card-head{background:rgba(45,58,46,.05);border-bottom:1px solid var(--line)}
+  .exh-card-info{flex:1;min-width:0}
+  .exh-brand{font-size:13px;font-weight:700;line-height:1.25;margin-bottom:2px;color:var(--ink)}
+  .exh-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+  .exh-dist-badge{font-size:9px;font-weight:700;padding:1px 6px;border-radius:2px;color:#fff;font-family:'Space Mono',monospace}
+  .exh-addr{font-size:10.5px;color:var(--slate);margin-bottom:3px}
+  .exh-desc{font-size:11px;color:var(--slate);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .exh-ev-count{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--teal);font-weight:700;white-space:nowrap;flex-shrink:0;padding-top:2px}
+  .exh-ev-count.none{color:var(--slate);opacity:.5}
+  .exh-toggle-arrow{font-size:11px;color:var(--slate);flex-shrink:0;transition:transform .18s;margin-top:2px}
+  .exh-card.open .exh-toggle-arrow{transform:rotate(180deg)}
+  /* 이벤트 목록 (접혀있으면 숨김) */
+  .exh-events{display:none;padding:4px 0 8px}
+  .exh-card.open .exh-events{display:block}
+  .exh-ev-row{
+    display:flex;gap:8px;padding:7px 14px 7px 28px;border-bottom:1px dashed var(--line);
+    align-items:flex-start;cursor:pointer;transition:.12s;
+  }
+  .exh-ev-row:last-child{border-bottom:none}
+  .exh-ev-row:hover{background:rgba(0,0,0,.04)}
+  .exh-ev-row.joint-ev{background:rgba(155,122,181,.04)}
+  .exh-ev-time{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--rust-deep);font-weight:700;white-space:nowrap;min-width:42px;padding-top:2px}
+  .exh-ev-body{flex:1;min-width:0}
+  .exh-ev-title{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px}
+  .exh-ev-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+  .exh-ev-tag{font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;color:#fff}
+  .exh-ev-loc{font-size:10px;color:var(--slate);margin-top:2px}
+  .exh-joint-badge{font-size:9px;color:#9b7ab5;font-family:'Space Mono',monospace;margin-left:4px}
+  .exh-day-chip{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;padding:1px 5px;color:#fff;border-radius:2px;flex-shrink:0;margin-top:2px}
+  /* 전시 없는 브랜드 섹션 */
+  .exh-no-events-hdr{padding:8px 14px;background:rgba(0,0,0,.03);border-bottom:1px solid var(--line);font-size:10px;font-family:'Space Mono',monospace;color:var(--slate);cursor:pointer;display:flex;align-items:center;gap:6px}
+  .exh-no-events-hdr:hover{background:rgba(0,0,0,.06)}
+  .exh-section-count{font-size:9.5px;opacity:.7}
+
   /* 드로어 위치 편집 */
   .drawer-loc-row{display:flex;align-items:center;gap:5px;padding:6px 12px;border-top:1px solid var(--line);background:var(--cream)}
   .drawer-loc-input{flex:1;font-size:11px;padding:4px 7px;border:1.5px solid var(--line);border-radius:3px;font-family:'Space Mono',monospace;outline:none;min-width:0;background:#fff}
@@ -1048,6 +1112,7 @@
       <button class="tab active" data-tab="plan">일정</button>
       <button class="tab" data-tab="rec">추천</button>
       <button class="tab" data-tab="fest">행사</button>
+      <button class="tab" data-tab="exh">전시</button>
       <button class="tab" data-tab="add">＋장소</button>
       <button class="tab" data-tab="dist">지구</button>
       <button class="tab" data-tab="info">정보</button>
@@ -1133,6 +1198,7 @@
 
 <!-- 행사 이벤트 데이터 (796개) -->
 <script src="/events-data.js"></script>
+<script src="/exhibitions-data.js"></script>
 
 <!-- LOGIN MODAL -->
 <div class="login-overlay" id="loginOverlay" style="display:none">
@@ -3230,6 +3296,287 @@ function renderInfo(){
   </div>`;
 }
 
+/* ---------- RENDER: EXHIBITIONS ---------- */
+let exhDistFilter = 'all';
+let exhCatFilter  = 'all';
+let exhDayFilter  = 'all';
+let exhSearchQ    = '';
+let exhOpenSet    = new Set();
+let exhNoEvOpen   = false;
+
+const EXH_DISTRICTS = [
+  {key:'all',          label:'전체 지구'},
+  {key:'Frederiksstaden', label:'프레데릭스타덴', color:'#2f6b6b'},
+  {key:'Kongens Nytorv',  label:'코넨스 뉘토르',  color:'#6d3b54'},
+  {key:'Rosengård',       label:'로센고르',        color:'#c8492a'},
+  {key:'Christianshavn',  label:'크리스티안스하운',color:'#3a4a5a'},
+  {key:'Nordhavn',        label:'노드하운',         color:'#5d7456'},
+  {key:'Holmen',          label:'홀멘',             color:'#d99021'},
+  {key:'Kultur',          label:'쿨투르',           color:'#9b7ab5'},
+  {key:'Islands Brygge',  label:'아일란스 브뤼게',  color:'#8b5e3c'},
+];
+const EXH_CATS = [
+  {key:'all',      label:'전체'},
+  {key:'talk',     label:'토크·패널',  icon:'💬'},
+  {key:'workshop', label:'워크숍',     icon:'✂️'},
+  {key:'drinks',   label:'음료·식음',  icon:'🍷'},
+  {key:'launch',   label:'런칭',       icon:'🚀'},
+  {key:'tour',     label:'가이드 투어',icon:'🚶'},
+];
+const EXH_DAY_COLORS = {10:'#c8492a', 11:'#2f6b6b', 12:'#9b7ab5'};
+
+function renderExhibitions(){
+  const el = document.getElementById('scroll');
+  el.style.cssText = 'display:flex;flex-direction:column;overflow:hidden;padding:0';
+  el.innerHTML = '';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'exh-wrap';
+
+  /* ── 지구 필터 ── */
+  const filterRow = document.createElement('div');
+  filterRow.className = 'exh-filters';
+  EXH_DISTRICTS.forEach(d=>{
+    const b = document.createElement('button');
+    b.className = 'exh-filter-btn dist-btn' + (exhDistFilter===d.key?' active':'');
+    b.textContent = d.label;
+    b.onclick = ()=>{ exhDistFilter=d.key; renderExhibitions(); };
+    filterRow.appendChild(b);
+  });
+  wrap.appendChild(filterRow);
+
+  /* ── 카테고리 + 날짜 필터 ── */
+  const catRow = document.createElement('div');
+  catRow.className = 'exh-filters';
+  catRow.style.paddingTop = '6px';
+
+  // 카테고리
+  EXH_CATS.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = 'exh-filter-btn cat-btn' + (exhCatFilter===c.key?' active':'');
+    b.textContent = (c.icon?c.icon+' ':'')+c.label;
+    b.onclick = ()=>{ exhCatFilter=c.key; renderExhibitions(); };
+    catRow.appendChild(b);
+  });
+
+  catRow.appendChild(Object.assign(document.createElement('span'),{style:'flex:1'}));
+
+  // 날짜 칩
+  [{k:'all',l:'전체'},{k:'10',l:'6/10'},{k:'11',l:'6/11'},{k:'12',l:'6/12'}].forEach(({k,l})=>{
+    const b = document.createElement('button');
+    b.className = 'exh-filter-btn' + (exhDayFilter===k?' active':'');
+    b.textContent = l;
+    if(k!=='all') b.style.borderColor = EXH_DAY_COLORS[+k]||'';
+    b.onclick = ()=>{ exhDayFilter=k; renderExhibitions(); };
+    catRow.appendChild(b);
+  });
+  wrap.appendChild(catRow);
+
+  /* ── 검색 ── */
+  const sWrap = document.createElement('div');
+  sWrap.className = 'exh-search-wrap';
+  const sInput = document.createElement('input');
+  sInput.type = 'text';
+  sInput.className = 'exh-search-input';
+  sInput.placeholder = '브랜드명 또는 이벤트 검색…';
+  sInput.value = exhSearchQ;
+  sInput.oninput = ()=>{ exhSearchQ = sInput.value; renderExhibitionsList(listEl, statEl); };
+  sWrap.appendChild(sInput);
+  wrap.appendChild(sWrap);
+
+  /* ── 통계 바 ── */
+  const statEl = document.createElement('div');
+  statEl.style.cssText = 'padding:4px 14px;font-size:10px;font-family:Space Mono,monospace;color:var(--slate);border-bottom:1px solid var(--line);flex-shrink:0;display:flex;gap:8px;align-items:center';
+  wrap.appendChild(statEl);
+
+  /* ── 리스트 ── */
+  const listEl = document.createElement('div');
+  listEl.className = 'exh-list';
+  wrap.appendChild(listEl);
+
+  el.appendChild(wrap);
+  renderExhibitionsList(listEl, statEl);
+  requestAnimationFrame(()=>sInput.focus&&sInput.focus());
+}
+
+function filterExhibitions(){
+  const q = exhSearchQ.toLowerCase().trim();
+  return EXHIBITIONS.filter(ex=>{
+    // 지구 필터
+    if(exhDistFilter !== 'all' && ex.district !== exhDistFilter) return false;
+    // 검색어
+    if(q){
+      const brandMatch = ex.brand.toLowerCase().includes(q);
+      const evMatch = ex.events.some(ev=>ev.title.toLowerCase().includes(q));
+      if(!brandMatch && !evMatch) return false;
+    }
+    // 카테고리 필터 (이벤트 없는 브랜드는 카테고리='all'일 때만 포함)
+    if(exhCatFilter !== 'all'){
+      const hasMatchingEv = ex.events.some(ev=>{
+        const cats = ev.cats || [ev.label === '토크·패널'?'talk':ev.label==='워크숍'?'workshop':ev.label==='음료·식음'?'drinks':ev.label==='런칭'?'launch':ev.label==='가이드 투어'?'tour':''];
+        return cats.includes(exhCatFilter);
+      });
+      if(!hasMatchingEv) return false;
+    }
+    // 날짜 필터
+    if(exhDayFilter !== 'all'){
+      const dayNum = parseInt(exhDayFilter);
+      const hasDay = ex.events.some(ev=>ev.day===dayNum);
+      if(!hasDay) return false;
+    }
+    return true;
+  });
+}
+
+function renderExhibitionsList(listEl, statEl){
+  const q = exhSearchQ.toLowerCase().trim();
+  const filtered = filterExhibitions();
+  const withEvs  = filtered.filter(x=>x.events.length > 0);
+  const noEvs    = filtered.filter(x=>x.events.length === 0);
+
+  const totalEvs = withEvs.reduce((s,x)=>{
+    // 날짜/카테고리 필터 적용된 이벤트 수
+    return s + filterEventsOf(x).length;
+  },0);
+
+  statEl.innerHTML = `<b style="color:var(--ink)">${withEvs.length}</b> 이벤트 브랜드&nbsp;·&nbsp;<b>${noEvs.length}</b> 전시 전용&nbsp;·&nbsp;이벤트 <b>${totalEvs}</b>건`;
+  if(exhDistFilter!=='all'||exhCatFilter!=='all'||exhDayFilter!=='all'||q){
+    const rst = document.createElement('button');
+    rst.style.cssText='margin-left:auto;font-size:9.5px;font-family:Space Mono,monospace;background:none;border:1px solid var(--line);padding:1px 7px;cursor:pointer;color:var(--slate);border-radius:2px';
+    rst.textContent='필터 초기화';
+    rst.onclick=()=>{exhDistFilter='all';exhCatFilter='all';exhDayFilter='all';exhSearchQ='';renderExhibitions();};
+    statEl.appendChild(rst);
+  }
+
+  listEl.innerHTML = '';
+
+  /* ── 이벤트 있는 브랜드 ── */
+  withEvs.forEach(ex=>{ listEl.appendChild(buildExhCard(ex, q)); });
+
+  /* ── 전시 전용 (이벤트 없는 브랜드) ── */
+  if(noEvs.length > 0 && (exhCatFilter==='all' && exhDayFilter==='all')){
+    const hdr = document.createElement('div');
+    hdr.className = 'exh-no-events-hdr';
+    hdr.innerHTML = `<span>${exhNoEvOpen?'▲':'▶'}</span> 전시 전용 부스 <span class="exh-section-count">(이벤트 없는 ${noEvs.length}개 브랜드)</span>`;
+    hdr.onclick = ()=>{ exhNoEvOpen=!exhNoEvOpen; renderExhibitionsList(listEl, statEl); };
+    listEl.appendChild(hdr);
+
+    if(exhNoEvOpen){
+      noEvs.forEach(ex=>{ listEl.appendChild(buildExhCard(ex, q)); });
+    }
+  }
+}
+
+function filterEventsOf(ex){
+  return ex.events.filter(ev=>{
+    if(exhDayFilter!=='all' && ev.day!==parseInt(exhDayFilter)) return false;
+    if(exhCatFilter!=='all'){
+      const cats = ev.cats || [];
+      // label에서 카테고리 역추론
+      const labelCat = ev.label==='토크·패널'?'talk':ev.label==='워크숍'?'workshop':ev.label==='음료·식음'?'drinks':ev.label==='런칭'?'launch':ev.label==='가이드 투어'?'tour':'';
+      if(!cats.includes(exhCatFilter) && labelCat!==exhCatFilter) return false;
+    }
+    return true;
+  });
+}
+
+function buildExhCard(ex, q){
+  const card = document.createElement('div');
+  card.className = 'exh-card' + (ex.events.length?  ' has-events':'');
+  const isOpen = exhOpenSet.has(ex.slug||ex.brand);
+
+  const evs = filterEventsOf(ex);
+  const hasFilteredEvs = evs.length > 0;
+
+  // 검색어 하이라이트 함수
+  const hl = (str)=>{
+    if(!q) return str;
+    const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    return str.replace(re,'<mark style="background:#fde68a;padding:0">$1</mark>');
+  };
+
+  /* 헤더 */
+  const head = document.createElement('div');
+  head.className = 'exh-card-head';
+
+  const distD = EXH_DISTRICTS.find(d=>d.key===ex.district)||{color:'#888'};
+  const evCountStr = ex.events.length > 0
+    ? `${hasFilteredEvs?evs.length:ex.events.length}개 이벤트`
+    : '전시';
+  const evCountClass = ex.events.length > 0 ? 'exh-ev-count' : 'exh-ev-count none';
+
+  head.innerHTML = `
+    <div class="exh-card-info">
+      <div class="exh-brand">${hl(ex.brand)}</div>
+      <div class="exh-meta">
+        <span class="exh-dist-badge" style="background:${distD.color||ex.districtColor}">${ex.districtKo||ex.district}</span>
+        ${ex.address ? `<span class="exh-addr" style="margin:0">📍 ${ex.address}</span>` : ''}
+      </div>
+      ${ex.desc ? `<div class="exh-desc">${ex.desc}</div>` : ''}
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
+      <span class="${evCountClass}">${evCountStr}</span>
+      ${ex.events.length>0?`<span class="exh-toggle-arrow">▼</span>`:''}
+      ${ex.slug?`<a href="https://www.3daysofdesign.dk/exhibition/${ex.slug}" target="_blank" style="font-size:9px;color:var(--rust);font-family:Space Mono,monospace;text-decoration:none" onclick="event.stopPropagation()">↗ 공식</a>`:''}
+    </div>`;
+
+  if(ex.events.length > 0){
+    if(isOpen) card.classList.add('open');
+    head.addEventListener('click',()=>{
+      const key = ex.slug||ex.brand;
+      if(exhOpenSet.has(key)) exhOpenSet.delete(key); else exhOpenSet.add(key);
+      card.classList.toggle('open');
+    });
+  }
+
+  card.appendChild(head);
+
+  /* 이벤트 목록 */
+  if(ex.events.length > 0){
+    const evList = document.createElement('div');
+    evList.className = 'exh-events';
+
+    const displayEvs = (exhDayFilter!=='all'||exhCatFilter!=='all') ? evs : ex.events;
+
+    displayEvs.forEach(ev=>{
+      const row = document.createElement('div');
+      row.className = 'exh-ev-row' + (ev.joint?' joint-ev':'');
+
+      const dayColor = EXH_DAY_COLORS[ev.day]||'#888';
+      const endStr = ev.end ? `–${ev.end}` : '';
+      const locHtml = ev.location ? `<div class="exh-ev-loc">📍 ${ev.location}</div>` : '';
+      const jointBadge = ev.joint ? `<span class="exh-joint-badge">공동</span>` : '';
+      const evUrl = ev.id ? `https://www.3daysofdesign.dk/event/${ev.id}` : '';
+
+      // 복합 카테고리 태그 구성
+      const catTags = (() => {
+        const allCats = ev.cats || [];
+        if(allCats.length === 0) return `<span class="exh-ev-tag" style="background:${ev.color}">${ev.icon} ${ev.label}</span>`;
+        return allCats.map(c=>{
+          const info = EXH_CATS.find(x=>x.key===c);
+          return info ? `<span class="exh-ev-tag" style="background:${c==='talk'?'#2f6b6b':c==='workshop'?'#5d7456':c==='drinks'?'#8b5e3c':c==='launch'?'#d99021':'#3a4a5a'}">${info.icon||''} ${info.label}</span>` : '';
+        }).join('');
+      })();
+
+      row.innerHTML = `
+        <span class="exh-day-chip" style="background:${dayColor}">6/${ev.day}</span>
+        <div class="exh-ev-time">${ev.start}${endStr}</div>
+        <div class="exh-ev-body">
+          <div class="exh-ev-title">${hl(ev.title)}${jointBadge}</div>
+          <div class="exh-ev-tags">${catTags}</div>
+          ${locHtml}
+        </div>
+        ${evUrl?`<a href="${evUrl}" target="_blank" style="font-size:10px;color:var(--rust);align-self:center;flex-shrink:0;font-family:Space Mono,monospace;text-decoration:none" onclick="event.stopPropagation()">↗</a>`:''}`;
+
+      evList.appendChild(row);
+    });
+
+    card.appendChild(evList);
+  }
+
+  return card;
+}
+
 /* ---------- OPTIMIZER ENGINE ---------- */
 // 날짜 인덱스 ↔ 페스티벌 매핑 (DEFAULT_PLAN 기준: 0출발 1도착 2~4페스티벌 5~8자유 9귀국)
 const FEST_DAYS = [2,3,4];           // 6/10,6/11,6/12
@@ -4573,6 +4920,8 @@ function setTab(t){
     renderRecommend();
   } else if(t==='fest'){
     renderFest();
+  } else if(t==='exh'){
+    renderExhibitions();
   } else if(t==='add'){
     document.getElementById('scroll').style.cssText='';
     renderAdd();
