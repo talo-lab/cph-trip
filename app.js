@@ -365,8 +365,8 @@ const RUNNING_ROUTES = {
 const DEFAULT_PLAN = [
   // DAY 0 — 6/8
   {date:'6/8 (월)', tag:'인천 출발', fest:false, items:[
-    {time:'22:25', title:'[미주] ICN → AMS 출발', note:'KE5925 (KLM 운항·B787-9) · 13h45m · 암스테르담 경유', dist:'', _fixed:true, _lat:37.4692, _lng:126.4503},
-    {time:'23:35', title:'[상효] ICN(T2) → CPH 직항 출발', note:'SAS SK0988 · 13h25m · 좌석 31F', dist:'', _fixed:true, _lat:37.4692, _lng:126.4503},
+    {time:'22:25', title:'[미주] ICN → AMS 출발', note:'KE5925 (KLM 운항·B787-9) · 13h45m · 암스테르담 경유', dist:'', _fixed:true},
+    {time:'23:35', title:'[상효] ICN(T2) → CPH 직항 출발', note:'SAS SK0988 · 13h25m · 좌석 31F', dist:'', _fixed:true},
   ]},
   // DAY 1 — 6/9
   {date:'6/9 (화)', tag:'코펜하겐 도착', fest:false, items:[
@@ -1686,8 +1686,17 @@ function renderPlan(){
   // 다중 선택 바 (다중 모드 시)
   if(planMultiMode) renderMultiSelBar();
 
-  // 첫 렌더 시: 핀만 표시 (연결선은 명시적 선택 시에만)
+  // 첫 렌더 시: 코펜하겐 좌표가 있는 첫 날 자동 선택 → 핀 표시
   if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
+  // currentVisDay가 0(출발일)이면 Copenhagen 아이템이 있는 첫 날로 이동
+  const CPH_BOX = {latMin:55.4, latMax:56.1, lngMin:11.9, lngMax:12.9};
+  const isCphItem = it => it._lat && it._lng
+    && it._lat>=CPH_BOX.latMin && it._lat<=CPH_BOX.latMax
+    && it._lng>=CPH_BOX.lngMin && it._lng<=CPH_BOX.lngMax;
+  if(currentVisDay===0 || !plan[currentVisDay]?.items.some(isCphItem)){
+    const firstCphDay = plan.findIndex(day=>day.items.some(isCphItem));
+    if(firstCphDay>=0) currentVisDay=firstCphDay;
+  }
   renderPlanMarkers(currentVisDay);
 
   // 스크롤로 날짜 바뀌면 핀만 업데이트 (연결선 자동 생성 없음)
@@ -5185,18 +5194,17 @@ function patchRunningCourses(){
   if(changed) savePlan();
 }
 
-/* 기존 저장 플랜의 항공편·공항 항목에 좌표 주입 */
+/* 기존 저장 플랜의 CPH 관련 항목에 좌표 주입 (ICN 출발편은 코펜하겐 지도에 불필요하므로 제외) */
 function patchFlightCoords(){
-  const ICN = {lat:37.4692, lng:126.4503}; // 인천국제공항
   const CPH = {lat:55.6180, lng:12.6560};  // 코펜하겐 공항
-  const flightKw = /ICN|CPH|AMS|LHR|공항|출발|도착|터미널|T2|T3/i;
   let changed = false;
   plan.forEach(day=>{
     day.items.forEach(it=>{
       if(!it._fixed || (it._lat && it._lng)) return;
-      if(!flightKw.test(it.title)) return;
-      if(/ICN|인천/.test(it.title)){ it._lat=ICN.lat; it._lng=ICN.lng; changed=true; }
-      else if(/CPH|코펜/.test(it.title)){ it._lat=CPH.lat; it._lng=CPH.lng; changed=true; }
+      // ICN 출발편은 한국 좌표 → 코펜하겐 맵에 무의미하므로 건너뜀
+      if(/ICN|인천/.test(it.title)) return;
+      // CPH 도착/출발, 공항 이동 항목에만 CPH 좌표 부여
+      if(/CPH|코펜하겐 공항|공항 이동/.test(it.title)){ it._lat=CPH.lat; it._lng=CPH.lng; changed=true; }
     });
   });
   if(changed) savePlan();
