@@ -574,6 +574,26 @@
   .wish-day-select{font-size:11px;padding:3px 6px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-family:inherit}
   .wish-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px}
   .wish-empty{font-size:12px;color:var(--slate);opacity:.6;padding:8px 0;font-style:italic}
+  /* 장소 검색 드롭다운 */
+  .wish-input-wrap{position:relative;flex:1;min-width:0}
+  .wish-suggest{position:absolute;top:100%;left:0;right:0;z-index:200;background:#fff;border:1.5px solid var(--slate);border-top:none;box-shadow:0 4px 12px rgba(0,0,0,.12);max-height:220px;overflow-y:auto}
+  .wish-suggest-item{padding:8px 10px;cursor:pointer;border-bottom:1px solid var(--line);font-size:12px}
+  .wish-suggest-item:hover,.wish-suggest-item.focused{background:#fff4d6}
+  .wish-suggest-item strong{display:block;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .wish-suggest-item span{font-size:10.5px;color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%}
+  .wish-suggest-loading{padding:10px;font-size:11px;color:var(--slate);text-align:center}
+  /* 위시리스트 장소 확정 배지 */
+  .wish-item-addr{font-size:10.5px;color:var(--sage);margin-top:2px}
+  /* 추천탭 위시리스트 섹션 */
+  .wish-rec-section{padding:12px 16px 4px;background:rgba(155,122,181,.06);border-bottom:2px solid var(--line);margin-bottom:4px}
+  .wish-rec-title{font-family:'Fraunces',serif;font-size:14px;color:var(--ink);margin:0 0 8px;display:flex;align-items:center;gap:6px}
+  .wish-rec-item{display:flex;gap:8px;align-items:flex-start;padding:7px 8px;background:#fff;border:1px solid var(--line);margin-bottom:5px;cursor:pointer;transition:.12s}
+  .wish-rec-item:hover{background:#fdf6e8}
+  .wish-rec-item-body{flex:1;min-width:0}
+  .wish-rec-item-title{font-size:13px;font-weight:600;color:var(--ink)}
+  .wish-rec-item-addr{font-size:10.5px;color:var(--slate);margin-top:1px}
+  .wish-rec-item-suggest{font-size:10.5px;color:var(--rust-deep);font-family:'Space Mono',monospace;margin-top:3px}
+  .wish-rec-add-btn{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--rust);color:#fff;border:none;cursor:pointer;border-radius:2px;white-space:nowrap;flex-shrink:0;align-self:center}
   .fav-btn:hover{transform:scale(1.2)}
   .fest-filter-btn.fav-active{background:#c8492a;color:#fff;border-color:#c8492a}
 
@@ -859,6 +879,7 @@
     .fest-filters{overflow-x:hidden}
     /* 위시리스트 입력 줄 바꿈 */
     .wish-add-row{flex-wrap:wrap}
+    .wish-input-wrap{min-width:100%;order:1}
     .wish-note-input{min-width:100%;order:2}
     .wish-add-btn{order:3}
   }
@@ -2516,6 +2537,100 @@ function renderRecommend(){
   routePanel.id = 'recRoutePanel';
   wrap.appendChild(routePanel);
 
+  // ── 가고싶은 곳 위시리스트 섹션 ──
+  const wishWithCoords = wishlist.filter(w => w._lat && w._lng);
+  // 이미 plan에 있는 항목 제외
+  const wishVisible = wishlist.filter(w => !plan.some(d => d.items.some(it => it.title === w.title)));
+  if(wishVisible.length > 0){
+    const wishSec = document.createElement('div');
+    wishSec.className = 'wish-rec-section';
+    wishSec.innerHTML = `<div class="wish-rec-title">⭐ 가고싶은 곳 <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--slate);font-weight:400">${wishVisible.length}곳</span></div>`;
+
+    wishVisible.forEach((w, idx)=>{
+      const row = document.createElement('div');
+      row.className = 'wish-rec-item';
+
+      // 최적 날짜 제안: 좌표 없으면 빈 날 우선, 있으면 당일 고정 일정과의 이동 최소화
+      let suggestText = '';
+      let bestDi = -1;
+      const freeDays = plan.map((d,di)=>({di, cnt:d.items.filter(it=>!it._fixed).length}))
+                          .filter(x=> x.di >= 1 && x.di <= 7) // 도착일~귀국 전날
+                          .sort((a,b)=>a.cnt-b.cnt);
+      if(w._lat && w._lng){
+        // 고정 항목과 가장 가까운 날 탐색
+        let best = null;
+        freeDays.forEach(({di})=>{
+          const fixed = plan[di].items.filter(it=>it._fixed && it._lat && it._lng);
+          if(!fixed.length) return;
+          const avgDist = fixed.reduce((s,it)=>s+haversineKm(w._lat,w._lng,it._lat,it._lng),0)/fixed.length;
+          if(!best || avgDist < best.dist){ best = {di, dist:avgDist}; }
+        });
+        if(best){
+          bestDi = best.di;
+          const t = transportBetween({lat:w._lat,lng:w._lng},{lat:plan[bestDi].items.find(it=>it._lat)?._lat||55.676,lng:plan[bestDi].items.find(it=>it._lat)?._lng||12.568});
+          suggestText = `추천: ${plan[bestDi].date} · 고정 일정과 ${t.icon}${t.mins}분 거리`;
+        } else if(freeDays.length){
+          bestDi = freeDays[0].di;
+          suggestText = `추천: ${plan[bestDi].date} (여유 있는 날)`;
+        }
+      } else if(freeDays.length){
+        bestDi = freeDays[0].di;
+        suggestText = `추천: ${plan[bestDi].date} (여유 있는 날)`;
+      }
+
+      const gmapLink = w._gmapsUrl ? `<a href="${w._gmapsUrl}" target="_blank" style="color:var(--rust);font-size:10px;margin-left:5px" onclick="event.stopPropagation()">지도 ↗</a>` : '';
+      row.innerHTML = `
+        <div class="wish-rec-item-body">
+          <div class="wish-rec-item-title">${w.title}${gmapLink}</div>
+          ${w.address?`<div class="wish-rec-item-addr">${w.address}</div>`:''}
+          ${w.note?`<div class="wish-rec-item-addr" style="color:var(--slate)">${w.note}</div>`:''}
+          ${suggestText?`<div class="wish-rec-item-suggest">${suggestText}</div>`:''}
+        </div>
+        <button class="wish-rec-add-btn">+ 일정 추가</button>`;
+
+      // 지도 클릭
+      if(w._lat && w._lng){
+        row.querySelector('.wish-rec-item-body').addEventListener('click',()=>{
+          map.flyTo([w._lat, w._lng], 15, {duration:.8});
+          setTab('recommend');
+        });
+      }
+
+      // 추가 버튼 → 날짜 선택 드롭다운 inline
+      const addBtn = row.querySelector('.wish-rec-add-btn');
+      addBtn.addEventListener('click', e=>{
+        e.stopPropagation();
+        // 이미 열린 드롭다운이 있으면 닫기
+        const existing = row.querySelector('.wish-rec-day-sel');
+        if(existing){ existing.remove(); return; }
+        const sel = document.createElement('div');
+        sel.className='wish-rec-day-sel';
+        sel.style.cssText='display:flex;gap:5px;align-items:center;margin-top:6px;flex-wrap:wrap';
+        sel.innerHTML=`<select class="wish-day-select" style="font-size:11px">${plan.map((d,di)=>`<option value="${di}"${di===bestDi?' selected':''}>${d.date} · ${d.tag}</option>`).join('')}</select><button class="wish-day-confirm" style="font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px">확인</button>`;
+        row.querySelector('.wish-rec-item-body').appendChild(sel);
+        sel.querySelector('.wish-day-confirm').addEventListener('click',()=>{
+          const di = +sel.querySelector('select').value;
+          plan[di].items.push({
+            time:'미정', title:w.title, note:w.note||'', dist:'',
+            _user:true, _addedBy:currentUser, _personal:false, _with:['miju','sanghyo'],
+            ...(w._lat && {_lat:w._lat, _lng:w._lng}),
+            ...(w._gmapsUrl && {_gmapsUrl:w._gmapsUrl})
+          });
+          sortDayByTime(di); savePlan();
+          const wIdx = wishlist.findIndex(x=>x.title===w.title && x.addedAt===w.addedAt);
+          if(wIdx>=0){ wishlist.splice(wIdx,1); saveWishlist(); }
+          setTab('plan');
+          requestAnimationFrame(()=>{
+            document.getElementById(`body-${di}`)?.closest('.day')?.scrollIntoView({behavior:'smooth',block:'start'});
+          });
+        });
+      });
+
+      wishSec.appendChild(row);
+    });
+    wrap.appendChild(wishSec);
+  }
+
   RECOMMEND.forEach((day)=>{
     const dayEl = document.createElement('div');
     dayEl.className = 'rec-day';
@@ -3142,12 +3257,18 @@ function renderAdd(){
     <h4>가고싶은 곳 목록</h4>
     <p class="lead">날짜 미정이지만 가보고 싶은 장소를 메모해두세요. 나중에 날짜를 정해 일정에 옮길 수 있어요.</p>
     <div class="wish-add-row">
-      <input class="wish-input" id="wishTitle" placeholder="장소명" maxlength="60">
+      <div class="wish-input-wrap">
+        <input class="wish-input" id="wishTitle" placeholder="장소명 입력 (자동 검색)" maxlength="60" autocomplete="off">
+        <div class="wish-suggest" id="wishSuggest" style="display:none"></div>
+      </div>
       <input class="wish-note-input" id="wishNote" placeholder="메모 (선택)" maxlength="80">
       <button class="wish-add-btn" id="wishAddBtn">＋ 추가</button>
     </div>
     <div class="wish-list" id="wishList"></div>`;
   el.querySelector('.add-wrap').insertAdjacentElement('afterend', wishWrap);
+
+  // 확정된 장소 임시 저장 (검색 결과 선택 후)
+  let _wishConfirmed = null; // {_lat, _lng, _gmapsUrl, address}
 
   function renderWishList(){
     const list = document.getElementById('wishList');
@@ -3160,9 +3281,11 @@ function renderAdd(){
     wishlist.forEach((w,idx)=>{
       const item = document.createElement('div');
       item.className='wish-item';
+      const gmapLink = w._gmapsUrl ? `<a href="${w._gmapsUrl}" target="_blank" style="font-size:10.5px;color:var(--rust);text-decoration:none;margin-left:4px" onclick="event.stopPropagation()">📍지도</a>` : '';
       item.innerHTML=`
         <div class="wish-item-body">
-          <div class="wish-item-title">${w.title}</div>
+          <div class="wish-item-title">${w.title}${gmapLink}</div>
+          ${w.address?`<div class="wish-item-addr">📌 ${w.address}</div>`:''}
           ${w.note?`<div class="wish-item-note">${w.note}</div>`:''}
           <div class="wish-item-actions">
             <button class="wish-to-plan-btn" data-idx="${idx}">→ 일정에 추가</button>
@@ -3184,7 +3307,12 @@ function renderAdd(){
       });
       item.querySelector('.wish-day-confirm').addEventListener('click',()=>{
         const di=+document.getElementById(`wish-day-sel-${idx}`).value;
-        plan[di].items.push({time:'미정',title:w.title,note:w.note||'',dist:'',_user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']});
+        plan[di].items.push({
+          time:'미정', title:w.title, note:w.note||'', dist:'',
+          _user:true, _addedBy:currentUser, _personal:false, _with:['miju','sanghyo'],
+          ...(w._lat && {_lat:w._lat, _lng:w._lng}),
+          ...(w._gmapsUrl && {_gmapsUrl:w._gmapsUrl})
+        });
         sortDayByTime(di); savePlan();
         wishlist.splice(idx,1); saveWishlist();
         setTab('plan');
@@ -3196,17 +3324,61 @@ function renderAdd(){
     });
   }
 
+  // Nominatim 장소 검색
+  let _wishSearchTimer = null;
+  async function searchWishPlace(query){
+    const sug = document.getElementById('wishSuggest');
+    if(!sug) return;
+    if(query.length < 2){ sug.style.display='none'; return; }
+    sug.style.display='block';
+    sug.innerHTML='<div class="wish-suggest-loading">검색 중...</div>';
+    try{
+      const q = encodeURIComponent(query + (query.toLowerCase().includes('copenhagen')||query.toLowerCase().includes('cph')||query.match(/[가-힣]/) ? '' : ' Copenhagen'));
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=5&addressdetails=1&accept-language=ko`, {headers:{'User-Agent':'cph-trip-app'}});
+      const data = await res.json();
+      if(!data.length){ sug.innerHTML='<div class="wish-suggest-loading">검색 결과 없음</div>'; return; }
+      sug.innerHTML='';
+      data.forEach((place,i)=>{
+        const name = place.namedetails?.name || place.display_name.split(',')[0];
+        const addr = place.display_name.split(',').slice(1,3).join(',').trim();
+        const row = document.createElement('div');
+        row.className='wish-suggest-item';
+        row.innerHTML=`<strong>${name}</strong><span>${addr}</span>`;
+        row.addEventListener('mousedown', e=>{
+          e.preventDefault();
+          const gmUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.display_name)}`;
+          _wishConfirmed = {_lat:+place.lat, _lng:+place.lon, _gmapsUrl:gmUrl, address:addr||place.display_name.split(',').slice(0,2).join(',').trim()};
+          document.getElementById('wishTitle').value = name;
+          sug.style.display='none';
+          document.getElementById('wishNote').focus();
+        });
+        sug.appendChild(row);
+      });
+    }catch(e){ sug.innerHTML='<div class="wish-suggest-loading">검색 실패</div>'; }
+  }
+
+  const wishTitleEl = document.getElementById('wishTitle');
+  wishTitleEl.addEventListener('input',()=>{
+    _wishConfirmed = null; // 직접 입력하면 확정 초기화
+    clearTimeout(_wishSearchTimer);
+    _wishSearchTimer = setTimeout(()=>searchWishPlace(wishTitleEl.value.trim()), 380);
+  });
+  wishTitleEl.addEventListener('blur',()=>{ setTimeout(()=>{ const s=document.getElementById('wishSuggest'); if(s) s.style.display='none'; },150); });
+
   document.getElementById('wishAddBtn').addEventListener('click',()=>{
-    const title=document.getElementById('wishTitle').value.trim();
+    const title=wishTitleEl.value.trim();
     if(!title) return;
     const note=document.getElementById('wishNote').value.trim();
-    wishlist.unshift({title,note,addedBy:currentUser||'',addedAt:Date.now()});
+    const entry = {title, note, addedBy:currentUser||'', addedAt:Date.now(), ...(_wishConfirmed||{})};
+    wishlist.unshift(entry);
     saveWishlist();
-    document.getElementById('wishTitle').value='';
+    wishTitleEl.value='';
     document.getElementById('wishNote').value='';
+    document.getElementById('wishSuggest').style.display='none';
+    _wishConfirmed = null;
     renderWishList();
   });
-  document.getElementById('wishTitle').addEventListener('keydown',e=>{
+  wishTitleEl.addEventListener('keydown',e=>{
     if(e.key==='Enter') document.getElementById('wishAddBtn').click();
   });
 
