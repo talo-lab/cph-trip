@@ -1,5 +1,5 @@
 # CPH-TRIP 세션 이관 문서
-_2026-06-03 세션 기준 (3차 업데이트)_
+_2026-06-03 세션 기준 (4차 업데이트)_
 
 ---
 
@@ -9,44 +9,45 @@ _2026-06-03 세션 기준 (3차 업데이트)_
 - **GitHub**: `talo-lab/cph-trip` (public)
 - **로컬 경로**: `C:\Users\DOJO_001\Documents\GitHub\cph-trip`
 - **미배포 커밋**: 없음 (모두 push 완료)
-- **최신 커밋**: `65e904e feat: 전시탭 브랜드 소개문 한국어 번역 완료`
+- **최신 커밋**: `4c712af feat: 전시 카드 탭 → 지도 핀 + 일정 추가 시 자동 지오코딩`
 
 ---
 
 ## 이번 세션에서 완료한 작업
 
-### 추천 탭 개선
+### 일정 탭 개선
 | 커밋 | 내용 |
 |---|---|
-| `a3aef41` | 단일 클릭 시 장소 정보 패널 (sticky, info-mode) |
-| `a3aef41` | 위시리스트 항목도 동선 비교 시스템 참여 |
-| `a3aef41` | 위시리스트 ✏️ 수정 (인라인 폼) / ✕ 삭제 버튼 |
+| `a59a2d7` | 체크박스 → 지도 선택/해제 토글 (행 클릭 시 재클릭으로 해제) |
+| `a59a2d7` | 시간 경과 항목 자동 음영 (`isPlanItemPast` + 1분 인터벌) |
+| `a59a2d7` | 진행률 바 → 경과 시간 비율로 자동 계산 |
+| `d57c94c` | 경로선 `_dk` 좌표 포함 (`getItemCoords` 통일 사용) |
+| `d57c94c` | 다른 날 항목 선택 시 해당 날짜 핀 자동 전환 |
 
-### 전시 탭 신규 추가
+### AI 드로어 개선
 | 커밋 | 내용 |
 |---|---|
-| `6e5cfae` | `exhibitions-data.js` 생성 (552개 브랜드, 870개 이벤트) |
-| `6e5cfae` | 전시(exh) 탭: 지구·카테고리·날짜 필터, 브랜드 검색 |
-| `6e5cfae` | 브랜드 카드 클릭 → 이벤트 목록 펼치기 |
-| `69e5888` | 이벤트 타이틀 한국어 번역 870개 (94.8%) |
-| `69e5888` | 모바일 필터 레이아웃 → 3개 행 가로 스크롤 (nowrap) |
-| `dc152dc` | 이벤트 행 + 버튼 → 날짜 선택 후 일정 추가 |
-| `960eed7` | 지구명 영어 원문 복원 (Frederiksstaden 등) |
-| `960eed7` | 이벤트 행 클릭 → AI 상세 팝업 (행사탭 구조 동일) |
-| `65e904e` | 브랜드 소개문 한국어 번역 549/552개 완료 |
+| `ea5dcaa` | 드로어 헤더 🗑 삭제 버튼 추가 (고정 항목 숨김) |
+| `ea5dcaa` | AI 옵션 카드 `action:"delete"` 지원 → 클릭 시 실제 삭제 |
+| `ea5dcaa` | AI 프롬프트에 삭제 케이스 형식 추가 |
 
-### 행사 탭 개선
+### 전시 탭 버그 수정
 | 커밋 | 내용 |
 |---|---|
-| `960eed7` | 점심(lunch) + 오후 음료(afternoon) → 🥂 브런치·음료 통합 |
-| `69e5888` | 필터 3개 행 가로 스크롤 (모바일 공간 최적화) |
+| `bb4cf0a` | SW `cph-v5` — `exhibitions-data.js` 사전 캐시 추가 |
+| `bb4cf0a` | `renderExhibitionsList` 방어 코드 (EXHIBITIONS 미정의 시 안내) |
+| `e560dc5` | `exhibitions-data.js` desc 필드 따옴표 구문 오류 11개 수정 |
 
-### 버그 수정
+### 지도 / 지구 탭 / 지오코딩
 | 커밋 | 내용 |
 |---|---|
-| `7af814c` | 모바일 드로어 입력창 가로 overflow → `min-width:0 + width:0` |
-| `0c7d00b` | 숙소복귀 이동 note 자동 재계산 (`recalcTransitNotes`) |
-| `0c7d00b` | AI 추천 응답 → 식당/장소 요청 시 반드시 `<options>` 카드 반환 |
+| `3f04189` | 지구 탭 카드: 전시 브랜드 수 + 이벤트 수 표시 |
+| `3f04189` | 지구 탭 카드: "전시 N개 ▸" 버튼 → 전시탭 해당 지구 필터 이동 |
+| `4c712af` | 전시 카드 탭 → Nominatim 지오코딩 → 지도 핀 표시 |
+| `4c712af` | 주소 `📍` 단독 탭 → 지도 핀 (이벤트 목록 토글 없이) |
+| `4c712af` | 일정 추가(confirmAddBtn) 시 백그라운드 지오코딩 |
+| `4c712af` | 제목 편집 완료(blur) 시 좌표 없는 항목 자동 지오코딩 |
+| `4c712af` | 좌표 없는 항목 선택 시 "검색 중..." 표시 + 재시도 |
 
 ---
 
@@ -54,26 +55,25 @@ _2026-06-03 세션 기준 (3차 업데이트)_
 
 ```
 cph-trip/
-├── index.html              ← 앱 본체 (~5500줄)
-├── events-data.js          ← 777개 행사 이벤트 (한국어, 카테고리 재분류)
-├── exhibitions-data.js     ← 552개 브랜드 / 870개 이벤트 (한국어 번역)
-├── sw.js                   ← Network First SW (cph-v4)
+├── index.html              ← 앱 본체 (~5700줄)
+├── events-data.js          ← 777개 행사 이벤트
+├── exhibitions-data.js     ← 552개 브랜드 / 870개 이벤트 (구문 오류 수정 완료)
+├── sw.js                   ← Network First SW (cph-v5, exhibitions-data.js 캐시 추가)
 ├── api/
 │   ├── auth.js
 │   ├── plan.js
-│   ├── extract.js          ← Claude API 프록시
+│   ├── extract.js
 │   ├── events.js
 │   └── transit.js
 ├── lib/
 │   └── redis-session.js
-├── generate_events.py      ← 행사 데이터 재생성 (로컬용)
-├── generate_exhibitions.py ← 전시 데이터 재생성 (로컬용)
-├── reclassify_events.py    ← 행사 카테고리 재분류
-├── translate_events.py     ← 행사 이벤트 번역 (ANTHROPIC_API_KEY 필요)
-├── translate_exhibitions.py← 전시 이벤트 타이틀 번역 (Vercel 프록시)
-├── translate_exh_desc.py   ← 전시 브랜드 소개문 번역 (Vercel 프록시)
-├── exh_title_cache.json    ← 이벤트 타이틀 번역 캐시 (524개)
-├── exh_desc_cache.json     ← 브랜드 소개문 번역 캐시 (552개)
+├── generate_events.py
+├── generate_exhibitions.py
+├── translate_events.py
+├── translate_exhibitions.py
+├── translate_exh_desc.py
+├── exh_title_cache.json
+├── exh_desc_cache.json
 └── SESSION_HANDOFF.md
 ```
 
@@ -83,79 +83,74 @@ cph-trip/
 
 | 탭 | 키 | 내용 |
 |---|---|---|
-| 일정 | `plan` | 날짜별 타임라인, 드래그 정렬, 인라인 편집 |
+| 일정 | `plan` | 날짜별 타임라인, 드래그 정렬, 체크박스=지도 선택 |
 | 추천 | `rec` | 위시리스트 + RECOMMEND 일정, 동선 비교 |
 | 행사 | `fest` | 777개 이벤트, 필터/검색, AI 팝업 |
-| 전시 | `exh` | 552개 브랜드, 870개 이벤트, AI 팝업, 일정 추가 |
+| 전시 | `exh` | 552개 브랜드, 870개 이벤트, 카드 탭 → 지도 핀 |
 | ＋장소 | `add` | 자유 텍스트 → AI 분석 → 일정 배치 |
-| 지구 | `dist` | 8개 디자인 지구 목록 |
+| 지구 | `dist` | 8개 지구 · 행사수/전시브랜드수 · 탭으로 각 탭 이동 |
 | 정보 | `info` | 행사 개요, 숙소, 항공편 |
 
 ---
 
-## FEST_CATEGORIES (현재, brunch 통합)
+## 핵심 함수 위치 (index.html)
 
-```javascript
-{key:'all',       label:'전체',        icon:'·'}
-{key:'morning',   label:'아침·커피',   icon:'☕', color:'#8b5e3c'}  // ~11시
-{key:'brunch',    label:'브런치·음료', icon:'🥂', color:'#9b7ab5'}  // lunch+afternoon 통합
-{key:'dining',    label:'저녁 다이닝', icon:'🍽', color:'#c8492a'}
-{key:'talk',      label:'토크·패널',   icon:'💬', color:'#2f6b6b'}
-{key:'exhibition',label:'전시·오프닝', icon:'🏛', color:'#6d3b54'}
-{key:'workshop',  label:'워크숍',      icon:'✂️', color:'#5d7456'}
-{key:'tour',      label:'투어·워크',   icon:'🚶', color:'#3a4a5a'}
-{key:'wellness',  label:'웰니스',      icon:'🧘', color:'#9c3318'}
-{key:'launch',    label:'런칭',        icon:'🚀', color:'#d99021'}
-```
-
-*주의: events-data.js 원본은 여전히 `lunch`/`afternoon` 카테고리. renderFestList에서 brunch로 통합 매핑.*
-
----
-
-## 핵심 데이터 구조 (index.html)
-
-| 기능 | 위치 | 비고 |
+| 기능 | 함수/변수 | 위치 |
 |---|---|---|
-| 숙소 | `STAY` 객체 ~1400줄 | Sommerstedgade 26, 1718 |
-| 고정 일정 | `DEFAULT_PLAN` ~1500줄 | 9일치 |
-| 추천 일정 | `RECOMMEND` ~2600줄 | DAY1–DAY7 |
-| 행사 카테고리 | `FEST_CATEGORIES` ~2040줄 | 10개 (brunch 통합) |
-| 전시 지구 | `EXH_DISTRICTS` ~3460줄 | 8개 (영어 원문) |
-| 전시 카테고리 | `EXH_CATS` ~3470줄 | 6개 |
-| 전시 AI 팝업 | `openExhEvModal` ~3310줄 | loadExhEvDetail 포함 |
-| 이동 note 재계산 | `recalcTransitNotes` ~4010줄 | sortDayByTime에서 자동 호출 |
-| AI 드로어 | `_drawerQuestion` ~4940줄 | <options> 강제 프롬프트 |
-| 전시 렌더 | `renderExhibitions` ~3520줄 | buildExhCard 포함 |
+| 지도 선택 상태 | `selectedPlanKey` | ~1706줄 |
+| 전시 지도 핀 | `showExhPin`, `clearExhPin`, `_placeExhPin` | ~1708줄 |
+| 지오코딩 공통 | `nominatimGeocode` | ~1712줄 |
+| 일정 지오코딩 | `geocodePlanItem` | ~1755줄 |
+| 경과 시간 판별 | `isPlanItemPast`, `updatePastItems` | ~5640줄 |
+| 지구 탭 렌더 | `renderDist` | ~3350줄 |
+| 전시 카드 빌드 | `buildExhCard` | ~3780줄 |
+| 드로어 삭제 버튼 | `drawerDeleteBtn` in `openDrawer` | ~4885줄 |
 
 ---
 
-## 번역 스크립트 사용 방법
+## 일정 탭 체크박스 동작 (새 방식)
 
-```bash
-# 전시 이벤트 타이틀 재번역 (Vercel 배포 필요)
-python translate_exhibitions.py
+- **체크박스** = 지도 선택 표시 (완료 표시 아님)
+- 체크 → 해당 항목 지도에 노란 경로선 + 앞뒤 핀 표시
+- 다시 클릭(행 클릭) → 선택 해제
+- **자동 음영**: 해당 날짜의 시간이 지난 항목은 opacity 38%로 자동 처리 (1분 간격 갱신)
+- **진행률 바**: 오늘 기준 경과 항목 비율로 자동 계산
 
-# 전시 브랜드 소개문 재번역
-python translate_exh_desc.py
+---
 
-# exhibitions-data.js 원본 재생성 (번역 제외)
-python generate_exhibitions.py
-# 이후 위 번역 스크립트 실행
+## 전시 지도 핀 동작
 
-# 행사 이벤트 재번역 (ANTHROPIC_API_KEY 환경변수 필요)
-$env:ANTHROPIC_API_KEY = "sk-ant-..."
-python translate_events.py
+1. 전시 카드 헤더 탭 → 지구 좌표로 즉시 핀 표시
+2. 백그라운드 Nominatim 지오코딩 → 정확한 주소 좌표로 핀 이동
+3. `exhGeoCache` 객체에 캐시 (페이지 세션 동안 유지)
+4. 탭 전환 시 핀 자동 제거
+
+---
+
+## 일정 자동 지오코딩 흐름
+
 ```
+AI 추천 카드 → 확정 버튼 클릭
+           ↓
+    geocodePlanItem(item, di)   ← 백그라운드 비동기
+           ↓
+    Nominatim: title + note 검색 (덴마크 한정)
+           ↓
+    item._lat, item._lng 저장 → savePlan() → updateDayViz()
+```
+- 제목 수동 편집 완료(blur) 시도 동일하게 실행
+- 좌표 없는 항목 선택 시 드로어에 "검색 중..." + 자동 재시도
 
 ---
 
 ## 알려진 이슈 / 미완성
 
 - **전시탭 브랜드 소개문**: 3/552 영문 잔류 (특수문자 포함 항목)
-- **이벤트 타이틀**: 45/870 영문 잔류 (ECLOS, DEKTON 등 브랜드명 자체가 영문)
-- **위시리스트 Nominatim 검색**: 간혹 엉뚱한 결과 (덴마크 한정이지만 완벽하지 않음)
-- **6/13 벨뷰·Louisiana, 6/15 크리스티아니아**: 시간 아직 `미정` 상태
+- **이벤트 타이틀**: 45/870 영문 잔류 (ECLOS, DEKTON 등 브랜드명)
+- **6/13 벨뷰·Louisiana, 6/15 크리스티아니아**: 시간 아직 `미정`
 - **미주 디바이스 테스트**: 로그인 + 일정 공유 동작 확인 필요
+- **지오코딩 정확도**: Nominatim 결과가 항목에 따라 엉뚱할 수 있음 (덴마크 한정 파라미터 사용 중)
+- **고정 일정 일부**: 내부 plan 저장본에 따라 `_lat`/`_lng` 없을 수 있음 (선택 시 지오코딩 시도)
 
 ---
 
@@ -192,10 +187,11 @@ python translate_events.py
 ## 다음 세션 추천 작업
 
 1. **시간 미정 항목 확정** — 6/13 벨뷰(오전) → Louisiana(오후), 6/15 크리스티아니아 시간 배정
-2. **미주 디바이스 테스트** — 미주 폰에서 로그인 + 일정 공유 동작 확인
+2. **미주 디바이스 테스트** — 로그인 + 일정 공유 + 지오코딩 동작 확인
 3. **여행 전 최종 점검** — 예약 필요 항목, 누락된 이동 시간, 전체 일정 흐름 리뷰
-4. **전시탭 UX 보완** — 브랜드 카드 열린 상태 세션 유지, 지도 핀 연동
-5. **행사탭 날짜 필터 기본값** — 현재 June 10 고정 → 오늘 날짜 기반 자동 전환
+4. **전시탭 지도 핀 개선** — 핀 표시 후 지도 확대 수준 조정, 다중 핀 지원
+5. **지오코딩 정확도 검증** — 추가된 항목들의 핀 위치 실제 확인
+6. **행사탭 날짜 필터 기본값** — June 10 고정 → 오늘 날짜 기반 자동 전환
 
 ---
 
