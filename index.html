@@ -3676,14 +3676,44 @@ const EXH_DISTRICTS = [
   {key:'Kultur',          label:'Kultur',           color:'#9b7ab5'},
   {key:'Islands Brygge',  label:'Islands Brygge',   color:'#8b5e3c'},
 ];
+/* 3DoD 공식 제품 카테고리 (https://www.3daysofdesign.dk/exhibitions) */
 const EXH_CATS = [
-  {key:'all',      label:'전체'},
-  {key:'talk',     label:'토크·패널',  icon:'💬'},
-  {key:'workshop', label:'워크숍',     icon:'✂️'},
-  {key:'drinks',   label:'음료·식음',  icon:'🍷'},
-  {key:'launch',   label:'런칭',       icon:'🚀'},
-  {key:'tour',     label:'가이드 투어',icon:'🚶'},
+  {key:'all',        label:'전체'},
+  {key:'furniture',  label:'가구',        icon:'🪑', color:'#c8492a'},
+  {key:'lighting',   label:'조명',        icon:'💡', color:'#e8a020'},
+  {key:'kitchen',    label:'주방',        icon:'🍽', color:'#7a4a1e'},
+  {key:'bath',       label:'욕실',        icon:'🛁', color:'#2f6b6b'},
+  {key:'accessories',label:'액세서리',    icon:'🏺', color:'#9b7ab5'},
+  {key:'materials',  label:'소재',        icon:'🪨', color:'#5d7456'},
+  {key:'rug',        label:'러그·바닥',   icon:'🧶', color:'#7a6a3a'},
+  {key:'av',         label:'오디오비주얼',icon:'🔊', color:'#3a4a5a'},
+  {key:'beds',       label:'침실',        icon:'🛏', color:'#6d3b54'},
+  {key:'office',     label:'오피스',      icon:'💼', color:'#2f5d6b'},
+  {key:'outdoor',    label:'아웃도어',    icon:'🌿', color:'#5d8456'},
+  {key:'wall',       label:'벽·표면',     icon:'🖼', color:'#7a7a7a'},
 ];
+
+/* 브랜드 제품 카테고리 자동 분류 (브랜드명+설명 키워드 매칭) */
+function getBrandProdCats(ex){
+  const name = ex.brand.toLowerCase();
+  const desc = (ex.desc||'').toLowerCase();
+  const t = name + ' ' + desc;
+  const cats = [];
+  if(/sofa|chair(?!man)|furn|møbler|møbel|stol|bord(?!eau)|shelf|shelv|bookcase|cabinet|storage|seating|armchair|bench|daybed|dresser|wardrobe|sideboard|credenza|lounge|recliner|fritz hansen|carl hansen|pp møbler|fredericia|sibast|woud|wendelbo|softline|blond|verner panton|house of finn juhl|gubi|boconcept|arper|muuto|&tradition|handvark|moebe|frama|fogia|andersen|kinnarps|flokk|davidsign|cane.line|dedon|gloster|kettal|가구|소파|의자|테이블|선반|수납/.test(t)) cats.push('furniture');
+  if(/\blamp|lighting|pendant|chandelier|sconce|floor lamp|\bled\b|nuura|lightpoint|light.point|tom rossau|umage|louis poulsen|le klint|lightyears|조명|전등|램프/.test(t)) cats.push('lighting');
+  if(/kitchen|cook(?!ie)|tableware|cutlery|plates?|bowl|pitcher|kettle|\bpot\b|\bpan\b|stelton|asko|kvik|vipp|eva solo|iittala|royal copenhagen|georg jensen|주방|식기|조리/.test(t)) cats.push('kitchen');
+  if(/\bbath|shower|basin|toilet|\bspa\b|faucet|sanitary|plumbing|gessi|dornbracht|frost denmark|kaldewei|\bvola\b|hansgrohe|\bgrohe\b|욕실|욕조|세면/.test(t)) cats.push('bath');
+  if(/accessor|vase|candle(?!stick)|tray|cushion|\bthrow\b|pillow|mette ditmer|danish art|broste|kähler|kahler|bloomingville|marimekko|액세서리|오브제|화병/.test(t)) cats.push('accessories');
+  if(/material|surface(?! design)|stone|marble|terrazzo|composite|cosentino|baux|durat|rockfon|kvadrat|vescom|camira|gabriel fabric|소재|재료|마감/.test(t)) cats.push('materials');
+  if(/\brug\b|carpet|kilim|\bege\b|finarte|rezas|\bromo\b|러그|카펫|바닥/.test(t)) cats.push('rug');
+  if(/audio|speaker|sound(?! design)|hifi|hi.fi|\bav\b|bang.{0,8}olufsen|beoplay|beosound|오디오|스피커|음향/.test(t)) cats.push('av');
+  if(/\bbed\b|mattress|\bsleep\b|bedroom|carpe diem|h.stens|tempur|침대|침실|매트리스/.test(t)) cats.push('beds');
+  if(/\boffice\b|workspace|ergonomic|work chair|workstation|\bvelux\b|task chair|사무|오피스|업무/.test(t)) cats.push('office');
+  if(/outdoor|garden|terrace|patio|exterior|weather(?:proof)|teak|rattan|야외|정원|테라스/.test(t)) cats.push('outdoor');
+  if(/wallpaper|wall.panel|wall.cover|wall.surface|wall.tile|wall.tex|\bpaint\b|coating|plaster|wood.panel|벽지|벽면/.test(t) && !/wall street|wall of/.test(t)) cats.push('wall');
+  return cats.length ? cats : ['accessories'];
+}
+
 const EXH_DAY_COLORS = {10:'#c8492a', 11:'#2f6b6b', 12:'#9b7ab5'};
 
 function renderExhibitions(){
@@ -3769,13 +3799,10 @@ function filterExhibitions(){
       const evMatch = ex.events.some(ev=>ev.title.toLowerCase().includes(q));
       if(!brandMatch && !evMatch) return false;
     }
-    // 카테고리 필터 (이벤트 없는 브랜드는 카테고리='all'일 때만 포함)
+    // 제품 카테고리 필터 (브랜드 단위 필터)
     if(exhCatFilter !== 'all'){
-      const hasMatchingEv = ex.events.some(ev=>{
-        const cats = ev.cats || [ev.label === '토크·패널'?'talk':ev.label==='워크숍'?'workshop':ev.label==='음료·식음'?'drinks':ev.label==='런칭'?'launch':ev.label==='가이드 투어'?'tour':''];
-        return cats.includes(exhCatFilter);
-      });
-      if(!hasMatchingEv) return false;
+      const brandCats = getBrandProdCats(ex);
+      if(!brandCats.includes(exhCatFilter)) return false;
     }
     // 날짜 필터
     if(exhDayFilter !== 'all'){
@@ -3833,12 +3860,6 @@ function renderExhibitionsList(listEl, statEl){
 function filterEventsOf(ex){
   return ex.events.filter(ev=>{
     if(exhDayFilter!=='all' && ev.day!==parseInt(exhDayFilter)) return false;
-    if(exhCatFilter!=='all'){
-      const cats = ev.cats || [];
-      // label에서 카테고리 역추론
-      const labelCat = ev.label==='토크·패널'?'talk':ev.label==='워크숍'?'workshop':ev.label==='음료·식음'?'drinks':ev.label==='런칭'?'launch':ev.label==='가이드 투어'?'tour':'';
-      if(!cats.includes(exhCatFilter) && labelCat!==exhCatFilter) return false;
-    }
     return true;
   });
 }
@@ -3868,12 +3889,15 @@ function buildExhCard(ex, q){
     : '전시';
   const evCountClass = ex.events.length > 0 ? 'exh-ev-count' : 'exh-ev-count none';
 
+  const prodCats = getBrandProdCats(ex);
+  const prodBadges = prodCats.map(k=>{ const c=EXH_CATS.find(x=>x.key===k); return c&&c.key!=='all'?`<span style="display:inline-flex;align-items:center;gap:2px;font-size:9px;font-family:'Space Mono',monospace;background:${c.color}22;color:${c.color};border:1px solid ${c.color}55;border-radius:2px;padding:1px 5px;white-space:nowrap">${c.icon} ${c.label}</span>`:'' }).join('');
   head.innerHTML = `
     <div class="exh-card-info">
       <div class="exh-brand">${hl(ex.brand)}</div>
-      <div class="exh-meta">
+      <div class="exh-meta" style="flex-wrap:wrap;gap:4px">
         <span class="exh-dist-badge" style="background:${distD.color||ex.districtColor}">${ex.district||'–'}</span>
-        ${ex.address ? `<span class="exh-addr exh-addr-pin" style="margin:0;cursor:pointer" title="지도에서 보기">📍 ${ex.address}</span>` : ''}
+        ${prodBadges}
+        ${ex.address ? `<span class="exh-addr exh-addr-pin" style="margin:0;cursor:pointer;width:100%" title="지도에서 보기">📍 ${ex.address}</span>` : ''}
       </div>
       ${ex.desc ? `<div class="exh-desc">${ex.desc}</div>` : ''}
     </div>
@@ -3907,7 +3931,7 @@ function buildExhCard(ex, q){
     const evList = document.createElement('div');
     evList.className = 'exh-events';
 
-    const displayEvs = (exhDayFilter!=='all'||exhCatFilter!=='all') ? evs : ex.events;
+    const displayEvs = exhDayFilter!=='all' ? evs : ex.events;
 
     displayEvs.forEach(ev=>{
       const row = document.createElement('div');
@@ -3919,15 +3943,7 @@ function buildExhCard(ex, q){
       const jointBadge = ev.joint ? `<span class="exh-joint-badge">공동</span>` : '';
       const evUrl = ev.id ? `https://www.3daysofdesign.dk/event/${ev.id}` : '';
 
-      // 복합 카테고리 태그 구성
-      const catTags = (() => {
-        const allCats = ev.cats || [];
-        if(allCats.length === 0) return `<span class="exh-ev-tag" style="background:${ev.color}">${ev.icon} ${ev.label}</span>`;
-        return allCats.map(c=>{
-          const info = EXH_CATS.find(x=>x.key===c);
-          return info ? `<span class="exh-ev-tag" style="background:${c==='talk'?'#2f6b6b':c==='workshop'?'#5d7456':c==='drinks'?'#8b5e3c':c==='launch'?'#d99021':'#3a4a5a'}">${info.icon||''} ${info.label}</span>` : '';
-        }).join('');
-      })();
+      const catTags = `<span class="exh-ev-tag" style="background:${ev.color||'#888'}">${ev.icon||''} ${ev.label||''}</span>`;
 
       // 6/10=dayIdx 2, 6/11=3, 6/12=4
       const festDayIdx = ev.day === 10 ? 2 : ev.day === 11 ? 3 : ev.day === 12 ? 4 : -1;
