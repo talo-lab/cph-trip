@@ -1704,6 +1704,76 @@ let planPinLayer = [];
 let selRouteLayer = null;
 let planSelItems = []; // [{di,ii,lat,lng,title}] max 2
 let selectedPlanKey = null; // 현재 지도 선택된 plan item "di-ii"
+let exhPinLayer = null;     // 전시탭 지도 핀
+const exhGeoCache = {};     // address -> {lat,lng}
+
+/* ---------- 공통 Nominatim 지오코딩 ---------- */
+async function nominatimGeocode(query){
+  const q = encodeURIComponent(query + ' Copenhagen Denmark');
+  const url = `https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=1&countrycodes=dk&viewbox=12.3,55.55,12.75,55.82&bounded=0`;
+  const res = await fetch(url, {headers:{'User-Agent':'cph-trip-planner/1.0'}});
+  const data = await res.json();
+  if(data.length) return {lat:+data[0].lat, lng:+data[0].lon};
+  return null;
+}
+
+/* 전시 카드 클릭 → 지도에 핀 표시 */
+function clearExhPin(){ if(exhPinLayer){ map.removeLayer(exhPinLayer); exhPinLayer=null; } }
+
+async function showExhPin(ex){
+  clearExhPin();
+  const distD = EXH_DISTRICTS.find(d=>d.key===ex.district)||{color:'#888'};
+  const color = distD.color||'#888';
+
+  let lat, lng;
+  const cacheKey = ex.address||ex.brand;
+  if(exhGeoCache[cacheKey]){
+    ({lat,lng} = exhGeoCache[cacheKey]);
+  } else {
+    // 지구 좌표로 즉시 임시 핀
+    const dist = DISTRICTS.find(d=>d.name===ex.district);
+    if(dist){ lat=dist.lat; lng=dist.lng; }
+    // Nominatim 지오코딩 (백그라운드)
+    const query = ex.address || (ex.brand + ' ' + (ex.district||''));
+    nominatimGeocode(query).then(c=>{
+      if(!c) return;
+      exhGeoCache[cacheKey] = c;
+      clearExhPin();
+      _placeExhPin(ex, c.lat, c.lng, color);
+      map.flyTo([c.lat, c.lng], 16, {duration:.5});
+    }).catch(()=>{});
+  }
+  if(lat && lng) _placeExhPin(ex, lat, lng, color);
+}
+
+function _placeExhPin(ex, lat, lng, color){
+  const icon = L.divIcon({
+    className:'',
+    html:`<div style="background:${color};color:#fff;padding:3px 8px;border-radius:4px;font-size:10.5px;font-family:'Space Mono',monospace;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.35);max-width:180px;overflow:hidden;text-overflow:ellipsis">${ex.brand}</div>`,
+    iconAnchor:[0,0]
+  });
+  exhPinLayer = L.marker([lat,lng],{icon}).addTo(map);
+  exhPinLayer.bindPopup(
+    `<div class="pop-name">🏛 ${ex.brand}</div>` +
+    `<div class="pop-desc">📍 ${ex.address||ex.district}<br><span style="background:${color};color:#fff;font-size:9px;padding:1px 5px;font-family:'Space Mono',monospace;border-radius:2px">${ex.district}</span></div>`
+  ).openPopup();
+  map.flyTo([lat,lng], 15, {duration:.5});
+}
+
+/* 일정 아이템 백그라운드 지오코딩 */
+async function geocodePlanItem(item, di){
+  if(item._lat && item._lng) return;
+  const titlePart = item.title.replace(/\[.*?\]/g,'').replace(/\(.*?\)/g,'').trim();
+  const notePart = (item.note||'').split('·')[0].split('·')[0].trim();
+  const query = titlePart + (notePart&&notePart.length<60 ? ' '+notePart : '');
+  try{
+    const c = await nominatimGeocode(query);
+    if(!c) return;
+    item._lat = c.lat; item._lng = c.lng;
+    savePlan();
+    if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
+  }catch(e){}
+}
 
 function getItemCoords(it){
   if(it._lat && it._lng) return {lat:it._lat, lng:it._lng};
@@ -1778,6 +1848,17 @@ function showItemRoute(di, ii){
   if(di !== currentVisDay){ currentVisDay=di; updateDayViz(di); }
   const items = plan[di].items;
   const coords = getItemCoords(items[ii]);
+
+  // 좌표 없는 항목: 백그라운드 지오코딩 시도
+  if(!coords && items[ii]._user && items[ii].title){
+    const st2=document.getElementById('drawerStatus');
+    if(st2){ st2.className='drawer-status show'; st2.textContent='📍 지도 좌표 검색 중...'; }
+    geocodePlanItem(items[ii], di).then(()=>{
+      const c2=getItemCoords(items[ii]);
+      if(c2){ showItemRoute(di,ii); } // 좌표 생기면 재시도
+      else if(st2){ st2.className='drawer-status show err'; st2.textContent='📍 지도 좌표를 찾지 못했어요. 제목/메모를 더 구체적으로 입력해보세요.'; }
+    });
+  }
 
   // 이전/다음 좌표 있는 항목 탐색
   let prevC=null, prevIt=null, nextC=null, nextIt=null;
@@ -2508,6 +2589,11 @@ function renderPlan(){
 
       const t=row.querySelector('.item-title'), n=row.querySelector('.item-note');
       t.addEventListener('input',()=>{plan[di].items[ii].title=t.textContent;savePlan()});
+      t.addEventListener('blur',()=>{
+        // 좌표 없는 항목: 제목 편집 완료 후 자동 지오코딩
+        if(!plan[di].items[ii]._lat && t.textContent.trim().length>2)
+          geocodePlanItem(plan[di].items[ii], di);
+      });
       n.addEventListener('input',()=>{plan[di].items[ii].note=n.textContent;savePlan()});
 
       // 시간 필드 인라인 편집
@@ -3740,7 +3826,7 @@ function buildExhCard(ex, q){
       <div class="exh-brand">${hl(ex.brand)}</div>
       <div class="exh-meta">
         <span class="exh-dist-badge" style="background:${distD.color||ex.districtColor}">${ex.district||'–'}</span>
-        ${ex.address ? `<span class="exh-addr" style="margin:0">📍 ${ex.address}</span>` : ''}
+        ${ex.address ? `<span class="exh-addr exh-addr-pin" style="margin:0;cursor:pointer" title="지도에서 보기">📍 ${ex.address}</span>` : ''}
       </div>
       ${ex.desc ? `<div class="exh-desc">${ex.desc}</div>` : ''}
     </div>
@@ -3750,14 +3836,22 @@ function buildExhCard(ex, q){
       ${ex.slug?`<a href="https://www.3daysofdesign.dk/exhibition/${ex.slug}" target="_blank" style="font-size:9px;color:var(--rust);font-family:Space Mono,monospace;text-decoration:none" onclick="event.stopPropagation()">↗ 공식</a>`:''}
     </div>`;
 
-  if(ex.events.length > 0){
-    if(isOpen) card.classList.add('open');
-    head.addEventListener('click',()=>{
+  // 주소 📍 클릭 → 지도 핀 (이벤트 전파 차단)
+  const addrPin = head.querySelector('.exh-addr-pin');
+  if(addrPin) addrPin.addEventListener('click', e=>{ e.stopPropagation(); showExhPin(ex); });
+
+  // 열린 상태 복원
+  if(isOpen) card.classList.add('open');
+
+  // 카드 헤더 클릭 → 이벤트 목록 토글 + 지도 핀
+  head.addEventListener('click',()=>{
+    showExhPin(ex);
+    if(ex.events.length > 0){
       const key = ex.slug||ex.brand;
       if(exhOpenSet.has(key)) exhOpenSet.delete(key); else exhOpenSet.add(key);
       card.classList.toggle('open');
-    });
-  }
+    }
+  });
 
   card.appendChild(head);
 
@@ -5028,11 +5122,14 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
     const time  = document.getElementById('confirmTime').value.trim();
     const dIdx  = +document.getElementById('confirmDay').value;
     if(!title) return;
-    plan[dIdx].items.push({time,title,note:_currentOptNote||'',dist:'',_user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']});
+    const newItem = {time,title,note:_currentOptNote||'',dist:'',_user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']};
+    plan[dIdx].items.push(newItem);
     sortDayByTime(dIdx); savePlan(); renderPlan();
     resp.classList.remove('show');
     st.className='drawer-status show ok'; st.textContent='✓ 일정에 추가됐어요!';
     setTimeout(closeDrawer,1400);
+    // 백그라운드 좌표 자동 등록
+    geocodePlanItem(newItem, dIdx);
   };
 
   // ── 단일 추천 ──
@@ -5287,6 +5384,7 @@ let activeTab='plan';
 function setTab(t){
   if(activeTab==='rec'  && t!=='rec')  clearRecMapSel();
   if(activeTab==='fest' && t!=='fest') clearFestMarkers();
+  if(activeTab==='exh'  && t!=='exh')  clearExhPin();
   activeTab=t;
   document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));
   if(t==='plan'){
