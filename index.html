@@ -124,6 +124,9 @@
     font-family:'Space Mono',monospace;font-size:11px;color:var(--rust-deep);
     font-weight:700;white-space:nowrap;padding-top:2px;min-width:46px;
   }
+  .item-time-edit{cursor:text;border-radius:3px;transition:.15s;outline:none}
+  .item-time-edit:empty::before{content:attr(data-placeholder);color:var(--slate);opacity:.4;font-weight:400}
+  .item-time-edit:focus{background:#fff4d6;box-shadow:0 0 0 2px var(--ochre);padding:1px 4px}
   .item-main{flex:1;min-width:0}
   .item-title{font-size:14px;font-weight:600;line-height:1.25}
   .item-title[contenteditable]{outline:none;border-radius:3px;transition:.15s}
@@ -2161,7 +2164,7 @@ function renderPlan(){
       row.innerHTML = `
         ${it._fixed?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
         <input type="checkbox" class="item-done-cb" ${it._done?'checked':''} title="완료 표시">
-        <div class="item-time">${it.time||''}</div>
+        <div class="item-time${it._fixed?'':' item-time-edit'}" ${it._fixed?'':'contenteditable spellcheck="false" data-placeholder="시간"'} title="${it._fixed?'':'클릭하여 시간 편집 (예: 14:30)'}">${it.time||''}</div>
         <div class="item-main">
           <div class="item-title" contenteditable spellcheck="false">${it.title||''}</div>
           <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
@@ -2186,6 +2189,24 @@ function renderPlan(){
       const t=row.querySelector('.item-title'), n=row.querySelector('.item-note');
       t.addEventListener('input',()=>{plan[di].items[ii].title=t.textContent;savePlan()});
       n.addEventListener('input',()=>{plan[di].items[ii].note=n.textContent;savePlan()});
+
+      // 시간 필드 인라인 편집
+      if(!it._fixed){
+        const tm=row.querySelector('.item-time-edit');
+        if(tm){
+          tm.addEventListener('focus',()=>{ if(!tm.textContent.trim()) tm.textContent=''; });
+          tm.addEventListener('blur',()=>{
+            let v=tm.textContent.trim();
+            // HH:MM 자동 포맷
+            const m=v.match(/^(\d{1,2})[:\.]?(\d{2})$/);
+            if(m) v=m[1].padStart(2,'0')+':'+m[2];
+            plan[di].items[ii].time=v;
+            tm.textContent=v;
+            savePlan();
+          });
+          tm.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();tm.blur();} });
+        }
+      }
 
       const xb=row.querySelector('.item-x');
       if(!it._fixed) xb.addEventListener('click',e=>{
@@ -2221,8 +2242,36 @@ function renderPlan(){
 
     const add=document.createElement('button'); add.className='add-item'; add.textContent='+ 일정 추가';
     add.addEventListener('click',()=>{
-      plan[di].items.push({time:'',title:'새 일정',note:'',dist:'',_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']});
-      savePlan(); renderPlan();
+      // 이전 항목 기준 이동 정보 자동 생성
+      let autoNote = '';
+      const dayItems = plan[di].items;
+      if(dayItems.length > 0){
+        // 마지막 좌표 있는 항목 탐색
+        let prevIt = null;
+        for(let i=dayItems.length-1;i>=0;i--){ if(getItemCoords(dayItems[i])){ prevIt=dayItems[i]; break; } }
+        if(prevIt){
+          const prevCoords = getItemCoords(prevIt);
+          // 숙소 좌표를 기본 목적지로 제안
+          const stay = {lat:55.6671, lng:12.5519};
+          const t = transportBetween(prevCoords, stay);
+          autoNote = `← ${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분`;
+        }
+      }
+      plan[di].items.push({time:'',title:'새 일정',note:autoNote,dist:'',_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']});
+      savePlan();
+      renderPlan();
+      // 새로 추가된 항목의 시간 필드에 포커스
+      const newIdx = plan[di].items.length - 1;
+      setTimeout(()=>{
+        const body=document.getElementById(`body-${di}`);
+        if(!body) return;
+        const rows=[...body.querySelectorAll('.item')];
+        const newRow=rows[newIdx];
+        if(newRow){
+          const timeFld=newRow.querySelector('.item-time-edit');
+          if(timeFld){ timeFld.focus(); selectAll(timeFld); }
+        }
+      },80);
     });
     body.appendChild(add);
 
@@ -2955,6 +3004,8 @@ function showDragToast(warnings, di){
   t.querySelector('#toastKeep').onclick = ()=>t.remove();
   setTimeout(()=>t?.remove(), 7000);
 }
+
+function selectAll(el){ const r=document.createRange(); r.selectNodeContents(el); const s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
 
 function timeToMin(t){
   if(!t) return 9999;
