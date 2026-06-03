@@ -810,8 +810,10 @@
     .app{display:block;position:relative;height:100vh;overflow:hidden}
     .panel{
       position:absolute;top:0;left:0;right:0;
-      border-right:none;border-bottom:2px solid var(--ink);overflow:hidden;
+      border-right:none;border-bottom:2px solid var(--ink);
+      overflow:hidden;max-width:100vw;
     }
+    .scroll{overflow-x:hidden}
     .map-wrap{
       position:absolute;bottom:0;left:0;right:0;
       border-top:3px solid var(--ink);background:#e8e0d0;
@@ -826,13 +828,36 @@
     }
     .map-handle:active{cursor:grabbing}
     .map-handle-bar{width:36px;height:4px;border-radius:2px;background:var(--line)}
-    .map-legend{top:38px}
+    /* 범례: 모바일에서 접힌 상태로 시작 */
+    .map-legend{
+      top:38px;right:8px;
+      max-width:min(200px, calc(100vw - 16px));
+      padding:6px 10px;
+    }
+    .map-legend.leg-collapsed .leg-body{display:none}
+    .map-legend.leg-collapsed{padding:5px 10px}
+    .leg-toggle{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:8px;cursor:pointer;user-select:none;
+    }
+    .leg-toggle h4{margin:0;pointer-events:none}
+    .leg-toggle-icon{font-size:11px;opacity:.6;flex-shrink:0;transition:.2s}
+    .map-legend.leg-collapsed .leg-toggle-icon{transform:rotate(-90deg)}
+    /* 하단 지도 타이틀 — 모바일 작게 */
+    .map-title{font-size:9px;padding:5px 10px;bottom:8px;left:8px}
+    .gps-btn{padding:7px 10px;font-size:10px;bottom:8px;right:8px}
     header.brand{padding:7px 14px 5px}
     .kicker{font-size:9px;letter-spacing:.1em}
     h1{font-size:20px;margin-top:3px;line-height:1}
     h1 br{display:none}
     .sub{font-size:10px;margin-top:3px}
     .tab{font-size:9px;padding:8px 2px;letter-spacing:.04em}
+    /* 행사 필터 가로 overflow 방지 */
+    .fest-filters{overflow-x:hidden}
+    /* 위시리스트 입력 줄 바꿈 */
+    .wish-add-row{flex-wrap:wrap}
+    .wish-note-input{min-width:100%;order:2}
+    .wish-add-btn{order:3}
   }
 </style>
 </head>
@@ -910,9 +935,12 @@
   <main class="map-wrap">
     <div class="map-handle" id="mapHandle"><div class="map-handle-bar"></div></div>
     <div id="map"></div>
-    <div class="map-legend">
-      <h4>8 Design Districts</h4>
-      <div id="legend"></div>
+    <div class="map-legend" id="mapLegend">
+      <div class="leg-toggle" id="legToggle">
+        <h4>8 Design Districts</h4>
+        <span class="leg-toggle-icon">▾</span>
+      </div>
+      <div class="leg-body" id="legend"></div>
     </div>
     <button class="gps-btn" id="gpsBtn" title="내 위치 찾기">◎ 내 위치</button>
     <div class="gps-info" id="gpsInfo"></div>
@@ -3889,6 +3917,22 @@ const saluIcon=L.divIcon({className:'',html:`<div class="plan-pin" style="backgr
 const saluMarker=L.marker([55.665398,12.550298],{icon:saluIcon}).addTo(map);
 saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73, 1720 København</div>`);
 markers['salu']=saluMarker;
+
+// 범례 토글 (모바일에서 기본 접힘)
+(function(){
+  const legend = document.getElementById('mapLegend');
+  const toggle = document.getElementById('legToggle');
+  if(!legend || !toggle) return;
+  const isMobile = () => window.innerWidth <= 820;
+  if(isMobile()) legend.classList.add('leg-collapsed');
+  toggle.addEventListener('click', ()=>{
+    if(!isMobile()) return;
+    legend.classList.toggle('leg-collapsed');
+  });
+  window.addEventListener('resize', ()=>{
+    if(!isMobile()) legend.classList.remove('leg-collapsed');
+  });
+})();
 
 // ── 범례: 날짜별 색상 + 숙소/SALU
 const leg=document.getElementById('legend');
