@@ -484,8 +484,10 @@ let routeLayer = null;
 let planPinLayer = [];
 let selRouteLayer = null;
 let runRouteLayers = [];   // 달리기 코스 폴리라인 (날짜 전환 시 초기화)
-let planSelItems = []; // [{di,ii,lat,lng,title}] max 2
+let planSelItems = []; // [{di,ii,lat,lng,title}] max 2 (단일 모드용)
 let selectedPlanKey = null; // 현재 지도 선택된 plan item "di-ii"
+let planMultiMode = false;  // 다중선택 모드 여부
+let planMultiSel = [];      // [{key,di,ii,lat,lng,title}] 다중선택 목록
 let exhPinLayer = null;     // 전시탭 지도 핀
 const exhGeoCache = {};     // address -> {lat,lng}
 
@@ -620,13 +622,19 @@ function renderPlanMarkers(di){
     seq++;
     const catIcon = getCategoryIcon(it);
     const isFixed = !!it._fixed;
-    // 색상 우선순위: ①_dk 지구색 → ②좌표 기준 가장 가까운 지구색(5km 이내) → ③날짜색
-    let distObj = it._dk ? DISTRICTS.find(d=>d.key===it._dk) : null;
-    if(!distObj && coords){
-      const nd = nearestDistrict(coords.lat, coords.lng);
-      if(nd.dist_km <= 5) distObj = nd.district;
+    // 색상 우선순위:
+    // ①달리기 코스 → 전용 주황 / ②_dk 지구색 / ③좌표→최근접 지구(10km) / ④날짜색
+    let pinColor;
+    if(it._runningCourse){
+      pinColor = '#e05c2a'; // 경로와 동일한 주황
+    } else {
+      let distObj = it._dk ? DISTRICTS.find(d=>d.key===it._dk) : null;
+      if(!distObj && coords){
+        const nd = nearestDistrict(coords.lat, coords.lng);
+        if(nd.dist_km <= 10) distObj = nd.district; // 10km 캡 (공항 제외, 코펜하겐 내 모두 포함)
+      }
+      pinColor = distObj ? distObj.color : dayColor;
     }
-    const pinColor = distObj ? distObj.color : dayColor;
     const borderColor = isFixed ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.3)';
     const numLabel = isFixed ? '🔒' : seq;
     const icon = L.divIcon({
@@ -844,6 +852,65 @@ function togglePlanSel(di, ii, lat, lng, title, dotEl){
     ).openPopup();
     map.fitBounds([[a.lat,a.lng],[b.lat,b.lng]],{padding:[60,60],maxZoom:15});
   }
+}
+
+/* ---------- 다중선택 경로 측정 ---------- */
+function updateMultiSel(){
+  if(selRouteLayer){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
+  const pts = planMultiSel.filter(x=>x.lat&&x.lng);
+  if(pts.length >= 2){
+    selRouteLayer = L.polyline(pts.map(x=>[x.lat,x.lng]),
+      {color:'#d99021',weight:3.5,opacity:.92,dashArray:'5 4'}).addTo(map);
+    map.fitBounds(L.latLngBounds(pts.map(x=>[x.lat,x.lng])),{padding:[55,55],maxZoom:15});
+  } else if(pts.length === 1){
+    map.flyTo([pts[0].lat,pts[0].lng],15,{duration:.6});
+  }
+  renderMultiSelBar();
+}
+
+function renderMultiSelBar(){
+  const scrollEl = document.getElementById('scroll');
+  let bar = document.getElementById('multiSelBar');
+  if(!planMultiMode){
+    if(bar) bar.remove();
+    return;
+  }
+  if(!bar){
+    bar = document.createElement('div');
+    bar.id = 'multiSelBar';
+    bar.className = 'multi-sel-bar';
+    scrollEl.insertBefore(bar, scrollEl.firstChild);
+  }
+  const pts = planMultiSel.filter(x=>x.lat&&x.lng);
+  if(!pts.length){
+    bar.innerHTML=`<span class="mbar-hint">📍 체크박스로 장소를 여러 개 선택하면 이동 경로와 소요시간이 표시됩니다</span>`;
+    return;
+  }
+  let totalKm=0, totalMins=0;
+  const segs=[];
+  for(let i=0;i<pts.length-1;i++){
+    const t=transportBetween({lat:pts[i].lat,lng:pts[i].lng},{lat:pts[i+1].lat,lng:pts[i+1].lng});
+    totalKm+=t.km; totalMins+=t.mins;
+    segs.push(`${t.icon} ${t.mins}분`);
+  }
+  bar.innerHTML=`
+    <div class="mbar-row">
+      <span class="mbar-count">${pts.length}개 선택</span>
+      <span class="mbar-sep">·</span>
+      <span class="mbar-dist">총 ${totalKm.toFixed(1)}km</span>
+      <span class="mbar-sep">·</span>
+      <span class="mbar-time">이동 약 ${totalMins}분</span>
+      ${segs.length?`<span class="mbar-segs">${segs.join(' → ')}</span>`:''}
+    </div>
+    <div class="mbar-titles">${pts.map((p,i)=>`<span class="mbar-stop">${i+1}. ${p.title.replace(/🏃\s*/,'')}</span>`).join('<span class="mbar-arr">→</span>')}</div>
+    <button class="mbar-clear" id="mbarClear">✕ 초기화</button>`;
+  document.getElementById('mbarClear')?.addEventListener('click', ()=>{
+    planMultiSel=[];
+    document.querySelectorAll('.item-sel-cb').forEach(cb=>cb.checked=false);
+    document.querySelectorAll('.item.sel-active').forEach(r=>r.classList.remove('sel-active'));
+    if(selRouteLayer){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
+    renderMultiSelBar();
+  });
 }
 
 /* ---------- FESTIVAL EVENTS DATA ---------- */
@@ -1337,7 +1404,8 @@ let currentVisDay = 0;
 function renderPlan(){
   const el = document.getElementById('scroll');
   el.innerHTML = '';
-  if(selRouteLayer){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
+  el.classList.toggle('multi-mode', planMultiMode);
+  if(selRouteLayer && !planMultiMode){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
 
   // 날씨 비동기 로드 → 렌더 후 삽입
   fetchWeather().then(wmap=>{
@@ -1407,22 +1475,48 @@ function renderPlan(){
         <a class="item-gmap" href="${gmapHref}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${gmapIcon}</a>
         <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
-      // 선택 체크박스 (지도 경로 연동)
+      // 선택 체크박스 — 단일/다중 모드 분기
       const selCb = row.querySelector('.item-sel-cb');
+      // 다중 모드 초기 체크 상태 복원
+      if(planMultiMode && planMultiSel.some(x=>x.key===`${di}-${ii}`)) selCb.checked=true;
+
       selCb.addEventListener('change', e=>{
         e.stopPropagation();
         const key = `${di}-${ii}`;
-        if(selCb.checked){
-          // 이전 선택 해제
-          if(selectedPlanKey && selectedPlanKey!==key){
-            const [pdi,pii]=selectedPlanKey.split('-').map(Number);
-            const prevRow=document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
-            if(prevRow){prevRow.querySelector('.item-sel-cb').checked=false;prevRow.classList.remove('sel-active');}
+        if(!planMultiMode){
+          // ── 단일 모드: 기존 동작 ──
+          if(selCb.checked){
+            if(selectedPlanKey && selectedPlanKey!==key){
+              const [pdi,pii]=selectedPlanKey.split('-').map(Number);
+              const prevRow=document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
+              if(prevRow){prevRow.querySelector('.item-sel-cb').checked=false;prevRow.classList.remove('sel-active');}
+            }
+            selectedPlanKey=key; row.classList.add('sel-active'); showItemRoute(di,ii);
+          } else {
+            selectedPlanKey=null; row.classList.remove('sel-active');
+            if(selRouteLayer){map.removeLayer(selRouteLayer);selRouteLayer=null;}
           }
-          selectedPlanKey=key; row.classList.add('sel-active'); showItemRoute(di,ii);
         } else {
-          selectedPlanKey=null; row.classList.remove('sel-active');
-          if(selRouteLayer){map.removeLayer(selRouteLayer);selRouteLayer=null;}
+          // ── 다중 모드: 누적 선택 ──
+          const coords = getItemCoords(it);
+          if(selCb.checked){
+            if(coords && !planMultiSel.some(x=>x.key===key)){
+              planMultiSel.push({key,di,ii,lat:coords.lat,lng:coords.lng,title:it.title});
+            } else if(!coords){
+              selCb.checked=false; // 좌표 없으면 선택 불가
+              const hint=document.createElement('span');
+              hint.style.cssText='font-size:10px;color:var(--rust);margin-left:4px;animation:fadein .3s';
+              hint.textContent='(좌표 없음)';
+              row.querySelector('.item-title').appendChild(hint);
+              setTimeout(()=>hint.remove(),2000);
+              return;
+            }
+            row.classList.add('sel-active');
+          } else {
+            planMultiSel = planMultiSel.filter(x=>x.key!==key);
+            row.classList.remove('sel-active');
+          }
+          updateMultiSel();
         }
       });
 
@@ -1459,24 +1553,28 @@ function renderPlan(){
         plan[di].items.splice(ii,1);savePlan();renderPlan();
       });
 
-      // 행 클릭 → 선택/해제 토글 + 드로어 열기
+      // 행 클릭 — 단일/다중 모드 분기
       row.addEventListener('click', e=>{
-        if(e.target.matches('[contenteditable],[contenteditable] *,.item-x,.item-sel-cb,.item-gmap')) return;
-        const key = `${di}-${ii}`;
-        if(selectedPlanKey===key){
-          // 같은 항목 재클릭 → 선택 해제
-          selectedPlanKey=null; selCb.checked=false; row.classList.remove('sel-active');
-          if(selRouteLayer){map.removeLayer(selRouteLayer);selRouteLayer=null;}
-        } else {
-          // 새 항목 선택
-          if(selectedPlanKey){
-            const [pdi,pii]=selectedPlanKey.split('-').map(Number);
-            const prevRow=document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
-            if(prevRow){prevRow.querySelector('.item-sel-cb').checked=false;prevRow.classList.remove('sel-active');}
+        if(e.target.matches('[contenteditable],[contenteditable] *,.item-x,.item-sel-cb,.item-gmap,.run-route-link')) return;
+        if(!planMultiMode){
+          // ── 단일 모드: 드로어 열기 + 지도 하이라이트 ──
+          const key = `${di}-${ii}`;
+          if(selectedPlanKey===key){
+            selectedPlanKey=null; selCb.checked=false; row.classList.remove('sel-active');
+            if(selRouteLayer){map.removeLayer(selRouteLayer);selRouteLayer=null;}
+          } else {
+            if(selectedPlanKey){
+              const [pdi,pii]=selectedPlanKey.split('-').map(Number);
+              const prevRow=document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
+              if(prevRow){prevRow.querySelector('.item-sel-cb').checked=false;prevRow.classList.remove('sel-active');}
+            }
+            selectedPlanKey=key; selCb.checked=true; row.classList.add('sel-active'); showItemRoute(di,ii);
           }
-          selectedPlanKey=key; selCb.checked=true; row.classList.add('sel-active'); showItemRoute(di,ii);
+          openDrawer(di, ii, it.title);
+        } else {
+          // ── 다중 모드: 체크박스 토글 (드로어 열지 않음) ──
+          selCb.click();
         }
-        openDrawer(di, ii, it.title);
       });
 
       body.appendChild(row);
@@ -1566,6 +1664,28 @@ function renderPlan(){
   updatePastItems();
   // 충돌 경고 배너
   renderConflictBanner(el);
+
+  // ── 선택 모드 토글 버튼
+  const modeToggleWrap = document.createElement('div');
+  modeToggleWrap.className = 'plan-mode-toggle-wrap';
+  modeToggleWrap.innerHTML = `
+    <button id="planModeToggle" class="plan-mode-toggle${planMultiMode?' active':''}">
+      ${planMultiMode ? '✕ 단일 선택 모드로' : '🗺 경로 측정 모드'}
+    </button>
+    ${planMultiMode ? '<span class="plan-mode-hint">체크박스로 여러 장소 선택 → 이동 경로·시간 표시</span>' : ''}`;
+  el.insertBefore(modeToggleWrap, el.firstChild);
+  document.getElementById('planModeToggle').addEventListener('click', ()=>{
+    planMultiMode = !planMultiMode;
+    if(!planMultiMode){
+      planMultiSel=[];
+      if(selRouteLayer){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
+    }
+    renderPlan();
+  });
+
+  // 다중 선택 바 (다중 모드 시)
+  if(planMultiMode) renderMultiSelBar();
+
   // 첫 렌더 시: 핀만 표시 (연결선은 명시적 선택 시에만)
   if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
   renderPlanMarkers(currentVisDay);

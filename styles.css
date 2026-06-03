@@ -646,10 +646,33 @@
   @media(hover:none),(pointer:coarse){.item-gmap{opacity:.5!important}}
   .is-touch .item-gmap{opacity:.5!important}
 
-  /* ============ PLAN ITEM SELECT (2-item route) ============ */
-  /* ── 진행률 체크 ── */
+  /* ============ PLAN ITEM SELECT ============ */
   .item-sel-cb{width:15px;height:15px;flex-shrink:0;accent-color:var(--rust);cursor:pointer;align-self:center}
   .item.sel-active{background:rgba(199,73,42,.05);border-left:2px solid var(--rust)}
+
+  /* ── 선택 모드 토글 ── */
+  .plan-mode-toggle-wrap{display:flex;align-items:center;gap:8px;padding:8px 16px 4px;flex-wrap:wrap}
+  .plan-mode-toggle{font-size:11px;font-family:'Space Mono',monospace;padding:4px 12px;border:1.5px solid var(--line);border-radius:20px;background:none;cursor:pointer;color:var(--slate);transition:.15s}
+  .plan-mode-toggle.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .plan-mode-hint{font-size:10.5px;color:var(--teal);opacity:.8}
+
+  /* ── 다중선택 측정 바 ── */
+  .multi-sel-bar{position:sticky;top:0;z-index:50;background:#fffbf2;border-bottom:2px solid var(--ochre);padding:8px 14px;font-size:11.5px;line-height:1.5}
+  .mbar-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+  .mbar-count{font-family:'Space Mono',monospace;font-weight:700;color:var(--rust)}
+  .mbar-dist{color:var(--teal)}
+  .mbar-time{color:var(--ochre-dark,#a06020);font-weight:600}
+  .mbar-sep{opacity:.4}
+  .mbar-segs{font-family:'Space Mono',monospace;font-size:10.5px;opacity:.7}
+  .mbar-titles{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-size:10.5px;margin-bottom:4px}
+  .mbar-stop{background:var(--cream);border:1px solid var(--line);border-radius:3px;padding:1px 6px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mbar-arr{opacity:.4;font-size:10px}
+  .mbar-clear{font-size:10px;font-family:'Space Mono',monospace;padding:2px 8px;border:1px solid var(--rust);border-radius:3px;background:none;color:var(--rust);cursor:pointer}
+  .mbar-hint{font-size:11px;opacity:.6}
+
+  /* 다중선택 모드일 때 아이템 체크박스 강조 */
+  .multi-mode .item-sel-cb{accent-color:var(--teal);width:17px;height:17px}
+  .multi-mode .item.sel-active{background:rgba(47,107,107,.07);border-left:2px solid var(--teal)}
   .item.past .item-time,.item.past .item-title{opacity:.38;transition:opacity .4s}
   .item.past .item-note{opacity:.28;transition:opacity .4s}
   .day-progress{height:3px;background:var(--line);margin:0 0 0 0}
