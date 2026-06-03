@@ -893,8 +893,9 @@ function detectTravelMode(note) {
 /* 장소명 정규화 매핑 — 한글/약어 → Google Maps 검색어 */
 const PLACE_MAP = [
   // 숙소 / 이동 기점
-  ['숙소',                'Vesterbro, Copenhagen'],
-  ['airbnb',              'Vesterbro, Copenhagen'],
+  ['숙소',                'Sommerstedgade 26, 1717 Copenhagen'],
+  ['airbnb',              'Sommerstedgade 26, 1717 Copenhagen'],
+  ['sommerstedgade',      'Sommerstedgade 26, 1717 Copenhagen'],
   // 공항
   ['공항',                'Copenhagen Airport, Kastrup'],
   ['코펜하겐 공항',        'Copenhagen Airport CPH'],
@@ -1113,6 +1114,20 @@ const VENUE_HOURS = [
   { keys:['gammel dok','dac','danish architecture'],
     open:'10:00', close:'18:00', closed:[],
     note:'매일 운영' },
+  { keys:['hart bageri','hart'],
+    open:'07:30', close:'18:00', closed:[],
+    satClose:'19:00', sunClose:'18:00',
+    note:'금-토 07:30–19:00' },
+  { keys:['hay house','hay '],
+    open:'10:00', close:'18:00', closed:[],
+    sunOpen:'11:00', sunClose:'17:00',
+    note:'일요일 단축 운영 (11–17시)' },
+  { keys:['wendelbo'],
+    open:'10:00', close:'18:00', closed:[],
+    note:'페스티벌 기간 (6/10–12) · 6/10 저녁 17:00–22:00 파티' },
+  { keys:['folkehuset absalon','absalon'],
+    open:'07:30', close:'00:00', closed:[],
+    note:'일–목 07:30–00:00 · 금–토 07:30–02:00' },
 ];
 
 /* 영업시간 경고 체크 → {type:'closed'|'early'|'late', msg} | null */
@@ -1178,11 +1193,11 @@ const DISTRICTS = [
   {key:'rosen', name:'Rosengård', color:'#7a6a3a', lat:55.682292, lng:12.572735, desc:'Fritz Hansen 등 · 도심 북서 골목', when:'Day 3 (6/10)'},
 ];
 
-// 숙소 (Airbnb · 베스테르브로, 상트요르겐스 호수 인근 · 정확 좌표 비공개로 대략 위치)
+// 숙소 (Airbnb · 베스테르브로 · Sommerstedgade 26)
 const STAY = {
   name:'우리 숙소 (Airbnb)',
-  lat:55.6745, lng:12.5535,
-  desc:'베스테르브로 · 상트요르겐스 호수 근처 · 코펜하겐 중앙역 900m · 현대적 아파트 (2인)',
+  lat:55.6671, lng:12.5519,
+  desc:'베스테르브로 · Sommerstedgade 26, 1717 Copenhagen · 코펜하겐 중앙역 도보 15분',
   meta:'체크인 6/9 15:00~ · 체크아웃 6/16 11:00 전',
   url:'https://www.airbnb.co.kr/rooms/1565348100263330857'
 };
@@ -1196,10 +1211,12 @@ const DEFAULT_PLAN = [
   // DAY 1 — 6/9
   {date:'6/9 (화)', tag:'코펜하겐 도착', fest:false, items:[
     {time:'06:00', title:'[상효] CPH(T3) 도착', note:'SAS 직항 · 메트로 M2로 도심 이동', dist:'', _fixed:true},
-    {time:'08:30', title:'[미주] CPH(T2) 도착', note:'AMS 환승(KL1267) 후 도착 · 공항에서 합류', dist:'', _fixed:true},
-    {time:'오전', title:'베스테르브로 숙소 짐 보관', note:'중앙역 900m · 체크인은 15:00부터', dist:''},
-    {time:'15:00', title:'Airbnb 체크인 (베스테르브로)', note:'상트요르겐스 호수 근처 현대적 아파트', dist:''},
-    {time:'16:00', title:'Installation', note:'Fredericiagade 57, 1310 Copenhagen K · 설치 미술 감상', dist:'', _lat:55.6844, _lng:12.5903, _fixed:true},
+    {time:'08:30', title:'[미주] CPH(T2) 도착', note:'KE5925 → KL1267 환승 후 도착 · 터미널2 · 공항에서 합류', dist:'', _fixed:true},
+    {time:'11:00', title:'숙소 이동 및 짐 보관', note:'Sommerstedgade 26, 1717 Copenhagen · 체크인은 15:00부터', dist:'', _lat:55.6671, _lng:12.5519},
+    {time:'11:30', title:'Hart Bageri', note:'카다멈 크로아상 · Gammel Kongevej 109, Frederiksberg', tag:'🍽 식사', dist:'', _lat:55.6755, _lng:12.5436, _fixed:true},
+    {time:'13:30', title:'디자인뮤지엄 덴마크 — 상설 전시', note:'Bredgade 68 · 페스티벌 기간 행사도 다수 · 미주', dist:'', _lat:55.6866, _lng:12.5928, _fixed:true},
+    {time:'15:00', title:'Airbnb 체크인', note:'Sommerstedgade 26, 1717 Copenhagen · 베스테르브로', dist:'', _lat:55.6671, _lng:12.5519},
+    {time:'16:00', title:'The Mechanics of Scent — Frama (예약 완료)', note:'Gammel Strand 32, 1202 Copenhagen · 16:00–16:30 · 미주 예약 완료', dist:'', _lat:55.6761, _lng:12.5765, _fixed:true},
     {time:'오후', title:'시차 적응 산책 · 뉘하운(Nyhavn)', note:'무리하지 않기 · 가벼운 도심 워킹', dist:''},
   ]},
   // DAY 2 — 6/10 (Festival Day 1)
@@ -2123,9 +2140,10 @@ const RECOMMEND = [
       {time:'09:00', title:'시차 극복 산책 — Istedgade 카페', note:'베스테르브로 로컬 카페에서 커피 한 잔, 동네 분위기 파악', tag:'☕ 다이닝', color:'#7a4a1e'},
       {time:'10:30', title:'Torvehallerne 마켓', note:'코펜하겐 최대 푸드마켓 — 스모레브레드, 신선 식재료 둘러보기', tag:'☕ 다이닝', color:'#7a4a1e', _lat:55.6836, _lng:12.5713},
       {time:'13:00', title:'Nørreport 인근 산책', note:'빌라 주거지구 골목 워킹 — 코펜하겐 일상 풍경', tag:'🚶 투어', color:'#3a4a5a'},
-      {time:'16:00', title:'Installation (관람)', note:'Fredericiagade 57, 1310 Copenhagen K — 16:00-16:30 CET', tag:'🏛 전시', color:'#6d3b54', _lat:55.6844, _lng:12.5903},
+      {time:'14:30', title:'Magnus Olesen 쇼룸', note:'Frederiksgade 7 — 덴마크 가구 브랜드 쇼룸 · 디자인뮤지엄 바로 인근', tag:'🏛 전시', color:'#6d3b54', _lat:55.6848, _lng:12.5882},
+      {time:'15:30', title:'KLASSIK Moderne Møbelkunst', note:'Bredgade 3 — 빈티지 덴마크 가구 편집샵 · Finn Juhl·Wegner·Jacobsen 원본 작품', tag:'🏛 전시', color:'#6d3b54', _lat:55.6836, _lng:12.5870},
       {time:'17:30', title:'뉘하운(Nyhavn) 운하 산책', note:'컬러풀 건물과 운하 — 저녁 조명이 아름다운 코펜하겐 상징', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6797, _lng:12.5913},
-      {time:'19:30', title:'저녁식사 — Nyhavn 인근', note:'Noma 예약 없다면 운하변 비스트로 추천 · 내일 페스티벌을 위해 일찍 귀숙', tag:'☕ 다이닝', color:'#7a4a1e'},
+      {time:'19:30', title:'저녁식사 — Nyhavn 인근', note:'운하변 비스트로 · 내일 페스티벌을 위해 일찍 귀숙', tag:'☕ 다이닝', color:'#7a4a1e'},
     ]
   },
   { dayIdx:2, label:'DAY 2', date:'6/10 (수)', tag:'페스티벌 1일차', fest:true,
@@ -2138,6 +2156,10 @@ const RECOMMEND = [
       {time:'13:00', title:'Fritz Hansen Listening Lounge', note:'Løvstræde 5 — 오디오+디자인 종일 체험 공간 · 아이코닉 가구 감상', tag:'🏛 전시', color:'#6d3b54', _lat:55.6795, _lng:12.5773},
       {time:'14:00', title:'Georg Jensen — Playdate', note:'Amagertorv 4 — 테이블웨어·주얼리 인터랙티브 체험', tag:'🏛 전시', color:'#6d3b54', _lat:55.6789, _lng:12.5800},
       {time:'14:30', title:'Hay House 플래그십', note:'Pilestræde — 덴마크 대표 디자인 브랜드 플래그십 스토어', tag:'🏛 전시', color:'#6d3b54', _lat:55.6794, _lng:12.5797},
+      {time:'11:30', title:'Alvar Aalto 90 Pavilion — iittala', note:'Ofelia Plads, Kvæsthusbroen — 아알토 90주년 파빌리온 · 뉘하운 인근 · 매일 06:00–22:30', tag:'🏛 전시', color:'#6d3b54', _lat:55.6815, _lng:12.5930},
+      {time:'13:00', title:'Ingo Maurer — Alice Folker Gallery', note:'Esplanaden 14 — 조명 거장 잉고 마우러 전시 · Frederiksstaden 갤러리', tag:'🏛 전시', color:'#6d3b54', _lat:55.6870, _lng:12.5924},
+      {time:'13:30', title:'Wendelbo 쇼룸 & 파티', note:'Bredgade 65 — 10:00–18:00 전시 · 17:00–22:00 오프닝 파티 · Frederiksstaden', tag:'🏛 전시', color:'#6d3b54', _lat:55.6852, _lng:12.5920},
+      {time:'14:30', title:'MOEBE 전시', note:'Valkendorfsgade 13B — 미니멀 덴마크 가구 브랜드 · 화–금 11:00–17:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.6787, _lng:12.5771},
       {time:'15:30', title:'Illums Bolighus', note:'Amagertorv 10 — 북유럽 디자인 백화점 · 기념품 리스트업', tag:'🏛 전시', color:'#6d3b54', _lat:55.6789, _lng:12.5800},
       {time:'16:00', title:'베스테르브로 복귀 이동', note:'메트로/도보 · 17시 SALU 다이닝 준비', tag:'🚶 투어', color:'#3a4a5a'},
     ]
@@ -2148,9 +2170,14 @@ const RECOMMEND = [
       {time:'08:00', title:'Guided Breathwork at the Harbour (Rockfon)', note:'Sundkaj 163 — 항구 아침 호흡 명상 · 상쾌하게 하루 시작', tag:'🧘 웰니스', color:'#9c3318', _lat:55.7126, _lng:12.5927},
       {time:'09:00', title:'Morning Design Talks: OEO Studio (Time & Style)', note:'Orientkaj 22 — 현대 인테리어 스튜디오 OEO 작업 소개', tag:'💬 토크', color:'#2f6b6b', _lat:55.7120, _lng:12.5940},
       {time:'10:00', title:'GUBI Nordhavn 그랜드 오프닝', note:'Orientkaj 18-20 — 이탈리아×북유럽 디자인의 만남 · 하이라이트', tag:'🏛 전시', color:'#6d3b54', _lat:55.7126, _lng:12.5927},
-      {time:'11:00', title:'The Power of Daylight (VELUX)', note:'Århusgade 126 — 자연광과 디자인·웰빙의 관계 아티스트 토크', tag:'💬 토크', color:'#2f6b6b', _lat:55.7120, _lng:12.5921},
+      {time:'10:30', title:'TIME & STYLE — OEO Studio Talk', note:'Orientkaj 22 — 현대 인테리어 스튜디오 OEO 작업 소개 · 6/9 17시 칵테일파티도 있음', tag:'💬 토크', color:'#2f6b6b', _lat:55.7120, _lng:12.5940},
+      {time:'11:00', title:'Japanmade Vol.1', note:'Dampfærgevej 2 — Dezeen 추천 전시 · 일본 디자인 × 북유럽 공간 · 매일 09:00–17:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.7090, _lng:12.5938},
+      {time:'11:30', title:'The Power of Daylight (VELUX)', note:'Århusgade 126 — 자연광과 디자인·웰빙의 관계 아티스트 토크', tag:'💬 토크', color:'#2f6b6b', _lat:55.7120, _lng:12.5921},
       {time:'12:30', title:'점심 — FORM BAR at FORMARKIVET', note:'Århusgade 128D — 디자인 마켓플레이스 레스토랑, 인근 쇼룸 둘러보기', tag:'☕ 다이닝', color:'#7a4a1e', _lat:55.7120, _lng:12.5920},
-      {time:'14:00', title:'Islands Brygge 이동 (메트로/자전거)', note:'M4 Orientkaj → Islands Brygge 환승 또는 자전거 20분', tag:'🚶 투어', color:'#3a4a5a'},
+      {time:'13:30', title:'Kvadrat Acoustics & Café', note:'Orient Plads 1, 2층 — Kvadrat & Vitra Café 09–15시 · 화–일 10:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.7085, _lng:12.5900},
+      {time:'14:30', title:'The Audo Copenhagen', note:'Århusgade 130 — 컨셉 호텔+스토어 · 13–16시 바 운영 · 카페 매일 08:00–16:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.7095, _lng:12.5903},
+      {time:'15:30', title:'Bread and Butter — Sandkaj 30', note:'Sandkaj 30, Nordhavn — Dezeen 추천 · 매일 06:00–22:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.7130, _lng:12.5930},
+      {time:'16:30', title:'Islands Brygge 이동 (메트로/자전거)', note:'M4 Orientkaj → Islands Brygge 환승 또는 자전거 20분', tag:'🚶 투어', color:'#3a4a5a'},
       {time:'14:30', title:'PP Møbler 쇼룸', note:'Bryggernes Plads 11 — Hans J. Wegner 가구의 정수 · 장인 정신 감상', tag:'🏛 전시', color:'#6d3b54', _lat:55.6641, _lng:12.5731},
       {time:'15:30', title:'UMAGE — BREAKFAST CLUB 방문', note:'Havnegade 29 — 조명 브랜드 쇼룸 · 스칸디나비안 감성', tag:'🏛 전시', color:'#6d3b54', _lat:55.6741, _lng:12.5797},
       {time:'17:00', title:'Evening Talk: The Future of Scandinavian Design', note:'Nordhavn — 스칸디나비아 디자인 미래를 전망하는 저녁 토크', tag:'💬 토크', color:'#2f6b6b'},
@@ -2166,43 +2193,53 @@ const RECOMMEND = [
       {time:'11:00', title:'BAUX 가이드 투어', note:'Papirøen 5 — 어쿠스틱 패널 디자인 혁신 · 건축 자재의 미래', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6888, _lng:12.6098},
       {time:'11:30', title:'Head Outside — XD Outdoor Launch (The Form Follows)', note:'Café Niko, Papirøen 81 — 아웃도어 가구 런칭 이벤트', tag:'🚀 런칭', color:'#d99021', _lat:55.6890, _lng:12.6095},
       {time:'12:30', title:'점심 — Reffen 스트리트푸드', note:'세계 최대 스트리트푸드 마켓 · 다양한 나라 음식 · Holmen 옆', tag:'☕ 다이닝', color:'#7a4a1e', _lat:55.6915, _lng:12.6045},
-      {time:'14:00', title:'Christianshavn 이동 — Ege Carpets', note:'Christianshavns Kanal 4 — 운하변 카펫 브랜드 · 크리스티안스하운 시작', tag:'🏛 전시', color:'#6d3b54', _lat:55.6737, _lng:12.5892},
-      {time:'15:00', title:'House of Finn Juhl × Edition — Artistry of Craftsmanship', note:'Strandgade 66 — 핀 율 가구 장인 정신 전시 · 페스티벌 최고 하이라이트 중 하나', tag:'🏛 전시', color:'#6d3b54', _lat:55.6732, _lng:12.5888},
-      {time:'16:00', title:'Closing Symposium: Make This Moment Matter', note:'페스티벌 클로징 심포지엄 · 참가 가능 시 참석 권장', tag:'💬 토크', color:'#2f6b6b'},
+      {time:'11:30', title:'Material Matters — Ukraine House', note:'Amaliegade 38 (Christianshavn 방향) — Dezeen 추천 · 화–토 12:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.6863, _lng:12.5895},
+      {time:'12:00', title:'ARPER — Store Strandstræde 21', note:'Store Strandstræde 21 — 이탈리아 가구 브랜드 · 페스티벌 기간 09:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.6838, _lng:12.5918},
+      {time:'12:30', title:'점심 — Reffen 스트리트푸드', note:'세계 최대 스트리트푸드 마켓 · 다양한 나라 음식 · Holmen 옆', tag:'☕ 다이닝', color:'#7a4a1e', _lat:55.6915, _lng:12.6045},
+      {time:'14:00', title:'Fredericia & Santa&Cole', note:'Løvstræde 1 — Dezeen 추천 · 10–18시 Santa&Cole 예약 가능 · 페스티벌 기간 09:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.6793, _lng:12.5775},
+      {time:'14:30', title:'Sell Out — Maria\'s Kiosk', note:'Indre By — Dezeen 추천 전시 · 매일 07:00–20:00', tag:'🏛 전시', color:'#6d3b54'},
+      {time:'15:00', title:'Other Circle — The Lab (Refshaleøen)', note:'Refshaleøen — Dezeen 추천 · 월–금 08:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.6905, _lng:12.6157},
+      {time:'15:30', title:'Christianshavn 이동 — Ege Carpets', note:'Christianshavns Kanal 4 — 운하변 카펫 브랜드', tag:'🏛 전시', color:'#6d3b54', _lat:55.6737, _lng:12.5892},
+      {time:'16:30', title:'House of Finn Juhl × Edition — Artistry of Craftsmanship', note:'Strandgade 66 — 핀 율 가구 장인 정신 전시 · 페스티벌 최고 하이라이트', tag:'🏛 전시', color:'#6d3b54', _lat:55.6732, _lng:12.5888},
+      {time:'18:00', title:'Closing Symposium: Make This Moment Matter', note:'페스티벌 클로징 심포지엄 · 참가 가능 시 참석 권장', tag:'💬 토크', color:'#2f6b6b'},
       {time:'저녁', title:'페스티벌 클로징 파티 & 기념 디너', note:'참가 브랜드들의 클로징 이벤트 탐방 · 페스티벌 마지막 밤', tag:'☕ 다이닝', color:'#7a4a1e'},
     ]
   },
-  { dayIdx:5, label:'DAY 5', date:'6/13 (토)', tag:'자유 관광 — 코펜하겐 클래식', fest:false,
-    theme:'못 본 쇼룸 보충 + 코펜하겐 관광 명소',
+  { dayIdx:5, label:'DAY 5', date:'6/13 (토)', tag:'북쪽 해안선 — 아르네 야콥센 비치 & Louisiana', fest:false,
+    theme:'Kystbanen 기차로 — 벨뷰 해변 → Louisiana 미술관 연계',
+    items:[
+      {time:'10:00', title:'코펜하겐 중앙역 → Klampenborg 출발', note:'Kystbanen 기차 · 약 20분 · Klampenborg 역 하차', tag:'🚶 투어', color:'#3a4a5a'},
+      {time:'10:30', title:'벨뷰 해변 — 아르네 야콥센 비치', note:'Bellevue Strand, Klampenborg — 야콥센이 설계한 라이프가드 타워 · 북유럽 모더니즘 해변', tag:'🚶 투어', color:'#3a4a5a', _lat:55.7766, _lng:12.5780},
+      {time:'12:00', title:'Klampenborg → Humlebæk 이동', note:'기차로 15분 추가 이동 · 해안선 경치', tag:'🚶 투어', color:'#3a4a5a'},
+      {time:'12:30', title:'Louisiana 현대미술관 도착', note:'GL Strandvej 13, Humlebæk — 해안절벽 위 건축 · 북유럽 최고 미술관 · 토-일 11:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.9695, _lng:12.5430},
+      {time:'13:00', title:'Louisiana 레스토랑 런치', note:'미술관 내 바다 전망 레스토랑 · 덴마크 오픈 샌드위치 추천', tag:'☕ 다이닝', color:'#7a4a1e'},
+      {time:'14:00', title:'Louisiana 관람 — 상설 컬렉션 & 조각공원', note:'Giacometti, Calder, Moore 등 거장 · 야외 조각공원 · 바다 조망 테라스', tag:'🏛 전시', color:'#6d3b54', _lat:55.9695, _lng:12.5430},
+      {time:'16:30', title:'코펜하겐 귀환 기차', note:'Humlebæk → 코펜하겐 중앙역 · 약 35분', tag:'🚶 투어', color:'#3a4a5a'},
+      {time:'19:00', title:'저녁식사 — 베스테르브로 Kødbyen', note:'고기 지구 레스토랑 탐방 · Nose, Kul 등 추천', tag:'☕ 다이닝', color:'#7a4a1e'},
+    ]
+  },
+  { dayIdx:6, label:'DAY 6', date:'6/14 (일)', tag:'코펜하겐 클래식 & 쇼핑', fest:false,
+    theme:'도심 명소 + 기념품 쇼핑 + 뉘하운 마무리',
     items:[
       {time:'10:00', title:'티볼리 가든 (Tivoli Gardens)', note:'코펜하겐 중앙역 바로 옆 · 세계에서 가장 오래된 놀이공원 · 낮 분위기 추천', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6736, _lng:12.5681},
-      {time:'12:30', title:'점심 — 중앙역 인근', note:'Riz Raz (채식 뷔페) 또는 Mikkeller 펍 · 가벼운 코펜하겐 런치', tag:'☕ 다이닝', color:'#7a4a1e'},
-      {time:'14:00', title:'Rundetårn (둥근탑) 전망대', note:'Købmagergade 52A — 나선형 램프 등반 · 코펜하겐 전경', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6814, _lng:12.5757},
-      {time:'15:30', title:'Strøget 쇼핑가 — 디자인 숍 투어', note:'Hay, Georg Jensen, Royal Copenhagen 등 · 기념품 쇼핑', tag:'🏛 전시', color:'#6d3b54'},
-      {time:'17:00', title:'인어공주 동상 (Little Mermaid)', note:'Langelinie — 코펜하겐 상징 · 항구 산책', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6929, _lng:12.5993},
-      {time:'19:00', title:'저녁식사 — Nørrebro 로컬 레스토랑', note:'젊은 감각의 레스토랑 밀집 지역 · Relæ, Manfreds 등 추천', tag:'☕ 다이닝', color:'#7a4a1e'},
+      {time:'12:00', title:'점심 — 중앙역 인근', note:'Riz Raz (채식 뷔페) 또는 Mikkeller 펍', tag:'☕ 다이닝', color:'#7a4a1e'},
+      {time:'13:30', title:'Rundetårn (둥근탑) 전망대', note:'Købmagergade 52A — 나선형 램프 등반 · 코펜하겐 전경', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6814, _lng:12.5757},
+      {time:'14:30', title:'Strøget 쇼핑가 — 디자인 숍 & 기념품', note:'Hay, Georg Jensen, Royal Copenhagen · A.C. Perchs Thehandel (차 구매)', tag:'🏛 전시', color:'#6d3b54'},
+      {time:'16:00', title:'인어공주 동상 & Kastellet 산책', note:'Langelinie — 코펜하겐 상징 · 요새 공원 산책', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6929, _lng:12.5993},
+      {time:'18:00', title:'뉘하운(Nyhavn) 저녁 산책', note:'운하변 카페에서 한 잔 · 코펜하겐 마지막 저녁', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6797, _lng:12.5913},
+      {time:'19:30', title:'저녁식사 — Nørrebro 로컬 레스토랑', note:'Relæ, Manfreds 등 젊은 감각 레스토랑', tag:'☕ 다이닝', color:'#7a4a1e'},
     ]
   },
-  { dayIdx:6, label:'DAY 6', date:'6/14 (일)', tag:'근교 당일치기 — Louisiana', fest:false,
-    theme:'Louisiana 현대미술관 + 해안선 드라이브',
+  { dayIdx:7, label:'DAY 7', date:'6/15 (월)', tag:'크리스티아니아 & 쇼핑 정리', fest:false,
+    theme:'⚠ 월요일 — 박물관 대부분 휴관 · 크리스티아니아 + 마지막 쇼핑',
     items:[
-      {time:'10:00', title:'코펜하겐 중앙역 → Louisiana 기차 출발', note:'Humlebæk 역 하차 · 약 35분 · InterCity 또는 Lyn 열차', tag:'🚶 투어', color:'#3a4a5a'},
-      {time:'10:45', title:'Louisiana 현대미술관 도착', note:'GL Strandvej 13, Humlebæk — 해안절벽 위 건축 · 북유럽 최고 미술관', tag:'🏛 전시', color:'#6d3b54', _lat:55.9695, _lng:12.5430},
-      {time:'11:00', title:'Louisiana 관람 — 상설 컬렉션', note:'Giacometti, Calder, Moore 등 거장 조각 · 바다 조망 테라스 산책', tag:'🏛 전시', color:'#6d3b54', _lat:55.9695, _lng:12.5430},
-      {time:'13:00', title:'Louisiana 레스토랑 런치', note:'미술관 내 바다 전망 레스토랑 · 덴마크 오픈 샌드위치 추천', tag:'☕ 다이닝', color:'#7a4a1e'},
-      {time:'14:30', title:'Louisiana 관람 — 기획전 & 조각공원', note:'야외 조각공원 산책 · 바다와 숲이 어우러진 공간 · 사진 명소', tag:'🏛 전시', color:'#6d3b54'},
-      {time:'17:00', title:'코펜하겐 귀환 기차', note:'Humlebæk → 코펜하겐 중앙역 · 저녁 자유 시간', tag:'🚶 투어', color:'#3a4a5a'},
-      {time:'19:30', title:'저녁식사 — 베스테르브로 인근', note:'숙소 근처 · Kødbyen (고기 지구) 레스토랑 탐방', tag:'☕ 다이닝', color:'#7a4a1e'},
-    ]
-  },
-  { dayIdx:7, label:'DAY 7', date:'6/15 (월)', tag:'자유 + 정리', fest:false,
-    theme:'마지막 코펜하겐 탐방 & 짐 정리',
-    items:[
-      {time:'10:00', title:'Designmuseum Danmark 여유롭게 재방문', note:'Bredgade 68 — 페스티벌 중 바빴다면 오늘 천천히 감상', tag:'🏛 전시', color:'#6d3b54', _lat:55.6866, _lng:12.5928},
-      {time:'12:00', title:'점심 — Bredgade 인근 카페', note:'왕실지구 골목 카페 · 편안한 마지막 코펜하겐 런치', tag:'☕ 다이닝', color:'#7a4a1e'},
-      {time:'13:30', title:'Fritz Hansen 플래그십 스토어 & Fredericia', note:'Løvstræde — 구매 결정 못한 디자인 아이템 최종 쇼핑', tag:'🏛 전시', color:'#6d3b54', _lat:55.6795, _lng:12.5773},
-      {time:'15:00', title:'Nyhavn 마지막 산책 & 기념사진', note:'운하변 카페에서 커피 · 코펜하겐과 작별 인사', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6797, _lng:12.5913},
-      {time:'17:00', title:'숙소 복귀 & 짐 정리', note:'내일 체크아웃 준비 · 구매 물품 정리 · 이른 취침 권장', tag:'🚶 투어', color:'#3a4a5a'},
+      {time:'10:00', title:'프리타운 크리스티아니아', note:'Christiania, Christianshavn — 자유 공동체 마을 · 그래피티·갤러리·카페 산책 · 매일 24시간', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6729, _lng:12.5946},
+      {time:'12:00', title:'점심 — Christianshavn 운하변', note:'크리스티아니아 인근 카페 또는 운하변 레스토랑', tag:'☕ 다이닝', color:'#7a4a1e'},
+      {time:'13:30', title:'Henrik Vibskov Boutique', note:'Krystalgade 6, Indre By — 덴마크 아방가르드 패션 · 월–금 11:00–18:00', tag:'🏛 전시', color:'#6d3b54', _lat:55.6806, _lng:12.5725},
+      {time:'14:30', title:'A.C. Perchs Thehandel — 차 대용량 구매', note:'Kronprinsensgade 5, Indre By — 1834년 창업 · 덴마크 최고령 차 전문점 · 기념품', tag:'🏛 전시', color:'#6d3b54', _lat:55.6782, _lng:12.5762},
+      {time:'15:30', title:'Fritz Hansen 플래그십 & 마지막 쇼핑', note:'Løvstræde 5 — 구매 못한 디자인 아이템 최종 결정', tag:'🏛 전시', color:'#6d3b54', _lat:55.6795, _lng:12.5773},
+      {time:'17:00', title:'Nyhavn 마지막 산책 & 기념사진', note:'운하변 카페에서 커피 · 코펜하겐과 작별 인사', tag:'🚶 투어', color:'#3a4a5a', _lat:55.6797, _lng:12.5913},
+      {time:'19:00', title:'숙소 복귀 & 짐 정리', note:'내일 체크아웃 준비 · 구매 물품 정리 · 이른 취침 권장', tag:'🚶 투어', color:'#3a4a5a'},
     ]
   },
 ];
@@ -2567,7 +2604,7 @@ function renderInfo(){
       <li><b>체크아웃</b> 6/16(화) 11:00 전</li>
       <li><b>위치 장점</b> 중앙역 도보권 → 공항·근교 이동 편리, 지구별 메트로/자전거 접근 양호</li>
     </ul>
-    <p style="font-size:11px;opacity:.7">※ 지도의 ★ 숙소 핀은 Airbnb가 정확 좌표를 공개하지 않아 베스테르브로·호수 인근의 대략적 위치입니다. 체크인 후 정확한 주소로 맞추세요.</p>
+    <p style="font-size:11px;opacity:.7">📍 숙소 주소: <b>Sommerstedgade 26, 1717 Copenhagen</b> (베스테르브로 · 코펜하겐 중앙역 도보 15분)</p>
     <h3>고정 예약</h3>
     <ul>
       <li><b>Food & Music with SALU</b> (소셜 다이닝, 3명) · 6/10(수) 17:00–20:00</li>
