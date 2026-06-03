@@ -1160,6 +1160,7 @@
         <button id="drawerMapBtn" title="지도에서 경로 보기" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--teal)">🗺</button>
         <a id="drawerGmapBtn" href="#" target="_blank" title="Google Maps로 열기" style="font-size:12px;padding:2px 6px;background:var(--sage);color:#fff;border-radius:3px;text-decoration:none;font-family:'Space Mono',monospace;display:none">G</a>
         <button id="drawerLocToggle" title="위치 링크 편집" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--slate)">📍</button>
+        <button id="drawerDeleteBtn" title="이 일정 삭제" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--rust);display:none">🗑</button>
         <button class="drawer-close" id="drawerClose">✕</button>
       </div>
       <div class="drawer-privacy" id="drawerPrivacy">
@@ -4791,6 +4792,16 @@ function openDrawer(di, ii, title){
     gmapBtn.style.display = 'inline';
   }
 
+  // 삭제 버튼 (고정 항목은 숨김)
+  const delBtn = document.getElementById('drawerDeleteBtn');
+  if(delBtn){
+    delBtn.style.display = (it && !it._fixed) ? 'inline' : 'none';
+    delBtn.onclick = ()=>{
+      if(!confirm(`"${it.title}" 일정을 삭제할까요?`)) return;
+      plan[di].items.splice(ii,1); savePlan(); renderPlan(); closeDrawer();
+    };
+  }
+
   // 위치편집 입력창: 현재 저장된 URL 표시
   const locInput = document.getElementById('drawerLocInput');
   const locRow   = document.getElementById('drawerLocRow');
@@ -4909,6 +4920,13 @@ Always respond in Korean. Be specific and concise.
 - 이미 일정에 있는 항목에 대한 세부 정보
 - "~해줘" 명령이 아닌 사실 확인 질문
 
+### ✅ 삭제 요청 케이스 (현재 일정 삭제 시 반드시 이 형식):
+사용자가 현재 선택 일정("${item.title}")을 삭제하려 할 때:
+<options>[
+  {"title":"삭제 확인","action":"delete","note":"${item.title} 일정을 삭제합니다","day_index":${di},"tags":["일정 관리"]},
+  {"title":"취소","action":"cancel","note":"일정 유지","day_index":${di},"tags":["일정 관리"]}
+]</options>
+
 ⚠️ 식사·카페·장소 추천은 예외 없이 <options> 사용. 절대로 텍스트만으로 추천하지 말 것.
 
 day_index ${di} = ${plan[di]?.date}.
@@ -5017,6 +5035,21 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
       card.addEventListener('click',()=>{
         optEl.querySelectorAll('.drawer-opt-card').forEach(c=>c.classList.remove('selected'));
         card.classList.add('selected');
+
+        // 삭제 액션
+        if(opt.action==='delete'){
+          const {di:cDi,ii:cIi}=drawerContext||{};
+          if(cDi!=null && cIi!=null && !plan[cDi]?.items[cIi]?._fixed){
+            plan[cDi].items.splice(cIi,1); savePlan(); renderPlan();
+            resp.classList.remove('show');
+            st.className='drawer-status show ok'; st.textContent='✓ 삭제됐어요!';
+            setTimeout(closeDrawer,1000);
+          }
+          return;
+        }
+        // 취소 액션
+        if(opt.action==='cancel'){ resp.classList.remove('show'); return; }
+
         _currentOptNote = opt.note||'';
 
         // 확정 바 채우기
