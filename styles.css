@@ -1,4 +1,5 @@
   :root{
+    /* Core palette */
     --ink:#1a1714;
     --paper:#f5efe4;
     --cream:#fbf7ee;
@@ -11,6 +12,15 @@
     --slate:#3a4a5a;
     --line:#ddd2bf;
     --shadow:rgba(40,30,20,.14);
+    /* District colors */
+    --dist-kongens:#c8492a; --dist-frederik:#d99021; --dist-nordhavn:#2f6b6b;
+    --dist-islands:#5d7456; --dist-christ:#6d3b54;  --dist-holmen:#3a4a5a;
+    --dist-kultur:#9c3318;  --dist-rosen:#7a6a3a;
+    /* Type scale */
+    --t-xs:9px; --t-sm:11px; --t-base:13px; --t-md:14px;
+    --t-lg:16px; --t-xl:20px; --t-2xl:26px; --t-3xl:34px;
+    /* Spacing */
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -44,20 +54,33 @@
     position:relative;z-index:1;
     background:var(--rust);
     color:var(--cream);
+    overflow:hidden;
+  }
+  /* 스캔라인 텍스처 */
+  header.brand::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.04) 0px,rgba(0,0,0,.04) 1px,transparent 1px,transparent 4px);
+  }
+  /* 우측 상단 장식 원 */
+  header.brand::after{
+    content:'';position:absolute;top:-30px;right:-30px;
+    width:120px;height:120px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.12);pointer-events:none;
   }
   .kicker{
     font-family:'Space Mono',monospace;
-    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;
     opacity:.85;display:flex;justify-content:space-between;align-items:center;
+    position:relative;z-index:1;
   }
   .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--ochre);box-shadow:0 0 0 3px rgba(217,144,33,.3)}
   h1{
     font-family:'Fraunces',serif;
-    font-weight:600;font-size:34px;line-height:.95;margin-top:8px;
-    letter-spacing:-.01em;font-optical-sizing:auto;
+    font-weight:600;font-size:var(--t-3xl);line-height:.95;margin-top:8px;
+    letter-spacing:-.01em;font-optical-sizing:auto;position:relative;z-index:1;
   }
   h1 em{font-style:italic;color:var(--ochre)}
-  .sub{font-size:12.5px;margin-top:8px;opacity:.9;font-weight:500}
+  .sub{font-size:12.5px;margin-top:8px;opacity:.9;font-weight:500;position:relative;z-index:1}
 
   .tabs{
     display:flex;gap:0;border-bottom:2px solid var(--ink);
@@ -65,12 +88,17 @@
   }
   .tab{
     flex:1;padding:11px 4px;border:none;background:none;cursor:pointer;
-    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;
+    font-family:'Space Mono',monospace;font-size:var(--t-xs);letter-spacing:.06em;
     text-transform:uppercase;color:var(--ink);opacity:.5;
     border-right:1px solid var(--line);transition:.18s;
+    position:relative;
   }
   .tab:last-child{border-right:none}
   .tab.active{opacity:1;background:var(--ink);color:var(--cream)}
+  .tab.active::after{
+    content:'';position:absolute;bottom:0;left:25%;right:25%;height:2px;
+    background:var(--ochre);border-radius:1px 1px 0 0;
+  }
   .tab:hover:not(.active){opacity:.8;background:rgba(0,0,0,.04)}
 
   .scroll{flex:1;overflow-y:auto;position:relative;z-index:1;padding:8px 0 80px}
@@ -99,11 +127,12 @@
 
   .item{
     display:flex;gap:11px;padding:9px 0;border-bottom:1px dashed var(--line);
-    position:relative;
+    position:relative;transition:background .12s;
   }
   .item:last-child{border-bottom:none}
+  .item:hover{background:rgba(0,0,0,.025);border-radius:2px}
   .item-time{
-    font-family:'Space Mono',monospace;font-size:11px;color:var(--rust-deep);
+    font-family:'Space Mono',monospace;font-size:var(--t-sm);color:var(--rust-deep);
     font-weight:700;white-space:nowrap;padding-top:2px;min-width:46px;
   }
   .item-time-edit{cursor:text;border-radius:3px;transition:.15s;outline:none}
@@ -336,13 +365,29 @@
     background:var(--ink);position:relative;overflow:hidden;
   }
   .ev-photo-placeholder{
-    width:100%;height:160px;display:flex;align-items:center;justify-content:center;
-    flex-direction:column;gap:6px;
+    width:100%;height:180px;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:8px;
     background:linear-gradient(135deg,var(--ink) 0%,#2d3a2e 100%);
-    color:var(--cream);opacity:.9;
+    color:var(--cream);opacity:.9;position:relative;overflow:hidden;
   }
-  .ev-photo-icon{font-size:36px;opacity:.6}
-  .ev-photo-vname{font-family:'Space Mono',monospace;font-size:11px;opacity:.5;letter-spacing:.08em}
+  /* 지구별 그라디언트 */
+  .ev-photo-placeholder[data-dk="kongens"]{background:linear-gradient(135deg,#7a2215 0%,#c8492a 100%)}
+  .ev-photo-placeholder[data-dk="frederik"]{background:linear-gradient(135deg,#7a5510 0%,#d99021 100%)}
+  .ev-photo-placeholder[data-dk="nordhavn"]{background:linear-gradient(135deg,#163838 0%,#2f6b6b 100%)}
+  .ev-photo-placeholder[data-dk="islands"]{background:linear-gradient(135deg,#2d3a2e 0%,#5d7456 100%)}
+  .ev-photo-placeholder[data-dk="christ"]{background:linear-gradient(135deg,#3a1e2e 0%,#6d3b54 100%)}
+  .ev-photo-placeholder[data-dk="holmen"]{background:linear-gradient(135deg,#1a2530 0%,#3a4a5a 100%)}
+  .ev-photo-placeholder[data-dk="kultur"]{background:linear-gradient(135deg,#5a1a0a 0%,#9c3318 100%)}
+  .ev-photo-placeholder[data-dk="rosen"]{background:linear-gradient(135deg,#3e3520 0%,#7a6a3a 100%)}
+  /* 격자 패턴 오버레이 */
+  .ev-photo-placeholder::before{
+    content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:24px 24px;
+  }
+  .ev-photo-icon{font-size:40px;opacity:.7;position:relative;z-index:1}
+  .ev-photo-vname{font-family:'Space Mono',monospace;font-size:var(--t-sm);opacity:.55;letter-spacing:.08em;position:relative;z-index:1;text-align:center;padding:0 16px}
   .ev-body{padding:18px 20px 24px;display:flex;flex-direction:column;gap:14px}
   .ev-section{}
   .ev-section-label{
@@ -389,13 +434,18 @@
   .dist{
     display:flex;align-items:center;gap:12px;padding:13px 24px;cursor:pointer;
     border-bottom:1px solid var(--line);transition:.15s;
+    border-left:3px solid transparent;
   }
-  .dist:hover{background:rgba(0,0,0,.03)}
-  .dist-swatch{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:2px solid var(--ink)}
+  .dist:hover{background:rgba(0,0,0,.03);border-left-color:var(--dist-color,var(--rust))}
+  .dist-swatch{
+    width:22px;height:22px;border-radius:4px;flex-shrink:0;border:2px solid var(--ink);
+    box-shadow:2px 2px 0 rgba(0,0,0,.15);
+  }
   .dist-info{flex:1}
-  .dist-name{font-family:'Fraunces',serif;font-size:16px;font-weight:600}
+  .dist-name{font-family:'Fraunces',serif;font-size:var(--t-lg);font-weight:600}
   .dist-desc{font-size:11.5px;color:var(--slate);margin-top:1px}
-  .dist-go{font-family:'Space Mono',monospace;font-size:10px;color:var(--rust);opacity:0;transition:.15s}
+  .dist-when{font-size:var(--t-xs);font-family:'Space Mono',monospace;color:var(--rust);opacity:.8;margin-top:3px}
+  .dist-go{font-family:'Space Mono',monospace;font-size:var(--t-xs);color:var(--rust);opacity:0;transition:.15s;flex-shrink:0}
   .dist:hover .dist-go{opacity:1}
 
   /* ============ INFO TAB ============ */
@@ -1138,6 +1188,7 @@
       position:absolute;top:0;left:0;right:0;height:28px;
       background:var(--cream);border-bottom:1px solid var(--line);
       cursor:grab;z-index:10;touch-action:none;user-select:none;
+      gap:6px;
     }
     .map-handle:active{cursor:grabbing}
     .map-handle-bar{width:36px;height:4px;border-radius:2px;background:var(--line)}
@@ -1157,14 +1208,17 @@
     .leg-toggle-icon{font-size:11px;opacity:.6;flex-shrink:0;transition:.2s}
     .map-legend.leg-collapsed .leg-toggle-icon{transform:rotate(-90deg)}
     /* 하단 지도 타이틀 — 모바일 작게 */
-    .map-title{font-size:9px;padding:5px 10px;bottom:8px;left:8px}
+    .map-title{font-size:var(--t-xs);padding:5px 10px;bottom:8px;left:8px}
     .gps-btn{padding:7px 10px;font-size:10px;bottom:8px;right:8px}
-    header.brand{padding:7px 14px 5px}
-    .kicker{font-size:9px;letter-spacing:.1em}
-    h1{font-size:20px;margin-top:3px;line-height:1}
+    /* 헤더 모바일 압축 */
+    header.brand{padding:8px 14px 6px}
+    header.brand::after{display:none}
+    .kicker{font-size:var(--t-xs);letter-spacing:.1em}
+    h1{font-size:22px;margin-top:3px;line-height:1}
     h1 br{display:none}
-    .sub{font-size:10px;margin-top:3px}
-    .tab{font-size:9px;padding:8px 2px;letter-spacing:.04em}
+    .sub{font-size:10px;margin-top:2px}
+    /* 탭 터치 타겟 최적화 */
+    .tab{font-size:var(--t-xs);padding:9px 2px;letter-spacing:.03em;min-height:38px}
     /* 행사·전시 필터: 모바일에서 세로 패딩 압축 */
     .fest-filters{padding:5px 12px}
     .exh-filters{padding:5px 12px}
@@ -1176,4 +1230,40 @@
     .wish-mode-tabs{width:100%}
     .wish-note-input{min-width:100%;order:2}
     .wish-add-btn{order:3;width:100%}
+    /* 이벤트 모달 모바일 최적화 */
+    .ev-modal{max-height:92vh}
+    .ev-photo-placeholder{height:140px}
+    .ev-photo-icon{font-size:32px}
+    /* 드로어 모바일 최적화 */
+    .item-drawer{max-height:65vh}
+    /* day card 패딩 */
+    .day-head{padding:12px 16px 4px}
+    .day-body{padding:4px 16px 12px}
+    .item{gap:8px}
+    .item-title{font-size:13px}
+    /* 지구 탭 */
+    .dist{padding:11px 16px}
+    .dist-name{font-size:var(--t-md)}
+  }
+
+  /* 초소형 폰 (≤480px) */
+  @media(max-width:480px){
+    h1{font-size:18px}
+    .tab{font-size:8.5px;padding:8px 1px;letter-spacing:.01em}
+    .tabs{border-bottom-width:1px}
+    /* 탭이 너무 좁으면 스크롤 허용 */
+    .tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{flex:0 0 auto;min-width:40px;padding:8px 6px}
+    /* 아이템 패딩 줄임 */
+    .day-head{padding:10px 12px 4px}
+    .day-body{padding:4px 12px 10px}
+    .item{gap:6px}
+    .item-time{min-width:40px;font-size:10px}
+    .item-title{font-size:12.5px}
+    .item-note{font-size:11.5px}
+    /* 헤더 초소형 */
+    header.brand{padding:6px 12px 5px}
+    h1{font-size:17px}
+    .sub{font-size:9.5px}
   }

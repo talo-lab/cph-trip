@@ -323,6 +323,9 @@ const DISTRICTS = [
   {key:'rosen', name:'Rosengård', color:'#7a6a3a', lat:55.682292, lng:12.572735, desc:'Fritz Hansen 등 · 도심 북서 골목', when:'Day 3 (6/10)'},
 ];
 
+/* EXH_DISTRICTS 이름(full name) → DISTRICTS 키(short key) 변환 — 핀 색상 통일 */
+function exhDkToPlanDk(name){ const d=DISTRICTS.find(x=>x.name===name); return d?d.key:null; }
+
 // 숙소 (Airbnb · 베스테르브로 · Sommerstedgade 26)
 const STAY = {
   name:'우리 숙소 (Airbnb)',
@@ -373,16 +376,16 @@ const DEFAULT_PLAN = [
     {time:'06:00', title:'[상효] CPH(T3) 도착', note:'SAS 직항 · 메트로 M2로 도심 이동', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
     {time:'08:30', title:'[미주] CPH(T2) 도착', note:'KE5925 → KL1267 환승 후 도착 · 터미널2 · 공항에서 합류', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
     {time:'11:00', title:'숙소 이동 및 짐 보관', note:'Sommerstedgade 26, 1718 København · 체크인은 15:00부터', dist:'', _lat:55.6671, _lng:12.5519},
-    {time:'11:30', title:'Hart Bageri', note:'카다멈 크로아상 · Gammel Kongevej 109, Frederiksberg', tag:'🍽 식사', dist:'', _lat:55.6755, _lng:12.5436, _fixed:true},
-    {time:'13:30', title:'디자인뮤지엄 덴마크 — 상설 전시', note:'Bredgade 68 · 페스티벌 기간 행사도 다수 · 미주', dist:'', _lat:55.6866, _lng:12.5928, _fixed:true},
+    {time:'11:30', title:'Hart Bageri', note:'카다멈 크로아상 · Gammel Kongevej 109, Frederiksberg', tag:'🍽 식사', dist:'', _lat:55.6755, _lng:12.5436, _dk:'rosen', _fixed:true},
+    {time:'13:30', title:'디자인뮤지엄 덴마크 — 상설 전시', note:'Bredgade 68 · 페스티벌 기간 행사도 다수 · 미주', dist:'', _lat:55.6866, _lng:12.5928, _dk:'frederik', _fixed:true},
     {time:'15:00', title:'Airbnb 체크인', note:'Sommerstedgade 26, 1718 København · 베스테르브로', dist:'', _lat:55.6671, _lng:12.5519},
-    {time:'16:00', title:'The Mechanics of Scent — Frama @ Apotek 57 (예약 완료)', note:'Fredericiagade 57, 1310 København (Apotek 57) · 16:00–16:30 · 미주 예약 완료', dist:'', _lat:55.6844, _lng:12.5903, _fixed:true},
-    {time:'오후', title:'시차 적응 산책 · 뉘하운(Nyhavn)', note:'무리하지 않기 · 가벼운 도심 워킹', dist:''},
+    {time:'16:00', title:'The Mechanics of Scent — Frama @ Apotek 57 (예약 완료)', note:'Fredericiagade 57, 1310 København (Apotek 57) · 16:00–16:30 · 미주 예약 완료', dist:'', _lat:55.6844, _lng:12.5903, _dk:'frederik', _fixed:true},
+    {time:'오후', title:'시차 적응 산책 · 뉘하운(Nyhavn)', note:'무리하지 않기 · 가벼운 도심 워킹', dist:'', _lat:55.6800, _lng:12.5897, _dk:'kongens'},
   ]},
   // DAY 2 — 6/10 (Festival Day 1)
   {date:'6/10 (수)', tag:'페스티벌 1일차', fest:true, items:[
     {time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true, ...RUNNING_ROUTES[2]},
-    {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _fixed:true},
+    {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _dk:'islands', _fixed:true},
   ]},
   // DAY 3 — 6/11 (Festival Day 2)
   {date:'6/11 (목)', tag:'페스티벌 2일차', fest:true, items:[
@@ -405,16 +408,16 @@ const DEFAULT_PLAN = [
   // DAY 7 — 6/15
   {date:'6/15 (월)', tag:'자유 일정', fest:false, items:[
     {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true, ...RUNNING_ROUTES[7]},
-    {time:'미정', title:'프리타운 크리스티아니아', note:'Christiania, Christianshavn — 자유 공동체 마을 · 그래피티·갤러리·카페 산책 · 매일 24시간', dist:'', _lat:55.6729, _lng:12.5946},
+    {time:'미정', title:'프리타운 크리스티아니아', note:'Christiania, Christianshavn — 자유 공동체 마을 · 그래피티·갤러리·카페 산책 · 매일 24시간', dist:'', _lat:55.6729, _lng:12.5946, _dk:'christ'},
   ]},
   // DAY 8 — 6/16
   {date:'6/16 (화)', tag:'귀국 (출국일)', fest:false, items:[
-    {time:'~11:00', title:'Airbnb 체크아웃', note:'체크아웃 11:00 전 · 짐 정리', dist:''},
-    {time:'오전', title:'마지막 산책 · 기념품', note:'14시 이전까지 도심에서 함께', dist:''},
+    {time:'~11:00', title:'Airbnb 체크아웃', note:'체크아웃 11:00 전 · 짐 정리', dist:'', _lat:55.6671, _lng:12.5519},
+    {time:'오전', title:'마지막 산책 · 기념품', note:'14시 이전까지 도심에서 함께', dist:'', _lat:55.6761, _lng:12.5683},
     {time:'~14:30', title:'[미주] 공항 이동', note:'16:40 출발편 · 2시간 전 도착 권장', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
     {time:'16:40', title:'[미주] CPH → LHR 출발', note:'SK1517 · 런던 경유 후 6/17 16:15 ICN 도착', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
-    {time:'오후~저녁', title:'[상효] 도심 자유시간', note:'미주 출발 후 늦은 출국까지 여유', dist:''},
-    {time:'~21:30', title:'[상효] 공항 이동 (CPH·T3)', note:'23:55 출발편 · 2시간 전 도착', dist:'', _fixed:true},
+    {time:'오후~저녁', title:'[상효] 도심 자유시간', note:'미주 출발 후 늦은 출국까지 여유', dist:'', _lat:55.6756, _lng:12.5680},
+    {time:'~21:30', title:'[상효] 공항 이동 (CPH·T3)', note:'23:55 출발편 · 2시간 전 도착', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
     {time:'23:55', title:'[상효] CPH → ICN 직항 출발', note:'SAS SK0987 · 11h40m · 6/17 18:35 ICN 도착', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
   ]},
 ];
@@ -954,6 +957,7 @@ function openEvModal(ev, id){
   }
 
   const dkColor = districtColor(ev.district);
+  const _festDk = DISTRICTS.find(d=>d.name===ev.district)?.key||'';
   const overlay = document.createElement('div');
   overlay.className='ev-overlay'; overlay.id='evOverlay';
   overlay.dataset.evId = id;
@@ -969,7 +973,7 @@ function openEvModal(ev, id){
           <span class="ev-hed-dk" style="background:${dkColor}">${ev.district}</span>
         </div>
       </div>
-      <div class="ev-photo-placeholder">
+      <div class="ev-photo-placeholder" data-dk="${_festDk}">
         <div class="ev-photo-icon">🏛</div>
         <div class="ev-photo-vname">${ev.venue.toUpperCase()}</div>
       </div>
@@ -2607,7 +2611,7 @@ function openExhEvModal(ev, ex){
           ${catTags}
         </div>
       </div>
-      <div class="ev-photo-placeholder" style="background:linear-gradient(135deg,${distD.color}22,${dayColor}22)">
+      <div class="ev-photo-placeholder" data-dk="${exhDkToPlanDk(ex.district)||''}">
         <div class="ev-photo-icon">${ev.icon}</div>
         <div class="ev-photo-vname">${ex.brand.toUpperCase()}</div>
       </div>
@@ -2644,7 +2648,7 @@ function openExhEvModal(ev, ex){
       note: `${ex.brand}${ex.address?' · '+ex.address:''}`,
       dist: ex.district||'',
       _user:true, _addedBy:currentUser, _personal:false, _with:['miju','sanghyo'],
-      _dk: ex.district,
+      _dk: exhDkToPlanDk(ex.district),
     });
     sortDayByTime(festDayIdx); savePlan();
     btn.textContent='✓ 일정에 추가됨'; btn.classList.add('done');
@@ -3062,7 +3066,7 @@ function buildExhCard(ex, q){
               _addedBy: currentUser,
               _personal: false,
               _with: ['miju','sanghyo'],
-              _dk: ex.district,
+              _dk: exhDkToPlanDk(ex.district),
             });
             sortDayByTime(di);
             savePlan();
@@ -3162,7 +3166,7 @@ function openExhVenueModal(ex){
       _addedBy: currentUser,
       _personal: false,
       _with: ['miju','sanghyo'],
-      _dk: EXH_DISTRICTS.find(d=>d.key===ex.district)?.key || null,
+      _dk: exhDkToPlanDk(ex.district),
     });
     sortDayByTime(di);
     savePlan();
@@ -3188,14 +3192,14 @@ function districtsOnDay(di){
   plan[di].items.forEach(it=>{ if(it._dk) set.add(it._dk); });
   return set;
 }
-// 지구 간 거리(좌표 기반) → 가장 가까운 지구 키
+// 지구 간 거리(좌표 기반) → 가장 가까운 지구 키 (하버사인 경도 보정 적용)
 function nearestDistrict(lat,lng){
   let best=null,bd=1e9;
   DISTRICTS.forEach(d=>{
-    const dd=Math.hypot(d.lat-lat,d.lng-lng);
+    const dd=haversineKm(lat,lng,d.lat,d.lng);
     if(dd<bd){bd=dd;best=d;}
   });
-  return {key:best.key, dist_km:Math.round(bd*111*10)/10, district:best};
+  return {key:best.key, dist_km:Math.round(bd*10)/10, district:best};
 }
 // 두 지구 좌표 거리(km)
 function kmBetween(a,b){return Math.hypot(a.lat-b.lat,a.lng-b.lng)*111;}
@@ -4751,7 +4755,8 @@ stayMarker.bindPopup(`<div class="pop-name">🏠 ${STAY.name}</div><div class="p
 markers['stay']=stayMarker;
 
 // SALU 고정 마커
-const saluIcon=L.divIcon({className:'',html:`<div class="ppv2 fixed-pin" style="--ppbg:${DAY_COLORS[2]};background:${DAY_COLORS[2]};border-color:rgba(0,0,0,.5)"><span class="ppv2-num">🔒</span><span class="ppv2-ico">🍽</span></div>`,iconSize:[36,44],iconAnchor:[18,44],popupAnchor:[0,-46]});
+const _saluColor=DISTRICTS.find(d=>d.key==='islands')?.color||'#5d7456';
+const saluIcon=L.divIcon({className:'',html:`<div class="ppv2 fixed-pin" style="--ppbg:${_saluColor};background:${_saluColor};border-color:rgba(0,0,0,.5)"><span class="ppv2-num">🔒</span><span class="ppv2-ico">🍽</span></div>`,iconSize:[36,44],iconAnchor:[18,44],popupAnchor:[0,-46]});
 const saluMarker=L.marker([55.665398,12.550298],{icon:saluIcon}).addTo(map);
 saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73, 1720 København</div>`);
 markers['salu']=saluMarker;
@@ -5194,6 +5199,38 @@ function patchRunningCourses(){
   if(changed) savePlan();
 }
 
+/* 기존 저장 플랜의 geodata 보완 — _dk 누락 항목 패치 + EXH full-name → DISTRICTS short-key 변환 */
+function patchPlanGeodata(){
+  const GEO = [
+    {re:/hart bageri/i,                                     _dk:'rosen'},
+    {re:/디자인뮤지엄/i,                                      _dk:'frederik'},
+    {re:/frama|apotek 57/i,                                  _dk:'frederik'},
+    {re:/salu|folkehuset absalon/i,                          _dk:'islands', _lat:55.665398, _lng:12.550298},
+    {re:/크리스티아니아|christiania/i,                         _dk:'christ'},
+    {re:/뉘하운|nyhavn/i,                                     _lat:55.6800,  _lng:12.5897, _dk:'kongens'},
+    {re:/체크아웃/i,                                           _lat:55.6671,  _lng:12.5519},
+    {re:/마지막 산책|기념품/i,                                  _lat:55.6761,  _lng:12.5683},
+    {re:/도심 자유시간/i,                                       _lat:55.6756,  _lng:12.5680},
+    {re:/상효.*공항 이동.*t3|공항 이동.*cph.*t3/i,             _lat:55.6180,  _lng:12.6560},
+  ];
+  let changed = false;
+  plan.forEach(day => day.items.forEach(it => {
+    // EXH full-name _dk → DISTRICTS short-key 변환
+    if (it._dk) {
+      const fixedDk = exhDkToPlanDk(it._dk);
+      if (fixedDk && fixedDk !== it._dk) { it._dk = fixedDk; changed = true; }
+    }
+    // 알려진 항목에 누락 geodata 주입
+    const text = (it.title||'') + ' ' + (it.note||'');
+    for (const {re, _dk, _lat, _lng} of GEO) {
+      if (!re.test(text)) continue;
+      if (_dk && !it._dk) { it._dk = _dk; changed = true; }
+      if (_lat && !it._lat) { it._lat = _lat; it._lng = _lng; changed = true; }
+    }
+  }));
+  if (changed) savePlan();
+}
+
 /* 기존 저장 플랜의 CPH 관련 항목에 좌표 주입 (ICN 출발편은 코펜하겐 지도에 불필요하므로 제외) */
 function patchFlightCoords(){
   const CPH = {lat:55.6180, lng:12.6560};  // 코펜하겐 공항
@@ -5232,6 +5269,7 @@ async function initApp(){
   }
   patchRunningCourses();
   patchFlightCoords();
+  patchPlanGeodata();
   plan.forEach(day=>day.items.forEach(it=>{
     if(it._user&&it._lat&&it._lng) addUserMarker({title:it.title,note:it.note,lat:it._lat,lng:it._lng});
   }));
