@@ -4265,6 +4265,12 @@ function checkKnown(raw){
 // 분석 결과 캐시 (같은 입력 재분석 방지)
 const EXTRACT_CACHE={};
 
+// 코펜하겐 유효 좌표 범위 검증 (AI 좌표 오류 방어)
+function isCphCoord(lat, lng){
+  return typeof lat==='number' && typeof lng==='number'
+    && lat>=55.4 && lat<=56.1 && lng>=11.9 && lng<=12.9;
+}
+
 // claude.ai 아티팩트 환경인지 감지 (배포 시엔 /api/extract 사용)
 const ON_CLAUDE = location.hostname.endsWith('claude.ai') || location.hostname.endsWith('claudeusercontent.com');
 
@@ -4313,6 +4319,7 @@ For transport: under 700m→도보, 700m-2.5km→자전거, 2.5-6km→대중교�
   }
   txt=txt.replace(/```json|```/g,'').trim();
   const obj=JSON.parse(txt);
+  if(!isCphCoord(obj.lat, obj.lng)){ obj.lat=null; obj.lng=null; }
   obj.source = rawText.startsWith('http')?'링크':'입력';
   // LRU-lite: 50개 초과 시 가장 오래된 항목 제거
   if(Object.keys(EXTRACT_CACHE).length>=50) delete EXTRACT_CACHE[Object.keys(EXTRACT_CACHE)[0]];
