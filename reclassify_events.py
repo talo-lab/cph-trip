@@ -24,13 +24,24 @@ RULES = [
     ]),
 
     ('exhibition', [
+        # 영어 전시/공간 키워드
         'press viewing', 'press view', 'exhibition', 'collection',
-        'collectors edit', 'gallery', 'vernissage',
+        'collectors edit', 'gallery', 'vernissage', 'pavilion',
+        'showroom', 'open house', 'pop-up', 'pop up', 'installation',
+        'display', 'showcase', 'retrospective', 'premiere showing',
+        # 한국어
         '전시회 관람', '보도진', '전시 개막', '전시회 개막',
-        '컬렉터', '갤러리', '전시 오프닝',
+        '컬렉터', '갤러리', '전시 오프닝', '파빌리온', '쇼룸',
+        '설치 작품', '인스톨레이션', '팝업', '팝-업',
+        '개막', '개막 리셉션', '개막 행사', '오프닝', '오프닝 파티',
+        '오픈', '리셉션', '밍글', '아티스트 밍글',
+        '한국 생활', '오픈 스튜디오', '베르니사주',
     ], [
         'exhibition', 'press viewing', 'gallery', 'vernissage',
-        '전시회', '전시 관람', '갤러리',
+        'pavilion', 'showroom', 'installation', 'showcase',
+        '전시회', '전시 관람', '갤러리', '파빌리온', '쇼룸',
+        '전시를', '전시와', '전시에', '전시의',          # "전시를 탐방", "전시에 초대" etc.
+        '전시 개막', '개막식', '개막을', '개막과',        # "개막을 기념", "개막과 라이브" etc.
     ]),
 
     ('workshop', [
@@ -48,11 +59,14 @@ RULES = [
         'lecture', 'symposium', 'keynote', 'interview',
         'in conversation', 'fireside', 'design talk',
         'morning talk', 'breakfast talk', 'breakfast chat',
+        'artist talk', 'q&a', 'roundtable', 'round table',
         '토크', '패널', '강연', '대담', '심포지엄', '토론',
-        '디자인 토크', '아침 대화',
+        '디자인 토크', '아침 대화', '디자인 대화', '대화와',
+        '오픈 대화', '아티스트 토크', 'q&a', '라운드테이블',
     ], [
         'panel discussion', 'keynote', 'symposium', 'fireside chat',
-        '패널', '심포지엄', '강연',
+        'roundtable', 'artist talk',
+        '패널', '심포지엄', '강연', '대담',
     ]),
 
     ('tour', [
@@ -66,9 +80,14 @@ RULES = [
 
     ('launch', [
         'launch:', 'launches:', 'grand opening', 'world premiere',
-        'debut', 'introducing', 'unveiling', 'reveal',
+        'debut', 'introducing', 'unveiling', 'reveal', 'new collection',
+        'new product', 'new arrival', 'first look',
         '런칭', '론칭', '데뷔', '공개', '그랜드 오프닝',
-    ], []),
+        '공식 개막', '신제품', '개관', '새로운 컬렉션',
+    ], [
+        'grand opening', 'world premiere', 'unveiling',
+        '공식 개막', '개관', '신제품 출시',
+    ]),
 ]
 
 # 다이닝으로 확실히 남겨야 할 것들 (재분류 방지)
