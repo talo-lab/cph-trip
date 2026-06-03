@@ -834,9 +834,28 @@
 </div>
 
 <script>
-/* Google Maps 딥링크 URL 생성 — 장소명 검색 방식 */
+/* Google Maps 딥링크 URL 생성 — 장소명/주소 추출 */
 function gMapsUrl(query) {
-  return `https://maps.google.com/?q=${encodeURIComponent(query + ', Copenhagen')}`;
+  return `https://maps.google.com/?q=${encodeURIComponent(query)}`;
+}
+
+/* 일정 항목에서 최적 검색어 추출
+ * note에서 주소처럼 보이는 구절 우선 사용 */
+function gMapsQuery(it) {
+  const note = it.note || '';
+  // · — – 로 구절 분리
+  const parts = note.split(/\s*[·—–·]\s*/).map(p => p.trim()).filter(Boolean);
+  // 1순위: 숫자+영문 포함 구절 (주소)
+  const addr = parts.find(p => /\d/.test(p) && /[a-zA-Z]/.test(p));
+  if (addr) return addr + ', Copenhagen';
+  // 2순위: 영문 3자 이상 포함 구절 (장소명)
+  const eng = parts.find(p => /[a-zA-Z]{3,}/.test(p));
+  if (eng) return eng + ', Copenhagen';
+  // 3순위: 제목에서 영문 단어 추출
+  const titleEng = (it.title || '').match(/[A-Za-z][A-Za-z\s&.,()-]{2,}/);
+  if (titleEng) return titleEng[0].trim() + ', Copenhagen';
+  // 최후: 제목 그대로
+  return (it.title || '') + ', Copenhagen';
 }
 
 /* 터치 기기 감지: CSS 미디어쿼리가 오작동하는 기기 대비 */
@@ -1660,7 +1679,7 @@ function renderPlan(){
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${tagsHtml}
         </div>
-        <a class="item-gmap" href="${gMapsUrl(it.title)}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">📍</a>
+        <a class="item-gmap" href="${gMapsUrl(gMapsQuery(it))}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">📍</a>
         <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
       // 완료 체크박스
@@ -2686,7 +2705,7 @@ function openDrawer(di, ii, title){
   const it = plan[di]?.items[ii];
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn && it){
-    gmapBtn.href = gMapsUrl(it.title);
+    gmapBtn.href = gMapsUrl(gMapsQuery(it));
     gmapBtn.style.display = 'inline';
   }
   setTimeout(()=>document.getElementById('drawerInput').focus(), 250);
