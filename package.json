@@ -6,7 +6,7 @@
   "description": "Copenhagen 3 Days of Design 2026 trip planner",
   "scripts": {
     "dev": "vercel dev",
-    "check": "node --check lib/http.js && node --check lib/redis-session.js && node --check api/auth.js && node --check api/plan.js && node --check api/extract.js && node --check api/events.js && node --check api/transit.js"
+    "check": "node --check lib/http.js && node --check lib/redis-session.js && node --check api/auth.js && node --check api/plan.js && node --check api/extract.js && node --check api/events.js && node --check api/transit.js && node --check api/geocode.js"
   },
   "dependencies": {
     "ioredis": "^5.3.2"

@@ -1716,14 +1716,11 @@ let selectedPlanKey = null; // 현재 지도 선택된 plan item "di-ii"
 let exhPinLayer = null;     // 전시탭 지도 핀
 const exhGeoCache = {};     // address -> {lat,lng}
 
-/* ---------- 공통 Nominatim 지오코딩 ---------- */
+/* ---------- 공통 Nominatim 지오코딩 (서버 프록시 경유) ---------- */
 async function nominatimGeocode(query){
-  const q = encodeURIComponent(query + ' Copenhagen Denmark');
-  const url = `https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=1&countrycodes=dk&viewbox=12.3,55.55,12.75,55.82&bounded=0`;
-  const res = await fetch(url, {headers:{'User-Agent':'cph-trip-planner/1.0'}});
-  const data = await res.json();
-  if(data.length) return {lat:+data[0].lat, lng:+data[0].lon};
-  return null;
+  const res = await fetch(`/api/geocode?q=${encodeURIComponent(query)}`);
+  if(!res.ok) return null;
+  return await res.json(); // {lat, lng} | null
 }
 
 /* 전시 카드 클릭 → 지도에 핀 표시 */
