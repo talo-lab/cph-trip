@@ -249,6 +249,26 @@
   .exh-ev-loc{font-size:10px;color:var(--slate);margin-top:2px}
   .exh-joint-badge{font-size:9px;color:#9b7ab5;font-family:'Space Mono',monospace;margin-left:4px}
   .exh-day-chip{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;padding:1px 5px;color:#fff;border-radius:2px;flex-shrink:0;margin-top:2px}
+  /* 이벤트 행 오른쪽 액션 버튼 */
+  .exh-ev-actions{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;margin-left:4px}
+  .exh-link-btn{font-size:10px;color:var(--rust);font-family:'Space Mono',monospace;text-decoration:none;line-height:1}
+  .exh-add-btn{
+    font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+    width:24px;height:24px;border-radius:50%;border:1.5px solid var(--sage);
+    background:none;color:var(--sage);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:.15s;flex-shrink:0;padding:0;
+  }
+  .exh-add-btn:hover{background:var(--sage);color:#fff}
+  .exh-add-btn.done{border-color:var(--sage);background:var(--sage);color:#fff;cursor:default}
+  /* 날짜 선택 드롭다운 */
+  .exh-day-sel{
+    display:flex;gap:5px;align-items:center;flex-wrap:wrap;
+    padding:7px 14px 7px 28px;background:#f9f4ec;
+    border-top:1px dashed var(--line);
+  }
+  .exh-day-select{font-size:11px;padding:3px 6px;border:1px solid var(--line);background:#fff;font-family:inherit}
+  .exh-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 10px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px}
+  .exh-day-cancel{font-size:12px;background:none;border:none;cursor:pointer;color:var(--slate);padding:0 4px}
   /* 전시 없는 브랜드 섹션 */
   .exh-no-events-hdr{padding:8px 14px;background:rgba(0,0,0,.03);border-bottom:1px solid var(--line);font-size:10px;font-family:'Space Mono',monospace;color:var(--slate);cursor:pointer;display:flex;align-items:center;gap:6px}
   .exh-no-events-hdr:hover{background:rgba(0,0,0,.06)}
@@ -3574,6 +3594,10 @@ function buildExhCard(ex, q){
         }).join('');
       })();
 
+      // 6/10=dayIdx 2, 6/11=3, 6/12=4
+      const festDayIdx = ev.day === 10 ? 2 : ev.day === 11 ? 3 : ev.day === 12 ? 4 : -1;
+      const alreadyIn = festDayIdx >= 0 && plan[festDayIdx]?.items.some(it => it.title === ev.title);
+
       row.innerHTML = `
         <span class="exh-day-chip" style="background:${dayColor}">6/${ev.day}</span>
         <div class="exh-ev-time">${ev.start}${endStr}</div>
@@ -3582,7 +3606,70 @@ function buildExhCard(ex, q){
           <div class="exh-ev-tags">${catTags}</div>
           ${locHtml}
         </div>
-        ${evUrl?`<a href="${evUrl}" target="_blank" style="font-size:10px;color:var(--rust);align-self:center;flex-shrink:0;font-family:Space Mono,monospace;text-decoration:none" onclick="event.stopPropagation()">↗</a>`:''}`;
+        <div class="exh-ev-actions">
+          ${evUrl?`<a href="${evUrl}" target="_blank" class="exh-link-btn" onclick="event.stopPropagation()">↗</a>`:''}
+          <button class="exh-add-btn${alreadyIn?' done':''}" title="${alreadyIn?'이미 일정에 있음':'일정에 추가'}">${alreadyIn?'✓':'+'}</button>
+        </div>`;
+
+      // 일정 추가 버튼 클릭
+      const addBtn = row.querySelector('.exh-add-btn');
+      if(!alreadyIn){
+        addBtn.addEventListener('click', e=>{
+          e.stopPropagation();
+          // 이미 열린 셀렉터 닫기
+          const existing = row.querySelector('.exh-day-sel');
+          if(existing){ existing.remove(); return; }
+
+          const sel = document.createElement('div');
+          sel.className = 'exh-day-sel';
+
+          // 이벤트 날짜에 해당하는 plan dayIdx를 기본 선택
+          const defaultDi = festDayIdx >= 0 ? festDayIdx : 2;
+          sel.innerHTML = `
+            <select class="exh-day-select">${plan.map((d,di)=>`<option value="${di}"${di===defaultDi?' selected':''}>${d.date} · ${d.tag}</option>`).join('')}</select>
+            <button class="exh-day-confirm">추가</button>
+            <button class="exh-day-cancel">✕</button>`;
+
+          sel.addEventListener('click', e=>e.stopPropagation());
+
+          sel.querySelector('.exh-day-confirm').addEventListener('click', ()=>{
+            const di = +sel.querySelector('select').value;
+            if(plan[di].items.some(it=>it.title===ev.title)){
+              sel.remove();
+              return;
+            }
+            // 이벤트 카테고리 → dist 태그 매핑
+            const distTag = ex.district || '';
+            plan[di].items.push({
+              time: ev.start || '미정',
+              title: ev.title,
+              note: `${ex.brand}${ex.address?` · ${ex.address}`:''}`,
+              dist: distTag,
+              _user: true,
+              _addedBy: currentUser,
+              _personal: false,
+              _with: ['miju','sanghyo'],
+              _dk: ex.district,
+            });
+            sortDayByTime(di);
+            savePlan();
+            sel.remove();
+            // 버튼을 ✓ 완료 표시로 변경
+            addBtn.textContent = '✓';
+            addBtn.classList.add('done');
+            addBtn.disabled = true;
+            // 토스트
+            const t = document.createElement('div');
+            t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2e6b2e;color:#fff;padding:9px 16px;border-radius:6px;font-size:12px;font-family:Space Mono,monospace;z-index:9999;pointer-events:none;white-space:nowrap';
+            t.textContent=`✓ ${plan[di].date}에 추가됨`;
+            document.body.appendChild(t);
+            setTimeout(()=>t.remove(), 2200);
+          });
+
+          sel.querySelector('.exh-day-cancel').addEventListener('click', ()=>sel.remove());
+          row.appendChild(sel);
+        });
+      }
 
       evList.appendChild(row);
     });
