@@ -1140,8 +1140,8 @@
     <div class="tabs">
       <button class="tab active" data-tab="plan">일정</button>
       <button class="tab" data-tab="rec">추천</button>
-      <button class="tab" data-tab="fest">행사</button>
-      <button class="tab" data-tab="exh">전시</button>
+      <button class="tab" data-tab="fest">3DoD</button>
+      <button class="tab" data-tab="exh">쇼룸</button>
       <button class="tab" data-tab="add">＋장소</button>
       <button class="tab" data-tab="dist">지구</button>
       <button class="tab" data-tab="info">정보</button>
@@ -1609,21 +1609,30 @@ const DEFAULT_PLAN = [
   ]},
   // DAY 2 — 6/10 (Festival Day 1)
   {date:'6/10 (수)', tag:'페스티벌 1일차', fest:true, items:[
+    {time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true},
     {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _fixed:true},
   ]},
   // DAY 3 — 6/11 (Festival Day 2)
-  {date:'6/11 (목)', tag:'페스티벌 2일차', fest:true, items:[]},
+  {date:'6/11 (목)', tag:'페스티벌 2일차', fest:true, items:[
+    {time:'07:00', title:'🏃 아침 달리기 — 3대 호수 풀 루프 7km', note:'숙소 → 상트요르겐스 → 페블링에 → 소르테담 호수 끝까지 → 반대편 돌아 귀숙 · 약 42분 · 코펜하겐 최고 인기 러닝 코스', dist:'', _lat:55.6855, _lng:12.5686, _runningCourse:true},
+  ]},
   // DAY 4 — 6/12 (Festival Day 3)
-  {date:'6/12 (금)', tag:'페스티벌 3일차', fest:true, items:[]},
+  {date:'6/12 (금)', tag:'페스티벌 3일차', fest:true, items:[
+    {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 공원 루프 5km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have 메인게이트 → 공원 내부 루프 → 귀숙 · 약 30분 · 왕실 정원 자갈길', dist:'', _lat:55.6762, _lng:12.5265, _runningCourse:true},
+  ]},
   // DAY 5 — 6/13
   {date:'6/13 (토)', tag:'자유 관광', fest:false, items:[
+    {time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true},
     {time:'미정', title:'벨뷰 해변 (아르네 야콥센 비치)', note:'Bellevue Strand, Klampenborg — 야콥센 설계 라이프가드 타워 · 북유럽 모더니즘 해변', dist:'', _lat:55.7766, _lng:12.5780},
     {time:'미정', title:'루이지애나 현대미술관', note:'GL Strandvej 13, Humlebæk — 해안절벽 위 건축 · 북유럽 최고 미술관 · 토–일 11:00–18:00', dist:'', _lat:55.9695, _lng:12.5430},
   ]},
   // DAY 6 — 6/14
-  {date:'6/14 (일)', tag:'근교 / 미술관', fest:false, items:[]},
+  {date:'6/14 (일)', tag:'근교 / 미술관', fest:false, items:[
+    {time:'07:00', title:'🏃 아침 달리기 — 베스테르브로 & 시청광장 루프 5km', note:'숙소 → Vesterbrogade → Rådhuspladsen 시청광장 → H.C. Andersens Blvd → Istedgade → 귀숙 · 약 30분 · 아침 코펜하겐 도심 분위기', dist:'', _lat:55.6757, _lng:12.5680, _runningCourse:true},
+  ]},
   // DAY 7 — 6/15
   {date:'6/15 (월)', tag:'자유 일정', fest:false, items:[
+    {time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true},
     {time:'미정', title:'프리타운 크리스티아니아', note:'Christiania, Christianshavn — 자유 공동체 마을 · 그래피티·갤러리·카페 산책 · 매일 24시간', dist:'', _lat:55.6729, _lng:12.5946},
   ]},
   // DAY 8 — 6/16
@@ -2202,7 +2211,7 @@ function renderFest(){
   // ── 상단: 새로고침 버튼
   const topBar = document.createElement('div');
   topBar.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-bottom:1px solid var(--line);background:rgba(93,116,86,.06)';
-  topBar.innerHTML=`<span style="font-size:11px;color:var(--slate)">공식 행사 데이터 · ${FESTIVAL_EVENTS.length}개 로드됨</span>
+  topBar.innerHTML=`<span style="font-size:11px;color:var(--slate)">3DoD 공식 프로그램 · ${FESTIVAL_EVENTS.length}개 로드됨</span>
     <button id="festRefreshBtn" style="font-size:10px;font-family:Space Mono,monospace;padding:3px 8px;border:1px solid var(--line);background:none;cursor:pointer;color:var(--sage)">↻ 새로고침</button>`;
   wrap.appendChild(topBar);
 
@@ -3412,11 +3421,11 @@ function renderDist(){
           </a>
           ${total>0?`<button onclick="setTab('fest');festDistFilter='${d.name}';renderFest()"
             style="flex:1;padding:5px;background:${d.color};color:#fff;border:none;border-radius:4px;font-size:10.5px;cursor:pointer;font-family:'Space Mono',monospace">
-            행사 ${total}개 ▸
+            3DoD ${total}개 ▸
           </button>`:''}
           ${exhTotal>0?`<button onclick="exhDistFilter='${d.name}';setTab('exh')"
             style="flex:1;padding:5px;background:var(--teal);color:#fff;border:none;border-radius:4px;font-size:10.5px;cursor:pointer;font-family:'Space Mono',monospace">
-            전시 ${exhTotal}개 ▸
+            쇼룸 ${exhTotal}개 ▸
           </button>`:''}
         </div>
       </div>`;
@@ -5915,6 +5924,27 @@ if('serviceWorker' in navigator){
   });
 }
 
+/* 기존 저장 플랜에 달리기 코스 주입 (없는 날에만) */
+function patchRunningCourses(){
+  const RUNS = [
+    {di:2, item:{time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true}},
+    {di:3, item:{time:'07:00', title:'🏃 아침 달리기 — 3대 호수 풀 루프 7km', note:'숙소 → 상트요르겐스 → 페블링에 → 소르테담 호수 끝까지 → 반대편 돌아 귀숙 · 약 42분 · 코펜하겐 최고 인기 러닝 코스', dist:'', _lat:55.6855, _lng:12.5686, _runningCourse:true}},
+    {di:4, item:{time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 공원 루프 5km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have 메인게이트 → 공원 내부 루프 → 귀숙 · 약 30분 · 왕실 정원 자갈길', dist:'', _lat:55.6762, _lng:12.5265, _runningCourse:true}},
+    {di:5, item:{time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true}},
+    {di:6, item:{time:'07:00', title:'🏃 아침 달리기 — 베스테르브로 & 시청광장 루프 5km', note:'숙소 → Vesterbrogade → Rådhuspladsen 시청광장 → H.C. Andersens Blvd → Istedgade → 귀숙 · 약 30분 · 아침 코펜하겐 도심 분위기', dist:'', _lat:55.6757, _lng:12.5680, _runningCourse:true}},
+    {di:7, item:{time:'07:00', title:'🏃 아침 달리기 — 프레데릭스베르 확장 루프 7km', note:'숙소 → Gammel Kongevej → 프레데릭스베르 Have → Frederiksberg Allé → 주택가 골목 → 귀숙 · 약 42분 · 왕실 정원 + 고급 주거지구', dist:'', _lat:55.6780, _lng:12.5200, _runningCourse:true}},
+  ];
+  let changed = false;
+  RUNS.forEach(({di, item})=>{
+    if(!plan[di]) return;
+    if(plan[di].items.some(it=>it._runningCourse)) return; // 이미 있으면 스킵
+    plan[di].items.push({...item});
+    sortDayByTime(di);
+    changed = true;
+  });
+  if(changed) savePlan();
+}
+
 async function initApp(){
   if(authToken){
     const d=await serverGet();
@@ -5935,6 +5965,7 @@ async function initApp(){
       try{ localStorage.setItem(WISH_KEY,JSON.stringify(d.wishlist)); }catch(e){}
     }
   }
+  patchRunningCourses();
   plan.forEach(day=>day.items.forEach(it=>{
     if(it._user&&it._lat&&it._lng) addUserMarker({title:it.title,note:it.note,lat:it._lat,lng:it._lng});
   }));
