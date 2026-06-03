@@ -365,13 +365,13 @@ const RUNNING_ROUTES = {
 const DEFAULT_PLAN = [
   // DAY 0 — 6/8
   {date:'6/8 (월)', tag:'인천 출발', fest:false, items:[
-    {time:'22:25', title:'[미주] ICN → AMS 출발', note:'KE5925 (KLM 운항·B787-9) · 13h45m · 암스테르담 경유', dist:'', _fixed:true},
-    {time:'23:35', title:'[상효] ICN(T2) → CPH 직항 출발', note:'SAS SK0988 · 13h25m · 좌석 31F', dist:'', _fixed:true},
+    {time:'22:25', title:'[미주] ICN → AMS 출발', note:'KE5925 (KLM 운항·B787-9) · 13h45m · 암스테르담 경유', dist:'', _fixed:true, _lat:37.4692, _lng:126.4503},
+    {time:'23:35', title:'[상효] ICN(T2) → CPH 직항 출발', note:'SAS SK0988 · 13h25m · 좌석 31F', dist:'', _fixed:true, _lat:37.4692, _lng:126.4503},
   ]},
   // DAY 1 — 6/9
   {date:'6/9 (화)', tag:'코펜하겐 도착', fest:false, items:[
-    {time:'06:00', title:'[상효] CPH(T3) 도착', note:'SAS 직항 · 메트로 M2로 도심 이동', dist:'', _fixed:true},
-    {time:'08:30', title:'[미주] CPH(T2) 도착', note:'KE5925 → KL1267 환승 후 도착 · 터미널2 · 공항에서 합류', dist:'', _fixed:true},
+    {time:'06:00', title:'[상효] CPH(T3) 도착', note:'SAS 직항 · 메트로 M2로 도심 이동', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
+    {time:'08:30', title:'[미주] CPH(T2) 도착', note:'KE5925 → KL1267 환승 후 도착 · 터미널2 · 공항에서 합류', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
     {time:'11:00', title:'숙소 이동 및 짐 보관', note:'Sommerstedgade 26, 1718 København · 체크인은 15:00부터', dist:'', _lat:55.6671, _lng:12.5519},
     {time:'11:30', title:'Hart Bageri', note:'카다멈 크로아상 · Gammel Kongevej 109, Frederiksberg', tag:'🍽 식사', dist:'', _lat:55.6755, _lng:12.5436, _fixed:true},
     {time:'13:30', title:'디자인뮤지엄 덴마크 — 상설 전시', note:'Bredgade 68 · 페스티벌 기간 행사도 다수 · 미주', dist:'', _lat:55.6866, _lng:12.5928, _fixed:true},
@@ -411,11 +411,11 @@ const DEFAULT_PLAN = [
   {date:'6/16 (화)', tag:'귀국 (출국일)', fest:false, items:[
     {time:'~11:00', title:'Airbnb 체크아웃', note:'체크아웃 11:00 전 · 짐 정리', dist:''},
     {time:'오전', title:'마지막 산책 · 기념품', note:'14시 이전까지 도심에서 함께', dist:''},
-    {time:'~14:30', title:'[미주] 공항 이동', note:'16:40 출발편 · 2시간 전 도착 권장', dist:'', _fixed:true},
-    {time:'16:40', title:'[미주] CPH → LHR 출발', note:'SK1517 · 런던 경유 후 6/17 16:15 ICN 도착', dist:'', _fixed:true},
+    {time:'~14:30', title:'[미주] 공항 이동', note:'16:40 출발편 · 2시간 전 도착 권장', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
+    {time:'16:40', title:'[미주] CPH → LHR 출발', note:'SK1517 · 런던 경유 후 6/17 16:15 ICN 도착', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
     {time:'오후~저녁', title:'[상효] 도심 자유시간', note:'미주 출발 후 늦은 출국까지 여유', dist:''},
     {time:'~21:30', title:'[상효] 공항 이동 (CPH·T3)', note:'23:55 출발편 · 2시간 전 도착', dist:'', _fixed:true},
-    {time:'23:55', title:'[상효] CPH → ICN 직항 출발', note:'SAS SK0987 · 11h40m · 6/17 18:35 ICN 도착', dist:'', _fixed:true},
+    {time:'23:55', title:'[상효] CPH → ICN 직항 출발', note:'SAS SK0987 · 11h40m · 6/17 18:35 ICN 도착', dist:'', _fixed:true, _lat:55.6180, _lng:12.6560},
   ]},
 ];
 
@@ -1566,16 +1566,21 @@ function renderPlan(){
   updatePastItems();
   // 충돌 경고 배너
   renderConflictBanner(el);
-  // 첫 렌더 시 첫 번째 날 핀 표시
-  updateDayViz(currentVisDay);
+  // 첫 렌더 시: 핀만 표시 (연결선은 명시적 선택 시에만)
+  if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
+  renderPlanMarkers(currentVisDay);
 
-  // 스크롤로 날짜 바뀌면 핀·경로 업데이트
+  // 스크롤로 날짜 바뀌면 핀만 업데이트 (연결선 자동 생성 없음)
   el.onscroll = ()=>{
     const days = el.querySelectorAll('.day');
     for(let i=0;i<days.length;i++){
       const rect=days[i].getBoundingClientRect(), pRect=el.getBoundingClientRect();
       if(rect.bottom>pRect.top+10){
-        if(i!==currentVisDay){ currentVisDay=i; updateDayViz(i); }
+        if(i!==currentVisDay){
+          currentVisDay=i;
+          if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
+          renderPlanMarkers(i);
+        }
         break;
       }
     }
@@ -4013,6 +4018,12 @@ async function _drawerQuestion(raw,di,ii,item,input,btn,st,resp){
   const sys=`You are a warm, practical travel assistant for a Korean couple (미주 and 상효) visiting Copenhagen for 3 Days of Design festival, June 8–16 2026.
 Always respond in Korean. Be specific and concise.
 
+## 앱 지도 기능 (중요 — 틀린 안내 금지)
+이 앱에는 코펜하겐 Leaflet 지도가 내장되어 있고, 일정 항목에 _lat/_lng 좌표가 있으면 지도에 자동으로 핀이 표시됩니다.
+좌표 추가 방법: '+장소' 탭에서 장소명을 입력하면 AI가 자동으로 좌표를 찾아 일정에 추가합니다.
+Google Maps 링크를 note에 추가하는 것은 앱 내 지도 핀을 생성하지 않습니다 — 이 방법은 효과가 없다고 안내하세요.
+좌표가 없는 기존 항목(항공편 등)은 클릭해도 지도 핀이 안 생기는 것이 정상입니다.
+
 ## 응답 형식 규칙 (엄격히 준수)
 
 ### ✅ <options> 필수 사용 케이스 (반드시 태그 사용):
@@ -4961,6 +4972,23 @@ function patchRunningCourses(){
   if(changed) savePlan();
 }
 
+/* 기존 저장 플랜의 항공편·공항 항목에 좌표 주입 */
+function patchFlightCoords(){
+  const ICN = {lat:37.4692, lng:126.4503}; // 인천국제공항
+  const CPH = {lat:55.6180, lng:12.6560};  // 코펜하겐 공항
+  const flightKw = /ICN|CPH|AMS|LHR|공항|출발|도착|터미널|T2|T3/i;
+  let changed = false;
+  plan.forEach(day=>{
+    day.items.forEach(it=>{
+      if(!it._fixed || (it._lat && it._lng)) return;
+      if(!flightKw.test(it.title)) return;
+      if(/ICN|인천/.test(it.title)){ it._lat=ICN.lat; it._lng=ICN.lng; changed=true; }
+      else if(/CPH|코펜/.test(it.title)){ it._lat=CPH.lat; it._lng=CPH.lng; changed=true; }
+    });
+  });
+  if(changed) savePlan();
+}
+
 async function initApp(){
   if(authToken){
     const d=await serverGet();
@@ -4982,6 +5010,7 @@ async function initApp(){
     }
   }
   patchRunningCourses();
+  patchFlightCoords();
   plan.forEach(day=>day.items.forEach(it=>{
     if(it._user&&it._lat&&it._lng) addUserMarker({title:it.title,note:it.note,lat:it._lat,lng:it._lng});
   }));
