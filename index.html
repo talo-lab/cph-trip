@@ -574,15 +574,25 @@
   .wish-day-select{font-size:11px;padding:3px 6px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-family:inherit}
   .wish-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px}
   .wish-empty{font-size:12px;color:var(--slate);opacity:.6;padding:8px 0;font-style:italic}
-  /* 장소 검색 드롭다운 */
+  /* 장소 검색 — 모드 탭 */
   .wish-input-wrap{position:relative;flex:1;min-width:0}
+  .wish-mode-tabs{display:flex;gap:0;margin-bottom:6px}
+  .wish-mode-tab{flex:1;padding:5px 0;border:1.5px solid var(--line);background:#fff;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.04em;color:var(--slate);cursor:pointer;transition:.12s}
+  .wish-mode-tab:first-child{border-right:none}
+  .wish-mode-tab.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  /* 검색 드롭다운 */
   .wish-suggest{position:absolute;top:100%;left:0;right:0;z-index:200;background:#fff;border:1.5px solid var(--slate);border-top:none;box-shadow:0 4px 12px rgba(0,0,0,.12);max-height:220px;overflow-y:auto}
   .wish-suggest-item{padding:8px 10px;cursor:pointer;border-bottom:1px solid var(--line);font-size:12px}
   .wish-suggest-item:hover,.wish-suggest-item.focused{background:#fff4d6}
   .wish-suggest-item strong{display:block;font-size:12.5px;font-weight:600;color:var(--ink)}
   .wish-suggest-item span{font-size:10.5px;color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%}
   .wish-suggest-loading{padding:10px;font-size:11px;color:var(--slate);text-align:center}
-  /* 위시리스트 장소 확정 배지 */
+  /* 링크 패널 */
+  .wish-link-preview{padding:8px 10px;background:#f0f8f4;border:1px solid var(--sage);margin-top:5px;font-size:11.5px}
+  .wish-link-preview strong{display:block;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .wish-link-preview span{color:var(--slate);font-size:10.5px}
+  /* 카테고리 배지 */
+  .wish-item-cat{display:inline-flex;align-items:center;gap:3px;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.04em;padding:1px 5px;border-radius:2px;background:var(--sage);color:#fff;margin-right:4px}
   .wish-item-addr{font-size:10.5px;color:var(--sage);margin-top:2px}
   /* 추천탭 위시리스트 섹션 */
   .wish-rec-section{padding:12px 16px 4px;background:rgba(155,122,181,.06);border-bottom:2px solid var(--line);margin-bottom:4px}
@@ -935,8 +945,9 @@
     /* 위시리스트 입력 줄 바꿈 */
     .wish-add-row{flex-wrap:wrap}
     .wish-input-wrap{min-width:100%;order:1}
+    .wish-mode-tabs{width:100%}
     .wish-note-input{min-width:100%;order:2}
-    .wish-add-btn{order:3}
+    .wish-add-btn{order:3;width:100%}
   }
 </style>
 </head>
@@ -3327,8 +3338,18 @@ function renderAdd(){
     <p class="lead">날짜 미정이지만 가보고 싶은 장소를 메모해두세요. 나중에 날짜를 정해 일정에 옮길 수 있어요.</p>
     <div class="wish-add-row">
       <div class="wish-input-wrap">
-        <input class="wish-input" id="wishTitle" placeholder="장소명 입력 (자동 검색)" maxlength="60" autocomplete="off">
-        <div class="wish-suggest" id="wishSuggest" style="display:none"></div>
+        <div class="wish-mode-tabs">
+          <button class="wish-mode-tab active" id="wishModeSearch">🔍 이름 검색</button>
+          <button class="wish-mode-tab" id="wishModeLink">🗺 Google Maps 링크</button>
+        </div>
+        <div id="wishSearchPanel">
+          <input class="wish-input" id="wishTitle" placeholder="장소명 (3글자 이상)" maxlength="60" autocomplete="off">
+          <div class="wish-suggest" id="wishSuggest" style="display:none"></div>
+        </div>
+        <div id="wishLinkPanel" style="display:none">
+          <input class="wish-input" id="wishGmapsUrl" placeholder="Google Maps URL 붙여넣기..." autocomplete="off">
+          <div class="wish-link-preview" id="wishLinkPreview" style="display:none"></div>
+        </div>
       </div>
       <input class="wish-note-input" id="wishNote" placeholder="메모 (선택)" maxlength="80">
       <button class="wish-add-btn" id="wishAddBtn">＋ 추가</button>
@@ -3336,9 +3357,45 @@ function renderAdd(){
     <div class="wish-list" id="wishList"></div>`;
   el.querySelector('.add-wrap').insertAdjacentElement('afterend', wishWrap);
 
-  // 확정된 장소 임시 저장 (검색 결과 선택 후)
-  let _wishConfirmed = null; // {_lat, _lng, _gmapsUrl, address}
+  // ── 카테고리 감지 ──
+  function detectWishCat(title='', note=''){
+    const t=(title+' '+note).toLowerCase();
+    if(/카페|cafe|café|coffee|roast|bageri|bager|빵|bakery/.test(t))  return {icon:'☕',label:'카페·베이커리',color:'#8b5e3c'};
+    if(/식당|레스토랑|restaurant|fiskebar|bistro|bodega|dinner|spiseri|tavern/.test(t)) return {icon:'🍽',label:'식당·바',color:'#c8492a'};
+    if(/bar|wine|øl|beer|cocktail|vinbar/.test(t))                    return {icon:'🍷',label:'바·드링크',color:'#7a3e8f'};
+    if(/쇼룸|showroom|galleri|gallery|갤러리|design|udstilling/.test(t)) return {icon:'🏛',label:'디자인·갤러리',color:'#2f6b6b'};
+    if(/museum|museet|미술관|박물관|kunsthal|kunstmuseum/.test(t))      return {icon:'🖼',label:'미술관',color:'#5d7456'};
+    if(/park|strand|beach|해변|공원|garden|have|skov/.test(t))         return {icon:'🌿',label:'자연·공원',color:'#5d7456'};
+    if(/shop|store|쇼핑|상점|스토어|market|marked|butik/.test(t))      return {icon:'🛍',label:'쇼핑',color:'#9b7ab5'};
+    if(/hotel|hostel|숙소|airbnb/.test(t))                            return {icon:'🏠',label:'숙소',color:'#7a7a7a'};
+    return {icon:'📍',label:'장소',color:'#7a7a7a'};
+  }
 
+  // ── Google Maps URL 파서 ──
+  function parseGmapsUrl(url){
+    try{
+      // /place/NAME/@LAT,LNG,ZOOMz
+      const pm=url.match(/\/place\/([^/@+]+)(?:\+([^/@]*))*\/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+      if(pm){
+        const raw=pm[1].replace(/\+/g,' ');
+        const name=decodeURIComponent(raw);
+        return {title:name, _lat:+pm[3], _lng:+pm[4], _gmapsUrl:url,
+                address:`${pm[3].substring(0,8)}, ${pm[4].substring(0,8)}`};
+      }
+      // /@LAT,LNG
+      const cm=url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+      if(cm) return {title:'', _lat:+cm[1], _lng:+cm[2], _gmapsUrl:url, address:''};
+      // ?q= or query=
+      const qm=url.match(/[?&](?:q|query)=([^&]+)/);
+      if(qm) return {title:decodeURIComponent(qm[1].replace(/\+/g,' ')), _gmapsUrl:url, address:''};
+      return {title:'', _gmapsUrl:url, address:''};
+    }catch(e){ return null; }
+  }
+
+  // ── 확정 장소 임시 저장 ──
+  let _wishConfirmed = null;
+
+  // ── 위시리스트 렌더링 ──
   function renderWishList(){
     const list = document.getElementById('wishList');
     if(!list) return;
@@ -3348,11 +3405,17 @@ function renderAdd(){
     }
     list.innerHTML='';
     wishlist.forEach((w,idx)=>{
+      const cat = detectWishCat(w.title, w.note);
       const item = document.createElement('div');
       item.className='wish-item';
-      const gmapLink = w._gmapsUrl ? `<a href="${w._gmapsUrl}" target="_blank" style="font-size:10.5px;color:var(--rust);text-decoration:none;margin-left:4px" onclick="event.stopPropagation()">📍지도</a>` : '';
+      const gmapLink = w._gmapsUrl
+        ? `<a href="${w._gmapsUrl}" target="_blank" style="font-size:10px;color:var(--rust);text-decoration:none;margin-left:6px;font-family:'Space Mono',monospace" onclick="event.stopPropagation()">지도↗</a>`
+        : '';
       item.innerHTML=`
         <div class="wish-item-body">
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+            <span class="wish-item-cat" style="background:${cat.color}">${cat.icon} ${cat.label}</span>
+          </div>
           <div class="wish-item-title">${w.title}${gmapLink}</div>
           ${w.address?`<div class="wish-item-addr">📌 ${w.address}</div>`:''}
           ${w.note?`<div class="wish-item-note">${w.note}</div>`:''}
@@ -3369,7 +3432,7 @@ function renderAdd(){
         </div>`;
       item.querySelector('.wish-to-plan-btn').addEventListener('click',()=>{
         const row=document.getElementById(`wish-day-row-${idx}`);
-        row.style.display = row.style.display==='none' ? 'flex' : 'none';
+        row.style.display=row.style.display==='none'?'flex':'none';
       });
       item.querySelector('.wish-del-btn').addEventListener('click',()=>{
         wishlist.splice(idx,1); saveWishlist(); renderWishList();
@@ -3377,10 +3440,10 @@ function renderAdd(){
       item.querySelector('.wish-day-confirm').addEventListener('click',()=>{
         const di=+document.getElementById(`wish-day-sel-${idx}`).value;
         plan[di].items.push({
-          time:'미정', title:w.title, note:w.note||'', dist:'',
-          _user:true, _addedBy:currentUser, _personal:false, _with:['miju','sanghyo'],
-          ...(w._lat && {_lat:w._lat, _lng:w._lng}),
-          ...(w._gmapsUrl && {_gmapsUrl:w._gmapsUrl})
+          time:'미정',title:w.title,note:w.note||'',dist:'',
+          _user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo'],
+          ...(w._lat&&{_lat:w._lat,_lng:w._lng}),
+          ...(w._gmapsUrl&&{_gmapsUrl:w._gmapsUrl})
         });
         sortDayByTime(di); savePlan();
         wishlist.splice(idx,1); saveWishlist();
@@ -3393,31 +3456,67 @@ function renderAdd(){
     });
   }
 
-  // Nominatim 장소 검색
-  let _wishSearchTimer = null;
+  // ── 탭 전환 ──
+  document.getElementById('wishModeSearch').addEventListener('click',()=>{
+    document.getElementById('wishModeSearch').classList.add('active');
+    document.getElementById('wishModeLink').classList.remove('active');
+    document.getElementById('wishSearchPanel').style.display='';
+    document.getElementById('wishLinkPanel').style.display='none';
+    _wishConfirmed=null;
+    document.getElementById('wishTitle').focus();
+  });
+  document.getElementById('wishModeLink').addEventListener('click',()=>{
+    document.getElementById('wishModeLink').classList.add('active');
+    document.getElementById('wishModeSearch').classList.remove('active');
+    document.getElementById('wishLinkPanel').style.display='';
+    document.getElementById('wishSearchPanel').style.display='none';
+    _wishConfirmed=null;
+    document.getElementById('wishGmapsUrl').focus();
+  });
+
+  // ── Google Maps URL 붙여넣기 ──
+  document.getElementById('wishGmapsUrl').addEventListener('input', function(){
+    const val=this.value.trim();
+    const prev=document.getElementById('wishLinkPreview');
+    if(!val||!val.startsWith('http')){ prev.style.display='none'; _wishConfirmed=null; return; }
+    const parsed=parseGmapsUrl(val);
+    if(!parsed){ prev.style.display='none'; _wishConfirmed=null; return; }
+    _wishConfirmed={...parsed};
+    // 이름이 파싱됐으면 wishTitle 채우기 (검색 패널용)
+    prev.style.display='block';
+    const cat=detectWishCat(parsed.title);
+    prev.innerHTML=`<strong>${cat.icon} ${parsed.title||'장소 (이름 직접 입력)'}</strong>`
+      +`<span>${parsed._lat?`위도 ${parsed._lat.toFixed(5)}, 경도 ${parsed._lng.toFixed(5)}`:'좌표 없음'}</span>`;
+  });
+
+  // ── Nominatim 검색 (덴마크 한정) ──
+  let _wishSearchTimer=null;
   async function searchWishPlace(query){
-    const sug = document.getElementById('wishSuggest');
+    const sug=document.getElementById('wishSuggest');
     if(!sug) return;
-    if(query.length < 2){ sug.style.display='none'; return; }
+    if(query.length<3){ sug.style.display='none'; return; }
     sug.style.display='block';
     sug.innerHTML='<div class="wish-suggest-loading">검색 중...</div>';
     try{
-      const q = encodeURIComponent(query + (query.toLowerCase().includes('copenhagen')||query.toLowerCase().includes('cph')||query.match(/[가-힣]/) ? '' : ' Copenhagen'));
-      const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=5&addressdetails=1&accept-language=ko`, {headers:{'User-Agent':'cph-trip-app'}});
-      const data = await res.json();
-      if(!data.length){ sug.innerHTML='<div class="wish-suggest-loading">검색 결과 없음</div>'; return; }
+      // countrycodes=dk + 코펜하겐 viewbox + bounded=1 로 덴마크 한정
+      const q=encodeURIComponent(query);
+      const url=`https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=6&addressdetails=1&countrycodes=dk&viewbox=12.3,55.55,12.75,55.82&bounded=0&accept-language=ko,en`;
+      const res=await fetch(url,{headers:{'User-Agent':'cph-trip-planner/1.0'}});
+      const data=await res.json();
+      if(!data.length){ sug.innerHTML='<div class="wish-suggest-loading">덴마크에서 검색 결과 없음</div>'; return; }
       sug.innerHTML='';
-      data.forEach((place,i)=>{
-        const name = place.namedetails?.name || place.display_name.split(',')[0];
-        const addr = place.display_name.split(',').slice(1,3).join(',').trim();
-        const row = document.createElement('div');
+      data.forEach(place=>{
+        const name=place.namedetails?.name||place.namedetails?.['name:en']||place.display_name.split(',')[0];
+        const addr=place.display_name.split(',').slice(1,3).join(', ').trim();
+        const row=document.createElement('div');
         row.className='wish-suggest-item';
-        row.innerHTML=`<strong>${name}</strong><span>${addr}</span>`;
-        row.addEventListener('mousedown', e=>{
+        const cat=detectWishCat(name);
+        row.innerHTML=`<strong>${cat.icon} ${name}</strong><span>${addr}</span>`;
+        row.addEventListener('mousedown',e=>{
           e.preventDefault();
-          const gmUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.display_name)}`;
-          _wishConfirmed = {_lat:+place.lat, _lng:+place.lon, _gmapsUrl:gmUrl, address:addr||place.display_name.split(',').slice(0,2).join(',').trim()};
-          document.getElementById('wishTitle').value = name;
+          const gmUrl=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name+', Copenhagen')}`;
+          _wishConfirmed={_lat:+place.lat,_lng:+place.lon,_gmapsUrl:gmUrl,address:addr};
+          document.getElementById('wishTitle').value=name;
           sug.style.display='none';
           document.getElementById('wishNote').focus();
         });
@@ -3426,30 +3525,39 @@ function renderAdd(){
     }catch(e){ sug.innerHTML='<div class="wish-suggest-loading">검색 실패</div>'; }
   }
 
-  const wishTitleEl = document.getElementById('wishTitle');
+  const wishTitleEl=document.getElementById('wishTitle');
   wishTitleEl.addEventListener('input',()=>{
-    _wishConfirmed = null; // 직접 입력하면 확정 초기화
+    _wishConfirmed=null;
     clearTimeout(_wishSearchTimer);
-    _wishSearchTimer = setTimeout(()=>searchWishPlace(wishTitleEl.value.trim()), 380);
+    _wishSearchTimer=setTimeout(()=>searchWishPlace(wishTitleEl.value.trim()),400);
   });
-  wishTitleEl.addEventListener('blur',()=>{ setTimeout(()=>{ const s=document.getElementById('wishSuggest'); if(s) s.style.display='none'; },150); });
+  wishTitleEl.addEventListener('blur',()=>{ setTimeout(()=>{ const s=document.getElementById('wishSuggest'); if(s) s.style.display='none'; },180); });
 
+  // ── 추가 버튼 ──
   document.getElementById('wishAddBtn').addEventListener('click',()=>{
-    const title=wishTitleEl.value.trim();
+    const isLinkMode=document.getElementById('wishModeLink').classList.contains('active');
+    let title='', confirmed=_wishConfirmed||{};
+    if(isLinkMode){
+      title=confirmed.title||document.getElementById('wishGmapsUrl').value.trim().slice(0,50);
+      // 이름이 없으면 메모 필드 값 사용
+      if(!title) title=document.getElementById('wishNote').value.trim()||'장소';
+    } else {
+      title=wishTitleEl.value.trim();
+    }
     if(!title) return;
     const note=document.getElementById('wishNote').value.trim();
-    const entry = {title, note, addedBy:currentUser||'', addedAt:Date.now(), ...(_wishConfirmed||{})};
-    wishlist.unshift(entry);
+    wishlist.unshift({title,note,addedBy:currentUser||'',addedAt:Date.now(),...confirmed});
     saveWishlist();
     wishTitleEl.value='';
+    document.getElementById('wishGmapsUrl').value='';
     document.getElementById('wishNote').value='';
     document.getElementById('wishSuggest').style.display='none';
-    _wishConfirmed = null;
+    document.getElementById('wishLinkPreview').style.display='none';
+    _wishConfirmed=null;
     renderWishList();
   });
-  wishTitleEl.addEventListener('keydown',e=>{
-    if(e.key==='Enter') document.getElementById('wishAddBtn').click();
-  });
+  wishTitleEl.addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('wishAddBtn').click(); });
+  document.getElementById('wishGmapsUrl').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('wishAddBtn').click(); });
 
   renderWishList();
 
