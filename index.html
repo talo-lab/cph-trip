@@ -570,9 +570,16 @@
   .wish-to-plan-btn:hover{background:var(--rust-deep)}
   .wish-del-btn{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:none;color:var(--slate);border:1px solid var(--line);cursor:pointer;border-radius:2px;transition:.15s}
   .wish-del-btn:hover{background:#fee;color:var(--rust);border-color:var(--rust)}
-  .wish-day-row{display:flex;gap:5px;align-items:center;margin-top:6px;flex-wrap:wrap}
-  .wish-day-select{font-size:11px;padding:3px 6px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-family:inherit}
-  .wish-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px}
+  .wish-day-row{display:none;flex-direction:column;gap:6px;margin-top:8px;padding:10px;background:#f8f5ee;border:1px solid var(--line)}
+  .wish-day-row.open{display:flex}
+  .wish-day-row-label{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--slate);margin-bottom:1px}
+  .wish-day-row-row{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+  .wish-day-select{font-size:11px;padding:4px 6px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-family:inherit;flex:1}
+  .wish-time-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+  .wish-time-chip{padding:3px 8px;border:1.5px solid var(--line);background:#fff;font-family:'Space Mono',monospace;font-size:9.5px;cursor:pointer;transition:.12s;color:var(--slate)}
+  .wish-time-chip:hover,.wish-time-chip.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .wish-travel-hint{font-size:10.5px;color:var(--rust-deep);background:rgba(200,73,42,.06);padding:4px 7px;border-left:2px solid var(--rust)}
+  .wish-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:5px 14px;background:var(--rust);color:#fff;border:none;cursor:pointer;font-weight:700;flex-shrink:0}
   .wish-empty{font-size:12px;color:var(--slate);opacity:.6;padding:8px 0;font-style:italic}
   /* 장소 검색 — 모드 탭 */
   .wish-input-wrap{position:relative;flex:1;min-width:0}
@@ -3348,7 +3355,10 @@ function renderAdd(){
         </div>
         <div id="wishLinkPanel" style="display:none">
           <input class="wish-input" id="wishGmapsUrl" placeholder="Google Maps URL 붙여넣기..." autocomplete="off">
-          <div class="wish-link-preview" id="wishLinkPreview" style="display:none"></div>
+          <div id="wishLinkPreview" style="display:none;margin-top:5px">
+            <input class="wish-input" id="wishGmapsName" placeholder="장소명 직접 입력..." autocomplete="off" maxlength="60" style="background:#f0f8f4;border-color:var(--sage)">
+            <div id="wishLinkCoords" style="font-size:10px;color:var(--sage);padding:3px 4px;font-family:'Space Mono',monospace"></div>
+          </div>
         </div>
       </div>
       <input class="wish-note-input" id="wishNote" placeholder="메모 (선택)" maxlength="80">
@@ -3411,36 +3421,97 @@ function renderAdd(){
       const gmapLink = w._gmapsUrl
         ? `<a href="${w._gmapsUrl}" target="_blank" style="font-size:10px;color:var(--rust);text-decoration:none;margin-left:6px;font-family:'Space Mono',monospace" onclick="event.stopPropagation()">지도↗</a>`
         : '';
+      // 주소: 좌표 문자열이면 숨김, 실제 주소명만 표시
+      const addrText = w.address && !/^\d{2}\.\d/.test(w.address) ? w.address : '';
       item.innerHTML=`
         <div class="wish-item-body">
           <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
             <span class="wish-item-cat" style="background:${cat.color}">${cat.icon} ${cat.label}</span>
           </div>
           <div class="wish-item-title">${w.title}${gmapLink}</div>
-          ${w.address?`<div class="wish-item-addr">📌 ${w.address}</div>`:''}
+          ${addrText?`<div class="wish-item-addr">📌 ${addrText}</div>`:''}
           ${w.note?`<div class="wish-item-note">${w.note}</div>`:''}
           <div class="wish-item-actions">
-            <button class="wish-to-plan-btn" data-idx="${idx}">→ 일정에 추가</button>
-            <button class="wish-del-btn" data-idx="${idx}">삭제</button>
+            <button class="wish-to-plan-btn">→ 일정에 추가</button>
+            <button class="wish-del-btn">삭제</button>
           </div>
-          <div class="wish-day-row" id="wish-day-row-${idx}" style="display:none">
-            <select class="wish-day-select" id="wish-day-sel-${idx}">
-              ${plan.map((d,di)=>`<option value="${di}">${d.date} · ${d.tag}</option>`).join('')}
-            </select>
-            <button class="wish-day-confirm" data-idx="${idx}">확인</button>
+          <div class="wish-day-row" id="wish-day-row-${idx}">
+            <div>
+              <div class="wish-day-row-label">날짜 선택</div>
+              <div class="wish-day-row-row">
+                <select class="wish-day-select" id="wish-day-sel-${idx}">
+                  ${plan.map((d,di)=>`<option value="${di}">${d.date} · ${d.tag}</option>`).join('')}
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="wish-day-row-label">방문 시간</div>
+              <div class="wish-time-chips" id="wish-time-chips-${idx}"></div>
+            </div>
+            <div class="wish-travel-hint" id="wish-travel-${idx}" style="display:none"></div>
+            <div class="wish-day-row-row">
+              <button class="wish-day-confirm">✓ 일정에 추가</button>
+              <button class="wish-del-btn" style="background:none;color:var(--slate);border:1px solid var(--line);font-size:10px;padding:4px 8px;cursor:pointer">취소</button>
+            </div>
           </div>
         </div>`;
+
+      // 날짜 변경 → 시간칩 + 이동 힌트 업데이트
+      function updateDayPanel(di){
+        const suggested = suggestTime(di);
+        const chips = document.getElementById(`wish-time-chips-${idx}`);
+        const travelEl = document.getElementById(`wish-travel-${idx}`);
+
+        // 시간 칩: 제안 시간 기준 ±1시간 옵션
+        const baseMin = (() => { const m=suggested.match(/(\d+):(\d+)/); return m ? +m[1]*60+ +m[2] : 10*60; })();
+        const times = [-60,0,60,120].map(d=>{ const t=baseMin+d; return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0'); })
+          .filter(t=>{ const h=+t.split(':')[0]; return h>=8&&h<=21; });
+        times.push('미정');
+        chips.innerHTML = times.map((t,i)=>`<button class="wish-time-chip${i===1?' active':''}" data-t="${t}">${t}</button>`).join('');
+        chips.querySelectorAll('.wish-time-chip').forEach(b=>{
+          b.onclick=()=>{ chips.querySelectorAll('.wish-time-chip').forEach(x=>x.classList.remove('active')); b.classList.add('active'); };
+        });
+
+        // 이동 힌트: w 좌표 있으면 해당 날 마지막 좌표 항목에서 이동시간 계산
+        if(w._lat && w._lng){
+          const dayItems = plan[di].items;
+          let prevIt=null;
+          for(let i=dayItems.length-1;i>=0;i--){ if(getItemCoords(dayItems[i])){ prevIt=dayItems[i]; break; } }
+          if(prevIt){
+            const pc=getItemCoords(prevIt);
+            const t=transportBetween(pc,{lat:w._lat,lng:w._lng});
+            travelEl.style.display='block';
+            travelEl.textContent=`${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분 (${t.km.toFixed(1)}km)`;
+          } else { travelEl.style.display='none'; }
+        } else { travelEl.style.display='none'; }
+      }
+
       item.querySelector('.wish-to-plan-btn').addEventListener('click',()=>{
         const row=document.getElementById(`wish-day-row-${idx}`);
-        row.style.display=row.style.display==='none'?'flex':'none';
+        const isOpen=row.classList.toggle('open');
+        if(isOpen) updateDayPanel(+document.getElementById(`wish-day-sel-${idx}`).value);
       });
-      item.querySelector('.wish-del-btn').addEventListener('click',()=>{
-        wishlist.splice(idx,1); saveWishlist(); renderWishList();
+      item.querySelector(`#wish-day-sel-${idx}`).addEventListener('change',function(){
+        updateDayPanel(+this.value);
       });
+
+      // 삭제 버튼 (두 곳: 일반 + 패널 내 취소)
+      item.querySelectorAll('.wish-del-btn').forEach(b=>{
+        b.addEventListener('click',e=>{
+          e.stopPropagation();
+          // 패널 내 취소인지 확인
+          if(b.textContent.trim()==='취소'){ document.getElementById(`wish-day-row-${idx}`).classList.remove('open'); return; }
+          wishlist.splice(idx,1); saveWishlist(); renderWishList();
+        });
+      });
+
       item.querySelector('.wish-day-confirm').addEventListener('click',()=>{
         const di=+document.getElementById(`wish-day-sel-${idx}`).value;
+        const chips=document.getElementById(`wish-time-chips-${idx}`);
+        const activeChip=chips.querySelector('.wish-time-chip.active');
+        const time=activeChip?.dataset.t==='미정'?'미정':(activeChip?.dataset.t||'미정');
         plan[di].items.push({
-          time:'미정',title:w.title,note:w.note||'',dist:'',
+          time,title:w.title,note:w.note||'',dist:'',
           _user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo'],
           ...(w._lat&&{_lat:w._lat,_lng:w._lng}),
           ...(w._gmapsUrl&&{_gmapsUrl:w._gmapsUrl})
@@ -3481,12 +3552,17 @@ function renderAdd(){
     if(!val||!val.startsWith('http')){ prev.style.display='none'; _wishConfirmed=null; return; }
     const parsed=parseGmapsUrl(val);
     if(!parsed){ prev.style.display='none'; _wishConfirmed=null; return; }
-    _wishConfirmed={...parsed};
-    // 이름이 파싱됐으면 wishTitle 채우기 (검색 패널용)
+    _wishConfirmed={...parsed, address:''}; // 좌표는 내부에만, address는 사용자가 입력
     prev.style.display='block';
-    const cat=detectWishCat(parsed.title);
-    prev.innerHTML=`<strong>${cat.icon} ${parsed.title||'장소 (이름 직접 입력)'}</strong>`
-      +`<span>${parsed._lat?`위도 ${parsed._lat.toFixed(5)}, 경도 ${parsed._lng.toFixed(5)}`:'좌표 없음'}</span>`;
+    // 장소명 입력 필드 - 파싱된 이름으로 채우되 사용자가 직접 수정 가능
+    const nameInput=document.getElementById('wishGmapsName');
+    if(parsed.title) nameInput.value=parsed.title;
+    else nameInput.value=''; nameInput.placeholder='장소명 직접 입력...';
+    const coordEl=document.getElementById('wishLinkCoords');
+    coordEl.textContent=parsed._lat?`📍 ${parsed._lat.toFixed(5)}, ${parsed._lng.toFixed(5)} · 지도 핀 연결됨`:'📍 좌표 없음 (이름으로 검색됩니다)';
+    // 이름 입력 이벤트
+    nameInput.oninput=()=>{ if(_wishConfirmed) _wishConfirmed.title=nameInput.value.trim(); };
+    setTimeout(()=>{ if(!parsed.title) nameInput.focus(); }, 50);
   });
 
   // ── Nominatim 검색 (덴마크 한정) ──
@@ -3538,9 +3614,12 @@ function renderAdd(){
     const isLinkMode=document.getElementById('wishModeLink').classList.contains('active');
     let title='', confirmed=_wishConfirmed||{};
     if(isLinkMode){
-      title=confirmed.title||document.getElementById('wishGmapsUrl').value.trim().slice(0,50);
-      // 이름이 없으면 메모 필드 값 사용
-      if(!title) title=document.getElementById('wishNote').value.trim()||'장소';
+      // 링크 모드: 이름 입력 필드 우선
+      title=document.getElementById('wishGmapsName').value.trim()
+           || confirmed.title
+           || document.getElementById('wishNote').value.trim()
+           || '새 장소';
+      confirmed.title=title; // 저장용
     } else {
       title=wishTitleEl.value.trim();
     }
