@@ -488,6 +488,61 @@
   .day-progress{height:3px;background:var(--line);margin:0 0 0 0}
   .day-progress-bar{height:100%;background:var(--sage);transition:width .4s ease}
 
+  /* ── AI 재조율 ── */
+  .reschedule-btn{
+    margin-left:auto;font-size:9.5px;font-family:'Space Mono',monospace;
+    background:transparent;border:1px solid rgba(155,122,181,.35);color:#9b7ab5;
+    padding:2px 8px;cursor:pointer;border-radius:3px;white-space:nowrap;flex-shrink:0;
+    transition:.15s;
+  }
+  .reschedule-btn:hover{background:rgba(155,122,181,.15)}
+  .reschedule-btn.loading{opacity:.5;cursor:default}
+  .reschedule-panel{
+    background:linear-gradient(160deg,#1c1a2e 0%,#16202e 100%);
+    border-top:1px solid rgba(155,122,181,.25);
+    padding:16px 20px 14px;color:var(--cream);
+    animation:fadeSlideDown .2s ease;
+  }
+  @keyframes fadeSlideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .reschedule-hd{
+    font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+    color:#9b7ab5;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .reschedule-loading{font-size:12px;color:rgba(255,255,255,.5);font-style:italic;padding:4px 0}
+  .reschedule-analysis{font-size:12.5px;line-height:1.75;color:rgba(255,255,255,.82);margin-bottom:14px}
+  .reschedule-proposal{
+    background:rgba(255,255,255,.04);border:1px solid rgba(155,122,181,.18);
+    border-radius:6px;padding:10px 14px;margin-bottom:12px;
+  }
+  .reschedule-proposal-hd{
+    font-size:9.5px;font-weight:700;color:#9b7ab5;text-transform:uppercase;
+    letter-spacing:.08em;margin-bottom:8px;
+  }
+  .reschedule-row{
+    display:flex;gap:10px;align-items:baseline;font-size:12px;
+    padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .reschedule-row:last-child{border:none}
+  .reschedule-row-time{
+    font-family:'Space Mono',monospace;font-size:10px;color:#9b7ab5;
+    min-width:44px;flex-shrink:0;
+  }
+  .reschedule-row-title{color:rgba(255,255,255,.9)}
+  .reschedule-row-changed{color:#9b7ab5;font-size:10px;margin-left:4px;flex-shrink:0}
+  .reschedule-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .reschedule-apply{
+    background:#9b7ab5;color:#fff;border:none;border-radius:4px;
+    padding:7px 14px;font-size:11.5px;font-family:'Space Mono',monospace;
+    cursor:pointer;transition:.15s;
+  }
+  .reschedule-apply:hover{background:#8a6aa4}
+  .reschedule-close{
+    background:transparent;color:rgba(255,255,255,.45);
+    border:1px solid rgba(255,255,255,.18);border-radius:4px;
+    padding:7px 12px;font-size:11.5px;cursor:pointer;transition:.15s;
+  }
+  .reschedule-close:hover{color:rgba(255,255,255,.8)}
+
   /* ── 즐겨찾기 ── */
   .fav-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 4px;line-height:1;flex-shrink:0;transition:.15s}
   .fav-btn:hover{transform:scale(1.2)}
@@ -1984,15 +2039,18 @@ function renderPlan(){
 
   plan.forEach((day,di)=>{
     const d = document.createElement('div'); d.className='day';
+    const hasItems = day.items.length > 0;
     d.innerHTML = `
       <div class="day-head">
         <span class="day-num ${day.fest?'fest':''}">${day.fest?'FEST':'DAY'} ${di}</span>
         <span class="day-date">${day.date}</span>
         <span class="day-weather day-weather-slot" data-di="${di}"></span>
         <span class="day-tag">${day.tag}</span>
+        ${hasItems?`<button class="reschedule-btn" id="reschedule-btn-${di}" onclick="triggerReschedule(${di});event.stopPropagation()" title="AI가 이 날 일정을 분석하고 최적화를 제안합니다">✦ 재조율</button>`:''}
       </div>
       <div class="day-progress"><div class="day-progress-bar" id="prog-${di}" style="width:0%"></div></div>
-      <div class="day-body" id="body-${di}" data-di="${di}"></div>`;
+      <div class="day-body" id="body-${di}" data-di="${di}"></div>
+      <div class="reschedule-slot" id="reschedule-slot-${di}"></div>`;
     el.appendChild(d);
     const body = d.querySelector(`#body-${di}`);
 
@@ -3411,6 +3469,117 @@ Rules:
   }finally{
     btn.disabled=false; btn.textContent='전송';
   }
+}
+
+/* ── AI 재조율 ── */
+const _rescheduleCache = {};
+
+async function triggerReschedule(di){
+  const slot = document.getElementById(`reschedule-slot-${di}`);
+  const btn  = document.getElementById(`reschedule-btn-${di}`);
+  if(!slot) return;
+
+  // 토글 — 이미 열려 있으면 닫기
+  if(slot.innerHTML.trim()){
+    slot.innerHTML='';
+    if(btn){ btn.textContent='✦ 재조율'; btn.classList.remove('loading'); btn.disabled=false; }
+    return;
+  }
+
+  const day = plan[di];
+  if(!day || !day.items.length) return;
+
+  slot.innerHTML=`<div class="reschedule-panel"><div class="reschedule-hd">✦ AI 재조율</div><div class="reschedule-loading">일정을 분석 중이에요…</div></div>`;
+  if(btn){ btn.textContent='분석 중…'; btn.classList.add('loading'); btn.disabled=true; }
+
+  // 이동 시간 정보
+  const travelLines = [];
+  for(let i=0;i<day.items.length-1;i++){
+    const cA=getItemCoords(day.items[i]), cB=getItemCoords(day.items[i+1]);
+    if(cA&&cB){ const t=transportBetween(cA,cB); travelLines.push(`"${day.items[i].title}"→"${day.items[i+1].title}": ${t.label} ~${t.mins}분`); }
+  }
+
+  const itemsDesc = day.items.map((it,i)=>
+    `${i+1}. [${it.time||'미정'}] ${it.title}${it.note?' ('+it.note+')':''}${it._fixed?' [고정]':''}`
+  ).join('\n');
+
+  const sys=`You are an expert Copenhagen travel scheduler for a Korean couple visiting for 3 Days of Design festival (June 8–16, 2026).
+Analyze the given day's schedule and respond in Korean with:
+1. 2–3 sentences: key issues or strengths (crowding, travel gaps, opening hours, energy pacing)
+2. An optimized time suggestion
+
+Rules:
+- NEVER change times of [고정] items
+- Realistic durations: museum 1.5–2h, café/bakery 30–45min, showroom 20–40min, walk variable
+- If an item has time 미정, suggest a concrete time
+- If the schedule is already optimal, say so briefly
+- End your response with EXACTLY this block (no markdown):
+<reschedule>
+[{"time":"HH:MM or 미정","title":"제목 그대로","changed":true/false}]
+</reschedule>
+Include ALL items in the array. Set changed:true only for items whose time actually differs from the current schedule.
+Travel between items: ${travelLines.join(' | ')||'(좌표 정보 부족)'}`;
+
+  const ctx=`날짜: ${day.date} (${day.tag})\n현재 일정:\n${itemsDesc}\n\n이 날 일정을 분석하고 최적화된 시간표를 제안해주세요.`;
+
+  try{
+    const r=await fetch('/api/extract',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({system:sys,input:ctx,max_tokens:1000})});
+    if(!r.ok) throw new Error('서버 '+r.status);
+    const data=await r.json();
+    let text=(data.text||'').trim();
+
+    let suggestion=null;
+    const m=text.match(/<reschedule>([\s\S]*?)<\/reschedule>/);
+    if(m){ try{ suggestion=JSON.parse(m[1].trim()); }catch(e){} text=text.replace(/<reschedule>[\s\S]*?<\/reschedule>/,'').trim(); }
+    _rescheduleCache[di]=suggestion;
+
+    const proposalHtml = suggestion ? `
+      <div class="reschedule-proposal">
+        <div class="reschedule-proposal-hd">제안된 시간표</div>
+        ${suggestion.map(it=>`
+          <div class="reschedule-row">
+            <span class="reschedule-row-time">${it.time}</span>
+            <span class="reschedule-row-title">${it.title}</span>
+            ${it.changed?`<span class="reschedule-row-changed">← 변경</span>`:''}
+          </div>`).join('')}
+      </div>
+      <div class="reschedule-actions">
+        <button class="reschedule-apply" onclick="applyReschedule(${di})">이 순서로 적용</button>
+        <button class="reschedule-close" onclick="closeReschedulePanel(${di})">닫기</button>
+      </div>` : `<div class="reschedule-actions"><button class="reschedule-close" onclick="closeReschedulePanel(${di})">닫기</button></div>`;
+
+    slot.innerHTML=`<div class="reschedule-panel">
+      <div class="reschedule-hd">✦ AI 재조율 — ${day.date}</div>
+      <div class="reschedule-analysis">${text.replace(/\n/g,'<br>')}</div>
+      ${proposalHtml}
+    </div>`;
+  }catch(e){
+    slot.innerHTML=`<div class="reschedule-panel"><div class="reschedule-analysis" style="color:#e07070">분석 실패: ${e.message}</div><div class="reschedule-actions"><button class="reschedule-close" onclick="closeReschedulePanel(${di})">닫기</button></div></div>`;
+  }finally{
+    if(btn){ btn.textContent='✦ 재조율'; btn.classList.remove('loading'); btn.disabled=false; }
+  }
+}
+
+function applyReschedule(di){
+  const suggestion=_rescheduleCache[di];
+  if(!suggestion) return;
+  const day=plan[di];
+  if(!day) return;
+  suggestion.forEach(sugg=>{
+    const item=day.items.find(it=>it.title===sugg.title);
+    if(item && !item._fixed && sugg.changed) item.time=sugg.time;
+  });
+  sortDayByTime(di);
+  savePlan();
+  renderPlan();
+}
+
+function closeReschedulePanel(di){
+  const slot=document.getElementById(`reschedule-slot-${di}`);
+  if(slot) slot.innerHTML='';
+  const btn=document.getElementById(`reschedule-btn-${di}`);
+  if(btn){ btn.textContent='✦ 재조율'; btn.classList.remove('loading'); btn.disabled=false; }
 }
 
 // 사용자 추가 장소 지도 마커
