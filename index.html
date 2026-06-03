@@ -1814,14 +1814,17 @@ function districtColor(name){ return DISTRICTS.find(d=>d.name===name)?.color||'#
 const FEST_DATE_MAP = {'June 10':2,'June 11':3,'June 12':4};
 
 const FEST_CATEGORIES = [
-  {key:'all',      label:'전체',     icon:'·',  color:'#1a1714'},
-  {key:'dining',   label:'다이닝',   icon:'☕', color:'#7a4a1e'},
-  {key:'talk',     label:'토크·패널', icon:'💬', color:'#2f6b6b'},
+  {key:'all',       label:'전체',      icon:'·',  color:'#1a1714'},
+  {key:'morning',   label:'아침·커피', icon:'☕', color:'#8b5e3c'},
+  {key:'lunch',     label:'점심',      icon:'🥗', color:'#5d7456'},
+  {key:'afternoon', label:'오후 음료', icon:'🥂', color:'#9b7ab5'},
+  {key:'dining',    label:'저녁 다이닝',icon:'🍽', color:'#c8492a'},
+  {key:'talk',      label:'토크·패널', icon:'💬', color:'#2f6b6b'},
   {key:'exhibition',label:'전시·오프닝',icon:'🏛', color:'#6d3b54'},
-  {key:'workshop', label:'워크숍',   icon:'✂️', color:'#5d7456'},
-  {key:'tour',     label:'투어·워크', icon:'🚶', color:'#3a4a5a'},
-  {key:'wellness', label:'웰니스',   icon:'🧘', color:'#9c3318'},
-  {key:'launch',   label:'런칭',     icon:'🚀', color:'#d99021'},
+  {key:'workshop',  label:'워크숍',    icon:'✂️', color:'#5d7456'},
+  {key:'tour',      label:'투어·워크', icon:'🚶', color:'#3a4a5a'},
+  {key:'wellness',  label:'웰니스',    icon:'🧘', color:'#9c3318'},
+  {key:'launch',    label:'런칭',      icon:'🚀', color:'#d99021'},
 ];
 
 /* FESTIVAL_EVENTS loaded from /events-data.js */

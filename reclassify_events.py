@@ -90,23 +90,44 @@ RULES = [
     ]),
 ]
 
-# 다이닝으로 확실히 남겨야 할 것들 (재분류 방지)
-FORCE_DINING = [
-    'long table dinner', 'dinner', 'lunch', 'breakfast club',
-    '롱 테이블 디너', '저녁 식사', '점심 식사', '조찬 클럽',
+# 저녁 다이닝으로 강제 유지할 타이틀 키워드 (저녁/야간 성격)
+FORCE_DINING_EVENING = [
+    'long table dinner', 'dinner', '저녁 식사', '롱 테이블 디너',
+    '클로징 파티', 'closing party', 'after party', '애프터파티',
 ]
 
-def get_category(title: str, desc: str, original: str) -> str:
+# 시간 문자열 → 시작 시간(시) 추출
+def parse_start_hour(time_str: str) -> int:
+    """'18:00-22:00' → 18, '9:00' → 9, 파싱 실패 → -1"""
+    if not time_str:
+        return -1
+    start = time_str.split('-')[0].strip()
+    m = re.match(r'(\d{1,2}):', start)
+    return int(m.group(1)) if m else -1
+
+# dining 이벤트를 시간대로 세분화
+def refine_dining_by_time(hour: int) -> str:
+    """dining 카테고리를 시작 시간에 따라 세분화"""
+    if hour < 0:
+        return 'dining'       # 시간 불명 → 유지
+    if hour < 11:
+        return 'morning'      # ~10:59 → 아침·커피
+    if hour < 14:
+        return 'lunch'        # 11:00~13:59 → 점심
+    if hour < 17:
+        return 'afternoon'    # 14:00~16:59 → 오후 음료
+    return 'dining'           # 17:00~ → 저녁 다이닝 유지
+
+def get_category(title: str, desc: str, original: str, time_str: str = '') -> str:
     t = title.lower()
     d = desc.lower()
-    combined = t + ' ' + d
 
-    # 다이닝으로 강제 유지
-    for kw in FORCE_DINING:
+    # 저녁 다이닝 강제 유지 (타이틀 키워드)
+    for kw in FORCE_DINING_EVENING:
         if kw in t:
             return 'dining'
 
-    # 우선순위 규칙 적용
+    # 우선순위 규칙 적용 (dining 외 카테고리로 재분류)
     for cat, title_kws, desc_kws in RULES:
         for kw in title_kws:
             if kw.lower() in t:
@@ -114,6 +135,11 @@ def get_category(title: str, desc: str, original: str) -> str:
         for kw in desc_kws:
             if kw.lower() in d:
                 return cat
+
+    # dining이면 시간대로 세분화
+    if original == 'dining':
+        hour = parse_start_hour(time_str)
+        return refine_dining_by_time(hour)
 
     return original  # 변경 없음
 
@@ -134,17 +160,19 @@ for line in lines:
     t_m = re.search(r"title:'((?:[^'\\]|\\.)*?)'", line)
     d_m = re.search(r"desc:'((?:[^'\\]|\\.)*?)'", line)
     c_m = re.search(r"category:'(\w+)'", line)
+    tm_m = re.search(r"time:'((?:[^'\\]|\\.)*?)'", line)
 
     if not c_m:
         new_lines.append(line)
         continue
 
-    title = t_m.group(1) if t_m else ''
-    desc  = d_m.group(1) if d_m else ''
-    orig  = c_m.group(1)
+    title    = t_m.group(1) if t_m else ''
+    desc     = d_m.group(1) if d_m else ''
+    orig     = c_m.group(1)
+    time_str = tm_m.group(1) if tm_m else ''
 
     before_counts[orig] += 1
-    new_cat = get_category(title, desc, orig)
+    new_cat = get_category(title, desc, orig, time_str)
     after_counts[new_cat] += 1
 
     if new_cat != orig:
