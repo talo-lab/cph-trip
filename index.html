@@ -834,28 +834,34 @@
 </div>
 
 <script>
-/* Google Maps 딥링크 URL 생성 — 장소명/주소 추출 */
+/* Google Maps Places Search URL — POI 매칭 최적화 */
 function gMapsUrl(query) {
-  return `https://maps.google.com/?q=${encodeURIComponent(query)}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
 /* 일정 항목에서 최적 검색어 추출
- * note에서 주소처럼 보이는 구절 우선 사용 */
+ * 우선순위: 제목 영문 → note 주소 → note 영문 → 제목 */
 function gMapsQuery(it) {
-  const note = it.note || '';
-  // · — – 로 구절 분리
+  const title = it.title || '';
+  const note  = it.note  || '';
+
+  // 1순위: 제목에서 영문 장소명 (괄호 제외, 3자 이상 연속 영문)
+  const titleEng = title.match(/[A-Z][A-Za-z\s&'.-]{3,}/);
+  if (titleEng) return titleEng[0].trim() + ' Copenhagen';
+
+  // note를 · — – 로 분리
   const parts = note.split(/\s*[·—–·]\s*/).map(p => p.trim()).filter(Boolean);
-  // 1순위: 숫자+영문 포함 구절 (주소)
-  const addr = parts.find(p => /\d/.test(p) && /[a-zA-Z]/.test(p));
-  if (addr) return addr + ', Copenhagen';
-  // 2순위: 영문 3자 이상 포함 구절 (장소명)
-  const eng = parts.find(p => /[a-zA-Z]{3,}/.test(p));
-  if (eng) return eng + ', Copenhagen';
-  // 3순위: 제목에서 영문 단어 추출
-  const titleEng = (it.title || '').match(/[A-Za-z][A-Za-z\s&.,()-]{2,}/);
-  if (titleEng) return titleEng[0].trim() + ', Copenhagen';
+
+  // 2순위: note에서 숫자+영문 구절 (도로명 주소)
+  const addr = parts.find(p => /\d/.test(p) && /[a-zA-Z]{2,}/.test(p));
+  if (addr) return addr + ' Copenhagen';
+
+  // 3순위: note에서 영문 장소명
+  const engPart = parts.find(p => /[a-zA-Z]{4,}/.test(p));
+  if (engPart) return engPart + ' Copenhagen';
+
   // 최후: 제목 그대로
-  return (it.title || '') + ', Copenhagen';
+  return title + ' Copenhagen';
 }
 
 /* 터치 기기 감지: CSS 미디어쿼리가 오작동하는 기기 대비 */
@@ -1508,7 +1514,7 @@ function renderFest(){
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;align-items:center;flex-shrink:0">
         <button class="fav-btn" title="즐겨찾기">${isFav?'♥':'♡'}</button>
-        <a href="https://maps.google.com/?q=${encodeURIComponent(ev.address||ev.venue)}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
+        <a href="${gMapsUrl((ev.venue||ev.title) + ' ' + (ev.address||'Copenhagen'))}" target="_blank" title="Google Maps로 열기" style="font-size:12px;text-decoration:none;opacity:.5" onclick="event.stopPropagation()">📍</a>
       </div>`;
     const cb = row.querySelector('.fest-cb');
     const titleEl = row.querySelector('.fest-title-link');
