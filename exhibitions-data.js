@@ -1,4 +1,4 @@
-/* exhibitions-data.js — 3 Days of Design 2026 브랜드·전시 데이터 */
+/* exhibitions-data.js — 3 Days of Design 2026 브랜드·전시 데이터 (한국어 번역) */
 /* 자동 생성: generate_exhibitions.py (2026-06-03) */
 /* 총 552개 브랜드, 870개 이벤트 */
 
@@ -12,32 +12,32 @@ const EXHIBITIONS = [
     slug:'fanzi',
     desc:'FANZI is a spatial practice based in Copenhagen, working across art, design and architecture. Projects move between…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Slow Writing: Live Calligraphy at The Pavilion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c41005bfaf60bca91bdd0'},
-      {day:10,start:'11:00',end:'11:45',title:'Stack by studio MOTO- Designing a System for a Changing Life',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0daa48d7a2bc74493fcca8',cats:['talk','workshop']},
-      {day:10,start:'12:00',end:'13:00',title:'Designer Walks: Inside FANZI’s “Welcome. Slow Down.”',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c62501a4d66d808b46fc6'},
-      {day:10,start:'13:00',end:'13:30',title:'Constructional Thinking',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c8a3de2be153d353807b3',location:'Posten 10D, 1577 Copenhagen'},
-      {day:10,start:'14:00',end:'14:30',title:'Softness Beyond Foam',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c4373e4d75fcae6b6c192'},
-      {day:10,start:'16:00',end:'17:00',title:'Designer Walks: Inside FANZI’s “Welcome. Slow Down.”',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c636a92416d8433ea54d3'},
-      {day:10,start:'20:00',end:'21:00',title:'Slow Writing: Live Calligraphy at The Pavilion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c41cb2d886985eda61fd4'},
-      {day:10,start:'9:00',end:'9:30',title:'Single Origin Sparkling Tea Tasting Salon',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0da4f90dcd972ece8e3d13',cats:['drinks','talk']},
-      {day:10,start:'9:00',end:'10:00',title:'Slow Down & Sketch Your THE MAT',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a1c1dd106ff06227150e356',location:'Posten 10D, 1577 Copenhagen'},
-      {day:10,start:'9:30',end:'10:00',title:'Post Industry – A Conversation on Glass, Craft, and Transformation',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1c228e201c9e9646511d16'},
-      {day:11,start:'10:00',end:'11:00',title:'Designer Walks: Inside FANZI’s “Welcome. Slow Down.”',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c63e23835eccaf1897890'},
-      {day:11,start:'11:00',end:'11:30',title:'Softness Beyond Foam',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c43c8b31b3b8b4ebde689'},
-      {day:11,start:'11:30',end:'12:00',title:'Post Industry – A Conversation on Glass, Craft, and Transformation',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1c22dbe819b4d278fb7c3c'},
-      {day:11,start:'13:30',end:'14:00',title:'Why Collaboration Matters',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c83a557dd9f844672dbb5',location:'Posten 10D, 1577 Copenhagen'},
-      {day:11,start:'14:00',end:'15:00',title:'Designer Walks: Inside FANZI’s “Welcome. Slow Down.”',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c64245aaa376931587861'},
-      {day:11,start:'15:00',end:'16:00',title:'Slow Writing: Live Calligraphy at The Pavilion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c425c31868809818154fc'},
-      {day:11,start:'9:00',end:'10:00',title:'Slow Writing: Live Calligraphy at The Pavilion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c4220359f8a6511ef984d'},
-      {day:11,start:'9:00',end:'10:00',title:'Slow Down & Sketch Your THE MAT',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a1c1e023c61cc3a561cd0c8',location:'Posten 10D, 1577 Copenhagen'},
-      {day:12,start:'10:00',end:'11:00',title:'Designer Walks: Inside FANZI’s “Welcome. Slow Down.”',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c650d7973e6f3d038c8bd'},
-      {day:12,start:'11:30',end:'12:00',title:'Single Origin Sparkling Tea Tasting Salon',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0da5819cc7ad4f73212efb',cats:['drinks','talk']},
-      {day:12,start:'12:00',end:'12:30',title:'Post Industry – A Conversation on Glass, Craft, and Transformation',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1c2322f96cad36ed744ed4'},
-      {day:12,start:'13:00',end:'14:00',title:'Slow Writing: Live Calligraphy at The Pavilion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c429968ffc3cdf2eccc95'},
-      {day:12,start:'14:00',end:'14:30',title:'Softness Beyond Foam',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c440104949789e3e4172d'},
-      {day:12,start:'16:00',end:'17:00',title:'Designer Walks: Inside FANZI’s “Welcome. Slow Down.”',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c655bb64f780744f8b3ff'},
-      {day:12,start:'17:00',end:'18:00',title:'Slow Writing: Live Calligraphy at The Pavilion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c42cca5044bd45df1f31d'},
-      {day:12,start:'9:00',end:'10:00',title:'Slow Down & Sketch Your THE MAT',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a1c1e34623b5cdf782dfcc7',location:'Posten 10D, 1577 Copenhagen'},
+      {day:10,start:'10:00',end:'11:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c41005bfaf60bca91bdd0'},
+      {day:10,start:'11:00',end:'11:45',title:'Stack by studio MOTO - 변화하는 삶을 위한 시스템 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0daa48d7a2bc74493fcca8',cats:['talk','workshop']},
+      {day:10,start:'12:00',end:'13:00',title:'디자이너 워크: FANZI의 "Welcome. Slow Down." 내부 탐방',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c62501a4d66d808b46fc6'},
+      {day:10,start:'13:00',end:'13:30',title:'구조적 사고',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c8a3de2be153d353807b3',location:'Posten 10D, 1577 Copenhagen'},
+      {day:10,start:'14:00',end:'14:30',title:'폼을 넘어선 부드러움',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c4373e4d75fcae6b6c192'},
+      {day:10,start:'16:00',end:'17:00',title:'디자이너 워크: FANZI의 "Welcome. Slow Down." 내부 탐방',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c636a92416d8433ea54d3'},
+      {day:10,start:'20:00',end:'21:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c41cb2d886985eda61fd4'},
+      {day:10,start:'9:00',end:'9:30',title:'싱글 오리진 스파클링 티 테이스팅 살롱',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0da4f90dcd972ece8e3d13',cats:['drinks','talk']},
+      {day:10,start:'9:00',end:'10:00',title:'느리게, THE MAT 스케치하기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a1c1dd106ff06227150e356',location:'Posten 10D, 1577 Copenhagen'},
+      {day:10,start:'9:30',end:'10:00',title:'포스트 인더스트리 – 유리, 공예, 그리고 변화에 관한 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1c228e201c9e9646511d16'},
+      {day:11,start:'10:00',end:'11:00',title:'디자이너 워크: FANZI의 "Welcome. Slow Down." 내부 탐방',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c63e23835eccaf1897890'},
+      {day:11,start:'11:00',end:'11:30',title:'폼을 넘어선 부드러움',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c43c8b31b3b8b4ebde689'},
+      {day:11,start:'11:30',end:'12:00',title:'포스트 인더스트리 – 유리, 공예, 그리고 변화에 관한 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1c22dbe819b4d278fb7c3c'},
+      {day:11,start:'13:30',end:'14:00',title:'협업이 중요한 이유',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c83a557dd9f844672dbb5',location:'Posten 10D, 1577 Copenhagen'},
+      {day:11,start:'14:00',end:'15:00',title:'디자이너 워크: FANZI의 "Welcome. Slow Down." 내부 탐방',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c64245aaa376931587861'},
+      {day:11,start:'15:00',end:'16:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c425c31868809818154fc'},
+      {day:11,start:'9:00',end:'10:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c4220359f8a6511ef984d'},
+      {day:11,start:'9:00',end:'10:00',title:'느리게, THE MAT 스케치하기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a1c1e023c61cc3a561cd0c8',location:'Posten 10D, 1577 Copenhagen'},
+      {day:12,start:'10:00',end:'11:00',title:'디자이너 워크: FANZI의 "Welcome. Slow Down." 내부 탐방',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c650d7973e6f3d038c8bd'},
+      {day:12,start:'11:30',end:'12:00',title:'싱글 오리진 스파클링 티 테이스팅 살롱',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0da5819cc7ad4f73212efb',cats:['drinks','talk']},
+      {day:12,start:'12:00',end:'12:30',title:'포스트 인더스트리 – 유리, 공예, 그리고 변화에 관한 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1c2322f96cad36ed744ed4'},
+      {day:12,start:'13:00',end:'14:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c429968ffc3cdf2eccc95'},
+      {day:12,start:'14:00',end:'14:30',title:'폼을 넘어선 부드러움',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c440104949789e3e4172d'},
+      {day:12,start:'16:00',end:'17:00',title:'디자이너 워크: FANZI의 "Welcome. Slow Down." 내부 탐방',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c655bb64f780744f8b3ff'},
+      {day:12,start:'17:00',end:'18:00',title:'슬로우 라이팅: The Pavilion 라이브 캘리그래피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c42cca5044bd45df1f31d'},
+      {day:12,start:'9:00',end:'10:00',title:'느리게, THE MAT 스케치하기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a1c1e34623b5cdf782dfcc7',location:'Posten 10D, 1577 Copenhagen'},
     ],
   },
   {
@@ -49,30 +49,30 @@ const EXHIBITIONS = [
     slug:'Technogym',
     desc:'Technogym is a global fitness and wellness industry leader. Their innovative & high–quality equipment, technologies,…',
     events:[
-      {day:10,start:'10:00',end:'10:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b1de4ecf529ee8b3e5e1',location:'Posten 10C, 1577 Copenhagen'},
-      {day:10,start:'12:00',end:'12:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b457cff7d863ec98fbf0',location:'Posten 10C, 1577 Copenhagen'},
-      {day:10,start:'14:00',end:'14:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b4c0ec42570e6ae3d852',location:'Posten 10C, 1577 Copenhagen'},
-      {day:10,start:'16:00',end:'16:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b4f028a2cfa1b328caa2',location:'Posten 10C, 1577 Copenhagen'},
-      {day:10,start:'16:00',end:'18:00',title:'DJ & Afternoon Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48e5adb9e3cd7b319b8a0'},
-      {day:10,start:'8:00',end:'8:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b18f34eef5e35f3113d7',location:'Posten 10C, 1577 Copenhagen'},
-      {day:10,start:'8:00',end:'8:45',title:'Breathwork Session',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2168250a90896d3b09899'},
-      {day:10,start:'9:00',end:'9:45',title:'Breathwork Session',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2170e72a81126b7686776'},
-      {day:11,start:'10:00',end:'10:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b5c9b3fb4428dc305b47',location:'Posten 10C, 1577 Copenhagen'},
-      {day:11,start:'12:00',end:'12:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b608f1b03299f54944e2',location:'Posten 10C, 1577 Copenhagen'},
-      {day:11,start:'14:00',end:'14:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b641dd2bbbff44760e1f',location:'Posten 10C, 1577 Copenhagen'},
-      {day:11,start:'16:00',end:'16:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4753c79934eda5be22f4d',location:'Posten 10C, 1577 Copenhagen'},
-      {day:11,start:'16:00',end:'18:00',title:'DJ & Afternoon Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48e99bc5cfcaaea819bc9'},
-      {day:11,start:'8:00',end:'8:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b586446e6702d0a52c63',location:'Posten 10C, 1577 Copenhagen'},
-      {day:11,start:'8:00',end:'8:45',title:'Breathwork Session',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2176572d607ed30b4db3e'},
-      {day:11,start:'9:00',end:'9:45',title:'Breathwork Session',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f21797600c707b5cc975ab'},
-      {day:12,start:'10:00',end:'10:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b857ef9ba774986e893d',location:'Posten 10C, 1577 Copenhagen'},
-      {day:12,start:'12:00',end:'12:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b8afe9beeb38881591b2',location:'Posten 10C, 1577 Copenhagen'},
-      {day:12,start:'14:00',end:'14:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b8d73d4e421ad1378692',location:'Posten 10C, 1577 Copenhagen'},
-      {day:12,start:'16:00',end:'16:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b905327dd01266a17898',location:'Posten 10C, 1577 Copenhagen'},
-      {day:12,start:'16:00',end:'18:00',title:'DJ & Afternoon Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48ec66daaf736b7c2c15f'},
-      {day:12,start:'8:00',end:'8:45',title:'Technogym Reform Pilates',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b7d630382630847cc86b',location:'Posten 10C, 1577 Copenhagen'},
-      {day:12,start:'8:00',end:'8:45',title:'Breathwork Session',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f217c18626cda95d97eb67'},
-      {day:12,start:'9:00',end:'9:45',title:'Breathwork Session',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f217ef8b77f37ebb251edd'},
+      {day:10,start:'10:00',end:'10:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b1de4ecf529ee8b3e5e1',location:'Posten 10C, 1577 Copenhagen'},
+      {day:10,start:'12:00',end:'12:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b457cff7d863ec98fbf0',location:'Posten 10C, 1577 Copenhagen'},
+      {day:10,start:'14:00',end:'14:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b4c0ec42570e6ae3d852',location:'Posten 10C, 1577 Copenhagen'},
+      {day:10,start:'16:00',end:'16:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b4f028a2cfa1b328caa2',location:'Posten 10C, 1577 Copenhagen'},
+      {day:10,start:'16:00',end:'18:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48e5adb9e3cd7b319b8a0'},
+      {day:10,start:'8:00',end:'8:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b18f34eef5e35f3113d7',location:'Posten 10C, 1577 Copenhagen'},
+      {day:10,start:'8:00',end:'8:45',title:'호흡 수련 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2168250a90896d3b09899'},
+      {day:10,start:'9:00',end:'9:45',title:'호흡 수련 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2170e72a81126b7686776'},
+      {day:11,start:'10:00',end:'10:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b5c9b3fb4428dc305b47',location:'Posten 10C, 1577 Copenhagen'},
+      {day:11,start:'12:00',end:'12:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b608f1b03299f54944e2',location:'Posten 10C, 1577 Copenhagen'},
+      {day:11,start:'14:00',end:'14:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b641dd2bbbff44760e1f',location:'Posten 10C, 1577 Copenhagen'},
+      {day:11,start:'16:00',end:'16:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4753c79934eda5be22f4d',location:'Posten 10C, 1577 Copenhagen'},
+      {day:11,start:'16:00',end:'18:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48e99bc5cfcaaea819bc9'},
+      {day:11,start:'8:00',end:'8:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b586446e6702d0a52c63',location:'Posten 10C, 1577 Copenhagen'},
+      {day:11,start:'8:00',end:'8:45',title:'호흡 수련 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2176572d607ed30b4db3e'},
+      {day:11,start:'9:00',end:'9:45',title:'호흡 수련 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f21797600c707b5cc975ab'},
+      {day:12,start:'10:00',end:'10:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b857ef9ba774986e893d',location:'Posten 10C, 1577 Copenhagen'},
+      {day:12,start:'12:00',end:'12:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b8afe9beeb38881591b2',location:'Posten 10C, 1577 Copenhagen'},
+      {day:12,start:'14:00',end:'14:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b8d73d4e421ad1378692',location:'Posten 10C, 1577 Copenhagen'},
+      {day:12,start:'16:00',end:'16:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b905327dd01266a17898',location:'Posten 10C, 1577 Copenhagen'},
+      {day:12,start:'16:00',end:'18:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48ec66daaf736b7c2c15f'},
+      {day:12,start:'8:00',end:'8:45',title:'Technogym 리폼 필라테스',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f0b7d630382630847cc86b',location:'Posten 10C, 1577 Copenhagen'},
+      {day:12,start:'8:00',end:'8:45',title:'호흡 수련 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f217c18626cda95d97eb67'},
+      {day:12,start:'9:00',end:'9:45',title:'호흡 수련 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f217ef8b77f37ebb251edd'},
     ],
   },
   {
@@ -84,23 +84,23 @@ const EXHIBITIONS = [
     slug:'designmuseum-danmark',
     desc:'Located in the heart of central Copenhagen, Designmuseum Danmark is Denmark’s leading museum of Danish and…',
     events:[
-      {day:10,start:'11:00',end:'11:15',title:'Opening of the Vibskov Pavilion',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f084b68b6334d9ea963ae6',cats:['drinks','talk']},
-      {day:10,start:'11:30',end:'12:30',title:'Belonging by Design: Shaping Future Consumption',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b48589aa4ee0f56dc9fe'},
-      {day:10,start:'13:00',end:'13:45',title:'Design, What the Fuck?!',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b4e56dbafb10d39b145b'},
-      {day:10,start:'14:00',end:'14:45',title:'Zero Waste – What is the future of Danish Furniture Design?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b54a64a8b5bbe41bcb90'},
-      {day:10,start:'15:00',end:'15:45',title:'DPP – Data to Business – from compliance to competitiveness',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b5a2dbb756448b14ee2a'},
-      {day:10,start:'16:00',end:'16:45',title:'Social event and networking',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b5ebeacedb84011ceeb9',cats:['drinks','talk']},
-      {day:10,start:'18:15',end:'19:00',title:'The Great Material Shift / with Henrik Vibskov',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1d81bc009f44a9c403447',cats:['drinks','talk']},
-      {day:11,start:'11:30',end:'12:30',title:'The Things We Keep - hosted by APOP',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f09e4ca3f5bb1efe47c483'},
-      {day:11,start:'13:00',end:'13:45',title:'ESG to the C-Suite: From Compliance to Value',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b65208a3fc7054e87eec'},
-      {day:11,start:'14:00',end:'14:45',title:'The evolution of formgivning',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b6ad8d75d8ba0f4d8b91'},
-      {day:11,start:'15:00',end:'15:45',title:'Design as a European Superpower',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b72082b5ce2942c11ca1'},
-      {day:11,start:'16:00',end:'17:45',title:'Salonformat with pen dialogue',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b7a566a303dc6a683d68'},
-      {day:11,start:'18:00',end:'19:00',title:'Talk: Living Verner Panton',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f7e0a7ca82b4b08189c',cats:['drinks','talk']},
-      {day:11,start:'19:00',end:'20:00',title:'Living Verner Panton: Jazz & Drinks w. Cort Lunde',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043fffb3d53c99949f5c15'},
-      {day:12,start:'13:00',end:'13:45',title:'Imperfect Aesthetics – Perfect or not so perfect?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b97965dffcbb240a70ea'},
-      {day:12,start:'14:00',end:'14:45',title:'Born circular – Scaling Circularity',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b9b4168c6272238365e9'},
-      {day:12,start:'16:00',end:'19:30',title:'Kontrapunkt – Opening Event',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1de42274f9d53ca2f35c1',cats:['drinks','talk']},
+      {day:10,start:'11:00',end:'11:15',title:'Vibskov Pavilion 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f084b68b6334d9ea963ae6',cats:['drinks','talk']},
+      {day:10,start:'11:30',end:'12:30',title:'디자인으로 만드는 소속감: 미래 소비의 형태',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b48589aa4ee0f56dc9fe'},
+      {day:10,start:'13:00',end:'13:45',title:'디자인, 대체 뭐란 말인가?!',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b4e56dbafb10d39b145b'},
+      {day:10,start:'14:00',end:'14:45',title:'제로 웨이스트 – 덴마크 가구 디자인의 미래는?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b54a64a8b5bbe41bcb90'},
+      {day:10,start:'15:00',end:'15:45',title:'DPP – 데이터에서 비즈니스로 – 컴플라이언스에서 경쟁력으로',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b5a2dbb756448b14ee2a'},
+      {day:10,start:'16:00',end:'16:45',title:'소셜 이벤트 및 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b5ebeacedb84011ceeb9',cats:['drinks','talk']},
+      {day:10,start:'18:15',end:'19:00',title:'위대한 소재의 전환 / Henrik Vibskov와 함께',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1d81bc009f44a9c403447',cats:['drinks','talk']},
+      {day:11,start:'11:30',end:'12:30',title:'우리가 간직하는 것들 - APOP 주최',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f09e4ca3f5bb1efe47c483'},
+      {day:11,start:'13:00',end:'13:45',title:'ESG를 경영진에게: 컴플라이언스에서 가치 창출로',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b65208a3fc7054e87eec'},
+      {day:11,start:'14:00',end:'14:45',title:'폼기브닝의 진화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b6ad8d75d8ba0f4d8b91'},
+      {day:11,start:'15:00',end:'15:45',title:'유럽의 초강대국으로서의 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b72082b5ce2942c11ca1'},
+      {day:11,start:'16:00',end:'17:45',title:'Salonformat 펜 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b7a566a303dc6a683d68'},
+      {day:11,start:'18:00',end:'19:00',title:'토크: Verner Panton과 함께 살다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f7e0a7ca82b4b08189c',cats:['drinks','talk']},
+      {day:11,start:'19:00',end:'20:00',title:'Living Verner Panton: Cort Lunde와 함께하는 재즈 & 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043fffb3d53c99949f5c15'},
+      {day:12,start:'13:00',end:'13:45',title:'불완전한 미학 – 완벽한가, 완벽하지 않은가?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b97965dffcbb240a70ea'},
+      {day:12,start:'14:00',end:'14:45',title:'태생부터 순환적으로 – 순환성의 확장',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f0b9b4168c6272238365e9'},
+      {day:12,start:'16:00',end:'19:30',title:'Kontrapunkt – 오프닝 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1de42274f9d53ca2f35c1',cats:['drinks','talk']},
     ],
   },
   {
@@ -112,22 +112,22 @@ const EXHIBITIONS = [
     slug:'cosentino',
     desc:'To inspire people through innovative and sustainable spaces. Cosentino is a global manufacturer of eco–friendly and…',
     events:[
-      {day:10,start:'10:00',end:'10:30',title:'ECLOS Launch | Redefining Surface Innovation',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05b651f969067d0a686fc',cats:['drinks','launch']},
-      {day:10,start:'11:00',end:'12:00',title:'Cosentino x Gaggenau – The Future of Kitchens',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f065ffcc152f4f9f2d0ff0',cats:['drinks','talk']},
-      {day:10,start:'12:00',end:'12:30',title:'A Study of Materials | Monique Consentino & Cosentino',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18186108c6a82615bc4411',cats:['drinks','talk']},
-      {day:10,start:'13:00',end:'13:30',title:'TUNTU | Designing for the Senses',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f2fdf53aaf6e2f463b6ed6'},
+      {day:10,start:'10:00',end:'10:30',title:'ECLOS 런칭 | 표면 혁신의 재정의',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05b651f969067d0a686fc',cats:['drinks','launch']},
+      {day:10,start:'11:00',end:'12:00',title:'Cosentino x Gaggenau – 주방의 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f065ffcc152f4f9f2d0ff0',cats:['drinks','talk']},
+      {day:10,start:'12:00',end:'12:30',title:'소재 연구 | Monique Consentino & Cosentino',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18186108c6a82615bc4411',cats:['drinks','talk']},
+      {day:10,start:'13:00',end:'13:30',title:'TUNTU | 감각을 위한 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f2fdf53aaf6e2f463b6ed6'},
       {day:10,start:'16:00',end:'18:00',title:'ECLOS & ECHOS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0626e57de0a21af6060ab',cats:['drinks','launch']},
       {day:10,start:'16:00',end:'16:45',title:'Patkau Studio Maitake x ECLOS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdd2afa871c88193fd4187',cats:['drinks','talk']},
-      {day:11,start:'10:00',end:'10:30',title:'A Study of Materials | Monique Consentino & Cosentino',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1818bc94c9fa48a70d3262',cats:['drinks','talk']},
-      {day:11,start:'11:00',end:'12:00',title:'Facades of the Future',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02e9a0fb3641e1499fab28',cats:['drinks','talk']},
-      {day:11,start:'12:00',end:'13:00',title:'Cosentino x Gaggenau – The Future of Kitchens',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f067a5a318c4f100634d02',cats:['drinks','talk']},
-      {day:11,start:'13:30',end:'14:00',title:'ECLOS Launch | Redefining Surface Innovation',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05bcf58458b33a25d4f76',cats:['drinks','launch']},
-      {day:11,start:'14:30',end:'15:00',title:'Performance in Action | Live Material Testing',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f086f885aac54bdbe999f6'},
+      {day:11,start:'10:00',end:'10:30',title:'소재 연구 | Monique Consentino & Cosentino',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1818bc94c9fa48a70d3262',cats:['drinks','talk']},
+      {day:11,start:'11:00',end:'12:00',title:'미래의 파사드',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02e9a0fb3641e1499fab28',cats:['drinks','talk']},
+      {day:11,start:'12:00',end:'13:00',title:'Cosentino x Gaggenau – 주방의 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f067a5a318c4f100634d02',cats:['drinks','talk']},
+      {day:11,start:'13:30',end:'14:00',title:'ECLOS 런칭 | 표면 혁신의 재정의',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05bcf58458b33a25d4f76',cats:['drinks','launch']},
+      {day:11,start:'14:30',end:'15:00',title:'퍼포먼스 인 액션 | 라이브 소재 테스트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f086f885aac54bdbe999f6'},
       {day:11,start:'16:00',end:'18:00',title:'DEKTON & DJ',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0635e3a62f63912174810'},
-      {day:12,start:'12:00',end:'12:30',title:'A Study of Materials | Monique Consentino & Cosentino',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1819095e03f625d570fedd',cats:['drinks','talk']},
-      {day:12,start:'13:00',end:'13:30',title:'ECLOS Launch | Redefining Surface Innovation',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05c944a3c2a71caf3a87a',cats:['drinks','launch']},
+      {day:12,start:'12:00',end:'12:30',title:'소재 연구 | Monique Consentino & Cosentino',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1819095e03f625d570fedd',cats:['drinks','talk']},
+      {day:12,start:'13:00',end:'13:30',title:'ECLOS 런칭 | 표면 혁신의 재정의',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f05c944a3c2a71caf3a87a',cats:['drinks','launch']},
       {day:12,start:'14:00',end:'16:00',title:'SILESTONE & SOUND',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f064677e3a944c70e85e95'},
-      {day:12,start:'9:30',end:'10:00',title:'Performance in Action | Live Material Testing',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f08437854cfa0085b32d80'},
+      {day:12,start:'9:30',end:'10:00',title:'퍼포먼스 인 액션 | 라이브 소재 테스트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f08437854cfa0085b32d80'},
     ],
   },
   {
@@ -139,20 +139,20 @@ const EXHIBITIONS = [
     slug:'aicep-portugal-global',
     desc:'Portugal’s participation at 3daysofdesign under the Made in Portugal Naturally brand—presents Momentum, a curatorial…',
     events:[
-      {day:10,start:'11:00',end:'11:20',title:'“From the Ocean\'s Point of View’’ Film & Porto',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b5b948d3b57831e82179',cats:['drinks','tour']},
-      {day:10,start:'13:30',end:'14:15',title:'Portugal Space: The Making of',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bbcb987639b0b98a9a66'},
-      {day:10,start:'15:00',end:'15:20',title:'“From the Ocean\'s Point of View’’ Film & Porto',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4bd6679c1072076a39eb5',cats:['drinks','tour']},
-      {day:11,start:'10:30',end:'11:15',title:'Shaping Stone: Circular Narratives in Design',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bc4128255aa665703391'},
-      {day:11,start:'11:40',end:'12:25',title:'DARONO – TALK Rewoven Matter: The Story of Upcycling by Darono',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bdff9ecc1f8125fa84ff'},
-      {day:11,start:'12:30',end:'13:15',title:'DARONO – WORKSHOP Macramé Workshop: The Practice of Knots by Darono',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4be6818680af4c3341cbe'},
-      {day:11,start:'13:30',end:'14:00',title:'Viúva Lamego - Portuguese tiles from tradition to contemporary',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a199c750c59a613d3e4c757'},
-      {day:11,start:'14:40',end:'15:25',title:'PARDO – TALK Crafted by Nature - Textiles by Pardo',icon:'🚀',color:'#d99021',label:'런칭',id:'69f4c313341c0dcb4e8d9b39'},
-      {day:11,start:'15:30',end:'16:00',title:'“From the Ocean\'s Point of View’’ Film & Porto',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c4866d0ed969f8e76a03',cats:['drinks','tour']},
-      {day:11,start:'15:30',end:'16:15',title:'Stone Stories: Portuguese Material Cultures',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4c598989e0e11346c6a58'},
-      {day:11,start:'17:00',end:'17:45',title:'MAKIHA- An Amplified Atlantic Perspective - THE PERFORMANCE AGENCY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1710ebb31d1021f8bc47c4'},
-      {day:12,start:'11:00',end:'11:30',title:'“From the Ocean\'s Point of View’’ Film & Porto',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c86b54e8debf8315718c',cats:['drinks','tour']},
+      {day:10,start:'11:00',end:'11:20',title:'"From the Ocean\'s Point of View" 영화 & 포르투',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b5b948d3b57831e82179',cats:['drinks','tour']},
+      {day:10,start:'13:30',end:'14:15',title:'Portugal Space: 메이킹 오브',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bbcb987639b0b98a9a66'},
+      {day:10,start:'15:00',end:'15:20',title:'"From the Ocean\'s Point of View" 영화 & 포르투',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4bd6679c1072076a39eb5',cats:['drinks','tour']},
+      {day:11,start:'10:30',end:'11:15',title:'돌을 빚다: 디자인 속 순환 내러티브',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bc4128255aa665703391'},
+      {day:11,start:'11:40',end:'12:25',title:'DARONO – TALK 재직조된 소재: Darono의 업사이클링 이야기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bdff9ecc1f8125fa84ff'},
+      {day:11,start:'12:30',end:'13:15',title:'DARONO – WORKSHOP 매듭의 실습: Darono의 마크라메 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4be6818680af4c3341cbe'},
+      {day:11,start:'13:30',end:'14:00',title:'Viúva Lamego - 전통에서 현대로, 포르투갈 타일',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a199c750c59a613d3e4c757'},
+      {day:11,start:'14:40',end:'15:25',title:'PARDO – TALK 자연이 빚은 공예 - Pardo의 텍스타일',icon:'🚀',color:'#d99021',label:'런칭',id:'69f4c313341c0dcb4e8d9b39'},
+      {day:11,start:'15:30',end:'16:00',title:'"From the Ocean\'s Point of View" 영화 & 포르투',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c4866d0ed969f8e76a03',cats:['drinks','tour']},
+      {day:11,start:'15:30',end:'16:15',title:'스톤 스토리: 포르투갈 소재 문화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4c598989e0e11346c6a58'},
+      {day:11,start:'17:00',end:'17:45',title:'MAKIHA - 증폭된 대서양의 시각 - THE PERFORMANCE AGENCY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1710ebb31d1021f8bc47c4'},
+      {day:12,start:'11:00',end:'11:30',title:'"From the Ocean\'s Point of View" 영화 & 포르투',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c86b54e8debf8315718c',cats:['drinks','tour']},
       {day:12,start:'11:40',end:'12:25',title:'MAKIHA — THE ENTERPRISE PERFORMANCE AGENCY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fcde82e37ca2b02133d69b'},
-      {day:12,start:'15:00',end:'15:00',title:'“From the Ocean\'s Point of View’’ Film & Porto',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c51476af25155acea92b',cats:['drinks','tour']},
+      {day:12,start:'15:00',end:'15:00',title:'"From the Ocean\'s Point of View" 영화 & 포르투',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c51476af25155acea92b',cats:['drinks','tour']},
     ],
   },
   {
@@ -164,19 +164,19 @@ const EXHIBITIONS = [
     slug:'ocee-four-design',
     desc:'Ocee & Four Design creates contemporary furniture shaped by Scandinavian design and British craftsmanship. The…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Arrive by Boat',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79579b41ade4d673d242f',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:10,start:'12:00',end:'13:00',title:'Snackable lunch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198f849ba4d7a67cd1c4c1',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:10,start:'15:00',end:'17:00',title:'Live Jazz and Designers’ Meet & Greet',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198cf148dd49a2d3a83dd2',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:10,start:'9:00',end:'10:00',title:'BMO Breakfast: Start 3daysofdesign Right',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79c57cf2f0a6af3e782ca',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:11,start:'10:00',end:'11:00',title:'Arrive by Boat',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f795b4d48c8ab544e3f924',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:11,start:'11:00',end:'14:00',title:'20 years of built to last, designed to come apart',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f78e6eaffab27d6f152a9b',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:11,start:'12:00',end:'13:00',title:'Snackable lunch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198fc6b259504fcc1c6d3d',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:11,start:'9:00',end:'10:00',title:'BMO Breakfast: Start 3daysofdesign Right',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79cc02bffd4d60bf15662',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:12,start:'10:00',end:'11:00',title:'Arrive by Boat',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f7961f3d80607f94af0dae',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:12,start:'11:00',end:'14:00',title:'20 years of built to last, designed to come apart',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f78f66b855359a021403ad',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:12,start:'12:00',end:'13:00',title:'Snackable lunch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198ffdc34c916edea29788',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:12,start:'15:00',end:'17:00',title:'Networking, Tournament & Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79261c3df2153608b2483',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
-      {day:12,start:'9:00',end:'10:00',title:'BMO Breakfast: Start 3daysofdesign Right',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79d13212c94f850f33afb',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:10,start:'10:00',end:'11:00',title:'보트로 도착하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79579b41ade4d673d242f',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:10,start:'12:00',end:'13:00',title:'가볍게 즐기는 런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198f849ba4d7a67cd1c4c1',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:10,start:'15:00',end:'17:00',title:'라이브 재즈와 디자이너 만남의 시간',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198cf148dd49a2d3a83dd2',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:10,start:'9:00',end:'10:00',title:'BMO 조찬: 3daysofdesign을 제대로 시작하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79c57cf2f0a6af3e782ca',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:11,start:'10:00',end:'11:00',title:'보트로 도착하기',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f795b4d48c8ab544e3f924',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:11,start:'11:00',end:'14:00',title:'오래 쓰도록 만들고, 분해 가능하도록 디자인한 20년',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f78e6eaffab27d6f152a9b',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:11,start:'12:00',end:'13:00',title:'가볍게 즐기는 런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198fc6b259504fcc1c6d3d',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:11,start:'9:00',end:'10:00',title:'BMO 조찬: 3daysofdesign을 제대로 시작하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79cc02bffd4d60bf15662',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:12,start:'10:00',end:'11:00',title:'보트로 도착하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f7961f3d80607f94af0dae',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:12,start:'11:00',end:'14:00',title:'오래 쓰도록 만들고, 분해 가능하도록 디자인한 20년',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f78f66b855359a021403ad',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:12,start:'12:00',end:'13:00',title:'가볍게 즐기는 런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a198ffdc34c916edea29788',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:12,start:'15:00',end:'17:00',title:'네트워킹, 토너먼트 & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79261c3df2153608b2483',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
+      {day:12,start:'9:00',end:'10:00',title:'BMO 조찬: 3daysofdesign을 제대로 시작하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f79d13212c94f850f33afb',location:'Frederiksholms Kanal 28E, 1473 Copenhagen'},
     ],
   },
   {
@@ -188,18 +188,18 @@ const EXHIBITIONS = [
     slug:'fritz-hansen',
     desc:'Founded in Denmark in 1872, Fritz Hansen plays an active role in the evolution of Danish design, shaping a legacy of…',
     events:[
-      {day:10,start:'10:00',end:'18:00',title:'Fritz Hansen Listening Lounge',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46f264ea0f0aa35030413',cats:['talk','workshop']},
-      {day:10,start:'10:00',end:'12:00',title:'Live DJ session with Wilone (DK)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d771dcd8ec3aa6387da15'},
-      {day:10,start:'14:00',end:'16:00',title:'Live DJ session with Louise Chen (FR)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d77c1afd1e5100a86f2d2'},
-      {day:11,start:'10:00',end:'18:00',title:'Fritz Hansen Listening Lounge',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46f723af134d5a1126dc7'},
-      {day:11,start:'10:00',end:'12:00',title:'Live DJ session with Mikkel Wonsbek (DK)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d786294e6f63745866aee'},
-      {day:11,start:'12:00',end:'14:00',title:'Live DJ session with Namansi (IT)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d78bcfb778bf245bedf9e'},
-      {day:11,start:'16:00',end:'18:00',title:'Live DJ session with Harrison Heat (DK)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7950b6fc05f0ec92ec81'},
-      {day:12,start:'10:00',end:'18:00',title:'Fritz Hansen Listening Lounge',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46faf6af6041eaede78ec'},
-      {day:12,start:'10:00',end:'12:00',title:'Live DJ session with Mads Axelsen (DK)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7a0d80c9a754be5e30ce'},
-      {day:12,start:'12:00',end:'14:00',title:'Live DJ session with Alfredo92 (DK)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7a3f88f5fc1397853bab'},
-      {day:12,start:'14:00',end:'16:00',title:'Live DJ session with Willone (DK)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7a886b91ca86692adad8'},
-      {day:12,start:'16:00',end:'18:00',title:'Live DJ session with Namansi (IT)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7abbeec6d45d28007431'},
+      {day:10,start:'10:00',end:'18:00',title:'Fritz Hansen 리스닝 라운지',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46f264ea0f0aa35030413',cats:['talk','workshop']},
+      {day:10,start:'10:00',end:'12:00',title:'Wilone (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d771dcd8ec3aa6387da15'},
+      {day:10,start:'14:00',end:'16:00',title:'Louise Chen (FR)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d77c1afd1e5100a86f2d2'},
+      {day:11,start:'10:00',end:'18:00',title:'Fritz Hansen 리스닝 라운지',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46f723af134d5a1126dc7'},
+      {day:11,start:'10:00',end:'12:00',title:'Mikkel Wonsbek (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d786294e6f63745866aee'},
+      {day:11,start:'12:00',end:'14:00',title:'Namansi (IT)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d78bcfb778bf245bedf9e'},
+      {day:11,start:'16:00',end:'18:00',title:'Harrison Heat (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7950b6fc05f0ec92ec81'},
+      {day:12,start:'10:00',end:'18:00',title:'Fritz Hansen 리스닝 라운지',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f46faf6af6041eaede78ec'},
+      {day:12,start:'10:00',end:'12:00',title:'Mads Axelsen (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7a0d80c9a754be5e30ce'},
+      {day:12,start:'12:00',end:'14:00',title:'Alfredo92 (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7a3f88f5fc1397853bab'},
+      {day:12,start:'14:00',end:'16:00',title:'Willone (DK)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7a886b91ca86692adad8'},
+      {day:12,start:'16:00',end:'18:00',title:'Namansi (IT)의 라이브 DJ 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d7abbeec6d45d28007431'},
     ],
   },
   {
@@ -211,18 +211,18 @@ const EXHIBITIONS = [
     slug:'nuura',
     desc:'Founded in 2017 with a vision to create sensuous lighting designs that enhances ambiance and transform spaces. Nuura…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Light therapy',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f987c267f99f903a18cb0d'},
-      {day:10,start:'13:00',end:'13:45',title:'Designtalk w/ Christian Flindt',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f9a43bf81bb59c66e9bcc4'},
-      {day:10,start:'15:00',end:'18:00',title:'Soothing tea by A.C. Perchs',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f203d6d9225da5192dbd4a'},
-      {day:10,start:'9:00',end:'10:00',title:'Breathwork & Refreshments',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1fa90151e31161533b7d7',cats:['drinks','workshop']},
-      {day:11,start:'11:00',end:'11:45',title:'Designtalk w/ Christian Flindt',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f9a477d27c726d8ca5eb42'},
-      {day:11,start:'13:00',end:'13:30',title:'The importance of sleep',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f9fd3726faf46a4d7518'},
-      {day:11,start:'15:00',end:'19:00',title:'Champagne and DJ',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdbf529c2a08a903527965'},
-      {day:11,start:'9:00',end:'10:00',title:'Breathwork & Refreshments',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1fe0f1b1f6ddc616ec217',cats:['drinks','workshop']},
-      {day:12,start:'11:00',end:'11:30',title:'Light therapy',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f99aeb94d7c18976347ba8'},
-      {day:12,start:'13:00',end:'13:45',title:'The power of light w/ Sofie Refer',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f206922d610304a0b2b514'},
-      {day:12,start:'14:00',end:'17:00',title:'Soothing tea by A.C. Perchs',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f204e2190b412a64fafae2'},
-      {day:12,start:'9:00',end:'10:00',title:'Breathwork & Refreshments',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f202a6fb94f98633d265cd',cats:['drinks','workshop']},
+      {day:10,start:'11:00',end:'11:30',title:'빛 테라피',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f987c267f99f903a18cb0d'},
+      {day:10,start:'13:00',end:'13:45',title:'디자인토크 w/ Christian Flindt',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f9a43bf81bb59c66e9bcc4'},
+      {day:10,start:'15:00',end:'18:00',title:'A.C. Perchs의 편안한 차',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f203d6d9225da5192dbd4a'},
+      {day:10,start:'9:00',end:'10:00',title:'호흡 수련과 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1fa90151e31161533b7d7',cats:['drinks','workshop']},
+      {day:11,start:'11:00',end:'11:45',title:'디자인토크 w/ Christian Flindt',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f9a477d27c726d8ca5eb42'},
+      {day:11,start:'13:00',end:'13:30',title:'수면의 중요성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f9fd3726faf46a4d7518'},
+      {day:11,start:'15:00',end:'19:00',title:'샴페인과 DJ',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdbf529c2a08a903527965'},
+      {day:11,start:'9:00',end:'10:00',title:'호흡 수련과 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1fe0f1b1f6ddc616ec217',cats:['drinks','workshop']},
+      {day:12,start:'11:00',end:'11:30',title:'빛 테라피',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f99aeb94d7c18976347ba8'},
+      {day:12,start:'13:00',end:'13:45',title:'빛의 힘 w/ Sofie Refer',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f206922d610304a0b2b514'},
+      {day:12,start:'14:00',end:'17:00',title:'A.C. Perchs의 편안한 차',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f204e2190b412a64fafae2'},
+      {day:12,start:'9:00',end:'10:00',title:'호흡 수련과 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f202a6fb94f98633d265cd',cats:['drinks','workshop']},
     ],
   },
   {
@@ -234,17 +234,17 @@ const EXHIBITIONS = [
     slug:'stelton',
     desc:'Based in Copenhagen, Stelton is a family–owned design house rooted in the Scandinavian design tradition. Since its…',
     events:[
-      {day:10,start:'10:00',end:'10:30',title:'The perfect cup of coffee',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8b2bbfb1f28a5a9593ebc',cats:['drinks','talk']},
-      {day:10,start:'13:00',end:'13:30',title:'Designtalk: Colours, and what colours can do',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b0fc0e2fc34d0c8c2eb2'},
-      {day:10,start:'15:00',end:'16:00',title:'Live craftsmanship: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b735344bbbe3e092a90f'},
-      {day:10,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e',joint:true},
-      {day:11,start:'10:30',end:'11:00',title:'The perfect cup of coffee',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8b2ffcef219fcb067590d',cats:['drinks','talk']},
-      {day:11,start:'13:00',end:'13:30',title:'Designtalk: How we work with our designs',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b205727abd1084241127'},
-      {day:11,start:'13:30',end:'14:00',title:'Designtalk: Studio Terhedebrügge (Berlin)',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b66a7a0b7b31d2584de3',cats:['talk','launch']},
-      {day:11,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af',joint:true},
-      {day:12,start:'10:00',end:'10:30',title:'Designtalk: How we work with our designs',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b24c6faa6cc0b9dde1c2'},
-      {day:12,start:'11:00',end:'13:00',title:'Live craftsmanship: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b7679b4bded9d77d59d2'},
-      {day:12,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d9e77a043ef18cd76c2',joint:true},
+      {day:10,start:'10:00',end:'10:30',title:'완벽한 커피 한 잔',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8b2bbfb1f28a5a9593ebc',cats:['drinks','talk']},
+      {day:10,start:'13:00',end:'13:30',title:'디자인토크: 색채, 그리고 색채가 할 수 있는 것',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b0fc0e2fc34d0c8c2eb2'},
+      {day:10,start:'15:00',end:'16:00',title:'라이브 장인정신: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b735344bbbe3e092a90f'},
+      {day:10,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e',joint:true},
+      {day:11,start:'10:30',end:'11:00',title:'완벽한 커피 한 잔',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8b2ffcef219fcb067590d',cats:['drinks','talk']},
+      {day:11,start:'13:00',end:'13:30',title:'디자인토크: 우리가 디자인 작업을 하는 방식',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b205727abd1084241127'},
+      {day:11,start:'13:30',end:'14:00',title:'디자인토크: Studio Terhedebrügge (Berlin)',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b66a7a0b7b31d2584de3',cats:['talk','launch']},
+      {day:11,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af',joint:true},
+      {day:12,start:'10:00',end:'10:30',title:'디자인토크: 우리가 디자인 작업을 하는 방식',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8b24c6faa6cc0b9dde1c2'},
+      {day:12,start:'11:00',end:'13:00',title:'라이브 장인정신: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b7679b4bded9d77d59d2'},
+      {day:12,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d9e77a043ef18cd76c2',joint:true},
     ],
   },
   {
@@ -256,16 +256,16 @@ const EXHIBITIONS = [
     slug:'umage',
     desc:'UMAGE takes its name from a Danish word meaning “making an effort,” reflecting the care and attention they put into…',
     events:[
-      {day:10,start:'12:00',end:'13:00',title:'CANAL TOUR: An Architectural Cruise',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f470c0d70593dafc1895b9'},
-      {day:10,start:'16:00',end:'16:30',title:'UMAGE x DI: AI and The Shape of Tomorrow',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1c37487373e77a9a78ff'},
+      {day:10,start:'12:00',end:'13:00',title:'운하 투어: 건축 크루즈',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f470c0d70593dafc1895b9'},
+      {day:10,start:'16:00',end:'16:30',title:'UMAGE x DI: AI와 내일의 형태',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1c37487373e77a9a78ff'},
       {day:10,start:'9:00',end:'11:00',title:'BREAKFAST CLUB',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f46c3b6c775a473f649041'},
-      {day:11,start:'12:00',end:'13:00',title:'CANAL TOUR: An Architectural Cruise',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f470fa777ca8612db58e9c'},
-      {day:11,start:'16:00',end:'16:30',title:'UMAGE x SO SOCIAL TALK: Social Media and Retail Success',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f89a103751230b48298fcc'},
-      {day:11,start:'8:30',end:'9:00',title:'MORNING YOGA: A Balanced Start',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46fe89ac9cf42b5d7997c'},
+      {day:11,start:'12:00',end:'13:00',title:'운하 투어: 건축 크루즈',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f470fa777ca8612db58e9c'},
+      {day:11,start:'16:00',end:'16:30',title:'UMAGE x SO SOCIAL TALK: 소셜 미디어와 리테일 성공',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f89a103751230b48298fcc'},
+      {day:11,start:'8:30',end:'9:00',title:'모닝 요가: 균형잡힌 시작',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46fe89ac9cf42b5d7997c'},
       {day:11,start:'9:00',end:'11:00',title:'BREAKFAST CLUB',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f46c614253adaf7fc04cf0'},
-      {day:12,start:'12:00',end:'13:00',title:'CANAL TOUR: An Architectural Cruise',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4711e314454955dfa4e85'},
-      {day:12,start:'16:00',end:'18:00',title:'UMAGE x BLOOM OBJECTS: Flowery Friday Bar',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f475d6e971448f1eca19a0'},
-      {day:12,start:'8:30',end:'9:00',title:'MORNING DIP: An UMAGE tradition',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f473c29a7d9409845571b4'},
+      {day:12,start:'12:00',end:'13:00',title:'운하 투어: 건축 크루즈',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4711e314454955dfa4e85'},
+      {day:12,start:'16:00',end:'18:00',title:'UMAGE x BLOOM OBJECTS: 꽃향기 가득한 금요일 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f475d6e971448f1eca19a0'},
+      {day:12,start:'8:30',end:'9:00',title:'아침 수영: UMAGE의 전통',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f473c29a7d9409845571b4'},
       {day:12,start:'9:00',end:'11:00',title:'BREAKFAST CLUB',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f46c8c6c01cb479a7dbcda'},
     ],
   },
@@ -278,16 +278,16 @@ const EXHIBITIONS = [
     slug:'arturel',
     desc:'Arturel is a Danish brand redefining interiors through innovative wall–hanging acoustic art. By seamlessly blending…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Silence by Design Focus Starts Here',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4ae04ffde48b570c4e8cb'},
-      {day:10,start:'14:00',end:'15:00',title:'Shape Your Own Off Cut Sculpture',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4afe3199914ce01857428'},
-      {day:10,start:'16:00',end:'18:00',title:'Bubbles at the Showroom',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b0ed2f7631a8d48c48ba'},
-      {day:11,start:'15:00',end:'16:00',title:'Shape Your Own Off Cut Sculpture',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4b00cc499f117563dc24f'},
-      {day:11,start:'17:00',end:'18:00',title:'Tiramisu and Tones',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b24e58f586b0a83c3f16'},
-      {day:11,start:'7:00',end:'9:00',title:'Quiet Mornings Coffee and Book Club',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b1da93e5671911f7c442'},
-      {day:12,start:'11:00',end:'12:00',title:'Noise Pollution The Invisible Threat',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4b36fcc81747bf414356a'},
-      {day:12,start:'14:00',end:'15:00',title:'Shape Your Own Off Cut Sculpture',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4b03027189c5b0f2b3f14'},
-      {day:12,start:'8:00',end:'9:00',title:'Silent Morning Session by Rave',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4b415e34c4c52b3fdd097'},
-      {day:12,start:'9:00',end:'11:00',title:'Slow Coffee Morning',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b288b92e883f8c497671'},
+      {day:10,start:'10:00',end:'11:00',title:'Silence by Design 포커스는 여기서 시작된다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4ae04ffde48b570c4e8cb'},
+      {day:10,start:'14:00',end:'15:00',title:'나만의 자투리 조각 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4afe3199914ce01857428'},
+      {day:10,start:'16:00',end:'18:00',title:'쇼룸에서의 샴페인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b0ed2f7631a8d48c48ba'},
+      {day:11,start:'15:00',end:'16:00',title:'나만의 자투리 조각 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4b00cc499f117563dc24f'},
+      {day:11,start:'17:00',end:'18:00',title:'티라미수와 음색',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b24e58f586b0a83c3f16'},
+      {day:11,start:'7:00',end:'9:00',title:'조용한 아침의 커피와 북 클럽',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b1da93e5671911f7c442'},
+      {day:12,start:'11:00',end:'12:00',title:'소음 공해, 보이지 않는 위협',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4b36fcc81747bf414356a'},
+      {day:12,start:'14:00',end:'15:00',title:'나만의 자투리 조각 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4b03027189c5b0f2b3f14'},
+      {day:12,start:'8:00',end:'9:00',title:'Rave와 함께하는 고요한 모닝 세션',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4b415e34c4c52b3fdd097'},
+      {day:12,start:'9:00',end:'11:00',title:'슬로우 커피 모닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b288b92e883f8c497671'},
     ],
   },
   {
@@ -299,16 +299,16 @@ const EXHIBITIONS = [
     slug:'rockfon',
     desc:'The world’s leading acoustic company. Rockfon, founded in Denmark in 1962 as part of ROCKWOOL Group, is built on the…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Adaptive Acoustics & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a071658592a61cc76b7620a',cats:['talk','workshop']},
+      {day:10,start:'11:00',end:'11:30',title:'적응형 음향 & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a071658592a61cc76b7620a',cats:['talk','workshop']},
       {day:10,start:'14:00',end:'14:45',title:'HubTalks & Drinks with Michel Rojkind',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d8116be63c01756808e27',cats:['drinks','talk']},
-      {day:10,start:'8:00',end:'8:30',title:'Guided Breathwork and BMO at the Harbour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7e22bf47169f480a0782',cats:['drinks','workshop']},
-      {day:10,start:'8:45',end:'9:15',title:'A Quiet Start by the Harbour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7eef374043d540acb2d9',cats:['drinks','workshop']},
+      {day:10,start:'8:00',end:'8:30',title:'항구에서 하는 가이드 호흡법과 BMO',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7e22bf47169f480a0782',cats:['drinks','workshop']},
+      {day:10,start:'8:45',end:'9:15',title:'항구에서 맞이하는 고요한 아침',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7eef374043d540acb2d9',cats:['drinks','workshop']},
       {day:11,start:'10:00',end:'10:45',title:'HubTalks & Coffee with Nina Mathiesen (Cobe Architects)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d81a3f8fd00386e0b3afd',cats:['drinks','talk']},
-      {day:11,start:'12:00',end:'12:30',title:'Adaptive Acoustics & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a071660d51d7ce3cddfd3a5',cats:['talk','workshop']},
-      {day:11,start:'14:00',end:'14:45',title:'HubTalks & Drinks with Melike Altınışık “Complex Geometries”',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d823bb0975a5eacd42ee8',cats:['drinks','talk']},
-      {day:11,start:'8:00',end:'8:30',title:'Guided Breathwork and BMO at the Harbour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7faf7c8913fcbc822eae',cats:['drinks','workshop']},
-      {day:11,start:'8:45',end:'9:15',title:'Breathwork, BMO & Harbour Views',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d8071a6c07c98f67b19dc',cats:['drinks','workshop']},
-      {day:12,start:'10:00',end:'10:30',title:'Adaptive Acoustics & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0716680dcc1097d9dbb602',cats:['talk','workshop']},
+      {day:11,start:'12:00',end:'12:30',title:'적응형 음향 & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a071660d51d7ce3cddfd3a5',cats:['talk','workshop']},
+      {day:11,start:'14:00',end:'14:45',title:'HubTalks & Drinks with Melike Altınışık "복잡한 기하학"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d823bb0975a5eacd42ee8',cats:['drinks','talk']},
+      {day:11,start:'8:00',end:'8:30',title:'항구에서 하는 가이드 호흡법과 BMO',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7faf7c8913fcbc822eae',cats:['drinks','workshop']},
+      {day:11,start:'8:45',end:'9:15',title:'호흡 수련, BMO 그리고 항구 전망',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d8071a6c07c98f67b19dc',cats:['drinks','workshop']},
+      {day:12,start:'10:00',end:'10:30',title:'적응형 음향 & SONATA Horizon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0716680dcc1097d9dbb602',cats:['talk','workshop']},
     ],
   },
   {
@@ -320,15 +320,15 @@ const EXHIBITIONS = [
     slug:'blond',
     desc:'With the aim of creating beautiful spaces through lighting design and a holistic approach, BLOND exists to evoke…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Guided Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a159352aca87993d5e46786'},
-      {day:10,start:'14:00',end:'15:00',title:'Guided Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593789aaf489eb16db10c'},
-      {day:10,start:'17:00',end:'20:00',title:'Design Dialogue with FUWL + NEW ERA MAGAZINE + Afterwork',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a159eea0f284e31c26f19b0',cats:['drinks','talk']},
-      {day:11,start:'11:00',end:'12:00',title:'Guided Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593c7d6a75ef4c2ee1a01'},
-      {day:11,start:'14:00',end:'15:00',title:'Guided Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593e1aee3dd50791eb635'},
-      {day:11,start:'17:00',end:'20:00',title:'Design Dialogue NEW ERA MAGAZINE + Afterwork',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15aa675f5f428af7b2a4fc',cats:['drinks','talk']},
-      {day:12,start:'11:00',end:'12:00',title:'Guided Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593fc82d983782a2a9158'},
-      {day:12,start:'14:00',end:'15:00',title:'Guided Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a15941887791cf8dad67d9f'},
-      {day:12,start:'17:00',end:'20:00',title:'Closing Party x PORSCHE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb309d86b25b4cbe0a5c00',joint:true},
+      {day:10,start:'11:00',end:'12:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a159352aca87993d5e46786'},
+      {day:10,start:'14:00',end:'15:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593789aaf489eb16db10c'},
+      {day:10,start:'17:00',end:'20:00',title:'FUWL + NEW ERA MAGAZINE과 함께하는 디자인 대화 + 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a159eea0f284e31c26f19b0',cats:['drinks','talk']},
+      {day:11,start:'11:00',end:'12:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593c7d6a75ef4c2ee1a01'},
+      {day:11,start:'14:00',end:'15:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593e1aee3dd50791eb635'},
+      {day:11,start:'17:00',end:'20:00',title:'NEW ERA MAGAZINE과 함께하는 디자인 대화 + 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15aa675f5f428af7b2a4fc',cats:['drinks','talk']},
+      {day:12,start:'11:00',end:'12:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1593fc82d983782a2a9158'},
+      {day:12,start:'14:00',end:'15:00',title:'가이드 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a15941887791cf8dad67d9f'},
+      {day:12,start:'17:00',end:'20:00',title:'PORSCHE와 함께하는 클로징 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb309d86b25b4cbe0a5c00',joint:true},
     ],
   },
   {
@@ -340,15 +340,15 @@ const EXHIBITIONS = [
     slug:'homo-faber-fellowship',
     desc:'Homo Faber Fellowship is presented by the Michelangelo Foundation for Creativity and Craftsmanship, a non–profit…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Guided visit of the Homo Faber Fellowship exhibition',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f461ea36bc16ea5171444e'},
-      {day:10,start:'14:00',end:'15:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f462df94ee947208f2ddc9'},
-      {day:10,start:'16:00',end:'17:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4631d38ac246f77780a71'},
-      {day:11,start:'11:00',end:'12:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4652d93712208da6df2c0'},
-      {day:11,start:'14:00',end:'15:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f46550c2a02ccb99e49f98'},
-      {day:11,start:'16:00',end:'17:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4657041a141d253662767'},
-      {day:12,start:'11:00',end:'12:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f46594ebd4cacc815f31a9'},
-      {day:12,start:'14:00',end:'15:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f465b497ba26354be01aa8'},
-      {day:12,start:'16:00',end:'17:00',title:'Guided visits with the next generation of craft talents',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f465d01f2b8d7444a45655'},
+      {day:10,start:'11:00',end:'12:00',title:'Homo Faber Fellowship 전시 가이드 관람',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f461ea36bc16ea5171444e'},
+      {day:10,start:'14:00',end:'15:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f462df94ee947208f2ddc9'},
+      {day:10,start:'16:00',end:'17:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4631d38ac246f77780a71'},
+      {day:11,start:'11:00',end:'12:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4652d93712208da6df2c0'},
+      {day:11,start:'14:00',end:'15:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f46550c2a02ccb99e49f98'},
+      {day:11,start:'16:00',end:'17:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4657041a141d253662767'},
+      {day:12,start:'11:00',end:'12:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f46594ebd4cacc815f31a9'},
+      {day:12,start:'14:00',end:'15:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f465b497ba26354be01aa8'},
+      {day:12,start:'16:00',end:'17:00',title:'차세대 공예 인재들과 함께하는 가이드 관람',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f465d01f2b8d7444a45655'},
     ],
   },
   {
@@ -360,14 +360,14 @@ const EXHIBITIONS = [
     slug:'a-poc-able-issey-miyake',
     desc:'A–POC, the acronym of \'A Piece Of Cloth\', is the name of the integrated design and manufacturing system first…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb1c739aee95a40cfe0f'},
-      {day:10,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb6266221f136d1dc1e7'},
-      {day:10,start:'17:00',end:'18:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb8295b42530aa692ce7'},
-      {day:11,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bbb1bbb5d8fbff14dff6'},
-      {day:11,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bbe16d2046f27fe719a0'},
-      {day:12,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bc0a111d063a18cea678'},
-      {day:12,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bc32fd2dd8e11cde1b23'},
-      {day:12,start:'17:00',end:'18:00',title:'A–POC ABLE ISSEY MIYAKE Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bc5a0f00e584c9ff41ad'},
+      {day:10,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb1c739aee95a40cfe0f'},
+      {day:10,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb6266221f136d1dc1e7'},
+      {day:10,start:'17:00',end:'18:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bb8295b42530aa692ce7'},
+      {day:11,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bbb1bbb5d8fbff14dff6'},
+      {day:11,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bbe16d2046f27fe719a0'},
+      {day:12,start:'10:00',end:'11:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bc0a111d063a18cea678'},
+      {day:12,start:'14:00',end:'15:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bc32fd2dd8e11cde1b23'},
+      {day:12,start:'17:00',end:'18:00',title:'A–POC ABLE ISSEY MIYAKE 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f2bc5a0f00e584c9ff41ad'},
     ],
   },
   {
@@ -379,14 +379,14 @@ const EXHIBITIONS = [
     slug:'foyos-gmbh',
     desc:'Foyos is a modular work furniture system that bridges living and working spaces. Launched in March 2026, it is built…',
     events:[
-      {day:10,start:'10:30',end:'11:30',title:'Eric Landon from Tortus shows the Joy of the Wheel',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa19f420538b4a33a4e1ec'},
-      {day:10,start:'14:30',end:'15:30',title:'CEO Paul Gummert & Designer Mark Braun—Foyos comes to life',icon:'🚀',color:'#d99021',label:'런칭',id:'69fa1bf94136602c2201461f'},
-      {day:10,start:'9:30',end:'10:30',title:'Breakfast & Beats',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0ce41fbbf4017aebb813'},
-      {day:11,start:'14:30',end:'16:30',title:'Studio Flør: A floral interpretation',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1d0f281373ae8c1db0b1'},
-      {day:11,start:'9:30',end:'10:30',title:'Breakfast & Beats',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d1761bfb90753ddfadd'},
-      {day:12,start:'11:00',end:'12:00',title:'Emmanuel Martini, Escential CPH: Scent as space',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1dea846894661021bed7'},
-      {day:12,start:'15:00',end:'16:00',title:'Emmanuel Martini, Escential CPH: Scent as space',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1e340bb81051e2c7d251'},
-      {day:12,start:'9:30',end:'10:30',title:'Breakfast & Beats',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d50159e870261eb776d'},
+      {day:10,start:'10:30',end:'11:30',title:'Tortus의 Eric Landon이 보여주는 물레의 즐거움',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa19f420538b4a33a4e1ec'},
+      {day:10,start:'14:30',end:'15:30',title:'CEO Paul Gummert & 디자이너 Mark Braun—Foyos의 탄생',icon:'🚀',color:'#d99021',label:'런칭',id:'69fa1bf94136602c2201461f'},
+      {day:10,start:'9:30',end:'10:30',title:'조찬과 비트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0ce41fbbf4017aebb813'},
+      {day:11,start:'14:30',end:'16:30',title:'Studio Flør: 꽃의 해석',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1d0f281373ae8c1db0b1'},
+      {day:11,start:'9:30',end:'10:30',title:'조찬과 비트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d1761bfb90753ddfadd'},
+      {day:12,start:'11:00',end:'12:00',title:'Emmanuel Martini, Escential CPH: 공간으로서의 향기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1dea846894661021bed7'},
+      {day:12,start:'15:00',end:'16:00',title:'Emmanuel Martini, Escential CPH: 공간으로서의 향기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fa1e340bb81051e2c7d251'},
+      {day:12,start:'9:30',end:'10:30',title:'조찬과 비트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d50159e870261eb776d'},
     ],
   },
   {
@@ -398,14 +398,14 @@ const EXHIBITIONS = [
     slug:'softline',
     desc:'SOFTLINE is a leading Danish furniture manufacturer with a proud history in craftsmanship and upholstery. Since 1979,…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Official opening - Meet & Greet with designer Javier Moreno',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044127a78db694fca089f4',cats:['drinks','talk','launch']},
-      {day:10,start:'11:00',end:'14:00',title:'Food & Drinks / Exploring the unexpected',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195c322bc6b0841a71f45a',cats:['drinks','talk']},
-      {day:10,start:'8:00',end:'11:00',title:'Coffee & Croissant / Exploring the unexpected',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f31fea2406a44b9f096',cats:['drinks','tour']},
-      {day:11,start:'11:00',end:'14:00',title:'Food & Drinks / Exploring the unexpected',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195c827f6aeb75e0ae1d31',cats:['drinks','talk']},
-      {day:11,start:'13:00',end:'15:00',title:'Meet & Greet with designer Sascha Sartory',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a04416748577d077d78267a',cats:['drinks','talk','launch']},
-      {day:11,start:'8:00',end:'11:00',title:'Coffee & Croissant / Exploring the unexpected',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f5f7808923ee1f123dd',cats:['drinks','tour']},
-      {day:12,start:'11:00',end:'14:00',title:'Food & Drinks / Exploring the unexpected',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195ca17b23bb89db73563e',cats:['drinks','talk']},
-      {day:12,start:'8:00',end:'11:00',title:'Coffee & Croissant / Exploring the unexpected',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f8b339ba8aa70c2c8f6',cats:['drinks','tour']},
+      {day:10,start:'10:00',end:'12:00',title:'공식 오프닝 - 디자이너 Javier Moreno와의 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044127a78db694fca089f4',cats:['drinks','talk','launch']},
+      {day:10,start:'11:00',end:'14:00',title:'푸드 & 드링크 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195c322bc6b0841a71f45a',cats:['drinks','talk']},
+      {day:10,start:'8:00',end:'11:00',title:'커피와 크루아상 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f31fea2406a44b9f096',cats:['drinks','tour']},
+      {day:11,start:'11:00',end:'14:00',title:'푸드 & 드링크 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195c827f6aeb75e0ae1d31',cats:['drinks','talk']},
+      {day:11,start:'13:00',end:'15:00',title:'디자이너 Sascha Sartory와의 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a04416748577d077d78267a',cats:['drinks','talk','launch']},
+      {day:11,start:'8:00',end:'11:00',title:'커피와 크루아상 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f5f7808923ee1f123dd',cats:['drinks','tour']},
+      {day:12,start:'11:00',end:'14:00',title:'푸드 & 드링크 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a195ca17b23bb89db73563e',cats:['drinks','talk']},
+      {day:12,start:'8:00',end:'11:00',title:'커피와 크루아상 / 예상치 못한 것의 탐구',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a043f8b339ba8aa70c2c8f6',cats:['drinks','tour']},
     ],
   },
   {
@@ -417,14 +417,14 @@ const EXHIBITIONS = [
     slug:'tom-rossau',
     desc:'What began over 20 years ago as a spontaneous experiment in Tom Rossau’s Copenhagen workshop has evolved into a…',
     events:[
-      {day:10,start:'12:00',end:'13:00',title:'Meet the Designer: Tom Rossau',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f33ff5bcb4b5cc3b93410d'},
-      {day:10,start:'15:00',end:'16:00',title:'Win an ST906 XS Lamp',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f351b867c6b04615e9b564',cats:['workshop','launch']},
-      {day:10,start:'9:00',end:'10:00',title:'Start Your Morning with Tom Rossau',icon:'🚀',color:'#d99021',label:'런칭',id:'69f344364982d6332faafa00'},
-      {day:11,start:'12:00',end:'13:00',title:'Win an ST906 XS Lamp',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f35225b07c4bafa2aa6218',cats:['workshop','launch']},
-      {day:11,start:'15:00',end:'16:00',title:'Win an ST906 XS Lamp',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f352554476768b62d390f2',cats:['workshop','launch']},
-      {day:11,start:'18:00',end:'20:00',title:'Evening Gathering & Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34249739bc138bd004562'},
-      {day:12,start:'12:00',end:'13:00',title:'Win an ST906 XS Lamp',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f352b17ca2455d6290d4f5',cats:['workshop','launch']},
-      {day:12,start:'15:00',end:'16:00',title:'Win an ST906 XS Lamp',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f3532ba14f765847329aa3',cats:['workshop','launch']},
+      {day:10,start:'12:00',end:'13:00',title:'디자이너를 만나다: Tom Rossau',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f33ff5bcb4b5cc3b93410d'},
+      {day:10,start:'15:00',end:'16:00',title:'ST906 XS 램프 경품 이벤트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f351b867c6b04615e9b564',cats:['workshop','launch']},
+      {day:10,start:'9:00',end:'10:00',title:'Tom Rossau와 함께 아침 시작하기',icon:'🚀',color:'#d99021',label:'런칭',id:'69f344364982d6332faafa00'},
+      {day:11,start:'12:00',end:'13:00',title:'ST906 XS 램프 경품 이벤트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f35225b07c4bafa2aa6218',cats:['workshop','launch']},
+      {day:11,start:'15:00',end:'16:00',title:'ST906 XS 램프 경품 이벤트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f352554476768b62d390f2',cats:['workshop','launch']},
+      {day:11,start:'18:00',end:'20:00',title:'이브닝 모임 & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34249739bc138bd004562'},
+      {day:12,start:'12:00',end:'13:00',title:'ST906 XS 램프 경품 이벤트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f352b17ca2455d6290d4f5',cats:['workshop','launch']},
+      {day:12,start:'15:00',end:'16:00',title:'ST906 XS 램프 경품 이벤트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f3532ba14f765847329aa3',cats:['workshop','launch']},
     ],
   },
   {
@@ -436,14 +436,14 @@ const EXHIBITIONS = [
     slug:'vipp',
     desc:'Vipp is a Danish, 3rd generation family–owned design company. Founded by metalsmith Holger Nielsen in the small town…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db87b93eb583c21bce074'},
-      {day:10,start:'13:00',end:'14:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0dc05820d2771f1f840f7b'},
-      {day:10,start:'16:00',end:'17:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0dc0d9ad8453c1d5fa6072'},
-      {day:11,start:'11:00',end:'12:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee4bcf82831a016ee4973'},
-      {day:11,start:'13:00',end:'14:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee556db1b1b6281134590'},
-      {day:11,start:'16:00',end:'17:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee5a6b421741df3abbbe1'},
-      {day:12,start:'11:00',end:'12:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee606ca044e21467dd0fb'},
-      {day:12,start:'13:00',end:'14:00',title:'Walk & Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee659d4e6df46f5a7a7e8'},
+      {day:10,start:'11:00',end:'12:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db87b93eb583c21bce074'},
+      {day:10,start:'13:00',end:'14:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0dc05820d2771f1f840f7b'},
+      {day:10,start:'16:00',end:'17:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0dc0d9ad8453c1d5fa6072'},
+      {day:11,start:'11:00',end:'12:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee4bcf82831a016ee4973'},
+      {day:11,start:'13:00',end:'14:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee556db1b1b6281134590'},
+      {day:11,start:'16:00',end:'17:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee5a6b421741df3abbbe1'},
+      {day:12,start:'11:00',end:'12:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee606ca044e21467dd0fb'},
+      {day:12,start:'13:00',end:'14:00',title:'산책하며 대화하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ee659d4e6df46f5a7a7e8'},
     ],
   },
   {
@@ -455,14 +455,14 @@ const EXHIBITIONS = [
     slug:'wendelbo',
     desc:'Founded in 1955 in Denmark as a small family workshop specialising in upholstery, Wendelbo began its journey with an…',
     events:[
-      {day:10,start:'10:00',end:'13:00',title:'Coffee and pastries',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045a5c2cd2c1cd99e3d53b'},
-      {day:10,start:'16:00',end:'16:30',title:'John Astbury: My Favourite Hour',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a045af48031d6c10ceff1fa'},
-      {day:10,start:'17:00',end:'20:00',title:'Wendelbo House Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d624eee21b7c03404f3f2'},
-      {day:11,start:'10:00',end:'13:00',title:'Coffee and pastries',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045a828a456df2e256b9c9'},
-      {day:11,start:'14:00',end:'14:30',title:'Jonas Wagell: Designing the In-Between',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a045b7d4b6f57a3db9dee5b'},
-      {day:11,start:'15:00',end:'18:00',title:'After Hours — Wine Tasting',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a045bcbde069e006da350ef'},
-      {day:12,start:'10:00',end:'13:00',title:'Coffee and pastries',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045aa247917fae948373e9'},
-      {day:12,start:'15:00',end:'18:00',title:'After Hours — Wine Tasting',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a045bf0afd8c66b1e1dae97'},
+      {day:10,start:'10:00',end:'13:00',title:'커피와 페이스트리',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045a5c2cd2c1cd99e3d53b'},
+      {day:10,start:'16:00',end:'16:30',title:'John Astbury: 나의 가장 좋아하는 시간',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a045af48031d6c10ceff1fa'},
+      {day:10,start:'17:00',end:'20:00',title:'Wendelbo 하우스 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d624eee21b7c03404f3f2'},
+      {day:11,start:'10:00',end:'13:00',title:'커피와 페이스트리',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045a828a456df2e256b9c9'},
+      {day:11,start:'14:00',end:'14:30',title:'Jonas Wagell: 중간 영역 디자인하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a045b7d4b6f57a3db9dee5b'},
+      {day:11,start:'15:00',end:'18:00',title:'애프터 아워 — 와인 시음',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a045bcbde069e006da350ef'},
+      {day:12,start:'10:00',end:'13:00',title:'커피와 페이스트리',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a045aa247917fae948373e9'},
+      {day:12,start:'15:00',end:'18:00',title:'애프터 아워 — 와인 시음',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a045bf0afd8c66b1e1dae97'},
     ],
   },
   {
@@ -474,13 +474,13 @@ const EXHIBITIONS = [
     slug:'bang-olufsen',
     desc:'Bang & Olufsen is a luxury audio brand founded in 1925 in Struer, Denmark, by Peter Bang and Svend Olufsen whose…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'DJ-set & drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a185e0e364fe29265312a82'},
-      {day:11,start:'11:00',end:'13:00',title:'Live jazz-duo',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a185ff3680e223ff0f28840'},
-      {day:11,start:'12:00',end:'15:00',title:'Restoring Icons: Live Repair',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a185b2e94c9fa48a710c8af'},
-      {day:11,start:'16:00',end:'17:00',title:'Live Performance by Karen Rosenberg',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d6267b8c763cb9b0bd146'},
+      {day:10,start:'16:00',end:'19:00',title:'DJ 세트 & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a185e0e364fe29265312a82'},
+      {day:11,start:'11:00',end:'13:00',title:'라이브 재즈 듀오',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a185ff3680e223ff0f28840'},
+      {day:11,start:'12:00',end:'15:00',title:'아이콘 복원하기: 라이브 수리',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a185b2e94c9fa48a710c8af'},
+      {day:11,start:'16:00',end:'17:00',title:'Karen Rosenberg의 라이브 퍼포먼스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d6267b8c763cb9b0bd146'},
       {day:12,start:'10:00',end:'14:30',title:'Reloved by Bang & Olufsen',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a185be43a4cc2a872b2d250'},
-      {day:12,start:'15:00',end:'16:00',title:'Live Performance by Coco O',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18629c39400da2e73b527c'},
-      {day:12,start:'9:00',end:'11:00',title:'Live jazz-duo',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d5fef754063815fc69de2'},
+      {day:12,start:'15:00',end:'16:00',title:'Coco O의 라이브 퍼포먼스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18629c39400da2e73b527c'},
+      {day:12,start:'9:00',end:'11:00',title:'라이브 재즈 듀오',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d5fef754063815fc69de2'},
     ],
   },
   {
@@ -492,13 +492,13 @@ const EXHIBITIONS = [
     slug:'formarkivet',
     desc:'FORMARKIVET is a multi–disciplinary design house redefining contemporary living by merging classic design principles…',
     events:[
-      {day:10,start:'15:30',end:'18:00',title:'FORMARKIVET Afternoon Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b112d08ad924d23e09d'},
-      {day:10,start:'9:00',end:'11:00',title:'Breakfast at FORM BAR',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a53e259b22cf2140411'},
-      {day:11,start:'14:30',end:'15:00',title:'Talk with Copenhagen Contemporary—Where Art Meets Design',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38c6eccd63e3acc071a5a',cats:['drinks','talk']},
-      {day:11,start:'15:30',end:'18:00',title:'FORMARKIVET Afternoon Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b43235bdbfb0e019b28'},
-      {day:11,start:'9:00',end:'11:00',title:'Breakfast at FORM BAR',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a7a3c34c5d98b7c9ea1'},
-      {day:12,start:'15:30',end:'18:00',title:'FORMARKIVET Afternoon Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b8a2db87650226c2070'},
-      {day:12,start:'9:00',end:'11:00',title:'Breakfast at FORM BAR',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a9520c1386c085fe627'},
+      {day:10,start:'15:30',end:'18:00',title:'FORMARKIVET 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b112d08ad924d23e09d'},
+      {day:10,start:'9:00',end:'11:00',title:'FORM BAR에서의 조찬',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a53e259b22cf2140411'},
+      {day:11,start:'14:30',end:'15:00',title:'Copenhagen Contemporary와의 토크—예술과 디자인의 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38c6eccd63e3acc071a5a',cats:['drinks','talk']},
+      {day:11,start:'15:30',end:'18:00',title:'FORMARKIVET 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b43235bdbfb0e019b28'},
+      {day:11,start:'9:00',end:'11:00',title:'FORM BAR에서의 조찬',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a7a3c34c5d98b7c9ea1'},
+      {day:12,start:'15:30',end:'18:00',title:'FORMARKIVET 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38b8a2db87650226c2070'},
+      {day:12,start:'9:00',end:'11:00',title:'FORM BAR에서의 조찬',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38a9520c1386c085fe627'},
     ],
   },
   {
@@ -510,13 +510,13 @@ const EXHIBITIONS = [
     slug:'gubi',
     desc:'Creativity and playfulness are what GUBI does. By blending design eras, materials, textures, colours, and patterns,…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Grand Opening',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a13efb36421aded1ac64'},
-      {day:10,start:'12:00',end:'13:00',title:'Guided Showroom Tour',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a019ac348e21df3976fdfa7'},
-      {day:10,start:'15:00',end:'17:00',title:'Seaside Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a20fc814f49b644a75de'},
-      {day:11,start:'13:00',end:'14:00',title:'Guided Showroom Tour Day 2',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a019b6a958f39ad44e2f641'},
-      {day:11,start:'9:00',end:'11:00',title:'Thursday Coffee & Croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a3265416f3068b4b79de'},
-      {day:12,start:'13:00',end:'14:00',title:'Guided Showroom Tour (For Professionals)',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a019bf67d6fe2ddc24c587f'},
-      {day:12,start:'9:00',end:'11:00',title:'Friday Coffee & Croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a3c15981e5792d51466f'},
+      {day:10,start:'10:00',end:'12:00',title:'그랜드 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a13efb36421aded1ac64'},
+      {day:10,start:'12:00',end:'13:00',title:'가이드 쇼룸 투어',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a019ac348e21df3976fdfa7'},
+      {day:10,start:'15:00',end:'17:00',title:'해변 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a20fc814f49b644a75de'},
+      {day:11,start:'13:00',end:'14:00',title:'가이드 쇼룸 투어 Day 2',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a019b6a958f39ad44e2f641'},
+      {day:11,start:'9:00',end:'11:00',title:'목요일 커피 & 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a3265416f3068b4b79de'},
+      {day:12,start:'13:00',end:'14:00',title:'가이드 쇼룸 투어 (전문가 대상)',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a019bf67d6fe2ddc24c587f'},
+      {day:12,start:'9:00',end:'11:00',title:'프라이데이 커피 & 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a3c15981e5792d51466f'},
     ],
   },
   {
@@ -528,13 +528,13 @@ const EXHIBITIONS = [
     slug:'house-of-finn-juhl',
     desc:'Trained as an architect, Finn Juhl approached furniture as an artistic discipline rather than a purely functional…',
     events:[
-      {day:10,start:'10:00',end:'10:30',title:'Exhibition Opening and Complimentary Goodie Bags',icon:'🚀',color:'#d99021',label:'런칭',id:'69f3488ad033eda9e62a4b34'},
-      {day:10,start:'14:30',end:'16:30',title:'Afternoon Cocktail Party with Stauning Whisky',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f348fcd5217db3b6dc874c'},
-      {day:10,start:'15:45',end:'16:30',title:'Guided Tour at Finn Juhl’s House',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0ac2cf6b3f24f341c2cee7',location:'Vilvordevej 110, 2920 Charlottenlund'},
+      {day:10,start:'10:00',end:'10:30',title:'전시 오프닝 및 굿즈백 증정',icon:'🚀',color:'#d99021',label:'런칭',id:'69f3488ad033eda9e62a4b34'},
+      {day:10,start:'14:30',end:'16:30',title:'Stauning Whisky와 함께하는 애프터눈 칵테일 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f348fcd5217db3b6dc874c'},
+      {day:10,start:'15:45',end:'16:30',title:'Finn Juhl\'s House 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0ac2cf6b3f24f341c2cee7',location:'Vilvordevej 110, 2920 Charlottenlund'},
       {day:11,start:'11:00',end:'13:00',title:'Roundhill Roastery x House of Finn Juhl',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34cc42e0ba864ffdf1a3e'},
-      {day:11,start:'15:45',end:'16:30',title:'Guided Tour at Finn Juhl’s House',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c094ca919c439f2714826',location:'Vilvordevej 110, 2920 Charlottenlund'},
+      {day:11,start:'15:45',end:'16:30',title:'Finn Juhl\'s House 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c094ca919c439f2714826',location:'Vilvordevej 110, 2920 Charlottenlund'},
       {day:12,start:'11:00',end:'13:00',title:'Roundhill Roastery x House of Finn Juhl',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34d11d7b4e89d39e82998'},
-      {day:12,start:'15:45',end:'16:30',title:'Guided Tour at Finn Juhl’s House',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c0a2a606bd0f97eb54f37',location:'Vilvordevej 110, 2920 Charlottenlund'},
+      {day:12,start:'15:45',end:'16:30',title:'Finn Juhl\'s House 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'6a0c0a2a606bd0f97eb54f37',location:'Vilvordevej 110, 2920 Charlottenlund'},
     ],
   },
   {
@@ -546,13 +546,13 @@ const EXHIBITIONS = [
     slug:'light-point',
     desc:'LIGHT–POINT designs more than just lamps—they design light. This is the essence of their brand slogan: CREATING LIGHT.…',
     events:[
-      {day:10,start:'10:00',end:'13:00',title:'Need a moment? Enjoy a free barista coffee!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61da0b352df4deb8377f5'},
-      {day:10,start:'12:00',end:'15:00',title:'Enjoy gourmet creations!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e6220ef2e91cf6cc2c8ab1'},
-      {day:10,start:'15:00',end:'18:00',title:'Take a moment! Enjoy a free drink!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61f2746f26d81602e9e61'},
-      {day:11,start:'10:00',end:'13:00',title:'Need a moment? Enjoy a free barista coffee!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61de682d780a7da89a4b5'},
-      {day:11,start:'12:00',end:'15:00',title:'Enjoy gourmet creations!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e62258a6ee112357a4ae81'},
-      {day:11,start:'15:00',end:'18:00',title:'Take a moment! Enjoy a free drink!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61f77421d972509bf8365'},
-      {day:12,start:'10:00',end:'13:00',title:'Need a moment? Enjoy a free barista coffee!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61e3748f65a067e840584'},
+      {day:10,start:'10:00',end:'13:00',title:'잠깐의 여유가 필요하신가요? 무료 바리스타 커피를 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61da0b352df4deb8377f5'},
+      {day:10,start:'12:00',end:'15:00',title:'고메 크리에이션을 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e6220ef2e91cf6cc2c8ab1'},
+      {day:10,start:'15:00',end:'18:00',title:'잠시 쉬어가세요! 무료 음료를 즐기세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61f2746f26d81602e9e61'},
+      {day:11,start:'10:00',end:'13:00',title:'잠깐의 여유가 필요하신가요? 무료 바리스타 커피를 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61de682d780a7da89a4b5'},
+      {day:11,start:'12:00',end:'15:00',title:'고메 크리에이션을 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e62258a6ee112357a4ae81'},
+      {day:11,start:'15:00',end:'18:00',title:'잠시 쉬어가세요! 무료 음료를 즐기세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61f77421d972509bf8365'},
+      {day:12,start:'10:00',end:'13:00',title:'잠깐의 여유가 필요하신가요? 무료 바리스타 커피를 즐겨보세요!',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e61e3748f65a067e840584'},
     ],
   },
   {
@@ -564,13 +564,13 @@ const EXHIBITIONS = [
     slug:'velux',
     desc:'"The most important prerequisite for all life and work is light." These are the words of the Danish VELUX founder,…',
     events:[
-      {day:10,start:'10:30',end:'11:30',title:'The Power of Daylight: Artist talk with Christina Augustesen',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f324f0df9fa4f159cb9762'},
-      {day:10,start:'11:30',end:'14:30',title:'Adding Daylight to Design',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31238db54b6caba571daf'},
-      {day:11,start:'10:30',end:'11:30',title:'The Power of Daylight: Artist talk with Christina Augustesen',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f325493f21d68c7913ccfa'},
-      {day:11,start:'11:30',end:'14:30',title:'Adding Daylight to Design',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f312711098ce0c18b0fc7c'},
-      {day:12,start:'10:30',end:'11:30',title:'The Power of Daylight: Artist talk with Christina Augustesen',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3257029b44ee05fd7fdb8'},
-      {day:12,start:'11:30',end:'14:30',title:'Adding Daylight to Design',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31292dd469ff182a5e016'},
-      {day:12,start:'9:30',end:'11:30',title:'Social Ride - Chase DAYLIGHT with VELUX and PAS Racing',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e09587399685637926183',location:'PAS Studios, Århusgade 126, 2150 Copenhagen'},
+      {day:10,start:'10:30',end:'11:30',title:'자연광의 힘: Christina Augustesen 아티스트 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f324f0df9fa4f159cb9762'},
+      {day:10,start:'11:30',end:'14:30',title:'디자인에 자연광 더하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31238db54b6caba571daf'},
+      {day:11,start:'10:30',end:'11:30',title:'자연광의 힘: Christina Augustesen 아티스트 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f325493f21d68c7913ccfa'},
+      {day:11,start:'11:30',end:'14:30',title:'디자인에 자연광 더하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f312711098ce0c18b0fc7c'},
+      {day:12,start:'10:30',end:'11:30',title:'자연광의 힘: Christina Augustesen 아티스트 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3257029b44ee05fd7fdb8'},
+      {day:12,start:'11:30',end:'14:30',title:'디자인에 자연광 더하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31292dd469ff182a5e016'},
+      {day:12,start:'9:30',end:'11:30',title:'소셜 라이드 - VELUX와 PAS Racing과 함께 일광을 쫓다',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e09587399685637926183',location:'PAS Studios, Århusgade 126, 2150 Copenhagen'},
     ],
   },
   {
@@ -582,13 +582,13 @@ const EXHIBITIONS = [
     slug:'woud',
     desc:'WOUD is a Danish design brand founded with the vision of establishing a harmonious collective that blends the talents…',
     events:[
-      {day:10,start:'10:00',end:'14:00',title:'Iced coffee and matcha by WOUD',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f15650a72935610577a'},
-      {day:10,start:'16:30',end:'18:00',title:'Olives and bubbles by WOUD',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef2014648f0f019db7adec'},
-      {day:11,start:'10:00',end:'14:00',title:'Iced coffee and matcha by WOUD',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f4c834a69b7a43d59bc'},
-      {day:11,start:'16:30',end:'18:00',title:'Olives and bubbles by WOUD',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef2047afafdc317f963796'},
-      {day:11,start:'7:30',end:'8:30',title:'Sauna ritual and cold plunge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef25e69277c044dd1ba970',cats:['drinks','workshop'],location:'Færgehavnsvej 35, 2150 København, Danmark'},
-      {day:12,start:'10:00',end:'14:00',title:'Iced coffee and matcha by WOUD',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f7db8d4eb1076742e32'},
-      {day:12,start:'15:30',end:'18:00',title:'Olives and bubbles by WOUD',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef24227852f8f74fef4bff'},
+      {day:10,start:'10:00',end:'14:00',title:'WOUD가 선보이는 아이스 커피와 말차',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f15650a72935610577a'},
+      {day:10,start:'16:30',end:'18:00',title:'WOUD가 선사하는 올리브와 버블',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef2014648f0f019db7adec'},
+      {day:11,start:'10:00',end:'14:00',title:'WOUD가 선보이는 아이스 커피와 말차',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f4c834a69b7a43d59bc'},
+      {day:11,start:'16:30',end:'18:00',title:'WOUD가 선사하는 올리브와 버블',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef2047afafdc317f963796'},
+      {day:11,start:'7:30',end:'8:30',title:'사우나 의식과 냉수 플런지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef25e69277c044dd1ba970',cats:['drinks','workshop'],location:'Færgehavnsvej 35, 2150 København, Danmark'},
+      {day:12,start:'10:00',end:'14:00',title:'WOUD가 선보이는 아이스 커피와 말차',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef1f7db8d4eb1076742e32'},
+      {day:12,start:'15:30',end:'18:00',title:'WOUD가 선사하는 올리브와 버블',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef24227852f8f74fef4bff'},
     ],
   },
   {
@@ -600,12 +600,12 @@ const EXHIBITIONS = [
     slug:'asko',
     desc:'ASKO, a premium Scandinavian brand, known for its high-quality appliances with designs based on Scandinavian…',
     events:[
-      {day:10,start:'12:00',end:'14:00',title:'Oysters & Bubbles',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18015f07d94be476fbb473'},
-      {day:10,start:'9:00',end:'10:00',title:'Morning Coffee & Croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b41ed59714a45a89cac5'},
-      {day:11,start:'12:00',end:'14:00',title:'Live Cooking Experience at ASKO',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1802a47f8c19bc52e63504'},
-      {day:11,start:'15:00',end:'17:00',title:'Wine Tasting at ASKO',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a180213f9e38c6c5a560d4e'},
-      {day:11,start:'8:00',end:'10:00',title:'Morning Run & Breakfast with ASKO',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b1cde4f96bb235e8a427'},
-      {day:12,start:'9:00',end:'10:00',title:'Morning Coffee & Croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b8a6be3fa0cb00880b70'},
+      {day:10,start:'12:00',end:'14:00',title:'굴과 샴페인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a18015f07d94be476fbb473'},
+      {day:10,start:'9:00',end:'10:00',title:'모닝 커피 & 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b41ed59714a45a89cac5'},
+      {day:11,start:'12:00',end:'14:00',title:'ASKO에서의 라이브 쿠킹 익스피리언스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1802a47f8c19bc52e63504'},
+      {day:11,start:'15:00',end:'17:00',title:'ASKO에서의 와인 테이스팅',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a180213f9e38c6c5a560d4e'},
+      {day:11,start:'8:00',end:'10:00',title:'ASKO와 함께하는 모닝 런 & 조식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b1cde4f96bb235e8a427'},
+      {day:12,start:'9:00',end:'10:00',title:'모닝 커피 & 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b8a6be3fa0cb00880b70'},
     ],
   },
   {
@@ -617,12 +617,12 @@ const EXHIBITIONS = [
     slug:'carl-hansen-son',
     desc:'Carl Hansen & Søn represents more than 115 years of Danish furniture history infused with respect and passion for…',
     events:[
-      {day:10,start:'11:00',end:'12:30',title:'Mentsen Mobile Workshop with Surplus Material',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eed31e5306b3bf9f6ca11',location:'Flaskehalsen 2, 1799 Copenhagen'},
-      {day:10,start:'14:00',end:'15:30',title:'Mentsen mobile workshop with Surplus Material',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eedb81a3bf7882c0b33ca'},
-      {day:11,start:'10:00',end:'12:30',title:'Drop-in ink stamp workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eeec1d167b580129509dc',location:'Flaskehalsen 2, 1799 Copenhagen'},
-      {day:11,start:'14:00',end:'16:00',title:'Drop-in Stamp Ink Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0ef04b7d32e4a5279020c2'},
-      {day:12,start:'10:00',end:'12:30',title:'Drop-in Stamp Ink Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0ef09bfac0c77e0f94b549',location:'Flaskehalsen 2, 1799 Copenhagen'},
-      {day:12,start:'14:00',end:'16:00',title:'Drop-in Stamp Ink Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0ef0f141f916143a780a27'},
+      {day:10,start:'11:00',end:'12:30',title:'Mentsen 잉여 소재 모바일 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eed31e5306b3bf9f6ca11',location:'Flaskehalsen 2, 1799 Copenhagen'},
+      {day:10,start:'14:00',end:'15:30',title:'Mentsen 잉여 소재 모바일 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eedb81a3bf7882c0b33ca'},
+      {day:11,start:'10:00',end:'12:30',title:'드롭인 잉크 스탬프 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0eeec1d167b580129509dc',location:'Flaskehalsen 2, 1799 Copenhagen'},
+      {day:11,start:'14:00',end:'16:00',title:'드롭인 스탬프 잉크 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0ef04b7d32e4a5279020c2'},
+      {day:12,start:'10:00',end:'12:30',title:'드롭인 스탬프 잉크 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0ef09bfac0c77e0f94b549',location:'Flaskehalsen 2, 1799 Copenhagen'},
+      {day:12,start:'14:00',end:'16:00',title:'드롭인 스탬프 잉크 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0ef0f141f916143a780a27'},
     ],
   },
   {
@@ -634,12 +634,12 @@ const EXHIBITIONS = [
     slug:'ester-erik',
     desc:'ester & erik is a family-owned company that has been making high-quality candles since 1987. Since then, the logo with…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Dip your own candles',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afdba25cb565c484b7e25'},
-      {day:10,start:'15:00',end:'16:00',title:'Dip your own candles',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afde1384de1ffd265ef00'},
-      {day:11,start:'10:00',end:'11:00',title:'Dip your own candles',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe04c104803f57d34f91'},
-      {day:11,start:'15:00',end:'16:00',title:'Dip your own candles',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe1de56e9e6dd5e059f5'},
-      {day:12,start:'10:00',end:'11:00',title:'Dip your own candles',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe3a103959a1312bab23'},
-      {day:12,start:'15:00',end:'16:00',title:'Dip your own candles',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe6936001fc7c5bcf4b5'},
+      {day:10,start:'10:00',end:'11:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afdba25cb565c484b7e25'},
+      {day:10,start:'15:00',end:'16:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afde1384de1ffd265ef00'},
+      {day:11,start:'10:00',end:'11:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe04c104803f57d34f91'},
+      {day:11,start:'15:00',end:'16:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe1de56e9e6dd5e059f5'},
+      {day:12,start:'10:00',end:'11:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe3a103959a1312bab23'},
+      {day:12,start:'15:00',end:'16:00',title:'직접 만드는 캔들 디핑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0afe6936001fc7c5bcf4b5'},
     ],
   },
   {
@@ -651,12 +651,12 @@ const EXHIBITIONS = [
     slug:'ferm-living',
     desc:'Based on a passion for authentic design and with responsibility at the forefront, Ferm Living creates honest products…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Kiosk Café at Taarnet',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4332143884c067f230f68',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen'},
-      {day:10,start:'14:00',end:'16:00',title:'Granitas in the Garden',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4343eea6b88260d4c1cc8'},
-      {day:11,start:'10:00',end:'12:00',title:'Kiosk Café at Taarnet',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f4338c08302f9890c33eac',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen Municipality, Denmark'},
-      {day:11,start:'14:00',end:'16:00',title:'Granitas in the Garden',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4346f10b140a51c8e437f'},
-      {day:12,start:'10:00',end:'12:00',title:'Kiosk Café at Taarnet',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f433e921e9e06f9cde1ba7',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen Municipality, Denmark'},
-      {day:12,start:'14:00',end:'16:00',title:'Granitas in the Garden',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f43513c71f7a65d5b295df'},
+      {day:10,start:'10:00',end:'12:00',title:'Taarnet의 Kiosk Café',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4332143884c067f230f68',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen'},
+      {day:10,start:'14:00',end:'16:00',title:'정원에서 즐기는 그라니타',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4343eea6b88260d4c1cc8'},
+      {day:11,start:'10:00',end:'12:00',title:'Taarnet의 Kiosk Café',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f4338c08302f9890c33eac',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen Municipality, Denmark'},
+      {day:11,start:'14:00',end:'16:00',title:'정원에서 즐기는 그라니타',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4346f10b140a51c8e437f'},
+      {day:12,start:'10:00',end:'12:00',title:'Taarnet의 Kiosk Café',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f433e921e9e06f9cde1ba7',location:'TAARNET PÅ KGS. NYTORV, Kongens Nytorv 16F, 1050 Copenhagen Municipality, Denmark'},
+      {day:12,start:'14:00',end:'16:00',title:'정원에서 즐기는 그라니타',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f43513c71f7a65d5b295df'},
     ],
   },
   {
@@ -668,12 +668,12 @@ const EXHIBITIONS = [
     slug:'gessi',
     desc:'Founded in Valsesia, Gessi represents an excellence of Made in Italy, internationally recognised in wellness,…',
     events:[
-      {day:10,start:'17:30',end:'20:00',title:'Aperitivo Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19aaf2fb4fa0c3fe2f55dc'},
-      {day:10,start:'9:00',end:'11:00',title:'Coffee Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abb158a9e8e42f9a0721'},
-      {day:11,start:'17:30',end:'20:00',title:'Aperitivo Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19ab64292b2a3ad334e47c'},
-      {day:11,start:'9:00',end:'11:00',title:'Coffee Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abd76548a9c22e5673d2'},
-      {day:12,start:'17:30',end:'20:00',title:'Aperitivo Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19ab839a54c47f718bfae6'},
-      {day:12,start:'9:00',end:'11:00',title:'Coffee Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abfe18092cbbbcdcb637'},
+      {day:10,start:'17:30',end:'20:00',title:'아페리티보 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19aaf2fb4fa0c3fe2f55dc'},
+      {day:10,start:'9:00',end:'11:00',title:'커피 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abb158a9e8e42f9a0721'},
+      {day:11,start:'17:30',end:'20:00',title:'아페리티보 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19ab64292b2a3ad334e47c'},
+      {day:11,start:'9:00',end:'11:00',title:'커피 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abd76548a9c22e5673d2'},
+      {day:12,start:'17:30',end:'20:00',title:'아페리티보 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19ab839a54c47f718bfae6'},
+      {day:12,start:'9:00',end:'11:00',title:'커피 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19abfe18092cbbbcdcb637'},
     ],
   },
   {
@@ -685,12 +685,12 @@ const EXHIBITIONS = [
     slug:'hjemstavn',
     desc:'HJEMSTAVN is a high–end brand specialising in bespoke kitchens and interior solutions, with a strong emphasis on…',
     events:[
-      {day:10,start:'11:00',end:'13:00',title:'Bread and butter',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1a8e01d7dadb6f85309'},
-      {day:10,start:'15:30',end:'18:30',title:'Forest Gin & Tonic Hour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda32f3f53f75c4a542c5e'},
-      {day:11,start:'11:00',end:'13:00',title:'Bread and butter',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1c63e5bc3f756c8ae1f'},
-      {day:11,start:'15:30',end:'18:30',title:'Forest Gin & Tonic Hour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda3a4412d4296bff48efc'},
-      {day:12,start:'11:00',end:'13:00',title:'Bread and butter',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1dfd743dab79c61f992'},
-      {day:12,start:'15:30',end:'18:30',title:'Forest Gin & Tonic Hour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda3c6139b3f66b56c1c5f'},
+      {day:10,start:'11:00',end:'13:00',title:'빵과 버터',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1a8e01d7dadb6f85309'},
+      {day:10,start:'15:30',end:'18:30',title:'Forest 진토닉 아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda32f3f53f75c4a542c5e'},
+      {day:11,start:'11:00',end:'13:00',title:'빵과 버터',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1c63e5bc3f756c8ae1f'},
+      {day:11,start:'15:30',end:'18:30',title:'Forest 진토닉 아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda3a4412d4296bff48efc'},
+      {day:12,start:'11:00',end:'13:00',title:'빵과 버터',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda1dfd743dab79c61f992'},
+      {day:12,start:'15:30',end:'18:30',title:'Forest 진토닉 아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fda3c6139b3f66b56c1c5f'},
     ],
   },
   {
@@ -702,12 +702,12 @@ const EXHIBITIONS = [
     slug:'edition-x-house-of-finn-juhl',
     desc:'For this year’s 3daysofdesign, House of Finn Juhl collaborates with Edition Copenhagen, one of the leading…',
     events:[
-      {day:10,start:'11:00',end:'13:00',title:'The Artistry of Craftsmanship',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f33fac5771b2162831476a'},
-      {day:10,start:'14:00',end:'16:30',title:'Wine Hour & the Artistry of Craftsmanship',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3426971537ea29721577a',cats:['drinks','workshop']},
-      {day:11,start:'11:00',end:'13:00',title:'The Artistry of Craftsmanship',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f343d135bb5a9c6c1b9cfa'},
-      {day:11,start:'14:00',end:'16:30',title:'Wine Hour & the Artistry of Craftsmanship',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f344c035bb5a9c6c1bc552',cats:['drinks','workshop']},
-      {day:12,start:'11:00',end:'13:00',title:'The Artistry of Craftsmanship',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f3456afd6130c786416ba8'},
-      {day:12,start:'14:00',end:'16:30',title:'Wine Hour & the Artistry of Craftsmanship',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f345fa67cd697b44735c1a',cats:['drinks','workshop']},
+      {day:10,start:'11:00',end:'13:00',title:'장인정신의 예술성',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f33fac5771b2162831476a'},
+      {day:10,start:'14:00',end:'16:30',title:'와인 아워 & 장인정신의 예술성',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3426971537ea29721577a',cats:['drinks','workshop']},
+      {day:11,start:'11:00',end:'13:00',title:'장인정신의 예술성',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f343d135bb5a9c6c1b9cfa'},
+      {day:11,start:'14:00',end:'16:30',title:'와인 아워 & 장인정신의 예술성',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f344c035bb5a9c6c1bc552',cats:['drinks','workshop']},
+      {day:12,start:'11:00',end:'13:00',title:'장인정신의 예술성',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f3456afd6130c786416ba8'},
+      {day:12,start:'14:00',end:'16:30',title:'와인 아워 & 장인정신의 예술성',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f345fa67cd697b44735c1a',cats:['drinks','workshop']},
     ],
   },
   {
@@ -719,12 +719,12 @@ const EXHIBITIONS = [
     slug:'id-collective',
     desc:'Iteration Collective is a newly established design collective of young designers. The community has emerged from a…',
     events:[
-      {day:10,start:'12:00',end:'15:00',title:'Furniture Croquis & Meet the designers',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4c2fb3c400f9091072931'},
-      {day:10,start:'17:00',end:'20:00',title:'Exibition Vernissage: Bright Future',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c6258b17bc84387eba9b'},
-      {day:10,start:'9:00',end:'11:00',title:'Sketchbook Binding & Morning Coffee',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c21ce02b6b5110c32e03',cats:['drinks','workshop']},
-      {day:11,start:'13:00',end:'16:00',title:'Furniture Croquis & Meet the designers',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4c330044511d86fa7c169'},
-      {day:11,start:'9:00',end:'11:00',title:'Sketchbook Binding & Morning Coffee',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c25d530ec1e215e51de9',cats:['drinks','workshop']},
-      {day:12,start:'9:00',end:'11:00',title:'Sketchbook Binding & Morning Coffee',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c2a1c1245f5c1928fb38',cats:['drinks','workshop']},
+      {day:10,start:'12:00',end:'15:00',title:'가구 크로키 & 디자이너 만남',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4c2fb3c400f9091072931'},
+      {day:10,start:'17:00',end:'20:00',title:'전시 베르니사주: Bright Future',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c6258b17bc84387eba9b'},
+      {day:10,start:'9:00',end:'11:00',title:'스케치북 제본 & 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c21ce02b6b5110c32e03',cats:['drinks','workshop']},
+      {day:11,start:'13:00',end:'16:00',title:'가구 크로키 & 디자이너 만남',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4c330044511d86fa7c169'},
+      {day:11,start:'9:00',end:'11:00',title:'스케치북 제본 & 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c25d530ec1e215e51de9',cats:['drinks','workshop']},
+      {day:12,start:'9:00',end:'11:00',title:'스케치북 제본 & 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c2a1c1245f5c1928fb38',cats:['drinks','workshop']},
     ],
   },
   {
@@ -736,12 +736,12 @@ const EXHIBITIONS = [
     slug:'kanttari',
     desc:'KANTTARI creates bespoke luxury furniture defined by bold architectural forms, refined detailing, and exceptional…',
     events:[
-      {day:10,start:'12:00',end:'13:00',title:'Daily Champagne & Live Music Performance',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d671fa747c766f15c84d6',cats:['drinks','talk','launch']},
-      {day:10,start:'17:00',end:'17:30',title:'Live Music & Champagne Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d676fa2744feeab27cde6',cats:['drinks','talk','launch']},
-      {day:11,start:'12:00',end:'13:00',title:'Champagne & Live Music Performance',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d67a4a91bde2a358ad11f',cats:['drinks','talk','launch']},
-      {day:11,start:'17:00',end:'18:00',title:'Live Music & Champagne Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d67e4fa083d4602ceeb93',cats:['drinks','talk','launch']},
-      {day:12,start:'12:00',end:'13:00',title:'Champagne & Live Music Performance',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d68136cd36d7fbcc8e8d3',cats:['drinks','talk','launch']},
-      {day:12,start:'17:00',end:'18:00',title:'Live Music & Champagne Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d684af036bd0c87bc7930',cats:['drinks','talk','launch']},
+      {day:10,start:'12:00',end:'13:00',title:'매일 샴페인 & 라이브 음악 공연',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d671fa747c766f15c84d6',cats:['drinks','talk','launch']},
+      {day:10,start:'17:00',end:'17:30',title:'라이브 뮤직 & 샴페인 익스피리언스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d676fa2744feeab27cde6',cats:['drinks','talk','launch']},
+      {day:11,start:'12:00',end:'13:00',title:'샴페인과 라이브 음악 공연',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d67a4a91bde2a358ad11f',cats:['drinks','talk','launch']},
+      {day:11,start:'17:00',end:'18:00',title:'라이브 뮤직 & 샴페인 익스피리언스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d67e4fa083d4602ceeb93',cats:['drinks','talk','launch']},
+      {day:12,start:'12:00',end:'13:00',title:'샴페인과 라이브 음악 공연',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d68136cd36d7fbcc8e8d3',cats:['drinks','talk','launch']},
+      {day:12,start:'17:00',end:'18:00',title:'라이브 뮤직 & 샴페인 익스피리언스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d684af036bd0c87bc7930',cats:['drinks','talk','launch']},
     ],
   },
   {
@@ -753,12 +753,12 @@ const EXHIBITIONS = [
     slug:'kvik',
     desc:'Kvik’s originality comes from redefining how people live in their kitchens. Since 1983, Kvik has focused on human…',
     events:[
-      {day:10,start:'11:30',end:'12:30',title:'Copenhagen Brief — a European perspective on Danish design',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db0cfc3a3936feb41ee06'},
-      {day:10,start:'14:00',end:'15:00',title:'Meet & Greet: Kasper Meldgaard, Says Who',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db439eb6fcdcab5b8ea5e'},
-      {day:10,start:'15:00',end:'16:00',title:'Meet & Greet: Søren Stellfeld, Hans Thyge & Co.',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db527d2f6d1ab8a4e2034'},
-      {day:11,start:'12:00',end:'14:00',title:'Meet & Greet: Rikke Frost',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db67fc0d37cf217d7e55c'},
-      {day:12,start:'10:00',end:'12:00',title:'Yarn windings with Astrid Skibsted',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0db25c1fe8a9592b41201b'},
-      {day:12,start:'12:30',end:'14:00',title:'Meet & Greet: Designer Annika Hoffmann',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db7e3b3d38c45807c0bf2'},
+      {day:10,start:'11:30',end:'12:30',title:'Copenhagen Brief — 덴마크 디자인에 대한 유럽의 시각',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db0cfc3a3936feb41ee06'},
+      {day:10,start:'14:00',end:'15:00',title:'Kasper Meldgaard, Says Who와의 만남',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db439eb6fcdcab5b8ea5e'},
+      {day:10,start:'15:00',end:'16:00',title:'Søren Stellfeld, Hans Thyge & Co.와의 만남',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db527d2f6d1ab8a4e2034'},
+      {day:11,start:'12:00',end:'14:00',title:'Rikke Frost와의 만남',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db67fc0d37cf217d7e55c'},
+      {day:12,start:'10:00',end:'12:00',title:'Astrid Skibsted와 함께하는 실 감기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0db25c1fe8a9592b41201b'},
+      {day:12,start:'12:30',end:'14:00',title:'디자이너 Annika Hoffmann과의 만남',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0db7e3b3d38c45807c0bf2'},
     ],
   },
   {
@@ -770,12 +770,12 @@ const EXHIBITIONS = [
     slug:'mette-ditmer-denmark',
     desc:'Mette Ditmer Denmark has been a voice within Scandinavian design since 1995, creating timeless collections grounded in…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'THE ART OF MAKING: LINE & THREAD',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bec2233ffa99a1d6f917'},
-      {day:10,start:'14:00',end:'15:00',title:'THE ART OF MAKING: CLAY & COLOR',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c07300c30e5be044c4b0'},
-      {day:11,start:'11:00',end:'12:00',title:'THE ART OF MAKING: LINE & THREAD',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bf8097ba2c575047ebe5'},
-      {day:11,start:'14:00',end:'15:00',title:'THE ART OF MAKING: CLAY & COLOR',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c0eec7491644f198a713'},
-      {day:12,start:'11:00',end:'12:00',title:'THE ART OF MAKING: LINE & THREAD',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bfa7091f0c1be8d56d1b'},
-      {day:12,start:'14:00',end:'15:00',title:'THE ART OF MAKING: CLAY & COLOR',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c115ac9b13afb4fb0466'},
+      {day:10,start:'11:00',end:'12:00',title:'만들기의 예술: 선과 실',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bec2233ffa99a1d6f917'},
+      {day:10,start:'14:00',end:'15:00',title:'만들기의 예술: 점토와 색',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c07300c30e5be044c4b0'},
+      {day:11,start:'11:00',end:'12:00',title:'만들기의 예술: 선과 실',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bf8097ba2c575047ebe5'},
+      {day:11,start:'14:00',end:'15:00',title:'만들기의 예술: 점토와 색',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c0eec7491644f198a713'},
+      {day:12,start:'11:00',end:'12:00',title:'만들기의 예술: 선과 실',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01bfa7091f0c1be8d56d1b'},
+      {day:12,start:'14:00',end:'15:00',title:'만들기의 예술: 점토와 색',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a01c115ac9b13afb4fb0466'},
     ],
   },
   {
@@ -787,12 +787,12 @@ const EXHIBITIONS = [
     slug:'nosou',
     desc:'Nosou is a contemporary Japanese design brand rooted in natural materials and traditional craftsmanship. Guided by the…',
     events:[
-      {day:10,start:'13:00',end:'14:00',title:'Experience the beauty of Japan in a single sip of sake',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70eb1c5d885ba5468693b'},
-      {day:10,start:'16:00',end:'17:00',title:'Experience the beauty of Japan in a single sip of sake',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70fd8feb35cd66a7f1876'},
-      {day:11,start:'13:00',end:'14:00',title:'Experience the beauty of Japan in a single sip of sake',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70ff859f9971223166db8'},
-      {day:11,start:'16:00',end:'17:00',title:'Experience the beauty of Japan in a single sip of sake',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e71027d4de2bc7d5fb630b'},
-      {day:12,start:'13:00',end:'14:00',title:'Experience the beauty of Japan in a single sip of sake',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e710563c2bec69d547ff3c'},
-      {day:12,start:'16:00',end:'17:00',title:'Experience the beauty of Japan in a single sip of sake',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e7107aff0fea9afd381e9e'},
+      {day:10,start:'13:00',end:'14:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70eb1c5d885ba5468693b'},
+      {day:10,start:'16:00',end:'17:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70fd8feb35cd66a7f1876'},
+      {day:11,start:'13:00',end:'14:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e70ff859f9971223166db8'},
+      {day:11,start:'16:00',end:'17:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e71027d4de2bc7d5fb630b'},
+      {day:12,start:'13:00',end:'14:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e710563c2bec69d547ff3c'},
+      {day:12,start:'16:00',end:'17:00',title:'한 모금의 사케로 느끼는 일본의 아름다움',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e7107aff0fea9afd381e9e'},
     ],
   },
   {
@@ -804,12 +804,12 @@ const EXHIBITIONS = [
     slug:'romo-ltd',
     desc:'Founded in 1902, Romo is a British family–run business now in its fifth generation. With decades of experience, an…',
     events:[
-      {day:10,start:'12:00',end:'15:00',title:'A Taste of Summer: Indulgent Ice Cream',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0d75434b9488e9f6db766f'},
-      {day:10,start:'14:00',end:'15:00',title:'Scandinavian design meets 120yrs of British Family Heritage',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0d7524f405dab26775d5e3'},
-      {day:10,start:'15:00',end:'17:00',title:'Romo in Copenhagen: Cocktail Celebration',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a0992b83f1db1be22faa'},
-      {day:11,start:'12:00',end:'15:00',title:'A Taste of Summer: Indulgent Ice Cream',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d755c8f266e109b69a963'},
-      {day:11,start:'15:00',end:'17:00',title:'An Evening with the Designers: Romo Copenhagen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a157d2e05f9a250fb02f'},
-      {day:12,start:'12:00',end:'15:00',title:'A Taste of Summer: Indulgent Ice Cream',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d75755284dca8348f0ffa'},
+      {day:10,start:'12:00',end:'15:00',title:'여름의 맛: 풍성한 아이스크림',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0d75434b9488e9f6db766f'},
+      {day:10,start:'14:00',end:'15:00',title:'스칸디나비아 디자인이 만난 120년 영국 가족 유산',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0d7524f405dab26775d5e3'},
+      {day:10,start:'15:00',end:'17:00',title:'Romo in Copenhagen: 칵테일 셀레브레이션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a0992b83f1db1be22faa'},
+      {day:11,start:'12:00',end:'15:00',title:'여름의 맛: 풍성한 아이스크림',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d755c8f266e109b69a963'},
+      {day:11,start:'15:00',end:'17:00',title:'디자이너와 함께하는 저녁: Romo Copenhagen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a157d2e05f9a250fb02f'},
+      {day:12,start:'12:00',end:'15:00',title:'여름의 맛: 풍성한 아이스크림',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d75755284dca8348f0ffa'},
     ],
   },
   {
@@ -821,11 +821,11 @@ const EXHIBITIONS = [
     slug:'baux',
     desc:'BAUX was founded with the belief that building materials should be sustainable, surprisingly functional and remarkably…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Guided Tours',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fb2dd65e21d8d4f90131e0'},
-      {day:10,start:'14:00',end:'15:00',title:'Guided Tours',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fb2dfe34110dfe66dc1cde'},
-      {day:10,start:'17:00',end:'20:00',title:'Design Dialogue with NEW ERA Magazine + After Work mingle',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb30269d1987d7670ddd68',cats:['drinks','talk']},
-      {day:11,start:'17:00',end:'20:00',title:'Design Dialogue with NEW ERA Magazine + After Work mingle',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb304af4ef165fbc8342aa',cats:['drinks','talk']},
-      {day:12,start:'17:00',end:'20:00',title:'Closing Party x PORSCHE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb309d86b25b4cbe0a5c00'},
+      {day:10,start:'11:00',end:'12:00',title:'가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fb2dd65e21d8d4f90131e0'},
+      {day:10,start:'14:00',end:'15:00',title:'가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fb2dfe34110dfe66dc1cde'},
+      {day:10,start:'17:00',end:'20:00',title:'NEW ERA Magazine과 함께하는 디자인 대화 + 애프터워크 밍글',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb30269d1987d7670ddd68',cats:['drinks','talk']},
+      {day:11,start:'17:00',end:'20:00',title:'NEW ERA Magazine과 함께하는 디자인 대화 + 애프터워크 밍글',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb304af4ef165fbc8342aa',cats:['drinks','talk']},
+      {day:12,start:'17:00',end:'20:00',title:'PORSCHE와 함께하는 클로징 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb309d86b25b4cbe0a5c00'},
     ],
   },
   {
@@ -837,11 +837,11 @@ const EXHIBITIONS = [
     slug:'bruun-rasmussen',
     desc:'Since 1948, Bruun Rasmussen Auctioneers has brought art, design, and antiques to passionate collectors across the…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'Launch of Copenhagen Design Paper',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4988f6cd6593fbe493e49'},
-      {day:10,start:'9:00',end:'11:00',title:'Opening — Collector\'s Edit',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49770303c2f31631b8773'},
-      {day:11,start:'13:00',end:'14:00',title:'Panel Talk — Collecting Now',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f499c8865057cd7f392ecc'},
-      {day:11,start:'17:00',end:'19:00',title:'Collector’s Lounge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49a0dd61cca0be898e859'},
-      {day:12,start:'17:00',end:'19:00',title:'Collector’s Lounge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49abb4057d85b0ddea7f6'},
+      {day:10,start:'16:00',end:'19:00',title:'Copenhagen Design Paper 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4988f6cd6593fbe493e49'},
+      {day:10,start:'9:00',end:'11:00',title:'오프닝 — Collector\'s Edit',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49770303c2f31631b8773'},
+      {day:11,start:'13:00',end:'14:00',title:'패널 토크 — 지금, 수집하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f499c8865057cd7f392ecc'},
+      {day:11,start:'17:00',end:'19:00',title:'Collector\'s Lounge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49a0dd61cca0be898e859'},
+      {day:12,start:'17:00',end:'19:00',title:'Collector\'s Lounge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49abb4057d85b0ddea7f6'},
     ],
   },
   {
@@ -853,11 +853,11 @@ const EXHIBITIONS = [
     slug:'dornbracht',
     desc:'Dornbracht provides exclusive designer fittings and accessories for bathrooms, spas, and kitchens. The brand combines…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Morning Moments',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16a9805acbc9d760a20cdb'},
-      {day:10,start:'15:00',end:'18:00',title:'Afternoon Cocktails & Two New Design Icons',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aa30c5b884c61866cb19',cats:['drinks','launch']},
-      {day:11,start:'10:00',end:'12:00',title:'Morning Moments',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aac63d6d4ea04d387bea'},
-      {day:11,start:'15:00',end:'18:00',title:'Afternoon Drinks & Two New Design Icons',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16ab7aaf5848bce9e59883',cats:['drinks','launch']},
-      {day:12,start:'10:00',end:'12:00',title:'Morning Moments',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16abcaa0334c0d24847b09'},
+      {day:10,start:'10:00',end:'12:00',title:'모닝 모멘트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16a9805acbc9d760a20cdb'},
+      {day:10,start:'15:00',end:'18:00',title:'애프터눈 칵테일 & 두 개의 새로운 디자인 아이콘',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aa30c5b884c61866cb19',cats:['drinks','launch']},
+      {day:11,start:'10:00',end:'12:00',title:'모닝 모멘트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aac63d6d4ea04d387bea'},
+      {day:11,start:'15:00',end:'18:00',title:'애프터눈 드링크 & 두 개의 새로운 디자인 아이콘',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16ab7aaf5848bce9e59883',cats:['drinks','launch']},
+      {day:12,start:'10:00',end:'12:00',title:'모닝 모멘트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16abcaa0334c0d24847b09'},
     ],
   },
   {
@@ -869,11 +869,11 @@ const EXHIBITIONS = [
     slug:'durat',
     desc:'Finnish Durat is a unique solid surface material which contains recycled post–industrial plastics and is 100%…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Durat unveils Palapeli shelf designed by Harri Koskinen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch']},
-      {day:10,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
-      {day:10,start:'17:00',end:'20:00',title:'PLAYROOM Opening',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf',joint:true},
-      {day:11,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8aca6cd3bffdac8a51f67',joint:true},
-      {day:12,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8acc5918729bc7d8f7471',joint:true},
+      {day:10,start:'11:00',end:'11:30',title:'Durat, Harri Koskinen 디자인 Palapeli 선반 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch']},
+      {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
+      {day:10,start:'17:00',end:'20:00',title:'PLAYROOM 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf',joint:true},
+      {day:11,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8aca6cd3bffdac8a51f67',joint:true},
+      {day:12,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8acc5918729bc7d8f7471',joint:true},
     ],
   },
   {
@@ -885,11 +885,11 @@ const EXHIBITIONS = [
     slug:'estonian-embassy-in-copenhagen',
     desc:'Estonia’s national story is simple: succeeding at change is its superpower; in design, that means future ready…',
     events:[
-      {day:10,start:'10:30',end:'11:30',title:'Figure & Furniture — sketch with designer Loreida Hein',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a02ebff65c40b7931b93373'},
-      {day:10,start:'14:00',end:'15:00',title:'RoomDiplomacy by Estonian Assocoation of Interior Architects',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02e3e2ba1e0334e4dd9ed2'},
-      {day:11,start:'10:15',end:'10:45',title:'Hands-on demonstration and story behind House of Pärnamets',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02e47d64b425ce9da16d1d'},
-      {day:11,start:'16:00',end:'18:00',title:'Rooted in traditions networking',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02e4c48272839de789535d',cats:['drinks','talk']},
-      {day:12,start:'11:00',end:'12:00',title:'The Estonian perseverance — discussion with Kristel Laurits',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02ec8a80c058168fc9b10f'},
+      {day:10,start:'10:30',end:'11:30',title:'Figure & Furniture — 디자이너 Loreida Hein과 함께하는 스케치',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a02ebff65c40b7931b93373'},
+      {day:10,start:'14:00',end:'15:00',title:'RoomDiplomacy by Estonian Association of Interior Architects',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02e3e2ba1e0334e4dd9ed2'},
+      {day:11,start:'10:15',end:'10:45',title:'House of Pärnamets의 실연과 비하인드 스토리',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02e47d64b425ce9da16d1d'},
+      {day:11,start:'16:00',end:'18:00',title:'전통에 뿌리내린 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02e4c48272839de789535d',cats:['drinks','talk']},
+      {day:12,start:'11:00',end:'12:00',title:'에스토니아의 인내 — Kristel Laurits와의 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a02ec8a80c058168fc9b10f'},
     ],
   },
   {
@@ -901,11 +901,11 @@ const EXHIBITIONS = [
     slug:'emfima-collection-aps',
     desc:'EMFIMA Collection is a Nordic agency established in September 2016 and today represent the well-known Italian…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Sound Matters: Acoustic comfort for Architecture',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f35c7054635eb33166fab9',joint:true},
-      {day:10,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32',joint:true},
-      {day:11,start:'10:00',end:'10:30',title:'Designing the Circular Economy',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f361c00f12ad18a50e685d',joint:true},
-      {day:11,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a',joint:true},
-      {day:12,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a92022d1a9a23e2e22ae',joint:true},
+      {day:10,start:'11:00',end:'11:30',title:'소리가 중요하다: 건축을 위한 음향 쾌적성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f35c7054635eb33166fab9',joint:true},
+      {day:10,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32',joint:true},
+      {day:11,start:'10:00',end:'10:30',title:'순환 경제 디자인하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f361c00f12ad18a50e685d',joint:true},
+      {day:11,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a',joint:true},
+      {day:12,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a92022d1a9a23e2e22ae',joint:true},
     ],
   },
   {
@@ -917,11 +917,11 @@ const EXHIBITIONS = [
     slug:'finarte',
     desc:'Finarte is Finland\'s leading design house for rugs and soft accessories, creating award–winning interior items for…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Durat unveils Palapeli shelf designed by Harri Koskinen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch'],joint:true},
-      {day:10,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
-      {day:10,start:'17:00',end:'20:00',title:'PLAYROOM Opening',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf'},
-      {day:11,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8aca6cd3bffdac8a51f67'},
-      {day:12,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8acc5918729bc7d8f7471'},
+      {day:10,start:'11:00',end:'11:30',title:'Durat, Harri Koskinen 디자인 Palapeli 선반 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc75af8c86331cef7f91a0',cats:['drinks','launch'],joint:true},
+      {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994',joint:true},
+      {day:10,start:'17:00',end:'20:00',title:'PLAYROOM 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf'},
+      {day:11,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8aca6cd3bffdac8a51f67'},
+      {day:12,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8acc5918729bc7d8f7471'},
     ],
   },
   {
@@ -933,11 +933,11 @@ const EXHIBITIONS = [
     slug:'fredericia',
     desc:'Since its foundation in 1911, the family–owned company Fredericia has proudly built a strong tradition of beautiful…',
     events:[
-      {day:10,start:'10:00',end:'10:30',title:'Exhibition Opening Speech',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f491d1ffac3ff136ca0786'},
-      {day:10,start:'13:00',end:'14:00',title:'Design Talk: Who Gets to Shape Danish Design?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0b1d03627ba9c8f246a635'},
+      {day:10,start:'10:00',end:'10:30',title:'전시 오프닝 스피치',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f491d1ffac3ff136ca0786'},
+      {day:10,start:'13:00',end:'14:00',title:'디자인 토크: 누가 덴마크 디자인을 만들어가는가?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0b1d03627ba9c8f246a635'},
       {day:10,start:'17:00',end:'19:00',title:'Trisse Bar',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a1e6a3f3ffb08142d180'},
-      {day:11,start:'11:00',end:'12:00',title:'The Untold Chronicles: Exhibition Tour',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4a7f34ef0fc6a08ad2a9d'},
-      {day:12,start:'15:00',end:'17:00',title:'Closing Bar',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a91a061ba3fac3da0b80'},
+      {day:11,start:'11:00',end:'12:00',title:'알려지지 않은 연대기: 전시 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f4a7f34ef0fc6a08ad2a9d'},
+      {day:12,start:'15:00',end:'17:00',title:'클로징 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4a91a061ba3fac3da0b80'},
     ],
   },
   {
@@ -949,11 +949,11 @@ const EXHIBITIONS = [
     slug:'frost',
     desc:'The story began with a vision of creating a new generation of interior design accessories where Danish design…',
     events:[
-      {day:10,start:'14:00',end:'14:30',title:'A New Era: Mixer Taps, Shower Sets, Bath Furniture & Basins',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f457e0703823a20e9b499d',cats:['talk','launch']},
-      {day:10,start:'17:00',end:'17:30',title:'Snacks and drinks with the FROST team',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f458d89d180006b0ba80bc'},
-      {day:11,start:'11:00',end:'11:30',title:'A New Era: Mixer Taps, Shower Sets, Bath Furniture & Basins',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f45856cc5cd9f226cc4f9e',cats:['talk','launch']},
-      {day:11,start:'17:00',end:'17:30',title:'Snacks and drinks with the FROST team',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f459224c98b969801a862a'},
-      {day:12,start:'11:00',end:'11:30',title:'FROST A Family Company',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f459f6d8269b4698e4adf5'},
+      {day:10,start:'14:00',end:'14:30',title:'새로운 시대: 믹서 수전, 샤워 세트, 욕실 가구 & 세면대',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f457e0703823a20e9b499d',cats:['talk','launch']},
+      {day:10,start:'17:00',end:'17:30',title:'FROST 팀과 함께하는 스낵과 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f458d89d180006b0ba80bc'},
+      {day:11,start:'11:00',end:'11:30',title:'새로운 시대: 믹서 수전, 샤워 세트, 욕실 가구 & 세면대',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f45856cc5cd9f226cc4f9e',cats:['talk','launch']},
+      {day:11,start:'17:00',end:'17:30',title:'FROST 팀과 함께하는 스낵과 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f459224c98b969801a862a'},
+      {day:12,start:'11:00',end:'11:30',title:'FROST 패밀리 컴퍼니',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f459f6d8269b4698e4adf5'},
     ],
   },
   {
@@ -965,11 +965,11 @@ const EXHIBITIONS = [
     slug:'gabriel-a-s',
     desc:'Specialists in fabrics. At Gabriel, fabrics are the foundation of exceptional design, performance, and craftsmanship.…',
     events:[
-      {day:10,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e',joint:true},
-      {day:11,start:'14:00',end:'14:30',title:'Savak NU - presentation by Creative Director Cenk Kivrikoglu',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4651ee232d7996d0806f5',cats:['talk','launch']},
-      {day:11,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af',joint:true},
-      {day:12,start:'10:30',end:'11:00',title:'Savak NU - presentation by creative director Cenk Kivrikoglu',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f465e9387186e8bbeb73c9',cats:['talk','launch']},
-      {day:12,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d9e77a043ef18cd76c2',joint:true},
+      {day:10,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e',joint:true},
+      {day:11,start:'14:00',end:'14:30',title:'Savak NU - 크리에이티브 디렉터 Cenk Kivrikoglu 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4651ee232d7996d0806f5',cats:['talk','launch']},
+      {day:11,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af',joint:true},
+      {day:12,start:'10:30',end:'11:00',title:'Savak NU - 크리에이티브 디렉터 Cenk Kivrikoglu 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f465e9387186e8bbeb73c9',cats:['talk','launch']},
+      {day:12,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d9e77a043ef18cd76c2',joint:true},
     ],
   },
   {
@@ -981,11 +981,11 @@ const EXHIBITIONS = [
     slug:'pp-mobler',
     desc:'PP Møbler is a family owned furniture workshop with a strong tradition for advanced craftsmanship made to the highest…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'A calm morning with coffee and croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33f57a22433b5c32a17e3'},
-      {day:10,start:'16:00',end:'17:00',title:'Experience the Circle Chair being woven',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f342d535bb5a9c6c1b70e9'},
-      {day:11,start:'16:00',end:'17:00',title:'Celebrating 40 years of the Circle Chair',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3419744913d2aba4c80db'},
-      {day:12,start:'10:00',end:'12:00',title:'Celebrating 75 years of the Papa Bear Chair',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f341eca21702f64e2531eb'},
-      {day:12,start:'16:00',end:'18:00',title:'Wine and a relaxed Friday afternoon',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3422eb83256527ff7c091'},
+      {day:10,start:'10:00',end:'11:00',title:'커피와 크루아상으로 시작하는 고요한 아침',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33f57a22433b5c32a17e3'},
+      {day:10,start:'16:00',end:'17:00',title:'Circle Chair 위빙 과정 체험',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f342d535bb5a9c6c1b70e9'},
+      {day:11,start:'16:00',end:'17:00',title:'Circle Chair 40주년 기념',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3419744913d2aba4c80db'},
+      {day:12,start:'10:00',end:'12:00',title:'Papa Bear Chair 75주년 기념',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f341eca21702f64e2531eb'},
+      {day:12,start:'16:00',end:'18:00',title:'와인과 여유로운 금요일 오후',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3422eb83256527ff7c091'},
     ],
   },
   {
@@ -997,11 +997,11 @@ const EXHIBITIONS = [
     slug:'reevein-studios',
     desc:'Reevein Studios is a Danish high–end design company dedicated to crafting collectible floral and botanical objects…',
     events:[
-      {day:10,start:'13:00',end:'15:00',title:'Seed Dating — B2B Meetup & Open Call',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0489465794494c758f76d7'},
-      {day:10,start:'16:00',end:'21:00',title:'THE-DESIGN-HANGOVER-JETLAG-LEGENDARY- BACKYARD- PARTY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a04783a6dc14ea1de8de7e0'},
-      {day:11,start:'10:00',end:'11:00',title:'Jeppe Utzon x Reevein — Using nature as an inspiration',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0481b893cfe44f6d2309f6'},
-      {day:11,start:'13:00',end:'15:00',title:'Seed Dating — B2B Meetup & Open Call',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a048978b3fdec0b307949b0'},
-      {day:12,start:'16:00',end:'19:00',title:'Reevein x Jane Kønig — The Spora Jewelry Edition Launch',icon:'🚀',color:'#d99021',label:'런칭',id:'6a046bfa2a0c1d11cfe20199',location:'Gothersgade 54, 1123 Copenhagen'},
+      {day:10,start:'13:00',end:'15:00',title:'Seed Dating — B2B 밋업 & 오픈 콜',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0489465794494c758f76d7'},
+      {day:10,start:'16:00',end:'21:00',title:'전설적인 뒷마당 파티 - 디자인 숙취와 시차 극복',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a04783a6dc14ea1de8de7e0'},
+      {day:11,start:'10:00',end:'11:00',title:'Jeppe Utzon x Reevein — 자연을 영감으로 삼다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0481b893cfe44f6d2309f6'},
+      {day:11,start:'13:00',end:'15:00',title:'Seed Dating — B2B 밋업 & 오픈 콜',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a048978b3fdec0b307949b0'},
+      {day:12,start:'16:00',end:'19:00',title:'Reevein x Jane Kønig — The Spora 주얼리 에디션 런칭',icon:'🚀',color:'#d99021',label:'런칭',id:'6a046bfa2a0c1d11cfe20199',location:'Gothersgade 54, 1123 Copenhagen'},
     ],
   },
   {
@@ -1013,11 +1013,11 @@ const EXHIBITIONS = [
     slug:'rezas',
     desc:'Rezas is a renowned rug brand that combines Nordic design with traditional craftsmanship and modern elegance. With…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'A calm start at Rezas',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48df60774c9889b74b7cd'},
-      {day:10,start:'16:30',end:'19:00',title:'An evening with craft & character',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48f0a6659a2172dfedd9a'},
-      {day:11,start:'14:00',end:'15:00',title:'Fair Craftsmanship with Reto Aschwanden from Label STEP',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1b24ae01a674fe089c3fe'},
-      {day:11,start:'16:30',end:'19:00',title:'An evening with craft & character',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48f2e5bb7d4fcc2e8543c'},
-      {day:12,start:'10:00',end:'12:00',title:'A calm start at Rezas',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48e7207f21da7699637fe'},
+      {day:10,start:'10:00',end:'12:00',title:'Rezas에서 맞이하는 고요한 시작',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48df60774c9889b74b7cd'},
+      {day:10,start:'16:30',end:'19:00',title:'장인정신과 개성이 있는 저녁',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48f0a6659a2172dfedd9a'},
+      {day:11,start:'14:00',end:'15:00',title:'Label STEP의 Reto Aschwanden과 함께하는 공정 장인정신',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1b24ae01a674fe089c3fe'},
+      {day:11,start:'16:30',end:'19:00',title:'장인정신과 개성이 있는 저녁',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48f2e5bb7d4fcc2e8543c'},
+      {day:12,start:'10:00',end:'12:00',title:'Rezas에서 맞이하는 고요한 시작',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48e7207f21da7699637fe'},
     ],
   },
   {
@@ -1029,11 +1029,11 @@ const EXHIBITIONS = [
     slug:'sibast-furniture',
     desc:'Sibast Furniture is a Danish family company with a proud heritage of fine furniture craftsmanship dating back to 1908.…',
     events:[
-      {day:10,start:'10:00',end:'11:30',title:'GRAND OPENING: DESIGNED TO MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b0f54982a1d4b2c7da3e',cats:['drinks','launch']},
-      {day:10,start:'15:00',end:'16:00',title:'MEET THE NEW SIBAST',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b2fd401cdafa657d516c'},
-      {day:11,start:'10:00',end:'11:00',title:'THE MOMENT DESIGN MATTERS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b80b50ae7a01c5e96661'},
-      {day:11,start:'15:00',end:'17:30',title:'WHY DESIGN MATTERS – AFTERNOON GATHERING',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b95ca0bc80234e08ce79'},
-      {day:12,start:'14:00',end:'16:00',title:'FINAL AFTERNOON: DESIGNED TO MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3baf89bb3be3ce35f3035'},
+      {day:10,start:'10:00',end:'11:30',title:'그랜드 오프닝: DESIGNED TO MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b0f54982a1d4b2c7da3e',cats:['drinks','launch']},
+      {day:10,start:'15:00',end:'16:00',title:'새로운 SIBAST를 만나다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b2fd401cdafa657d516c'},
+      {day:11,start:'10:00',end:'11:00',title:'디자인이 중요한 순간',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b80b50ae7a01c5e96661'},
+      {day:11,start:'15:00',end:'17:30',title:'WHY DESIGN MATTERS – 오후 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b95ca0bc80234e08ce79'},
+      {day:12,start:'14:00',end:'16:00',title:'마지막 오후: DESIGNED TO MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3baf89bb3be3ce35f3035'},
     ],
   },
   {
@@ -1045,11 +1045,11 @@ const EXHIBITIONS = [
     slug:'the-form-follows',
     desc:'The Form Follows creates furniture and design objects that balance clarity of form with a distinct sense of character.…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Head Outside – Introducing the XD outdoor series',icon:'🚀',color:'#d99021',label:'런칭',id:'69f35b4bdd07f495624e0c5d'},
-      {day:10,start:'11:00',end:'13:00',title:'Coffee Happy Hour at Café Niko',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35c118898abaa5faeb809'},
-      {day:10,start:'16:00',end:'18:00',title:'One Year of The Form Follows – Birthday Giveaway',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35c838d11cc7a1249dcf6'},
-      {day:11,start:'16:00',end:'18:00',title:'One Year of The Form Follows – Birthday Giveaway',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35ce765112f6adfa555b1'},
-      {day:12,start:'16:00',end:'18:00',title:'One Year of The Form Follows – Birthday Giveaway',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35d3cc4342b2140b85907'},
+      {day:10,start:'10:00',end:'11:00',title:'밖으로 나가자 – XD 아웃도어 시리즈 소개',icon:'🚀',color:'#d99021',label:'런칭',id:'69f35b4bdd07f495624e0c5d'},
+      {day:10,start:'11:00',end:'13:00',title:'Café Niko에서 커피 해피아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35c118898abaa5faeb809'},
+      {day:10,start:'16:00',end:'18:00',title:'The Form Follows 1주년 – 생일 기념 경품 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35c838d11cc7a1249dcf6'},
+      {day:11,start:'16:00',end:'18:00',title:'The Form Follows 1주년 – 생일 기념 경품 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35ce765112f6adfa555b1'},
+      {day:12,start:'16:00',end:'18:00',title:'The Form Follows 1주년 – 생일 기념 경품 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35d3cc4342b2140b85907'},
     ],
   },
   {
@@ -1061,11 +1061,11 @@ const EXHIBITIONS = [
     slug:'verner-panton-design-ag',
     desc:'Verner Panton Design AG is a family-run company based in Basel, Switzerland. As the sole custodian and exclusive owner…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Self-Guided Verner Panton Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe0a9bd2f58a69dd5c565',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
-      {day:10,start:'13:00',end:'14:00',title:'Self-Guided Verner Panton Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe14b50e5684e29733005',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
-      {day:11,start:'11:00',end:'12:00',title:'Self-Guided Verner Panton Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe17e1dc2637e6b700fc7',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
-      {day:11,start:'13:00',end:'14:00',title:'Self-Guided Verner Panton Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe1ab20e9d5ec1b6c15fb',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
-      {day:12,start:'11:00',end:'12:00',title:'Self-Guided Verner Panton Tour',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe1dbea30870f81cbc0c0',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
+      {day:10,start:'11:00',end:'12:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe0a9bd2f58a69dd5c565',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
+      {day:10,start:'13:00',end:'14:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe14b50e5684e29733005',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
+      {day:11,start:'11:00',end:'12:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe17e1dc2637e6b700fc7',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
+      {day:11,start:'13:00',end:'14:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe1ab20e9d5ec1b6c15fb',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
+      {day:12,start:'11:00',end:'12:00',title:'셀프 가이드 Verner Panton 투어',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe1dbea30870f81cbc0c0',location:'Designmuseum Danmark, Bredgade 68, 1260 København, Denmark'},
     ],
   },
   {
@@ -1079,7 +1079,7 @@ const EXHIBITIONS = [
     events:[
       {day:10,start:'17:30',end:'18:00',title:'Ignacio Ciocchini X BIRDMIND',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d385470b0391bd0106155',location:'Gammel Dok, Strandgade D3&D5, 1401 Copenhagen'},
       {day:11,start:'15:00',end:'15:30',title:'Ignacio Ciocchini X BIRDMIND',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d38acef04627154a34807',location:'Gammel Dok, Strandgade D3&D5, 1401 Copenhagen'},
-      {day:11,start:'15:00',end:'15:30',title:'In Designing For a Circular Future',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d3952345ae6f15a270004',location:'Store Kongensgade 108, 1264, Copenhagen'},
+      {day:11,start:'15:00',end:'15:30',title:'순환하는 미래를 위한 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d3952345ae6f15a270004',location:'Store Kongensgade 108, 1264, Copenhagen'},
       {day:12,start:'10:30',end:'11:00',title:'Ignacio Ciocchini X BIRDMIND',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d38e31c0aa5998b1a79d0',location:'Gammel Dok, Strandgade D3&D5, 1401 Copenhagen'},
     ],
   },
@@ -1092,10 +1092,10 @@ const EXHIBITIONS = [
     slug:'carpe-diem-beds',
     desc:'Unwind in bespoke luxury with Carpe Diem Beds: a harmonious blend of comfort, innovation and Scandinavian design.…',
     events:[
-      {day:10,start:'13:00',end:'16:00',title:'Dj drinks and mingle',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3156f4047ede426b84a8f'},
-      {day:11,start:'13:00',end:'16:00',title:'Dj, drinks & mingling',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31916b6ef9caacec370b6'},
-      {day:11,start:'14:30',end:'15:30',title:'Design Talk with Bengt Thornefors, Creative Director at Sahco textiles',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3143c43b3a9cdcd244d4f',cats:['drinks','talk']},
-      {day:12,start:'13:00',end:'16:00',title:'Dj, drinks and mingling',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f315c3423aa2a032bf8b24'},
+      {day:10,start:'13:00',end:'16:00',title:'DJ, 음료와 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3156f4047ede426b84a8f'},
+      {day:11,start:'13:00',end:'16:00',title:'DJ, 음료 & 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31916b6ef9caacec370b6'},
+      {day:11,start:'14:30',end:'15:30',title:'Sahco textiles 크리에이티브 디렉터 Bengt Thornefors와의 디자인 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3143c43b3a9cdcd244d4f',cats:['drinks','talk']},
+      {day:12,start:'13:00',end:'16:00',title:'DJ, 음료와 네트워킹',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f315c3423aa2a032bf8b24'},
     ],
   },
   {
@@ -1107,10 +1107,10 @@ const EXHIBITIONS = [
     slug:'danish-art-workshop',
     desc:'Danish Art Workshops contributes to the field of art and design in Denmark by offering professionals a unique platform…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Meet 13 Designers in 30 Minutes',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d645053a48b306ea7b49'},
-      {day:10,start:'14:00',end:'14:45',title:'Talk: Mentze Ottenstein & Alberte Svendsen',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d730e1888e053bcb594a'},
-      {day:11,start:'14:00',end:'15:00',title:'Guided Tour Around the Workshops',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f1d8493fb0e0495ab320c5'},
-      {day:12,start:'14:00',end:'15:00',title:'Guided Tour Around the Workshops',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f1d87e274f9d53ca2de9f8'},
+      {day:10,start:'11:00',end:'11:30',title:'30분 안에 13명의 디자이너 만나기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d645053a48b306ea7b49'},
+      {day:10,start:'14:00',end:'14:45',title:'토크: Mentze Ottenstein & Alberte Svendsen',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d730e1888e053bcb594a'},
+      {day:11,start:'14:00',end:'15:00',title:'워크숍 둘러보기 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f1d8493fb0e0495ab320c5'},
+      {day:12,start:'14:00',end:'15:00',title:'워크숍 둘러보기 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69f1d87e274f9d53ca2de9f8'},
     ],
   },
   {
@@ -1122,10 +1122,10 @@ const EXHIBITIONS = [
     slug:'ege-carpets',
     desc:'With intention over trend, Ege Carpets weave life into spaces. Elegant, distinctive, deeply familiar. With extensive…',
     events:[
-      {day:10,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e'},
-      {day:11,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af'},
-      {day:12,start:'8:30',end:'10:00',title:'Start you day in Christianshavn',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d9e77a043ef18cd76c2'},
-      {day:12,start:'9:30',end:'10:00',title:'Guided tour of exhibition: The Perception of Space',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f33fc048709b93e1505257'},
+      {day:10,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d371f75b433f7200a2e'},
+      {day:11,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d64b4b6f91f532c26af'},
+      {day:12,start:'8:30',end:'10:00',title:'Christianshavn에서 하루를 시작하세요',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33d9e77a043ef18cd76c2'},
+      {day:12,start:'9:30',end:'10:00',title:'전시 가이드 투어: 공간의 인식',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f33fc048709b93e1505257'},
     ],
   },
   {
@@ -1137,10 +1137,10 @@ const EXHIBITIONS = [
     slug:'eilersen',
     desc:'“From coach to couch” – Founded in 1895, Eilersen has focused on craftsmanship, quality, and innovation. The journey…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Afternoon Lounge at Eilersen House',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3122695016946a0c04cb2'},
-      {day:10,start:'8:00',end:'9:30',title:'Morning Moments: Breakfast at Eilersen House',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5ac5096e5873139b5331'},
-      {day:11,start:'8:00',end:'9:30',title:'Morning Moments: Breakfast at Eilersen House',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5b0b2e38efd9745aba74'},
-      {day:12,start:'8:00',end:'9:30',title:'Morning Moments: Breakfast at Eilersen House',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5b3a0442f93bc80e09d3'},
+      {day:10,start:'16:00',end:'18:00',title:'Eilersen House 애프터눈 라운지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3122695016946a0c04cb2'},
+      {day:10,start:'8:00',end:'9:30',title:'Morning Moments: Eilersen House에서의 조식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5ac5096e5873139b5331'},
+      {day:11,start:'8:00',end:'9:30',title:'Morning Moments: Eilersen House에서의 조식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5b0b2e38efd9745aba74'},
+      {day:12,start:'8:00',end:'9:30',title:'Morning Moments: Eilersen House에서의 조식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef5b3a0442f93bc80e09d3'},
     ],
   },
   {
@@ -1167,10 +1167,10 @@ const EXHIBITIONS = [
     slug:'galleri-sonja',
     desc:'Galleri Sonja is visiting from Bornholm. Once a saddle maker’s shop from the early 1800s, Galleri Sonja is now a place…',
     events:[
-      {day:10,start:'12:00',end:'14:00',title:'Join us at Galleri Sonja for a Tea Break',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f89e1547c676c6807f3c48'},
-      {day:10,start:'15:00',end:'16:00',title:'Dogmestrik Workshop hosted by Hedestrik',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a048048237f232959aa5131'},
-      {day:11,start:'12:00',end:'14:00',title:'Spolsky.Studio and Tyst Te joins Galleri Sonja',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f89f5366ca1bef2383c59d'},
-      {day:12,start:'12:00',end:'14:00',title:'Tea Ceremony with Tyst Te and surprise pastry artist',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8a0154081d83a0d703410'},
+      {day:10,start:'12:00',end:'14:00',title:'Galleri Sonja에서 티 브레이크 함께하기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f89e1547c676c6807f3c48'},
+      {day:10,start:'15:00',end:'16:00',title:'Hedestrik 주관 Dogmestrik 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a048048237f232959aa5131'},
+      {day:11,start:'12:00',end:'14:00',title:'Spolsky.Studio와 Tyst Te, Galleri Sonja에 합류하다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f89f5366ca1bef2383c59d'},
+      {day:12,start:'12:00',end:'14:00',title:'Tyst Te와 함께하는 다도 & 서프라이즈 페이스트리 아티스트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f8a0154081d83a0d703410'},
     ],
   },
   {
@@ -1182,10 +1182,10 @@ const EXHIBITIONS = [
     slug:'hdk-valand-goteborgs-universitet',
     desc:'HDK–Valand—Academy of Art and Design, at the University of Gothenburg, is one of the Nordic region’s leading…',
     events:[
-      {day:10,start:'12:00',end:'14:00',title:'The Dream Catcher',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049bb2d4c60ee943aac619'},
-      {day:10,start:'16:00',end:'18:00',title:'Drinks & Snacks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc'},
-      {day:11,start:'14:00',end:'16:00',title:'Hålla Drop-in workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049acd99272078e364cebe'},
-      {day:11,start:'14:00',end:'16:00',title:'The Dream Catcher',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049b72318ee21df4431fc3'},
+      {day:10,start:'12:00',end:'14:00',title:'드림 캐처',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049bb2d4c60ee943aac619'},
+      {day:10,start:'16:00',end:'18:00',title:'음료 & 스낵',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc'},
+      {day:11,start:'14:00',end:'16:00',title:'Hålla 드롭인 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049acd99272078e364cebe'},
+      {day:11,start:'14:00',end:'16:00',title:'드림 캐처',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a049b72318ee21df4431fc3'},
     ],
   },
   {
@@ -1197,10 +1197,10 @@ const EXHIBITIONS = [
     slug:'johanna-gullichsen-42427',
     desc:'Discover Johanna Gullichsen’s distinctive textiles, where tradition meets modern design. Since 1989, Johanna…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994'},
-      {day:10,start:'17:00',end:'20:00',title:'PLAYROOM Opening',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf',joint:true},
-      {day:11,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8aca6cd3bffdac8a51f67',joint:true},
-      {day:12,start:'15:00',end:'16:00',title:'PLAYROOM Playtime',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8acc5918729bc7d8f7471',joint:true},
+      {day:10,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f854ebdcf9159700eb8994'},
+      {day:10,start:'17:00',end:'20:00',title:'PLAYROOM 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35401fc1eb0e8cae8fedf',joint:true},
+      {day:11,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8aca6cd3bffdac8a51f67',joint:true},
+      {day:12,start:'15:00',end:'16:00',title:'PLAYROOM 플레이타임',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f8acc5918729bc7d8f7471',joint:true},
     ],
   },
   {
@@ -1212,10 +1212,10 @@ const EXHIBITIONS = [
     slug:'kvadrat',
     desc:'Kvadrat was established in Denmark in 1968 and has deep roots in Scandinavia’s world–famous design tradition. A leader…',
     events:[
-      {day:10,start:'16:30',end:'17:00',title:'THREE, a conversation with Isa Glink',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01b3fa73e4f29d08a949ef'},
-      {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra launch party',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a01ae73d72ebd402c2ccb21'},
-      {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra Launch Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0721ce54c70231ff807312',cats:['drinks','talk'],joint:true},
-      {day:11,start:'11:00',end:'11:45',title:'Design Talk: Dienke Dekker on Loux Rugs',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01b009823d4887af8bf8b0'},
+      {day:10,start:'16:30',end:'17:00',title:'THREE, Isa Glink과의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01b3fa73e4f29d08a949ef'},
+      {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra 런치 파티',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a01ae73d72ebd402c2ccb21'},
+      {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra 런치 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0721ce54c70231ff807312',cats:['drinks','talk'],joint:true},
+      {day:11,start:'11:00',end:'11:45',title:'디자인 토크: Dienke Dekker가 말하는 Loux Rugs',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01b009823d4887af8bf8b0'},
     ],
   },
   {
@@ -1227,10 +1227,10 @@ const EXHIBITIONS = [
     slug:'kvadrat-acoustics',
     desc:'Kvadrat Acoustics creates fully customisable, high–performance acoustic solutions characterised by aesthetic…',
     events:[
-      {day:10,start:'13:00',end:'13:45',title:'Demonstration: An acoustic experiment',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f8dd411de8dd0acbd72f'},
-      {day:10,start:'14:00',end:'14:45',title:'Workshop: Designed for disassembly and re–use',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1f9e6f9c32ba7ba62b9cc'},
-      {day:11,start:'10:00',end:'10:45',title:'Demonstration: An acoustic experiment',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f92cd10cb2109c60d0b1'},
-      {day:11,start:'14:00',end:'14:45',title:'Workshop: Designed for disassembly and re–use',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1fa8a8360e670d69f7090'},
+      {day:10,start:'13:00',end:'13:45',title:'시연: 음향 실험',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f8dd411de8dd0acbd72f'},
+      {day:10,start:'14:00',end:'14:45',title:'워크숍: 분해와 재사용을 위한 디자인',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1f9e6f9c32ba7ba62b9cc'},
+      {day:11,start:'10:00',end:'10:45',title:'시연: 음향 실험',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1f92cd10cb2109c60d0b1'},
+      {day:11,start:'14:00',end:'14:45',title:'워크숍: 분해와 재사용을 위한 디자인',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1fa8a8360e670d69f7090'},
     ],
   },
   {
@@ -1242,10 +1242,10 @@ const EXHIBITIONS = [
     slug:'magnus-olesen',
     desc:'Magnus Olesen develops and manufactures high quality furniture in cooperation with leading designers and architects.…',
     events:[
-      {day:10,start:'10:00',end:'16:00',title:'HANS CAFÉ POP-UP at MAGNUS OLESEN',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a158051ccf0d0520913571d'},
-      {day:11,start:'10:00',end:'16:00',title:'HANS CAFÉ POP-UP at MAGNUS OLESEN',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1580a17f30eb3ad4bf35c2'},
-      {day:12,start:'10:00',end:'16:00',title:'HANS CAFÉ POP-UP at MAGNUS OLESEN',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a158115ea2614e90aa01e87'},
-      {day:12,start:'14:00',end:'15:00',title:'MEET THE DESIGNERS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a157f7c636cfe72e4c8b9c5',cats:['drinks','talk']},
+      {day:10,start:'10:00',end:'16:00',title:'MAGNUS OLESEN에서 만나는 HANS CAFÉ 팝업',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a158051ccf0d0520913571d'},
+      {day:11,start:'10:00',end:'16:00',title:'MAGNUS OLESEN에서 만나는 HANS CAFÉ 팝업',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1580a17f30eb3ad4bf35c2'},
+      {day:12,start:'10:00',end:'16:00',title:'MAGNUS OLESEN에서 만나는 HANS CAFÉ 팝업',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a158115ea2614e90aa01e87'},
+      {day:12,start:'14:00',end:'15:00',title:'디자이너를 만나다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a157f7c636cfe72e4c8b9c5',cats:['drinks','talk']},
     ],
   },
   {
@@ -1257,10 +1257,10 @@ const EXHIBITIONS = [
     slug:'moebe',
     desc:'MOEBE is a Danish design studio creating furniture, lighting, and objects defined by a relentless pursuit of…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Press Morning: Paper, Porcelain & Light',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69eb70bdf4bf8b3eeafbb39a',cats:['drinks','talk','launch']},
-      {day:10,start:'16:00',end:'19:00',title:'Golden Hour: Paper & Porcelain',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69eb71480c61afbe486e9d7f',cats:['drinks','launch']},
-      {day:11,start:'10:00',end:'11:00',title:'Breakfast Talk: Paper, Porcelain & Light',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69eb73ca66456b7917d36f32',cats:['talk','launch']},
-      {day:11,start:'16:00',end:'19:00',title:'Afternoon at MOEBE Café',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b11011360e50b852341d'},
+      {day:10,start:'10:00',end:'12:00',title:'프레스 모닝: 종이, 도자기 그리고 빛',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69eb70bdf4bf8b3eeafbb39a',cats:['drinks','talk','launch']},
+      {day:10,start:'16:00',end:'19:00',title:'Golden Hour: 종이와 도자기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69eb71480c61afbe486e9d7f',cats:['drinks','launch']},
+      {day:11,start:'10:00',end:'11:00',title:'조찬 토크: 종이, 도자기 그리고 빛',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69eb73ca66456b7917d36f32',cats:['talk','launch']},
+      {day:11,start:'16:00',end:'19:00',title:'MOEBE Café에서 보내는 오후',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b11011360e50b852341d'},
     ],
   },
   {
@@ -1272,10 +1272,10 @@ const EXHIBITIONS = [
     slug:'new-works',
     desc:'New Works presents a collection at the intersection between old and new. Light and dark. Design and art. The…',
     events:[
-      {day:10,start:'14:00',end:'14:15',title:'An Immersive Listening Experience at the New Works Residence',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4941be8776f88cd94b329'},
-      {day:11,start:'10:00',end:'11:00',title:'Objects, Spaces & Perception',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4961040f9aaa181bb5ced'},
-      {day:11,start:'14:00',end:'14:15',title:'An Immersive Listening Experience at the New Works Residence',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4944dd5f3d9186d32bf3c'},
-      {day:12,start:'14:00',end:'14:15',title:'An Immersive Listening Experience at the New Works Residence',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f494775c0d00f5c3966c95'},
+      {day:10,start:'14:00',end:'14:15',title:'New Works Residence에서의 몰입형 리스닝 경험',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4941be8776f88cd94b329'},
+      {day:11,start:'10:00',end:'11:00',title:'오브제, 공간 그리고 지각',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4961040f9aaa181bb5ced'},
+      {day:11,start:'14:00',end:'14:15',title:'New Works Residence에서의 몰입형 리스닝 경험',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4944dd5f3d9186d32bf3c'},
+      {day:12,start:'14:00',end:'14:15',title:'New Works Residence에서의 몰입형 리스닝 경험',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f494775c0d00f5c3966c95'},
     ],
   },
   {
@@ -1287,10 +1287,10 @@ const EXHIBITIONS = [
     slug:'nordal',
     desc:'Nordal is a Danish interior design brand, but it’s much more than that. Home is an important part of life—perhaps more…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Make Your Own Scrub',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f48ce104622bc1b7f29b42'},
-      {day:10,start:'14:00',end:'16:00',title:'A Scoop of Ice and Bubbles',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48d8628e6f67fa737ee63'},
-      {day:11,start:'10:00',end:'12:00',title:'Make Your Own Scrub',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f48d48bef1f08f77eb2749'},
-      {day:11,start:'14:00',end:'16:00',title:'A Scoop of Ice and Bubbles',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48db54384c016cbceb6fd'},
+      {day:10,start:'10:00',end:'12:00',title:'나만의 스크럽 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f48ce104622bc1b7f29b42'},
+      {day:10,start:'14:00',end:'16:00',title:'아이스크림과 스파클링',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48d8628e6f67fa737ee63'},
+      {day:11,start:'10:00',end:'12:00',title:'나만의 스크럽 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f48d48bef1f08f77eb2749'},
+      {day:11,start:'14:00',end:'16:00',title:'아이스크림과 스파클링',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f48db54384c016cbceb6fd'},
     ],
   },
   {
@@ -1302,10 +1302,10 @@ const EXHIBITIONS = [
     slug:'norrvik',
     desc:'Norrvik is a Danish brand, dedicated to redefining the essence of outdoor living with its outdoor kitchens.…',
     events:[
-      {day:10,start:'13:00',end:'14:00',title:'Summer Champagne',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69df291a13e25ae8236660ad'},
-      {day:11,start:'11:00',end:'12:00',title:'Bo Franch-Mærkedahl: The Future of Outdoor Spaces',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ebcab710394c1bb657f9a'},
-      {day:11,start:'13:00',end:'14:00',title:'Outdoor Spaces by Camilla Rudnicki',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c637d7db67eb08fa6c104'},
-      {day:12,start:'12:00',end:'13:00',title:'Summer Drinks at Norrvik - Featuring "To Øl"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19895b080969e7b1134221'},
+      {day:10,start:'13:00',end:'14:00',title:'여름 샴페인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69df291a13e25ae8236660ad'},
+      {day:11,start:'11:00',end:'12:00',title:'Bo Franch-Mærkedahl: 야외 공간의 미래',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ebcab710394c1bb657f9a'},
+      {day:11,start:'13:00',end:'14:00',title:'Camilla Rudnicki의 야외 공간',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c637d7db67eb08fa6c104'},
+      {day:12,start:'12:00',end:'13:00',title:'Norrvik에서 즐기는 여름 드링크 - "To Øl" 피처링',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19895b080969e7b1134221'},
     ],
   },
   {
@@ -1317,10 +1317,10 @@ const EXHIBITIONS = [
     slug:'openhouse',
     desc:'Openhouse Studio leads creative projects and bears brands\' messages in a comprehensive and unique way. The studio…',
     events:[
-      {day:10,start:'10:30',end:'11:00',title:'A Coffee with Mike Hausmann',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103cf94e8237b8a7ed9097'},
+      {day:10,start:'10:30',end:'11:00',title:'Mike Hausmann과 함께하는 커피',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103cf94e8237b8a7ed9097'},
       {day:10,start:'15:30',end:'16:00',title:'"When Objects Change Meaning" with Saba Italia & JOV',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a103c7c6cdc32fa1ab72c65'},
-      {day:11,start:'14:00',end:'14:30',title:'Porcelain, Light and Context',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0f41f193eba767c2b25654'},
-      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE LAUNCH EVENT “ECHOES OF SPACE”',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9'},
+      {day:11,start:'14:00',end:'14:30',title:'도자기, 빛 그리고 맥락',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0f41f193eba767c2b25654'},
+      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9'},
     ],
   },
   {
@@ -1332,10 +1332,10 @@ const EXHIBITIONS = [
     slug:'paper-collective',
     desc:'Paper Collective is a Copenhagen–based curator and creator of exclusive collections across art, craft and design.…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'Paper Collective x Zilenzio, Lolita Pelegrime Live Painting',icon:'🚀',color:'#d99021',label:'런칭',id:'6a15960efdafb7173aaec656'},
-      {day:10,start:'9:00',end:'10:30',title:'Designers Panel Talk. A holistic approach to art & design',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1592eb87791cf8dad66ff3'},
-      {day:11,start:'17:00',end:'20:00',title:'Paper Collective x Sancal — Sangria Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b295a5ef494ff0cd9ce03'},
-      {day:11,start:'9:00',end:'10:30',title:'Mentsen — Collage Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0b1c6b1f16bb5c1637d9f5'},
+      {day:10,start:'16:00',end:'19:00',title:'Paper Collective x Zilenzio, Lolita Pelegrime 라이브 페인팅',icon:'🚀',color:'#d99021',label:'런칭',id:'6a15960efdafb7173aaec656'},
+      {day:10,start:'9:00',end:'10:30',title:'디자이너 패널 토크: 예술과 디자인에 대한 통합적 접근',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1592eb87791cf8dad66ff3'},
+      {day:11,start:'17:00',end:'20:00',title:'Paper Collective x Sancal — 상그리아 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b295a5ef494ff0cd9ce03'},
+      {day:11,start:'9:00',end:'10:30',title:'Mentsen — 콜라주 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0b1c6b1f16bb5c1637d9f5'},
     ],
   },
   {
@@ -1347,10 +1347,10 @@ const EXHIBITIONS = [
     slug:'the-royal-danish-academy',
     desc:'The Royal Danish Academy—Architecture, Design, Conservation strives to be an active, creative and leading actor in…',
     events:[
-      {day:10,start:'10:30',end:'11:30',title:'Guided Tour in the Chair Collection',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fa4b289c73f9767afe7488',location:'Fabrikmestervej 10, København, Danmark'},
-      {day:10,start:'16:00',end:'18:00',title:'Opening Here & Now at the Library',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3c1461045ee69d009f41d',location:'Danneskiold-Samsøes Allé 50, København, Danmark'},
-      {day:10,start:'18:00',end:'0:00',title:'Royal Danish Academy & Dezeen: Opening Party Harbourside',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b606508ce4239e1f8fd1',location:'Fabrikmestervej 10, 1437 Copenhagen'},
-      {day:11,start:'10:30',end:'11:30',title:'Guided Tour in the Chair Collection',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fa4bbb903dfac204b7d027',location:'Fabrikmestervej 10, København, Danmark'},
+      {day:10,start:'10:30',end:'11:30',title:'의자 컬렉션 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fa4b289c73f9767afe7488',location:'Fabrikmestervej 10, København, Danmark'},
+      {day:10,start:'16:00',end:'18:00',title:'도서관에서의 Here & Now 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3c1461045ee69d009f41d',location:'Danneskiold-Samsøes Allé 50, København, Danmark'},
+      {day:10,start:'18:00',end:'0:00',title:'Royal Danish Academy & Dezeen: 하버사이드 오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3b606508ce4239e1f8fd1',location:'Fabrikmestervej 10, 1437 Copenhagen'},
+      {day:11,start:'10:30',end:'11:30',title:'의자 컬렉션 가이드 투어',icon:'🚶',color:'#3a4a5a',label:'가이드 투어',id:'69fa4bbb903dfac204b7d027',location:'Fabrikmestervej 10, København, Danmark'},
     ],
   },
   {
@@ -1362,10 +1362,10 @@ const EXHIBITIONS = [
     slug:'stride',
     desc:'STRIDE is an emerging material-led design platform reimagining how waste streams and overlooked resources can shape…',
     events:[
-      {day:10,start:'14:00',end:'15:00',title:'Natural Dye Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d8f5ce5953935ca59fc7'},
-      {day:11,start:'15:00',end:'16:00',title:'Natural Dye Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d939e03fe68e66590228'},
-      {day:11,start:'16:00',end:'19:00',title:'Tidal Dissolution',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31966c2647488539a3e44'},
-      {day:12,start:'13:00',end:'14:00',title:'Natural Dye Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d99485a85ab47d086b6a'},
+      {day:10,start:'14:00',end:'15:00',title:'천연 염색 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d8f5ce5953935ca59fc7'},
+      {day:11,start:'15:00',end:'16:00',title:'천연 염색 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d939e03fe68e66590228'},
+      {day:11,start:'16:00',end:'19:00',title:'조수의 용해',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31966c2647488539a3e44'},
+      {day:12,start:'13:00',end:'14:00',title:'천연 염색 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1d99485a85ab47d086b6a'},
     ],
   },
   {
@@ -1377,10 +1377,10 @@ const EXHIBITIONS = [
     slug:'vermland',
     desc:'Vermland creates high-quality kitchens and furniture crafted from solid wood frames built to endure for generations.…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Lunch & Talk',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d598f22b81ed42649b619',cats:['drinks','talk']},
-      {day:11,start:'15:00',end:'17:00',title:'Wine & Music',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7ce37de6f2ab1f7ffcd4'},
-      {day:11,start:'9:00',end:'10:00',title:'Ease Into the Day with Croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d80db1648fe66c664dbf8'},
-      {day:12,start:'9:00',end:'10:00',title:'Ease Into the Day with Croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d5a697e924feaf6ca6b95'},
+      {day:10,start:'11:00',end:'12:00',title:'런치 & 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d598f22b81ed42649b619',cats:['drinks','talk']},
+      {day:11,start:'15:00',end:'17:00',title:'와인 & 음악',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d7ce37de6f2ab1f7ffcd4'},
+      {day:11,start:'9:00',end:'10:00',title:'크루아상과 함께하는 여유로운 시작',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d80db1648fe66c664dbf8'},
+      {day:12,start:'9:00',end:'10:00',title:'크루아상과 함께하는 여유로운 시작',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d5a697e924feaf6ca6b95'},
     ],
   },
   {
@@ -1392,9 +1392,9 @@ const EXHIBITIONS = [
     slug:'anker-co',
     desc:'Anker & Co brings together a thoughtfully curated mix of lighting brands, blending timeless craftsmanship with…',
     events:[
-      {day:10,start:'8:30',end:'9:30',title:'Morning Talk: The Fusion of Craft and Tech',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9e6f8e400d0d461aa51ee',cats:['drinks','talk']},
-      {day:11,start:'8:30',end:'9:30',title:'Morning Talk: The Fusion of Craft and Tech. Special guest: Justine Kegels',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d08983163bc891f0a30',cats:['drinks','talk']},
-      {day:12,start:'8:30',end:'9:30',title:'Morning Talk: The Fusion of Craft and Tech',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d52d512646da0917bce',cats:['drinks','talk']},
+      {day:10,start:'8:30',end:'9:30',title:'모닝 토크: 공예와 기술의 융합',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9e6f8e400d0d461aa51ee',cats:['drinks','talk']},
+      {day:11,start:'8:30',end:'9:30',title:'모닝 토크: 공예와 기술의 융합. 특별 게스트: Justine Kegels',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d08983163bc891f0a30',cats:['drinks','talk']},
+      {day:12,start:'8:30',end:'9:30',title:'모닝 토크: 공예와 기술의 융합',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fa0d52d512646da0917bce',cats:['drinks','talk']},
     ],
   },
   {
@@ -1406,9 +1406,9 @@ const EXHIBITIONS = [
     slug:'anour',
     desc:'ANOUR is a handcrafted contemporary lighting design studio inspired by tradition, driven by creativity, obsession for…',
     events:[
-      {day:10,start:'9:30',end:'11:00',title:'Morning Coffee & Conversations',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b166e282383c65f2ed58f'},
-      {day:11,start:'9:30',end:'11:00',title:'Morning Coffee & Conversations',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b169b0228239c83f754fa'},
-      {day:12,start:'9:30',end:'11:00',title:'Morning Coffee & Conversations',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b16c6870bbfe149c60b12'},
+      {day:10,start:'9:30',end:'11:00',title:'모닝 커피 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b166e282383c65f2ed58f'},
+      {day:11,start:'9:30',end:'11:00',title:'모닝 커피 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b169b0228239c83f754fa'},
+      {day:12,start:'9:30',end:'11:00',title:'모닝 커피 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b16c6870bbfe149c60b12'},
     ],
   },
   {
@@ -1420,9 +1420,9 @@ const EXHIBITIONS = [
     slug:'baenue',
     desc:'Founded by MIT PhD Jinwoo Bae, the Korean lighting brand BAENUE traces its roots to supplying millions of custom LED…',
     events:[
-      {day:10,start:'12:00',end:'12:30',title:'Tech Talk: Dim2Amber™— Engineering the Future of Light',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06e214bebd8d25a55eb8aa',cats:['drinks','talk']},
-      {day:10,start:'17:00',end:'19:00',title:'Grand Opening: Exclusive Preview of SHIIM & Launch of MINI',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c33bd291162a7bd761bc7',cats:['drinks','launch']},
-      {day:11,start:'12:00',end:'12:30',title:'SHIIM by Øivind Slaatto: A Danish-Korean Lighting Symphony',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0bc824decd59926adb4bef',cats:['drinks','talk']},
+      {day:10,start:'12:00',end:'12:30',title:'테크 토크: Dim2Amber™— 빛의 미래를 설계하다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06e214bebd8d25a55eb8aa',cats:['drinks','talk']},
+      {day:10,start:'17:00',end:'19:00',title:'그랜드 오프닝: SHIIM 독점 프리뷰 & MINI 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c33bd291162a7bd761bc7',cats:['drinks','launch']},
+      {day:11,start:'12:00',end:'12:30',title:'SHIIM by Øivind Slaatto: 덴마크-한국 조명 심포니',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0bc824decd59926adb4bef',cats:['drinks','talk']},
     ],
   },
   {
@@ -1434,9 +1434,9 @@ const EXHIBITIONS = [
     slug:'birdie-scandinavia',
     desc:'Birdie is a Danish brand redefining indoor climate & health through intuitive design and storytelling. Founded in…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'Birdie: \'\'Home of Fresh Air\'\'',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f49b3d07f21da769978d39',cats:['talk','launch']},
-      {day:10,start:'16:00',end:'18:00',title:'FRESH AIR & FREE DRINKS (!)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49c1870e13aeaeeda5044'},
-      {day:12,start:'10:00',end:'11:00',title:'Birdie: \'\'Home of Fresh Air\'\'',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f49b727d6142f9e4368795',cats:['talk','launch']},
+      {day:10,start:'15:00',end:'16:00',title:'Birdie: \'신선한 공기의 집\'',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f49b3d07f21da769978d39',cats:['talk','launch']},
+      {day:10,start:'16:00',end:'18:00',title:'신선한 공기 & 무료 드링크 (!)',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49c1870e13aeaeeda5044'},
+      {day:12,start:'10:00',end:'11:00',title:'Birdie: \'신선한 공기의 집\'',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f49b727d6142f9e4368795',cats:['talk','launch']},
     ],
   },
   {
@@ -1448,9 +1448,9 @@ const EXHIBITIONS = [
     slug:'tfurniture',
     desc:'BIRKEBAEK is a Danish distributor and agent specialising in international brands for the contract market, all united…',
     events:[
-      {day:10,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32',joint:true},
-      {day:11,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a',joint:true},
-      {day:12,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a92022d1a9a23e2e22ae',joint:true},
+      {day:10,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32',joint:true},
+      {day:11,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a',joint:true},
+      {day:12,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a92022d1a9a23e2e22ae',joint:true},
     ],
   },
   {
@@ -1462,9 +1462,9 @@ const EXHIBITIONS = [
     slug:'bla-station',
     desc:'Blå Station is a family business based in a former sewing factory in Åhus, on the south–east coast of Sweden, where…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'40 Years Celebration Event',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1c77b43ecf22b0b881649c',location:'Store Kongensgade 69, 1264 Copenhagen, Danmark'},
-      {day:11,start:'16:00',end:'19:00',title:'SKG81 - Gin & Tonic',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1c7898377ea9c7ad4a677c',location:'Store Kongensgade 81, 1264 Copenhagen, Danmark'},
-      {day:11,start:'16:00',end:'19:00',title:'Gin & Tonic After Work',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',location:'Store Kongensgade 81, 1264 Copenhagen',joint:true},
+      {day:10,start:'17:00',end:'20:00',title:'창립 40주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1c77b43ecf22b0b881649c',location:'Store Kongensgade 69, 1264 Copenhagen, Danmark'},
+      {day:11,start:'16:00',end:'19:00',title:'SKG81 - 진 앤 토닉',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1c7898377ea9c7ad4a677c',location:'Store Kongensgade 81, 1264 Copenhagen, Danmark'},
+      {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',location:'Store Kongensgade 81, 1264 Copenhagen',joint:true},
     ],
   },
   {
@@ -1476,9 +1476,9 @@ const EXHIBITIONS = [
     slug:'bodum',
     desc:'The Bodum story began in Copenhagen, Denmark, where Peter Bodum founded the company in 1944. Today, the Bodum Group…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Morning Coffee from Bodum',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef67dcf050d766542130d7'},
-      {day:11,start:'10:00',end:'11:00',title:'Morning Coffee from Bodum',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef6813aaa363586ef7b4cd'},
-      {day:12,start:'10:00',end:'11:00',title:'Morning Coffee from Bodum',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef685c449fc5fec4f7c7b7'},
+      {day:10,start:'10:00',end:'11:00',title:'Bodum의 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef67dcf050d766542130d7'},
+      {day:11,start:'10:00',end:'11:00',title:'Bodum의 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef6813aaa363586ef7b4cd'},
+      {day:12,start:'10:00',end:'11:00',title:'Bodum의 모닝 커피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef685c449fc5fec4f7c7b7'},
     ],
   },
   {
@@ -1490,9 +1490,9 @@ const EXHIBITIONS = [
     slug:'botane',
     desc:'Botané is building a new category at the intersection of interior design, sustainability and modern aesthetics.…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'Drop-In Flower Workshop with Botané',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9d4ee5b9513336926eb3'},
-      {day:11,start:'15:00',end:'16:00',title:'Drop-In Flower Workshop with Botané',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9de217a8cca2e87662b1'},
-      {day:12,start:'14:00',end:'15:00',title:'Drop-In Flower Workshop with Botané',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9e1b1e8f536cf8e74f5e'},
+      {day:10,start:'15:00',end:'16:00',title:'Botané와 함께하는 드롭인 플라워 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9d4ee5b9513336926eb3'},
+      {day:11,start:'15:00',end:'16:00',title:'Botané와 함께하는 드롭인 플라워 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9de217a8cca2e87662b1'},
+      {day:12,start:'14:00',end:'15:00',title:'Botané와 함께하는 드롭인 플라워 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc9e1b1e8f536cf8e74f5e'},
     ],
   },
   {
@@ -1504,9 +1504,9 @@ const EXHIBITIONS = [
     slug:'dignitydesign',
     desc:'Dignity Design is a collaborative platform and movement exploring how design can restore dignity in vulnerable stages…',
     events:[
-      {day:10,start:'9:00',end:'9:45',title:'Dignity as a Design Principle',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a161202c524d6ac525bd527'},
-      {day:11,start:'9:00',end:'9:45',title:'Design for transitions and aging',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1613a06c0fb9b0d4d421b4'},
-      {day:12,start:'9:00',end:'9:45',title:'Design for Grief, Rituals and Memory',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1616e2089b5407f1b968e7'},
+      {day:10,start:'9:00',end:'9:45',title:'디자인 원칙으로서의 존엄성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a161202c524d6ac525bd527'},
+      {day:11,start:'9:00',end:'9:45',title:'전환기와 노화를 위한 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1613a06c0fb9b0d4d421b4'},
+      {day:12,start:'9:00',end:'9:45',title:'슬픔, 의례, 기억을 위한 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1616e2089b5407f1b968e7'},
     ],
   },
   {
@@ -1518,9 +1518,9 @@ const EXHIBITIONS = [
     slug:'dk3',
     desc:'dk3 is a Danish design furniture brand creating exclusive classic and contemporary furniture from acclaimed Danish and…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Coffee & croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e8cbcf166730af15e4875b'},
-      {day:10,start:'14:00',end:'17:00',title:'Meet & Greet Kensaku Oshiro',icon:'🚀',color:'#d99021',label:'런칭',id:'69e8cfee8c77b4092deb1acc'},
-      {day:11,start:'10:00',end:'12:00',title:'Coffee & croissants',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e8cc1cc834f3b3661b5457'},
+      {day:10,start:'10:00',end:'12:00',title:'커피와 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e8cbcf166730af15e4875b'},
+      {day:10,start:'14:00',end:'17:00',title:'Kensaku Oshiro와의 만남',icon:'🚀',color:'#d99021',label:'런칭',id:'69e8cfee8c77b4092deb1acc'},
+      {day:11,start:'10:00',end:'12:00',title:'커피와 크루아상',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69e8cc1cc834f3b3661b5457'},
     ],
   },
   {
@@ -1532,9 +1532,9 @@ const EXHIBITIONS = [
     slug:'embassy-of-iceland-copenhagen',
     desc:'Copenhagen based Icelandic designer Dögg Guðmundsdóttir creates nature inspired products with emotional appeal and a…',
     events:[
-      {day:10,start:'16:30',end:'18:30',title:'A Space Between States—Design in Dialogue with Nature',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f86c3aa0864e120ed708b9'},
-      {day:11,start:'10:30',end:'12:00',title:'How deep is your love… for a dialogue between designers and local experts?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f5b01b1e75127190baf6b2'},
-      {day:12,start:'11:00',end:'11:30',title:'In Depth with Dögg & Dýpi',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f5b249ed718eea4885768e'},
+      {day:10,start:'16:30',end:'18:30',title:'상태 사이의 공간—자연과 대화하는 디자인',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f86c3aa0864e120ed708b9'},
+      {day:11,start:'10:30',end:'12:00',title:'디자이너와 현지 전문가 간의 대화에 대한 당신의 애정은 얼마나 깊은가요?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f5b01b1e75127190baf6b2'},
+      {day:12,start:'11:00',end:'11:30',title:'Dögg & Dýpi 심층 탐구',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f5b249ed718eea4885768e'},
     ],
   },
   {
@@ -1546,9 +1546,9 @@ const EXHIBITIONS = [
     slug:'fatboy-the-original-b-v',
     desc:'The Dutch brand Fatboy redefines the boundaries of everyday design. What began with the iconic beanbag in 1998 has…',
     events:[
-      {day:10,start:'12:00',end:'14:00',title:'Live Portraits by Fatboy & Martyna Brechelke',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46ba94a1ffd0c4b5ac801'},
-      {day:11,start:'12:00',end:'14:00',title:'Live Portraits by Fatboy & Martyna Brechelke',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46bd94492844902494fb6'},
-      {day:12,start:'12:00',end:'14:00',title:'Live Portraits by Fatboy & Martyna Brechelke',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46bf9c56b72b56f6eb538'},
+      {day:10,start:'12:00',end:'14:00',title:'Fatboy & Martyna Brechelke의 라이브 포트레이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46ba94a1ffd0c4b5ac801'},
+      {day:11,start:'12:00',end:'14:00',title:'Fatboy & Martyna Brechelke의 라이브 포트레이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46bd94492844902494fb6'},
+      {day:12,start:'12:00',end:'14:00',title:'Fatboy & Martyna Brechelke의 라이브 포트레이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f46bf9c56b72b56f6eb538'},
     ],
   },
   {
@@ -1560,9 +1560,9 @@ const EXHIBITIONS = [
     slug:'fdb-mobler',
     desc:'Furniture ought to make room for people. This has been the philosophy of FDB Møbler since its founding in 1942, when…',
     events:[
-      {day:10,start:'12:00',end:'13:00',title:'Talk with Jannik-Martensen Larsen from Tapet Café',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a20124483c76d63f5e52bcc'},
-      {day:10,start:'12:00',end:'15:00',title:'Sweet treats and coffee',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a20127376a3464518c3cd99'},
-      {day:10,start:'9:00',end:'12:00',title:'Cozy breakfast with coffee and croissants.',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a2011c9c1105fbf7c405702'},
+      {day:10,start:'12:00',end:'13:00',title:'Tapet Café의 Jannik-Martensen Larsen과의 토크',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a20124483c76d63f5e52bcc'},
+      {day:10,start:'12:00',end:'15:00',title:'달콤한 간식과 커피',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a20127376a3464518c3cd99'},
+      {day:10,start:'9:00',end:'12:00',title:'커피와 크루아상으로 즐기는 아늑한 아침식사',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a2011c9c1105fbf7c405702'},
     ],
   },
   {
@@ -1574,9 +1574,9 @@ const EXHIBITIONS = [
     slug:'form-refine',
     desc:'Formed by Nature. Refined for Life. Form & Refine celebrates form, refines with care, and honours the materials that…',
     events:[
-      {day:10,start:'16:30',end:'18:00',title:'Sips & Senses',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091265a7ca034487dc325'},
-      {day:11,start:'16:30',end:'18:00',title:'Sips & Senses',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091460c7c11d693177da5'},
-      {day:12,start:'16:30',end:'18:00',title:'Sips & Senses',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f09160d2adc43f8aa1ad52'},
+      {day:10,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091265a7ca034487dc325'},
+      {day:11,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091460c7c11d693177da5'},
+      {day:12,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f09160d2adc43f8aa1ad52'},
     ],
   },
   {
@@ -1588,9 +1588,9 @@ const EXHIBITIONS = [
     slug:'fucina-frammenti',
     desc:'Fucina Frammenti is a sustainable brand with an online shop focused on contemporary designs that prioritise material…',
     events:[
-      {day:10,start:'18:00',end:'20:00',title:'Apéritif',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31d315eaff10504c8a809',cats:['drinks','launch']},
-      {day:11,start:'18:00',end:'21:00',title:'No rules, just Pasta',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31f61ecc2316f106322ec',cats:['drinks','launch']},
-      {day:12,start:'18:00',end:'20:00',title:'Apéritif',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32097f9708d12859fbd2c',cats:['drinks','launch']},
+      {day:10,start:'18:00',end:'20:00',title:'아페리티프',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31d315eaff10504c8a809',cats:['drinks','launch']},
+      {day:11,start:'18:00',end:'21:00',title:'규칙은 없다, 오직 파스타만',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f31f61ecc2316f106322ec',cats:['drinks','launch']},
+      {day:12,start:'18:00',end:'20:00',title:'아페리티프',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32097f9708d12859fbd2c',cats:['drinks','launch']},
     ],
   },
   {
@@ -1602,9 +1602,9 @@ const EXHIBITIONS = [
     slug:'georg-jensen',
     desc:'Founded in Copenhagen in 1904, Georg Jensen is a heritage Danish design house rooted in its founder’s curious spirit…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Playdate',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc93f4c619007e907d2a5c'},
-      {day:11,start:'11:00',end:'12:00',title:'Playdate',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc94f41d73abe45c1f11fd'},
-      {day:12,start:'11:00',end:'12:00',title:'Playdate',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc951ab263b9753556a8af'},
+      {day:10,start:'11:00',end:'12:00',title:'플레이데이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc93f4c619007e907d2a5c'},
+      {day:11,start:'11:00',end:'12:00',title:'플레이데이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc94f41d73abe45c1f11fd'},
+      {day:12,start:'11:00',end:'12:00',title:'플레이데이트',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fc951ab263b9753556a8af'},
     ],
   },
   {
@@ -1616,9 +1616,9 @@ const EXHIBITIONS = [
     slug:'grid-system',
     desc:'GRID is a flexible, modular interior design system based on the original cube by Peter J. Lassen. Weighing just 800…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'Cocktails & Cubes',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4aa711fa15255ce72b3'},
-      {day:11,start:'15:00',end:'16:00',title:'Cocktails & Cubes',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4cd29f3aabac4ed1144'},
-      {day:12,start:'15:00',end:'16:00',title:'Cocktails & Cubes',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4f0d46d7c0c604a30f2'},
+      {day:10,start:'15:00',end:'16:00',title:'칵테일과 큐브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4aa711fa15255ce72b3'},
+      {day:11,start:'15:00',end:'16:00',title:'칵테일과 큐브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4cd29f3aabac4ed1144'},
+      {day:12,start:'15:00',end:'16:00',title:'칵테일과 큐브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1b4f0d46d7c0c604a30f2'},
     ],
   },
   {
@@ -1630,9 +1630,9 @@ const EXHIBITIONS = [
     slug:'hubbub',
     desc:'HUBBUB develops 100% natural acoustic materials for architecture, replacing synthetic layers in acoustic systems. Made…',
     events:[
-      {day:10,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32'},
-      {day:11,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a'},
-      {day:12,start:'8:30',end:'9:00',title:'Morning Yoga in Designhouse Copenhagen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a92022d1a9a23e2e22ae'},
+      {day:10,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8bf547fff29503acc32'},
+      {day:11,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a8f484531926492ac93a'},
+      {day:12,start:'8:30',end:'9:00',title:'Designhouse Copenhagen에서의 모닝 요가',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f4a92022d1a9a23e2e22ae'},
     ],
   },
   {
@@ -1644,9 +1644,9 @@ const EXHIBITIONS = [
     slug:'hyletech',
     desc:'HYLEtech is both a company and a product: a multi-patented technology that uniquely combines recycled aluminum and…',
     events:[
-      {day:10,start:'17:00',end:'18:30',title:'TASTE - Technology, Architecture, Space, Tuscany, Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19894f63fcdf4724083df8',location:'Bredgade 45, Copenaghen, Danimarca'},
-      {day:11,start:'17:00',end:'18:30',title:'TASTE - Technology, Architecture, Space, Tuscany, Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19898f30292e96e55d2af3',location:'Bredgade 45, Copenaghen, Danimarca'},
-      {day:12,start:'17:00',end:'18:30',title:'TASTE - Technology, Architecture, Space, Tuscany, Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1989b68b32513d75cd358e',location:'Bredgade 45, Copenaghen, Danimarca'},
+      {day:10,start:'17:00',end:'18:30',title:'TASTE - 기술, 건축, 공간, 투스카니, 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19894f63fcdf4724083df8',location:'Bredgade 45, Copenaghen, Danimarca'},
+      {day:11,start:'17:00',end:'18:30',title:'TASTE - 기술, 건축, 공간, 투스카니, 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19898f30292e96e55d2af3',location:'Bredgade 45, Copenaghen, Danimarca'},
+      {day:12,start:'17:00',end:'18:30',title:'TASTE - 기술, 건축, 공간, 투스카니, 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1989b68b32513d75cd358e',location:'Bredgade 45, Copenaghen, Danimarca'},
     ],
   },
   {
@@ -1658,9 +1658,9 @@ const EXHIBITIONS = [
     slug:'indalo',
     desc:'INDALO has two meanings in siSwati: “nature” and “to create.” This collective of craft artisans from Eswatini and…',
     events:[
-      {day:10,start:'14:00',end:'15:00',title:'Meet the Artisan',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e883ab2d41e3859e428724'},
-      {day:11,start:'14:00',end:'15:00',title:'Meet the artisan',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1ba8d7e91282f2f2ec80e'},
-      {day:12,start:'14:00',end:'15:00',title:'Meet the Artisan',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1bb007e91282f2f2ede0c'},
+      {day:10,start:'14:00',end:'15:00',title:'장인을 만나다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e883ab2d41e3859e428724'},
+      {day:11,start:'14:00',end:'15:00',title:'장인을 만나다',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1ba8d7e91282f2f2ec80e'},
+      {day:12,start:'14:00',end:'15:00',title:'장인을 만나다',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1bb007e91282f2f2ede0c'},
     ],
   },
   {
@@ -1672,9 +1672,9 @@ const EXHIBITIONS = [
     slug:'isaksen-design',
     desc:'Greenlandic designer Nickie Isaksen presents her brand Isaksen Design at the Greenland Representation during…',
     events:[
-      {day:11,start:'11:00',end:'12:00',title:'Greenlandic Mask Dance',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f4820fbc5cfcaaea801ad4'},
-      {day:12,start:'11:00',end:'12:00',title:'Greenlandic Mask Dance',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f481bd3df736e2af426d91'},
-      {day:12,start:'16:30',end:'17:15',title:'Nickie Isaksen: Her Journey as a Designer',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ea366ff6ba8aca30ef995'},
+      {day:11,start:'11:00',end:'12:00',title:'그린란드 가면 무용',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f4820fbc5cfcaaea801ad4'},
+      {day:12,start:'11:00',end:'12:00',title:'그린란드 가면 무용',icon:'🏛',color:'#6d3b54',label:'전시',id:'69f481bd3df736e2af426d91'},
+      {day:12,start:'16:30',end:'17:15',title:'Nickie Isaksen: 디자이너로서의 여정',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ea366ff6ba8aca30ef995'},
     ],
   },
   {
@@ -1686,9 +1686,9 @@ const EXHIBITIONS = [
     slug:'j-adams-co',
     desc:'J. Adams & Co is a British lighting manufacturer known for elegant, enduring luminaires that balance beauty, clarity…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Aperitivo at the Pavilion',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef741bff7c39842bfe879a'},
-      {day:11,start:'16:00',end:'18:00',title:'Aperitivo at the Pavilion',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b3e02f86ddfe1c3934ff',location:'Møller & Rothe Pavillonen, Kronprinsessegade 3, 1306 Copenhagen'},
-      {day:12,start:'16:00',end:'18:00',title:'Aperitivo at the Pavilion',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b42e930b5ceac221827e',location:'Møller & Rothe Pavillonen, Kronprinsessegade 3, 1306 Copenhagen'},
+      {day:10,start:'16:00',end:'18:00',title:'파빌리온에서 즐기는 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef741bff7c39842bfe879a'},
+      {day:11,start:'16:00',end:'18:00',title:'파빌리온에서 즐기는 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b3e02f86ddfe1c3934ff',location:'Møller & Rothe Pavillonen, Kronprinsessegade 3, 1306 Copenhagen'},
+      {day:12,start:'16:00',end:'18:00',title:'파빌리온에서 즐기는 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15b42e930b5ceac221827e',location:'Møller & Rothe Pavillonen, Kronprinsessegade 3, 1306 Copenhagen'},
     ],
   },
   {
@@ -1700,9 +1700,9 @@ const EXHIBITIONS = [
     slug:'karimoku-furniture',
     desc:'Emerging from shared design values, Karimoku Case is a contemporary lifestyle brand based in Japan and born out of…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Encounter the spirit of Japan in Copenhagen—Matcha tea',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02dffc4f9e6133c6aac0af'},
-      {day:11,start:'15:00',end:'16:00',title:'Encounter the spirit of Japan in Copenhagen—Matcha tea',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06e7fe5d5188468d0ce8e4'},
-      {day:12,start:'11:00',end:'12:00',title:'Encounter the spirit of Japan in Copenhagen—Matcha tea',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02e0c0ba5fa0d6ad666550'},
+      {day:10,start:'11:00',end:'12:00',title:'코펜하겐에서 만나는 일본의 정신—말차 티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02dffc4f9e6133c6aac0af'},
+      {day:11,start:'15:00',end:'16:00',title:'코펜하겐에서 만나는 일본의 정신—말차 티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06e7fe5d5188468d0ce8e4'},
+      {day:12,start:'11:00',end:'12:00',title:'코펜하겐에서 만나는 일본의 정신—말차 티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a02e0c0ba5fa0d6ad666550'},
     ],
   },
   {
@@ -1714,9 +1714,9 @@ const EXHIBITIONS = [
     slug:'kasthall',
     desc:'Kasthall is a maker of beautiful rugs and a creator of design culture, crafting rugs in its own mill in Kinna, Sweden.…',
     events:[
-      {day:10,start:'9:00',end:'9:45',title:'Breakfast Chat – One-thingness',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18448d84489af36c19c38f',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
-      {day:11,start:'9:00',end:'9:45',title:'Breakfast Chat – Taking the long view',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a184515f49ddc9ebf05e88b',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
-      {day:12,start:'9:00',end:'9:45',title:'Breakfast Chat – Perfectly imperfect',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18456d4cfc7ec158c3cb52',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
+      {day:10,start:'9:00',end:'9:45',title:'조찬 대화 – 하나됨',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18448d84489af36c19c38f',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
+      {day:11,start:'9:00',end:'9:45',title:'조찬 대화 – 장기적 관점 취하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a184515f49ddc9ebf05e88b',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
+      {day:12,start:'9:00',end:'9:45',title:'조찬 대화 – 완벽한 불완전함',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18456d4cfc7ec158c3cb52',location:'Oslo Plads 1, 2100 Copenhagen',joint:true},
     ],
   },
   {
@@ -1728,9 +1728,9 @@ const EXHIBITIONS = [
     slug:'kurage',
     desc:'Kurage is a Danish design brand offering bold, recycled fabrics to visionary designers and architects. Since 1990,…',
     events:[
-      {day:10,start:'16:30',end:'18:00',title:'Sips & Senses',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091265a7ca034487dc325',joint:true},
-      {day:11,start:'16:30',end:'18:00',title:'Sips & Senses',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091460c7c11d693177da5',joint:true},
-      {day:12,start:'16:30',end:'18:00',title:'Sips & Senses',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f09160d2adc43f8aa1ad52',joint:true},
+      {day:10,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091265a7ca034487dc325',joint:true},
+      {day:11,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f091460c7c11d693177da5',joint:true},
+      {day:12,start:'16:30',end:'18:00',title:'한 모금과 감각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f09160d2adc43f8aa1ad52',joint:true},
     ],
   },
   {
@@ -1742,9 +1742,9 @@ const EXHIBITIONS = [
     slug:'la-cabra',
     desc:'Shaped by a growing exploration of space, craft, and hospitality, La Cabra continues to explore how coffee is…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Exploring form and material affect taste with Kasper Würtz',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb41423ddac887e588706e'},
-      {day:11,start:'10:00',end:'12:00',title:'How design and materiality affect the perception of space.',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb415d5b318ff6767ecbe2'},
-      {day:12,start:'10:00',end:'12:00',title:'Explore sound, emotion and atmosphere with Dynaudio',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb4233aa22fdffd98c9072'},
+      {day:10,start:'10:00',end:'12:00',title:'Kasper Würtz와 함께 탐구하는 형태와 소재가 맛에 미치는 영향',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb41423ddac887e588706e'},
+      {day:11,start:'10:00',end:'12:00',title:'디자인과 물성이 공간 인식에 미치는 영향',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb415d5b318ff6767ecbe2'},
+      {day:12,start:'10:00',end:'12:00',title:'Dynaudio와 함께 탐구하는 사운드, 감정, 분위기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fb4233aa22fdffd98c9072'},
     ],
   },
   {
@@ -1756,9 +1756,9 @@ const EXHIBITIONS = [
     slug:'louis-poulsen',
     desc:'Founded in 1874, the Danish lighting manufacturer Louis Poulsen creates products that encompass the duality of design…',
     events:[
-      {day:10,start:'9:15',end:'10:00',title:'Design talk: Searching for PH w. Mads Wille',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f308c5231583637f2a7617'},
-      {day:11,start:'14:00',end:'14:45',title:'Design talk: Cities for the Future w. Jan Gehl',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f30bbff1e4399677df17ff'},
-      {day:11,start:'9:15',end:'10:00',title:'Design talk: Searching for PH w. Mads Wille',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f30a3184d47053cb5d5988'},
+      {day:10,start:'9:15',end:'10:00',title:'디자인 토크: Mads Wille과 함께 PH를 찾아서',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f308c5231583637f2a7617'},
+      {day:11,start:'14:00',end:'14:45',title:'디자인 토크: Jan Gehl과 함께하는 미래 도시',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f30bbff1e4399677df17ff'},
+      {day:11,start:'9:15',end:'10:00',title:'디자인 토크: Mads Wille과 함께 PH를 찾아서',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f30a3184d47053cb5d5988'},
     ],
   },
   {
@@ -1770,9 +1770,9 @@ const EXHIBITIONS = [
     slug:'made-by-hand',
     desc:'Made by Hand is a contemporary Danish design brand celebrating fine craftsmanship and understated luxury. Founded in…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Opening Breakfast + Panel',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc409e2aa32faaac7cd508',cats:['drinks','talk']},
-      {day:10,start:'16:00',end:'19:00',title:'Cocktail Event',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34f4c6cf8bb70fb90ff58'},
-      {day:11,start:'16:00',end:'19:00',title:'Cocktail Event',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34fbb1d13cdcccfc2121f'},
+      {day:10,start:'10:00',end:'12:00',title:'오프닝 조식 + 패널',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc409e2aa32faaac7cd508',cats:['drinks','talk']},
+      {day:10,start:'16:00',end:'19:00',title:'칵테일 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34f4c6cf8bb70fb90ff58'},
+      {day:11,start:'16:00',end:'19:00',title:'칵테일 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f34fbb1d13cdcccfc2121f'},
     ],
   },
   {
@@ -1784,9 +1784,9 @@ const EXHIBITIONS = [
     slug:'mizetto',
     desc:'Mizetto is a Swedish design brand creating bold, adaptable furniture for contemporary public and professional spaces.…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Drinks, Design & Conversation',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1980ec4b02a1d052992117'},
-      {day:11,start:'16:00',end:'18:00',title:'Drinks, Design & Conversation',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19816c9e77f8341c76d8f7'},
-      {day:12,start:'14:30',end:'16:00',title:'Drinks, Design & Conversation',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1981ab3e5646104ab282a8'},
+      {day:10,start:'16:00',end:'18:00',title:'음료, 디자인 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1980ec4b02a1d052992117'},
+      {day:11,start:'16:00',end:'18:00',title:'음료, 디자인 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a19816c9e77f8341c76d8f7'},
+      {day:12,start:'14:30',end:'16:00',title:'음료, 디자인 & 대화',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1981ab3e5646104ab282a8'},
     ],
   },
   {
@@ -1798,9 +1798,9 @@ const EXHIBITIONS = [
     slug:'moifani',
     desc:'Where attachment begins. "moifani" is a furniture brand launched in 2021 by SHIKI, an Okawa-based manufacturer in…',
     events:[
-      {day:10,start:'14:00',end:'16:00',title:'Experience Japanese Hygge with pombo collection',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35b5b62c72943943edf9b',cats:['drinks','launch']},
-      {day:11,start:'14:00',end:'16:00',title:'Experience Japanese Hygge with pombo collection',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35b918aba6883a755eaac',cats:['drinks','launch']},
-      {day:12,start:'14:00',end:'16:00',title:'Experience Japanese Hygge with pombo collection',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35baf398c290f4e045d85',cats:['drinks','launch']},
+      {day:10,start:'14:00',end:'16:00',title:'pombo collection과 함께하는 일본식 휘게 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35b5b62c72943943edf9b',cats:['drinks','launch']},
+      {day:11,start:'14:00',end:'16:00',title:'pombo collection과 함께하는 일본식 휘게 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35b918aba6883a755eaac',cats:['drinks','launch']},
+      {day:12,start:'14:00',end:'16:00',title:'pombo collection과 함께하는 일본식 휘게 경험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f35baf398c290f4e045d85',cats:['drinks','launch']},
     ],
   },
   {
@@ -1812,9 +1812,9 @@ const EXHIBITIONS = [
     slug:'motarasu',
     desc:'MOTARASU crafts design objects within lighting, furniture and interior that unites the clean, functional elegance of…',
     events:[
-      {day:10,start:'9:30',end:'11:30',title:'Exclusive talk with Norm Architects at COMPOSED MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark',joint:true},
-      {day:11,start:'16:00',end:'18:00',title:'Refreshments at COMPOSED MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch']},
-      {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30 year anniversary celebration',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],joint:true},
+      {day:10,start:'9:30',end:'11:30',title:'COMPOSED MATTER에서 Norm Architects와의 단독 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark',joint:true},
+      {day:11,start:'16:00',end:'18:00',title:'COMPOSED MATTER에서 즐기는 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch']},
+      {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],joint:true},
     ],
   },
   {
@@ -1826,9 +1826,9 @@ const EXHIBITIONS = [
     slug:'maerk',
     desc:'MÆRK is a Copenhagen–based curatorial platform that examines contemporary design through material, tactility and form.…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Opening Reception. MÆRK — Perception Through Design',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01ea260f5b01084d4cc7a0'},
-      {day:10,start:'9:00',end:'9:45',title:'Design Talk: Perception in Materiality Across the Nordics',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01c35a96ffd550dfafe602'},
-      {day:11,start:'9:00',end:'9:45',title:'Design talk: Exploring Sustainability in Materials',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01e3fea4dd6eee1319bbe7'},
+      {day:10,start:'16:00',end:'18:00',title:'오프닝 리셉션. MÆRK — 디자인을 통한 지각',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01ea260f5b01084d4cc7a0'},
+      {day:10,start:'9:00',end:'9:45',title:'디자인 토크: 북유럽 전역의 물성에 대한 인식',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01c35a96ffd550dfafe602'},
+      {day:11,start:'9:00',end:'9:45',title:'디자인 토크: 소재의 지속가능성 탐구',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01e3fea4dd6eee1319bbe7'},
     ],
   },
   {
@@ -1840,9 +1840,9 @@ const EXHIBITIONS = [
     slug:'normann-copenhagen',
     desc:'Since Normann Copenhagen’s foundation in 1999, the brand\'s ambition has been to challenge conventional thinking and…',
     events:[
-      {day:10,start:'12:00',end:'15:00',title:'STREET PARTY – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83899ee93ad13c27b8ac'},
-      {day:11,start:'12:00',end:'15:00',title:'STREET PARTY – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83eb546890ab08a86594'},
-      {day:12,start:'12:00',end:'15:00',title:'STREET PARTY – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d878c39154533b107ca8c'},
+      {day:10,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83899ee93ad13c27b8ac'},
+      {day:11,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d83eb546890ab08a86594'},
+      {day:12,start:'12:00',end:'15:00',title:'거리 파티 – NIELS HEMMINGSENS GADE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0d878c39154533b107ca8c'},
     ],
   },
   {
@@ -1854,9 +1854,9 @@ const EXHIBITIONS = [
     slug:'ochre',
     desc:'Established in 2020 in Armenia, OCHRE merges artistic ideas with artisanal expertise to craft objects for everyday…',
     events:[
-      {day:10,start:'11:00',end:'12:00',title:'Design Practice from Armenia: Gestures of Continuity with Anush Zeinalian',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1000fa0ce879fe87d7b9e9',cats:['drinks','talk']},
-      {day:11,start:'14:00',end:'15:00',title:'Artist Talk: Material as Method with Aleksey Manukyan',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1563439cb317fa6dedb995'},
-      {day:12,start:'16:30',end:'17:30',title:'Artist Talk: Slow Gestures with Anush Ghukasyan',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1807d826b33411e8daafb8',cats:['drinks','talk']},
+      {day:10,start:'11:00',end:'12:00',title:'아르메니아의 디자인 실천: Anush Zeinalian과 함께하는 연속성의 제스처',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1000fa0ce879fe87d7b9e9',cats:['drinks','talk']},
+      {day:11,start:'14:00',end:'15:00',title:'아티스트 토크: Aleksey Manukyan과 함께하는 소재를 통한 방법론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1563439cb317fa6dedb995'},
+      {day:12,start:'16:30',end:'17:30',title:'아티스트 토크: Anush Ghukasyan과 함께하는 느린 제스처',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1807d826b33411e8daafb8',cats:['drinks','talk']},
     ],
   },
   {
@@ -1868,9 +1868,9 @@ const EXHIBITIONS = [
     slug:'ordning-reda',
     desc:'A new chapter of clarity and craftsmanship. Ordning&Reda, the iconic stationery brand, is entering a new chapter. With…',
     events:[
-      {day:10,start:'14:00',end:'15:00',title:'Personalize your Ordning&Reda notebook',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef5d9b8dc77b83434e4267'},
-      {day:11,start:'14:00',end:'15:00',title:'Personalize your Ordning&Reda notebook',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef5f3309c02ca0c5dd2d0c'},
-      {day:12,start:'14:00',end:'15:00',title:'Personalize your Ordning&Reda notebook',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef622671c5c486074e08a0'},
+      {day:10,start:'14:00',end:'15:00',title:'나만의 Ordning&Reda 노트북 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef5d9b8dc77b83434e4267'},
+      {day:11,start:'14:00',end:'15:00',title:'나만의 Ordning&Reda 노트북 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef5f3309c02ca0c5dd2d0c'},
+      {day:12,start:'14:00',end:'15:00',title:'나만의 Ordning&Reda 노트북 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef622671c5c486074e08a0'},
     ],
   },
   {
@@ -1882,9 +1882,9 @@ const EXHIBITIONS = [
     slug:'pap-deco',
     desc:'PAP DECO is a family–run Polish manufactory that has become a pioneer in creating hand–carved furniture handles and…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'The Nature of Brass—Love of Craftsmanship by PAP DECO',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef4349d587341a3198fa86'},
-      {day:10,start:'14:00',end:'15:00',title:'The Nature of Brass—Love for Craftsmanship by PAP DECO',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef4400415f43616236ea29'},
-      {day:12,start:'19:00',end:'22:00',title:'HONEST CRAFTSMANSHIP - THE IMPACT OF POLISH HEARTBEAT',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef52295e251c50edcb4f4b'},
+      {day:10,start:'10:00',end:'11:00',title:'황동의 본질—PAP DECO의 장인정신에 대한 사랑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef4349d587341a3198fa86'},
+      {day:10,start:'14:00',end:'15:00',title:'황동의 본질—PAP DECO의 장인정신에 대한 사랑',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69ef4400415f43616236ea29'},
+      {day:12,start:'19:00',end:'22:00',title:'정직한 장인정신 - 폴란드의 심장박동이 만드는 임팩트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef52295e251c50edcb4f4b'},
     ],
   },
   {
@@ -1896,9 +1896,9 @@ const EXHIBITIONS = [
     slug:'pbj-desginhouse',
     desc:'PBJ Designhouse was founded in 1968 and has been Danish–owned ever since. PBJ is known for making modern home…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'From idea to finished product',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc7f4fd01aa673971acb52'},
-      {day:11,start:'15:00',end:'16:00',title:'Discover our B2B concept',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc7fc7d69ec79cbb15e573'},
-      {day:12,start:'15:00',end:'16:00',title:'PBJ history',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc800efd6e07a1a2272cdd'},
+      {day:10,start:'15:00',end:'16:00',title:'아이디어에서 완성품까지',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc7f4fd01aa673971acb52'},
+      {day:11,start:'15:00',end:'16:00',title:'우리의 B2B 컨셉 둘러보기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc7fc7d69ec79cbb15e573'},
+      {day:12,start:'15:00',end:'16:00',title:'PBJ 히스토리',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69fc800efd6e07a1a2272cdd'},
     ],
   },
   {
@@ -1910,9 +1910,9 @@ const EXHIBITIONS = [
     slug:'postbyen',
     desc:'Postbyen, Copenhagen’s new urban district, is hosting events and exhibitions during 3daysofdesign. Once the hub of…',
     events:[
-      {day:12,start:'15:00',end:'15:30',title:'Unveiling of Jeppe Hein’s artwork, Something Between Us',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d5057d7d5cc4b651a074',cats:['talk','launch']},
-      {day:12,start:'15:30',end:'16:00',title:'Art Talk: Art in Public Spaces',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1e58bf81bf8de73bb7473'},
-      {day:12,start:'16:00',end:'18:00',title:'Postbyen Live: Free Urban Garden Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1e70fd64ccdb83937df3f'},
+      {day:12,start:'15:00',end:'15:30',title:'Jeppe Hein의 작품 공개, Something Between Us',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1d5057d7d5cc4b651a074',cats:['talk','launch']},
+      {day:12,start:'15:30',end:'16:00',title:'아트 토크: 공공 공간 속 예술',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1e58bf81bf8de73bb7473'},
+      {day:12,start:'16:00',end:'18:00',title:'Postbyen Live: 무료 어반 가든 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1e70fd64ccdb83937df3f'},
     ],
   },
   {
@@ -1924,9 +1924,9 @@ const EXHIBITIONS = [
     slug:'project-materia',
     desc:'Project Materia is an evolving platform dedicated to the exploration of materiality - its histories, processes, and…',
     events:[
-      {day:10,start:'14:00',end:'15:00',title:'What Makes a Material Worth Collecting?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1985db070207b8951fe234'},
-      {day:11,start:'14:00',end:'15:00',title:'What Makes a Material Worth Collecting?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a198621b108c210ffc274b9'},
-      {day:12,start:'14:00',end:'15:00',title:'What Makes a Material Worth Collecting?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a19865e55d2ae94bd1e0acc'},
+      {day:10,start:'14:00',end:'15:00',title:'소재를 컬렉션할 가치가 있게 만드는 것은 무엇인가?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1985db070207b8951fe234'},
+      {day:11,start:'14:00',end:'15:00',title:'소재를 컬렉션할 가치가 있게 만드는 것은 무엇인가?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a198621b108c210ffc274b9'},
+      {day:12,start:'14:00',end:'15:00',title:'소재를 컬렉션할 가치가 있게 만드는 것은 무엇인가?',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a19865e55d2ae94bd1e0acc'},
     ],
   },
   {
@@ -1938,9 +1938,9 @@ const EXHIBITIONS = [
     slug:'sancal',
     desc:'Founded under the Spanish sun more than fifty years ago, Sancal\'s passionate, open, and respectful identity in each of…',
     events:[
-      {day:11,start:'17:00',end:'20:00',title:'Paper Collective x Sancal — Sangria Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b295a5ef494ff0cd9ce03',joint:true},
-      {day:11,start:'9:00',end:'10:30',title:'Mentsen — Collage Workshop',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0b1c6b1f16bb5c1637d9f5',joint:true},
-      {day:12,start:'9:00',end:'10:00',title:'UNS Panel Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a16eb812ccc33ea623c4cf3'},
+      {day:11,start:'17:00',end:'20:00',title:'Paper Collective x Sancal — 상그리아 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b295a5ef494ff0cd9ce03',joint:true},
+      {day:11,start:'9:00',end:'10:30',title:'Mentsen — 콜라주 워크숍',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0b1c6b1f16bb5c1637d9f5',joint:true},
+      {day:12,start:'9:00',end:'10:00',title:'UNS 패널 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a16eb812ccc33ea623c4cf3'},
     ],
   },
   {
@@ -1952,9 +1952,9 @@ const EXHIBITIONS = [
     slug:'savo',
     desc:'Scandinavian office chair pioneer Savo has spent over half a century raising the bar for workspace seating standards.…',
     events:[
-      {day:10,start:'10:00',end:'10:40',title:'Savo\'s guided breakfast sessions',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0ef0193309693b1e30c304',cats:['drinks','talk']},
-      {day:11,start:'10:00',end:'10:45',title:'Savo\'s guided breakfast sessions',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1ffca4f85e4d25ea41b371'},
-      {day:12,start:'10:00',end:'10:45',title:'Savo\'s guided breakfast sessions',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1ffce55baa95b503097890'},
+      {day:10,start:'10:00',end:'10:40',title:'Savo의 가이드 조찬 세션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0ef0193309693b1e30c304',cats:['drinks','talk']},
+      {day:11,start:'10:00',end:'10:45',title:'Savo의 가이드 조찬 세션',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1ffca4f85e4d25ea41b371'},
+      {day:12,start:'10:00',end:'10:45',title:'Savo의 가이드 조찬 세션',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1ffce55baa95b503097890'},
     ],
   },
   {
@@ -1966,9 +1966,9 @@ const EXHIBITIONS = [
     slug:'sould',
     desc:'Søuld is an innovative Danish material manufacturer committed to providing carbon-storing and recyclable acoustic…',
     events:[
-      {day:10,start:'9:30',end:'11:30',title:'Exclusive talk with Norm Architects at COMPOSED MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark'},
-      {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30 year anniversary celebration',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],joint:true},
-      {day:11,start:'16:00',end:'18:00',title:'Refreshments at COMPOSED MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch'],joint:true},
+      {day:10,start:'9:30',end:'11:30',title:'COMPOSED MATTER에서 Norm Architects와의 단독 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark'},
+      {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],joint:true},
+      {day:11,start:'16:00',end:'18:00',title:'COMPOSED MATTER에서 즐기는 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch'],joint:true},
     ],
   },
   {
@@ -1980,9 +1980,9 @@ const EXHIBITIONS = [
     slug:'tarkett',
     desc:'Tarkett is a global leader in flooring and sports surfaces, designing solutions that are better for people—and for the…',
     events:[
-      {day:10,start:'10:30',end:'12:00',title:'MEET THE DESIGNERS Brunch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c0b3cd74d50458e0b292'},
-      {day:10,start:'18:30',end:'20:00',title:'TALK EVENT: Beginnings & Endings by Tarkett',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bf6c3aef5cbbeb3a190c'},
-      {day:11,start:'10:30',end:'12:30',title:'MEET THE DESIGNERS Brunch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c1075905f910a9e381aa'},
+      {day:10,start:'10:30',end:'12:00',title:'디자이너와 함께하는 브런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c0b3cd74d50458e0b292'},
+      {day:10,start:'18:30',end:'20:00',title:'토크 이벤트: Tarkett과 함께하는 시작과 끝',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4bf6c3aef5cbbeb3a190c'},
+      {day:11,start:'10:30',end:'12:30',title:'디자이너와 함께하는 브런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4c1075905f910a9e381aa'},
     ],
   },
   {
@@ -1994,9 +1994,9 @@ const EXHIBITIONS = [
     slug:'the-poster-club',
     desc:'The Poster Club is a Copenhagen–based art platform offering a carefully curated selection of premium art prints and…',
     events:[
-      {day:10,start:'14:00',end:'17:00',title:'Artist Mingle',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f499e1d8ca60d4e50677cf',cats:['drinks','launch']},
-      {day:11,start:'12:00',end:'15:00',title:'Open Workshop & Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49b15262795c6c3141901',cats:['drinks','workshop']},
-      {day:12,start:'10:00',end:'13:00',title:'Open Workshop & Breakfast',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49bb36e4599991b4c6bb7',cats:['drinks','workshop']},
+      {day:10,start:'14:00',end:'17:00',title:'아티스트 밍글',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f499e1d8ca60d4e50677cf',cats:['drinks','launch']},
+      {day:11,start:'12:00',end:'15:00',title:'오픈 워크숍 & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49b15262795c6c3141901',cats:['drinks','workshop']},
+      {day:12,start:'10:00',end:'13:00',title:'오픈 워크숍 & 조식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f49bb36e4599991b4c6bb7',cats:['drinks','workshop']},
     ],
   },
   {
@@ -2008,9 +2008,9 @@ const EXHIBITIONS = [
     slug:'time-style',
     desc:'Founded in 1992, Time & Style is a Japanese interior brand that designs and manufactures a wide range of products,…',
     events:[
-      {day:10,start:'9:00',end:'10:00',title:'Morning Design Talks: OEO Studio',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04e4d4f334eefe43f262a6'},
-      {day:11,start:'9:00',end:'10:00',title:'Morning Design Talks: Claesson Koivisto Rune',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04e83064f6394975bf2dd8'},
-      {day:12,start:'9:00',end:'10:00',title:'Morning Design Talks: Kensaku Oshiro',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04ed742ae52d22ccbe3b19'},
+      {day:10,start:'9:00',end:'10:00',title:'모닝 디자인 토크: OEO Studio',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04e4d4f334eefe43f262a6'},
+      {day:11,start:'9:00',end:'10:00',title:'모닝 디자인 토크: Claesson Koivisto Rune',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04e83064f6394975bf2dd8'},
+      {day:12,start:'9:00',end:'10:00',title:'모닝 디자인 토크: Kensaku Oshiro',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04ed742ae52d22ccbe3b19'},
     ],
   },
   {
@@ -2022,9 +2022,9 @@ const EXHIBITIONS = [
     slug:'uno-form-nobia-danmark',
     desc:'Ever since Danish designer Arne Munch designed the original Classic kitchen in 1968, uno form has been dedicated to…',
     events:[
-      {day:10,start:'13:00',end:'15:00',title:'Make This Moment Matter — A living legacy in wood',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1bdcb1c0013b106d25388'},
-      {day:11,start:'13:00',end:'15:00',title:'Make This Moment Matter — A living legacy in wood',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1be2180768a3bc5f75a7f'},
-      {day:12,start:'13:00',end:'15:00',title:'Make This Moment Matter — A living legacy in wood',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1be4e02df41ed30d8bc07'},
+      {day:10,start:'13:00',end:'15:00',title:'이 순간을 의미있게 — 목재로 남기는 살아있는 유산',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1bdcb1c0013b106d25388'},
+      {day:11,start:'13:00',end:'15:00',title:'이 순간을 의미있게 — 목재로 남기는 살아있는 유산',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1be2180768a3bc5f75a7f'},
+      {day:12,start:'13:00',end:'15:00',title:'이 순간을 의미있게 — 목재로 남기는 살아있는 유산',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f1be4e02df41ed30d8bc07'},
     ],
   },
   {
@@ -2036,9 +2036,9 @@ const EXHIBITIONS = [
     slug:'vaarnii',
     desc:'Vaarnii is a furniture & lighting company making brutal and sophisticated objects from a single and plentiful natural…',
     events:[
-      {day:10,start:'9:00',end:'9:45',title:'Breakfast Chat – One-thingness',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18448d84489af36c19c38f'},
-      {day:11,start:'9:00',end:'9:45',title:'Breakfast Chat – Taking the long view',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a184515f49ddc9ebf05e88b'},
-      {day:12,start:'9:00',end:'9:45',title:'Breakfast Chat – Perfectly imperfect',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18456d4cfc7ec158c3cb52'},
+      {day:10,start:'9:00',end:'9:45',title:'조찬 대화 – 하나됨',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18448d84489af36c19c38f'},
+      {day:11,start:'9:00',end:'9:45',title:'조찬 대화 – 장기적 관점 취하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a184515f49ddc9ebf05e88b'},
+      {day:12,start:'9:00',end:'9:45',title:'조찬 대화 – 완벽한 불완전함',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a18456d4cfc7ec158c3cb52'},
     ],
   },
   {
@@ -2050,8 +2050,8 @@ const EXHIBITIONS = [
     slug:'abstracta-interior',
     desc:'Abstracta creates better soundscapes since 1972—making them acoustics pioneers. Today, the brand offers a wide variety…',
     events:[
-      {day:10,start:'11:00',end:'14:00',title:'Meet the designers and discover this year\'s product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
-      {day:11,start:'11:00',end:'14:00',title:'Meet the designers and discover this years product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
+      {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
+      {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
     ],
   },
   {
@@ -2063,8 +2063,8 @@ const EXHIBITIONS = [
     slug:'agape-srl',
     desc:'For more than 50 years, Agape has been synonymous with design culture. Founded by the Benedini family, the brand…',
     events:[
-      {day:10,start:'10:00',end:'10:30',title:'Living with Art',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0af5a55a51ce7f08ca1e3f',location:'Frederiksgade 1, 1st Floor, 1263 Copenhagen'},
-      {day:11,start:'10:00',end:'10:30',title:'A presentation on the life and works of Sonja Ferlov Mancoba',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
+      {day:10,start:'10:00',end:'10:30',title:'예술과 함께 살아가기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0af5a55a51ce7f08ca1e3f',location:'Frederiksgade 1, 1st Floor, 1263 Copenhagen'},
+      {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
     ],
   },
   {
@@ -2076,8 +2076,8 @@ const EXHIBITIONS = [
     slug:'akuart',
     desc:'Akuart is a Danish acoustic design brand developing sound absorbing systems for professional environments. Based on…',
     events:[
-      {day:10,start:'14:00',end:'15:00',title:'Talk & Drinks: "The Contagion of Imagination"',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a16cdada043d7c68850becf'},
-      {day:10,start:'17:00',end:'20:00',title:'Akuart Harbourside Party: CTRL:OFF',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d4b48438f4dbaca9299c4'},
+      {day:10,start:'14:00',end:'15:00',title:'토크 & 드링크: "상상력의 전염"',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a16cdada043d7c68850becf'},
+      {day:10,start:'17:00',end:'20:00',title:'Akuart 하버사이드 파티: CTRL:OFF',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d4b48438f4dbaca9299c4'},
     ],
   },
   {
@@ -2089,8 +2089,8 @@ const EXHIBITIONS = [
     slug:'anglepoise',
     desc:'Since 1935, Anglepoise has been a pioneer in lighting design, known for crafting innovative, spring–balanced lamps…',
     events:[
-      {day:10,start:'17:30',end:'19:00',title:'Anglepoise Social',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69cd030b1334679e4ec91085',cats:['drinks','launch']},
-      {day:11,start:'17:30',end:'19:00',title:'Anglepoise Social',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69cd0fc17a246f107284987c',cats:['drinks','launch']},
+      {day:10,start:'17:30',end:'19:00',title:'Anglepoise 소셜',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69cd030b1334679e4ec91085',cats:['drinks','launch']},
+      {day:11,start:'17:30',end:'19:00',title:'Anglepoise 소셜',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69cd0fc17a246f107284987c',cats:['drinks','launch']},
     ],
   },
   {
@@ -2102,8 +2102,8 @@ const EXHIBITIONS = [
     slug:'architectmade',
     desc:'For over 20 years, ARCHITECTMADE has carefully crafted designs from Denmark’s most visionary architects. Rejecting…',
     events:[
-      {day:11,start:'14:00',end:'15:00',title:'Knots & Coffee with Hirayama-nichiyo-ten',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fba34571296fe87ad50658'},
-      {day:12,start:'16:00',end:'18:00',title:'Sip. Share. Connect.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d685b729c555748b16f55'},
+      {day:11,start:'14:00',end:'15:00',title:'Hirayama-nichiyo-ten과 함께하는 매듭 & 커피',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69fba34571296fe87ad50658'},
+      {day:12,start:'16:00',end:'18:00',title:'한 모금. 나눔. 연결.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d685b729c555748b16f55'},
     ],
   },
   {
@@ -2115,8 +2115,8 @@ const EXHIBITIONS = [
     slug:'astep',
     desc:'Astep is a young, contemporary design company with a rich legacy. Founded in 2014 by Alessandro Sarfatti with the…',
     events:[
-      {day:10,start:'15:00',end:'17:00',title:'Astep Coffee Rave',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc94c9e24e5bce34bd134'},
-      {day:11,start:'17:00',end:'20:00',title:'Astep Aperitivo',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc87fee2e3a32775b8648'},
+      {day:10,start:'15:00',end:'17:00',title:'Astep 커피 레이브',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc94c9e24e5bce34bd134'},
+      {day:11,start:'17:00',end:'20:00',title:'Astep 아페리티보',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc87fee2e3a32775b8648'},
     ],
   },
   {
@@ -2128,8 +2128,8 @@ const EXHIBITIONS = [
     slug:'audio-magic-lab',
     desc:'Discovering the artefacts, interfaces and rituals through which sound is experienced, Audio Magic Lab is a collective…',
     events:[
-      {day:10,start:'13:08',end:'15:08',title:'Welcome to our Lab',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199a7a4d4900ad562c6904'},
-      {day:11,start:'13:08',end:'15:08',title:'Welcome to our Lab',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199acee04bac2dc850d11f'},
+      {day:10,start:'13:08',end:'15:08',title:'우리 연구실에 오신 것을 환영합니다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199a7a4d4900ad562c6904'},
+      {day:11,start:'13:08',end:'15:08',title:'우리 연구실에 오신 것을 환영합니다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199acee04bac2dc850d11f'},
     ],
   },
   {
@@ -2141,8 +2141,8 @@ const EXHIBITIONS = [
     slug:'audo-copenhagen',
     desc:'Audo Copenhagen brings together a century of Danish design values with a global outlook. At the heart of every Audo…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Courtyard Gathering at Audo House',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c719696d76fb175b1857c'},
-      {day:12,start:'16:00',end:'18:00',title:'Courtyard Gathering at Audo House',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c71c1025d2d50ccb83e49'},
+      {day:10,start:'16:00',end:'18:00',title:'Audo House 안뜰 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c719696d76fb175b1857c'},
+      {day:12,start:'16:00',end:'18:00',title:'Audo House 안뜰 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c71c1025d2d50ccb83e49'},
     ],
   },
   {
@@ -2154,8 +2154,8 @@ const EXHIBITIONS = [
     slug:'bolia-com',
     desc:'BOLIA is a Danish design company with close to a hundred concept stores across Europe, Australia, and Singapore. Known…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'DJ & AFTERNOON DRINKS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b5394905a85bc0df5763'},
-      {day:11,start:'16:00',end:'19:00',title:'DJ & AFTERNOON DRINKS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b6e5f260a3270cd3cc43'},
+      {day:10,start:'16:00',end:'19:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b5394905a85bc0df5763'},
+      {day:11,start:'16:00',end:'19:00',title:'DJ & 애프터눈 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0b6e5f260a3270cd3cc43'},
     ],
   },
   {
@@ -2167,8 +2167,8 @@ const EXHIBITIONS = [
     slug:'eob',
     desc:'Bread and Butter is an itinerant exhibition platform that explores everyday rituals through the concept of paired…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'Opening Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199100dc65a617454ad7b0',location:'Sankt Peders Stræde 35A 코펜하겐 덴마크'},
-      {day:12,start:'17:00',end:'21:00',title:'Sunset Beer Time',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1991e024bb901c62f8bcfd',location:'Sandkaj 30 코펜하겐 덴마크'},
+      {day:10,start:'16:00',end:'19:00',title:'오프닝 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a199100dc65a617454ad7b0',location:'Sankt Peders Stræde 35A 코펜하겐 덴마크'},
+      {day:12,start:'17:00',end:'21:00',title:'석양 맥주 타임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1991e024bb901c62f8bcfd',location:'Sandkaj 30 코펜하겐 덴마크'},
     ],
   },
   {
@@ -2180,8 +2180,8 @@ const EXHIBITIONS = [
     slug:'bretz',
     desc:'Bretz combines two essentially contrary, but fundamental desires in life: On the one hand, the creations take you on…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Discover the latest Bretz collection update',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c75a13c9975666a2c2ebf',cats:['drinks','launch']},
-      {day:11,start:'16:00',end:'18:00',title:'Discover the latest Bretz collection update',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c766378be7ec6411df29a',cats:['drinks','launch']},
+      {day:10,start:'16:00',end:'18:00',title:'최신 Bretz 컬렉션 업데이트 살펴보기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c75a13c9975666a2c2ebf',cats:['drinks','launch']},
+      {day:11,start:'16:00',end:'18:00',title:'최신 Bretz 컬렉션 업데이트 살펴보기',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c766378be7ec6411df29a',cats:['drinks','launch']},
     ],
   },
   {
@@ -2193,8 +2193,8 @@ const EXHIBITIONS = [
     slug:'crevin',
     desc:'Crevin is a Barcelona–based textile brand that has designed and manufactured premium upholstery fabrics since 1976.…',
     events:[
-      {day:10,start:'15:00',end:'15:45',title:'Create your own swatch',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69dcf60adffe9c0d31e532e2'},
-      {day:12,start:'14:00',end:'14:45',title:'Circular Textures',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69dcf7c5bf410fc7ceaf6109',cats:['drinks','workshop']},
+      {day:10,start:'15:00',end:'15:45',title:'나만의 견본 만들기',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69dcf60adffe9c0d31e532e2'},
+      {day:12,start:'14:00',end:'14:45',title:'순환하는 텍스처',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69dcf7c5bf410fc7ceaf6109',cats:['drinks','workshop']},
     ],
   },
   {
@@ -2206,8 +2206,8 @@ const EXHIBITIONS = [
     slug:'danish-architecture-center',
     desc:'Danish Architecture Center (DAC) is an international cultural attraction for everyone who wants to experience and…',
     events:[
-      {day:11,start:'17:00',end:'20:00',title:'Exhibition Opening: This is Not a Forrest',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1c1a04728a03522251786',location:'Danish Architecture Center, Bryghuspladsen 10, 1473 Copenhagen K'},
-      {day:11,start:'18:00',end:'19:00',title:'AfterDAC — Talk: This Is Not a Forest',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f48668ac57d99f8bfba128',location:'Danish Architecture Center, Bryghuspladsen 10, 1473 Copenhagen K'},
+      {day:11,start:'17:00',end:'20:00',title:'전시 오프닝: This is Not a Forrest',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f1c1a04728a03522251786',location:'Danish Architecture Center, Bryghuspladsen 10, 1473 Copenhagen K'},
+      {day:11,start:'18:00',end:'19:00',title:'AfterDAC — 토크: This Is Not a Forest',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f48668ac57d99f8bfba128',location:'Danish Architecture Center, Bryghuspladsen 10, 1473 Copenhagen K'},
     ],
   },
   {
@@ -2219,8 +2219,8 @@ const EXHIBITIONS = [
     slug:'de-la-espada',
     desc:'At their workshop on Portugal\'s Silver Coast, De La Espada combines artisanal furniture making savoir faire with…',
     events:[
-      {day:10,start:'8:30',end:'11:00',title:'Breakfast — Time, at its best, begins slowly.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
-      {day:12,start:'16:00',end:'20:00',title:'Friday Bar — Some things are worth staying for.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
+      {day:10,start:'8:30',end:'11:00',title:'조찬 — 최고의 시간은 천천히 시작된다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
+      {day:12,start:'16:00',end:'20:00',title:'프라이데이 바 — 머물 가치가 있는 것들',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902',location:'Esplanaden 8D, 1263 Copenhagen',joint:true},
     ],
   },
   {
@@ -2232,8 +2232,8 @@ const EXHIBITIONS = [
     slug:'duni-lighting-solutions',
     desc:'Duni Lighting Solutions a Swedish design brand aiming to become the global leader in cordless ambience lighting. The…',
     events:[
-      {day:10,start:'16:30',end:'17:30',title:'Design Talk: Social Magnetism',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ec20ab79e6ed28e2be0fb',location:'Herman K, Bremerholm 6, København K, Danmark'},
-      {day:10,start:'19:00',end:'22:00',title:'Global Launch Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a072e28efc2482e43600478',cats:['drinks','launch'],location:'Bremerholm 6, 1069 Copenhagen'},
+      {day:10,start:'16:30',end:'17:30',title:'디자인 토크: 사회적 자력(磁力)',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ec20ab79e6ed28e2be0fb',location:'Herman K, Bremerholm 6, København K, Danmark'},
+      {day:10,start:'19:00',end:'22:00',title:'글로벌 런칭 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a072e28efc2482e43600478',cats:['drinks','launch'],location:'Bremerholm 6, 1069 Copenhagen'},
     ],
   },
   {
@@ -2245,8 +2245,8 @@ const EXHIBITIONS = [
     slug:'eldvarm',
     desc:'A fireplace is often the centrepiece of a room and Eldvarm was founded on the belief that the objects alongside it…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'Talk with Louise Varre & Paul Bennett—I BELONG',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01a5c5669961614bdf01f1'},
-      {day:10,start:'16:00',end:'18:00',title:'Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01a62c66a9ed7ae3817f67'},
+      {day:10,start:'15:00',end:'16:00',title:'Louise Varre & Paul Bennett과의 토크—I BELONG',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a01a5c5669961614bdf01f1'},
+      {day:10,start:'16:00',end:'18:00',title:'음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01a62c66a9ed7ae3817f67'},
     ],
   },
   {
@@ -2258,8 +2258,8 @@ const EXHIBITIONS = [
     slug:'elis-monsport',
     desc:'Elis Monsport is a Czech multidisciplinary designer and visionary glass engraver working at the intersection of fine…',
     events:[
-      {day:10,start:'13:30',end:'14:30',title:'Elis Monsport × Tokio.: Light, Glass, Material',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f37a1c77d6a19a0a8ccf12'},
-      {day:11,start:'13:00',end:'14:00',title:'Elis Monsport × Tokio.: A Dialogue in Glass and Light',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f37ad5e8b8f997d54f5fa7'},
+      {day:10,start:'13:30',end:'14:30',title:'Elis Monsport × Tokio.: 빛, 유리, 소재',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f37a1c77d6a19a0a8ccf12'},
+      {day:11,start:'13:00',end:'14:00',title:'Elis Monsport × Tokio.: 유리와 빛의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f37ad5e8b8f997d54f5fa7'},
     ],
   },
   {
@@ -2271,8 +2271,8 @@ const EXHIBITIONS = [
     slug:'escential-cph',
     desc:'ESCENTIAL CPH is a Copenhagen–based perfume composition house led by perfumer Emmanuel Martini. They design bespoke…',
     events:[
-      {day:12,start:'11:00',end:'12:00',title:'Emmanuel Martini, Escential CPH x Foyos : Scent as space',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e0cec62046a43968e4a04'},
-      {day:12,start:'15:00',end:'16:00',title:'Emmanuel Martini, Escential CPH x Foyos : Scent as space',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e0d3424f2e7b63cf296ad'},
+      {day:12,start:'11:00',end:'12:00',title:'Emmanuel Martini, Escential CPH x Foyos : 공간으로서의 향기',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e0cec62046a43968e4a04'},
+      {day:12,start:'15:00',end:'16:00',title:'Emmanuel Martini, Escential CPH x Foyos : 공간으로서의 향기',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0e0d3424f2e7b63cf296ad'},
     ],
   },
   {
@@ -2284,8 +2284,8 @@ const EXHIBITIONS = [
     slug:'expormim-f7be4',
     desc:'Since its inception in 1960, Expormim has consistently embraced a global perspective in design, craftsmanship and…',
     events:[
-      {day:10,start:'15:30',end:'16:30',title:'When Objects Change Meaning',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f34752a16cbd2db24dca7f'},
-      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE LAUNCH EVENT “ECHOES OF SPACE”',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
+      {day:10,start:'15:30',end:'16:30',title:'오브제의 의미가 변화할 때',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f34752a16cbd2db24dca7f'},
+      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
     ],
   },
   {
@@ -2297,8 +2297,8 @@ const EXHIBITIONS = [
     slug:'fantoni-spa',
     desc:'Fantoni Group specialises in the manufacture of office furniture, partition walls, sound–absorbent systems, MDF,…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Sound Matters: Acoustic comfort for Architecture',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f35c7054635eb33166fab9'},
-      {day:11,start:'10:00',end:'10:30',title:'Designing the Circular Economy',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f361c00f12ad18a50e685d'},
+      {day:10,start:'11:00',end:'11:30',title:'소리가 중요하다: 건축을 위한 음향 쾌적성',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f35c7054635eb33166fab9'},
+      {day:11,start:'10:00',end:'10:30',title:'순환 경제 디자인하기',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f361c00f12ad18a50e685d'},
     ],
   },
   {
@@ -2310,8 +2310,8 @@ const EXHIBITIONS = [
     slug:'file-under-pop',
     desc:'File Under Pop shapes interiors through surface and feeling. Bringing colour and texture to walls, floors, and…',
     events:[
-      {day:11,start:'10:00',end:'10:30',title:'A presentation on the life and works of Sonja Ferlov Mancoba',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3'},
-      {day:12,start:'15:00',end:'18:00',title:'Open House at Papirøen 36',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f491b3283b1ad8ea77a9dc',location:'Papirøen 36, 1436 Copenhagen'},
+      {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3'},
+      {day:12,start:'15:00',end:'18:00',title:'Papirøen 36 오픈 하우스',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f491b3283b1ad8ea77a9dc',location:'Papirøen 36, 1436 Copenhagen'},
     ],
   },
   {
@@ -2323,8 +2323,8 @@ const EXHIBITIONS = [
     slug:'fora-form',
     desc:'Fora Form is a Norwegian contract furniture manufacturer for areas wherever people meet. Fora Form manufactures…',
     events:[
-      {day:10,start:'11:00',end:'14:00',title:'Meet the designers and discover this year\'s product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230'},
-      {day:11,start:'11:00',end:'14:00',title:'Meet the designers and discover this years product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1'},
+      {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230'},
+      {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1'},
     ],
   },
   {
@@ -2336,8 +2336,8 @@ const EXHIBITIONS = [
     slug:'foscarini',
     desc:'Foscarini imagines, develops, and produces decorative lighting that seduces, surprises, and inspires—by day and by…',
     events:[
-      {day:10,start:'17:00',end:'18:00',title:'Marc Sadler and Twiggy: 20 Years of a lighting design icon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31d618817c1b3377620b7'},
-      {day:11,start:'10:00',end:'11:00',title:'Marc Sadler and Twiggy: 20 Years of a lighting design icon',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31da3695203fa404023f6'},
+      {day:10,start:'17:00',end:'18:00',title:'Marc Sadler와 Twiggy: 조명 디자인 아이콘의 20년',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31d618817c1b3377620b7'},
+      {day:11,start:'10:00',end:'11:00',title:'Marc Sadler와 Twiggy: 조명 디자인 아이콘의 20년',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f31da3695203fa404023f6'},
     ],
   },
   {
@@ -2349,8 +2349,8 @@ const EXHIBITIONS = [
     slug:'framery',
     desc:'Framery enables people to focus on what truly matters and get things done. With soundproof smart pods and intelligent…',
     events:[
-      {day:10,start:'15:00',end:'18:00',title:'Out of Office | DJ & Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb4b34b9229b8132c4ce2e'},
-      {day:11,start:'15:00',end:'18:00',title:'Out of Office | DJ & Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb4b88a2290ce0e14eb1d6'},
+      {day:10,start:'15:00',end:'18:00',title:'Out of Office | DJ & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb4b34b9229b8132c4ce2e'},
+      {day:11,start:'15:00',end:'18:00',title:'Out of Office | DJ & 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fb4b88a2290ce0e14eb1d6'},
     ],
   },
   {
@@ -2362,8 +2362,8 @@ const EXHIBITIONS = [
     slug:'folk',
     desc:'With deep respect for design and acknowledging the urgent need for a circular transformation, FÓLK creates objects and…',
     events:[
-      {day:11,start:'15:00',end:'15:30',title:'Designing For a Circular Future: Stories of Transformations',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1438d6c2a5552fc3ff298a'},
-      {day:11,start:'16:00',end:'18:00',title:'FÓLK Opening Party: Remixed by Martin Kechayas',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a143e7275e9aa9bf69da696'},
+      {day:11,start:'15:00',end:'15:30',title:'순환적 미래를 위한 디자인: 전환의 이야기들',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1438d6c2a5552fc3ff298a'},
+      {day:11,start:'16:00',end:'18:00',title:'FÓLK 오프닝 파티: Remixed by Martin Kechayas',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a143e7275e9aa9bf69da696'},
     ],
   },
   {
@@ -2375,8 +2375,8 @@ const EXHIBITIONS = [
     slug:'garde-hvalsoe',
     desc:'Garde Hvalsøe has, since 1990, created kitchens and interiors shaped by hand, material, and architectural intent. Each…',
     events:[
-      {day:10,start:'8:30',end:'11:00',title:'Breakfast — Time, at its best, begins slowly.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f'},
-      {day:12,start:'16:00',end:'20:00',title:'Friday Bar — Some things are worth staying for.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902'},
+      {day:10,start:'8:30',end:'11:00',title:'조찬 — 최고의 시간은 천천히 시작된다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0bd2f6a57cd7c46e5758f'},
+      {day:12,start:'16:00',end:'20:00',title:'프라이데이 바 — 머물 가치가 있는 것들',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f0be99d10307a716f00902'},
     ],
   },
   {
@@ -2388,8 +2388,8 @@ const EXHIBITIONS = [
     slug:'hem',
     desc:'Progressive by nature, Hem creates contemporary furniture for architectural spaces, combining experimentation with…',
     events:[
-      {day:11,start:'16:00',end:'17:00',title:'Max Lamb Design Talk',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fae50f06cfb121800d1c76',cats:['drinks','talk']},
-      {day:11,start:'16:00',end:'17:00',title:'Conversation with Max Lamb followed by drinks',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a182e37d4461022aaf48892',location:'Papirøen 5, 1436 Copenhagen, Danmark'},
+      {day:11,start:'16:00',end:'17:00',title:'Max Lamb 디자인 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fae50f06cfb121800d1c76',cats:['drinks','talk']},
+      {day:11,start:'16:00',end:'17:00',title:'Max Lamb과의 대화 후 음료',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a182e37d4461022aaf48892',location:'Papirøen 5, 1436 Copenhagen, Danmark'},
     ],
   },
   {
@@ -2401,8 +2401,8 @@ const EXHIBITIONS = [
     slug:'hevea-house',
     desc:'Hévéa House is a French design house rooted in a cultural dialogue between Europe and Southeast Asia. Inspired by a…',
     events:[
-      {day:10,start:'10:00',end:'12:00',title:'Product Launch—Le Bureau de Biarritz Desk',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdbd1b3135ee461470bd02',cats:['drinks','launch']},
-      {day:11,start:'14:00',end:'16:00',title:'Joyful Moments with Mini Hévéa',icon:'🚀',color:'#d99021',label:'런칭',id:'69fd9fcef4eec82dd5e90536'},
+      {day:10,start:'10:00',end:'12:00',title:'제품 런칭—Le Bureau de Biarritz 데스크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdbd1b3135ee461470bd02',cats:['drinks','launch']},
+      {day:11,start:'14:00',end:'16:00',title:'Mini Hévéa와 함께하는 즐거운 순간',icon:'🚀',color:'#d99021',label:'런칭',id:'69fd9fcef4eec82dd5e90536'},
     ],
   },
   {
@@ -2414,8 +2414,8 @@ const EXHIBITIONS = [
     slug:'ingo-maurer',
     desc:'For 60 years, Ingo Maurer has been designing and manufacturing exceptional designer lamps that bridge the gap between…',
     events:[
-      {day:11,start:'17:00',end:'18:00',title:'Mishmash in Design: Talk by Axel Schmid',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f359b6d3db5727c737071e'},
-      {day:12,start:'10:00',end:'11:00',title:'Mishmash in Design: Talk by Axel Schmid',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f359fbe49f82b590c357b4'},
+      {day:11,start:'17:00',end:'18:00',title:'디자인 속 믹스매시: Axel Schmid 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f359b6d3db5727c737071e'},
+      {day:12,start:'10:00',end:'11:00',title:'디자인 속 믹스매시: Axel Schmid 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f359fbe49f82b590c357b4'},
     ],
   },
   {
@@ -2427,8 +2427,8 @@ const EXHIBITIONS = [
     slug:'kinto',
     desc:'Encouraging warmth, balance, and connection, KINTO is a Japanese tableware and lifestyle brand that creates thoughtful…',
     events:[
-      {day:10,start:'15:00',end:'16:30',title:'Opening drinks & seasonal bites at studio x kitchen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32a6c137c9fc94b4cfa69',location:'studio x kitchen, Dronningens Tværgade 52, 1302 Copenhagen'},
-      {day:12,start:'15:00',end:'16:30',title:'Cold brew tea tasting with io いほ at studio x kitchen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32b44912a2d0f890de64a',location:'studio x kitchen, Dronningens Tværgade 52, 1302 Copenhagen'},
+      {day:10,start:'15:00',end:'16:30',title:'studio x kitchen에서의 오프닝 드링크 & 시즌 바이트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32a6c137c9fc94b4cfa69',location:'studio x kitchen, Dronningens Tværgade 52, 1302 Copenhagen'},
+      {day:12,start:'15:00',end:'16:30',title:'studio x kitchen에서 io いほ와 함께하는 콜드브루 티 테이스팅',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32b44912a2d0f890de64a',location:'studio x kitchen, Dronningens Tværgade 52, 1302 Copenhagen'},
     ],
   },
   {
@@ -2440,8 +2440,8 @@ const EXHIBITIONS = [
     slug:'knabstrup-keramik',
     desc:'For more than a century, Knabstrup Keramik has been a place where ceramists and designers meet around the material,…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'Live craftsmanship: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b735344bbbe3e092a90f',joint:true},
-      {day:12,start:'11:00',end:'13:00',title:'Live craftsmanship: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b7679b4bded9d77d59d2',joint:true},
+      {day:10,start:'15:00',end:'16:00',title:'라이브 장인정신: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b735344bbbe3e092a90f',joint:true},
+      {day:12,start:'11:00',end:'13:00',title:'라이브 장인정신: Ditte Lindberg Mortensen',icon:'🚀',color:'#d99021',label:'런칭',id:'69f8b7679b4bded9d77d59d2',joint:true},
     ],
   },
   {
@@ -2453,7 +2453,7 @@ const EXHIBITIONS = [
     slug:'kobenhavns-snedkerlaug',
     desc:'Copenhagen Cabinetmakers’ Guild represents the legacy and future of Danish craftsmanship. Founded on centuries of…',
     events:[
-      {day:11,start:'14:30',end:'15:30',title:'When Carpenters Create Art',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ac1476fcb274c8f6b2846'},
+      {day:11,start:'14:30',end:'15:30',title:'목수가 예술을 창조할 때',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ac1476fcb274c8f6b2846'},
       {day:11,start:'16:00',end:'17:00',title:'Snedkerprisen 2026',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0abf88720eb65c5116921b',cats:['drinks','launch']},
     ],
   },
@@ -2466,8 +2466,8 @@ const EXHIBITIONS = [
     slug:'lammhults',
     desc:'Lammhults convinces design as a great potential to improve everyday lives and to contribute to more meaningful and…',
     events:[
-      {day:10,start:'11:00',end:'14:00',title:'Meet the designers and discover this year\'s product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
-      {day:11,start:'11:00',end:'14:00',title:'Meet the designers and discover this years product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
+      {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
+      {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
     ],
   },
   {
@@ -2479,8 +2479,8 @@ const EXHIBITIONS = [
     slug:'layered',
     desc:'LAYERED bridges creativity, culture, and art into the physical space. From their studio in Stockholm, they design…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'OPENING NIGHT—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f369a88514cb63d9449b20'},
-      {day:10,start:'9:00',end:'11:00',title:'PRESS VIEWING—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f36860fdfe8f74b3895ae8',cats:['drinks','talk','launch']},
+      {day:10,start:'17:00',end:'20:00',title:'오프닝 나이트—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f369a88514cb63d9449b20'},
+      {day:10,start:'9:00',end:'11:00',title:'프레스 뷰잉—인더스트리얼 코레오그래피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f36860fdfe8f74b3895ae8',cats:['drinks','talk','launch']},
     ],
   },
   {
@@ -2492,8 +2492,8 @@ const EXHIBITIONS = [
     slug:'linie-design',
     desc:'Established in 1980, Linie Design is a Danish design house with traditions deeply rooted in Scandinavian design.…',
     events:[
-      {day:10,start:'14:00',end:'15:00',title:'A colourful encounter',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9aabae977d88fa24f4390'},
-      {day:11,start:'14:00',end:'15:00',title:'A colourful encounter',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9aae9523e2caee83d022a'},
+      {day:10,start:'14:00',end:'15:00',title:'다채로운 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9aabae977d88fa24f4390'},
+      {day:11,start:'14:00',end:'15:00',title:'다채로운 만남',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f9aae9523e2caee83d022a'},
     ],
   },
   {
@@ -2505,8 +2505,8 @@ const EXHIBITIONS = [
     slug:'hjelle',
     desc:'You’re not like everyone else. Neither are we. You won’t find us in every home, in every store, or in every office.…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Opening party',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe370e6f4a41c1c1901ac',location:'Odd Fellow Palæet, Bredgade, København, Indre By, Danmark'},
-      {day:11,start:'15:00',end:'17:00',title:'Meet the designers.',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe3bde5f472f4c4549fc5',location:'Odd Fellow Palæet, Bredgade, København, Indre By, Danmark'},
+      {day:10,start:'16:00',end:'18:00',title:'오프닝 파티',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe370e6f4a41c1c1901ac',location:'Odd Fellow Palæet, Bredgade, København, Indre By, Danmark'},
+      {day:11,start:'15:00',end:'17:00',title:'디자이너를 만나다',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1fe3bde5f472f4c4549fc5',location:'Odd Fellow Palæet, Bredgade, København, Indre By, Danmark'},
     ],
   },
   {
@@ -2518,8 +2518,8 @@ const EXHIBITIONS = [
     slug:'massproductions',
     desc:'Massproductions creates furniture and accessories that enrich design culture, drawing inspiration from the factory as…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'OPENING NIGHT—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f369a88514cb63d9449b20',joint:true},
-      {day:10,start:'9:00',end:'11:00',title:'PRESS VIEWING—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f36860fdfe8f74b3895ae8',cats:['drinks','talk','launch'],joint:true},
+      {day:10,start:'17:00',end:'20:00',title:'오프닝 나이트—INDUSTRIAL CHOREOGRAPHY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f369a88514cb63d9449b20',joint:true},
+      {day:10,start:'9:00',end:'11:00',title:'프레스 뷰잉—인더스트리얼 코레오그래피',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f36860fdfe8f74b3895ae8',cats:['drinks','talk','launch'],joint:true},
     ],
   },
   {
@@ -2531,8 +2531,8 @@ const EXHIBITIONS = [
     slug:'montana-furniture',
     desc:'Montana Furniture is committed to creating playful spaces and making room for personality. Since 1982, the Danish…',
     events:[
-      {day:11,start:'11:00',end:'12:00',title:'The Myth of Timeless Colour',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8792ba9a86da50661fe8a'},
-      {day:11,start:'19:00',end:'21:00',title:'DJ & Lounge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f87bfdf3d88b17cfcaa5bb'},
+      {day:11,start:'11:00',end:'12:00',title:'영원한 색의 신화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f8792ba9a86da50661fe8a'},
+      {day:11,start:'19:00',end:'21:00',title:'DJ & 라운지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f87bfdf3d88b17cfcaa5bb'},
     ],
   },
   {
@@ -2545,7 +2545,7 @@ const EXHIBITIONS = [
     desc:'Founded by Richard Munao in 2017, NAU is a leading Australian design brand known for its commitment to original design…',
     events:[
       {day:10,start:'16:00',end:'19:00',title:'Nau, Later',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3fd16f05bed5a6d2cfa99'},
-      {day:12,start:'10:00',end:'12:00',title:'Design Between Legacy and the Present',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3f877f05bed5a6d2cbacc'},
+      {day:12,start:'10:00',end:'12:00',title:'유산과 현재 사이의 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3f877f05bed5a6d2cbacc'},
     ],
   },
   {
@@ -2557,8 +2557,8 @@ const EXHIBITIONS = [
     slug:'porcelanosa',
     desc:'Combining Spanish heritage with modern design, Porcelanosa redefines the home with timeless elegance. Known worldwide…',
     events:[
-      {day:10,start:'10:00',end:'13:00',title:'Unveiling Porcelanosa Copenhagen',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d336990adee1bcf78583f'},
-      {day:11,start:'16:00',end:'18:00',title:'UNDORA® Material Experience',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a14553e2a77f87a2ea12b67',cats:['drinks','launch']},
+      {day:10,start:'10:00',end:'13:00',title:'Porcelanosa Copenhagen 공개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d336990adee1bcf78583f'},
+      {day:11,start:'16:00',end:'18:00',title:'UNDORA® 소재 체험',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a14553e2a77f87a2ea12b67',cats:['drinks','launch']},
     ],
   },
   {
@@ -2570,8 +2570,8 @@ const EXHIBITIONS = [
     slug:'ragnars-inredningar',
     desc:'Ragnars is a Swedish furniture company based in Forserum, Småland, that specialises in high–end office furniture for…',
     events:[
-      {day:10,start:'11:00',end:'14:00',title:'Meet the designers and discover this year\'s product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
-      {day:11,start:'11:00',end:'14:00',title:'Meet the designers and discover this years product launches',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
+      {day:10,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f896dd3751230b4828d230',joint:true},
+      {day:11,start:'11:00',end:'14:00',title:'디자이너를 만나고 올해의 신제품을 발견하다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f897c633c40bc4408303f1',joint:true},
     ],
   },
   {
@@ -2583,8 +2583,8 @@ const EXHIBITIONS = [
     slug:'rosti',
     desc:'Rosti is a Danish brand, founded in 1944 by Rolf Fahrenholz and Stig Jørgensen, and known for its functional kitchen…',
     events:[
-      {day:11,start:'12:00',end:'14:00',title:'Delicious bites by Rosti',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f313a14a7581738b2ade80'},
-      {day:11,start:'15:00',end:'17:00',title:'Delicious tastings by Rosti',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f316db00e8e5598e39a335'},
+      {day:11,start:'12:00',end:'14:00',title:'Rosti의 맛있는 한입 요리',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f313a14a7581738b2ade80'},
+      {day:11,start:'15:00',end:'17:00',title:'Rosti의 맛있는 시식',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f316db00e8e5598e39a335'},
     ],
   },
   {
@@ -2597,7 +2597,7 @@ const EXHIBITIONS = [
     desc:'Saba is a female-led company with a design philosophy rooted in strong, thoughtful concepts. The mission is to…',
     events:[
       {day:10,start:'15:30',end:'16:00',title:'"When Objects Change Meaning" with Saba Italia & JOV',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0f257db40b0b765a9b09e2'},
-      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE LAUNCH EVENT “ECHOES OF SPACE”',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
+      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
     ],
   },
   {
@@ -2609,8 +2609,8 @@ const EXHIBITIONS = [
     slug:'service-projects',
     desc:'Service Projects is a tableware brand that creates enduring, timeless pieces designed for everyday use. Inspired by…',
     events:[
-      {day:11,start:'12:00',end:'15:00',title:'SP Caffe Takeover',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01ac4057bc3122bec07bef',location:'Sturlasgade 14M, 2300 Copenhagen'},
-      {day:11,start:'15:00',end:'17:30',title:'Martini Bar at l\'Alsace',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a193ed513fb6abb5d5a1ce3',location:'Ny Østergade 9, 1101 København, Danmark'},
+      {day:11,start:'12:00',end:'15:00',title:'SP Caffe 테이크오버',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a01ac4057bc3122bec07bef',location:'Sturlasgade 14M, 2300 Copenhagen'},
+      {day:11,start:'15:00',end:'17:30',title:'l\'Alsace의 마티니 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a193ed513fb6abb5d5a1ce3',location:'Ny Østergade 9, 1101 København, Danmark'},
     ],
   },
   {
@@ -2622,8 +2622,8 @@ const EXHIBITIONS = [
     slug:'stellar-works',
     desc:'Stellar Works is a Japanese furniture brand with its heart in Shanghai but with a global presence. It blends tradition…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'THOUGHT / FUL—Golden Hour Cocktails',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0acd8ccc97496300a30f55'},
-      {day:11,start:'15:00',end:'16:00',title:'DOING MORE WITH LESS—Thoughtful Design Through Restraint',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ace6ad0126dcea7dc40ea'},
+      {day:10,start:'16:00',end:'18:00',title:'THOUGHT / FUL—골든 아워 칵테일',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0acd8ccc97496300a30f55'},
+      {day:11,start:'15:00',end:'16:00',title:'적게 가지고 더 많이 하기—절제를 통한 사려 깊은 디자인',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0ace6ad0126dcea7dc40ea'},
     ],
   },
   {
@@ -2635,8 +2635,8 @@ const EXHIBITIONS = [
     slug:'stilling-a-s',
     desc:'Stilling® is a renowned Danish design company specialising in bespoke curtain track systems for projects of all sizes,…',
     events:[
-      {day:10,start:'15:00',end:'17:00',title:'Drinks & Talk with Hvass&Hannibal',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f37ef05bf2888f714885eb',cats:['drinks','talk']},
-      {day:11,start:'10:00',end:'12:00',title:'Breakfast & Talk with Stilling',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3813989bbaf5e190cebc7',cats:['drinks','talk']},
+      {day:10,start:'15:00',end:'17:00',title:'Hvass&Hannibal과 함께하는 음료 & 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f37ef05bf2888f714885eb',cats:['drinks','talk']},
+      {day:11,start:'10:00',end:'12:00',title:'Stilling과 함께하는 조찬 및 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3813989bbaf5e190cebc7',cats:['drinks','talk']},
     ],
   },
   {
@@ -2648,8 +2648,8 @@ const EXHIBITIONS = [
     slug:'sumum-bv',
     desc:'Sumum is a Belgian brand, originated in a switch, designed simply. It became a product pure as can be. We are…',
     events:[
-      {day:10,start:'9:30',end:'11:30',title:'Exclusive talk with Norm Architects at COMPOSED MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark',joint:true},
-      {day:11,start:'16:00',end:'18:00',title:'Refreshments at COMPOSED MATTER',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch'],joint:true},
+      {day:10,start:'9:30',end:'11:30',title:'COMPOSED MATTER에서 Norm Architects와의 단독 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4753adc466076dbe9ecfc',cats:['drinks','talk'],location:'Esplanaden 8b, København, Danmark',joint:true},
+      {day:11,start:'16:00',end:'18:00',title:'COMPOSED MATTER에서 즐기는 다과',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4f195802c85703291f719',cats:['drinks','launch'],joint:true},
     ],
   },
   {
@@ -2661,8 +2661,8 @@ const EXHIBITIONS = [
     slug:'teixidors',
     desc:'In Terrassa, 30 km from Barcelona, Teixidors creates unique pieces of cashmere, wool and linen using 19th–century…',
     events:[
-      {day:10,start:'11:00',end:'13:00',title:'Mediterranean Dialogues: Threads & Tastes',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0f06236e94936662af3309',location:'Frederiksgade 1, 3rd Floor, 1265 Copenhagen'},
-      {day:12,start:'11:00',end:'17:00',title:'Mediterranean Dialogues: Threads & Tastes',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef',joint:true},
+      {day:10,start:'11:00',end:'13:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0f06236e94936662af3309',location:'Frederiksgade 1, 3rd Floor, 1265 Copenhagen'},
+      {day:12,start:'11:00',end:'17:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef',joint:true},
     ],
   },
   {
@@ -2674,8 +2674,8 @@ const EXHIBITIONS = [
     slug:'tokio',
     desc:'Tokio. is a design brand founded by Gorazd Malačič in 2011, blending Japanese design principles with advanced…',
     events:[
-      {day:10,start:'13:00',end:'14:00',title:'Tokio. × Elis Monsport: Light, material, form',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3287978d4bf614c12f341'},
-      {day:11,start:'13:30',end:'14:30',title:'Tokio. x Elis Monsport: A Dialogue in Light and Material',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f32a5f4e7235e3299e3aca'},
+      {day:10,start:'13:00',end:'14:00',title:'Tokio. × Elis Monsport: 빛, 소재, 형태',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f3287978d4bf614c12f341'},
+      {day:11,start:'13:30',end:'14:30',title:'Tokio. x Elis Monsport: 빛과 소재의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f32a5f4e7235e3299e3aca'},
     ],
   },
   {
@@ -2687,8 +2687,8 @@ const EXHIBITIONS = [
     slug:'ukurant-a4e5b',
     desc:'Ukurant celebrates experimental approaches to craft, material and tradition, offering young designers a platform and…',
     events:[
-      {day:10,start:'16:00',end:'20:00',title:'Ukurant Opening & Afterparty',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0f0f97d1fea0034132f056'},
-      {day:10,start:'20:00',end:'23:59',title:'Ukurant Afterparty',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a17fd611233c6f295ff2596'},
+      {day:10,start:'16:00',end:'20:00',title:'Ukurant 오프닝 & 애프터파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0f0f97d1fea0034132f056'},
+      {day:10,start:'20:00',end:'23:59',title:'Ukurant 애프터파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a17fd611233c6f295ff2596'},
     ],
   },
   {
@@ -2700,8 +2700,8 @@ const EXHIBITIONS = [
     slug:'viefe',
     desc:'Viefe goes beyond the design and manufacture of architectural hardware, transforming interior spaces through…',
     events:[
-      {day:11,start:'11:00',end:'13:00',title:'Mediterranean Dialogues: Meet & Share with Isern Serra',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc024cc335f46dabf3c97',cats:['drinks','talk']},
-      {day:12,start:'11:00',end:'17:00',title:'Mediterranean Dialogues: Threads & Tastes',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef',joint:true},
+      {day:11,start:'11:00',end:'13:00',title:'지중해 대화: Isern Serra와의 만남과 공유',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fdc024cc335f46dabf3c97',cats:['drinks','talk']},
+      {day:12,start:'11:00',end:'17:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef',joint:true},
     ],
   },
   {
@@ -2713,8 +2713,8 @@ const EXHIBITIONS = [
     slug:'vitra',
     desc:'Vitra believes that environments shape thoughts and feelings, be it at home, work, or on the go. Vitra, a family…',
     events:[
-      {day:10,start:'16:00',end:'16:30',title:'Tailored to Move, a conversation with Studio Œ',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0720f7a1ab6e406ec25a72'},
-      {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra Launch Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0721ce54c70231ff807312',cats:['drinks','talk']},
+      {day:10,start:'16:00',end:'16:30',title:'Tailored to Move, Studio Œ와의 대화',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0720f7a1ab6e406ec25a72'},
+      {day:10,start:'17:00',end:'20:00',title:'Kvadrat & Vitra 런치 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0721ce54c70231ff807312',cats:['drinks','talk']},
     ],
   },
   {
@@ -2726,8 +2726,8 @@ const EXHIBITIONS = [
     slug:'wever-ducre',
     desc:'Life is too short for boring lighting. At Wever & Ducré, they know it—the familiar glimpse at the ceiling during which…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'JEMMA takes the stage',icon:'🚀',color:'#d99021',label:'런칭',id:'69f87a0d330b0464403340b6'},
-      {day:11,start:'16:00',end:'18:00',title:'Drinks, Food & Exciting Lighting',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f87a5e6e506b416780fdf6'},
+      {day:10,start:'16:00',end:'18:00',title:'JEMMA, 무대에 오르다',icon:'🚀',color:'#d99021',label:'런칭',id:'69f87a0d330b0464403340b6'},
+      {day:11,start:'16:00',end:'18:00',title:'음료, 음식 & 흥미로운 조명',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f87a5e6e506b416780fdf6'},
     ],
   },
   {
@@ -2739,8 +2739,8 @@ const EXHIBITIONS = [
     slug:'white-label-project',
     desc:'White Label Project is a curated platform dedicated to bringing emerging women designers and artists from around the…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'Vernissage: Female Design Futures',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044c513f0ea13c7fc501b6',cats:['drinks','talk']},
-      {day:11,start:'10:00',end:'11:30',title:'Interior Design Brunch: Female Design Futures',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044e63abfd5bc2ba5544d1',cats:['drinks','talk']},
+      {day:10,start:'17:00',end:'20:00',title:'베르니사주: 여성 디자인 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044c513f0ea13c7fc501b6',cats:['drinks','talk']},
+      {day:11,start:'10:00',end:'11:30',title:'인테리어 디자인 브런치: 여성 디자인의 미래',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a044e63abfd5bc2ba5544d1',cats:['drinks','talk']},
     ],
   },
   {
@@ -2752,7 +2752,7 @@ const EXHIBITIONS = [
     slug:'tradition',
     desc:'Founded in 2010 in Copenhagen, &Tradition is an international brand, built on a Danish legacy of craftsmanship and…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Wine Bar',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c116e41da013eb93cead4'},
+      {day:11,start:'16:00',end:'18:00',title:'와인 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c116e41da013eb93cead4'},
     ],
   },
   {
@@ -2764,7 +2764,7 @@ const EXHIBITIONS = [
     slug:'aarticles',
     desc:'Conceived as part gallery, part archive, and part marketplace, aarticles is a place to encounter crafted design…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'aarticles Party at Another Aspect',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a149acb71f772cf439777d7',location:'Møntergade 3A, 1116 København, Denmark'},
+      {day:10,start:'17:00',end:'20:00',title:'Another Aspect에서 열리는 aarticles 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a149acb71f772cf439777d7',location:'Møntergade 3A, 1116 København, Denmark'},
     ],
   },
   {
@@ -2788,7 +2788,7 @@ const EXHIBITIONS = [
     slug:'ahec',
     desc:'An international creative collaborator and invaluable material resource, The American Hardwood Export Council (AHEC)…',
     events:[
-      {day:10,start:'11:00',end:'11:30',title:'Wood for the Trees: Forest Tours',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a16a9d86a16c4af7cc1aefd'},
+      {day:10,start:'11:00',end:'11:30',title:'나무를 위한 숲: 포레스트 투어',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a16a9d86a16c4af7cc1aefd'},
     ],
   },
   {
@@ -2800,7 +2800,7 @@ const EXHIBITIONS = [
     slug:'aifunghi-bv',
     desc:'Aifunghi is a newly established company founded by experienced design professionals, driven by a commitment to…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'Late Night Event with Aifunghi at Material Matters',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0ac25cf8d87feb8dce4ef0',cats:['drinks','launch']},
+      {day:10,start:'17:00',end:'20:00',title:'Material Matters에서 Aifunghi와 함께하는 레이트 나이트 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0ac25cf8d87feb8dce4ef0',cats:['drinks','launch']},
     ],
   },
   {
@@ -2812,7 +2812,7 @@ const EXHIBITIONS = [
     slug:'alternative-artefacts-danto',
     desc:'Tiles as objects of possibility. Tiles that leave a sensory imprint. Tiles connecting future and past, design and…',
     events:[
-      {day:10,start:'15:00',end:'17:00',title:'DESIGNERS GATHERING',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a197284aa9ef0d741d12a1a',cats:['drinks','launch']},
+      {day:10,start:'15:00',end:'17:00',title:'디자이너 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a197284aa9ef0d741d12a1a',cats:['drinks','launch']},
     ],
   },
   {
@@ -2824,7 +2824,7 @@ const EXHIBITIONS = [
     slug:'anna-von-lipa',
     desc:'Anna von Lipa unites Danish design with centuries–old Czech glassmaking traditions. Founded by Danish designer Jytte…',
     events:[
-      {day:11,start:'14:00',end:'17:00',title:'Meet Laura Kjær - A New Design Voice at Anna von Lipa',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a2004bf60f5461c275cb871',location:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen Municipality, Dánsko'},
+      {day:11,start:'14:00',end:'17:00',title:'Laura Kjær를 만나다 - Anna von Lipa의 새로운 디자인 목소리',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a2004bf60f5461c275cb871',location:'Odd Fellow Palace, Bredgade 28, 1260 Copenhagen Municipality, Dánsko'},
     ],
   },
   {
@@ -2836,7 +2836,7 @@ const EXHIBITIONS = [
     slug:'ariake',
     desc:'Ariake is a Japanese furniture brand founded by Legnatec and Hirata Chair, two manufacturers from the…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'"The Art of Making" Round Table Discussion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a13c82b4f1ddcdd7a8df54f'},
+      {day:10,start:'10:00',end:'11:00',title:'"The Art of Making" 라운드 테이블 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a13c82b4f1ddcdd7a8df54f'},
     ],
   },
   {
@@ -2848,7 +2848,7 @@ const EXHIBITIONS = [
     slug:'asahiyaki',
     desc:'Based in Uji, Kyoto, Asahiyaki is among the oldest ceramic kilns in Japan, having crafted tea wares in the same family…',
     events:[
-      {day:12,start:'18:30',end:'22:00',title:'Osaa Collection Launch Dinner by Asahiyaki',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2361afd7ad072838400ae',cats:['drinks','launch']},
+      {day:12,start:'18:30',end:'22:00',title:'Asahiyaki의 Osaa Collection 런칭 디너',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2361afd7ad072838400ae',cats:['drinks','launch']},
     ],
   },
   {
@@ -2860,7 +2860,7 @@ const EXHIBITIONS = [
     slug:'astrid-ab',
     desc:'Astrid was launched in 2003, founded on Anna Boustedt’s genuine love for textiles. This passion continues to guide…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Drinks with BRANDT & ASTRID',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3270660e4fcd1111867ab',joint:true},
+      {day:10,start:'16:00',end:'18:00',title:'BRANDT & ASTRID와 함께하는 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3270660e4fcd1111867ab',joint:true},
     ],
   },
   {
@@ -2872,7 +2872,7 @@ const EXHIBITIONS = [
     slug:'axor',
     desc:'AXOR conceives and manufactures iconic objects for luxurious bathrooms. Developed in collaboration with world-renowned…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Design Talk with Barber Osgerby',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c0cea74df473728757aa6',cats:['talk','launch']},
+      {day:11,start:'16:00',end:'18:00',title:'Barber Osgerby와의 디자인 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0c0cea74df473728757aa6',cats:['talk','launch']},
     ],
   },
   {
@@ -2884,7 +2884,7 @@ const EXHIBITIONS = [
     slug:'baina',
     desc:'BAINA is an Antipodean brand of considered bathing essentials, founded in 2019. Distinctly modern and consciously…',
     events:[
-      {day:10,start:'15:00',end:'17:00',title:'Afternoon Apéritif',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2e50f4be8099772af2301'},
+      {day:10,start:'15:00',end:'17:00',title:'애프터눈 아페리티프',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2e50f4be8099772af2301'},
     ],
   },
   {
@@ -2896,7 +2896,7 @@ const EXHIBITIONS = [
     slug:'bankston',
     desc:'At the heart of Bankston is the aspiration to be a thoughtful and consistent lab of design incubation. Guided by this…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'HOW TO HANDLE',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4329c412ab1268573a3c7'},
+      {day:11,start:'16:00',end:'19:00',title:'다루는 법',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4329c412ab1268573a3c7'},
     ],
   },
   {
@@ -2908,7 +2908,7 @@ const EXHIBITIONS = [
     slug:'beckmans-college-of-design',
     desc:'A lab for creative diversity. Stockholm-based Beckmans College of Design offers BA-programs in Fashion, Product Design…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Drinks & Snacks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc',location:'Strandgade 91, 5th Floor, 1401 Copenhagen',joint:true},
+      {day:10,start:'16:00',end:'18:00',title:'음료 & 스낵',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc',location:'Strandgade 91, 5th Floor, 1401 Copenhagen',joint:true},
     ],
   },
   {
@@ -2920,7 +2920,7 @@ const EXHIBITIONS = [
     slug:'bomma',
     desc:'BOMMA is a Czech design lighting brand, manufacturing handcrafted sculptural lighting. Each piece is unique, combining…',
     events:[
-      {day:10,start:'17:00',end:'21:00',title:'Grand Opening of Fragments of Light in Hofteatret',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c8bb836e1132c9b0bc66a'},
+      {day:10,start:'17:00',end:'21:00',title:'Hofteatret에서 선보이는 \'Fragments of Light\' 그랜드 오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c8bb836e1132c9b0bc66a'},
     ],
   },
   {
@@ -2932,7 +2932,7 @@ const EXHIBITIONS = [
     slug:'bongusta',
     desc:'BONGUSTA is a crossover brand founded in 2021, shaped by a shared love of fashion, interior design, and bold colors.…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'BONGUSTA x Ebeltoft Gårdbryg: An Afternoon of Local Craft',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4e994ae3c26ef1c414868',cats:['drinks','talk']},
+      {day:10,start:'16:00',end:'18:00',title:'BONGUSTA x Ebeltoft Gårdbryg: 로컬 크래프트의 오후',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4e994ae3c26ef1c414868',cats:['drinks','talk']},
     ],
   },
   {
@@ -2944,7 +2944,7 @@ const EXHIBITIONS = [
     slug:'brandt-collective',
     desc:'BRANDT Copenhagen is a Danish design–driven brand founded by renowned designer Julie Brandt. With a holistic approach…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Drinks with BRANDT & ASTRID',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3270660e4fcd1111867ab'},
+      {day:10,start:'16:00',end:'18:00',title:'BRANDT & ASTRID와 함께하는 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3270660e4fcd1111867ab'},
     ],
   },
   {
@@ -2956,7 +2956,7 @@ const EXHIBITIONS = [
     slug:'cane-line',
     desc:'Cane–line is a Danish design company with more than 35 years of experience in designing and manufacturing functional…',
     events:[
-      {day:10,start:'15:00',end:'16:00',title:'Talk: Designer Johannes Foersom',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69ea21e2f9153bd18eee4dcf'},
+      {day:10,start:'15:00',end:'16:00',title:'토크: 디자이너 Johannes Foersom',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69ea21e2f9153bd18eee4dcf'},
     ],
   },
   {
@@ -2968,7 +2968,7 @@ const EXHIBITIONS = [
     slug:'claire-delmar-of-studio-cd-228de',
     desc:'Claire Delmar is a Sydney based commercial and residential interior stylist working across interiors, editorial and…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'Drinks and Designer Talks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f432c8526c319d3eff35a6',cats:['drinks','talk']},
+      {day:11,start:'16:00',end:'19:00',title:'음료와 디자이너 토크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f432c8526c319d3eff35a6',cats:['drinks','talk']},
     ],
   },
   {
@@ -2980,7 +2980,7 @@ const EXHIBITIONS = [
     slug:'cumellas',
     desc:'Cumellas designs and produces contemporary handmade rugs. Based in Barcelona since 1992, its work reflects a deep…',
     events:[
-      {day:12,start:'11:00',end:'17:00',title:'Mediterranean Dialogues: Threads & Tastes',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef'},
+      {day:12,start:'11:00',end:'17:00',title:'지중해 대화: 실과 맛',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a0184b6d0f7be5dd1c940ef'},
     ],
   },
   {
@@ -2992,7 +2992,7 @@ const EXHIBITIONS = [
     slug:'danish-industry',
     desc:'Danish Industry (DI) is Denmark’s largest business and employers’ organisation, representing over 20.000…',
     events:[
-      {day:10,start:'13:00',end:'14:00',title:'Rocks & Drops - Marble & Maintenance',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a16f22aad0f1b7330cf3135'},
+      {day:10,start:'13:00',end:'14:00',title:'Rocks & Drops - 대리석과 유지관리',icon:'✂️',color:'#5d7456',label:'워크숍',id:'6a16f22aad0f1b7330cf3135'},
     ],
   },
   {
@@ -3004,7 +3004,7 @@ const EXHIBITIONS = [
     slug:'davide-groppi',
     desc:'Founded in the late 1980s, Davide Groppi is an Italian lighting company recognised worldwide for original and…',
     events:[
-      {day:11,start:'10:00',end:'10:30',title:'A presentation on the life and works of Sonja Ferlov Mancoba',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
+      {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
     ],
   },
   {
@@ -3016,7 +3016,7 @@ const EXHIBITIONS = [
     slug:'dencon',
     desc:'With more than half a century of experience and deep roots in Danish traditions, Dencon was established in 1964 with a…',
     events:[
-      {day:11,start:'15:00',end:'16:00',title:'The Craft of Colour with Bent Erik Myrvoll',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e8db6c1cb99b8e150ac03a',joint:true},
+      {day:11,start:'15:00',end:'16:00',title:'Bent Erik Myrvoll과 함께하는 색의 공예',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e8db6c1cb99b8e150ac03a',joint:true},
     ],
   },
   {
@@ -3028,7 +3028,7 @@ const EXHIBITIONS = [
     slug:'designbythem',
     desc:'Established in 2007, Design By Them was founded by industrial designers Sarah Gibson and Nicholas Karlovasitis. Based…',
     events:[
-      {day:11,start:'14:00',end:'16:00',title:'Meet The Designers',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d7ce894e6f63745869a34'},
+      {day:11,start:'14:00',end:'16:00',title:'디자이너를 만나다',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a1d7ce894e6f63745869a34'},
     ],
   },
   {
@@ -3040,7 +3040,7 @@ const EXHIBITIONS = [
     slug:'design-studio-lars-vejen',
     desc:'Design Studio Lars Vejen is a multidisciplinary design practice based in Denmark and Japan. His work spans a broad…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30 year anniversary celebration',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],location:'Esplanaden 8B, 1263 Copenhagen'},
+      {day:11,start:'16:00',end:'19:00',title:'Lars Vejen 30주년 기념 행사',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4ab865eedccef460326b8',cats:['drinks','launch'],location:'Esplanaden 8B, 1263 Copenhagen'},
     ],
   },
   {
@@ -3052,7 +3052,7 @@ const EXHIBITIONS = [
     slug:'eetal-project',
     desc:'EETAL is a project launched in 2021 by Japan Benex Corporation, a company specialising in precision sheet metal…',
     events:[
-      {day:11,start:'18:00',end:'20:00',title:'＜A Prologue to EETAL＞ Japanese Beer & Egg Sando Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f28758d896f4c7535d5a93'},
+      {day:11,start:'18:00',end:'20:00',title:'＜A Prologue to EETAL＞ 일본 맥주 & 에그 샌도 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f28758d896f4c7535d5a93'},
     ],
   },
   {
@@ -3064,7 +3064,7 @@ const EXHIBITIONS = [
     slug:'everyday',
     desc:'Everyday^ reimagins and builds the essential systems that power everyday life at home—designed to be healthier, more…',
     events:[
-      {day:11,start:'17:00',end:'20:00',title:'There\'s something in the air',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69da2ebac999940f36194dd0',cats:['drinks','talk','launch']},
+      {day:11,start:'17:00',end:'20:00',title:'공기 중에 무언가가 있다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69da2ebac999940f36194dd0',cats:['drinks','talk','launch']},
     ],
   },
   {
@@ -3076,7 +3076,7 @@ const EXHIBITIONS = [
     slug:'extremis-nv',
     desc:'Extremis is a Belgian design brand that creates “tools for togetherness.” Founded in 1994 by designer Dirk Wynants,…',
     events:[
-      {day:10,start:'15:00',end:'18:00',title:'After Work by the Water',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d3e255c530abcdaf1f927'},
+      {day:10,start:'15:00',end:'18:00',title:'물가에서 즐기는 퇴근 후 한때',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1d3e255c530abcdaf1f927'},
     ],
   },
   {
@@ -3088,7 +3088,7 @@ const EXHIBITIONS = [
     slug:'flatpoint',
     desc:'Guided by the philosophy “Flatness is the Point”, Flat Point creates interior pieces that integrate seamlessly with…',
     events:[
-      {day:10,start:'17:00',end:'19:00',title:'Portrait of Korean Living—Opening Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch']},
+      {day:10,start:'17:00',end:'19:00',title:'한국인의 삶의 초상—오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch']},
     ],
   },
   {
@@ -3100,7 +3100,7 @@ const EXHIBITIONS = [
     slug:'gejst',
     desc:'Gejst was founded with a passion for making attractive, sustainable design that will last the test of time. Gejst…',
     events:[
-      {day:10,start:'19:00',end:'21:00',title:'Official Showroom Opening Party & New Product Launch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef6e3f34cdfba1212750b0',cats:['drinks','launch']},
+      {day:10,start:'19:00',end:'21:00',title:'공식 쇼룸 오프닝 파티 & 신제품 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef6e3f34cdfba1212750b0',cats:['drinks','launch']},
     ],
   },
   {
@@ -3112,7 +3112,7 @@ const EXHIBITIONS = [
     slug:'glimakra-of-sweden',
     desc:'The Home of Acoustic Design – Glimakra of Sweden takes great pride in collaborating with local suppliers, always with…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'Gin & Tonic After Work',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
+      {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
     ],
   },
   {
@@ -3124,7 +3124,7 @@ const EXHIBITIONS = [
     slug:'hausmann---furniture-and-friends',
     desc:'HAUSMANN Furniture is a design studio dedicated to solid wood furniture and interior objects, operating between…',
     events:[
-      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE LAUNCH EVENT “ECHOES OF SPACE”',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
+      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
     ],
   },
   {
@@ -3136,7 +3136,7 @@ const EXHIBITIONS = [
     slug:'holmris-b8',
     desc:'Holmris B8 creates room for people through turnkey solutions that fit people, space, and purpose. Rooted in insight…',
     events:[
-      {day:11,start:'14:00',end:'16:00',title:'Open House at Amaliegade 35',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b28baa117cf655c22e421',cats:['drinks','launch']},
+      {day:11,start:'14:00',end:'16:00',title:'Amaliegade 35 오픈 하우스',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0b28baa117cf655c22e421',cats:['drinks','launch']},
     ],
   },
   {
@@ -3148,7 +3148,7 @@ const EXHIBITIONS = [
     slug:'horreds',
     desc:'Horreds designs, manufactures, and sells office and meeting furniture built on enduring values. Summed up by the term…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'Gin & Tonic After Work',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
+      {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
     ],
   },
   {
@@ -3184,7 +3184,7 @@ const EXHIBITIONS = [
     slug:'ilkw',
     desc:'Founded in 1962 as a specialist in incandescent bulb production, ILKW by Ilkwang Lighting has built its lighting…',
     events:[
-      {day:10,start:'17:00',end:'19:00',title:'Portrait of Korean Living—Opening Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch'],joint:true},
+      {day:10,start:'17:00',end:'19:00',title:'한국인의 삶의 초상—오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch'],joint:true},
     ],
   },
   {
@@ -3196,7 +3196,7 @@ const EXHIBITIONS = [
     slug:'jakobsen-copenhagen',
     desc:'Jakobsen Copenhagen is a Danish furniture brand rooted in the heritage of Scandinavian design and inspired by the…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Afternoon champagne & wine bar with live music.',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a159500a8f676ac9d0bdf0f'},
+      {day:11,start:'16:00',end:'18:00',title:'라이브 음악과 함께하는 애프터눈 샴페인 & 와인 바',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a159500a8f676ac9d0bdf0f'},
     ],
   },
   {
@@ -3208,7 +3208,7 @@ const EXHIBITIONS = [
     slug:'japan-form',
     desc:'JAPAN FORM is a Stockholm–based curatorial platform presenting contemporary Japanese craftsmanship in Europe.…',
     events:[
-      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE LAUNCH EVENT “ECHOES OF SPACE”',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
+      {day:11,start:'15:00',end:'18:00',title:'OPENHOUSE 런칭 이벤트 "ECHOES OF SPACE"',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05c496ebf52ad93a9793c9',joint:true},
     ],
   },
   {
@@ -3220,7 +3220,7 @@ const EXHIBITIONS = [
     slug:'johan-borups-hojskole',
     desc:'On the occasion of 3daysofdesign, Johan Borups Højskole opens the doors to its historic mansion in Copenhagen’s…',
     events:[
-      {day:11,start:'16:00',end:'17:00',title:'vernissage | design students graduation showcase',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33e02207c1acf44b26a39'},
+      {day:11,start:'16:00',end:'17:00',title:'베르니사주 | 디자인 학생 졸업 전시',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f33e02207c1acf44b26a39'},
     ],
   },
   {
@@ -3232,7 +3232,7 @@ const EXHIBITIONS = [
     slug:'kateha',
     desc:'Kateha is a Swedish family–owned company designing and creating rugs. At Kateha, a rug is the beginning of a room. A…',
     events:[
-      {day:10,start:'18:00',end:'20:00',title:'Opening night drinks welcome event',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b65299668ab1d74e0a82'},
+      {day:10,start:'18:00',end:'20:00',title:'오프닝 나이트 드링크 환영 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f4b65299668ab1d74e0a82'},
     ],
   },
   {
@@ -3244,7 +3244,7 @@ const EXHIBITIONS = [
     slug:'kilzi',
     desc:'Kilzi means many things to its founder: it is his family name, weird in his context and a symbol of other lands, Kilzi…',
     events:[
-      {day:11,start:'14:00',end:'17:00',title:'DRINKS at BAR AMORE x KILZI',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f334daf59058c0d7c4fc9d',location:'Gl. Kongevej 74D, 1850 Frederiksberg, Denmark'},
+      {day:11,start:'14:00',end:'17:00',title:'BAR AMORE x KILZI에서 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f334daf59058c0d7c4fc9d',location:'Gl. Kongevej 74D, 1850 Frederiksberg, Denmark'},
     ],
   },
   {
@@ -3256,7 +3256,7 @@ const EXHIBITIONS = [
     slug:'kolding-school-of-design',
     desc:'The world needs change—more sustainability, stronger communities, and a better life for all. That’s why design isn’t…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'Opening',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15e77712d18c1ee1bd42a7'},
+      {day:10,start:'10:00',end:'11:00',title:'오프닝',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15e77712d18c1ee1bd42a7'},
     ],
   },
   {
@@ -3268,7 +3268,7 @@ const EXHIBITIONS = [
     slug:'kristalia',
     desc:'Founded by entrepreneurs with a passion for innovation, Kristalia is a "Made in Italy" brand defined by over 30 years…',
     events:[
-      {day:11,start:'13:00',end:'14:00',title:'An informal conversation with FORM US WITH LOVE at Kristalia',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0dbd73d7d44c709a0953b4',location:'Bredgade 73, 1260 Copenaghen'},
+      {day:11,start:'13:00',end:'14:00',title:'Kristalia에서 FORM US WITH LOVE와 나누는 편안한 대화',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a0dbd73d7d44c709a0953b4',location:'Bredgade 73, 1260 Copenaghen'},
     ],
   },
   {
@@ -3280,7 +3280,7 @@ const EXHIBITIONS = [
     slug:'kristina-dam-studio',
     desc:'Founded in 2012, Kristina Dam Studio creates furniture, accessories and art objects shaped through an architectural…',
     events:[
-      {day:11,start:'13:00',end:'14:00',title:'Paint on Embroidery Linen',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f09bde49194594a5a2f6ce'},
+      {day:11,start:'13:00',end:'14:00',title:'린넨 자수에 페인팅',icon:'✂️',color:'#5d7456',label:'워크숍',id:'69f09bde49194594a5a2f6ce'},
     ],
   },
   {
@@ -3292,7 +3292,7 @@ const EXHIBITIONS = [
     slug:'ladies-gentlemen-studio',
     desc:'Ladies & Gentlemen Studio is a multi–faceted design studio with an approach to create and inspire a sense of…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'The Art of Making: Round Table Discussion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a076b7468c0f7e59e0a9296'},
+      {day:10,start:'10:00',end:'11:00',title:'만들기의 예술: 라운드 테이블 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a076b7468c0f7e59e0a9296'},
     ],
   },
   {
@@ -3304,7 +3304,7 @@ const EXHIBITIONS = [
     slug:'lokal-gallery',
     desc:'Lokal is a Helsinki–based concept gallery bringing forth local artwork and collectible design. Inspired by a blend of…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'A Prima Vista — Opening Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32174771db557a2618259'},
+      {day:10,start:'17:00',end:'20:00',title:'A Prima Vista — 오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f32174771db557a2618259'},
     ],
   },
   {
@@ -3316,7 +3316,7 @@ const EXHIBITIONS = [
     slug:'lund-university',
     desc:'Lasting change begins at the smallest scale. No detail is too little, no problem too small, no emotion trivial and no…',
     events:[
-      {day:10,start:'16:00',end:'18:00',title:'Drinks & Snacks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc',location:'Strandgade 91, 5th Floor, 1401 Copenhagen',joint:true},
+      {day:10,start:'16:00',end:'18:00',title:'음료 & 스낵',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a05760b3fe704f7079c07cc',location:'Strandgade 91, 5th Floor, 1401 Copenhagen',joint:true},
     ],
   },
   {
@@ -3328,7 +3328,7 @@ const EXHIBITIONS = [
     slug:'lyfa',
     desc:'LYFA is a visionary home of iconic classics from some of Denmark’s most influential lighting designers. Their enduring…',
     events:[
-      {day:11,start:'14:00',end:'15:00',title:'Design Introduction by GamFratesi',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0b166c6a937e3ed9bb2bce'},
+      {day:11,start:'14:00',end:'15:00',title:'GamFratesi의 디자인 소개',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0b166c6a937e3ed9bb2bce'},
     ],
   },
   {
@@ -3340,7 +3340,7 @@ const EXHIBITIONS = [
     slug:'marokk',
     desc:'Experts in sourcing and curating handmade and exclusive tiles from small local producers worldwide, MAROKK is…',
     events:[
-      {day:11,start:'11:00',end:'12:00',title:'FROM INDIA WITH LOVE AND HANDMADE TILES',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fce8921745868143fef32e',cats:['drinks','talk','launch']},
+      {day:11,start:'11:00',end:'12:00',title:'인도에서 온 사랑과 핸드메이드 타일',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fce8921745868143fef32e',cats:['drinks','talk','launch']},
     ],
   },
   {
@@ -3352,7 +3352,7 @@ const EXHIBITIONS = [
     slug:'mas',
     desc:'Introducing MAS, a woodworking furniture brand born from a dialogue with various woods spread across Japan. By…',
     events:[
-      {day:11,start:'10:00',end:'11:30',title:'Japan / Nordic Design Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a051fc57ca914d7925848b5',location:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen'},
+      {day:11,start:'10:00',end:'11:30',title:'일본 / 북유럽 디자인 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a051fc57ca914d7925848b5',location:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen'},
     ],
   },
   {
@@ -3364,7 +3364,7 @@ const EXHIBITIONS = [
     slug:'material-matters',
     desc:'Material Matters is a platform dedicated to exploring the role of material intelligence in architecture and design.…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'Late Night',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aef878d4a4e7840681c7'},
+      {day:10,start:'17:00',end:'20:00',title:'레이트 나이트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16aef878d4a4e7840681c7'},
     ],
   },
   {
@@ -3376,7 +3376,7 @@ const EXHIBITIONS = [
     slug:'matias-moellenbach',
     desc:'Matias Moellenbach is a Copenhagen–based furniture and interior design brand driven by a commitment to producing…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Introducing the OBA Collection',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38ef2a191410da56084f6'},
+      {day:11,start:'16:00',end:'18:00',title:'OBA Collection 소개',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38ef2a191410da56084f6'},
     ],
   },
   {
@@ -3388,7 +3388,7 @@ const EXHIBITIONS = [
     slug:'mazo',
     desc:'Mazo takes a thoughtful, hands–on approach to design, focusing on creativity, quality, and the small details that make…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Open Air Jazz',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16a51d29e4d51e63db5bd1'},
+      {day:11,start:'16:00',end:'18:00',title:'오픈 에어 재즈',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16a51d29e4d51e63db5bd1'},
     ],
   },
   {
@@ -3400,7 +3400,7 @@ const EXHIBITIONS = [
     slug:'miele-a-s',
     desc:'It all started more than 125 years ago, with two families—the Miele and Zinkann families. The engineer Carl Miele and…',
     events:[
-      {day:11,start:'12:00',end:'15:00',title:'Live baking and bespoke cake',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a185112a922b1ab937665a4'},
+      {day:11,start:'12:00',end:'15:00',title:'라이브 베이킹과 맞춤 케이크',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a185112a922b1ab937665a4'},
     ],
   },
   {
@@ -3412,7 +3412,7 @@ const EXHIBITIONS = [
     slug:'natural-material-studio',
     desc:'Natural Material Studio is an award-winning, Copenhagen-based design and research studio redefining material…',
     events:[
-      {day:10,start:'16:00',end:'20:00',title:'The Feeling of Copenhagen—a Celebration',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1819a0b1ff1a468c639148',cats:['drinks','launch']},
+      {day:10,start:'16:00',end:'20:00',title:'코펜하겐의 감성—축제',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a1819a0b1ff1a468c639148',cats:['drinks','launch']},
     ],
   },
   {
@@ -3424,7 +3424,7 @@ const EXHIBITIONS = [
     slug:'nevotex-danmark-aps',
     desc:'Nevotex is Europe’s leading supplier of fabrics, leather, technical materials and tools for the interior design and…',
     events:[
-      {day:11,start:'15:00',end:'16:00',title:'The Craft of Colour with Bent Erik Myrvoll',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e8db6c1cb99b8e150ac03a'},
+      {day:11,start:'15:00',end:'16:00',title:'Bent Erik Myrvoll과 함께하는 색의 공예',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69e8db6c1cb99b8e150ac03a'},
     ],
   },
   {
@@ -3436,7 +3436,7 @@ const EXHIBITIONS = [
     slug:'new-light-pottery',
     desc:'New Light Pottery is a lighting manufacturer based in the ancient former Japanese capital of Nara. Founded in 2015 by…',
     events:[
-      {day:11,start:'10:00',end:'11:30',title:'Japan/Nordic Design Talk',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69ef952da232e413031ed01e',location:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen'},
+      {day:11,start:'10:00',end:'11:30',title:'Japan/Nordic 디자인 토크',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69ef952da232e413031ed01e',location:'Pakhus 11, Dampfærgevej 2, 2100 Copenhagen'},
     ],
   },
   {
@@ -3448,7 +3448,7 @@ const EXHIBITIONS = [
     slug:'objects-may-vary',
     desc:'Objects May Vary is an cross–disciplinary collaborative exhibition platform dedicated to experimental design . It…',
     events:[
-      {day:11,start:'15:00',end:'17:00',title:'Objects May Vary — Daytime Reception',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a048796bb9177c29c847d0d'},
+      {day:11,start:'15:00',end:'17:00',title:'Objects May Vary — 데이타임 리셉션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a048796bb9177c29c847d0d'},
     ],
   },
   {
@@ -3460,7 +3460,7 @@ const EXHIBITIONS = [
     slug:'objects-of-desire',
     desc:'United by a focus on material awareness, production quality, and design integrity, the Objects of Desire exhibition…',
     events:[
-      {day:10,start:'15:00',end:'16:30',title:'Opening Reception',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc992a1d51f03fe347b158',cats:['drinks','talk']},
+      {day:10,start:'15:00',end:'16:30',title:'오프닝 리셉션',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69fc992a1d51f03fe347b158',cats:['drinks','talk']},
     ],
   },
   {
@@ -3472,7 +3472,7 @@ const EXHIBITIONS = [
     slug:'origin-made',
     desc:'Origin Made is a Porto–based craft–focused design brand founded in 2019 by Gabriel Tan and Cherie Er, built on the…',
     events:[
-      {day:10,start:'10:00',end:'11:00',title:'"The Art of Making" Round Table Discussion',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a13c6f29b7b63ab7078a17d'},
+      {day:10,start:'10:00',end:'11:00',title:'"The Art of Making" 라운드 테이블 토론',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a13c6f29b7b63ab7078a17d'},
     ],
   },
   {
@@ -3484,7 +3484,7 @@ const EXHIBITIONS = [
     slug:'oslomet-product-design',
     desc:'Founded in 1917 as a handicraft college (husflidskole), OsloMet Product Design is rooted in a strong tradition of…',
     events:[
-      {day:12,start:'10:00',end:'11:00',title:'Where Is Product Design Education Headed?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04485b3b7a2f4e00b78421'},
+      {day:12,start:'10:00',end:'11:00',title:'제품 디자인 교육은 어디로 향하는가?',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a04485b3b7a2f4e00b78421'},
     ],
   },
   {
@@ -3496,7 +3496,7 @@ const EXHIBITIONS = [
     slug:'panzeri',
     desc:'Panzeri represents the \'Made in Italy\' manufacture tradition with high–quality decorative and architectural lighting.…',
     events:[
-      {day:10,start:'11:00',end:'15:00',title:'Light as a sensory experience_Unveiling Scent by Panzeri',icon:'🚀',color:'#d99021',label:'런칭',id:'6a057bce1cd29733aaec3eb3'},
+      {day:10,start:'11:00',end:'15:00',title:'빛을 감각적 경험으로_Panzeri의 Scent 공개',icon:'🚀',color:'#d99021',label:'런칭',id:'6a057bce1cd29733aaec3eb3'},
     ],
   },
   {
@@ -3508,7 +3508,7 @@ const EXHIBITIONS = [
     slug:'raawii',
     desc:'raawii was founded in 2017 by Bo Raahauge Rasmussen and Nicholai Wiig–Hansen in Copenhagen, Denmark. Their ambition is…',
     events:[
-      {day:12,start:'16:00',end:'18:00',title:'SHAPE & COLOR: SO LONG DRINKS',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a048ed3ef44a96897ca5e5e'},
+      {day:12,start:'16:00',end:'18:00',title:'SHAPE & COLOR: SO LONG 드링크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a048ed3ef44a96897ca5e5e'},
     ],
   },
   {
@@ -3520,7 +3520,7 @@ const EXHIBITIONS = [
     slug:'rareraw',
     desc:'RARERAW is a modular furniture brand that moves beyond fixed forms, allowing its systems to be flexibly interpreted in…',
     events:[
-      {day:10,start:'17:00',end:'19:00',title:'Portrait of Korean Living—Opening Party',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch'],joint:true},
+      {day:10,start:'17:00',end:'19:00',title:'한국인의 삶의 초상—오프닝 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f2f833051f5da3f0fc4a17',cats:['drinks','launch'],joint:true},
     ],
   },
   {
@@ -3532,7 +3532,7 @@ const EXHIBITIONS = [
     slug:'rosendahl-design-group',
     desc:'Rosendahl Design Group is a Danish design house uniting eight renowned Danish design brands—Kähler, Holmegaard, Lyngby…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Mingle: An Afternoon of Design & Connection',icon:'🚀',color:'#d99021',label:'런칭',id:'69f4a445845319264929fbd4'},
+      {day:11,start:'16:00',end:'18:00',title:'Mingle: 디자인과 연결의 오후',icon:'🚀',color:'#d99021',label:'런칭',id:'69f4a445845319264929fbd4'},
     ],
   },
   {
@@ -3544,7 +3544,7 @@ const EXHIBITIONS = [
     slug:'royal-copenhagen',
     desc:'Royal Copenhagen was founded in 1775 under patronage of the Danish monarchy. For more than two centuries, the company…',
     events:[
-      {day:10,start:'17:00',end:'20:00',title:'Royal Copenhagen x Griegst Cocktail Hour',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f477180774c9889b724f66'},
+      {day:10,start:'17:00',end:'20:00',title:'Royal Copenhagen x Griegst 칵테일 아워',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f477180774c9889b724f66'},
     ],
   },
   {
@@ -3556,7 +3556,7 @@ const EXHIBITIONS = [
     slug:'rytsola',
     desc:'Born in Rome—Refined in Helsinki—Designed for Generations. RYTSOLA, a Finnish–Italian family company, makes its…',
     events:[
-      {day:12,start:'16:00',end:'19:00',title:'RYTSOLA — CLOSING PARTY',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c96f27ee237d95eddc8b1',cats:['drinks','launch']},
+      {day:12,start:'16:00',end:'19:00',title:'RYTSOLA — 클로징 파티',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c96f27ee237d95eddc8b1',cats:['drinks','launch']},
     ],
   },
   {
@@ -3568,7 +3568,7 @@ const EXHIBITIONS = [
     slug:'santa-cole',
     desc:'Founded in 1985, Santa & Cole is an independent editor of thoughtful design objects, art and books headquartered in…',
     events:[
-      {day:11,start:'17:00',end:'19:00',title:'Light Reading, chapter Two.',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1d4352e55c0cc0b180572d'},
+      {day:11,start:'17:00',end:'19:00',title:'Light Reading, 챕터 2',icon:'🏛',color:'#6d3b54',label:'전시',id:'6a1d4352e55c0cc0b180572d'},
     ],
   },
   {
@@ -3580,7 +3580,7 @@ const EXHIBITIONS = [
     slug:'scandinavian-design-embassy',
     desc:'Scandinavian Design Embassy is an initiative aimed at promoting Nordic design companies internationally at Nordic…',
     events:[
-      {day:11,start:'16:00',end:'17:00',title:'Scandinavian Design on the Move – Meet the Makers',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15d9cd1c412d05c989e2a4'},
+      {day:11,start:'16:00',end:'17:00',title:'움직이는 스칸디나비아 디자인 – 메이커를 만나다',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15d9cd1c412d05c989e2a4'},
     ],
   },
   {
@@ -3592,7 +3592,7 @@ const EXHIBITIONS = [
     slug:'sestra',
     desc:'SESTRÁ develops visually restrained objects and furniture informed by research into everyday homemaking practices.…',
     events:[
-      {day:10,start:'15:00',end:'17:00',title:'Collection Walkthrough with Tea & Desserts',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3ce87b8bc626791ef408c',cats:['drinks','talk','launch']},
+      {day:10,start:'15:00',end:'17:00',title:'차와 디저트를 곁들인 컬렉션 워크스루',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f3ce87b8bc626791ef408c',cats:['drinks','talk','launch']},
     ],
   },
   {
@@ -3604,7 +3604,7 @@ const EXHIBITIONS = [
     slug:'sfso',
     desc:'SF–SO is an industrial design studio operating between San Francisco and Seoul, founded in 2019 by Jaehoon Jung and…',
     events:[
-      {day:12,start:'15:00',end:'15:40',title:'Unpacking Structure: Thin Form, Full Load',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1a0466270efdb7e045175'},
+      {day:12,start:'15:00',end:'15:40',title:'구조 풀어내기: 얇은 형태, 가득한 하중',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f1a0466270efdb7e045175'},
     ],
   },
   {
@@ -3616,7 +3616,7 @@ const EXHIBITIONS = [
     slug:'s-k-u-l-t-u-n-a',
     desc:'Founded in 1607 by King Karl IX of Sweden, Skultuna has been creating objects of lasting beauty for over 400 years.…',
     events:[
-      {day:11,start:'17:00',end:'20:00',title:'Live jazz • Candlelight • New collection • Drinks',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c25d45d316ec938e103f5',cats:['drinks','launch']},
+      {day:11,start:'17:00',end:'20:00',title:'라이브 재즈 • 촛불 • 신작 컬렉션 • 음료',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a0c25d45d316ec938e103f5',cats:['drinks','launch']},
     ],
   },
   {
@@ -3628,7 +3628,7 @@ const EXHIBITIONS = [
     slug:'st-leo-interiors',
     desc:'St. Leo is an interior company creating tactile wall finishes, furniture and lighting designed to elevate the…',
     events:[
-      {day:11,start:'16:00',end:'18:00',title:'Wine lounge',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f45c7762a42365c500f658'},
+      {day:11,start:'16:00',end:'18:00',title:'와인 라운지',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f45c7762a42365c500f658'},
     ],
   },
   {
@@ -3640,7 +3640,7 @@ const EXHIBITIONS = [
     slug:'stillark',
     desc:'Stillark is an architecture studio focused on the home and life within it. The studio’s mission is to enhance everyday…',
     events:[
-      {day:10,start:'14:00',end:'16:00',title:'NEW PERSPECTIVES ON STORAGE AND FURNITURE LAUNCH',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38de38feee940beb3a083',location:'Frederiksborggade 22, Copenhagen, Denmark'},
+      {day:10,start:'14:00',end:'16:00',title:'수납과 가구에 대한 새로운 시각 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f38de38feee940beb3a083',location:'Frederiksborggade 22, Copenhagen, Denmark'},
     ],
   },
   {
@@ -3652,7 +3652,7 @@ const EXHIBITIONS = [
     slug:'stolab-mobel-ab',
     desc:'Stolab strives to create solid wood furniture with soul and character. The focus lies in crafting pieces that are both…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'Gin & Tonic After Work',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
+      {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0',joint:true},
     ],
   },
   {
@@ -3700,7 +3700,7 @@ const EXHIBITIONS = [
     slug:'tadaima',
     desc:'Tadaima is a Copenhagen–based design studio and concept store founded in 2021 by Hanne Berzant and her daughters,…',
     events:[
-      {day:11,start:'11:00',end:'11:45',title:'From Fashion to Interiors: Gergei Erdei x Porta Romana',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0acfeb1209fe98c1a1d160'},
+      {day:11,start:'11:00',end:'11:45',title:'패션에서 인테리어로: Gergei Erdei x Porta Romana',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'6a0acfeb1209fe98c1a1d160'},
     ],
   },
   {
@@ -3712,7 +3712,7 @@ const EXHIBITIONS = [
     slug:'tekla',
     desc:'Established in Copenhagen in 2017, Tekla creates elevated yet functional homeware pieces that centre a timeless,…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'Tekla Heart of Living I Opening event',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef41ad95d5d70b25d83f96'},
+      {day:10,start:'16:00',end:'19:00',title:'Tekla Heart of Living I 오프닝 이벤트',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69ef41ad95d5d70b25d83f96'},
     ],
   },
   {
@@ -3724,7 +3724,7 @@ const EXHIBITIONS = [
     slug:'tf-design---tina-frey-designs',
     desc:'Tina Frey Designs, based in San Francisco, California, specializes in timeless, functional objects, furniture, and…',
     events:[
-      {day:10,start:'10:30',end:'12:30',title:'Tina Frey Designs x Pinch Food Design: Launch Soft Serve',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a07028b3ba26db7a4779392'},
+      {day:10,start:'10:30',end:'12:30',title:'Tina Frey Designs x Pinch Food Design: 소프트 아이스크림 런칭',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a07028b3ba26db7a4779392'},
     ],
   },
   {
@@ -3736,7 +3736,7 @@ const EXHIBITIONS = [
     slug:'trece',
     desc:'TreCe is one of the leading Nordic suppliers of storage and recycling furniture. The company has reached this position…',
     events:[
-      {day:11,start:'16:00',end:'19:00',title:'Gin & Tonic After Work',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0'},
+      {day:11,start:'16:00',end:'19:00',title:'진토닉 애프터워크',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a16b51ee0894bf87ecc3fd0'},
     ],
   },
   {
@@ -3748,7 +3748,7 @@ const EXHIBITIONS = [
     slug:'toseibo',
     desc:'Tōseibo is a Copenhagen–based ceramic studio that specialises in handcrafted tea and coffee ware, flower and incense…',
     events:[
-      {day:12,start:'14:00',end:'16:00',title:'Japanese tea gathering at Tōseibo',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06cbca9e5e93805d4836ea'},
+      {day:12,start:'14:00',end:'16:00',title:'Tōseibo에서의 일본 다도 모임',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a06cbca9e5e93805d4836ea'},
     ],
   },
   {
@@ -3760,7 +3760,7 @@ const EXHIBITIONS = [
     slug:'udrb',
     desc:'Uderbekov Daniyar is a design brand where ancient heritage meets future technology. Founded by Daniyar Uderbekov, it…',
     events:[
-      {day:11,start:'11:00',end:'11:30',title:'Experience collectible design from Kazakhstan',icon:'🚀',color:'#d99021',label:'런칭',id:'69e6e1788279cdaeab86ec98',location:'Kanalhuset, Overgaden Oven Vandet 62A, København, Dania'},
+      {day:11,start:'11:00',end:'11:30',title:'카자흐스탄의 컬렉터블 디자인 경험',icon:'🚀',color:'#d99021',label:'런칭',id:'69e6e1788279cdaeab86ec98',location:'Kanalhuset, Overgaden Oven Vandet 62A, København, Dania'},
     ],
   },
   {
@@ -3772,7 +3772,7 @@ const EXHIBITIONS = [
     slug:'vandra-rugs-ab',
     desc:'Vandra Rugs crafts handmade rugs that blend contemporary design with exceptional craftsmanship. Made from high-quality…',
     events:[
-      {day:10,start:'16:00',end:'19:00',title:'Cocktails',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15865bc484f256b6a976e1',location:'MKDT Studio, Store Strandstræde 9, Copenhagen, Denmark'},
+      {day:10,start:'16:00',end:'19:00',title:'칵테일',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'6a15865bc484f256b6a976e1',location:'MKDT Studio, Store Strandstræde 9, Copenhagen, Denmark'},
     ],
   },
   {
@@ -3784,7 +3784,7 @@ const EXHIBITIONS = [
     slug:'v-zug',
     desc:'V–ZUG, the leading Swiss household appliance brand, has been developing and manufacturing kitchen and laundry…',
     events:[
-      {day:11,start:'10:00',end:'10:30',title:'A presentation on the life and works of Sonja Ferlov Mancoba',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
+      {day:11,start:'10:00',end:'10:30',title:'Sonja Ferlov Mancoba의 삶과 작품에 관한 프레젠테이션',icon:'💬',color:'#2f6b6b',label:'토크·패널',id:'69f4910e2a8bea9dc079b1b3',joint:true},
     ],
   },
   {
@@ -3796,7 +3796,7 @@ const EXHIBITIONS = [
     slug:'wastberg',
     desc:'Wastberg+ creates well–being through good light. Working closely with leading architects and designers, W+ develops…',
     events:[
-      {day:11,start:'10:00',end:'12:00',title:'W+ Brunch',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f83e648d68390c630c89ed',cats:['drinks','talk']},
+      {day:11,start:'10:00',end:'12:00',title:'W+ 브런치',icon:'🍷',color:'#8b5e3c',label:'음료·식음',id:'69f83e648d68390c630c89ed',cats:['drinks','talk']},
     ],
   },
   {

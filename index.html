@@ -170,7 +170,9 @@
 
   /* ============ FESTIVAL EVENTS TAB ============ */
   .fest-wrap{display:flex;flex-direction:column;height:100%}
-  .fest-filters{display:flex;gap:6px;padding:12px 16px 8px;flex-wrap:wrap;border-bottom:1px solid var(--line);flex-shrink:0}
+  /* 각 필터 행: 단일 줄 가로 스크롤 (모바일 공간 최적화) */
+  .fest-filters{display:flex;gap:6px;padding:7px 14px;flex-wrap:nowrap;border-bottom:1px solid var(--line);flex-shrink:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;align-items:center}
+  .fest-filters::-webkit-scrollbar{display:none}
   .fest-filter-btn{
     font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.05em;
     padding:4px 10px;border:1.5px solid var(--line);background:none;cursor:pointer;
@@ -189,7 +191,8 @@
 
   /* ============ EXHIBITIONS TAB ============ */
   .exh-wrap{display:flex;flex-direction:column;height:100%}
-  .exh-filters{display:flex;gap:5px;padding:10px 14px 6px;flex-wrap:wrap;border-bottom:1px solid var(--line);flex-shrink:0;align-items:center}
+  .exh-filters{display:flex;gap:5px;padding:7px 14px;flex-wrap:nowrap;border-bottom:1px solid var(--line);flex-shrink:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;align-items:center}
+  .exh-filters::-webkit-scrollbar{display:none}
   .exh-filter-btn{
     font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.04em;
     padding:3px 9px;border:1.5px solid var(--line);background:none;cursor:pointer;
@@ -1083,8 +1086,11 @@
     h1 br{display:none}
     .sub{font-size:10px;margin-top:3px}
     .tab{font-size:9px;padding:8px 2px;letter-spacing:.04em}
-    /* 행사 필터 가로 overflow 방지 */
-    .fest-filters{overflow-x:hidden}
+    /* 행사·전시 필터: 모바일에서 세로 패딩 압축 */
+    .fest-filters{padding:5px 12px}
+    .exh-filters{padding:5px 12px}
+    .fest-search-wrap{padding:4px 12px}
+    .exh-search-wrap{padding:4px 12px}
     /* 위시리스트 입력 줄 바꿈 */
     .wish-add-row{flex-wrap:wrap}
     .wish-input-wrap{min-width:100%;order:1}
@@ -2111,20 +2117,36 @@ function renderFest(){
     finally{ btn.textContent='↻ 새로고침'; btn.disabled=false; }
   };
 
-  // ── 날짜 필터
-  const filters = document.createElement('div');
-  filters.className = 'fest-filters';
+  // ── 행 1: 날짜 + 즐겨찾기
+  const row1 = document.createElement('div');
+  row1.className = 'fest-filters';
 
   ['June 10','June 11','June 12'].forEach(d=>{
     const b = document.createElement('button');
     b.className = 'fest-filter-btn' + (festDateFilter===d?' active':'');
     b.textContent = d.replace('June ','6/');
     b.onclick = ()=>{ festDateFilter=d; renderFest(); };
-    filters.appendChild(b);
+    row1.appendChild(b);
   });
 
-  // ── 카테고리 필터 (구분선)
-  const catSep = document.createElement('div'); catSep.style.cssText='width:100%;height:0'; filters.appendChild(catSep);
+  const favBtn = document.createElement('button');
+  favBtn.className = 'fest-filter-btn' + (festFavFilter?' fav-active':'');
+  favBtn.innerHTML = (festFavFilter ? '♥' : '♡') + ' 즐겨찾기';
+  favBtn.onclick = ()=>{ festFavFilter=!festFavFilter; renderFest(); };
+  row1.appendChild(favBtn);
+
+  // 날짜+즐겨찾기 상태 요약 (활성 필터 있으면 리셋 버튼)
+  if(festDateFilter||festFavFilter){
+    const rst = document.createElement('button');
+    rst.style.cssText='font-family:Space Mono,monospace;font-size:9px;padding:2px 7px;border:1px solid var(--line);background:none;cursor:pointer;color:var(--slate);border-radius:2px;flex-shrink:0;margin-left:auto';
+    rst.textContent='초기화';
+    rst.onclick=()=>{festDateFilter='';festCatFilter='all';festDistFilter='all';festFavFilter=false;renderFest();};
+    row1.appendChild(rst);
+  }
+
+  // ── 행 2: 카테고리
+  const row2 = document.createElement('div');
+  row2.className = 'fest-filters';
   FEST_CATEGORIES.forEach(cat=>{
     const b = document.createElement('button');
     const isActive = festCatFilter===cat.key;
@@ -2132,11 +2154,12 @@ function renderFest(){
     b.textContent = cat.key==='all' ? cat.label : `${cat.icon} ${cat.label}`;
     if(cat.key!=='all') b.style.cssText=`border-color:${cat.color};${isActive?`background:${cat.color};color:#fff`:`color:${cat.color}`}`;
     b.onclick = ()=>{ festCatFilter=cat.key; renderFest(); };
-    filters.appendChild(b);
+    row2.appendChild(b);
   });
 
-  // ── 지구 필터 (구분선)
-  const distSep = document.createElement('div'); distSep.style.cssText='width:100%;height:0'; filters.appendChild(distSep);
+  // ── 행 3: 지구
+  const row3 = document.createElement('div');
+  row3.className = 'fest-filters';
   const distNames = ['all',...DISTRICTS.map(d=>d.name)];
   distNames.forEach(d=>{
     const b = document.createElement('button');
@@ -2145,22 +2168,17 @@ function renderFest(){
     b.textContent = d==='all'?'전체':d;
     if(d!=='all') b.style.cssText=`border-color:${c};${festDistFilter===d?'':'color:'+c}`;
     b.onclick = ()=>{ festDistFilter=d; renderFest(); };
-    filters.appendChild(b);
+    row3.appendChild(b);
   });
-  // ── 즐겨찾기 필터 버튼
-  const favSep = document.createElement('div'); favSep.style.cssText='width:100%;height:0'; filters.appendChild(favSep);
-  const favBtn = document.createElement('button');
-  favBtn.className = 'fest-filter-btn' + (festFavFilter?' fav-active':'');
-  favBtn.innerHTML = (festFavFilter ? '♥' : '♡') + ' 즐겨찾기';
-  favBtn.onclick = ()=>{ festFavFilter=!festFavFilter; renderFest(); };
-  filters.appendChild(favBtn);
 
   // ── 검색창
   const searchWrap = document.createElement('div');
   searchWrap.className = 'fest-search-wrap';
   searchWrap.innerHTML = `<input class="fest-search-input" id="festSearchInput" type="text" placeholder="행사·장소 검색..." value="${festSearchQuery.replace(/"/g,'&quot;')}">`;
   wrap.appendChild(searchWrap);
-  wrap.appendChild(filters);
+  wrap.appendChild(row1);
+  wrap.appendChild(row2);
+  wrap.appendChild(row3);
 
   // ── 이벤트 목록 컨테이너 (renderFestList로 채움)
   const list = document.createElement('div');
@@ -3345,12 +3363,9 @@ function renderExhibitions(){
   });
   wrap.appendChild(filterRow);
 
-  /* ── 카테고리 + 날짜 필터 ── */
+  /* ── 행 2: 카테고리 ── */
   const catRow = document.createElement('div');
   catRow.className = 'exh-filters';
-  catRow.style.paddingTop = '6px';
-
-  // 카테고리
   EXH_CATS.forEach(c=>{
     const b = document.createElement('button');
     b.className = 'exh-filter-btn cat-btn' + (exhCatFilter===c.key?' active':'');
@@ -3358,19 +3373,20 @@ function renderExhibitions(){
     b.onclick = ()=>{ exhCatFilter=c.key; renderExhibitions(); };
     catRow.appendChild(b);
   });
+  wrap.appendChild(catRow);
 
-  catRow.appendChild(Object.assign(document.createElement('span'),{style:'flex:1'}));
-
-  // 날짜 칩
-  [{k:'all',l:'전체'},{k:'10',l:'6/10'},{k:'11',l:'6/11'},{k:'12',l:'6/12'}].forEach(({k,l})=>{
+  /* ── 행 3: 날짜 + 초기화 ── */
+  const dayRow = document.createElement('div');
+  dayRow.className = 'exh-filters';
+  [{k:'all',l:'전체 날짜'},{k:'10',l:'6/10 (수)'},{k:'11',l:'6/11 (목)'},{k:'12',l:'6/12 (금)'}].forEach(({k,l})=>{
     const b = document.createElement('button');
     b.className = 'exh-filter-btn' + (exhDayFilter===k?' active':'');
     b.textContent = l;
-    if(k!=='all') b.style.borderColor = EXH_DAY_COLORS[+k]||'';
+    if(k!=='all') b.style.cssText=`border-color:${EXH_DAY_COLORS[+k]};${exhDayFilter===k?`background:${EXH_DAY_COLORS[+k]};color:#fff`:`color:${EXH_DAY_COLORS[+k]}`}`;
     b.onclick = ()=>{ exhDayFilter=k; renderExhibitions(); };
-    catRow.appendChild(b);
+    dayRow.appendChild(b);
   });
-  wrap.appendChild(catRow);
+  wrap.appendChild(dayRow);
 
   /* ── 검색 ── */
   const sWrap = document.createElement('div');
