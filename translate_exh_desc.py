@@ -4,10 +4,11 @@ exhibitions-data.js 브랜드 소개문(desc) 한국어 번역
 Vercel /api/extract 프록시 사용
 """
 import json, re, sys, time, os
+from script_paths import EXHIBITIONS_JS, REPO_ROOT
 sys.stdout.reconfigure(encoding='utf-8')
 
-INPUT_JS   = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\exhibitions-data.js"
-CACHE_FILE = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\exh_desc_cache.json"
+INPUT_JS   = str(EXHIBITIONS_JS)
+CACHE_FILE = str(REPO_ROOT / 'exh_desc_cache.json')
 VERCEL_URL = "https://cph-trip.vercel.app/api/extract"
 
 import urllib.request

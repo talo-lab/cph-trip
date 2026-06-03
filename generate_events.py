@@ -1,5 +1,8 @@
 import json, sys
+from script_paths import get_data_dir, EVENTS_JS
 sys.stdout.reconfigure(encoding='utf-8')
+
+DATA_DIR = get_data_dir()
 
 def esc(s):
     s = (s or '').replace("'", '').replace('"', '').replace('\n', ' ').replace('\r', '')
@@ -20,13 +23,13 @@ DATE_MAP = {'10 Jun':'June 10','11 Jun':'June 11','12 Jun':'June 12'}
 DATE_MAP2 = {'10 June':'June 10','11 June':'June 11','12 June':'June 12'}
 
 # Load data
-with open(r'C:\Users\DOJO_001\Documents\New project\output\3daysofdesign\3dod_events_2026_partial.json', encoding='utf-8') as f:
+with open(DATA_DIR / '3dod_events_2026_partial.json', encoding='utf-8') as f:
     events = json.load(f)
-with open(r'C:\Users\DOJO_001\Documents\New project\output\3daysofdesign\3dod_long_table_dinners_2026.json', encoding='utf-8') as f:
+with open(DATA_DIR / '3dod_long_table_dinners_2026.json', encoding='utf-8') as f:
     dinners = json.load(f)
-with open(r'C:\Users\DOJO_001\Documents\New project\output\3daysofdesign\3dod_symposium_2026.json', encoding='utf-8') as f:
+with open(DATA_DIR / '3dod_symposium_2026.json', encoding='utf-8') as f:
     symposium = json.load(f)
-with open(r'C:\Users\DOJO_001\Documents\New project\output\3daysofdesign\3dod_design_walks_2026.json', encoding='utf-8') as f:
+with open(DATA_DIR / '3dod_design_walks_2026.json', encoding='utf-8') as f:
     walks = json.load(f)
 
 lines = ['const FESTIVAL_EVENTS = [']
@@ -95,7 +98,7 @@ for w in walks:
 lines.append('];')
 
 output = '\n'.join(lines)
-with open(r'C:\Users\DOJO_001\Documents\GitHub\cph-trip\events-data.js', 'w', encoding='utf-8') as f:
+with open(EVENTS_JS, 'w', encoding='utf-8') as f:
     f.write(output)
 
 print(f'events-data.js generated')

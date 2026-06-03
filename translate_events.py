@@ -12,8 +12,9 @@ title, desc 필드를 Claude API로 한국어 번역 후 덮어씁니다.
 
 import re, json, os, sys, time
 import anthropic
+from script_paths import EVENTS_JS
 
-INPUT = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\events-data.js"
+INPUT = str(EVENTS_JS)
 BATCH_SIZE = 40  # 한 번에 번역할 이벤트 수
 
 # ── API 클라이언트 ──────────────────────────────────────────────────

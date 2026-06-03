@@ -4,10 +4,11 @@ exhibitions-data.js 생성 스크립트
 3dod_exhibitions_with_events_2026.json → exhibitions-data.js
 """
 import json, re, sys
+from script_paths import get_data_dir, EXHIBITIONS_JS
 sys.stdout.reconfigure(encoding='utf-8')
 
-INPUT_JSON = r"C:\Users\DOJO_001\Documents\New project\output\3daysofdesign\3dod_exhibitions_with_events_2026.json"
-OUTPUT_JS  = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\exhibitions-data.js"
+INPUT_JSON = get_data_dir() / '3dod_exhibitions_with_events_2026.json'
+OUTPUT_JS  = EXHIBITIONS_JS
 
 # 카테고리 → 아이콘·한국어·색상
 CAT_MAP = {

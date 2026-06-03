@@ -1,20 +1,26 @@
 // Vercel Serverless: /api/plan
-// GET  (auth) → { plan, favs }
-// POST (auth) → { plan?, favs? }
+// GET  (auth) → { plan, favs, wishlist }
+// POST (auth) → { plan?, favs?, wishlist? }
 import { getRedis, getSession } from '../lib/redis-session.js';
+import { handleCors, requireMethod, sendError, serverError } from '../lib/http.js';
 
 async function getJson(redis, key) {
   const raw = await redis.get(key);
-  return raw ? JSON.parse(raw) : null;
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error(`[plan] 깨진 JSON: key=${key}`, e.message);
+    return null;
+  }
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (handleCors(req, res)) return;
 
   try {
     const session = await getSession(req);
-    if (!session) return res.status(401).json({ error: 'Unauthorized' });
+    if (!session) return sendError(res, 401, 'Unauthorized');
 
     const { user } = session;
     const redis = getRedis();
@@ -26,9 +32,9 @@ export default async function handler(req, res) {
         getJson(redis, `wishlist:${user}`),
       ]);
       return res.json({
-        plan: planData,
-        favs: favsData || [],
-        wishlist: wishData || [],
+        plan:     planData,
+        favs:     favsData     || [],
+        wishlist: wishData     || [],
       });
     }
 
@@ -42,9 +48,8 @@ export default async function handler(req, res) {
       return res.json({ ok: true });
     }
 
-    return res.status(405).end();
+    return requireMethod(req, res, 'GET', 'POST');
   } catch (e) {
-    console.error('[plan] error:', e);
-    return res.status(500).json({ error: `server error: ${e.message}` });
+    return serverError(res, e, 'plan');
   }
 }

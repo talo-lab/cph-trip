@@ -7,8 +7,9 @@ reclassify_events.py — 행사 카테고리 재분류
 """
 import re
 from collections import Counter
+from script_paths import EVENTS_JS
 
-INPUT = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\events-data.js"
+INPUT = str(EVENTS_JS)
 
 # ── 카테고리 키워드 (우선순위 순) ────────────────────────────────────
 RULES = [

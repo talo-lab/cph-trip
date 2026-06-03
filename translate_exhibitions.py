@@ -4,10 +4,11 @@ exhibitions-data.js 이벤트 타이틀 한국어 번역
 524개 고유 영어 제목 → Claude API 배치 번역 → exhibitions-data.js 재생성
 """
 import json, re, sys, time, os
+from script_paths import EXHIBITIONS_JS, REPO_ROOT
 sys.stdout.reconfigure(encoding='utf-8')
 
-INPUT_JS  = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\exhibitions-data.js"
-CACHE_FILE = r"C:\Users\DOJO_001\Documents\GitHub\cph-trip\exh_title_cache.json"
+INPUT_JS  = str(EXHIBITIONS_JS)
+CACHE_FILE = str(REPO_ROOT / 'exh_title_cache.json')
 
 # ── Vercel API 프록시 사용 (로컬 API 키 불필요) ──
 import urllib.request, urllib.error
