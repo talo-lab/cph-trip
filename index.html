@@ -545,6 +545,32 @@
 
   /* ── 즐겨찾기 ── */
   .fav-btn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 4px;line-height:1;flex-shrink:0;transition:.15s}
+
+  /* ── 위시리스트 (가고싶은 곳) ── */
+  .wish-section{margin-top:24px;border-top:2px solid var(--line);padding-top:16px}
+  .wish-section h4{font-family:'Fraunces',serif;font-size:16px;margin:0 0 4px;color:var(--ink)}
+  .wish-section .lead{font-size:11.5px;color:var(--slate);margin:0 0 12px}
+  .wish-add-row{display:flex;gap:6px;margin-bottom:12px}
+  .wish-input{flex:1;padding:7px 10px;border:1.5px solid var(--line);font-size:12.5px;font-family:inherit;background:#fff;border-radius:2px;min-width:0}
+  .wish-input:focus{outline:none;border-color:var(--slate)}
+  .wish-note-input{flex:1;padding:7px 10px;border:1.5px solid var(--line);font-size:11.5px;font-family:inherit;background:#fff;border-radius:2px;min-width:0;color:var(--slate)}
+  .wish-note-input:focus{outline:none;border-color:var(--slate)}
+  .wish-add-btn{padding:7px 14px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.04em;flex-shrink:0;transition:.15s}
+  .wish-add-btn:hover{background:var(--rust)}
+  .wish-list{display:flex;flex-direction:column;gap:6px}
+  .wish-item{background:#f8f5ee;border:1px solid var(--line);padding:10px 12px;display:flex;align-items:flex-start;gap:8px}
+  .wish-item-body{flex:1;min-width:0}
+  .wish-item-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+  .wish-item-note{font-size:11px;color:var(--slate);white-space:pre-wrap}
+  .wish-item-actions{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
+  .wish-to-plan-btn{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--rust);color:#fff;border:none;cursor:pointer;border-radius:2px;transition:.15s}
+  .wish-to-plan-btn:hover{background:var(--rust-deep)}
+  .wish-del-btn{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:none;color:var(--slate);border:1px solid var(--line);cursor:pointer;border-radius:2px;transition:.15s}
+  .wish-del-btn:hover{background:#fee;color:var(--rust);border-color:var(--rust)}
+  .wish-day-row{display:flex;gap:5px;align-items:center;margin-top:6px;flex-wrap:wrap}
+  .wish-day-select{font-size:11px;padding:3px 6px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-family:inherit}
+  .wish-day-confirm{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 9px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px}
+  .wish-empty{font-size:12px;color:var(--slate);opacity:.6;padding:8px 0;font-style:italic}
   .fav-btn:hover{transform:scale(1.2)}
   .fest-filter-btn.fav-active{background:#c8492a;color:#fff;border-color:#c8492a}
 
@@ -2420,8 +2446,9 @@ function renderRecommend(){
     const head = document.createElement('div');
     head.className = 'rec-day-head';
 
-    const hasDayItems = day.items.length > 0;
-    const allAdded = hasDayItems && day.items.every((_,i)=>recChecked.has(`${day.dayIdx}-${i}`));
+    const visibleForHeader = day.items.map((it,i)=>({it,i})).filter(({it})=>!isRecInPlan(day.dayIdx, it.title));
+    const hasDayItems = visibleForHeader.length > 0;
+    const allAdded = hasDayItems && visibleForHeader.every(({i})=>recChecked.has(`${day.dayIdx}-${i}`));
 
     head.innerHTML = `
       <span class="rec-day-num${day.fest?' fest':''}">${day.label}</span>
@@ -2445,8 +2472,15 @@ function renderRecommend(){
     const itemsEl = document.createElement('div');
     itemsEl.className = 'rec-items';
 
-    if(day.items.length===0){
-      itemsEl.innerHTML = `<div style="padding:12px 20px;font-size:12px;color:var(--slate);opacity:.6">이 날은 비어있어요. 행사 탭이나 +장소 탭에서 직접 추가하세요.</div>`;
+    // plan에 없는 항목만 필터
+    const visibleItems = day.items.map((it,i)=>({it,i})).filter(({it})=>!isRecInPlan(day.dayIdx, it.title));
+
+    if(visibleItems.length===0){
+      itemsEl.innerHTML = `<div style="padding:12px 20px;font-size:12px;color:var(--slate);opacity:.6">${
+        day.items.length===0
+          ? '이 날은 비어있어요. 행사 탭이나 +장소 탭에서 직접 추가하세요.'
+          : '✓ 이 날 추천 항목이 모두 내 일정에 추가됐어요.'
+      }</div>`;
     } else {
       const themeEl = document.createElement('div');
       themeEl.style.cssText='padding:6px 20px 4px;font-size:11.5px;color:var(--rust-deep);font-style:italic;border-bottom:1px solid var(--line)';
@@ -2455,7 +2489,7 @@ function renderRecommend(){
 
       const dayColor = DAY_COLORS[day.dayIdx] || '#888';
 
-      day.items.forEach((it,i)=>{
+      visibleItems.forEach(({it,i})=>{
         const key = `${day.dayIdx}-${i}`;
         const isChecked = recChecked.has(key);
         const hasCoords = !!(it._lat && it._lng);
@@ -2585,7 +2619,7 @@ function updateRecFooter(){
 }
 
 async function applyRecItems(){
-  let added = 0;
+  let added = 0, firstDi = null;
   RECOMMEND.forEach(day=>{
     day.items.forEach((it,i)=>{
       const key = `${day.dayIdx}-${i}`;
@@ -2607,13 +2641,26 @@ async function applyRecItems(){
       });
       sortDayByTime(di);
       added++;
+      if(firstDi===null) firstDi=di;
     });
   });
   await savePlan();
   recChecked.clear();
-  const btn = document.getElementById('recApplyBtn');
-  if(btn){ btn.textContent=`✓ ${added}개 일정에 추가됐어요!`; btn.disabled=true; }
-  setTimeout(()=>renderRecommend(), 1500);
+
+  if(added===0){ renderRecommend(); return; }
+
+  setTab('plan');
+  if(firstDi!==null){
+    requestAnimationFrame(()=>{
+      document.getElementById(`body-${firstDi}`)?.closest('.day')
+        ?.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  }
+  const t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2e6b2e;color:#fff;padding:10px 18px;border-radius:6px;font-size:12px;font-family:Space Mono,monospace;z-index:9999;pointer-events:none';
+  t.textContent=`✓ ${added}개 일정에 추가됐어요`;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
 }
 
 /* ---------- RENDER: DISTRICTS ---------- */
@@ -3008,6 +3055,83 @@ function renderAdd(){
 
     <div id="addStatus"></div>
   </div>`;
+
+  // 위시리스트 섹션 동적 추가
+  const wishWrap = document.createElement('div');
+  wishWrap.className = 'add-wrap wish-section';
+  wishWrap.innerHTML = `
+    <h4>가고싶은 곳 목록</h4>
+    <p class="lead">날짜 미정이지만 가보고 싶은 장소를 메모해두세요. 나중에 날짜를 정해 일정에 옮길 수 있어요.</p>
+    <div class="wish-add-row">
+      <input class="wish-input" id="wishTitle" placeholder="장소명" maxlength="60">
+      <input class="wish-note-input" id="wishNote" placeholder="메모 (선택)" maxlength="80">
+      <button class="wish-add-btn" id="wishAddBtn">＋ 추가</button>
+    </div>
+    <div class="wish-list" id="wishList"></div>`;
+  el.querySelector('.add-wrap').insertAdjacentElement('afterend', wishWrap);
+
+  function renderWishList(){
+    const list = document.getElementById('wishList');
+    if(!list) return;
+    if(wishlist.length===0){
+      list.innerHTML='<div class="wish-empty">아직 추가된 장소가 없어요.</div>';
+      return;
+    }
+    list.innerHTML='';
+    wishlist.forEach((w,idx)=>{
+      const item = document.createElement('div');
+      item.className='wish-item';
+      item.innerHTML=`
+        <div class="wish-item-body">
+          <div class="wish-item-title">${w.title}</div>
+          ${w.note?`<div class="wish-item-note">${w.note}</div>`:''}
+          <div class="wish-item-actions">
+            <button class="wish-to-plan-btn" data-idx="${idx}">→ 일정에 추가</button>
+            <button class="wish-del-btn" data-idx="${idx}">삭제</button>
+          </div>
+          <div class="wish-day-row" id="wish-day-row-${idx}" style="display:none">
+            <select class="wish-day-select" id="wish-day-sel-${idx}">
+              ${plan.map((d,di)=>`<option value="${di}">${d.date} · ${d.tag}</option>`).join('')}
+            </select>
+            <button class="wish-day-confirm" data-idx="${idx}">확인</button>
+          </div>
+        </div>`;
+      item.querySelector('.wish-to-plan-btn').addEventListener('click',()=>{
+        const row=document.getElementById(`wish-day-row-${idx}`);
+        row.style.display = row.style.display==='none' ? 'flex' : 'none';
+      });
+      item.querySelector('.wish-del-btn').addEventListener('click',()=>{
+        wishlist.splice(idx,1); saveWishlist(); renderWishList();
+      });
+      item.querySelector('.wish-day-confirm').addEventListener('click',()=>{
+        const di=+document.getElementById(`wish-day-sel-${idx}`).value;
+        plan[di].items.push({time:'미정',title:w.title,note:w.note||'',dist:'',_user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']});
+        sortDayByTime(di); savePlan();
+        wishlist.splice(idx,1); saveWishlist();
+        setTab('plan');
+        requestAnimationFrame(()=>{
+          document.getElementById(`body-${di}`)?.closest('.day')?.scrollIntoView({behavior:'smooth',block:'start'});
+        });
+      });
+      list.appendChild(item);
+    });
+  }
+
+  document.getElementById('wishAddBtn').addEventListener('click',()=>{
+    const title=document.getElementById('wishTitle').value.trim();
+    if(!title) return;
+    const note=document.getElementById('wishNote').value.trim();
+    wishlist.unshift({title,note,addedBy:currentUser||'',addedAt:Date.now()});
+    saveWishlist();
+    document.getElementById('wishTitle').value='';
+    document.getElementById('wishNote').value='';
+    renderWishList();
+  });
+  document.getElementById('wishTitle').addEventListener('keydown',e=>{
+    if(e.key==='Enter') document.getElementById('wishAddBtn').click();
+  });
+
+  renderWishList();
 
   el.querySelectorAll('.quick button').forEach(b=>{
     b.addEventListener('click',()=>{ document.getElementById('addInput').value=b.dataset.q; });
@@ -3915,6 +4039,16 @@ function updateDayProgress(di){
 const FAV_KEY = 'cph_favorites';
 let favorites = new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]'));
 let festFavFilter = false;
+
+/* ---------- WISHLIST (가고싶은 곳) ---------- */
+const WISH_KEY = 'cph_wishlist_v1';
+let wishlist = JSON.parse(localStorage.getItem(WISH_KEY)||'[]');
+function saveWishlist(){ localStorage.setItem(WISH_KEY, JSON.stringify(wishlist)); }
+
+/* 추천 항목이 현재 plan에 있는지 확인 */
+function isRecInPlan(di, title){
+  return !!(plan[di]?.items.some(it => it.title === title));
+}
 
 /* ---------- FEST MAP MARKERS ---------- */
 const festMarkers = {};
