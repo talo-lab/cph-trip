@@ -1772,6 +1772,14 @@ function _placeExhPin(ex, lat, lng, color){
 /* 일정 아이템 백그라운드 지오코딩 */
 async function geocodePlanItem(item, di){
   if(item._lat && item._lng) return;
+  // 숙소 키워드 감지 → STAY 좌표 즉시 사용
+  const stayKw = /숙소|체크인|체크아웃|airbnb|에어비앤비|호텔|hotel|check.?in|check.?out/i;
+  if(stayKw.test(item.title) || stayKw.test(item.note||'')){
+    item._lat = STAY.lat; item._lng = STAY.lng;
+    savePlan();
+    if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
+    return;
+  }
   const titlePart = item.title.replace(/\[.*?\]/g,'').replace(/\(.*?\)/g,'').trim();
   const notePart = (item.note||'').split('·')[0].split('·')[0].trim();
   const query = titlePart + (notePart&&notePart.length<60 ? ' '+notePart : '');
@@ -1858,8 +1866,8 @@ function showItemRoute(di, ii){
   const items = plan[di].items;
   const coords = getItemCoords(items[ii]);
 
-  // 좌표 없는 항목: 백그라운드 지오코딩 시도
-  if(!coords && items[ii]._user && items[ii].title){
+  // 좌표 없는 항목: 백그라운드 지오코딩 시도 (_user 또는 _addedBy 있는 항목)
+  if(!coords && (items[ii]._user || items[ii]._addedBy) && items[ii].title){
     const st2=document.getElementById('drawerStatus');
     if(st2){ st2.className='drawer-status show'; st2.textContent='📍 지도 좌표 검색 중...'; }
     geocodePlanItem(items[ii], di).then(()=>{
@@ -2685,7 +2693,7 @@ function renderPlan(){
           autoNote = `← ${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분`;
         }
       }
-      plan[di].items.push({time:'',title:'새 일정',note:autoNote,dist:'',_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']});
+      plan[di].items.push({time:'',title:'새 일정',note:'',dist:'',_addedBy:currentUser,_user:true,_personal:false,_with:['miju','sanghyo']});
       savePlan();
       renderPlan();
       // 새로 추가된 항목의 시간 필드에 포커스
