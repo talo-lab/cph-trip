@@ -701,7 +701,7 @@
   .rec-item.map-active{background:rgba(155,122,181,.12);border-left:3px solid #9b7ab5;padding-left:17px}
   .rec-item.map-prev{background:rgba(155,122,181,.05);border-left:3px solid rgba(155,122,181,.3);padding-left:17px}
 
-  /* 동선 비교 패널 */
+  /* 동선 비교 패널 / 장소 정보 패널 */
   .rec-route-panel{
     position:sticky;top:0;z-index:10;
     background:linear-gradient(135deg,#1a1714 0%,#2a2030 100%);
@@ -709,6 +709,7 @@
     border-bottom:2px solid #9b7ab5;font-size:11.5px;line-height:1.5;display:none;
   }
   .rec-route-panel.show{display:block}
+  .rec-route-panel.info-mode{border-bottom-color:#7ab59b}
   .rec-route-panel b{color:#c4a8e8}
   .rec-route-clear{float:right;background:none;border:none;color:rgba(255,255,255,.45);cursor:pointer;font-size:15px;line-height:1;margin-top:-1px}
   .rec-route-clear:hover{color:#fff}
@@ -716,6 +717,25 @@
   .rec-route-bar{flex:1;height:3px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
   .rec-route-bar-fill{height:100%;background:#9b7ab5;border-radius:2px;transition:width .4s}
   .rec-pin-dot{width:10px;height:10px;border-radius:50%;border:2px solid rgba(255,255,255,.8);flex-shrink:0}
+  .rec-info-tag{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:2px;color:#fff;vertical-align:middle;margin-right:5px}
+  .rec-info-note{font-size:11px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .rec-info-hint{font-size:9.5px;color:rgba(255,255,255,.35);margin-top:5px;font-family:'Space Mono',monospace}
+  .rec-info-actions{display:flex;gap:7px;margin-top:7px}
+  .rec-info-btn{font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;padding:3px 9px;border:1.5px solid rgba(255,255,255,.3);background:none;color:rgba(255,255,255,.8);cursor:pointer;border-radius:2px;transition:.12s}
+  .rec-info-btn:hover{border-color:#7ab59b;color:#7ab59b}
+  /* 위시리스트 추천탭 액션 버튼 */
+  .wish-rec-actions{display:flex;gap:4px;align-items:center;flex-shrink:0;margin-left:2px}
+  .wish-rec-del-btn{font-size:12px;padding:3px 6px;background:none;border:1px solid #ddd;cursor:pointer;color:var(--slate);border-radius:2px;transition:.12s}
+  .wish-rec-del-btn:hover{background:#fee;border-color:var(--rust);color:var(--rust)}
+  .wish-rec-edit-btn{font-size:12px;padding:3px 6px;background:none;border:1px solid #ddd;cursor:pointer;color:var(--slate);border-radius:2px;transition:.12s}
+  .wish-rec-edit-btn:hover{background:#eef;border-color:#7ab59b;color:#5d9980}
+  /* 위시리스트 인라인 편집 */
+  .wish-rec-edit-form{margin-top:7px;display:flex;flex-direction:column;gap:5px;padding:8px;background:#f9f4ec;border:1px solid var(--line)}
+  .wish-rec-edit-form input,.wish-rec-edit-form textarea{font-size:11.5px;border:1px solid var(--line);padding:4px 7px;background:#fff;font-family:inherit;width:100%;box-sizing:border-box}
+  .wish-rec-edit-form textarea{resize:vertical;min-height:48px}
+  .wish-rec-edit-btns{display:flex;gap:5px}
+  .wish-rec-save-btn{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 10px;background:var(--sage);color:#fff;border:none;cursor:pointer;border-radius:2px}
+  .wish-rec-cancel-btn{font-size:10.5px;font-family:'Space Mono',monospace;padding:3px 10px;background:var(--slate);color:#fff;border:none;cursor:pointer;border-radius:2px}
   .rec-item-cb{width:15px;height:15px;flex-shrink:0;accent-color:var(--rust);margin-top:2px;cursor:pointer}
   .rec-item-time{font-family:'Space Mono',monospace;font-size:10px;color:var(--rust-deep);font-weight:700;white-space:nowrap;min-width:48px;padding-top:2px}
   .rec-item-main{flex:1;min-width:0}
@@ -2633,10 +2653,29 @@ function addRecPin(lat, lng, title, color, tag){
   return m;
 }
 
+function renderRecPlaceInfoPanel(place){
+  const panel = document.getElementById('recRoutePanel');
+  if(!panel) return;
+  panel.className='rec-route-panel show info-mode';
+  const gmapBtn = place.gmapsUrl
+    ? `<a href="${place.gmapsUrl}" target="_blank" class="rec-info-btn" style="text-decoration:none" onclick="event.stopPropagation()">지도 ↗</a>`
+    : '';
+  const tagHtml = place.tag
+    ? `<span class="rec-info-tag" style="background:${place.color||'#888'}">${place.tag}</span>`
+    : '';
+  panel.innerHTML=`
+    <button class="rec-route-clear" onclick="clearRecMapSel()">✕</button>
+    <div style="padding-right:20px">${tagHtml}<b>${place.title}</b></div>
+    ${place.note ? `<div class="rec-info-note">${place.note}</div>` : ''}
+    <div class="rec-info-actions">
+      ${gmapBtn}
+    </div>
+    <div class="rec-info-hint">📍 다른 장소를 클릭하면 이동거리 비교</div>`;
+}
+
 function renderRecRoutePanel(prev, curr, transport){
   const panel = document.getElementById('recRoutePanel');
   if(!panel) return;
-  // 거리 기반 바 너비 (최대 10km = 100%)
   const barPct = Math.min(100, Math.round(transport.km/10*100));
   panel.className='rec-route-panel show';
   panel.innerHTML=`
@@ -2696,18 +2735,17 @@ function renderRecommend(){
     wishSec.className = 'wish-rec-section';
     wishSec.innerHTML = `<div class="wish-rec-title">⭐ 가고싶은 곳 <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--slate);font-weight:400">${wishVisible.length}곳</span></div>`;
 
-    wishVisible.forEach((w, idx)=>{
+    wishVisible.forEach((w, wListIdx)=>{
       const row = document.createElement('div');
       row.className = 'wish-rec-item';
 
-      // 최적 날짜 제안: 좌표 없으면 빈 날 우선, 있으면 당일 고정 일정과의 이동 최소화
+      // 최적 날짜 제안
       let suggestText = '';
       let bestDi = -1;
       const freeDays = plan.map((d,di)=>({di, cnt:d.items.filter(it=>!it._fixed).length}))
-                          .filter(x=> x.di >= 1 && x.di <= 7) // 도착일~귀국 전날
+                          .filter(x=> x.di >= 1 && x.di <= 7)
                           .sort((a,b)=>a.cnt-b.cnt);
       if(w._lat && w._lng){
-        // 고정 항목과 가장 가까운 날 탐색
         let best = null;
         freeDays.forEach(({di})=>{
           const fixed = plan[di].items.filter(it=>it._fixed && it._lat && it._lng);
@@ -2729,28 +2767,101 @@ function renderRecommend(){
       }
 
       const gmapLink = w._gmapsUrl ? `<a href="${w._gmapsUrl}" target="_blank" style="color:var(--rust);font-size:10px;margin-left:5px" onclick="event.stopPropagation()">지도 ↗</a>` : '';
+      const hasCoords = !!(w._lat && w._lng);
+      const mapHint = hasCoords ? `<span style="font-size:10px;color:var(--teal);margin-left:4px;opacity:.7">📍</span>` : '';
+
       row.innerHTML = `
         <div class="wish-rec-item-body">
-          <div class="wish-rec-item-title">${w.title}${gmapLink}</div>
+          <div class="wish-rec-item-title">${w.title}${mapHint}${gmapLink}</div>
           ${w.address?`<div class="wish-rec-item-addr">${w.address}</div>`:''}
           ${w.note?`<div class="wish-rec-item-addr" style="color:var(--slate)">${w.note}</div>`:''}
           ${suggestText?`<div class="wish-rec-item-suggest">${suggestText}</div>`:''}
         </div>
-        <button class="wish-rec-add-btn">+ 일정 추가</button>`;
+        <div class="wish-rec-actions">
+          <button class="wish-rec-edit-btn" title="수정">✏️</button>
+          <button class="wish-rec-del-btn" title="삭제">✕</button>
+          <button class="wish-rec-add-btn">+ 일정 추가</button>
+        </div>`;
 
-      // 지도 클릭
-      if(w._lat && w._lng){
-        row.querySelector('.wish-rec-item-body').addEventListener('click',()=>{
+      // 지도 클릭 + 동선 비교 참여
+      row.querySelector('.wish-rec-item-body').addEventListener('click',()=>{
+        if(!hasCoords) return;
+        clearRecPreview();
+        if(recMapCurr){
+          if(recMapPrev?.row) recMapPrev.row.classList.remove('map-prev');
+          recMapPrev = recMapCurr;
+          recMapPrev.row.classList.remove('map-active');
+          recMapPrev.row.classList.add('map-prev');
+        }
+        if(recMapCurr?.row) recMapCurr.row.classList.remove('map-active');
+        recMapCurr = {lat:w._lat, lng:w._lng, title:w.title, color:'#9b7ab5', tag:'⭐', note:w.note||w.address||'', gmapsUrl:w._gmapsUrl||null, row};
+        row.classList.add('map-active');
+        const pin = addRecPin(w._lat, w._lng, w.title, '#9b7ab5', '⭐');
+        if(recMapPrev && recMapPrev.lat && recMapPrev.lng){
+          addRecPin(recMapPrev.lat, recMapPrev.lng, recMapPrev.title, recMapPrev.color, recMapPrev.tag);
+          const t = transportBetween({lat:recMapPrev.lat, lng:recMapPrev.lng},{lat:w._lat, lng:w._lng});
+          recPreviewLayer = L.polyline(
+            [[recMapPrev.lat,recMapPrev.lng],[w._lat,w._lng]],
+            {color:'#9b7ab5', weight:3, opacity:.85, dashArray:'6 4'}
+          ).addTo(map);
+          const mid = [(recMapPrev.lat+w._lat)/2, (recMapPrev.lng+w._lng)/2];
+          L.popup({closeButton:false, className:'', offset:[0,0]})
+            .setLatLng(mid)
+            .setContent(`<div style="font-family:Space Mono,monospace;font-size:11px;font-weight:700;padding:4px 8px">${t.icon} ${t.label} ~${t.mins}분 · ${t.km.toFixed(1)}km</div>`)
+            .openOn(map);
+          renderRecRoutePanel(recMapPrev, recMapCurr, t);
+          map.fitBounds([[recMapPrev.lat,recMapPrev.lng],[w._lat,w._lng]],{padding:[55,55],maxZoom:15});
+        } else {
           map.flyTo([w._lat, w._lng], 15, {duration:.8});
-          setTab('recommend');
+          pin.openPopup();
+          renderRecPlaceInfoPanel(recMapCurr);
+        }
+      });
+
+      // 삭제 버튼
+      row.querySelector('.wish-rec-del-btn').addEventListener('click', e=>{
+        e.stopPropagation();
+        if(!confirm(`"${w.title}" 을(를) 위시리스트에서 삭제할까요?`)) return;
+        const wIdx = wishlist.findIndex(x=>x.title===w.title && x.addedAt===w.addedAt);
+        if(wIdx>=0){ wishlist.splice(wIdx,1); saveWishlist(); }
+        renderRecommend();
+      });
+
+      // 수정 버튼 → 인라인 폼 토글
+      row.querySelector('.wish-rec-edit-btn').addEventListener('click', e=>{
+        e.stopPropagation();
+        const existing = row.querySelector('.wish-rec-edit-form');
+        if(existing){ existing.remove(); return; }
+        const form = document.createElement('div');
+        form.className = 'wish-rec-edit-form';
+        form.innerHTML = `
+          <input type="text" class="wedit-title" value="${w.title.replace(/"/g,'&quot;')}" placeholder="장소명">
+          <textarea class="wedit-note" placeholder="메모 (선택)">${w.note||''}</textarea>
+          <div class="wish-rec-edit-btns">
+            <button class="wish-rec-save-btn">저장</button>
+            <button class="wish-rec-cancel-btn">취소</button>
+          </div>`;
+        form.addEventListener('click', e=>e.stopPropagation());
+        row.querySelector('.wish-rec-item-body').appendChild(form);
+        form.querySelector('.wish-rec-save-btn').addEventListener('click', ()=>{
+          const newTitle = form.querySelector('.wedit-title').value.trim();
+          const newNote = form.querySelector('.wedit-note').value.trim();
+          if(!newTitle) return;
+          const wIdx = wishlist.findIndex(x=>x.title===w.title && x.addedAt===w.addedAt);
+          if(wIdx>=0){
+            wishlist[wIdx].title = newTitle;
+            wishlist[wIdx].note = newNote;
+            saveWishlist();
+          }
+          renderRecommend();
         });
-      }
+        form.querySelector('.wish-rec-cancel-btn').addEventListener('click', ()=>form.remove());
+      });
 
       // 추가 버튼 → 날짜 선택 드롭다운 inline
       const addBtn = row.querySelector('.wish-rec-add-btn');
       addBtn.addEventListener('click', e=>{
         e.stopPropagation();
-        // 이미 열린 드롭다운이 있으면 닫기
         const existing = row.querySelector('.wish-rec-day-sel');
         if(existing){ existing.remove(); return; }
         const sel = document.createElement('div');
@@ -2883,7 +2994,7 @@ function renderRecommend(){
 
           // 현재 항목 설정
           if(recMapCurr?.row) recMapCurr.row.classList.remove('map-active');
-          recMapCurr = {lat:it._lat, lng:it._lng, title:it.title, color:dayColor, tag:it.tag, row};
+          recMapCurr = {lat:it._lat, lng:it._lng, title:it.title, color:dayColor, tag:it.tag, note:it.note, gmapsUrl:it._gmapsUrl||null, row};
           row.classList.add('map-active');
 
           // 현재 핀 표시
@@ -2918,9 +3029,10 @@ function renderRecommend(){
               {padding:[55,55], maxZoom:15}
             );
           } else {
-            // 첫 클릭: 해당 위치로 이동
+            // 첫 클릭: 해당 위치로 이동 + 장소 정보 패널 표시
             map.flyTo([it._lat, it._lng], 15, {duration:.8});
             pin.openPopup();
+            renderRecPlaceInfoPanel(recMapCurr);
           }
         });
 
