@@ -361,12 +361,35 @@
   .leaflet-container{font-family:'Archivo',sans-serif}
   .map-legend{
     position:absolute;top:18px;right:18px;z-index:500;background:var(--cream);
-    border:2px solid var(--ink);padding:12px 14px;box-shadow:4px 4px 0 var(--shadow);
-    max-width:200px;
+    border:2px solid var(--ink);padding:10px 12px 12px;box-shadow:5px 5px 0 var(--shadow);
+    max-width:230px;min-width:190px;
   }
-  .map-legend h4{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-  .leg-row{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:2px 0;cursor:pointer}
-  .leg-row:hover{font-weight:700}
+  .map-legend h4{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;color:var(--ink)}
+  /* 날짜 범례 행 */
+  .leg-row{display:flex;align-items:center;gap:7px;font-size:11px;padding:2.5px 0;cursor:pointer;border-radius:2px;transition:.12s}
+  .leg-row:hover{background:rgba(0,0,0,.04);padding-left:3px}
+  /* 날짜 뱃지: 컬러 사각 + 날짜 텍스트 */
+  .leg-day-badge{
+    flex-shrink:0;width:40px;height:18px;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;color:#fff;
+    letter-spacing:.02em;border:1.5px solid rgba(0,0,0,.2);
+  }
+  /* 지구 범례 행 */
+  .leg-dist-row{display:flex;align-items:center;gap:7px;font-size:10.5px;padding:2px 0;cursor:pointer;border-radius:2px;transition:.12s}
+  .leg-dist-row:hover{background:rgba(0,0,0,.04);padding-left:3px}
+  .leg-dist-sq{width:12px;height:12px;flex-shrink:0;border-radius:1px;border:1.5px solid rgba(0,0,0,.25)}
+  /* 섹션 헤더 */
+  .leg-section-head{
+    font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.12em;
+    color:var(--slate);opacity:.7;padding:6px 0 3px;border-top:1px solid var(--line);margin-top:4px;
+    text-transform:uppercase;
+  }
+  /* 숙소 행 */
+  .leg-stay-row{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;padding:3px 0 5px;cursor:pointer;border-bottom:1px solid var(--line);margin-bottom:4px}
+  .leg-stay-dot{width:18px;height:18px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ochre);flex-shrink:0}
+  /* 호버 시 지도 이동 표시 */
+  .leg-row:hover .leg-day-badge::after,.leg-dist-row:hover .leg-dist-sq::after{content:'▶'}
   .leg-dot{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--ink)}
   .map-title{
     position:absolute;bottom:18px;left:18px;z-index:500;background:var(--ink);
@@ -402,7 +425,7 @@
   .pin.home{background:var(--ink);width:30px;height:30px}
   .pin.home span{color:var(--ochre);font-size:14px}
 
-  /* ── 장소별 핀 (카테고리 아이콘 + 날짜 색상) ── */
+  /* ── 장소별 핀 (순번 + 카테고리 아이콘 + 날짜 색상) ── */
   .plan-pin{
     border-radius:50% 50% 50% 0;transform:rotate(-45deg);
     display:flex;align-items:center;justify-content:center;
@@ -411,6 +434,26 @@
     width:30px;height:30px;
   }
   .plan-pin span{transform:rotate(45deg);font-size:14px;line-height:1}
+  /* ── 새 핀: 순번+아이콘 수직 배치 ── */
+  .ppv2{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    width:36px;border-radius:6px 6px 0 0;padding:3px 4px 2px;
+    border:2px solid rgba(0,0,0,.4);box-shadow:0 3px 8px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.2);
+    position:relative;
+  }
+  .ppv2::after{
+    content:'';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
+    border-left:6px solid transparent;border-right:6px solid transparent;
+    border-top:7px solid var(--ppbg,#c8492a);
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
+  }
+  .ppv2-num{
+    font-family:'Space Mono',monospace;font-size:9px;font-weight:700;color:#fff;
+    line-height:1;opacity:.9;letter-spacing:-.02em;
+  }
+  .ppv2-ico{font-size:13px;line-height:1.1}
+  /* ── 고정 핀: 자물쇠 모양 + 두꺼운 테두리 ── */
+  .ppv2.fixed-pin{border-width:2.5px;border-style:solid}
 
   /* ── 지구 라벨 ── */
   .dist-lbl{
@@ -1553,17 +1596,25 @@ function clearPlanPins(){
 function renderPlanMarkers(di){
   clearPlanPins();
   const dayColor = DAY_COLORS[di]||'#c8492a';
+  let seq = 0;
   plan[di].items.forEach((it)=>{
     const coords = getItemCoords(it);
     if(!coords) return;
+    seq++;
     const catIcon = getCategoryIcon(it);
+    const isFixed = !!it._fixed;
+    const borderColor = isFixed ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.3)';
+    const numLabel = isFixed ? '🔒' : seq;
     const icon = L.divIcon({
       className:'',
-      html:`<div class="plan-pin" style="background:${dayColor}"><span>${catIcon}</span></div>`,
-      iconSize:[30,30], iconAnchor:[15,30], popupAnchor:[0,-32]
+      html:`<div class="ppv2${isFixed?' fixed-pin':''}" style="--ppbg:${dayColor};background:${dayColor};border-color:${borderColor}">
+        <span class="ppv2-num">${numLabel}</span>
+        <span class="ppv2-ico">${catIcon}</span>
+      </div>`,
+      iconSize:[36,44], iconAnchor:[18,44], popupAnchor:[0,-46]
     });
     const m = L.marker([coords.lat,coords.lng],{icon}).addTo(map);
-    m.bindPopup(`<div class="pop-name">${it.title}</div><div class="pop-desc">${it.time||''}${it.note?' · '+it.note:''}<br><b style="color:${dayColor}">${plan[di].date}</b></div>`);
+    m.bindPopup(`<div class="pop-name">${catIcon} ${it.title}</div><div class="pop-desc">${it.time?`<b>${it.time}</b> · `:''}${it.note||''}<br><span style="display:inline-block;margin-top:4px;background:${dayColor};color:#fff;padding:1px 6px;font-family:'Space Mono',monospace;font-size:10px;border-radius:1px">${plan[di].date}</span></div>`);
     planPinLayer.push(m);
   });
 }
@@ -2561,8 +2612,8 @@ function addRecPin(lat, lng, title, color, tag){
   const emoji = (tag||'').match(/\p{Emoji_Presentation}|\p{Emoji}️/u)?.[0] || '📍';
   const icon = L.divIcon({
     className:'',
-    html:`<div class="plan-pin" style="background:${color};box-shadow:0 0 0 3px rgba(155,122,181,.5)"><span>${emoji}</span></div>`,
-    iconSize:[30,30], iconAnchor:[15,30], popupAnchor:[0,-32]
+    html:`<div class="ppv2" style="--ppbg:${color};background:${color};border-color:rgba(155,122,181,.6);box-shadow:0 0 0 2px rgba(155,122,181,.35),0 3px 8px rgba(0,0,0,.3)"><span class="ppv2-num" style="opacity:.75">✦</span><span class="ppv2-ico">${emoji}</span></div>`,
+    iconSize:[36,44], iconAnchor:[18,44], popupAnchor:[0,-46]
   });
   const m = L.marker([lat,lng],{icon,zIndexOffset:500}).addTo(map);
   m.bindPopup(`<div class="pop-name">${title}</div><div class="pop-desc" style="color:${color}">✦ 추천 일정 미리보기</div>`);
@@ -4488,7 +4539,7 @@ stayMarker.bindPopup(`<div class="pop-name">🏠 ${STAY.name}</div><div class="p
 markers['stay']=stayMarker;
 
 // SALU 고정 마커
-const saluIcon=L.divIcon({className:'',html:`<div class="plan-pin" style="background:${DAY_COLORS[2]}"><span>🍽</span></div>`,iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-32]});
+const saluIcon=L.divIcon({className:'',html:`<div class="ppv2 fixed-pin" style="--ppbg:${DAY_COLORS[2]};background:${DAY_COLORS[2]};border-color:rgba(0,0,0,.5)"><span class="ppv2-num">🔒</span><span class="ppv2-ico">🍽</span></div>`,iconSize:[36,44],iconAnchor:[18,44],popupAnchor:[0,-46]});
 const saluMarker=L.marker([55.665398,12.550298],{icon:saluIcon}).addTo(map);
 saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73, 1720 København</div>`);
 markers['salu']=saluMarker;
@@ -4509,34 +4560,46 @@ markers['salu']=saluMarker;
   });
 })();
 
-// ── 범례: 날짜별 색상 + 숙소/SALU
+// ── 범례: 날짜별 색상 + 숙소 + 지구
 const leg=document.getElementById('legend');
 leg.innerHTML='';
 
-// 숙소·SALU
-const stayRow=document.createElement('div'); stayRow.className='leg-row';
-stayRow.innerHTML=`<span class="leg-dot" style="background:#1a1714">★</span><b>우리 숙소</b>`;
-stayRow.style.cssText='border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:5px;cursor:pointer';
-stayRow.onclick=()=>{map.flyTo([STAY.lat,STAY.lng],15,{duration:1});stayMarker.openPopup()};
+// 숙소
+const stayRow=document.createElement('div'); stayRow.className='leg-stay-row';
+stayRow.innerHTML=`<span class="leg-stay-dot">★</span><span>우리 숙소</span>`;
+stayRow.title='클릭하면 숙소 위치로 이동';
+stayRow.onclick=()=>{map.flyTo([STAY.lat,STAY.lng],16,{duration:1});stayMarker.openPopup()};
 leg.appendChild(stayRow);
 
 // 날짜별 범례
+const planHead=document.createElement('div'); planHead.className='leg-section-head';
+planHead.textContent='PLAN — 날짜별 이동';
+leg.appendChild(planHead);
+
+// 날짜 약칭 (뱃지용)
+const DAY_SHORT=['6/8','6/9','6/10','6/11','6/12','6/13','6/14','6/15','6/16'];
+const DAY_SUBLABEL=['출발','도착','Fest①','Fest②','Fest③','자유','근교','자유','귀국'];
+
 DAY_COLORS.forEach((color,i)=>{
   const r=document.createElement('div'); r.className='leg-row';
-  r.style.cursor='pointer';
-  r.innerHTML=`<span class="leg-dot" style="background:${color}">●</span><span style="font-size:10px">${DAY_LABELS[i]}</span>`;
+  r.title=`${DAY_LABELS[i]} — 클릭하면 일정 지도 표시`;
+  r.innerHTML=`
+    <span class="leg-day-badge" style="background:${color}">${DAY_SHORT[i]}</span>
+    <span>${DAY_SUBLABEL[i]}</span>`;
   r.onclick=()=>{ currentVisDay=i; updateDayViz(i); setTab('plan'); };
   leg.appendChild(r);
 });
 
-// 지구 목록 (구분선 후)
-const distHead=document.createElement('div');
-distHead.style.cssText='font-family:Space Mono,monospace;font-size:9px;font-weight:700;letter-spacing:.1em;opacity:.5;padding:6px 0 3px;border-top:1px solid var(--line);margin-top:4px';
+// 지구 목록
+const distHead=document.createElement('div'); distHead.className='leg-section-head';
 distHead.textContent='8 DISTRICTS';
 leg.appendChild(distHead);
 DISTRICTS.forEach((d,i)=>{
-  const r=document.createElement('div'); r.className='leg-row'; r.style.cursor='pointer';
-  r.innerHTML=`<span class="leg-dot" style="background:${d.color};border-radius:50%"></span><span style="font-size:10px">${i+1}. ${d.name}</span>`;
+  const r=document.createElement('div'); r.className='leg-dist-row';
+  r.title=`${d.name} — ${d.desc}`;
+  r.innerHTML=`
+    <span class="leg-dist-sq" style="background:${d.color}"></span>
+    <span>${i+1}. ${d.name}</span>`;
   r.onclick=()=>{map.flyTo([d.lat,d.lng],14.5,{duration:1});markers[d.key].openPopup()};
   leg.appendChild(r);
 });
