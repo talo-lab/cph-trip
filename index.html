@@ -3108,6 +3108,7 @@ function renderRecommend(){
           sortDayByTime(di); savePlan();
           const wIdx = wishlist.findIndex(x=>x.title===w.title && x.addedAt===w.addedAt);
           if(wIdx>=0){ wishlist.splice(wIdx,1); saveWishlist(); }
+          currentVisDay = di;
           setTab('plan');
           requestAnimationFrame(()=>{
             document.getElementById(`body-${di}`)?.closest('.day')?.scrollIntoView({behavior:'smooth',block:'start'});
@@ -4499,6 +4500,7 @@ function renderAdd(){
         });
         sortDayByTime(di); savePlan();
         wishlist.splice(idx,1); saveWishlist();
+        currentVisDay = di;
         setTab('plan');
         requestAnimationFrame(()=>{
           document.getElementById(`body-${di}`)?.closest('.day')?.scrollIntoView({behavior:'smooth',block:'start'});
@@ -4531,6 +4533,18 @@ function renderAdd(){
     const val=this.value.trim();
     const prev=document.getElementById('wishLinkPreview');
     if(!val||!val.startsWith('http')){ prev.style.display='none'; _wishConfirmed=null; return; }
+    // 단축 URL 감지
+    if(/maps\.app\.goo\.gl|goo\.gl\/maps/.test(val)){
+      prev.style.display='block';
+      document.getElementById('wishGmapsName').value='';
+      document.getElementById('wishGmapsName').placeholder='장소명 직접 입력...';
+      document.getElementById('wishLinkCoords').textContent='⚠ 단축 URL은 좌표를 읽을 수 없어요. 구글맵에서 장소를 열고 주소창의 전체 URL을 복사해 주세요.';
+      document.getElementById('wishLinkCoords').style.color='#c8492a';
+      _wishConfirmed={_gmapsUrl:val, address:''};
+      document.getElementById('wishGmapsName').oninput=()=>{ if(_wishConfirmed) _wishConfirmed.title=document.getElementById('wishGmapsName').value.trim(); };
+      return;
+    }
+    document.getElementById('wishLinkCoords').style.color='';
     const parsed=parseGmapsUrl(val);
     if(!parsed){ prev.style.display='none'; _wishConfirmed=null; return; }
     _wishConfirmed={...parsed, address:''}; // 좌표는 내부에만, address는 사용자가 입력
