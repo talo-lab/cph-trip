@@ -860,6 +860,7 @@
     position:absolute;bottom:0;left:0;right:0;z-index:300;
     background:var(--cream);border-top:2px solid var(--teal);
     transform:translateY(100%);transition:transform .22s cubic-bezier(.4,0,.2,1);
+    overflow:hidden;max-width:100%;
   }
   .item-drawer.open{transform:translateY(0)}
   .drawer-head{
@@ -869,9 +870,10 @@
   .drawer-label{flex:1;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
   .drawer-close{background:none;border:none;cursor:pointer;font-size:15px;color:var(--slate);padding:2px 4px;line-height:1}
   .drawer-close:hover{color:var(--rust)}
-  .drawer-row{display:flex;gap:0;padding:8px 14px 12px;align-items:flex-end}
+  .drawer-row{display:flex;gap:0;padding:8px 14px 12px;align-items:flex-end;overflow:hidden;min-width:0}
   .drawer-input{
-    flex:1;border:1.5px solid var(--ink);border-right:none;background:#fff;
+    flex:1;min-width:0;width:0;box-sizing:border-box;/* flex overflow 방지 */
+    border:1.5px solid var(--ink);border-right:none;background:#fff;
     padding:8px 10px;font-family:'Archivo';font-size:13px;resize:none;
     min-height:42px;max-height:100px;line-height:1.4;color:var(--ink);
   }
