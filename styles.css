@@ -145,7 +145,7 @@
   .item-note{font-size:12px;color:var(--slate);margin-top:2px;line-height:1.35}
   .item-note[contenteditable]:focus{outline:none;background:#fff4d6;box-shadow:0 0 0 2px var(--ochre);border-radius:3px}
   .item-dist{display:inline-block;font-size:10px;font-family:'Space Mono',monospace;color:var(--cream);background:var(--sage);padding:1px 5px;margin-top:4px;letter-spacing:.03em}
-  .item-walk{display:flex;align-items:center;gap:6px;padding:3px 20px;font-size:10.5px;font-family:'Space Mono',monospace;color:var(--slate);opacity:.75;cursor:pointer;transition:background .1s}
+  .item-walk{display:flex;align-items:center;gap:6px;padding:3px 20px;font-size:10.5px;font-family:'Space Mono',monospace;color:var(--slate);opacity:.75;cursor:pointer;transition:background .1s;touch-action:manipulation}
   .item-walk:hover{opacity:1;background:rgba(47,107,107,.04)}
   .item-walk.has-override{background:rgba(47,107,107,.06)}
   .item-walk.has-override .item-walk-label{color:var(--teal)}

@@ -1650,6 +1650,15 @@ function toggleWalkPicker(walkEl, di, ii) {
     });
 
   walkEl.after(picker);
+  // 모바일에서 picker가 스크롤 영역 밖에 있으면 보이도록 스크롤
+  setTimeout(() => {
+    const scrollEl = document.getElementById('scroll');
+    const pr = picker.getBoundingClientRect();
+    const sr = scrollEl ? scrollEl.getBoundingClientRect() : null;
+    if (sr && pr.bottom > sr.bottom) {
+      scrollEl.scrollTop += pr.bottom - sr.bottom + 8;
+    }
+  }, 50);
 }
 
 /* 날짜 퀵점프 바 — plan 탭 최상단 sticky 칩 */
@@ -1956,6 +1965,7 @@ function renderPlan(){
       animation:150,
       handle:'.drag-handle',
       filter:'.item-walk,.day-gap-section,.add-item',
+      preventOnFilter:false, // 필터 요소(item-walk 등)에서 click 이벤트 차단하지 않음 (모바일 picker 동작 필수)
       ghostClass:'sortable-ghost',
       chosenClass:'sortable-chosen',
       dragClass:'sortable-drag',
