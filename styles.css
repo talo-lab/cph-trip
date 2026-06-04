@@ -1348,6 +1348,28 @@
     .sub{font-size:9.5px}
   }
 
+  /* ============ NEWS TICKER ============ */
+  .ticker-wrap{
+    height:22px;overflow:hidden;background:var(--ink);
+    flex-shrink:0;position:relative;z-index:2;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .ticker-track{
+    display:inline-flex;align-items:center;height:22px;
+    white-space:nowrap;animation:tickerScroll 30s linear infinite;
+    padding-left:8px;
+  }
+  .ticker-track:hover{animation-play-state:paused}
+  @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .ticker-item{
+    font-family:'Space Mono',monospace;font-size:9px;
+    color:var(--cream);letter-spacing:.05em;opacity:.8;
+  }
+  .ticker-item a{color:var(--ochre);text-decoration:none}
+  .ticker-item a:hover{text-decoration:underline;opacity:1}
+  .ticker-sep{color:var(--teal);opacity:.55;padding:0 10px;font-size:9px}
+  @media(max-width:820px){.ticker-wrap{height:20px}.ticker-track{height:20px}.ticker-item{font-size:8.5px}}
+
   /* ============ DAY JUMP BAR ============ */
   .day-jump-bar{
     position:sticky;top:0;z-index:20;

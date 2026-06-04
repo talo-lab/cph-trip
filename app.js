@@ -5785,6 +5785,39 @@ function clearFestMarkers(){
   init();
 })();
 
+/* ---------- NEWS TICKER ---------- */
+function updateTicker(items) {
+  const wrap  = document.getElementById('tickerWrap');
+  const track = document.getElementById('tickerTrack');
+  if (!wrap || !track || !items?.length) return;
+
+  // 각 항목 HTML 생성 (링크 있으면 <a>)
+  const makeItems = () => items.map((it, i) => {
+    const label = it.url
+      ? `<a href="${it.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${it.text}</a>`
+      : it.text;
+    return `<span class="ticker-item">${label}</span>`
+         + (i < items.length - 1 ? '<span class="ticker-sep">·</span>' : '');
+  }).join('');
+
+  // 내용 2배 복사 → translateX(-50%) 무한 루프 시 seamless
+  track.innerHTML = makeItems() + '<span class="ticker-sep">·</span>' + makeItems();
+
+  // 텍스트 길이에 비례한 속도 (짧으면 빠르게, 길면 천천히)
+  const totalLen = items.map(i => i.text).join('').length;
+  track.style.animationDuration = Math.max(20, Math.round(totalLen * 0.22)) + 's';
+
+  wrap.style.display = 'block';
+}
+
+async function loadNewsTicker() {
+  try {
+    const r = await fetch('/api/news');
+    if (!r.ok) return;
+    updateTicker(await r.json());
+  } catch(e) { /* 네트워크 오류 시 티커 숨김 유지 */ }
+}
+
 /* ---------- SERVICE WORKER ---------- */
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(()=>{});
@@ -5959,6 +5992,9 @@ async function initApp(){
   patchNewItems();
   updateUserSelector();
   setTab('plan');
+  // 뉴스 티커: 로드 즉시 + 15분마다 갱신
+  loadNewsTicker();
+  setInterval(loadNewsTicker, 15 * 60 * 1000);
 }
 
 /* ---------- INIT ---------- */
