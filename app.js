@@ -156,7 +156,8 @@ function extractStationWalk(note) {
  * _gmapsUrl 수동 지정이 있으면 최우선 사용
  * ① 제목에 "→"      → 경로(origin → dest) URL
  * ② note에 "역에서 도보" → 역 → 목적지 도보 경로
- * ③ 나머지          → 장소 검색 URL */
+ * ③ 좌표(_lat/_lng) 있으면 → 좌표 기반 검색 (한글 제목 오탐 방지)
+ * ④ 나머지          → 텍스트 검색 URL */
 function gMapsUrlForItem(it) {
   if (it._gmapsUrl) return it._gmapsUrl;
   const title = it.title || '';
@@ -173,11 +174,16 @@ function gMapsUrlForItem(it) {
   // ② 역 → 목적지 도보 (note에 "X역에서 도보" 있는 경우)
   const station = extractStationWalk(note);
   if (station) {
-    const dest = gMapsQuery(it);
+    const dest = it._lat ? `${it._lat},${it._lng}` : gMapsQuery(it);
     return gMapsDir(`${station} Station, Denmark`, dest, 'walking');
   }
 
-  // ③ 일반 장소 검색
+  // ③ 좌표가 있으면 좌표 기반 URL (한글 검색어 오탐 방지)
+  if (it._lat && it._lng) {
+    return `https://www.google.com/maps/search/?api=1&query=${it._lat},${it._lng}`;
+  }
+
+  // ④ 텍스트 검색 (영문 주소/장소명 우선)
   return gMapsUrl(gMapsQuery(it));
 }
 
