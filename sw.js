@@ -112,8 +112,21 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // ── /api/ 엔드포인트: 네트워크 우선, 8초 타임아웃 후 503 JSON ──
-  // plan.js, auth.js 등은 캐시 불가 (동적 데이터)
+  // ── /api/extract (AI): Anthropic API 최대 30초 → SW 타임아웃 35초 ──
+  // 8초로 자르면 AI 응답 전에 SW가 연결을 끊어버려 500 오류 발생
+  if (url.pathname === '/api/extract') {
+    e.respondWith(
+      fetchWithTimeout(e.request, 35_000).catch(() =>
+        new Response(
+          JSON.stringify({ error: 'timeout', message: 'AI 응답 시간이 초과됐습니다. 다시 시도해 주세요.' }),
+          { status: 503, headers: { 'Content-Type': 'application/json' } }
+        )
+      )
+    );
+    return;
+  }
+
+  // ── 나머지 /api/ 엔드포인트: 8초 타임아웃 (plan, auth, geocode 등) ──
   if (url.pathname.startsWith('/api/')) {
     e.respondWith(
       fetchWithTimeout(e.request, 8000).catch(() =>
