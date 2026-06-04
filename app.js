@@ -1843,7 +1843,12 @@ function renderPlan(){
           if(t.km >= 0.05){
             const walk = document.createElement('div');
             walk.className='item-walk';
-            walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km`;
+            // [상효], [미주] 접두사·화살표 이후 텍스트 제거 후 최대 14자 줄임
+            const _clip = s => s.replace(/^\[.*?\]\s*/,'').replace(/\s*→.*$/,'').trim();
+            const fromLabel = _clip(it.title).substring(0,14);
+            const toLabel   = _clip(nextIt.title).substring(0,14);
+            const _esc = s => s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+            walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km<span class="item-walk-route" title="${_esc(it.title)} → ${_esc(nextIt.title)}">${fromLabel} → ${toLabel}</span>`;
             body.appendChild(walk);
           }
         }

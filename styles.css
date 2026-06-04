@@ -150,6 +150,15 @@
   .item-walk::after{content:'';display:block;flex:1;height:1px;background:var(--slate);opacity:.12}
   .item-walk-icon{font-size:12px}
   .item-walk-label{font-weight:700;letter-spacing:.04em}
+  /* 이동 출발지 → 목적지 레이블
+     order:1로 ::after(장식선, flex:1) 다음에 배치 → 선이 가운데 채워지고 라우트는 우측 끝 */
+  .item-walk-route{
+    order:1;flex-shrink:0;padding-left:6px;
+    font-size:9.5px;font-family:'Space Mono',monospace;font-weight:400;
+    color:var(--slate);opacity:.65;
+    max-width:44%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    letter-spacing:.01em;cursor:default;
+  }
 
   /* ── 빈 시간 추천 ── */
   .day-gap-section{padding:6px 16px 10px;border-top:1px dashed var(--line);background:rgba(93,116,86,.04)}
