@@ -1836,20 +1836,23 @@ function renderPlan(){
       // 연속 항목 간 이동수단 + 거리 표시 (실제 _lat/_lng 있는 항목만, 50m 이상만)
       const nextIt = day.items[ii+1];
       if(nextIt){
-        const cA = (it._lat && it._lng) ? {lat:it._lat, lng:it._lng} : null;
+        // 달리기 코스는 숙소로 귀환하는 루프 — 출발점을 숙소 좌표로 대체
+        const isRun = !!it._runningCourse;
+        const cA = isRun ? {lat:STAY.lat, lng:STAY.lng}
+                         : (it._lat && it._lng) ? {lat:it._lat, lng:it._lng} : null;
         const cB = (nextIt._lat && nextIt._lng) ? {lat:nextIt._lat, lng:nextIt._lng} : null;
         if(cA && cB){
+          const fromTitle = isRun ? '숙소' : it.title;
           const hour = timeToMin(it.time) / 60;
-          const t = transportBetween(cA, cB, {hour, fromTitle:it.title, toTitle:nextIt.title});
+          const t = transportBetween(cA, cB, {hour, fromTitle, toTitle:nextIt.title});
           if(t.km >= 0.05){
             const walk = document.createElement('div');
             walk.className='item-walk';
-            // [상효], [미주] 접두사·화살표 이후 텍스트 제거 후 최대 14자 줄임
             const _clip = s => s.replace(/^\[.*?\]\s*/,'').replace(/\s*→.*$/,'').trim();
-            const fromLabel = _clip(it.title).substring(0,14);
+            const fromLabel = isRun ? '숙소' : _clip(it.title).substring(0,14);
             const toLabel   = _clip(nextIt.title).substring(0,14);
             const _esc = s => s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
-            walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km<span class="item-walk-route" title="${_esc(it.title)} → ${_esc(nextIt.title)}">${fromLabel} → ${toLabel}</span>`;
+            walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km<span class="item-walk-route" title="${_esc(fromTitle)} → ${_esc(nextIt.title)}">${fromLabel} → ${toLabel}</span>`;
             body.appendChild(walk);
           }
         }
