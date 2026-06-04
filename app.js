@@ -555,6 +555,43 @@ function _placeHoverPin(title, note, lat, lng){
   ).openPopup();
   map.flyTo([lat,lng],15,{duration:.45});
 }
+
+// ── 추천 카드 선택(클릭) 시 지속 핀 ──
+let _selectedOptPin = null;
+let _selectedOptCoords = null; // {lat,lng} 캐시
+
+function _clearSelectedOptPin(){
+  if(_selectedOptPin){ try{ map.removeLayer(_selectedOptPin); }catch(e){} _selectedOptPin=null; }
+  _selectedOptCoords = null;
+}
+
+async function _showSelectedOptPin(title, note){
+  _clearSelectedOptPin();
+  _clearHoverPin(); // 호버 핀 중복 제거
+
+  // 캐시 먼저 조회
+  let coords = _hoverGeoCache[title];
+  if(!coords){
+    coords = await nominatimGeocode(title);
+    _hoverGeoCache[title] = coords;
+  }
+  if(!coords) return;
+  _selectedOptCoords = coords;
+
+  const icon = L.divIcon({
+    className:'',
+    html:`<div class="sel-opt-pin-label"><span class="sel-opt-plus">＋</span>${title}</div>`,
+    iconAnchor:[8, 28]
+  });
+  _selectedOptPin = L.marker([coords.lat, coords.lng], {icon, zIndexOffset:700}).addTo(map);
+  _selectedOptPin.bindPopup(
+    `<div class="pop-name">📍 ${title}</div>` +
+    `<div class="pop-desc">${note||''}</div>` +
+    `<div style="margin-top:5px;font-size:10px;font-family:'Space Mono',monospace;color:var(--teal);display:inline-block;padding:1px 6px;border:1px solid var(--teal);border-radius:2px">+ 일정 추가 예정</div>`
+  ).openPopup();
+  map.flyTo([coords.lat, coords.lng], 15, {duration:.6});
+}
+
 const exhGeoCache = {};     // address -> {lat,lng}
 
 function clearRunRouteLayers(){
@@ -4512,6 +4549,8 @@ document.getElementById('drawerPinReset')?.addEventListener('click', async ()=>{
 function closeDrawer(){
   document.getElementById('itemDrawer').classList.remove('open');
   drawerContext = null;
+  _clearSelectedOptPin();
+  _clearHoverPin();
 }
 
 /* 질문 vs 명령 판별 — 명확한 플랜 편집 지시어만 command, 나머지는 question */
@@ -4648,10 +4687,10 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
   // 닫기 버튼
   const closeBtn = document.createElement('button');
   closeBtn.className='drawer-dismiss-btn'; closeBtn.textContent='닫기';
-  closeBtn.onclick=()=>{ resp.classList.remove('show'); };
+  closeBtn.onclick=()=>{ resp.classList.remove('show'); _clearSelectedOptPin(); };
   actEl.appendChild(closeBtn);
 
-  document.getElementById('drawerDismiss2').onclick=()=>resp.classList.remove('show');
+  document.getElementById('drawerDismiss2').onclick=()=>{ resp.classList.remove('show'); _clearSelectedOptPin(); };
 
   // 확정 바 초기화
   const daySelEl = document.getElementById('confirmDay');
@@ -4663,13 +4702,16 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
     const dIdx  = +document.getElementById('confirmDay').value;
     if(!title) return;
     const newItem = {time,title,note:_currentOptNote||'',dist:'',_user:true,_addedBy:currentUser,_personal:false,_with:['miju','sanghyo']};
+    // 선택 핀의 캐시 좌표가 있으면 바로 적용 (geocoding 생략)
+    if(_selectedOptCoords){ newItem._lat = _selectedOptCoords.lat; newItem._lng = _selectedOptCoords.lng; }
     plan[dIdx].items.push(newItem);
     sortDayByTime(dIdx); savePlan(); renderPlan();
+    _clearSelectedOptPin();
     resp.classList.remove('show');
     st.className='drawer-status show ok'; st.textContent='✓ 일정에 추가됐어요!';
     setTimeout(closeDrawer,1400);
-    // 백그라운드 좌표 자동 등록
-    geocodePlanItem(newItem, dIdx);
+    // 백그라운드 좌표 자동 등록 (캐시 없는 경우 fallback)
+    if(!newItem._lat) geocodePlanItem(newItem, dIdx);
   };
 
   // ── 단일 추천 ──
@@ -4696,13 +4738,15 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
         ${opt.tip?`<div class="opt-note" style="color:var(--rust-deep);font-size:11px">⚑ ${opt.tip}</div>`:''}
         ${tags?`<div class="opt-tags">${tags}</div>`:''}`;
 
-      // 호버 시 지도에 임시 핀 표시
-      card.addEventListener('mouseenter',()=>_showHoverPin(opt.title, opt.note));
+      // 호버: 임시 핀 (선택된 카드가 없을 때만)
+      card.addEventListener('mouseenter',()=>{ if(!card.classList.contains('selected')) _showHoverPin(opt.title, opt.note); });
       card.addEventListener('mouseleave',()=>_clearHoverPin());
 
       card.addEventListener('click',()=>{
         optEl.querySelectorAll('.drawer-opt-card').forEach(c=>c.classList.remove('selected'));
         card.classList.add('selected');
+        // 선택 시 지도에 지속 핀 표시
+        if(opt.action !== 'delete' && opt.action !== 'cancel') _showSelectedOptPin(opt.title, opt.note);
 
         // 삭제 액션
         if(opt.action==='delete'){
