@@ -405,7 +405,7 @@ const DEFAULT_PLAN = [
   // DAY 2 — 6/10 (Festival Day 1)
   {date:'6/10 (수)', tag:'페스티벌 1일차', fest:true, items:[
     {time:'07:00', title:'🏃 아침 달리기 — 호수 이스트 루프 5km', note:'숙소 → Åboulevard → 상트요르겐스 호수 북쪽 → 페블링에 호수 동쪽 반바퀴 → 귀숙 · 약 30분 · 완전 평탄 포장', dist:'', _lat:55.6801, _lng:12.5631, _runningCourse:true, ...RUNNING_ROUTES[2]},
-    {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _dk:'islands', _fixed:true},
+    {time:'17:00', title:'🍽 Food & Music with SALU (예약 완료)', note:'소셜 다이닝 3명 · Folkehuset Absalon, Sønder Blvd. 73, 1720 København · 17:00–20:00 · QR코드 보유 · 숙소 도보권', dist:'고정 일정', _lat:55.665398, _lng:12.550298, _fixed:true},
   ]},
   // DAY 3 — 6/11 (Festival Day 2)
   {date:'6/11 (목)', tag:'페스티벌 2일차', fest:true, items:[
@@ -573,13 +573,42 @@ function _placeExhPin(ex, lat, lng, color){
 async function geocodePlanItem(item, di){
   if(item._lat && item._lng) return;
 
-  // 1. 숙소/복귀 키워드 → STAY 좌표 즉시
+  // 1a. 숙소/복귀 키워드 → STAY 좌표 즉시
   const stayKw = /숙소|체크인|체크아웃|airbnb|에어비앤비|호텔|hotel|check.?in|check.?out/i;
   if(stayKw.test(item.title) || stayKw.test(item.note||'')){
     item._lat = STAY.lat; item._lng = STAY.lng;
     savePlan();
     if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
     return;
+  }
+
+  // 1b. 한국어 랜드마크 → 고정 좌표 즉시 (지오코딩 생략)
+  const txt = (item.title + ' ' + (item.note||'')).toLowerCase();
+  const KO_LANDMARKS = [
+    {re:/중앙역|코펜하겐역|central station|left luggage|kobenhavn h|københavn h/i,
+      lat:55.6723, lng:12.5647},
+    {re:/공항|airport|cph t[12]/i,
+      lat:55.6180, lng:12.6560},
+    {re:/뉘하운|nyhavn/i,
+      lat:55.6797, lng:12.5913},
+    {re:/티볼리|tivoli/i,
+      lat:55.6736, lng:12.5681},
+    {re:/크리스티아니아|christiania/i,
+      lat:55.6729, lng:12.5946},
+    {re:/reffen|레펜/i,
+      lat:55.6915, lng:12.6045},
+    {re:/루이지애나|louisiana 현대/i,
+      lat:55.9695, lng:12.5430},
+    {re:/운하|canal tour|카날/i,
+      lat:55.6797, lng:12.5813},
+  ];
+  for(const lm of KO_LANDMARKS){
+    if(lm.re.test(txt)){
+      item._lat = lm.lat; item._lng = lm.lng;
+      savePlan();
+      if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
+      return;
+    }
   }
 
   // 2. 헬퍼: 한국어 및 이모지·이동시간 표현 제거
@@ -639,7 +668,7 @@ function renderPlanMarkers(di){
   clearPlanPins();
   const dayColor = DAY_COLORS[di]||'#c8492a';
   let seq = 0;
-  plan[di].items.forEach((it)=>{
+  plan[di].items.forEach((it, ii)=>{
     const coords = getItemCoords(it);
     if(!coords) return;
     seq++;
@@ -658,6 +687,7 @@ function renderPlanMarkers(di){
       iconSize:[36,44], iconAnchor:[18,44], popupAnchor:[0,-46]
     });
     const m = L.marker([coords.lat,coords.lng],{icon}).addTo(map);
+    m._planKey = `${di}-${ii}`; // 선택 하이라이트용 키
     m.bindPopup(`<div class="pop-name">${catIcon} ${it.title}</div><div class="pop-desc">${it.time?`<b>${it.time}</b> · `:''}${it.note||''}<br><span style="display:inline-block;margin-top:4px;background:${pinColor};color:#fff;padding:1px 6px;font-family:'Space Mono',monospace;font-size:10px;border-radius:1px">${plan[di].date}</span></div>`);
     planPinLayer.push(m);
   });
@@ -675,10 +705,12 @@ function renderPlanMarkers(di){
 
 function updateDayViz(di){
   if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
-  // _dk 좌표(지구 기반)까지 포함
-  const pts = plan[di].items.map(it=>getItemCoords(it)).filter(Boolean).map(c=>[c.lat,c.lng]);
+  // 달리기 코스 제외 — 자체 경로 폴리라인이 따로 표시되므로 일별 직선 경로에서 제외
+  const pts = plan[di].items
+    .filter(it=>!it._runningCourse)
+    .map(it=>getItemCoords(it)).filter(Boolean).map(c=>[c.lat,c.lng]);
   if(pts.length>=2){
-    routeLayer = L.polyline(pts,{color:'#c8492a',weight:3,opacity:.7,dashArray:'6 5'}).addTo(map);
+    routeLayer = L.polyline(pts,{color:'#c8492a',weight:2,opacity:.5,dashArray:'6 5'}).addTo(map);
     map.fitBounds(routeLayer.getBounds(),{padding:[40,40],maxZoom:15});
   }
   renderPlanMarkers(di);
@@ -699,59 +731,66 @@ function transportBetween(coordA, coordB){
   return {km, mins, ...m};
 }
 
-/* ---------- ITEM ROUTE VISUALIZATION (click) ---------- */
+/* ---------- ITEM HIGHLIGHT VISUALIZATION (click) ---------- */
+/** 선택된 핀만 full opacity, 앞뒤 핀 40%, 나머지 15% */
+function resetPinOpacity(){
+  planPinLayer.forEach(m=>{ try{ m.setOpacity(1); }catch(e){} });
+}
+
 function showItemRoute(di, ii){
   if(selRouteLayer){ map.removeLayer(selRouteLayer); selRouteLayer=null; }
   // 다른 날 선택 시 해당 날짜 핀으로 전환
   if(di !== currentVisDay){ currentVisDay=di; updateDayViz(di); }
-  const items = plan[di].items;
-  const coords = getItemCoords(items[ii]);
 
-  // 좌표 없는 항목: 백그라운드 지오코딩 시도 (_user 또는 _addedBy 있는 항목)
-  if(!coords && (items[ii]._user || items[ii]._addedBy) && items[ii].title){
+  const items = plan[di].items;
+  const it = items[ii];
+  const coords = getItemCoords(it);
+
+  // 좌표 없는 항목: 백그라운드 지오코딩 (모든 항목에 적용)
+  if(!coords && it && it.title){
     const st2=document.getElementById('drawerStatus');
     if(st2){ st2.className='drawer-status show'; st2.textContent='📍 지도 좌표 검색 중...'; }
-    geocodePlanItem(items[ii], di).then(()=>{
-      const c2=getItemCoords(items[ii]);
-      if(c2){ showItemRoute(di,ii); } // 좌표 생기면 재시도
-      else if(st2){ st2.className='drawer-status show err'; st2.textContent='📍 지도 좌표를 찾지 못했어요. 제목/메모를 더 구체적으로 입력해보세요.'; }
+    geocodePlanItem(it, di).then(()=>{
+      const c2=getItemCoords(it);
+      if(c2){ showItemRoute(di,ii); }
+      else if(st2){ st2.className='drawer-status show err'; st2.textContent='📍 좌표를 찾지 못했어요. 제목/메모를 더 구체적으로 입력해보세요.'; }
     });
+    return;
   }
+  if(!coords) return;
 
-  // 이전/다음 좌표 있는 항목 탐색
-  let prevC=null, prevIt=null, nextC=null, nextIt=null;
-  for(let i=ii-1;i>=0;i--){ const c=getItemCoords(items[i]); if(c){prevC=c;prevIt=items[i];break;} }
-  for(let i=ii+1;i<items.length;i++){ const c=getItemCoords(items[i]); if(c){nextC=c;nextIt=items[i];break;} }
+  // ── 지도: 선택 항목으로 flyTo ──
+  map.flyTo([coords.lat, coords.lng], 15, {duration:.8});
 
-  // 경로선 그리기
-  const pts=[];
-  if(prevC) pts.push([prevC.lat,prevC.lng]);
-  if(coords) pts.push([coords.lat,coords.lng]);
-  if(nextC) pts.push([nextC.lat,nextC.lng]);
+  // 앞뒤 항목 인덱스 탐색
+  let prevIdx = -1, nextIdx = -1;
+  for(let i=ii-1; i>=0; i--){ if(getItemCoords(items[i])){ prevIdx=i; break; } }
+  for(let i=ii+1; i<items.length; i++){ if(getItemCoords(items[i])){ nextIdx=i; break; } }
 
-  if(pts.length>=2){
-    selRouteLayer=L.polyline(pts,{color:'#d99021',weight:3,opacity:.9,dashArray:'4 4'}).addTo(map);
-    map.fitBounds(L.latLngBounds(pts),{padding:[55,55],maxZoom:15});
-  } else if(coords){
-    map.flyTo([coords.lat,coords.lng],15,{duration:.8});
-    const pin=planPinLayer.find(m=>{const ll=m.getLatLng();return Math.abs(ll.lat-coords.lat)<.0001&&Math.abs(ll.lng-coords.lng)<.0001;});
-    if(pin) pin.openPopup();
-  }
+  // 핀 opacity 조정: 선택=1.0 / 앞뒤=0.4 / 나머지=0.12
+  const selKey = `${di}-${ii}`;
+  const prevKey = prevIdx>=0 ? `${di}-${prevIdx}` : null;
+  const nextKey = nextIdx>=0 ? `${di}-${nextIdx}` : null;
+  planPinLayer.forEach(m=>{
+    const k = m._planKey;
+    if(k === selKey)       { try{ m.setOpacity(1);    }catch(e){} }
+    else if(k===prevKey || k===nextKey) { try{ m.setOpacity(0.4);  }catch(e){} }
+    else                   { try{ m.setOpacity(0.12); }catch(e){} }
+  });
 
-  // 드로어 상태에 이동수단 정보 표시
+  // 선택 핀 팝업 열기
+  const selPin = planPinLayer.find(m=>m._planKey===selKey);
+  if(selPin) setTimeout(()=>selPin.openPopup(), 400);
+
+  // 드로어 상태: 이동수단 표시
+  const prevC = prevIdx>=0 ? getItemCoords(items[prevIdx]) : null;
+  const nextC = nextIdx>=0 ? getItemCoords(items[nextIdx]) : null;
   const parts=[];
-  if(prevC && coords){
-    const t=transportBetween(prevC,coords);
-    parts.push(`← ${t.icon} ${t.label} ~${t.mins}분 (${t.km.toFixed(1)}km)`);
-  }
-  if(coords && nextC){
-    const t=transportBetween(coords,nextC);
-    parts.push(`${t.icon} ${t.label} ~${t.mins}분 → (${t.km.toFixed(1)}km)`);
-  }
+  if(prevC){ const t=transportBetween(prevC,coords); parts.push(`← ${t.icon} ${t.label} ~${t.mins}분 (${t.km.toFixed(1)}km)`); }
+  if(nextC){ const t=transportBetween(coords,nextC); parts.push(`${t.icon} ${t.label} ~${t.mins}분 → (${t.km.toFixed(1)}km)`); }
   const st=document.getElementById('drawerStatus');
   if(st && parts.length){
     st.className='drawer-status show ok';
-    // 실시간 대중교통 조회 버튼
     const transitBtn = coords && nextC
       ? `<button onclick="fetchTransit(${coords.lat},${coords.lng},${nextC.lat},${nextC.lng})" style="margin-left:8px;font-size:9px;font-family:Space Mono,monospace;padding:2px 6px;border:1px solid var(--teal);color:var(--teal);background:none;cursor:pointer">🚌 실시간 경로</button>`
       : '';
@@ -1509,6 +1548,7 @@ function renderPlan(){
           } else {
             selectedPlanKey=null; row.classList.remove('sel-active');
             if(selRouteLayer){map.removeLayer(selRouteLayer);selRouteLayer=null;}
+            resetPinOpacity();
           }
         } else {
           // ── 다중 모드: 누적 선택 ──
@@ -1576,6 +1616,7 @@ function renderPlan(){
           if(selectedPlanKey===key){
             selectedPlanKey=null; selCb.checked=false; row.classList.remove('sel-active');
             if(selRouteLayer){map.removeLayer(selRouteLayer);selRouteLayer=null;}
+            resetPinOpacity();
           } else {
             if(selectedPlanKey){
               const [pdi,pii]=selectedPlanKey.split('-').map(Number);
@@ -4922,12 +4963,7 @@ const stayMarker=L.marker([STAY.lat,STAY.lng],{icon:stayIcon}).addTo(map);
 stayMarker.bindPopup(`<div class="pop-name">🏠 ${STAY.name}</div><div class="pop-desc">${STAY.desc}<br><b>${STAY.meta}</b></div>`);
 markers['stay']=stayMarker;
 
-// SALU 고정 마커 — 6/10 날짜색(DAY_COLORS[2]) 사용
-const _saluColor = DAY_COLORS[2]; // #c8492a (6/10 페스티벌 1일차)
-const saluIcon=L.divIcon({className:'',html:`<div class="ppv2 fixed-pin" style="--ppbg:${_saluColor};background:${_saluColor};border-color:rgba(0,0,0,.5)"><span class="ppv2-num">🔒</span><span class="ppv2-ico">🍽</span></div>`,iconSize:[36,44],iconAnchor:[18,44],popupAnchor:[0,-46]});
-const saluMarker=L.marker([55.665398,12.550298],{icon:saluIcon}).addTo(map);
-saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73, 1720 København</div>`);
-markers['salu']=saluMarker;
+// SALU 마커 — DEFAULT_PLAN 6/10 항목에 통합되어 plan pin으로 표시됨 (별도 고정 마커 제거)
 
 // 지구 구역 오버레이 — 반투명 원형으로 지도에 지구 영역 표시
 const DISTRICT_RADII = {kongens:420,frederik:480,nordhavn:680,islands:520,christ:460,holmen:380,kultur:360,rosen:420};
@@ -5414,7 +5450,7 @@ function patchPlanGeodata(){
     {re:/hart bageri/i,                                     _dk:'rosen'},
     {re:/디자인뮤지엄/i,                                      _dk:'frederik'},
     {re:/frama|apotek 57/i,                                  _dk:'frederik'},
-    {re:/salu|folkehuset absalon/i,                          _dk:'islands', _lat:55.665398, _lng:12.550298},
+    {re:/salu|folkehuset absalon/i,                          _lat:55.665398, _lng:12.550298},
     {re:/크리스티아니아|christiania/i,                         _dk:'christ'},
     {re:/뉘하운|nyhavn/i,                                     _lat:55.6800,  _lng:12.5897, _dk:'kongens'},
     {re:/체크아웃/i,                                           _lat:55.6671,  _lng:12.5519},
