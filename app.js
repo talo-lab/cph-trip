@@ -355,6 +355,9 @@ const STAY = {
   url:'https://www.airbnb.co.kr/rooms/1565348100263330857'
 };
 
+/* 달리기 코스 전용 컬러 — 네온 라임 */
+const RUNNING_COLOR = '#b8ff00';
+
 /* ---------- 달리기 코스 경로 데이터 ---------- */
 // _routePts → Leaflet 폴리라인 웨이포인트 [[lat,lng],...]
 // gmaps → Google Maps 걷기 경로 URL
@@ -755,12 +758,12 @@ function renderPlanMarkers(di){
     const catIcon = getCategoryIcon(it);
     const isFixed = !!it._fixed;
     // 색상: ①달리기 코스 → 주황, ②그 외 → 날짜색 (지구색은 지도 존 오버레이로 별도 표시)
-    const pinColor = it._runningCourse ? '#e05c2a' : dayColor;
+    const pinColor = it._runningCourse ? RUNNING_COLOR : dayColor;
     const borderColor = isFixed ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.3)';
     const numLabel = isFixed ? '🔒' : seq;
     const icon = L.divIcon({
       className:'',
-      html:`<div class="ppv2${isFixed?' fixed-pin':''}" style="--ppbg:${pinColor};background:${pinColor};border-color:${borderColor}">
+      html:`<div class="ppv2${isFixed?' fixed-pin':''}${it._runningCourse?' run-pin':''}" style="--ppbg:${pinColor};background:${pinColor};border-color:${borderColor}">
         <span class="ppv2-num">${numLabel}</span>
         <span class="ppv2-ico">${catIcon}</span>
       </div>`,
@@ -776,9 +779,9 @@ function renderPlanMarkers(di){
   clearRunRouteLayers();
   plan[di].items.forEach(it=>{
     if(!it._runningCourse || !it.pts) return;
-    const line = L.polyline(it.pts, {color:'#e05c2a', weight:3, opacity:.75, dashArray:'8 5'}).addTo(map);
-    const startM = L.circleMarker(it.pts[0], {radius:6, color:'#e05c2a', fillColor:'#fff', fillOpacity:1, weight:2}).addTo(map);
-    const endM   = L.circleMarker(it.pts[it.pts.length-1], {radius:5, color:'#e05c2a', fillColor:'#e05c2a', fillOpacity:.7, weight:2}).addTo(map);
+    const line = L.polyline(it.pts, {color:RUNNING_COLOR, weight:3, opacity:.75, dashArray:'8 5'}).addTo(map);
+    const startM = L.circleMarker(it.pts[0], {radius:6, color:RUNNING_COLOR, fillColor:'#fff', fillOpacity:1, weight:2}).addTo(map);
+    const endM   = L.circleMarker(it.pts[it.pts.length-1], {radius:5, color:RUNNING_COLOR, fillColor:RUNNING_COLOR, fillOpacity:.7, weight:2}).addTo(map);
     runRouteLayers.push(line, startM, endM);
   });
 }
@@ -879,11 +882,11 @@ function showItemRoute(di, ii){
 
     // 기존 달리기 마커 지우고 라벨 있는 마커로 교체
     clearRunRouteLayers();
-    const line = L.polyline(it.pts, {color:'#e05c2a', weight:3.5, opacity:.85, dashArray:'8 5'}).addTo(map);
+    const line = L.polyline(it.pts, {color:RUNNING_COLOR, weight:3.5, opacity:.85, dashArray:'8 5'}).addTo(map);
     // 반환점: 경로 중간 지점 (가장 먼 점)
     const midPt = it.pts[Math.floor(it.pts.length/2)];
-    const startIcon = L.divIcon({className:'', html:`<div style="background:#e05c2a;color:#fff;font-size:9px;font-family:'Space Mono',monospace;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏃 출발·도착</div>`, iconAnchor:[40,10]});
-    const midIcon  = L.divIcon({className:'', html:`<div style="background:#fff;color:#e05c2a;border:1.5px solid #e05c2a;font-size:9px;font-family:'Space Mono',monospace;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.2)">↩ 반환점</div>`, iconAnchor:[35,10]});
+    const startIcon = L.divIcon({className:'', html:`<div style="background:${RUNNING_COLOR};color:#1a2000;font-size:9px;font-family:'Space Mono',monospace;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.3)">🏃 출발·도착</div>`, iconAnchor:[40,10]});
+    const midIcon  = L.divIcon({className:'', html:`<div style="background:#fff;color:#3a5500;border:1.5px solid ${RUNNING_COLOR};font-size:9px;font-family:'Space Mono',monospace;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.2)">↩ 반환점</div>`, iconAnchor:[35,10]});
     const startM = L.marker(it.pts[0], {icon:startIcon}).addTo(map);
     const midM   = L.marker(midPt,     {icon:midIcon}).addTo(map);
     runRouteLayers.push(line, startM, midM);
