@@ -645,25 +645,8 @@ function renderPlanMarkers(di){
     seq++;
     const catIcon = getCategoryIcon(it);
     const isFixed = !!it._fixed;
-    // 색상 우선순위:
-    // ①달리기 코스 → 전용 주황
-    // ②페스티벌 날(fest:true, 6/10~6/12)만 지구색 적용 — 지구 이동 구분이 중요
-    // ③그 외 날짜(도착·자유·귀국)는 날짜색 사용 — 지구색과 혼동 방지
-    let pinColor;
-    if(it._runningCourse){
-      pinColor = '#e05c2a'; // 경로와 동일한 주황
-    } else if(plan[di].fest){
-      // 페스티벌 날: _dk 지구색 우선 → 최근접 지구 → 날짜색
-      let distObj = it._dk ? DISTRICTS.find(d=>d.key===it._dk) : null;
-      if(!distObj && coords){
-        const nd = nearestDistrict(coords.lat, coords.lng);
-        if(nd.dist_km <= 10) distObj = nd.district;
-      }
-      pinColor = distObj ? distObj.color : dayColor;
-    } else {
-      // 비페스티벌 날: 날짜색으로 통일
-      pinColor = dayColor;
-    }
+    // 색상: ①달리기 코스 → 주황, ②그 외 → 날짜색 (지구색은 지도 존 오버레이로 별도 표시)
+    const pinColor = it._runningCourse ? '#e05c2a' : dayColor;
     const borderColor = isFixed ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.3)';
     const numLabel = isFixed ? '🔒' : seq;
     const icon = L.divIcon({
@@ -4774,12 +4757,53 @@ const stayMarker=L.marker([STAY.lat,STAY.lng],{icon:stayIcon}).addTo(map);
 stayMarker.bindPopup(`<div class="pop-name">🏠 ${STAY.name}</div><div class="pop-desc">${STAY.desc}<br><b>${STAY.meta}</b></div>`);
 markers['stay']=stayMarker;
 
-// SALU 고정 마커
-const _saluColor=DISTRICTS.find(d=>d.key==='islands')?.color||'#5d7456';
+// SALU 고정 마커 — 6/10 날짜색(DAY_COLORS[2]) 사용
+const _saluColor = DAY_COLORS[2]; // #c8492a (6/10 페스티벌 1일차)
 const saluIcon=L.divIcon({className:'',html:`<div class="ppv2 fixed-pin" style="--ppbg:${_saluColor};background:${_saluColor};border-color:rgba(0,0,0,.5)"><span class="ppv2-num">🔒</span><span class="ppv2-ico">🍽</span></div>`,iconSize:[36,44],iconAnchor:[18,44],popupAnchor:[0,-46]});
 const saluMarker=L.marker([55.665398,12.550298],{icon:saluIcon}).addTo(map);
 saluMarker.bindPopup(`<div class="pop-name">🍽 Food & Music with SALU</div><div class="pop-desc">소셜 다이닝 (3명 예약) · 6/10(수) 17:00–20:00<br>Folkehuset Absalon · Sønder Blvd. 73, 1720 København</div>`);
 markers['salu']=saluMarker;
+
+// 지구 구역 오버레이 — 반투명 원형으로 지도에 지구 영역 표시
+const DISTRICT_RADII = {kongens:420,frederik:480,nordhavn:680,islands:520,christ:460,holmen:380,kultur:360,rosen:420};
+const districtZoneLayer = L.layerGroup().addTo(map);
+const districtZones = []; // 인덱스로 접근 가능하도록 저장
+DISTRICTS.forEach(d=>{
+  const r = DISTRICT_RADII[d.key] || 480;
+  const zone = L.circle([d.lat, d.lng], {
+    radius: r,
+    color: d.color,
+    weight: 1.5,
+    opacity: 0.45,
+    fillColor: d.color,
+    fillOpacity: 0.09,
+    dashArray: '5 5',
+    interactive: true,
+    bubblingMouseEvents: false,
+    className: 'district-zone'
+  });
+  zone.bindTooltip(d.name, {
+    permanent: false,
+    direction: 'center',
+    className: 'dist-zone-tip',
+    offset: [0, 0]
+  });
+  zone.addTo(districtZoneLayer);
+  districtZones.push(zone);
+});
+// 지구 존 하이라이트 헬퍼 — 클릭된 존만 잠시 강조
+let _zoneHlTimer = null;
+function highlightDistrictZone(idx){
+  if(_zoneHlTimer) clearTimeout(_zoneHlTimer);
+  districtZones.forEach((z,i)=>{
+    z.setStyle(i===idx
+      ? {opacity:.85, fillOpacity:.22, weight:2.5, dashArray:''}
+      : {opacity:.25, fillOpacity:.04, weight:1.5, dashArray:'5 5'});
+  });
+  _zoneHlTimer = setTimeout(()=>{
+    districtZones.forEach(z=>z.setStyle({opacity:.45, fillOpacity:.09, weight:1.5, dashArray:'5 5'}));
+  }, 2000);
+}
 
 // 범례 토글 (모바일에서 기본 접힘)
 (function(){
@@ -4837,7 +4861,7 @@ DISTRICTS.forEach((d,i)=>{
   r.innerHTML=`
     <span class="leg-dist-sq" style="background:${d.color}"></span>
     <span>${i+1}. ${d.name}</span>`;
-  r.onclick=()=>{ map.flyTo([d.lat,d.lng],14.5,{duration:1}); };
+  r.onclick=()=>{ map.flyTo([d.lat,d.lng],14.5,{duration:1}); highlightDistrictZone(i); };
   leg.appendChild(r);
 });
 
