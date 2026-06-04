@@ -4679,6 +4679,7 @@ tags는 핵심 특징 2–3개 (예: "도보 10분", "예약 권장", "가성비
 서두 텍스트는 1문장으로만.`;
 
   const ctx=`선택 일정: "${item.title}" (${dayLabel})
+숙소: ${STAY.name} · ${STAY.desc} (좌표: ${STAY.lat}, ${STAY.lng})
 ${gpsStr}
 오늘 일정:
 ${todayList}
