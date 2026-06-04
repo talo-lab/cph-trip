@@ -759,7 +759,40 @@ function showItemRoute(di, ii){
   }
   if(!coords) return;
 
-  // ── 지도: 선택 항목으로 flyTo ──
+  // ── 달리기 코스 특수 처리 ──
+  if(it._runningCourse && it.pts && it.pts.length >= 2){
+    // 전체 루프 경로 fitBounds
+    const routeBounds = L.latLngBounds(it.pts);
+    map.fitBounds(routeBounds, {padding:[50,50], maxZoom:14});
+
+    // 기존 달리기 마커 지우고 라벨 있는 마커로 교체
+    clearRunRouteLayers();
+    const line = L.polyline(it.pts, {color:'#e05c2a', weight:3.5, opacity:.85, dashArray:'8 5'}).addTo(map);
+    // 반환점: 경로 중간 지점 (가장 먼 점)
+    const midPt = it.pts[Math.floor(it.pts.length/2)];
+    const startIcon = L.divIcon({className:'', html:`<div style="background:#e05c2a;color:#fff;font-size:9px;font-family:'Space Mono',monospace;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3)">🏃 출발·도착</div>`, iconAnchor:[40,10]});
+    const midIcon  = L.divIcon({className:'', html:`<div style="background:#fff;color:#e05c2a;border:1.5px solid #e05c2a;font-size:9px;font-family:'Space Mono',monospace;font-weight:700;padding:2px 6px;border-radius:2px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.2)">↩ 반환점</div>`, iconAnchor:[35,10]});
+    const startM = L.marker(it.pts[0], {icon:startIcon}).addTo(map);
+    const midM   = L.marker(midPt,     {icon:midIcon}).addTo(map);
+    runRouteLayers.push(line, startM, midM);
+
+    // 핀 opacity: 달리기 핀만 full, 나머지 fade
+    const selKey = `${di}-${ii}`;
+    planPinLayer.forEach(m=>{
+      try{ m.setOpacity(m._planKey===selKey ? 1 : 0.12); }catch(e){}
+    });
+
+    // 드로어 상태: 코스 정보
+    const st=document.getElementById('drawerStatus');
+    if(st){
+      st.className='drawer-status show ok';
+      const gmapsHref = it.gmaps || '';
+      st.innerHTML = `🏃 ${it.title.replace(/🏃\s*/,'')} · <a href="${gmapsHref}" target="_blank" rel="noopener" style="color:var(--teal);font-size:10px">Google Maps 경로 열기 ↗</a>`;
+    }
+    return;
+  }
+
+  // ── 일반 항목: 선택 핀으로 flyTo ──
   map.flyTo([coords.lat, coords.lng], 15, {duration:.8});
 
   // 앞뒤 항목 인덱스 탐색
@@ -773,9 +806,9 @@ function showItemRoute(di, ii){
   const nextKey = nextIdx>=0 ? `${di}-${nextIdx}` : null;
   planPinLayer.forEach(m=>{
     const k = m._planKey;
-    if(k === selKey)       { try{ m.setOpacity(1);    }catch(e){} }
+    if(k === selKey)                    { try{ m.setOpacity(1);    }catch(e){} }
     else if(k===prevKey || k===nextKey) { try{ m.setOpacity(0.4);  }catch(e){} }
-    else                   { try{ m.setOpacity(0.12); }catch(e){} }
+    else                                { try{ m.setOpacity(0.12); }catch(e){} }
   });
 
   // 선택 핀 팝업 열기
@@ -1508,8 +1541,9 @@ function renderPlan(){
       const vWarn = getVenueWarning(it, di);
       const warnHtml = vWarn ? `<span class="item-hours-warn ${vWarn.type}" title="${vWarn.msg}">${vWarn.type==='closed'?'🔴 휴관':'⚠ '+vWarn.msg}</span>` : '';
 
-      const gmapHref = it._gmapsUrl || gMapsUrlForItem(it);
-      const gmapIcon = it._gmapsUrl ? '🔗' : (it.title&&it.title.includes('→')?'🧭':'📍');
+      // 달리기 코스: gmaps(숙소 출발 전체 루프) 우선 사용
+      const gmapHref = it._runningCourse ? (it.gmaps||gMapsUrlForItem(it)) : (it._gmapsUrl||gMapsUrlForItem(it));
+      const gmapIcon = it._runningCourse ? '🗺' : (it._gmapsUrl ? '🔗' : (it.title&&it.title.includes('→')?'🧭':'📍'));
 
       row.innerHTML = `
         ${it._fixed?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
@@ -1520,7 +1554,6 @@ function renderPlan(){
           <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
           ${(()=>{ const tag=it._catTag||inferTag(it); return tag?`<span class="item-cat-tag">${tag}</span>`:''; })()}
-          ${it._runningCourse&&it.gmaps?`<a href="${it.gmaps}" target="_blank" rel="noopener" class="item-src run-route-link" onclick="event.stopPropagation()" style="color:var(--teal);text-decoration:none">🗺 Google Maps 경로</a>`:''}
           ${it._user?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${tagsHtml}${warnHtml}
@@ -1609,7 +1642,7 @@ function renderPlan(){
 
       // 행 클릭 — 단일/다중 모드 분기
       row.addEventListener('click', e=>{
-        if(e.target.matches('[contenteditable],[contenteditable] *,.item-x,.item-sel-cb,.item-gmap,.run-route-link')) return;
+        if(e.target.matches('[contenteditable],[contenteditable] *,.item-x,.item-sel-cb,.item-gmap')) return;
         if(!planMultiMode){
           // ── 단일 모드: 드로어 열기 + 지도 하이라이트 ──
           const key = `${di}-${ii}`;
@@ -4939,10 +4972,13 @@ const DAY_LABELS = ['6/8 출발','6/9 도착','6/10 Festival①','6/11 Festival�
 function getCategoryIcon(it){
   const t=(it.title||'').toLowerCase(), n=(it.note||it.dist||'').toLowerCase();
   const all=t+' '+n;
+  // 달리기 코스 최우선 체크 — "아침" 키워드가 식사 패턴에 오탐되는 것 방지
+  if(it._runningCourse || /달리기|러닝|running|run route/i.test(all)) return '🏃';
   if(/icn|cph→|ams|lhr|출발|직항|항공편|sk\d|ke\d|kl\d/.test(all)) return '✈️';
   if(it._fixed && /salu|다이닝|dining/.test(all)) return '🍽';
   if(it._fixed) return '🔒';
-  if(/breakfast|brunch|lunch|dinner|dining|café|coffee|식사|다이닝|점심|저녁|아침|음식|레스토랑|restaurant|bar|eating/.test(all)) return '🍽';
+  // "아침" 제거 → "아침 달리기" 오탐 방지 (달리기는 위에서 처리됨)
+  if(/breakfast|brunch|lunch|dinner|dining|café|coffee|식사|다이닝|점심|저녁|음식|레스토랑|restaurant|bar|eating/.test(all)) return '🍽';
   if(/museum|전시|exhibition|gallery|오프닝|opening|lounge|pavilion/.test(all)) return '🏛';
   if(/talk|panel|토크|세미나|symposium|discussion|lecture|강연/.test(all)) return '💬';
   if(/workshop|워크숍|making|crafting/.test(all)) return '✂️';
