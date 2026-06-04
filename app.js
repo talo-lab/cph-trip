@@ -797,16 +797,48 @@ function updateDayViz(di){
 }
 
 /* ---------- TRANSPORT MODE ---------- */
-function getTransportMode(km){
+/**
+ * 컨텍스트 인식 이동수단 결정
+ * ctx: { hour?:number, fromTitle?:string, toTitle?:string }
+ */
+function getTransportMode(km, ctx = {}){
+  const { hour = 12, fromTitle = '', toTitle = '' } = ctx;
+  const allText = (fromTitle + ' ' + toTitle).toLowerCase();
+
+  // 시간대 분류
+  const isLateNight  = hour >= 22 || hour < 5;   // 밤 10시~새벽 5시
+  const isNight      = hour >= 20 || hour < 7;    // 밤 8시~아침 7시
+  const isEvening    = hour >= 18 && hour < 22;   // 저녁 6시~10시
+
+  // 항목 유형
+  const isFood = /restaurant|café|cafe|식당|다이닝|레스토랑|bar|음식|dinner|저녁|lunch|점심|dining|brunch|bistro|맛집/.test(allText);
+  const isEvent = /concert|공연|symposium|talk|workshop|클럽|club|bar/.test(allText);
+
+  // ① 매우 짧은 거리 → 항상 도보
+  if(km < 0.45) return {icon:'🚶', label:'도보', speed:5, extra:0};
+
+  // ② 심야 (22:00~) → 택시·지하철 (자전거 위험)
+  if(isLateNight && km >= 0.5)
+    return {icon:'🚇', label:'지하철·택시', speed:22, extra:5};
+
+  // ③ 저녁 식사·행사 후 귀가 (18:00~22:00, 거리 > 1km) → 대중교통 우선
+  if((isFood || isEvent) && isEvening && km > 1.0)
+    return {icon:'🚌', label:'대중교통', speed:18, extra:5};
+
+  // ④ 야간 + 중거리 → 대중교통
+  if(isNight && km > 2.0)
+    return {icon:'🚌', label:'대중교통', speed:18, extra:5};
+
+  // ⑤ 표준 거리 기반 (낮 시간대)
   if(km < 0.7) return {icon:'🚶', label:'도보',     speed:5,  extra:0};
   if(km < 2.5) return {icon:'🚴', label:'자전거',   speed:14, extra:0};
   if(km < 6)   return {icon:'🚌', label:'대중교통', speed:18, extra:5};
   return              {icon:'🚇', label:'지하철',   speed:28, extra:8};
 }
 
-function transportBetween(coordA, coordB){
+function transportBetween(coordA, coordB, ctx = {}){
   const km = haversineKm(coordA.lat, coordA.lng, coordB.lat, coordB.lng);
-  const m = getTransportMode(km);
+  const m = getTransportMode(km, ctx);
   const mins = Math.max(1, Math.round(km/m.speed*60) + m.extra);
   return {km, mins, ...m};
 }
@@ -895,12 +927,14 @@ function showItemRoute(di, ii){
   const selPin = planPinLayer.find(m=>m._planKey===selKey);
   if(selPin) setTimeout(()=>selPin.openPopup(), 400);
 
-  // 드로어 상태: 이동수단 표시
+  // 드로어 상태: 이동수단 표시 (시간 컨텍스트 포함)
   const prevC = prevIdx>=0 ? getItemCoords(items[prevIdx]) : null;
   const nextC = nextIdx>=0 ? getItemCoords(items[nextIdx]) : null;
+  const itHour = timeToMin(it.time) / 60;
+  const prevHour = prevIdx>=0 ? timeToMin(items[prevIdx].time)/60 : itHour;
   const parts=[];
-  if(prevC){ const t=transportBetween(prevC,coords); parts.push(`← ${t.icon} ${t.label} ~${t.mins}분 (${t.km.toFixed(1)}km)`); }
-  if(nextC){ const t=transportBetween(coords,nextC); parts.push(`${t.icon} ${t.label} ~${t.mins}분 → (${t.km.toFixed(1)}km)`); }
+  if(prevC){ const t=transportBetween(prevC,coords,{hour:prevHour,fromTitle:items[prevIdx].title,toTitle:it.title}); parts.push(`← ${t.icon} ${t.label} ~${t.mins}분 (${t.km.toFixed(1)}km)`); }
+  if(nextC){ const t=transportBetween(coords,nextC,{hour:itHour,fromTitle:it.title,toTitle:items[nextIdx].title}); parts.push(`${t.icon} ${t.label} ~${t.mins}분 → (${t.km.toFixed(1)}km)`); }
   const st=document.getElementById('drawerStatus');
   if(st && parts.length){
     st.className='drawer-status show ok';
@@ -1752,7 +1786,8 @@ function renderPlan(){
       if(nextIt){
         const cA = getItemCoords(it), cB = getItemCoords(nextIt);
         if(cA && cB){
-          const t = transportBetween(cA, cB);
+          const hour = timeToMin(it.time) / 60;
+          const t = transportBetween(cA, cB, {hour, fromTitle:it.title, toTitle:nextIt.title});
           const walk = document.createElement('div');
           walk.className='item-walk';
           walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km`;
@@ -1775,9 +1810,9 @@ function renderPlan(){
         for(let i=dayItems.length-1;i>=0;i--){ if(getItemCoords(dayItems[i])){ prevIt=dayItems[i]; break; } }
         if(prevIt){
           const prevCoords = getItemCoords(prevIt);
-          // 숙소 좌표를 기본 목적지로 제안
           const stay = {lat:55.6671, lng:12.5519};
-          const t = transportBetween(prevCoords, stay);
+          const prevHour = timeToMin(prevIt.time) / 60;
+          const t = transportBetween(prevCoords, stay, {hour: prevHour, fromTitle: prevIt.title, toTitle: '숙소 복귀'});
           autoNote = `← ${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분`;
         }
       }
@@ -3689,7 +3724,8 @@ function recalcTransitNotes(di){
       if(isHome) myCoords = {lat:55.6671, lng:12.5519};
       else continue;
     }
-    const t = transportBetween(prevCoords, myCoords);
+    const hour = timeToMin(prevIt.time) / 60; // 출발 시각 기준
+    const t = transportBetween(prevCoords, myCoords, {hour, fromTitle: prevIt.title, toTitle: it.title});
     it.note = `← ${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분`;
   }
 }
