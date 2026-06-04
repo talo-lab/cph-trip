@@ -4705,7 +4705,9 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
     // 선택 핀의 캐시 좌표가 있으면 바로 적용 (geocoding 생략)
     if(_selectedOptCoords){ newItem._lat = _selectedOptCoords.lat; newItem._lng = _selectedOptCoords.lng; }
     plan[dIdx].items.push(newItem);
-    sortDayByTime(dIdx); savePlan(); renderPlan();
+    sortDayByTime(dIdx);
+    recalcTransitNotes(dIdx); // 앞뒤 이동 메모 재계산 (새 항목 삽입으로 기준 변경)
+    savePlan(); renderPlan();
     _clearSelectedOptPin();
     resp.classList.remove('show');
     st.className='drawer-status show ok'; st.textContent='✓ 일정에 추가됐어요!';
