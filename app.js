@@ -4766,6 +4766,12 @@ async function _drawerQuestion(raw,di,ii,item,input,btn,st,resp){
     ? `현재 위치: 위도 ${currentPos.lat.toFixed(5)}, 경도 ${currentPos.lng.toFixed(5)}`
     : '현재 위치: 미확인';
 
+  // 다음 일정 정보 (이동 수단 삽입에 활용)
+  const nextItem = plan[di]?.items[ii+1];
+  const nextStr  = nextItem
+    ? `다음 일정: "${nextItem.title}" (${nextItem.time||'?'})`
+    : '다음 일정: 없음';
+
   const sys=`You are a warm, practical travel assistant for a Korean couple (미주 and 상효) visiting Copenhagen, June 8–16 2026.
 3 Days of Design festival period: June 10–12 only (NOT the entire trip). Free days: June 13–15. Departure: June 16.
 Always respond in Korean. Be specific and concise.
@@ -4777,6 +4783,14 @@ Google Maps 링크를 note에 추가하는 것은 앱 내 지도 핀을 생성�
 좌표가 없는 기존 항목(항공편 등)은 클릭해도 지도 핀이 안 생기는 것이 정상입니다.
 
 ## 응답 형식 규칙 (엄격히 준수)
+
+### ✅ <transit> 필수 사용 케이스 (이동 항목 삽입):
+사용자가 현재 일정("${item.title}")에서 다음 일정으로의 이동 방법·수단을 묻거나 이동 항목 추가를 요청할 때.
+현재 일정과 다음 일정 사이에 이동 항목을 자동 삽입합니다.
+<transit>{"time":"HH:MM","title":"[출발 장소 단축명] → [도착 장소 단축명]","note":"이동수단 · 소요시간 · 노선 (예: 도보 12분 / 메트로 M1 → Kongens Nytorv 하차 · 3정거장)","tag":"🚌 이동"}</transit>
+규칙: time은 현재 일정 시각 그대로 또는 직후. note는 가장 실용적인 수단 1–2가지, 덴마크 실제 노선 기반.
+코펜하겐 기준: 도보 15분 이내 → 도보 권장. 그 이상 → 메트로/버스/자전거.
+텍스트 설명 1문장 + <transit> 태그.
 
 ### ✅ <options> 필수 사용 케이스 (반드시 태그 사용):
 - 식당/카페/바 추천 (저녁식사, 점심, 커피, 술집 등)
@@ -4795,10 +4809,9 @@ Google Maps 링크를 note에 추가하는 것은 앱 내 지도 핀을 생성�
 ### ✅ <add> 사용 케이스 (단 1개 추천):
 <add>{"title":"장소명","time":"HH:MM","note":"한 줄 설명","day_index":${di}}</add>
 
-### ✅ 텍스트만 사용 케이스 (장소 추가가 전혀 불필요한 경우만):
-- 순수 정보 질문: 영업시간, 가격, 교통편 정보 등
-- 이미 일정에 있는 항목에 대한 세부 정보
-- "~해줘" 명령이 아닌 사실 확인 질문
+### ✅ 텍스트만 사용 케이스 (장소·이동 추가가 전혀 불필요한 경우만):
+- 영업시간, 가격 등 단순 사실 확인
+- 이미 일정에 있는 항목의 세부 정보
 
 ### ✅ 삭제 요청 케이스 (현재 일정 삭제 시 반드시 이 형식):
 사용자가 현재 선택 일정("${item.title}")을 삭제하려 할 때:
@@ -4807,13 +4820,14 @@ Google Maps 링크를 note에 추가하는 것은 앱 내 지도 핀을 생성�
   {"title":"취소","action":"cancel","note":"일정 유지","day_index":${di},"tags":["일정 관리"]}
 ]</options>
 
-⚠️ 식사·카페·장소 추천은 예외 없이 <options> 사용. 절대로 텍스트만으로 추천하지 말 것.
+⚠️ 이동 방법 질문 → 반드시 <transit> 사용. 식사·장소 추천 → 반드시 <options> 사용. 텍스트만 쓰지 말 것.
 
 day_index ${di} = ${plan[di]?.date}.
 tags는 핵심 특징 2–3개 (예: "도보 10분", "예약 권장", "가성비", "뷰 맛집", "현지인 맛집").
 서두 텍스트는 1문장으로만.`;
 
   const ctx=`선택 일정: "${item.title}" (${dayLabel})
+${nextStr}
 숙소: ${STAY.name} · ${STAY.desc} (좌표: ${STAY.lat}, ${STAY.lng})
 ${gpsStr}
 오늘 일정:
@@ -4827,6 +4841,32 @@ ${todayList}
     if(!r.ok) throw new Error('서버 '+r.status);
     const d=await r.json();
     let text=(d.text||'').trim();
+
+    // <transit> 파싱 — 현재 항목 바로 다음 위치에 이동 항목 삽입
+    const mt=text.match(/<transit>([\s\S]*?)<\/transit>/);
+    if(mt){
+      let tr=null;
+      try{ tr=JSON.parse(mt[1].trim()); }catch(e){}
+      text=text.replace(/<transit>[\s\S]*?<\/transit>/,'').trim();
+      if(tr?.title){
+        const newItem={
+          time : tr.time || item.time || '',
+          title: tr.title,
+          note : tr.note || '',
+          tag  : tr.tag  || '🚌 이동',
+          _transit: true,
+        };
+        plan[di].items.splice(ii+1, 0, newItem);
+        savePlan(); renderPlan();
+        st.className='drawer-status show ok';
+        st.textContent=`🚌 이동 항목 추가됨 — ${newItem.title}`;
+        resp.innerHTML=''; resp.classList.remove('show');
+        if(text){ document.getElementById('drawerRespIntro').textContent=text; resp.classList.add('show'); }
+        input.value='';
+        btn.disabled=false; btn.textContent='전송';
+        return;
+      }
+    }
 
     // <options> 파싱
     let options=null;
