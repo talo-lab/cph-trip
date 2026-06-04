@@ -4521,10 +4521,11 @@ async function runSmartAdd(){
       const sys = `You are a Copenhagen trip plan editor. Given the current plan JSON and a modification request (Korean or English), output ONLY the updated full plan JSON array. No markdown, no explanation.
 Trip: June 8–16 2026. 3 Days of Design festival: June 10–12 only (Day 2–4). Free days: June 13–15 (Day 5–7).
 Rules:
-- Never delete _fixed:true items; preserve _user,_fixed,_lat,_lng,_dk fields; sort by time after changes.
-- Time/date change ("~시로 변경", "move to June 14", "6/13으로 옮겨줘") → update the item's time field and/or move it to the correct day array. This is NOT the same as drag reordering.
-- Content change ("제목 바꿔줘", "메모 수정") → update title/note fields only.
-- When moving an item to another day, remove it from the original day and insert it into the target day at the correct time position.`;
+- Never delete _fixed:true items; preserve _user,_fixed,_lat,_lng,_dk fields.
+- Time change ("10시로 변경", "change time to 14:00") → update the item's time field; keep on same day. Sort by time after.
+- Same-day reorder ("A를 B 뒤로", "B 앞으로 이동", "move after X") → reposition items within the same day array; do NOT change their time fields unless asked.
+- Cross-day move ("6/13 일정을 6/14로", "다음날로 옮겨줘", "move to June 14") → remove from source day array, insert into target day array; preserve the item's time value.
+- Content edit ("제목 바꿔줘", "메모 추가") → update title/note fields only.`;
       const planJson = JSON.stringify(plan.map(day=>({
         date:day.date,tag:day.tag,fest:day.fest,
         items:day.items.map(it=>({time:it.time,title:it.title,note:it.note,dist:it.dist,
@@ -4983,12 +4984,11 @@ async function _drawerCommand(raw,di,ii,item,input,btn,st){
   const sys=`You are a Copenhagen trip plan editor. The user selected a specific item and made a request about it (Korean or English). Apply the change to the full plan and output ONLY the updated full plan JSON array. No markdown, no explanation.
 Trip: June 8–16 2026. 3 Days of Design festival: June 10–12 only (Day 2–4). Free days: June 13–15 (Day 5–7). Departure: June 16 (Day 8).
 Rules:
-- Never delete _fixed:true items
-- Preserve _user, _fixed, _lat, _lng, _dk fields on all items
-- Time/date change ("~시로 변경", "6/14로 옮겨줘", "move to June 13") → update the item's time field and/or move to the correct day. Do NOT treat this as drag reordering.
-- Content change ("제목 수정", "메모 추가") → update title/note fields only.
-- Moving to another day: remove from original day array, insert into target day array at correct time position.
-- Sort each day's items by time after changes.
+- Never delete _fixed:true items. Preserve _user, _fixed, _lat, _lng, _dk fields on all items.
+- Time change ("10시로 변경", "change time to 15:00") → update the item's time field; keep on same day. Sort by time after.
+- Same-day reorder ("A 뒤로", "B 앞에", "move after X") → reposition within the same day array; do NOT change time fields unless asked.
+- Cross-day move ("6/14로 옮겨줘", "다음날로", "move to June 13") → remove from source day array, insert into target day array; preserve the item's time value.
+- Content edit ("제목 수정", "메모 추가") → update title/note fields only.
 - Date reference: Day 0=6/8, Day 1=6/9, Day 2=6/10(FEST), Day 3=6/11(FEST), Day 4=6/12(FEST), Day 5=6/13, Day 6=6/14, Day 7=6/15, Day 8=6/16`;
 
   const planJson=JSON.stringify(plan.map(day=>({
