@@ -1790,17 +1790,20 @@ function renderPlan(){
 
       body.appendChild(row);
 
-      // 연속 항목 간 이동수단 + 거리 표시
+      // 연속 항목 간 이동수단 + 거리 표시 (실제 _lat/_lng 있는 항목만, 50m 이상만)
       const nextIt = day.items[ii+1];
       if(nextIt){
-        const cA = getItemCoords(it), cB = getItemCoords(nextIt);
+        const cA = (it._lat && it._lng) ? {lat:it._lat, lng:it._lng} : null;
+        const cB = (nextIt._lat && nextIt._lng) ? {lat:nextIt._lat, lng:nextIt._lng} : null;
         if(cA && cB){
           const hour = timeToMin(it.time) / 60;
           const t = transportBetween(cA, cB, {hour, fromTitle:it.title, toTitle:nextIt.title});
-          const walk = document.createElement('div');
-          walk.className='item-walk';
-          walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km`;
-          body.appendChild(walk);
+          if(t.km >= 0.05){
+            const walk = document.createElement('div');
+            walk.className='item-walk';
+            walk.innerHTML=`<span class="item-walk-icon">${t.icon}</span><span class="item-walk-label">${t.label}</span> ~${t.mins}분 · ${t.km.toFixed(1)}km`;
+            body.appendChild(walk);
+          }
         }
       }
     });
@@ -1866,6 +1869,9 @@ function renderPlan(){
         plan[toDi].items.splice(toIdx,0,planItem);
         // 스마트 스케줄링: 시간 자동 조정 + 태그 추론
         const result = autoSmartSchedule(toDi, toIdx);
+        // 이동 메모 재계산: 원본 날짜 + 대상 날짜 모두
+        recalcTransitNotes(toDi);
+        if(fromDi !== toDi) recalcTransitNotes(fromDi);
         savePlan();
         renderPlan();
         if(result) showSmartScheduleToast(result, toDi);
@@ -3717,23 +3723,25 @@ function sortDayByTime(di){
 const TRANSIT_NOTE_RE = /^←\s*.+에서\s*/;
 function recalcTransitNotes(di){
   const items = plan[di].items;
+  // 첫 번째 항목의 transit note 제거 (이전 항목 없음)
+  if(items[0] && TRANSIT_NOTE_RE.test(items[0].note || '')) items[0].note = '';
   for(let i=1; i<items.length; i++){
     const it = items[i];
     if(!it.note || !TRANSIT_NOTE_RE.test(it.note)) continue;
     // 좌표 있는 이전 항목 탐색
     let prevIt = null;
     for(let j=i-1; j>=0; j--){ if(getItemCoords(items[j])){ prevIt=items[j]; break; } }
-    if(!prevIt) continue;
+    // 이전 항목 없으면 transit note 제거
+    if(!prevIt){ it.note = ''; continue; }
     const prevCoords = getItemCoords(prevIt);
     // 현재 항목 좌표 (숙소복귀 등은 좌표 없을 수 있음 → 숙소 기본값)
     let myCoords = getItemCoords(it);
     if(!myCoords){
-      // 숙소복귀류 → 숙소 좌표 사용
       const isHome = /숙소|복귀|호텔|airbnb/i.test(it.title);
       if(isHome) myCoords = {lat:55.6671, lng:12.5519};
-      else continue;
+      else { it.note = ''; continue; }
     }
-    const hour = timeToMin(prevIt.time) / 60; // 출발 시각 기준
+    const hour = timeToMin(prevIt.time) / 60;
     const t = transportBetween(prevCoords, myCoords, {hour, fromTitle: prevIt.title, toTitle: it.title});
     it.note = `← ${prevIt.title}에서 ${t.icon} ${t.label} ~${t.mins}분`;
   }
