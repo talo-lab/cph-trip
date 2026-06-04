@@ -5807,7 +5807,7 @@ function updateTicker(items) {
   const totalLen = items.map(i => i.text).join('').length;
   track.style.animationDuration = Math.max(20, Math.round(totalLen * 0.22)) + 's';
 
-  wrap.style.display = 'block';
+  wrap.style.display = 'flex';
 }
 
 async function loadNewsTicker() {

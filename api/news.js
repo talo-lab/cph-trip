@@ -1,17 +1,20 @@
 // Vercel Serverless Function: /api/news
-// 3daysofdesign.dk Journal 스크래핑 + 수동 관리 공지 fallback
+// db/news.json 수동 관리 공지 + 3daysofdesign.dk Journal 스크래핑
 // 캐시 TTL: 15분 (메모리, Vercel 재시작 시 초기화)
 import { handleCors, requireMethod, serverError, fetchWithTimeout } from '../lib/http.js';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
-// 수동 관리 공지 — 스크래핑 실패 시 fallback / 항상 앞에 고정 노출
-const STATIC_ITEMS = [
-  { text: '3 Days of Design 2026 · JUN 10–12 · COPENHAGEN · 460+ BRANDS', url: 'https://www.3daysofdesign.dk' },
-  { text: 'Claude for Creatives Workshop · 6/10 11:30 @ KLUB — Anthropic 공식', url: null },
-  { text: 'Long Table Dinners · 8개 지구 6/10–11 저녁 · 예약 필수 (650–900 DKK)', url: null },
-  { text: 'Entering the Now Symposium · 매일 2세션 @ KLUB (Linnésgade 25)', url: null },
-  { text: '3DoD 공식 앱에서 실시간 프로그램 업데이트 확인 (iOS / Android)', url: null },
-  { text: '코펜하겐 자전거 대여 · Bycyklen 앱 또는 숙소 근처 대여소 이용', url: null },
-];
+// db/news.json 로드 (배포 번들에 포함)
+function loadStaticItems() {
+  try {
+    const p = join(process.cwd(), 'db', 'news.json');
+    return JSON.parse(readFileSync(p, 'utf8'));
+  } catch {
+    // 파일 없으면 최소 fallback
+    return [{ id: 0, text: '3 Days of Design 2026 · JUN 10–12 · COPENHAGEN', url: 'https://www.3daysofdesign.dk' }];
+  }
+}
 
 const CACHE = { data: null, at: 0 };
 const TTL = 15 * 60 * 1000; // 15분
@@ -63,17 +66,23 @@ export default async function handler(req, res) {
   if (handleCors(req, res)) return;
   if (!requireMethod(req, res, 'GET')) return;
 
+  // Cache-Control 헤더: 브라우저 15분 캐시
+  res.setHeader('Cache-Control', 's-maxage=900, stale-while-revalidate=60');
+
   const now = Date.now();
   if (CACHE.data && now - CACHE.at < TTL) {
     return res.status(200).json(CACHE.data);
   }
 
   try {
+    const staticItems = loadStaticItems();
     const journal = await scrapeJournal().catch(() => null);
+
     // 고정 공지 1개 + journal 최신 3개(있을 때) + 나머지 고정 공지
     const combined = journal
-      ? [STATIC_ITEMS[0], ...journal.slice(0, 3), ...STATIC_ITEMS.slice(1, 3)]
-      : STATIC_ITEMS;
+      ? [staticItems[0], ...journal.slice(0, 3), ...staticItems.slice(1, 3)]
+      : staticItems;
+
     CACHE.data = combined;
     CACHE.at = now;
     return res.status(200).json(combined);
