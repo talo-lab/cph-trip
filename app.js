@@ -646,17 +646,23 @@ function renderPlanMarkers(di){
     const catIcon = getCategoryIcon(it);
     const isFixed = !!it._fixed;
     // 색상 우선순위:
-    // ①달리기 코스 → 전용 주황 / ②_dk 지구색 / ③좌표→최근접 지구(10km) / ④날짜색
+    // ①달리기 코스 → 전용 주황
+    // ②페스티벌 날(fest:true, 6/10~6/12)만 지구색 적용 — 지구 이동 구분이 중요
+    // ③그 외 날짜(도착·자유·귀국)는 날짜색 사용 — 지구색과 혼동 방지
     let pinColor;
     if(it._runningCourse){
       pinColor = '#e05c2a'; // 경로와 동일한 주황
-    } else {
+    } else if(plan[di].fest){
+      // 페스티벌 날: _dk 지구색 우선 → 최근접 지구 → 날짜색
       let distObj = it._dk ? DISTRICTS.find(d=>d.key===it._dk) : null;
       if(!distObj && coords){
         const nd = nearestDistrict(coords.lat, coords.lng);
-        if(nd.dist_km <= 10) distObj = nd.district; // 10km 캡 (공항 제외, 코펜하겐 내 모두 포함)
+        if(nd.dist_km <= 10) distObj = nd.district;
       }
       pinColor = distObj ? distObj.color : dayColor;
+    } else {
+      // 비페스티벌 날: 날짜색으로 통일
+      pinColor = dayColor;
     }
     const borderColor = isFixed ? 'rgba(0,0,0,.5)' : 'rgba(0,0,0,.3)';
     const numLabel = isFixed ? '🔒' : seq;
