@@ -1609,6 +1609,48 @@ async function addFestSelected(){
 
 /* ---------- RENDER: PLAN ---------- */
 let currentVisDay = 0;
+/* 날짜 퀵점프 바 — plan 탭 최상단 sticky 칩 */
+function renderDayJumpBar(el) {
+  const bar = document.createElement('div');
+  bar.className = 'day-jump-bar';
+
+  plan.forEach((day, di) => {
+    const chip = document.createElement('button');
+    chip.className = 'day-jump-chip' + (day.fest ? ' fest' : '');
+    chip.dataset.di = di;
+    const m = day.date.match(/(\d+\/\d+)/);
+    chip.textContent = m ? m[1] : day.date;
+    chip.title = day.date + ' · ' + day.tag;
+    chip.addEventListener('click', () => {
+      const target = document.getElementById(`body-${di}`)?.closest('.day');
+      if (!target) return;
+      const barH = bar.offsetHeight || 36;
+      el.scrollTo({ top: target.offsetTop - barH, behavior: 'smooth' });
+      bar.querySelectorAll('.day-jump-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+    bar.appendChild(chip);
+  });
+
+  // 스크롤 위치에 따라 active 칩 갱신 (누적 방지: 이전 핸들러 제거)
+  if (el._dayJumpScrollH) el.removeEventListener('scroll', el._dayJumpScrollH);
+  el._dayJumpScrollH = () => {
+    const barH = bar.offsetHeight || 36;
+    const st = el.scrollTop + barH + 4;
+    const dayEls = [...el.querySelectorAll('.day')];
+    let activeDi = 0;
+    dayEls.forEach((d, i) => { if (d.offsetTop <= st) activeDi = i; });
+    bar.querySelectorAll('.day-jump-chip').forEach((c, i) => c.classList.toggle('active', i === activeDi));
+    // 활성 칩이 바 안에서 보이도록 가로 스크롤
+    const ac = bar.children[activeDi];
+    if (ac) ac.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  };
+  el.addEventListener('scroll', el._dayJumpScrollH, { passive: true });
+
+  // 점프 바를 첫 번째 자식으로 삽입 (mode toggle 위)
+  el.insertBefore(bar, el.firstChild);
+}
+
 function renderPlan(){
   const el = document.getElementById('scroll');
   el.innerHTML = '';
@@ -1893,6 +1935,8 @@ function renderPlan(){
     </button>
     ${planMultiMode ? '<span class="plan-mode-hint">체크박스로 여러 장소 선택 → 이동 경로·시간 표시</span>' : ''}`;
   el.insertBefore(modeToggleWrap, el.firstChild);
+  // 날짜 퀵점프 바 (mode toggle 위에 삽입)
+  renderDayJumpBar(el);
   document.getElementById('planModeToggle').addEventListener('click', ()=>{
     planMultiMode = !planMultiMode;
     if(!planMultiMode){
@@ -4500,6 +4544,8 @@ function openDrawer(di, ii, title){
   document.getElementById('drawerRespActions').innerHTML = '';
   _currentOptNote = '';
   document.getElementById('itemDrawer').classList.add('open');
+  // 모바일: 드로어 공간 확보를 위해 지도를 peek(10%)으로
+  if(window.innerWidth<=820 && window._mapSnap) window._mapSnap(0,true);
   updateDrawerPrivacy();
 
   const it = plan[di]?.items[ii];
@@ -4601,6 +4647,8 @@ document.getElementById('drawerPinReset')?.addEventListener('click', async ()=>{
 
 function closeDrawer(){
   document.getElementById('itemDrawer').classList.remove('open');
+  // 모바일: 드로어 닫히면 지도를 half(44%)로 복원
+  if(window.innerWidth<=820 && window._mapSnap) window._mapSnap(1,true);
   drawerContext = null;
   _clearSelectedOptPin();
   _clearHoverPin();
@@ -5120,11 +5168,53 @@ document.getElementById('drawerInput').addEventListener('keydown', e=>{
   if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){ e.preventDefault(); sendDrawerMsg(); }
 });
 
-document.getElementById('reset').addEventListener('click',async()=>{
-  if(confirm('일정을 초기 상태로 되돌릴까요? 편집한 내용이 사라집니다.')){
-    plan=structuredClone(DEFAULT_PLAN); await savePlan(); if(activeTab==='plan')renderPlan();
+/* ---------- UNDO TOAST ---------- */
+let _undoTimer = null;
+
+function showResetUndoToast(){
+  // 진행 중인 토스트 있으면 먼저 취소
+  if(_undoTimer){ clearInterval(_undoTimer); _undoTimer=null; const old=document.querySelector('.undo-toast'); if(old) old.remove(); }
+
+  const SECONDS = 10;
+  let remaining = SECONDS;
+
+  const toast = document.createElement('div');
+  toast.className = 'undo-toast';
+  toast.style.position = 'relative'; // bar 절대 위치 기준
+  toast.innerHTML = `
+    <span class="undo-toast-msg">일정이 초기화됩니다</span>
+    <span class="undo-toast-count">${remaining}</span>
+    <button class="undo-toast-btn">취소</button>
+    <div class="undo-toast-bar" style="width:100%"></div>`;
+  document.body.appendChild(toast);
+
+  const countEl = toast.querySelector('.undo-toast-count');
+  const barEl   = toast.querySelector('.undo-toast-bar');
+
+  // 첫 프레임 이후 트랜지션 시작 (width: 100% → 0%)
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ barEl.style.width='0%'; }); });
+
+  function dismiss(animate){
+    clearInterval(_undoTimer); _undoTimer=null;
+    if(animate){ toast.classList.add('out'); setTimeout(()=>toast.remove(), 220); }
+    else toast.remove();
   }
-});
+
+  toast.querySelector('.undo-toast-btn').addEventListener('click', ()=>dismiss(true));
+
+  _undoTimer = setInterval(async ()=>{
+    remaining--;
+    countEl.textContent = remaining;
+    if(remaining <= 0){
+      dismiss(false);
+      plan = structuredClone(DEFAULT_PLAN);
+      await savePlan();
+      if(activeTab==='plan') renderPlan();
+    }
+  }, 1000);
+}
+
+document.getElementById('reset').addEventListener('click', showResetUndoToast);
 
 /* ---------- MAP ---------- */
 // 날짜별 핀 색상
@@ -5343,11 +5433,36 @@ const WMO_LABEL = {
 };
 
 let weatherCache = null;
+const WEATHER_LS_KEY = 'cph_weather_v1';
+const WEATHER_LS_TTL = 3 * 60 * 60 * 1000; // 3시간 — 로밍 절약
 // 여행 날짜 배열 (DEFAULT_PLAN과 동기화)
 const TRIP_DATES = ['2026-06-08','2026-06-09','2026-06-10','2026-06-11','2026-06-12','2026-06-13','2026-06-14','2026-06-15','2026-06-16'];
 
+/* localStorage에서 날씨 캐시 복원 */
+function _loadWeatherLS(){
+  try{
+    const raw = localStorage.getItem(WEATHER_LS_KEY);
+    if(!raw) return null;
+    const {ts, data} = JSON.parse(raw);
+    return {data, stale: Date.now() - ts > WEATHER_LS_TTL};
+  }catch(e){ return null; }
+}
+
+/* localStorage에 날씨 캐시 저장 */
+function _saveWeatherLS(map){
+  try{ localStorage.setItem(WEATHER_LS_KEY, JSON.stringify({ts:Date.now(), data:map})); }catch(e){}
+}
+
 async function fetchWeather(){
   if(weatherCache) return weatherCache;
+
+  // 먼저 localStorage 캐시 확인 → 신선하면 즉시 반환
+  const ls = _loadWeatherLS();
+  if(ls && !ls.stale){
+    weatherCache = ls.data;
+    return weatherCache;
+  }
+
   try{
     const url = 'https://api.open-meteo.com/v1/forecast'
       + '?latitude=55.676&longitude=12.568'
@@ -5357,7 +5472,7 @@ async function fetchWeather(){
     const ctrl = new AbortController();
     const tId = setTimeout(()=>ctrl.abort(), 4000);
     const res = await fetch(url, {signal: ctrl.signal}).finally(()=>clearTimeout(tId));
-    if(!res.ok) return null;
+    if(!res.ok) throw new Error('status '+res.status);
     const data = await res.json();
     // {dayIdx → {icon, label, max, min, rain}}
     const map = {};
@@ -5374,8 +5489,13 @@ async function fetchWeather(){
       };
     });
     weatherCache = map;
+    _saveWeatherLS(map);
     return map;
-  }catch(e){ return null; }
+  }catch(e){
+    // 네트워크 실패 시 오래된 캐시라도 반환 (오프라인 폴백)
+    if(ls){ weatherCache = ls.data; return ls.data; }
+    return null;
+  }
 }
 
 /* ---------- PAST ITEMS / PROGRESS ---------- */
@@ -5531,6 +5651,9 @@ function clearFestMarkers(){
     snapIdx = Math.max(0, Math.min(SNAPS.length-1, idx));
     applyH(Math.round(SNAPS[snapIdx]*window.innerHeight), anim);
   }
+  // 외부에서 접근 가능하도록 노출 (드로어 연동용)
+  window._mapSnap    = snap;
+  window._mapSnapIdx = () => snapIdx;
 
   // 드래그
   hdl.addEventListener('touchstart', e=>{
@@ -5581,7 +5704,7 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(()=>{});
   // 오프라인 감지 배너
   const offlineBanner = document.createElement('div');
-  offlineBanner.style.cssText='display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1714;color:#fbf7ee;text-align:center;font-size:12px;padding:7px;font-family:Space Mono,monospace;letter-spacing:.05em';
+  offlineBanner.style.cssText='display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1714;color:#fbf7ee;text-align:center;font-size:12px;padding:7px 7px calc(7px + env(safe-area-inset-bottom));font-family:Space Mono,monospace;letter-spacing:.05em';
   offlineBanner.textContent='📵 오프라인 — 저장된 일정과 지도 타일은 계속 사용 가능합니다';
   document.body.appendChild(offlineBanner);
   window.addEventListener('offline', ()=>{ offlineBanner.style.display='block'; });

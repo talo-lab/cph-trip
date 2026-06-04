@@ -1318,3 +1318,47 @@
     h1{font-size:17px}
     .sub{font-size:9.5px}
   }
+
+  /* ============ DAY JUMP BAR ============ */
+  .day-jump-bar{
+    position:sticky;top:0;z-index:20;
+    display:flex;gap:4px;padding:6px 10px;
+    background:var(--cream);border-bottom:1.5px solid var(--ink);
+    overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  }
+  .day-jump-bar::-webkit-scrollbar{display:none}
+  .day-jump-chip{
+    flex:0 0 auto;padding:3px 9px;
+    border:1.5px solid var(--line);background:none;cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+    color:var(--slate);letter-spacing:.03em;transition:.13s;white-space:nowrap;
+  }
+  .day-jump-chip:hover{border-color:var(--rust);color:var(--rust)}
+  .day-jump-chip.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .day-jump-chip.fest{border-color:rgba(200,73,42,.5);color:var(--rust)}
+  .day-jump-chip.fest.active{background:var(--rust);border-color:var(--rust);color:#fff}
+
+  /* ============ UNDO TOAST ============ */
+  .undo-toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(0);
+    z-index:9998;background:var(--ink);color:var(--cream);
+    display:flex;align-items:center;gap:10px;
+    padding:12px 16px;min-width:260px;max-width:calc(100vw - 32px);
+    box-shadow:0 4px 20px rgba(0,0,0,.35);
+    animation:toastIn .22s cubic-bezier(.4,0,.2,1);
+  }
+  .undo-toast.out{animation:toastOut .2s cubic-bezier(.4,0,.2,1) forwards}
+  @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @keyframes toastOut{to{opacity:0;transform:translateX(-50%) translateY(16px)}}
+  .undo-toast-msg{flex:1;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;line-height:1.4}
+  .undo-toast-count{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--ochre);min-width:18px;text-align:right}
+  .undo-toast-btn{
+    padding:5px 12px;border:1.5px solid var(--ochre);background:none;
+    color:var(--ochre);cursor:pointer;font-family:'Space Mono',monospace;
+    font-size:10px;font-weight:700;letter-spacing:.06em;transition:.15s;flex-shrink:0;
+  }
+  .undo-toast-btn:hover{background:var(--ochre);color:var(--ink)}
+  .undo-toast-bar{
+    position:absolute;bottom:0;left:0;height:3px;background:var(--ochre);
+    transition:width 1s linear;
+  }
