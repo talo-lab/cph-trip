@@ -427,6 +427,7 @@ const DEFAULT_PLAN = [
   // DAY 5 — 6/13
   {date:'6/13 (토)', tag:'자유 관광', fest:false, items:[
     {time:'07:00', title:'🏃 아침 달리기 — 하버 & 운하 루프 7km', note:'숙소 → 중앙역 → Langebro 다리 → Amager Blvd → 크리스티안스하운 운하 → Knippelsbro → 귀숙 · 약 42분 · 운하·항구 파노라마', dist:'', _lat:55.6700, _lng:12.5755, _runningCourse:true, ...RUNNING_ROUTES[5]},
+    {time:'10:00', title:'플리마켓 (Frederiksberg)', note:'Frederiksberg Bredegade, 2000 Frederiksberg · 토요일 야외 벼룩시장', dist:'', _lat:55.6778, _lng:12.5317, _gmapsUrl:'https://maps.app.goo.gl/Espr77BhkCbP6ShM8'},
     {time:'미정', title:'벨뷰 해변 (아르네 야콥센 비치)', note:'Bellevue Strand, Klampenborg — 야콥센 설계 라이프가드 타워 · 북유럽 모더니즘 해변', dist:'', _lat:55.7766, _lng:12.5780},
     {time:'미정', title:'루이지애나 현대미술관', note:'GL Strandvej 13, Humlebæk — 해안절벽 위 건축 · 북유럽 최고 미술관 · 토–일 11:00–18:00', dist:'', _lat:55.9695, _lng:12.5430},
   ]},
@@ -5820,6 +5821,23 @@ function patchPlanGeodata(){
 }
 
 /* 기존 저장 플랜의 CPH 관련 항목에 좌표 주입 (ICN 출발편은 코펜하겐 지도에 불필요하므로 제외) */
+/* 신규 항목 패치 — 기존 저장 플랜에 새로 추가된 항목 주입 */
+function patchNewItems(){
+  const PATCHES = [
+    { di:5, match: it => /플리마켓.*frederiksberg|frederiksberg.*플리마켓/i.test(it.title),
+      item: {time:'10:00', title:'플리마켓 (Frederiksberg)', note:'Frederiksberg Bredegade, 2000 Frederiksberg · 토요일 야외 벼룩시장', dist:'', _lat:55.6778, _lng:12.5317, _gmapsUrl:'https://maps.app.goo.gl/Espr77BhkCbP6ShM8'} },
+  ];
+  let changed = false;
+  PATCHES.forEach(({di, match, item}) => {
+    if(!plan[di]) return;
+    if(plan[di].items.some(match)) return; // 이미 있으면 건너뜀
+    plan[di].items.push({...item});
+    sortDayByTime(di);
+    changed = true;
+  });
+  if(changed) savePlan();
+}
+
 function patchFlightCoords(){
   const CPH = {lat:55.6180, lng:12.6560};  // 코펜하겐 공항
   let changed = false;
@@ -5858,6 +5876,7 @@ async function initApp(){
   patchRunningCourses();
   patchFlightCoords();
   patchPlanGeodata();
+  patchNewItems();
   updateUserSelector();
   setTab('plan');
 }
