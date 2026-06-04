@@ -5545,10 +5545,16 @@ function patchRunningCourses(){
   let changed = false;
   RUNS.forEach(({di, item})=>{
     if(!plan[di]) return;
-    if(plan[di].items.some(it=>it._runningCourse)) return; // 이미 있으면 스킵
-    plan[di].items.push({...item});
-    sortDayByTime(di);
-    changed = true;
+    const existing = plan[di].items.find(it=>it._runningCourse);
+    if(existing){
+      // 이미 있는 경우: gmaps·pts 누락 시 최신 데이터로 패치
+      if(!existing.gmaps && item.gmaps){ existing.gmaps = item.gmaps; changed = true; }
+      if(!existing.pts   && item.pts  ){ existing.pts   = item.pts;   changed = true; }
+    } else {
+      plan[di].items.push({...item});
+      sortDayByTime(di);
+      changed = true;
+    }
   });
   if(changed) savePlan();
 }
