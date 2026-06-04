@@ -512,6 +512,49 @@ let selectedPlanKey = null; // 현재 지도 선택된 plan item "di-ii"
 let planMultiMode = false;  // 다중선택 모드 여부
 let planMultiSel = [];      // [{key,di,ii,lat,lng,title}] 다중선택 목록
 let exhPinLayer = null;     // 전시탭 지도 핀
+
+// 추천 카드 호버 핀
+let _hoverPin = null;
+let _hoverTimer = null;
+let _hoverTitle = '';
+const _hoverGeoCache = {}; // title → {lat,lng}|null
+
+function _clearHoverPin(){
+  clearTimeout(_hoverTimer);
+  _hoverTitle = '';
+  if(_hoverPin){ try{ map.removeLayer(_hoverPin); }catch(e){} _hoverPin=null; }
+  map.closePopup();
+}
+
+async function _showHoverPin(title, note){
+  _clearHoverPin();
+  _hoverTitle = title;
+  // 캐시된 좌표 즉시 사용
+  if(_hoverGeoCache[title] !== undefined){
+    const c = _hoverGeoCache[title];
+    if(c && _hoverTitle===title) _placeHoverPin(title, note, c.lat, c.lng);
+    return;
+  }
+  // 200ms 딜레이 후 지오코딩 (빠른 hover 통과 방지)
+  _hoverTimer = setTimeout(async ()=>{
+    const c = await nominatimGeocode(title);
+    _hoverGeoCache[title] = c;
+    if(c && _hoverTitle===title) _placeHoverPin(title, note, c.lat, c.lng);
+  }, 200);
+}
+
+function _placeHoverPin(title, note, lat, lng){
+  const icon = L.divIcon({
+    className:'',
+    html:`<div class="hover-pin-label">${title}</div>`,
+    iconAnchor:[0, 22]
+  });
+  _hoverPin = L.marker([lat,lng],{icon,zIndexOffset:800}).addTo(map);
+  _hoverPin.bindPopup(
+    `<div class="pop-name">${title}</div><div class="pop-desc">${note||''}</div>`
+  ).openPopup();
+  map.flyTo([lat,lng],15,{duration:.45});
+}
 const exhGeoCache = {};     // address -> {lat,lng}
 
 function clearRunRouteLayers(){
@@ -570,12 +613,12 @@ function _placeExhPin(ex, lat, lng, color){
 }
 
 /* 일정 아이템 백그라운드 지오코딩 — 다중 전략 순차 시도 */
-async function geocodePlanItem(item, di){
-  if(item._lat && item._lng) return;
+async function geocodePlanItem(item, di, force=false){
+  if(!force && item._lat && item._lng) return;
 
-  // 1a. 숙소/복귀 키워드 → STAY 좌표 즉시
-  const stayKw = /숙소|체크인|체크아웃|airbnb|에어비앤비|호텔|hotel|check.?in|check.?out/i;
-  if(stayKw.test(item.title) || stayKw.test(item.note||'')){
+  // 1a. 숙소/복귀 키워드 → STAY 좌표 즉시 (title만 체크 — note의 "체크인 전 ~" 오탐 방지)
+  const stayKw = /^(숙소|airbnb|에어비앤비|호텔|숙소 체크인|숙소 복귀|숙소복귀|체크아웃|checkout)|(숙소|airbnb).*(체크인|체크아웃|check)|(체크인|check.?in).*숙소/i;
+  if(stayKw.test(item.title)){
     item._lat = STAY.lat; item._lng = STAY.lng;
     savePlan();
     if(activeTab==='plan'){ updateDayViz(di); renderPlan(); }
@@ -4408,24 +4451,33 @@ document.getElementById('drawerLocToggle').addEventListener('click', ()=>{
   if(!isOpen) document.getElementById('drawerLocInput').focus();
 });
 
-// 위치 저장
-document.getElementById('drawerLocSave').addEventListener('click', ()=>{
+// 위치 저장 — 장소명 입력 시 _lat/_lng도 재검색
+document.getElementById('drawerLocSave').addEventListener('click', async ()=>{
   if(!drawerContext) return;
-  const it = plan[drawerContext.di]?.items[drawerContext.ii];
+  const {di, ii} = drawerContext;
+  const it = plan[di]?.items[ii];
   if(!it) return;
   const val = document.getElementById('drawerLocInput').value.trim();
-  // Google Maps URL이면 그대로, 아니면 Places Search URL로 변환
+  const saveBtn = document.getElementById('drawerLocSave');
+
   if(val && !val.startsWith('http')){
     it._gmapsUrl = gMapsUrl(val + (val.toLowerCase().includes('copenhagen')?'':' Copenhagen'));
+    // 장소명으로 지도 핀 좌표 재검색
+    saveBtn.textContent = '검색 중...'; saveBtn.disabled = true;
+    const c = await nominatimGeocode(val);
+    if(c){ it._lat = c.lat; it._lng = c.lng; }
+    else { delete it._lat; delete it._lng; }
+    saveBtn.textContent = '저장'; saveBtn.disabled = false;
   } else {
     it._gmapsUrl = val || undefined;
   }
   savePlan();
   document.getElementById('drawerLocRow').style.display = 'none';
-  // G 버튼 업데이트
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn) gmapBtn.href = it._gmapsUrl || gMapsUrlForItem(it);
   renderPlan();
+  // 저장 후 지도에 반영
+  if(it._lat) showItemRoute(di, ii);
 });
 
 // 위치 초기화 (자동생성으로 복원)
@@ -4438,6 +4490,23 @@ document.getElementById('drawerLocReset').addEventListener('click', ()=>{
   const locInput = document.getElementById('drawerLocInput');
   if(locInput){ locInput.value = ''; locInput.placeholder = gMapsUrlForItem(it); }
   renderPlan();
+});
+
+// 📍↺ 핀 위치 재검색 — _lat/_lng 초기화 후 타이틀 기반 재지오코딩
+document.getElementById('drawerPinReset')?.addEventListener('click', async ()=>{
+  if(!drawerContext) return;
+  const {di, ii} = drawerContext;
+  const it = plan[di]?.items[ii];
+  if(!it) return;
+  const btn = document.getElementById('drawerPinReset');
+  btn.textContent = '검색 중...'; btn.disabled = true;
+  delete it._lat; delete it._lng;
+  await geocodePlanItem(it, di, true); // force=true
+  btn.textContent = '📍↺'; btn.disabled = false;
+  document.getElementById('drawerLocRow').style.display = 'none';
+  const c = getItemCoords(it);
+  if(c){ map.flyTo([c.lat, c.lng], 15, {duration:.8}); }
+  else { const st=document.getElementById('drawerStatus'); if(st){ st.className='drawer-status show err'; st.textContent='📍 좌표를 찾지 못했어요. 위치 입력 후 저장해보세요.'; } }
 });
 
 function closeDrawer(){
@@ -4626,6 +4695,10 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
         ${opt.note?`<div class="opt-note">${opt.note}</div>`:''}
         ${opt.tip?`<div class="opt-note" style="color:var(--rust-deep);font-size:11px">⚑ ${opt.tip}</div>`:''}
         ${tags?`<div class="opt-tags">${tags}</div>`:''}`;
+
+      // 호버 시 지도에 임시 핀 표시
+      card.addEventListener('mouseenter',()=>_showHoverPin(opt.title, opt.note));
+      card.addEventListener('mouseleave',()=>_clearHoverPin());
 
       card.addEventListener('click',()=>{
         optEl.querySelectorAll('.drawer-opt-card').forEach(c=>c.classList.remove('selected'));

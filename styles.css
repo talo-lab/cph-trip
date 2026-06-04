@@ -633,6 +633,15 @@
     box-shadow:1px 1px 3px rgba(0,0,0,.15);
     pointer-events:none;
   }
+  /* 추천 카드 호버 핀 라벨 */
+  .hover-pin-label{
+    background:var(--ochre);color:#fff;
+    padding:3px 10px;border-radius:3px;
+    font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
+    white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis;
+    box-shadow:0 2px 8px rgba(0,0,0,.3);
+    animation:fadeIn .15s ease;
+  }
   .leaflet-tooltip.dist-tip{
     background:rgba(255,255,255,.9);border:none;box-shadow:none;
     font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:3px 7px;
