@@ -853,6 +853,13 @@ function transportBetween(coordA, coordB, ctx = {}){
   return {km, mins, ...m};
 }
 
+/* 수동 이동수단 override 모드 정의 */
+const OVERRIDE_MODES = {
+  walk:    {icon:'🚶', label:'도보',     speed:5,  extra:0},
+  bike:    {icon:'🚴', label:'자전거',   speed:15, extra:0},
+  transit: {icon:'🚌', label:'대중교통', speed:18, extra:5},
+};
+
 /* ---------- ITEM HIGHLIGHT VISUALIZATION (click) ---------- */
 /** 선택된 핀만 full opacity, 앞뒤 핀 40%, 나머지 15% */
 function resetPinOpacity(){
@@ -1610,6 +1617,41 @@ async function addFestSelected(){
 
 /* ---------- RENDER: PLAN ---------- */
 let currentVisDay = 0;
+/* 이동수단 수동 선택 picker 토글 */
+function toggleWalkPicker(walkEl, di, ii) {
+  // 같은 행 picker가 열려 있으면 닫기
+  const next = walkEl.nextElementSibling;
+  if (next?.classList.contains('item-walk-picker')) { next.remove(); return; }
+  // 다른 picker 닫기
+  document.querySelectorAll('.item-walk-picker').forEach(p => p.remove());
+
+  const it = plan[di]?.items[ii];
+  if (!it) return;
+  const current = it._transportOverride || 'auto';
+
+  const picker = document.createElement('div');
+  picker.className = 'item-walk-picker';
+  picker.addEventListener('click', e => e.stopPropagation()); // 전역 close 방지
+
+  [{key:'walk',icon:'🚶',label:'도보'},{key:'bike',icon:'🚴',label:'자전거'},
+   {key:'transit',icon:'🚌',label:'대중교통'},{key:'auto',icon:'✦',label:'자동'}]
+    .forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = `item-walk-pick-btn${opt.key===current?' active':''}${opt.key==='auto'?' auto-btn':''}`;
+      btn.textContent = `${opt.icon} ${opt.label}`;
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        if (opt.key === 'auto') delete it._transportOverride;
+        else it._transportOverride = opt.key;
+        savePlan();
+        renderPlan();
+      });
+      picker.appendChild(btn);
+    });
+
+  walkEl.after(picker);
+}
+
 /* 날짜 퀵점프 바 — plan 탭 최상단 sticky 칩 */
 function renderDayJumpBar(el) {
   const bar = document.createElement('div');
@@ -1844,10 +1886,21 @@ function renderPlan(){
         if(cA && cB){
           const fromTitle = isRun ? '숙소' : it.title;
           const hour = timeToMin(it.time) / 60;
-          const t = transportBetween(cA, cB, {hour, fromTitle, toTitle:nextIt.title});
+          // Override 있으면 해당 수단으로 재계산, 없으면 자동 추론
+          const ovKey = !isRun && it._transportOverride;
+          let t;
+          if(ovKey && OVERRIDE_MODES[ovKey]){
+            const km = haversineKm(cA.lat, cA.lng, cB.lat, cB.lng);
+            const m = OVERRIDE_MODES[ovKey];
+            t = {km, mins: Math.max(1, Math.round(km/m.speed*60) + m.extra), ...m};
+          } else {
+            t = transportBetween(cA, cB, {hour, fromTitle, toTitle:nextIt.title});
+          }
           if(t.km >= 0.05){
             const walk = document.createElement('div');
-            walk.className='item-walk';
+            walk.className = 'item-walk' + (ovKey ? ' has-override' : '');
+            walk.dataset.di = di; walk.dataset.ii = ii;
+            walk.addEventListener('click', e => { e.stopPropagation(); toggleWalkPicker(walk, di, ii); });
             const _clip = s => s.replace(/^\[.*?\]\s*/,'').replace(/\s*→.*$/,'').trim();
             const fromLabel = isRun ? '숙소' : _clip(it.title).substring(0,14);
             const toLabel   = _clip(nextIt.title).substring(0,14);
@@ -5127,6 +5180,11 @@ function setTab(t){
   }
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
+
+// 전역 클릭: 이동수단 picker 닫기
+document.addEventListener('click', ()=>
+  document.querySelectorAll('.item-walk-picker').forEach(p=>p.remove())
+);
 
 // Escape 키: 모달·드로어 닫기
 document.addEventListener('keydown', e=>{

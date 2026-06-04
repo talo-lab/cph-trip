@@ -145,11 +145,31 @@
   .item-note{font-size:12px;color:var(--slate);margin-top:2px;line-height:1.35}
   .item-note[contenteditable]:focus{outline:none;background:#fff4d6;box-shadow:0 0 0 2px var(--ochre);border-radius:3px}
   .item-dist{display:inline-block;font-size:10px;font-family:'Space Mono',monospace;color:var(--cream);background:var(--sage);padding:1px 5px;margin-top:4px;letter-spacing:.03em}
-  .item-walk{display:flex;align-items:center;gap:6px;padding:3px 20px;font-size:10.5px;font-family:'Space Mono',monospace;color:var(--slate);opacity:.75}
+  .item-walk{display:flex;align-items:center;gap:6px;padding:3px 20px;font-size:10.5px;font-family:'Space Mono',monospace;color:var(--slate);opacity:.75;cursor:pointer;transition:background .1s}
+  .item-walk:hover{opacity:1;background:rgba(47,107,107,.04)}
+  .item-walk.has-override{background:rgba(47,107,107,.06)}
+  .item-walk.has-override .item-walk-label{color:var(--teal)}
   .item-walk::before{content:'';display:block;width:12px;height:1px;background:var(--slate);opacity:.3}
   .item-walk::after{content:'';display:block;flex:1;height:1px;background:var(--slate);opacity:.12}
   .item-walk-icon{font-size:12px}
   .item-walk-label{font-weight:700;letter-spacing:.04em}
+  /* 이동수단 수동 선택 picker */
+  .item-walk-picker{
+    display:flex;gap:5px;padding:5px 20px 7px;
+    background:rgba(47,107,107,.04);border-bottom:1px dashed var(--line);
+    animation:wPickFade .13s ease;
+  }
+  @keyframes wPickFade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+  .item-walk-pick-btn{
+    flex:0 0 auto;padding:3px 9px;
+    border:1.5px solid var(--line);background:none;cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;
+    color:var(--slate);letter-spacing:.02em;transition:.13s;white-space:nowrap;
+  }
+  .item-walk-pick-btn:hover{border-color:var(--teal);color:var(--teal)}
+  .item-walk-pick-btn.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .item-walk-pick-btn.auto-btn{opacity:.75;font-style:italic}
+  .item-walk-pick-btn.auto-btn.active{background:var(--sage);border-color:var(--sage);opacity:1;font-style:normal}
   /* 이동 출발지 → 목적지 레이블
      order:1로 ::after(장식선, flex:1) 다음에 배치 → 선이 가운데 채워지고 라우트는 우측 끝 */
   .item-walk-route{
