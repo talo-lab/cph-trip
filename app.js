@@ -1480,6 +1480,7 @@ function renderPlan(){
           <div class="item-title" contenteditable spellcheck="false">${it.title||''}</div>
           <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
+          ${(()=>{ const tag=it._catTag||inferTag(it); return tag?`<span class="item-cat-tag">${tag}</span>`:''; })()}
           ${it._runningCourse&&it.gmaps?`<a href="${it.gmaps}" target="_blank" rel="noopener" class="item-src run-route-link" onclick="event.stopPropagation()" style="color:var(--teal);text-decoration:none">🗺 Google Maps 경로</a>`:''}
           ${it._user?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
@@ -1665,10 +1666,11 @@ function renderPlan(){
         if(toIdx<0||(fromDi===toDi&&fromIdx===toIdx)) return;
         const planItem=plan[fromDi].items.splice(fromIdx,1)[0];
         plan[toDi].items.splice(toIdx,0,planItem);
+        // 스마트 스케줄링: 시간 자동 조정 + 태그 추론
+        const result = autoSmartSchedule(toDi, toIdx);
         savePlan();
         renderPlan();
-        // 시간 순서 검증 → 경고 토스트
-        checkDragOrder(toDi, planItem);
+        if(result) showSmartScheduleToast(result, toDi);
       }
     });
   });
@@ -3251,7 +3253,170 @@ function placeOptimally(place){
 }
 
 // 시간 문자열을 분으로 (정렬용). "오전/오후/종일" 등은 적당히 매핑
-/* ── 드래그 후 시간 역순 경고 ── */
+
+/* ════════════════════════════════════════════════════════
+   스마트 스케줄링 — 소요시간 추론 · 태그 추론 · 자동 시간 조정
+   ════════════════════════════════════════════════════════ */
+
+/** 일정 항목의 예상 소요시간(분) 추론 */
+function inferDuration(it){
+  const txt = ((it.title||'') + ' ' + (it.note||'')).toLowerCase();
+  if(it._runningCourse) return /7km/.test(txt) ? 55 : 40;
+  if(/롱테이블|long table|소셜 다이닝|salu/.test(txt)) return 180;
+  if(/dinner|gala|만찬/.test(txt)) return 120;
+  if(/식사|다이닝|dining|restaurant|레스토랑|점심|저녁|lunch|brunch/.test(txt)) return 90;
+  if(/카페|café|cafe|coffee|커피|베이커리|bageri|bakeri|크로아상|pastry/.test(txt)) return 35;
+  if(/museum|뮤지엄|미술관|갤러리|gallery|전시|exhibition|오프닝/.test(txt)) return 90;
+  if(/symposium|conference|심포지엄|컨퍼런스/.test(txt)) return 110;
+  if(/talk|panel|토크|강연|lecture|세미나/.test(txt)) return 90;
+  if(/workshop|워크숍|making|crafting/.test(txt)) return 90;
+  if(/concert|공연|music|show|performance/.test(txt)) return 90;
+  if(/yoga|웰니스|wellness|meditation|breathwork/.test(txt)) return 60;
+  if(/shopping|쇼핑|매장|store|shop/.test(txt)) return 50;
+  if(/공항|airport|icn|cph|출발|도착|환승/.test(txt)) return 30;
+  if(/체크인|체크아웃|checkout/.test(txt)) return 30;
+  if(/산책|walk|stroll|hike/.test(txt)) return 60;
+  if(/tour|투어/.test(txt)) return 70;
+  if(/이동|transit|지하철|metro|버스|bus/.test(txt)) return 25;
+  return 60;
+}
+
+/** 일정 항목 카테고리 태그 추론 — emoji + 한국어 */
+function inferTag(it){
+  const txt = ((it.title||'') + ' ' + (it.note||'')).toLowerCase();
+  if(it._runningCourse) return '🏃 달리기';
+  if(/✈️|출발|도착|항공편|공항|icn|cph/.test(txt)) return '✈️ 이동';
+  if(/롱테이블|long table|소셜 다이닝|salu/.test(txt)) return '🍽 스페셜 디너';
+  if(/dinner|만찬|gala/.test(txt)) return '🍽 디너';
+  if(/식사|다이닝|dining|restaurant|레스토랑|점심|저녁|lunch|brunch/.test(txt)) return '🍽 식사';
+  if(/카페|café|cafe|coffee|커피|베이커리|bageri|bakeri|크로아상/.test(txt)) return '☕ 카페';
+  if(/museum|뮤지엄|미술관|갤러리|gallery|전시|exhibition|오프닝/.test(txt)) return '🏛 전시';
+  if(/symposium|심포지엄|conference|컨퍼런스/.test(txt)) return '💬 심포지엄';
+  if(/talk|panel|토크|강연|lecture|세미나/.test(txt)) return '💬 토크';
+  if(/workshop|워크숍/.test(txt)) return '✂️ 워크숍';
+  if(/yoga|웰니스|wellness|meditation|breathwork/.test(txt)) return '🧘 웰니스';
+  if(/concert|공연|performance|show/.test(txt)) return '🎵 공연';
+  if(/shopping|쇼핑|매장|store|shop/.test(txt)) return '🛍 쇼핑';
+  if(/산책|walk|stroll|hike/.test(txt)) return '🚶 산책';
+  if(/tour|투어/.test(txt)) return '🗺 투어';
+  if(/체크인|airbnb|호텔|숙소/.test(txt)) return '🏠 숙소';
+  if(/이동|transit|지하철|metro|버스|bus/.test(txt)) return '🚌 이동';
+  return '';
+}
+
+/** 분 → "HH:MM" 문자열 */
+function minToTimeStr(m){
+  if(m == null || m >= 9000) return '';
+  m = Math.max(0, Math.min(m, 23*60+59));
+  return String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0');
+}
+function roundTo5(m){ return Math.round(m/5)*5; }
+
+/**
+ * 드래그 완료 후 호출:
+ * 1) 이동된 항목 시간을 앞뒤 컨텍스트로 자동 계산
+ * 2) 이후 비고정 항목들 연쇄 조정 (고정 항목에서 중단)
+ * 3) 카테고리 태그 추론 & _catTag 반영
+ * Returns { timeChanged, prevTime, newTime, tag }
+ */
+function autoSmartSchedule(di, movedIdx){
+  const items = plan[di].items;
+  const it = items[movedIdx];
+  if(!it) return null;
+
+  const prevTimeStr = it.time || '';
+  let timeChanged = false;
+
+  // ── 태그 추론 (고정 아이템도 적용) ──
+  const tag = inferTag(it);
+  if(tag && !it._catTag) it._catTag = tag;
+  else if(tag) it._catTag = tag; // 드래그마다 갱신
+
+  // ── 고정 항목은 시간 건드리지 않음 ──
+  if(it._fixed) return { timeChanged:false, tag };
+
+  // ── 앞쪽: 구체 시간 있는 가장 가까운 이전 항목 ──
+  let prevEndMin = null;
+  for(let i = movedIdx - 1; i >= 0; i--){
+    const pt = timeToMin(items[i].time);
+    if(pt < 9000){
+      prevEndMin = pt + inferDuration(items[i]);
+      break;
+    }
+  }
+
+  // ── 뒤쪽: 구체 시간 있는 가장 가까운 다음 항목 ──
+  let nextStartMin = null;
+  let nextFixedStartMin = null;
+  for(let i = movedIdx + 1; i < items.length; i++){
+    const nt = timeToMin(items[i].time);
+    if(nt < 9000){
+      if(nextStartMin === null) nextStartMin = nt;
+      if(items[i]._fixed && nextFixedStartMin === null) nextFixedStartMin = nt;
+    }
+  }
+
+  // ── 이동된 항목 시간 계산 ──
+  if(prevEndMin !== null){
+    let newMin = roundTo5(prevEndMin);
+    // 다음 고정 항목이 있고 새 시간이 그것보다 늦으면 → 고정 항목 직전으로 clamp
+    if(nextFixedStartMin !== null && newMin >= nextFixedStartMin){
+      newMin = nextFixedStartMin - inferDuration(it) - 5;
+      newMin = roundTo5(Math.max(newMin, prevEndMin - inferDuration(it)));
+    }
+    if(newMin >= 6*60 && newMin <= 23*60){
+      it.time = minToTimeStr(newMin);
+      timeChanged = it.time !== prevTimeStr;
+    }
+  }
+
+  // ── 연쇄 조정: 이후 비고정 항목들 ──
+  let curEndMin = timeToMin(it.time) + inferDuration(it);
+  for(let i = movedIdx + 1; i < items.length; i++){
+    const nx = items[i];
+    if(nx._fixed) break; // 고정 항목에서 멈춤
+    const nt = timeToMin(nx.time);
+    if(nt < 9000 && nt < curEndMin - 5){
+      const adjusted = roundTo5(curEndMin + 5);
+      if(adjusted <= 23*60){
+        nx.time = minToTimeStr(adjusted);
+        timeChanged = true;
+      }
+    }
+    curEndMin = timeToMin(nx.time) + inferDuration(nx);
+  }
+
+  return { timeChanged, prevTime: prevTimeStr, newTime: it.time, tag };
+}
+
+/** 자동 조정 완료 토스트 */
+function showSmartScheduleToast(result, di){
+  document.getElementById('smartToast')?.remove();
+  const t = document.createElement('div');
+  t.id = 'smartToast';
+  const lines = [];
+  if(result.tag) lines.push(`<span style="opacity:.85">${result.tag}</span> 태그 추론`);
+  if(result.timeChanged && result.prevTime !== result.newTime){
+    const prev = result.prevTime || '미정';
+    lines.push(`🕐 ${prev} → <b>${result.newTime}</b> 자동 조정`);
+  }
+  if(!lines.length) return;
+  t.style.cssText = `
+    position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+    background:var(--ink);color:var(--cream);
+    padding:10px 16px;border-radius:8px;max-width:300px;width:90%;
+    z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.3);
+    font-size:12px;line-height:1.6;animation:slideUp .18s ease;
+    display:flex;align-items:center;gap:10px;`;
+  t.innerHTML = `
+    <div style="flex:1">${lines.join('<br>')}</div>
+    <button onclick="sortDayByTime(${di});savePlan();renderPlan();this.closest('#smartToast').remove()"
+      style="flex-shrink:0;padding:4px 10px;background:var(--sage);color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-family:'Space Mono',monospace;white-space:nowrap">⇅ 전체 정렬</button>`;
+  document.body.appendChild(t);
+  setTimeout(()=>t?.remove(), 5000);
+}
+
+/* ── 드래그 후 시간 역순 경고 (fallback) ── */
 function checkDragOrder(di, movedItem){
   const items = plan[di].items;
   const warnings = [];

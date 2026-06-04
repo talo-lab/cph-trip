@@ -690,6 +690,15 @@
   .quick button:hover{border-color:var(--rust);color:var(--rust)}
   .item.user-added{background:linear-gradient(90deg,rgba(217,144,33,.1),transparent)}
   .item-src{display:inline-block;font-size:10px;font-family:'Space Mono',monospace;color:var(--ochre);margin-top:3px}
+  /* 드래그 스마트 스케줄링 — 카테고리 태그 뱃지 */
+  .item-cat-tag{
+    display:inline-flex;align-items:center;gap:3px;
+    font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;
+    letter-spacing:.03em;padding:1px 7px;margin-top:4px;margin-right:4px;
+    background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.12);
+    border-radius:2px;color:var(--slate);vertical-align:middle;
+    white-space:nowrap;
+  }
   .item.fixed{background:linear-gradient(90deg,rgba(45,107,107,.13),transparent);border-left:3px solid var(--teal);padding-left:8px;margin-left:-11px}
   .item-src.lock{color:var(--teal);font-weight:700}
   .item-x[disabled]{cursor:default;opacity:.5}
