@@ -1703,7 +1703,7 @@ function renderDayJumpBar(el, container) {
       if (!target) return;
       const hdrH = (container || bar).closest('.plan-sticky-header')?.offsetHeight
                    || bar.offsetHeight || 36;
-      el.scrollTo({ top: target.offsetTop - hdrH, behavior: 'smooth' });
+      el.scrollTop = target.offsetTop - hdrH;
       bar.querySelectorAll('.day-jump-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
     });
@@ -1719,9 +1719,14 @@ function renderDayJumpBar(el, container) {
     let activeDi = 0;
     dayEls.forEach((d, i) => { if (d.offsetTop <= st) activeDi = i; });
     bar.querySelectorAll('.day-jump-chip').forEach((c, i) => c.classList.toggle('active', i === activeDi));
-    // 활성 칩이 바 안에서 보이도록 가로 스크롤
+    // 활성 칩이 바 안에서 보이도록 가로 스크롤 (scrollIntoView 대신 직접 조정)
     const ac = bar.children[activeDi];
-    if (ac) ac.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    if (ac) {
+      const barRect = bar.getBoundingClientRect();
+      const acRect  = ac.getBoundingClientRect();
+      if (acRect.right > barRect.right) bar.scrollLeft += acRect.right - barRect.right + 8;
+      else if (acRect.left < barRect.left) bar.scrollLeft -= barRect.left - acRect.left + 8;
+    }
   };
   el.addEventListener('scroll', el._dayJumpScrollH, { passive: true });
 
