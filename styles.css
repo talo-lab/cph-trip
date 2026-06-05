@@ -129,6 +129,7 @@
     font-family:var(--font-mono);font-size:var(--t-sm);color:var(--rust);
     font-weight:700;white-space:nowrap;padding-top:2px;min-width:46px;
   }
+  .item-time-end{display:block;font-size:9px;color:var(--slate);font-weight:500;opacity:.75;letter-spacing:0}
   .item-time-edit{cursor:text;border-radius:3px;transition:.15s;outline:none}
   .item-time-edit:empty::before{content:attr(data-placeholder);color:var(--slate);opacity:.4;font-weight:400}
   .item-time-edit:focus{background:var(--cream);box-shadow:0 0 0 1.5px var(--ink);padding:1px 4px}

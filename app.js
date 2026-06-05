@@ -1792,7 +1792,7 @@ function renderPlan(){
       row.innerHTML = `
         ${(it._fixed||it._lockedTime)?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
         <input type="checkbox" class="item-sel-cb" ${selectedPlanKey===`${di}-${ii}`?'checked':''} title="지도에서 선택/해제">
-        <div class="item-time${(it._fixed||it._lockedTime)?'':' item-time-edit'}" title="${(it._fixed||it._lockedTime)?'':'클릭하여 시간 선택'}">${it.time||''}</div>
+        <div class="item-time${(it._fixed||it._lockedTime)?'':' item-time-edit'}" title="${(it._fixed||it._lockedTime)?'':'클릭하여 시간 선택'}">${it.time||''}${it._lockedTime&&it._timeEnd?`<span class="item-time-end">–${it._timeEnd}</span>`:''}</div>
         <div class="item-main">
           <div class="item-title" ${(it._fixed||it._lockedTime)?'':'contenteditable'} spellcheck="false">${it.title||''}</div>
           <div class="item-note" ${(it._fixed||it._lockedTime)?'':'contenteditable'} spellcheck="false">${it.note||''}</div>
@@ -1800,7 +1800,7 @@ function renderPlan(){
           ${(()=>{ const tag=it._catTag||inferTag(it); return tag?`<span class="item-cat-tag">${tag}</span>`:''; })()}
           ${it._user&&!it._lockedTime?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
-          ${it._lockedTime?`<span class="item-src lock">🕐 ${it.time}${it._timeEnd?' – '+it._timeEnd:''} · 공식일정고정</span>`:''}
+          ${it._lockedTime?`<span class="item-src lock">🕐 ${it.time}${it._timeEnd?' – '+it._timeEnd:''}${(()=>{const d=fmtEventDuration(it.time,it._timeEnd);return d?' · '+d:''})()}· 공식일정고정</span>`:''}
           ${tagsHtml}${warnHtml}
         </div>
         <a class="item-gmap" href="${gmapHref}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${gmapIcon}</a>
@@ -4053,6 +4053,16 @@ function showTimePicker(anchor, currentVal, onSelect){
       }
     });
   }, 0);
+}
+
+function fmtEventDuration(start, end){
+  const s = timeToMin(start), e = timeToMin(end);
+  if(s >= 9999 || e >= 9999 || e <= s) return '';
+  const mins = e - s;
+  const h = Math.floor(mins / 60), m = mins % 60;
+  if(h > 0 && m > 0) return h+'시간 '+m+'분 ';
+  if(h > 0) return h+'시간 ';
+  return m+'분 ';
 }
 
 function timeToMin(t){
