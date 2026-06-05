@@ -5533,7 +5533,7 @@ function setTab(t){
   } else if(t==='fest'){
     if(typeof FESTIVAL_EVENTS==='undefined'){
       _tabLoading('3DoD 행사 데이터 로드 중...');
-      loadDataScript('/events-data.js').then(()=>renderFest()).catch(()=>{
+      loadDataScript('/events-data.js').then(()=>{ patchLockedTimes(); renderFest(); }).catch(()=>{
         document.getElementById('scroll').innerHTML='<div style="padding:20px;color:var(--rust)">데이터 로드 실패. 새로고침해 주세요.</div>';
       });
     } else { renderFest(); }
@@ -6305,6 +6305,7 @@ function patchLockedTimes(){
     },
   ];
   let changed = false;
+  const daysToSort = new Set();
   FIXES.forEach(({match, di, time, _timeEnd}) => {
     if(!plan[di]) return;
     plan[di].items.forEach(it => {
@@ -6313,10 +6314,33 @@ function patchLockedTimes(){
       if(it.time !== time){ it.time = time; dirty = true; }
       if(it._timeEnd !== _timeEnd){ it._timeEnd = _timeEnd; dirty = true; }
       if(!it._lockedTime){ it._lockedTime = true; dirty = true; }
-      if(dirty) changed = true;
+      if(dirty){ changed = true; daysToSort.add(di); }
     });
   });
-  if(changed){ sortDayByTime(2); savePlan(); }
+
+  // FESTIVAL_EVENTS 전체 대조 — 기존 추가 항목에 _lockedTime 일괄 적용
+  if(typeof FESTIVAL_EVENTS !== 'undefined'){
+    const festMap = new Map();
+    FESTIVAL_EVENTS.forEach(ev => {
+      if(!festMap.has(ev.title)){
+        const parts = (ev.time||'').split('-');
+        festMap.set(ev.title, {time: parts[0].trim(), _timeEnd: (parts[1]||'').trim()});
+      }
+    });
+    plan.forEach((day, di) => {
+      day.items.forEach(it => {
+        if(it._fixed || it._runningCourse || it._lockedTime) return;
+        if(!it._user) return;
+        if(!festMap.has(it.title)) return;
+        it._lockedTime = true;
+        changed = true;
+        daysToSort.add(di);
+      });
+    });
+  }
+
+  daysToSort.forEach(di => sortDayByTime(di));
+  if(changed) savePlan();
 }
 
 function patchNewItems(){
