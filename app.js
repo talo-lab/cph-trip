@@ -1792,13 +1792,13 @@ function renderPlan(){
         <input type="checkbox" class="item-sel-cb" ${selectedPlanKey===`${di}-${ii}`?'checked':''} title="지도에서 선택/해제">
         <div class="item-time${(it._fixed||it._lockedTime)?'':' item-time-edit'}" title="${(it._fixed||it._lockedTime)?'':'클릭하여 시간 선택'}">${it.time||''}</div>
         <div class="item-main">
-          <div class="item-title" contenteditable spellcheck="false">${it.title||''}</div>
-          <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
+          <div class="item-title" ${(it._fixed||it._lockedTime)?'':'contenteditable'} spellcheck="false">${it.title||''}</div>
+          <div class="item-note" ${(it._fixed||it._lockedTime)?'':'contenteditable'} spellcheck="false">${it.note||''}</div>
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
           ${(()=>{ const tag=it._catTag||inferTag(it); return tag?`<span class="item-cat-tag">${tag}</span>`:''; })()}
           ${it._user&&!it._lockedTime?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
-          ${it._lockedTime?`<span class="item-src lock">🕐 ${it.time}${it._timeEnd?' – '+it._timeEnd:''} · 시간고정</span>`:''}
+          ${it._lockedTime?`<span class="item-src lock">🕐 ${it.time}${it._timeEnd?' – '+it._timeEnd:''} · 공식일정고정</span>`:''}
           ${tagsHtml}${warnHtml}
         </div>
         <a class="item-gmap" href="${gmapHref}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${gmapIcon}</a>
@@ -1851,13 +1851,15 @@ function renderPlan(){
       });
 
       const t=row.querySelector('.item-title'), n=row.querySelector('.item-note');
-      t.addEventListener('input',()=>{plan[di].items[ii].title=t.textContent;savePlan()});
-      t.addEventListener('blur',()=>{
-        // 좌표 없는 항목: 제목 편집 완료 후 자동 지오코딩
-        if(!plan[di].items[ii]._lat && t.textContent.trim().length>2)
-          geocodePlanItem(plan[di].items[ii], di);
-      });
-      n.addEventListener('input',()=>{plan[di].items[ii].note=n.textContent;savePlan()});
+      if(!it._fixed && !it._lockedTime){
+        t.addEventListener('input',()=>{plan[di].items[ii].title=t.textContent;savePlan()});
+        t.addEventListener('blur',()=>{
+          // 좌표 없는 항목: 제목 편집 완료 후 자동 지오코딩
+          if(!plan[di].items[ii]._lat && t.textContent.trim().length>2)
+            geocodePlanItem(plan[di].items[ii], di);
+        });
+        n.addEventListener('input',()=>{plan[di].items[ii].note=n.textContent;savePlan()});
+      }
 
       // 시간 필드 — 클릭 시 30분 단위 피커 팝업
       if(!it._fixed && !it._lockedTime){
