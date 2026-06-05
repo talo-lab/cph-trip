@@ -836,6 +836,46 @@
   .plan-mode-toggle{font-size:11px;font-family:var(--font-mono);padding:5px 13px;border:1.5px solid var(--line);border-radius:20px;background:none;cursor:pointer;color:var(--slate);transition:.15s}
   .plan-mode-toggle.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
   .plan-mode-hint{font-size:10.5px;color:var(--slate);opacity:.8}
+  .plan-review-btn{margin-left:auto;flex-shrink:0;font-size:10.5px;font-family:var(--font-mono);padding:4px 11px;border:1.5px solid var(--rust);background:none;cursor:pointer;color:var(--rust);border-radius:3px;transition:.15s;white-space:nowrap}
+  .plan-review-btn:hover,.plan-review-btn.active{background:var(--rust);color:#fff}
+  .plan-review-btn:disabled{opacity:.5;cursor:default}
+
+  /* ── 전체 일정 검토 패널 ── */
+  .plan-review-panel{margin:0;padding:0;background:var(--paper);border-bottom:2px solid var(--rust)}
+  .pr-hd{display:flex;align-items:center;gap:8px;padding:10px 16px 8px;border-bottom:1px solid var(--line);background:var(--ink);color:var(--cream)}
+  .pr-hd>span:first-child{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;flex:1}
+  .pr-grade{font-family:var(--font-mono);font-size:20px;font-weight:700;line-height:1}
+  .pr-close,.pr-close-btn,.pr-rerun{background:none;border:none;cursor:pointer;font-size:13px;color:var(--cream);opacity:.7;padding:2px 5px}
+  .pr-close:hover,.pr-close-btn:hover{opacity:1}
+  .pr-rerun{border:1px solid rgba(247,245,242,.3);border-radius:3px;font-size:10px;font-family:var(--font-mono);opacity:.8}
+  .pr-rerun:hover{opacity:1;border-color:var(--cream)}
+  .pr-overall{padding:10px 16px 6px;font-size:13px;line-height:1.6;color:var(--ink)}
+  .pr-day-bar{display:flex;gap:5px;padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+  .pr-day-chip{font-family:var(--font-mono);font-size:9.5px;padding:3px 8px;border-radius:3px;white-space:nowrap;cursor:default;font-weight:700}
+  .pr-day-ok{background:#e8f5e9;color:#2e7d32}
+  .pr-day-busy{background:#fff3e0;color:#e65100}
+  .pr-day-warn{background:#fff8e1;color:#f57f17}
+  .pr-day-light{background:#e3f2fd;color:#1565c0}
+  .pr-section-hd{padding:6px 16px 3px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);border-top:1px solid var(--line)}
+  .pr-no-issues{padding:6px 16px;font-size:12px;color:#2e7d32;border-top:1px solid var(--line)}
+  .pr-issue{padding:8px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:.1s}
+  .pr-issue:hover{background:var(--cream)}
+  .pr-sev-high{border-left:3px solid #c62828}
+  .pr-sev-mid{border-left:3px solid #e65100}
+  .pr-sev-low{border-left:3px solid #1565c0}
+  .pr-issue-hd{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap}
+  .pr-sev-badge{font-size:10px;font-family:var(--font-mono);font-weight:700;white-space:nowrap}
+  .pr-issue-day{font-family:var(--font-mono);font-size:9.5px;background:var(--ink);color:var(--cream);padding:1px 5px;border-radius:2px;white-space:nowrap}
+  .pr-issue-title{font-size:12.5px;font-weight:600}
+  .pr-issue-detail{font-size:12px;color:var(--slate);line-height:1.5}
+  .pr-suggest{display:flex;gap:10px;padding:8px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:.1s}
+  .pr-suggest:hover{background:var(--cream)}
+  .pr-suggest-day{font-family:var(--font-mono);font-size:9px;background:var(--rust);color:#fff;padding:2px 6px;border-radius:2px;white-space:nowrap;align-self:flex-start;margin-top:1px}
+  .pr-suggest-title{font-size:12.5px;font-weight:600;margin-bottom:2px}
+  .pr-suggest-detail{font-size:12px;color:var(--slate);line-height:1.5}
+  .pr-tips{margin:4px 16px 8px 28px;padding:0;font-size:12px;color:var(--slate);line-height:1.7}
+  .pr-footer{display:flex;gap:8px;padding:8px 16px;border-top:1px solid var(--line);background:var(--ink);justify-content:flex-end}
+  .pr-loading{padding:20px 16px;font-size:12px;color:var(--slate);display:flex;align-items:center;gap:8px}
 
   /* ── 다중선택 측정 바 ── */
   .multi-sel-bar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:2px solid var(--rust);padding:8px 14px;font-size:11.5px;line-height:1.5}

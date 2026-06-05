@@ -2043,7 +2043,8 @@ function renderPlan(){
     <button id="planModeToggle" class="plan-mode-toggle${planMultiMode?' active':''}">
       ${planMultiMode ? '✕ 단일 선택 모드로' : '🗺 경로 측정 모드'}
     </button>
-    ${planMultiMode ? '<span class="plan-mode-hint">체크박스로 여러 장소 선택 → 이동 경로·시간 표시</span>' : ''}`;
+    ${planMultiMode ? '<span class="plan-mode-hint">체크박스로 여러 장소 선택 → 이동 경로·시간 표시</span>' : ''}
+    <button id="planReviewBtn" class="plan-review-btn" onclick="triggerPlanReview()">✦ 전체 검토</button>`;
   stickyHdr.appendChild(modeToggleWrap);
   el.insertBefore(stickyHdr, el.firstChild);
   // 날짜 퀵점프 바를 sticky 헤더 최상단에 삽입
@@ -2059,6 +2060,11 @@ function renderPlan(){
 
   // 다중 선택 바 (다중 모드 시)
   if(planMultiMode) renderMultiSelBar();
+
+  // 전체 검토 결과 슬롯 (sticky 헤더 바로 아래)
+  const reviewSlot = document.createElement('div');
+  reviewSlot.id = 'planReviewSlot';
+  el.insertBefore(reviewSlot, stickyHdr.nextSibling);
 
   // 첫 렌더 시: 코펜하겐 좌표가 있는 첫 날 자동 선택 → 핀 표시
   if(routeLayer){ map.removeLayer(routeLayer); routeLayer=null; }
@@ -5397,6 +5403,193 @@ Rules:
   }finally{
     btn.disabled=false; btn.textContent='전송';
   }
+}
+
+/* ── AI 전체 일정 검토 ── */
+async function triggerPlanReview(){
+  const slot = document.getElementById('planReviewSlot');
+  const btn  = document.getElementById('planReviewBtn');
+  if(!slot) return;
+
+  // 토글 닫기
+  if(slot.dataset.open === '1'){
+    slot.innerHTML = ''; slot.dataset.open = '0';
+    if(btn) btn.classList.remove('active');
+    return;
+  }
+
+  if(btn){ btn.classList.add('active'); btn.textContent = '분석 중…'; btn.disabled = true; }
+  slot.dataset.open = '1';
+  slot.innerHTML = `<div class="plan-review-panel">
+    <div class="pr-hd"><span>✦ AI 여행 비서 · 전체 일정 검토</span><button class="pr-close" onclick="closePlanReview()">✕</button></div>
+    <div class="pr-loading"><span class="spin"></span> 9일치 일정을 시뮬레이션하고 있어요…</div>
+  </div>`;
+
+  // 전체 플랜 텍스트 생성
+  const planDesc = plan.map((day, di) => {
+    const items = day.items
+      .filter(it => !(it._personal && it._addedBy && it._addedBy !== currentUser))
+      .map(it => {
+        const timeRange = it.time + (it._timeEnd ? '–' + it._timeEnd : '');
+        const coords = getItemCoords(it);
+        return `    [${timeRange||'미정'}] ${it.title}${it.note ? ' | ' + it.note.slice(0,60) : ''}${it._lockedTime?' [공식행사]':it._fixed?' [고정]':''}`;
+      }).join('\n');
+    return `## ${day.date} (${day.tag})\n${items || '    (항목 없음)'}`;
+  }).join('\n\n');
+
+  // 이동 거리 요약 (코펜하겐 날짜만)
+  const travelSummary = [];
+  plan.forEach((day, di) => {
+    if(!day.fest && di < 2) return;
+    for(let i = 0; i < day.items.length - 1; i++){
+      const a = day.items[i], b = day.items[i+1];
+      const cA = getItemCoords(a), cB = getItemCoords(b);
+      if(cA && cB){
+        const t = transportBetween(cA, cB, {hour: parseInt(a.time)||9, fromTitle:a.title, toTitle:b.title});
+        if(t.km > 1.5) travelSummary.push(`${day.date}: "${a.title}"→"${b.title}" ${t.icon}${t.label} ~${t.mins}분 (${t.km.toFixed(1)}km)`);
+      }
+    }
+  });
+
+  const sys = `You are a seasoned Copenhagen travel expert and travel simulation specialist. You're analyzing a 9-day trip itinerary for a Korean couple (미주 and 상효) visiting Copenhagen June 8–16, 2026.
+
+Context:
+- 3 Days of Design festival: ONLY June 10–12 (not the full trip)
+- Accommodation: Sommerstedgade 26, Vesterbro (55.6671, 12.5519)
+- Morning runs: 07:00 daily (30–42 min, non-negotiable)
+- Festival events are time-locked [공식행사] — do NOT suggest changing them
+- [고정] items are booked/confirmed
+
+Your task: Simulate the trip from the traveler's perspective. Think step-by-step through each day. Identify real problems and actionable improvements.
+
+Respond ONLY in Korean. Be specific, practical, and warm — like a Korean travel blogger who has done this exact trip.
+
+Return this exact JSON (no markdown):
+<review>
+{
+  "overall": "2–3 문장 전체 평가",
+  "grade": "A/B/C/D",
+  "days": [
+    {"di": 0, "status": "ok|warn|busy|light", "note": "한 줄 요약"}
+  ],
+  "issues": [
+    {"severity": "high|mid|low", "di": 2, "day": "6/10", "title": "이슈 제목", "detail": "구체적 설명과 해결책"}
+  ],
+  "suggestions": [
+    {"di": 3, "day": "6/11", "title": "제안 제목", "detail": "구체적 제안"}
+  ],
+  "tips": ["실용 팁 1", "실용 팁 2", "실용 팁 3"]
+}
+</review>
+
+Important:
+- issues: 실제 문제만 (시간 겹침, 너무 먼 거리, 체력 소모, 식사 누락, 영업시간 문제 등). 최대 6개.
+- suggestions: 개선하면 더 좋아질 것들. 최대 5개.
+- tips: 이 일정 특화 실용 팁 3–4개.
+- grade: A=완성도 높음, B=좋으나 조정 필요, C=큰 개선 필요, D=재구성 필요`;
+
+  const ctx = `전체 일정:\n\n${planDesc}\n\n주요 이동 거리 (1.5km 이상):\n${travelSummary.join('\n') || '(좌표 부족으로 계산 불가)'}`;
+
+  try{
+    const r = await fetch('/api/extract', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({system:sys, input:ctx, max_tokens:2000})
+    });
+    if(!r.ok) throw new Error('서버 '+r.status);
+    const data = await r.json();
+    let text = (data.text||'').trim();
+
+    let review = null;
+    const m = text.match(/<review>([\s\S]*?)<\/review>/);
+    if(m){ try{ review = JSON.parse(m[1].trim()); }catch(e){ console.warn('review parse error', e); } }
+
+    if(!review){ throw new Error('응답 형식 오류'); }
+
+    const gradeColor = {A:'#2e7d32', B:'#1565c0', C:'#e65100', D:'#c62828'}[review.grade] || '#555';
+    const severityLabel = {high:'🔴 주의', mid:'🟡 확인', low:'🔵 참고'};
+    const statusIcon = {ok:'✓', warn:'⚠', busy:'🔥', light:'💨'};
+
+    // 날짜별 상태 바
+    const dayBar = (review.days||[]).map(d => {
+      const chip = plan[d.di];
+      if(!chip) return '';
+      const m = chip.date.match(/(\d+\/\d+)/);
+      const label = m ? m[1] : chip.date;
+      const icon = statusIcon[d.status] || '';
+      const cls = d.status === 'ok' ? 'pr-day-ok' : d.status === 'busy' ? 'pr-day-busy' : d.status === 'warn' ? 'pr-day-warn' : 'pr-day-light';
+      return `<div class="pr-day-chip ${cls}" title="${d.note}">${icon} ${label}</div>`;
+    }).join('');
+
+    // 이슈 렌더
+    const issuesHtml = (review.issues||[]).map(iss => `
+      <div class="pr-issue pr-sev-${iss.severity}" onclick="jumpToDay(${iss.di})">
+        <div class="pr-issue-hd">
+          <span class="pr-sev-badge">${severityLabel[iss.severity]||iss.severity}</span>
+          <span class="pr-issue-day">${iss.day}</span>
+          <span class="pr-issue-title">${iss.title}</span>
+        </div>
+        <div class="pr-issue-detail">${iss.detail}</div>
+      </div>`).join('');
+
+    // 제안 렌더
+    const suggestHtml = (review.suggestions||[]).map(s => `
+      <div class="pr-suggest" onclick="jumpToDay(${s.di})">
+        <span class="pr-suggest-day">${s.day}</span>
+        <div>
+          <div class="pr-suggest-title">${s.title}</div>
+          <div class="pr-suggest-detail">${s.detail}</div>
+        </div>
+      </div>`).join('');
+
+    // 팁 렌더
+    const tipsHtml = (review.tips||[]).map(t => `<li>${t}</li>`).join('');
+
+    slot.innerHTML = `<div class="plan-review-panel">
+      <div class="pr-hd">
+        <span>✦ AI 여행 비서 · 전체 일정 검토</span>
+        <span class="pr-grade" style="color:${gradeColor}">${review.grade}</span>
+        <button class="pr-close" onclick="closePlanReview()">✕</button>
+      </div>
+
+      <div class="pr-overall">${review.overall}</div>
+
+      <div class="pr-day-bar">${dayBar}</div>
+
+      ${issuesHtml ? `<div class="pr-section-hd">발견된 이슈 (클릭하면 해당 날짜로 이동)</div>${issuesHtml}` : '<div class="pr-no-issues">✓ 심각한 이슈 없음</div>'}
+
+      ${suggestHtml ? `<div class="pr-section-hd">개선 제안</div>${suggestHtml}` : ''}
+
+      ${tipsHtml ? `<div class="pr-section-hd">여행 팁</div><ul class="pr-tips">${tipsHtml}</ul>` : ''}
+
+      <div class="pr-footer">
+        <button class="pr-rerun" onclick="triggerPlanReview()">↻ 다시 검토</button>
+        <button class="pr-close-btn" onclick="closePlanReview()">닫기</button>
+      </div>
+    </div>`;
+
+  }catch(e){
+    slot.innerHTML = `<div class="plan-review-panel">
+      <div class="pr-hd"><span>✦ AI 여행 비서</span><button class="pr-close" onclick="closePlanReview()">✕</button></div>
+      <div class="pr-overall" style="color:var(--rust)">검토 실패: ${e.message}</div>
+    </div>`;
+  }finally{
+    if(btn){ btn.textContent = '✦ 전체 검토'; btn.disabled = false; }
+  }
+}
+
+function closePlanReview(){
+  const slot = document.getElementById('planReviewSlot');
+  const btn  = document.getElementById('planReviewBtn');
+  if(slot){ slot.innerHTML = ''; slot.dataset.open = '0'; }
+  if(btn){ btn.classList.remove('active'); }
+}
+
+function jumpToDay(di){
+  const el = document.getElementById('scroll');
+  const target = document.getElementById(`body-${di}`)?.closest('.day');
+  if(!target || !el) return;
+  const hdrH = document.querySelector('.plan-sticky-header')?.offsetHeight || 79;
+  el.scrollTop = target.offsetTop - hdrH;
 }
 
 /* ── AI 재조율 ── */
