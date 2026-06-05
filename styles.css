@@ -269,7 +269,7 @@
   .exh-events{display:none;padding:4px 0 8px}
   .exh-card.open .exh-events{display:block}
   .exh-ev-row{
-    display:flex;gap:8px;padding:7px 14px 7px 28px;border-bottom:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:8px;padding:7px 14px 7px 28px;border-bottom:1px solid var(--line);
     align-items:flex-start;cursor:pointer;transition:.12s;
   }
   .exh-ev-row:last-child{border-bottom:none}
@@ -297,8 +297,8 @@
   /* 날짜 선택 드롭다운 */
   .exh-day-sel{
     display:flex;gap:5px;align-items:center;flex-wrap:wrap;
-    padding:7px 14px 7px 28px;background:var(--bg-2);
-    border-top:1px solid var(--line);
+    flex-basis:100%;padding:6px 0 2px;background:transparent;
+    border-top:1px solid var(--line);margin-top:4px;
   }
   .exh-day-select{font-size:11px;padding:3px 6px;border:1px solid var(--line);background:#fff;font-family:inherit}
   .exh-day-confirm{font-size:10.5px;font-family:var(--font-mono);padding:3px 10px;background:var(--rust);color:#fff;border:none;cursor:pointer;border-radius:2px}
