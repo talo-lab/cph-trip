@@ -5533,17 +5533,17 @@ function setTab(t){
   } else if(t==='fest'){
     if(typeof FESTIVAL_EVENTS==='undefined'){
       _tabLoading('3DoD 행사 데이터 로드 중...');
-      loadDataScript('/events-data.js').then(()=>{ patchLockedTimes(); renderFest(); }).catch(()=>{
+      loadDataScript('/events-data.js').then(()=>{ document.getElementById('scroll').style.cssText=''; patchLockedTimes(); renderFest(); }).catch(()=>{
         document.getElementById('scroll').innerHTML='<div style="padding:20px;color:var(--rust)">데이터 로드 실패. 새로고침해 주세요.</div>';
       });
-    } else { renderFest(); }
+    } else { document.getElementById('scroll').style.cssText=''; renderFest(); }
   } else if(t==='exh'){
     if(typeof EXHIBITIONS==='undefined'){
       _tabLoading('쇼룸 데이터 로드 중...');
-      loadDataScript('/exhibitions-data.js').then(()=>renderExhibitions()).catch(()=>{
+      loadDataScript('/exhibitions-data.js').then(()=>{ document.getElementById('scroll').style.cssText=''; renderExhibitions(); }).catch(()=>{
         document.getElementById('scroll').innerHTML='<div style="padding:20px;color:var(--rust)">데이터 로드 실패. 새로고침해 주세요.</div>';
       });
-    } else { renderExhibitions(); }
+    } else { document.getElementById('scroll').style.cssText=''; renderExhibitions(); }
   } else if(t==='add'){
     document.getElementById('scroll').style.cssText='';
     renderAdd();
