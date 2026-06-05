@@ -6290,6 +6290,33 @@ function patchPlanGeodata(){
 
 /* 기존 저장 플랜의 CPH 관련 항목에 좌표 주입 (ICN 출발편은 코펜하겐 지도에 불필요하므로 제외) */
 /* 신규 항목 패치 — 기존 저장 플랜에 새로 추가된 항목 주입 */
+/* 저장된 플랜의 3DoD 공식 이벤트 시간이 틀린 경우 자동 교정 */
+function patchLockedTimes(){
+  // events-data.js 공식 데이터와 대조하여 확인된 교정 목록
+  // { match: 제목 패턴, di: 날짜 인덱스, time, _timeEnd }
+  const FIXES = [
+    {
+      match: it => /한국.*초상화|초상화.*한국|ILKW|flat point|etage projects/i.test(it.title+' '+(it.note||'')),
+      di: 2, // 6/10
+      time: '17:00',
+      _timeEnd: '19:00',
+    },
+  ];
+  let changed = false;
+  FIXES.forEach(({match, di, time, _timeEnd}) => {
+    if(!plan[di]) return;
+    plan[di].items.forEach(it => {
+      if(!match(it)) return;
+      let dirty = false;
+      if(it.time !== time){ it.time = time; dirty = true; }
+      if(it._timeEnd !== _timeEnd){ it._timeEnd = _timeEnd; dirty = true; }
+      if(!it._lockedTime){ it._lockedTime = true; dirty = true; }
+      if(dirty) changed = true;
+    });
+  });
+  if(changed){ sortDayByTime(2); savePlan(); }
+}
+
 function patchNewItems(){
   const PATCHES = [
     { di:5, match: it => /플리마켓.*frederiksberg|frederiksberg.*플리마켓/i.test(it.title),
@@ -6345,6 +6372,7 @@ async function initApp(){
   patchFlightCoords();
   patchPlanGeodata();
   patchNewItems();
+  patchLockedTimes();
   updateUserSelector();
   setTab('plan');
   // 뉴스 티커: 로드 즉시 + 15분마다 갱신
