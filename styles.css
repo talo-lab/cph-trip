@@ -1126,6 +1126,62 @@
   .drawer-status.ok{color:var(--rust)}
   .drawer-status.err{color:var(--rust)}
 
+  /* ============ TIME PICKER ============ */
+  .time-picker-popup{
+    position:fixed;z-index:9000;
+    background:var(--cream);border:1.5px solid var(--line);
+    border-radius:6px;box-shadow:0 8px 28px rgba(0,0,0,.18);
+    overflow:hidden;display:flex;flex-direction:column;
+    min-width:120px;
+  }
+  .time-picker-search{
+    padding:6px 8px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:6px;
+  }
+  .time-picker-search input{
+    flex:1;border:none;background:transparent;outline:none;
+    font-family:var(--font-mono);font-size:11px;color:var(--ink);
+    placeholder-color:var(--slate);
+  }
+  .time-picker-list{
+    overflow-y:auto;max-height:220px;padding:4px 0;
+  }
+  .time-picker-item{
+    padding:6px 14px;font-family:var(--font-mono);font-size:12px;
+    color:var(--ink);cursor:pointer;white-space:nowrap;
+    transition:background .1s;
+  }
+  .time-picker-item:hover,.time-picker-item.focused{
+    background:var(--rust);color:#fff;
+  }
+  .time-picker-item.selected{
+    font-weight:700;color:var(--rust);
+  }
+  .time-picker-item.selected:hover{background:var(--rust);color:#fff}
+  .time-picker-sep{
+    padding:2px 14px;font-size:9px;font-family:var(--font-body);
+    color:var(--slate);opacity:.55;letter-spacing:.08em;text-transform:uppercase;
+    border-top:1px solid var(--line);margin-top:2px;padding-top:5px;
+  }
+  /* 일정 항목 시간 클릭 영역 */
+  .item-time-edit{
+    cursor:pointer;border-radius:3px;transition:.15s;outline:none;
+    min-width:40px;
+  }
+  .item-time-edit:empty::before{content:'시간';color:var(--slate);opacity:.35;font-weight:400}
+  .item-time-edit:hover{background:rgba(200,73,42,.08);padding:1px 4px}
+  .item-time-edit.tp-open{background:var(--cream);box-shadow:0 0 0 1.5px var(--rust);padding:1px 4px}
+  /* 쇼룸/축제 추가 시간 버튼 */
+  .time-pick-btn{
+    font-family:var(--font-mono);font-size:11px;color:var(--ink);
+    border:1.5px solid var(--line);background:var(--cream);
+    border-radius:4px;padding:5px 10px;cursor:pointer;
+    min-width:96px;text-align:left;transition:.12s;
+  }
+  .time-pick-btn:hover{border-color:var(--rust);color:var(--rust)}
+  .time-pick-btn.tp-open{border-color:var(--rust);color:var(--rust)}
+  .time-pick-btn.has-val{color:var(--rust);font-weight:700}
+
   /* ============ DRAG & DROP ============ */
   .drag-handle{
     cursor:grab;color:var(--line);font-size:14px;padding:2px 3px;

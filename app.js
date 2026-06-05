@@ -1787,7 +1787,7 @@ function renderPlan(){
       row.innerHTML = `
         ${it._fixed?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
         <input type="checkbox" class="item-sel-cb" ${selectedPlanKey===`${di}-${ii}`?'checked':''} title="지도에서 선택/해제">
-        <div class="item-time${it._fixed?'':' item-time-edit'}" ${it._fixed?'':'contenteditable spellcheck="false" data-placeholder="시간"'} title="${it._fixed?'':'클릭하여 시간 편집 (예: 14:30)'}">${it.time||''}</div>
+        <div class="item-time${it._fixed?'':' item-time-edit'}" title="${it._fixed?'':'클릭하여 시간 선택'}">${it.time||''}</div>
         <div class="item-main">
           <div class="item-title" contenteditable spellcheck="false">${it.title||''}</div>
           <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
@@ -1855,21 +1855,20 @@ function renderPlan(){
       });
       n.addEventListener('input',()=>{plan[di].items[ii].note=n.textContent;savePlan()});
 
-      // 시간 필드 인라인 편집
+      // 시간 필드 — 클릭 시 30분 단위 피커 팝업
       if(!it._fixed){
         const tm=row.querySelector('.item-time-edit');
         if(tm){
-          tm.addEventListener('focus',()=>{ if(!tm.textContent.trim()) tm.textContent=''; });
-          tm.addEventListener('blur',()=>{
-            let v=tm.textContent.trim();
-            // HH:MM 자동 포맷
-            const m=v.match(/^(\d{1,2})[:\.]?(\d{2})$/);
-            if(m) v=m[1].padStart(2,'0')+':'+m[2];
-            plan[di].items[ii].time=v;
-            tm.textContent=v;
-            savePlan();
+          tm.addEventListener('click', e=>{
+            e.stopPropagation();
+            showTimePicker(tm, plan[di].items[ii].time||'', val=>{
+              plan[di].items[ii].time = val;
+              tm.textContent = val;
+              sortDayByTime(di);
+              savePlan();
+              renderPlan();
+            });
           });
-          tm.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();tm.blur();} });
         }
       }
 
@@ -1966,7 +1965,7 @@ function renderPlan(){
       plan[di].items.push({time:'',title:'새 일정',note:'',dist:'',_addedBy:currentUser,_user:true,_personal:false,_with:['miju','sanghyo']});
       savePlan();
       renderPlan();
-      // 새로 추가된 항목의 시간 필드에 포커스
+      // 새로 추가된 항목 — 시간 피커 자동 오픈
       const newIdx = plan[di].items.length - 1;
       setTimeout(()=>{
         const body=document.getElementById(`body-${di}`);
@@ -1974,8 +1973,9 @@ function renderPlan(){
         const rows=[...body.querySelectorAll('.item')];
         const newRow=rows[newIdx];
         if(newRow){
+          newRow.scrollIntoView({behavior:'smooth',block:'center'});
           const timeFld=newRow.querySelector('.item-time-edit');
-          if(timeFld){ timeFld.focus(); selectAll(timeFld); }
+          if(timeFld) setTimeout(()=>timeFld.click(), 120);
         }
       },80);
     });
@@ -3512,7 +3512,7 @@ function openExhVenueModal(ex){
           <div class="exh-venue-add-label">📅 일정에 추가</div>
           <div class="exh-venue-add-row">
             <select class="exh-venue-day-sel">${plan.map((d,di)=>`<option value="${di}"${di===defaultDi?' selected':''}>${d.date} · ${d.tag}</option>`).join('')}</select>
-            <input class="exh-venue-time-inp" type="text" placeholder="시간 (예: 14:00)" maxlength="5">
+            <button class="time-pick-btn exh-venue-time-btn" data-val="">⏰ 시간 선택</button>
             <button class="exh-venue-confirm-btn">＋ 추가</button>
           </div>
           <div class="exh-venue-add-status"></div>
@@ -3529,13 +3529,24 @@ function openExhVenueModal(ex){
   overlay.querySelector('.exh-venue-close').addEventListener('click', ()=>overlay.remove());
   overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
 
+  // 시간 선택 버튼
+  const timeBtn = overlay.querySelector('.exh-venue-time-btn');
+  timeBtn.addEventListener('click', e=>{
+    e.stopPropagation();
+    showTimePicker(timeBtn, timeBtn.dataset.val||'', val=>{
+      timeBtn.dataset.val = val;
+      timeBtn.textContent = val;
+      timeBtn.classList.add('has-val');
+    });
+  });
+
   // 지도에 핀 표시
   showExhPin(ex);
 
   // 일정 추가 실행
   overlay.querySelector('.exh-venue-confirm-btn').addEventListener('click', ()=>{
     const di = +overlay.querySelector('.exh-venue-day-sel').value;
-    const timeVal = overlay.querySelector('.exh-venue-time-inp').value.trim() || '미정';
+    const timeVal = timeBtn.dataset.val || '미정';
     const statusEl = overlay.querySelector('.exh-venue-add-status');
 
     if(plan[di].items.some(it=>it.title===ex.brand)){
@@ -3881,6 +3892,135 @@ function showDragToast(warnings, di){
 }
 
 function selectAll(el){ const r=document.createRange(); r.selectNodeContents(el); const s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+/* ── 30분 단위 시간 피커 ─────────────────────────────────────────── */
+function buildTimeSlots(){
+  const special = ['미정','오전','오후','저녁'];
+  const slots = [...special];
+  for(let h=5;h<24;h++){
+    slots.push(`${String(h).padStart(2,'0')}:00`);
+    if(h<23) slots.push(`${String(h).padStart(2,'0')}:30`);
+  }
+  return slots;
+}
+const TIME_SLOTS = buildTimeSlots();
+
+let _tpActive = null; // 현재 열린 피커 {popup, anchor}
+
+function closeTimePicker(){
+  if(_tpActive){
+    _tpActive.popup.remove();
+    _tpActive.anchor.classList.remove('tp-open');
+    _tpActive = null;
+  }
+}
+
+/**
+ * showTimePicker(anchor, currentVal, onSelect)
+ * anchor: 클릭된 DOM 엘리먼트 (위치 기준)
+ * currentVal: 현재 선택된 시간 문자열
+ * onSelect(val): 사용자가 값 선택 시 호출
+ */
+function showTimePicker(anchor, currentVal, onSelect){
+  closeTimePicker();
+
+  anchor.classList.add('tp-open');
+  const rect = anchor.getBoundingClientRect();
+
+  const popup = document.createElement('div');
+  popup.className = 'time-picker-popup';
+
+  // 검색 입력
+  const searchWrap = document.createElement('div');
+  searchWrap.className = 'time-picker-search';
+  searchWrap.innerHTML = `<span style="font-size:10px;color:var(--slate)">⏰</span><input type="text" placeholder="시간 직접 입력…" maxlength="5" autocomplete="off">`;
+  popup.appendChild(searchWrap);
+  const searchInp = searchWrap.querySelector('input');
+
+  const list = document.createElement('div');
+  list.className = 'time-picker-list';
+  popup.appendChild(list);
+
+  function renderList(filter){
+    list.innerHTML = '';
+    let showSep = false;
+    TIME_SLOTS.forEach(t=>{
+      const isSpecial = ['미정','오전','오후','저녁'].includes(t);
+      if(!showSep && !isSpecial){
+        const sep = document.createElement('div');
+        sep.className='time-picker-sep';
+        sep.textContent='시간대';
+        list.appendChild(sep);
+        showSep = true;
+      }
+      if(filter && !t.includes(filter)) return;
+      const item = document.createElement('div');
+      item.className = 'time-picker-item' + (t===currentVal?' selected':'');
+      item.textContent = t;
+      item.addEventListener('mousedown', e=>{
+        e.preventDefault();
+        onSelect(t);
+        closeTimePicker();
+      });
+      list.appendChild(item);
+    });
+    // 현재값으로 스크롤
+    const sel = list.querySelector('.selected');
+    if(sel) setTimeout(()=>sel.scrollIntoView({block:'center'}),0);
+  }
+
+  renderList('');
+
+  // 위치 결정
+  popup.style.cssText = `left:${rect.left}px;top:${rect.bottom+4}px`;
+  document.body.appendChild(popup);
+
+  // 화면 하단 넘침 처리
+  const pr = popup.getBoundingClientRect();
+  if(pr.bottom > window.innerHeight - 8){
+    popup.style.top = `${rect.top - pr.height - 4}px`;
+  }
+  if(pr.right > window.innerWidth - 8){
+    popup.style.left = `${window.innerWidth - pr.width - 8}px`;
+  }
+
+  // 검색 필터
+  searchInp.addEventListener('input',()=>{
+    const v = searchInp.value.trim();
+    renderList(v);
+    // HH:MM 패턴 완성 시 즉시 선택
+    if(/^\d{1,2}:\d{2}$/.test(v)){
+      const mm = v.match(/^(\d{1,2}):(\d{2})$/);
+      if(mm){
+        const hh = String(+mm[1]).padStart(2,'0');
+        const mn = mm[2];
+        const formatted = `${hh}:${mn}`;
+        onSelect(formatted);
+        closeTimePicker();
+      }
+    }
+  });
+  searchInp.addEventListener('keydown', e=>{
+    if(e.key==='Escape'){ closeTimePicker(); return; }
+    if(e.key==='Enter'){
+      const v = searchInp.value.trim();
+      if(v){ onSelect(v); closeTimePicker(); }
+    }
+  });
+  searchInp.focus();
+
+  _tpActive = {popup, anchor};
+
+  // 외부 클릭 시 닫기
+  setTimeout(()=>{
+    document.addEventListener('mousedown', function handler(e){
+      if(!popup.contains(e.target) && e.target!==anchor){
+        closeTimePicker();
+        document.removeEventListener('mousedown', handler);
+      }
+    });
+  }, 0);
+}
 
 function timeToMin(t){
   if(!t) return 9999;
