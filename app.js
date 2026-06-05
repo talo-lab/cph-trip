@@ -5399,6 +5399,14 @@ function addUserMarker(place, di){
 
 /* ---------- TABS ---------- */
 let activeTab='plan';
+
+function resetZoom(){
+  const vp=document.querySelector('meta[name=viewport]');
+  if(!vp) return;
+  vp.content='width=device-width,initial-scale=1,maximum-scale=1';
+  setTimeout(()=>{ vp.content='width=device-width,initial-scale=1'; },100);
+}
+
 function _tabLoading(msg){
   const el=document.getElementById('scroll');
   el.style.cssText='display:flex;align-items:center;justify-content:center;padding:40px 20px';
@@ -5407,6 +5415,8 @@ function _tabLoading(msg){
 }
 
 function setTab(t){
+  resetZoom();
+  document.getElementById('scroll').scrollTop=0;
   if(activeTab==='rec'  && t!=='rec')  clearRecMapSel();
   if(activeTab==='fest' && t!=='fest') clearFestMarkers();
   if(activeTab==='exh'  && t!=='exh')  clearExhPin();
