@@ -821,12 +821,16 @@
   .item-sel-cb{width:15px;height:15px;flex-shrink:0;accent-color:var(--rust);cursor:pointer;align-self:center}
   .item.sel-active{background:rgba(199,73,42,.05);border-left:2px solid var(--rust)}
 
+  /* ── plan sticky 헤더 래퍼 (날짜칩 + 모드 토글) ── */
+  .plan-sticky-header{
+    position:sticky;top:0;z-index:20;
+    background:var(--paper);
+    box-shadow:0 2px 6px rgba(0,0,0,.06);
+  }
   /* ── 선택 모드 토글 ── */
   .plan-mode-toggle-wrap{
     display:flex;align-items:center;gap:8px;padding:7px 14px;flex-wrap:wrap;
-    position:sticky;top:0;z-index:20;
-    background:var(--paper);border-bottom:1px solid var(--line);
-    box-shadow:0 2px 6px rgba(0,0,0,.06);
+    border-bottom:1px solid var(--line);
   }
   .plan-mode-toggle{font-size:11px;font-family:var(--font-mono);padding:5px 13px;border:1.5px solid var(--line);border-radius:20px;background:none;cursor:pointer;color:var(--slate);transition:.15s}
   .plan-mode-toggle.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
@@ -1485,7 +1489,6 @@
 
   /* ============ DAY JUMP BAR ============ */
   .day-jump-bar{
-    position:sticky;top:0;z-index:20;
     display:flex;gap:4px;padding:6px 10px;
     background:var(--paper);border-bottom:1px solid var(--line);
     overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;

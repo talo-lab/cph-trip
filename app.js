@@ -1687,7 +1687,7 @@ function toggleWalkPicker(walkEl, di, ii) {
 }
 
 /* 날짜 퀵점프 바 — plan 탭 최상단 sticky 칩 */
-function renderDayJumpBar(el) {
+function renderDayJumpBar(el, container) {
   const bar = document.createElement('div');
   bar.className = 'day-jump-bar';
 
@@ -1701,8 +1701,9 @@ function renderDayJumpBar(el) {
     chip.addEventListener('click', () => {
       const target = document.getElementById(`body-${di}`)?.closest('.day');
       if (!target) return;
-      const barH = bar.offsetHeight || 36;
-      el.scrollTo({ top: target.offsetTop - barH, behavior: 'smooth' });
+      const hdrH = (container || bar).closest('.plan-sticky-header')?.offsetHeight
+                   || bar.offsetHeight || 36;
+      el.scrollTo({ top: target.offsetTop - hdrH, behavior: 'smooth' });
       bar.querySelectorAll('.day-jump-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
     });
@@ -1712,8 +1713,8 @@ function renderDayJumpBar(el) {
   // 스크롤 위치에 따라 active 칩 갱신 (누적 방지: 이전 핸들러 제거)
   if (el._dayJumpScrollH) el.removeEventListener('scroll', el._dayJumpScrollH);
   el._dayJumpScrollH = () => {
-    const barH = bar.offsetHeight || 36;
-    const st = el.scrollTop + barH + 4;
+    const hdrH = bar.closest('.plan-sticky-header')?.offsetHeight || bar.offsetHeight || 36;
+    const st = el.scrollTop + hdrH + 4;
     const dayEls = [...el.querySelectorAll('.day')];
     let activeDi = 0;
     dayEls.forEach((d, i) => { if (d.offsetTop <= st) activeDi = i; });
@@ -1724,8 +1725,9 @@ function renderDayJumpBar(el) {
   };
   el.addEventListener('scroll', el._dayJumpScrollH, { passive: true });
 
-  // 점프 바를 첫 번째 자식으로 삽입 (mode toggle 위)
-  el.insertBefore(bar, el.firstChild);
+  // container가 있으면 거기에, 없으면 el 최상단에 삽입 (하위 호환)
+  if(container) container.insertBefore(bar, container.firstChild);
+  else el.insertBefore(bar, el.firstChild);
 }
 
 function renderPlan(){
@@ -2026,7 +2028,10 @@ function renderPlan(){
   // 충돌 경고 배너
   renderConflictBanner(el);
 
-  // ── 선택 모드 토글 버튼
+  // ── sticky 헤더: 날짜 퀵점프 바 + 선택 모드 토글 묶음
+  const stickyHdr = document.createElement('div');
+  stickyHdr.className = 'plan-sticky-header';
+
   const modeToggleWrap = document.createElement('div');
   modeToggleWrap.className = 'plan-mode-toggle-wrap';
   modeToggleWrap.innerHTML = `
@@ -2034,9 +2039,10 @@ function renderPlan(){
       ${planMultiMode ? '✕ 단일 선택 모드로' : '🗺 경로 측정 모드'}
     </button>
     ${planMultiMode ? '<span class="plan-mode-hint">체크박스로 여러 장소 선택 → 이동 경로·시간 표시</span>' : ''}`;
-  el.insertBefore(modeToggleWrap, el.firstChild);
-  // 날짜 퀵점프 바 (mode toggle 위에 삽입)
-  renderDayJumpBar(el);
+  stickyHdr.appendChild(modeToggleWrap);
+  el.insertBefore(stickyHdr, el.firstChild);
+  // 날짜 퀵점프 바를 sticky 헤더 최상단에 삽입
+  renderDayJumpBar(el, stickyHdr);
   document.getElementById('planModeToggle').addEventListener('click', ()=>{
     planMultiMode = !planMultiMode;
     if(!planMultiMode){
