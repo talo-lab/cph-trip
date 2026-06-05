@@ -4964,13 +4964,13 @@ function openDrawer(di, ii, title){
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn && it){
     gmapBtn.href = it._gmapsUrl || gMapsUrlForItem(it);
-    gmapBtn.style.display = 'inline';
+    gmapBtn.classList.remove('is-hidden');
   }
 
   // 삭제 버튼 (고정 항목은 숨김)
   const delBtn = document.getElementById('drawerDeleteBtn');
   if(delBtn){
-    delBtn.style.display = (it && !it._fixed) ? 'inline' : 'none';
+    delBtn.classList.toggle('is-hidden', !(it && !it._fixed));
     delBtn.onclick = ()=>{
       if(!confirm(`"${it.title}" 일정을 삭제할까요?`)) return;
       plan[di].items.splice(ii,1); savePlan(); renderPlan(); closeDrawer();
@@ -4984,7 +4984,7 @@ function openDrawer(di, ii, title){
     locInput.value = it._gmapsUrl || '';
     locInput.placeholder = gMapsUrlForItem(it); // 자동생성 URL을 플레이스홀더로
   }
-  if(locRow) locRow.style.display = 'none'; // 열 때마다 닫힘 상태로
+  if(locRow) locRow.classList.add('is-hidden'); // 열 때마다 닫힘 상태로
 
   setTimeout(()=>document.getElementById('drawerInput').focus(), 250);
 }
@@ -4992,8 +4992,8 @@ function openDrawer(di, ii, title){
 // 위치편집 토글
 document.getElementById('drawerLocToggle').addEventListener('click', ()=>{
   const row = document.getElementById('drawerLocRow');
-  const isOpen = row.style.display !== 'none';
-  row.style.display = isOpen ? 'none' : 'flex';
+  const isOpen = !row.classList.contains('is-hidden');
+  row.classList.toggle('is-hidden', isOpen);
   if(!isOpen) document.getElementById('drawerLocInput').focus();
 });
 
@@ -5018,7 +5018,7 @@ document.getElementById('drawerLocSave').addEventListener('click', async ()=>{
     it._gmapsUrl = val || undefined;
   }
   savePlan();
-  document.getElementById('drawerLocRow').style.display = 'none';
+  document.getElementById('drawerLocRow').classList.add('is-hidden');
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn) gmapBtn.href = it._gmapsUrl || gMapsUrlForItem(it);
   renderPlan();
@@ -5049,7 +5049,7 @@ document.getElementById('drawerPinReset')?.addEventListener('click', async ()=>{
   delete it._lat; delete it._lng;
   await geocodePlanItem(it, di, true); // force=true
   btn.textContent = '📍↺'; btn.disabled = false;
-  document.getElementById('drawerLocRow').style.display = 'none';
+  document.getElementById('drawerLocRow').classList.add('is-hidden');
   savePlan();
   renderPlanMarkers(di); // 핀 즉시 재생성
   const c = getItemCoords(it);
@@ -5739,7 +5739,11 @@ function setTab(t){
   if(activeTab==='fest' && t!=='fest') clearFestMarkers();
   if(activeTab==='exh'  && t!=='exh')  clearExhPin();
   activeTab=t;
-  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));
+  document.querySelectorAll('.tab').forEach(b=>{
+    const isActive = b.dataset.tab===t;
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
   if(t==='plan'){
     document.getElementById('scroll').style.cssText='';
     renderPlan();
@@ -5773,6 +5777,29 @@ function setTab(t){
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 
+// 탭 키보드 내비게이션 (ArrowLeft/Right/Home/End)
+(()=>{
+  const tabs = ()=>[...document.querySelectorAll('.tab[role="tab"]')];
+  document.querySelector('.tabs')?.addEventListener('keydown', e=>{
+    const all = tabs(); const cur = all.indexOf(e.target);
+    if(cur < 0) return;
+    let next = cur;
+    if(e.key==='ArrowRight') next = (cur+1) % all.length;
+    else if(e.key==='ArrowLeft') next = (cur-1+all.length) % all.length;
+    else if(e.key==='Home') next = 0;
+    else if(e.key==='End') next = all.length-1;
+    else return;
+    e.preventDefault();
+    all[next].focus();
+    setTab(all[next].dataset.tab);
+  });
+})();
+
+// 지도 핸들 Enter/Space 키 snap 전환
+document.getElementById('mapHandle')?.addEventListener('keydown', e=>{
+  if(e.key==='Enter'||e.key===' '){ e.preventDefault(); document.getElementById('mapHandle').click(); }
+});
+
 // 전역 클릭: 이동수단 picker 닫기
 document.addEventListener('click', ()=>
   document.querySelectorAll('.item-walk-picker').forEach(p=>p.remove())
@@ -5784,7 +5811,7 @@ document.addEventListener('keydown', e=>{
   const evOverlay = document.querySelector('.ev-overlay');
   if(evOverlay){ evOverlay.remove(); return; }
   if(document.getElementById('itemDrawer')?.classList.contains('open')){ closeDrawer(); return; }
-  if(document.getElementById('loginOverlay')?.style.display !== 'none'){ document.getElementById('loginOverlay').style.display='none'; }
+  document.getElementById('loginOverlay')?.classList.add('is-hidden');
 });
 
 // 사용자 선택 (미주 / 상효)
@@ -5848,11 +5875,12 @@ function showResetUndoToast(){
 
   const toast = document.createElement('div');
   toast.className = 'undo-toast';
-  toast.style.position = 'relative'; // bar 절대 위치 기준
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'assertive');
   toast.innerHTML = `
     <span class="undo-toast-msg">일정이 초기화됩니다</span>
     <span class="undo-toast-count">${remaining}</span>
-    <button class="undo-toast-btn">취소</button>
+    <button class="undo-toast-btn" type="button">취소</button>
     <div class="undo-toast-bar" style="width:100%"></div>`;
   document.body.appendChild(toast);
 
@@ -6389,7 +6417,7 @@ function updateTicker(items) {
   const totalLen = items.map(i => i.text).join('').length;
   track.style.animationDuration = Math.max(20, Math.round(totalLen * 0.22)) + 's';
 
-  wrap.style.display = 'flex';
+  wrap.classList.remove('is-hidden');
 }
 
 async function loadNewsTicker() {
@@ -6606,7 +6634,7 @@ async function initApp(){
   if(authToken){
     const d=await serverGet();
     if(!authToken){ // 401 — 토큰 만료
-      document.getElementById('loginOverlay').style.display='flex';
+      document.getElementById('loginOverlay').classList.remove('is-hidden');
       return;
     }
     if(d?.plan){
@@ -6639,7 +6667,7 @@ async function initApp(){
   loadUserPref();
   await loadPlan(); // localStorage에서 즉시 로드
   if(!authToken){
-    document.getElementById('loginOverlay').style.display='flex';
+    document.getElementById('loginOverlay').classList.remove('is-hidden');
   } else {
     await initApp();
   }

@@ -29,74 +29,74 @@
       <h1>3 Days of <em>Design</em><br>2026</h1>
       <div class="sub">JUN 8 — JUN 16 · 미주 & 상효 · "Make This Moment Matter"</div>
       <div class="user-selector" id="userSelector">
-        <button class="user-sel-btn" data-user="miju">미주</button>
-        <button class="user-sel-btn" data-user="sanghyo">상효</button>
+        <button class="user-sel-btn" type="button" data-user="miju">미주</button>
+        <button class="user-sel-btn" type="button" data-user="sanghyo">상효</button>
       </div>
     </header>
 
     <!-- 뉴스 티커 (3DoD 공지 / Journal) -->
-    <div class="ticker-wrap" id="tickerWrap" style="display:none">
+    <div class="ticker-wrap is-hidden" id="tickerWrap" aria-live="polite">
       <span class="ticker-label">LIVE</span>
       <div class="ticker-scroll"><div class="ticker-track" id="tickerTrack"></div></div>
     </div>
 
-    <div class="tabs">
-      <button class="tab active" data-tab="plan">일정</button>
-      <button class="tab" data-tab="rec">추천</button>
-      <button class="tab" data-tab="exh">쇼룸</button>
-      <button class="tab" data-tab="fest">3DoD</button>
-      <button class="tab" data-tab="add">＋장소</button>
-      <button class="tab" data-tab="dist">지구</button>
-      <button class="tab" data-tab="info">정보</button>
+    <div class="tabs" role="tablist" aria-label="여행 플래너 메뉴">
+      <button class="tab active" type="button" role="tab" aria-selected="true"  data-tab="plan">일정</button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="rec">추천</button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="exh">쇼룸</button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="fest">3DoD</button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="add">＋장소</button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="dist">지구</button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="info">정보</button>
     </div>
 
-    <div class="scroll" id="scroll"></div>
+    <div class="scroll" id="scroll" role="tabpanel" aria-live="polite"></div>
 
-    <div class="saver" id="saver"><span class="pulse"></span> 자동 저장됨</div>
-    <button class="reset" id="reset">초기화</button>
+    <div class="saver" id="saver" aria-live="polite"><span class="pulse"></span> 자동 저장됨</div>
+    <button class="reset" id="reset" type="button">초기화</button>
 
     <!-- 일정 항목 컨텍스트 드로어 -->
     <div class="item-drawer" id="itemDrawer">
       <div class="drawer-head">
         <span class="drawer-icon">✦ AI</span>
         <span class="drawer-label" id="drawerLabel"></span>
-        <button id="drawerMapBtn" title="지도에서 경로 보기" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:rgba(247,245,242,.7)">🗺</button>
-        <a id="drawerGmapBtn" href="#" target="_blank" title="Google Maps로 열기" style="font-size:11px;padding:2px 6px;background:rgba(247,245,242,.15);color:#F7F5F2;border-radius:2px;text-decoration:none;font-family:'Space Mono',monospace;display:none;border:1px solid rgba(247,245,242,.25)">G</a>
-        <button id="drawerLocToggle" title="위치 링크 편집" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:rgba(247,245,242,.55)">📍</button>
-        <button id="drawerDeleteBtn" title="이 일정 삭제" style="background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;color:rgba(255,160,140,.85);display:none">🗑</button>
-        <button class="drawer-close" id="drawerClose">✕</button>
+        <button class="drawer-action" id="drawerMapBtn" type="button" title="지도에서 경로 보기" aria-label="지도에서 경로 보기">🗺</button>
+        <a class="drawer-action drawer-gmap-btn is-hidden" id="drawerGmapBtn" href="#" target="_blank" rel="noopener" title="Google Maps로 열기" aria-label="Google Maps로 열기">G</a>
+        <button class="drawer-action muted" id="drawerLocToggle" type="button" title="위치 링크 편집" aria-label="위치 링크 편집">📍</button>
+        <button class="drawer-action danger is-hidden" id="drawerDeleteBtn" type="button" title="이 일정 삭제" aria-label="이 일정 삭제">🗑</button>
+        <button class="drawer-close" id="drawerClose" type="button" aria-label="드로어 닫기">✕</button>
       </div>
       <div class="drawer-privacy" id="drawerPrivacy">
         <div class="drawer-privacy-row">
           <span class="drawer-privacy-label">참가자</span>
-          <button class="drawer-with-btn" data-with="both">👥 함께</button>
-          <button class="drawer-with-btn" data-with="miju">👩 미주만</button>
-          <button class="drawer-with-btn" data-with="sanghyo">🧑 상효만</button>
+          <button class="drawer-with-btn" type="button" data-with="both">👥 함께</button>
+          <button class="drawer-with-btn" type="button" data-with="miju">👩 미주만</button>
+          <button class="drawer-with-btn" type="button" data-with="sanghyo">🧑 상효만</button>
         </div>
         <div class="drawer-privacy-row">
           <span class="drawer-privacy-label">공개</span>
-          <button class="drawer-vis-btn" data-vis="shared">공유</button>
-          <button class="drawer-vis-btn" data-vis="personal">🔒 나만보기</button>
+          <button class="drawer-vis-btn" type="button" data-vis="shared">공유</button>
+          <button class="drawer-vis-btn" type="button" data-vis="personal">🔒 나만보기</button>
         </div>
       </div>
       <!-- 위치 링크 편집 (토글) -->
-      <div class="drawer-loc-row" id="drawerLocRow" style="display:none">
-        <span style="font-size:10px;color:var(--teal);flex-shrink:0;font-family:'Space Mono',monospace">📍</span>
+      <div class="drawer-loc-row is-hidden" id="drawerLocRow">
+        <span class="drawer-loc-icon" aria-hidden="true">📍</span>
         <input class="drawer-loc-input" id="drawerLocInput" type="text" placeholder="Google Maps URL 또는 장소명 붙여넣기...">
-        <button class="drawer-loc-save" id="drawerLocSave">저장</button>
-        <button class="drawer-loc-reset" id="drawerLocReset" title="초기화 (자동 생성으로 복원)">↺</button>
-        <button class="drawer-loc-reset" id="drawerPinReset" title="핀 위치 재검색 (제목 기반)">📍↺</button>
+        <button class="drawer-loc-save" id="drawerLocSave" type="button">저장</button>
+        <button class="drawer-loc-reset" id="drawerLocReset" type="button" title="초기화 (자동 생성으로 복원)">↺</button>
+        <button class="drawer-loc-reset" id="drawerPinReset" type="button" title="핀 위치 재검색 (제목 기반)">📍↺</button>
       </div>
       <div class="drawer-quick-chips" id="drawerQuickChips">
-        <button class="drawer-qchip" data-q="이 곳에 어떻게 가는지, 소요시간은 얼마나 잡아야 하는지, 추천 여행 팁을 알려줘">🗺 여행 팁</button>
-        <button class="drawer-qchip" data-q="이 장소의 영업시간, 입장료, 예약 필요 여부를 알려줘">🕐 운영 정보</button>
-        <button class="drawer-qchip" data-q="이 일정 다음에 근처에서 점심이나 커피 마시기 좋은 곳을 추천해줘">☕ 근처 식당</button>
+        <button class="drawer-qchip" type="button" data-q="이 곳에 어떻게 가는지, 소요시간은 얼마나 잡아야 하는지, 추천 여행 팁을 알려줘">🗺 여행 팁</button>
+        <button class="drawer-qchip" type="button" data-q="이 장소의 영업시간, 입장료, 예약 필요 여부를 알려줘">🕐 운영 정보</button>
+        <button class="drawer-qchip" type="button" data-q="이 일정 다음에 근처에서 점심이나 커피 마시기 좋은 곳을 추천해줘">☕ 근처 식당</button>
       </div>
       <div class="drawer-row">
         <textarea class="drawer-input" id="drawerInput" rows="2" placeholder="이 일정에 대해 자유롭게 요청하세요..."></textarea>
-        <button class="drawer-send" id="drawerSend">전송</button>
+        <button class="drawer-send" id="drawerSend" type="button">전송</button>
       </div>
-      <div class="drawer-status" id="drawerStatus"></div>
+      <div class="drawer-status" id="drawerStatus" aria-live="polite"></div>
       <div class="drawer-response" id="drawerResponse">
         <div class="drawer-resp-intro" id="drawerRespIntro"></div>
         <div class="drawer-options" id="drawerOptions"></div>
@@ -109,8 +109,8 @@
             <select class="confirm-day-sel" id="confirmDay"></select>
           </div>
           <div class="confirm-bar-row">
-            <button class="confirm-add-btn" id="confirmAddBtn">＋ 일정 추가</button>
-            <button class="drawer-dismiss-btn" id="drawerDismiss2">닫기</button>
+            <button class="confirm-add-btn" id="confirmAddBtn" type="button">＋ 일정 추가</button>
+            <button class="drawer-dismiss-btn" id="drawerDismiss2" type="button">닫기</button>
           </div>
         </div>
         <div class="drawer-resp-actions" id="drawerRespActions"></div>
@@ -120,7 +120,7 @@
 
   <!-- MAP -->
   <main class="map-wrap">
-    <div class="map-handle" id="mapHandle"><div class="map-handle-bar"></div></div>
+    <div class="map-handle" id="mapHandle" role="button" tabindex="0" aria-label="지도 패널 높이 변경"><div class="map-handle-bar"></div></div>
     <div id="map"></div>
     <div class="map-legend" id="mapLegend">
       <div class="leg-toggle" id="legToggle">
@@ -129,37 +129,37 @@
       </div>
       <div class="leg-body" id="legend"></div>
     </div>
-    <button class="gps-btn" id="gpsBtn" title="내 위치 찾기">◎ 내 위치</button>
-    <div class="gps-info" id="gpsInfo"></div>
+    <button class="gps-btn" id="gpsBtn" type="button" title="내 위치 찾기">◎ 내 위치</button>
+    <div class="gps-info" id="gpsInfo" aria-live="polite"></div>
     <div class="map-title">10–12 JUN · 8 DISTRICTS · 460+ BRANDS</div>
   </main>
 </div>
 
 <!-- LOGIN MODAL -->
-<div class="login-overlay" id="loginOverlay" style="display:none">
-  <div class="login-modal">
+<div class="login-overlay is-hidden" id="loginOverlay">
+  <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
     <div class="login-hd">
       <div class="kicker">COPENHAGEN · 2026</div>
-      <h2>3 Days of <em>Design</em></h2>
+      <h2 id="loginTitle">3 Days of <em>Design</em></h2>
     </div>
     <div class="login-bd">
       <p class="login-lead">누구로 접속할까요?</p>
       <div class="login-users">
-        <button class="login-user-btn" data-user="miju">👩 미주</button>
-        <button class="login-user-btn" data-user="sanghyo">🧑 상효</button>
+        <button class="login-user-btn" type="button" data-user="miju">👩 미주</button>
+        <button class="login-user-btn" type="button" data-user="sanghyo">🧑 상효</button>
       </div>
       <div id="loginPwRow" style="display:none">
         <div class="login-pw-row">
           <input type="password" class="login-pw-inp" id="loginPw" placeholder="비밀번호">
-          <button class="login-pw-sub" id="loginSub">입장 →</button>
+          <button class="login-pw-sub" id="loginSub" type="button">입장 →</button>
         </div>
         <div class="login-err" id="loginErr"></div>
       </div>
     </div>
-    <button class="login-skip" id="loginSkip">이 기기에만 저장 (로컬 모드)</button>
+    <button class="login-skip" id="loginSkip" type="button">이 기기에만 저장 (로컬 모드)</button>
   </div>
 </div>
 
-<script src="/app.js?v=20260606d"></script>
+<script src="/app.js?v=20260606f"></script>
 </body>
 </html>

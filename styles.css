@@ -31,6 +31,7 @@
     --color-sanghyo:#5C6B7A;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  .is-hidden{display:none!important}
   html,body{height:100%}
   body{
     font-family:var(--font-body);
@@ -92,6 +93,17 @@
   .tab.active{color:var(--ink);background:var(--paper);border-top-color:var(--ink)}
   .tab.active::after{content:none}
   .tab:hover:not(.active){color:var(--ink);background:var(--bg-2)}
+
+  /* ── 키보드 포커스 ── */
+  .tab:focus-visible,.user-sel-btn:focus-visible,.reset:focus-visible,
+  .gps-btn:focus-visible,.login-user-btn:focus-visible,
+  .login-pw-sub:focus-visible,.login-skip:focus-visible{
+    outline:2px solid var(--rust);outline-offset:2px;
+  }
+  .drawer-action:focus-visible,.drawer-close:focus-visible{
+    outline:2px solid rgba(247,245,242,.7);outline-offset:2px;
+  }
+  .map-handle:focus-visible{outline:2px solid var(--rust);outline-offset:-2px}
 
   .scroll{flex:1;overflow-y:auto;position:relative;z-index:1;padding:8px 0 80px}
   .scroll::-webkit-scrollbar{width:4px}
@@ -1151,6 +1163,14 @@
   .drawer-label{flex:1;font-size:13px;font-weight:400;font-style:italic;font-family:var(--font-head);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F7F5F2}
   .drawer-close{background:none;border:none;cursor:pointer;font-size:15px;color:rgba(247,245,242,.4);padding:2px 4px;line-height:1}
   .drawer-close:hover{color:rgba(247,245,242,.9)}
+  /* ── 드로어 액션 버튼 컴포넌트 ── */
+  .drawer-action{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;padding:2px 6px;border:1px solid transparent;background:none;cursor:pointer;border-radius:3px;color:rgba(247,245,242,.72);font-family:var(--font-mono);font-size:13px;line-height:1;text-decoration:none;flex-shrink:0;transition:.13s}
+  .drawer-action:hover{background:rgba(247,245,242,.12);color:#F7F5F2;border-color:rgba(247,245,242,.18)}
+  .drawer-action.muted{color:rgba(247,245,242,.55)}
+  .drawer-action.danger{color:rgba(255,160,140,.85)}
+  .drawer-action.danger:hover{background:rgba(200,64,42,.22);border-color:rgba(255,160,140,.26)}
+  .drawer-gmap-btn{min-width:24px;height:24px;background:rgba(247,245,242,.13);border-color:rgba(247,245,242,.25);font-size:11px;font-weight:700}
+  .drawer-loc-icon{font-size:10px;color:var(--teal);flex-shrink:0;font-family:var(--font-mono)}
   .drawer-quick-chips{display:flex;gap:5px;padding:4px 14px 0;flex-wrap:wrap}
   .drawer-qchip{flex:0 0 auto;padding:4px 10px;border:1.5px solid rgba(247,245,242,.2);background:rgba(247,245,242,.07);border-radius:14px;color:rgba(247,245,242,.75);font-size:10.5px;font-family:var(--font-body);cursor:pointer;transition:.15s;white-space:nowrap}
   .drawer-qchip:hover{background:rgba(247,245,242,.15);border-color:rgba(247,245,242,.4);color:#fff}
