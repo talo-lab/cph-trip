@@ -1157,6 +1157,15 @@ let festChecked = new Set();
 let festSearchQuery = '';
 const evDetailCache = {};
 
+/* ── 이벤트 대표 이미지 URL (Unsplash Source fallback) ── */
+const _EV_CAT_KW = {exhibition:'gallery',talk:'conference',wellness:'yoga',workshop:'craft',tour:'architecture',launch:'showroom',dining:'restaurant',brunch:'cafe',morning:'coffee'};
+function _evImgUrl(keywords){
+  const kw = keywords.filter(Boolean)
+    .map(k=>k.toLowerCase().replace(/[^a-z0-9]/g,' ').trim().split(/\s+/)[0])
+    .filter(k=>k.length>2).slice(0,2).join(',');
+  return `https://source.unsplash.com/featured/800x400?copenhagen,design,${kw||'interior'}`;
+}
+
 /* ---------- EVENT DETAIL MODAL ---------- */
 function openEvModal(ev, id){
   // 모든 기존 오버레이 제거 (중복 방지)
@@ -1185,9 +1194,13 @@ function openEvModal(ev, id){
           <span class="ev-hed-dk" style="background:${dkColor}">${ev.district}</span>
         </div>
       </div>
-      <div class="ev-photo-placeholder" data-dk="${_festDk}">
-        <div class="ev-photo-icon">🏛</div>
-        <div class="ev-photo-vname">${ev.venue.toUpperCase()}</div>
+      <div class="ev-photo-wrap" data-dk="${_festDk}">
+        <div class="ev-photo-fallback">
+          <div class="ev-photo-icon">🏛</div>
+          <div class="ev-photo-vname">${ev.venue.toUpperCase()}</div>
+        </div>
+        <img class="ev-photo-img" src="${ev.image||_evImgUrl([_EV_CAT_KW[ev.category],ev.venue.split(' ')[0]])}" alt="${ev.venue}" loading="lazy">
+        <div class="ev-photo-gradient"></div>
       </div>
       <div class="ev-body" id="evBody">
         <div class="ev-section">
@@ -1204,6 +1217,13 @@ function openEvModal(ev, id){
         </button>
       </div>
     </div>`;
+
+  // 이미지 load / error 핸들러
+  const _img1 = overlay.querySelector('.ev-photo-img');
+  if(_img1){
+    _img1.addEventListener('load', ()=>_img1.classList.add('loaded'));
+    _img1.addEventListener('error', ()=>{ _img1.style.display='none'; overlay.querySelector('.ev-photo-gradient').style.display='none'; });
+  }
 
   // 닫기
   overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
@@ -2967,9 +2987,13 @@ function openExhEvModal(ev, ex){
           ${catTags}
         </div>
       </div>
-      <div class="ev-photo-placeholder" data-dk="${exhDkToPlanDk(ex.district)||''}">
-        <div class="ev-photo-icon">${ev.icon}</div>
-        <div class="ev-photo-vname">${ex.brand.toUpperCase()}</div>
+      <div class="ev-photo-wrap" data-dk="${exhDkToPlanDk(ex.district)||''}">
+        <div class="ev-photo-fallback">
+          <div class="ev-photo-icon">${ev.icon}</div>
+          <div class="ev-photo-vname">${ex.brand.toUpperCase()}</div>
+        </div>
+        <img class="ev-photo-img" src="${ex.image||ev.image||_evImgUrl([ex.slug,_EV_CAT_KW[ev.label?.toLowerCase()]||ev.label?.split('·')[0]])}" alt="${ex.brand}" loading="lazy">
+        <div class="ev-photo-gradient"></div>
       </div>
       <div class="ev-body" id="evBody">
         <div class="ev-section">
@@ -2986,6 +3010,13 @@ function openExhEvModal(ev, ex){
         <button class="ev-add-btn" id="evAddBtn">＋ 일정에 추가</button>
       </div>
     </div>`;
+
+  // 이미지 load / error 핸들러
+  const _img2 = overlay.querySelector('.ev-photo-img');
+  if(_img2){
+    _img2.addEventListener('load', ()=>_img2.classList.add('loaded'));
+    _img2.addEventListener('error', ()=>{ _img2.style.display='none'; overlay.querySelector('.ev-photo-gradient').style.display='none'; });
+  }
 
   overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
   overlay.querySelector('#evClose').onclick = ()=>overlay.remove();

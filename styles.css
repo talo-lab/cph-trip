@@ -393,30 +393,48 @@
     width:100%;height:160px;object-fit:cover;display:block;
     background:var(--ink);position:relative;overflow:hidden;
   }
-  .ev-photo-placeholder{
-    width:100%;height:180px;display:flex;align-items:center;justify-content:center;
-    flex-direction:column;gap:8px;
+  /* ── 이미지 래퍼 ── */
+  .ev-photo-wrap{
+    width:100%;height:180px;position:relative;overflow:hidden;
     background:linear-gradient(135deg,var(--ink) 0%,#2d3a2e 100%);
-    color:var(--cream);opacity:.9;position:relative;overflow:hidden;
+    color:var(--cream);
   }
-  /* 지구별 그라디언트 */
-  .ev-photo-placeholder[data-dk="kongens"]{background:linear-gradient(135deg,#7a2215 0%,#c8492a 100%)}
-  .ev-photo-placeholder[data-dk="frederik"]{background:linear-gradient(135deg,#7a5510 0%,#d99021 100%)}
-  .ev-photo-placeholder[data-dk="nordhavn"]{background:linear-gradient(135deg,#163838 0%,#2f6b6b 100%)}
-  .ev-photo-placeholder[data-dk="islands"]{background:linear-gradient(135deg,#2d3a2e 0%,#5d7456 100%)}
-  .ev-photo-placeholder[data-dk="christ"]{background:linear-gradient(135deg,#3a1e2e 0%,#6d3b54 100%)}
-  .ev-photo-placeholder[data-dk="holmen"]{background:linear-gradient(135deg,#1a2530 0%,#3a4a5a 100%)}
-  .ev-photo-placeholder[data-dk="kultur"]{background:linear-gradient(135deg,#5a1a0a 0%,#9c3318 100%)}
-  .ev-photo-placeholder[data-dk="rosen"]{background:linear-gradient(135deg,#3e3520 0%,#7a6a3a 100%)}
-  /* 격자 패턴 오버레이 */
-  .ev-photo-placeholder::before{
-    content:'';position:absolute;inset:0;
+  /* 지구별 배경 그라디언트 */
+  .ev-photo-wrap[data-dk="kongens"]{background:linear-gradient(135deg,#7a2215 0%,#c8492a 100%)}
+  .ev-photo-wrap[data-dk="frederik"]{background:linear-gradient(135deg,#7a5510 0%,#d99021 100%)}
+  .ev-photo-wrap[data-dk="nordhavn"]{background:linear-gradient(135deg,#163838 0%,#2f6b6b 100%)}
+  .ev-photo-wrap[data-dk="islands"]{background:linear-gradient(135deg,#2d3a2e 0%,#5d7456 100%)}
+  .ev-photo-wrap[data-dk="christ"]{background:linear-gradient(135deg,#3a1e2e 0%,#6d3b54 100%)}
+  .ev-photo-wrap[data-dk="holmen"]{background:linear-gradient(135deg,#1a2530 0%,#3a4a5a 100%)}
+  .ev-photo-wrap[data-dk="kultur"]{background:linear-gradient(135deg,#5a1a0a 0%,#9c3318 100%)}
+  .ev-photo-wrap[data-dk="rosen"]{background:linear-gradient(135deg,#3e3520 0%,#7a6a3a 100%)}
+  /* 격자 패턴 오버레이 (fallback 배경에만) */
+  .ev-photo-wrap::before{
+    content:'';position:absolute;inset:0;z-index:0;
     background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
                      linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
-    background-size:24px 24px;
+    background-size:24px 24px;pointer-events:none;
   }
-  .ev-photo-icon{font-size:40px;opacity:.7;position:relative;z-index:1}
-  .ev-photo-vname{font-family:'Space Mono',monospace;font-size:var(--t-sm);opacity:.55;letter-spacing:.08em;position:relative;z-index:1;text-align:center;padding:0 16px}
+  /* fallback: 아이콘 + 브랜드명 (이미지 뒤에 위치) */
+  .ev-photo-fallback{
+    position:absolute;inset:0;z-index:1;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
+  }
+  .ev-photo-icon{font-size:40px;opacity:.7}
+  .ev-photo-vname{font-family:'Space Mono',monospace;font-size:var(--t-sm);opacity:.55;letter-spacing:.08em;text-align:center;padding:0 16px}
+  /* 실제 이미지 — 로드 전 투명, 로드 완료 시 fade-in */
+  .ev-photo-img{
+    position:absolute;inset:0;z-index:2;
+    width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .35s ease;
+  }
+  .ev-photo-img.loaded{opacity:1}
+  /* 하단 그라디언트 페이드 */
+  .ev-photo-gradient{
+    position:absolute;bottom:0;left:0;right:0;height:90px;z-index:3;
+    background:linear-gradient(transparent,rgba(26,23,20,.55));
+    pointer-events:none;
+  }
   .ev-body{padding:18px 20px 24px;display:flex;flex-direction:column;gap:14px}
   .ev-section{}
   .ev-section-label{
@@ -1345,7 +1363,7 @@
     .wish-add-btn{order:3;width:100%}
     /* 이벤트 모달 모바일 최적화 */
     .ev-modal{max-height:92vh}
-    .ev-photo-placeholder{height:140px}
+    .ev-photo-wrap{height:150px}
     .ev-photo-icon{font-size:32px}
     /* 드로어 모바일 최적화 */
     .item-drawer{max-height:65vh}
