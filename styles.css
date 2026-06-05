@@ -1111,6 +1111,9 @@
   .drawer-label{flex:1;font-size:13px;font-weight:400;font-style:italic;font-family:var(--font-head);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F7F5F2}
   .drawer-close{background:none;border:none;cursor:pointer;font-size:15px;color:rgba(247,245,242,.4);padding:2px 4px;line-height:1}
   .drawer-close:hover{color:rgba(247,245,242,.9)}
+  .drawer-quick-chips{display:flex;gap:5px;padding:4px 14px 0;flex-wrap:wrap}
+  .drawer-qchip{flex:0 0 auto;padding:4px 10px;border:1.5px solid rgba(247,245,242,.2);background:rgba(247,245,242,.07);border-radius:14px;color:rgba(247,245,242,.75);font-size:10.5px;font-family:var(--font-body);cursor:pointer;transition:.15s;white-space:nowrap}
+  .drawer-qchip:hover{background:rgba(247,245,242,.15);border-color:rgba(247,245,242,.4);color:#fff}
   .drawer-row{display:flex;gap:0;padding:8px 14px 12px;align-items:flex-end;overflow:hidden;min-width:0}
   .drawer-input{
     flex:1;min-width:0;width:0;box-sizing:border-box;/* flex overflow 방지 */

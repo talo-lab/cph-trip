@@ -5044,6 +5044,8 @@ document.getElementById('drawerPinReset')?.addEventListener('click', async ()=>{
   await geocodePlanItem(it, di, true); // force=true
   btn.textContent = '📍↺'; btn.disabled = false;
   document.getElementById('drawerLocRow').style.display = 'none';
+  savePlan();
+  renderPlanMarkers(di); // 핀 즉시 재생성
   const c = getItemCoords(it);
   if(c){ map.flyTo([c.lat, c.lng], 15, {duration:.8}); }
   else { const st=document.getElementById('drawerStatus'); if(st){ st.className='drawer-status show err'; st.textContent='📍 좌표를 찾지 못했어요. 위치 입력 후 저장해보세요.'; } }
@@ -5388,7 +5390,7 @@ Rules:
     });
     await savePlan(); input.value='';
     st.className='drawer-status show ok'; st.textContent='✓ 수정됐어요!';
-    if(activeTab==='plan') renderPlan();
+    try{ if(activeTab==='plan') renderPlan(); }catch(re){ console.warn('renderPlan error after command:', re); }
     setTimeout(closeDrawer,1200);
   }catch(e){
     st.className='drawer-status show err'; st.textContent=`실패 (${e.message})`;
@@ -5630,6 +5632,15 @@ document.getElementById('drawerMapBtn').addEventListener('click', ()=>{
 document.getElementById('drawerSend').addEventListener('click', sendDrawerMsg);
 document.getElementById('drawerInput').addEventListener('keydown', e=>{
   if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){ e.preventDefault(); sendDrawerMsg(); }
+});
+
+// 빠른 질문 칩
+document.getElementById('drawerQuickChips').addEventListener('click', e=>{
+  const chip = e.target.closest('.drawer-qchip');
+  if(!chip) return;
+  const input = document.getElementById('drawerInput');
+  input.value = chip.dataset.q;
+  sendDrawerMsg();
 });
 
 /* ---------- UNDO TOAST ---------- */
@@ -6350,12 +6361,15 @@ function patchLockedTimes(){
     });
     plan.forEach((day, di) => {
       day.items.forEach(it => {
-        if(it._fixed || it._runningCourse || it._lockedTime) return;
+        if(it._fixed || it._runningCourse) return;
         if(!it._user) return;
-        if(!festMap.has(it.title)) return;
-        it._lockedTime = true;
-        changed = true;
-        daysToSort.add(di);
+        const info = festMap.get(it.title);
+        if(!info) return;
+        let dirty = false;
+        if(!it._lockedTime){ it._lockedTime = true; dirty = true; }
+        // 이미 잠긴 항목이라도 _timeEnd 누락 시 보완
+        if(info._timeEnd && !it._timeEnd){ it._timeEnd = info._timeEnd; dirty = true; }
+        if(dirty){ changed = true; daysToSort.add(di); }
       });
     });
   }
