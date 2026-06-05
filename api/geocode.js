@@ -12,16 +12,30 @@ export default async function handler(req, res) {
   if (!q || !q.trim()) return sendError(res, 400, 'q 파라미터가 필요합니다.');
 
   try {
-    const query = encodeURIComponent(q.trim() + ' Copenhagen Denmark');
-    const url = `${NOMINATIM}?q=${query}&format=json&limit=1&countrycodes=dk&viewbox=12.3,55.55,12.75,55.82&bounded=0`;
-    const r = await fetchWithTimeout(url, {
-      headers: { 'User-Agent': 'cph-trip-planner/1.0' }
-    }, 6000);
-    if (!r.ok) throw new Error(`Nominatim HTTP ${r.status}`);
-    const data = await r.json();
-    if (!data.length) return res.status(200).json(null);
-    const { lat, lon } = data[0];
-    return res.status(200).json({ lat: +lat, lng: +lon });
+    const base = q.trim();
+    const CPH = 'Copenhagen Denmark';
+    // 순차 fallback: 이름만 → restaurant → bar/café
+    const candidates = [
+      `${base} ${CPH}`,
+      `${base} restaurant ${CPH}`,
+      `${base} bar ${CPH}`,
+      `${base} café ${CPH}`,
+    ];
+    const delay = ms => new Promise(r => setTimeout(r, ms));
+    for (let i = 0; i < candidates.length; i++) {
+      if (i > 0) await delay(350); // Nominatim 1req/s 제한 준수
+      const url = `${NOMINATIM}?q=${encodeURIComponent(candidates[i])}&format=json&limit=1&countrycodes=dk&viewbox=12.3,55.55,12.75,55.82&bounded=0`;
+      const r = await fetchWithTimeout(url, {
+        headers: { 'User-Agent': 'cph-trip-planner/1.0' }
+      }, 6000);
+      if (!r.ok) continue;
+      const data = await r.json();
+      if (data.length) {
+        const { lat, lon } = data[0];
+        return res.status(200).json({ lat: +lat, lng: +lon });
+      }
+    }
+    return res.status(200).json(null);
   } catch (e) {
     return serverError(res, e, 'geocode');
   }
