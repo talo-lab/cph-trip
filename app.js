@@ -4206,11 +4206,18 @@ function renderAdd(){
           <div class="wish-suggest" id="wishSuggest" style="display:none"></div>
         </div>
         <div id="wishLinkPanel" style="display:none">
-          <input class="wish-input" id="wishGmapsUrl" placeholder="Google Maps URL 붙여넣기..." autocomplete="off">
+          <input class="wish-input" id="wishGmapsUrl" placeholder="Google Maps URL 붙여넣기 (선택)..." autocomplete="off">
           <div id="wishLinkPreview" style="display:none;margin-top:5px">
-            <input class="wish-input" id="wishGmapsName" placeholder="장소명 직접 입력..." autocomplete="off" maxlength="60" style="background:#f0f8f4;border-color:var(--sage)">
-            <div id="wishLinkCoords" style="font-size:10px;color:var(--sage);padding:3px 4px;font-family:'Space Mono',monospace"></div>
+            <input class="wish-input" id="wishGmapsName" placeholder="장소명 직접 입력..." autocomplete="off" maxlength="60" style="background:var(--bg-2)">
+            <div id="wishLinkCoords" style="font-size:10px;color:var(--slate);padding:3px 4px;font-family:var(--font-mono)"></div>
           </div>
+          <div style="display:flex;align-items:center;gap:8px;margin:8px 0 5px">
+            <div style="flex:1;height:1px;background:var(--line)"></div>
+            <span style="font-size:9px;color:var(--slate);letter-spacing:.1em;text-transform:uppercase">또는 주소 직접 입력</span>
+            <div style="flex:1;height:1px;background:var(--line)"></div>
+          </div>
+          <input class="wish-input" id="wishAddrInput" placeholder="주소 입력 (예: Nørreport, Copenhagen)" autocomplete="off">
+          <div id="wishAddrResult" style="display:none;font-size:10px;padding:3px 4px;color:var(--slate);font-family:var(--font-mono)"></div>
         </div>
       </div>
       <input class="wish-note-input" id="wishNote" placeholder="메모 (선택)" maxlength="80">
@@ -4432,33 +4439,53 @@ function renderAdd(){
   });
 
   // ── Google Maps URL 붙여넣기 ──
-  document.getElementById('wishGmapsUrl').addEventListener('input', function(){
+  document.getElementById('wishGmapsUrl').addEventListener('input', async function(){
     const val=this.value.trim();
     const prev=document.getElementById('wishLinkPreview');
     if(!val||!val.startsWith('http')){ prev.style.display='none'; _wishConfirmed=null; return; }
-    // 단축 URL 감지
+
+    // 단축 URL → 서버에서 리다이렉트 추적
     if(/maps\.app\.goo\.gl|goo\.gl\/maps/.test(val)){
       prev.style.display='block';
       document.getElementById('wishGmapsName').value='';
-      document.getElementById('wishGmapsName').placeholder='장소명 직접 입력...';
-      document.getElementById('wishLinkCoords').textContent='⚠ 단축 URL은 좌표를 읽을 수 없어요. 구글맵에서 장소를 열고 주소창의 전체 URL을 복사해 주세요.';
-      document.getElementById('wishLinkCoords').style.color='#c8492a';
-      _wishConfirmed={_gmapsUrl:val, address:''};
+      const coordEl=document.getElementById('wishLinkCoords');
+      coordEl.textContent='⏳ 단축 URL 분석 중...';
+      coordEl.style.color='var(--slate)';
+      _wishConfirmed={_gmapsUrl:val};
       document.getElementById('wishGmapsName').oninput=()=>{ if(_wishConfirmed) _wishConfirmed.title=document.getElementById('wishGmapsName').value.trim(); };
+      try{
+        const r=await fetch(`/api/resolve-gmaps?url=${encodeURIComponent(val)}`);
+        const data=await r.json();
+        if(data.lat && data.lng){
+          _wishConfirmed={_lat:data.lat, _lng:data.lng, _gmapsUrl:data.url||val};
+          coordEl.textContent=`📍 ${data.lat.toFixed(5)}, ${data.lng.toFixed(5)} · 좌표 확인됨`;
+          coordEl.style.color='var(--rust)';
+          if(data.title){
+            document.getElementById('wishGmapsName').value=data.title;
+            _wishConfirmed.title=data.title;
+          }
+        } else {
+          coordEl.textContent='⚠ 좌표 추출 실패. 장소명을 직접 입력하거나 아래 주소를 이용하세요.';
+          coordEl.style.color='var(--rust)';
+        }
+      }catch(e){
+        coordEl.textContent='⚠ 분석 실패. 장소명을 직접 입력해주세요.';
+        coordEl.style.color='var(--rust)';
+      }
       return;
     }
+
+    // 일반 구글맵 URL 파싱
     document.getElementById('wishLinkCoords').style.color='';
     const parsed=parseGmapsUrl(val);
     if(!parsed){ prev.style.display='none'; _wishConfirmed=null; return; }
-    _wishConfirmed={...parsed, address:''}; // 좌표는 내부에만, address는 사용자가 입력
+    _wishConfirmed={...parsed};
     prev.style.display='block';
-    // 장소명 입력 필드 - 파싱된 이름으로 채우되 사용자가 직접 수정 가능
     const nameInput=document.getElementById('wishGmapsName');
     if(parsed.title) nameInput.value=parsed.title;
-    else nameInput.value=''; nameInput.placeholder='장소명 직접 입력...';
+    else { nameInput.value=''; nameInput.placeholder='장소명 직접 입력...'; }
     const coordEl=document.getElementById('wishLinkCoords');
     coordEl.textContent=parsed._lat?`📍 ${parsed._lat.toFixed(5)}, ${parsed._lng.toFixed(5)} · 지도 핀 연결됨`:'📍 좌표 없음 (이름으로 검색됩니다)';
-    // 이름 입력 이벤트
     nameInput.oninput=()=>{ if(_wishConfirmed) _wishConfirmed.title=nameInput.value.trim(); };
     setTimeout(()=>{ if(!parsed.title) nameInput.focus(); }, 50);
   });
@@ -4507,18 +4534,58 @@ function renderAdd(){
   });
   wishTitleEl.addEventListener('blur',()=>{ setTimeout(()=>{ const s=document.getElementById('wishSuggest'); if(s) s.style.display='none'; },180); });
 
+  // ── 주소 입력 → Nominatim 지오코딩 ──
+  let _wishAddrTimer=null;
+  let _wishAddrConfirmed=null;
+  document.getElementById('wishAddrInput').addEventListener('input', function(){
+    const val=this.value.trim();
+    const res=document.getElementById('wishAddrResult');
+    _wishAddrConfirmed=null;
+    clearTimeout(_wishAddrTimer);
+    if(!val){ res.style.display='none'; return; }
+    res.style.display='block';
+    res.style.color='var(--slate)';
+    res.textContent='⏳ 주소 검색 중...';
+    _wishAddrTimer=setTimeout(async()=>{
+      try{
+        const r=await fetch(`/api/geocode?q=${encodeURIComponent(val)}`);
+        const data=await r.json();
+        if(data && data.lat && data.lng){
+          _wishAddrConfirmed={_lat:data.lat, _lng:data.lng,
+            _gmapsUrl:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(val+', Copenhagen')}`};
+          res.textContent=`📍 ${data.lat.toFixed(5)}, ${data.lng.toFixed(5)} · 코펜하겐 기준 확인됨`;
+          res.style.color='var(--rust)';
+        } else {
+          _wishAddrConfirmed=null;
+          res.textContent='검색 결과 없음. 더 구체적인 주소를 입력해보세요.';
+          res.style.color='var(--slate)';
+        }
+      }catch(e){
+        _wishAddrConfirmed=null;
+        res.textContent='검색 실패';
+        res.style.color='var(--slate)';
+      }
+    }, 600);
+  });
+
   // ── 추가 버튼 ──
   document.getElementById('wishAddBtn').addEventListener('click',()=>{
     const isLinkMode=document.getElementById('wishModeLink').classList.contains('active');
-    let title='', confirmed=_wishConfirmed||{};
+    let title='', confirmed=null;
     if(isLinkMode){
-      // 링크 모드: 이름 입력 필드 우선
+      // 구글맵 URL 우선, 없으면 주소 지오코딩 결과
+      confirmed=_wishConfirmed || _wishAddrConfirmed || {};
+      const addrVal=document.getElementById('wishAddrInput').value.trim();
       title=document.getElementById('wishGmapsName').value.trim()
            || confirmed.title
+           || addrVal
            || document.getElementById('wishNote').value.trim()
            || '새 장소';
-      confirmed.title=title; // 저장용
+      // 주소만 입력된 경우 장소명으로 주소값 사용
+      if(!_wishConfirmed && _wishAddrConfirmed && !confirmed.title) confirmed.title=addrVal||title;
+      confirmed.title=title;
     } else {
+      confirmed=_wishConfirmed||{};
       title=wishTitleEl.value.trim();
     }
     if(!title) return;
@@ -4528,15 +4595,19 @@ function renderAdd(){
     saveWishlist();
     wishTitleEl.value='';
     document.getElementById('wishGmapsUrl').value='';
+    document.getElementById('wishAddrInput').value='';
     document.getElementById('wishNote').value='';
     document.getElementById('wishSuggest').style.display='none';
     document.getElementById('wishLinkPreview').style.display='none';
+    document.getElementById('wishAddrResult').style.display='none';
+    _wishAddrConfirmed=null;
     const festEl=document.getElementById('wishFestOnly'); if(festEl) festEl.checked=false;
     _wishConfirmed=null;
     renderWishList();
   });
   wishTitleEl.addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('wishAddBtn').click(); });
   document.getElementById('wishGmapsUrl').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('wishAddBtn').click(); });
+  document.getElementById('wishAddrInput').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('wishAddBtn').click(); });
 
   renderWishList();
 
