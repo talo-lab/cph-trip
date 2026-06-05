@@ -2845,19 +2845,56 @@ function renderInfo(){
   const QA_KEY = 'cph_qa_history';
   let qaHistory = JSON.parse(localStorage.getItem(QA_KEY)||'[]');
 
+  /* 마크다운 → HTML (간단한 regex 파서, 외부 라이브러리 없음) */
+  function markdownToHtml(md){
+    if(!md) return '';
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const inline = s => esc(s)
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,'<em>$1</em>')
+      .replace(/`([^`]+)`/g,'<code>$1</code>');
+    const lines = md.split('\n');
+    const out = [];
+    let inUl=false, inOl=false;
+    const closeList = ()=>{ if(inUl){out.push('</ul>');inUl=false;} if(inOl){out.push('</ol>');inOl=false;} };
+    for(const raw of lines){
+      const l = raw.trimEnd();
+      if(/^###\s/.test(l)){ closeList(); out.push(`<h5>${inline(l.slice(4))}</h5>`); continue; }
+      if(/^##\s/.test(l)){  closeList(); out.push(`<h4>${inline(l.slice(3))}</h4>`); continue; }
+      if(/^#\s/.test(l)){   closeList(); out.push(`<h3>${inline(l.slice(2))}</h3>`); continue; }
+      if(/^[-*]\s/.test(l)){ if(!inUl){if(inOl){out.push('</ol>');inOl=false;}out.push('<ul>');inUl=true;} out.push(`<li>${inline(l.slice(2))}</li>`); continue; }
+      if(/^\d+\.\s/.test(l)){ if(!inOl){if(inUl){out.push('</ul>');inUl=false;}out.push('<ol>');inOl=true;} out.push(`<li>${inline(l.replace(/^\d+\.\s/,''))}</li>`); continue; }
+      closeList();
+      if(!l.trim()){ out.push('<br>'); continue; }
+      out.push(`<p>${inline(l)}</p>`);
+    }
+    closeList();
+    return out.join('');
+  }
+
   function renderQaHistory(){
     const el = document.getElementById('qaHistory');
     if(!el) return;
     if(!qaHistory.length){
-      el.innerHTML='<div style="font-size:11.5px;opacity:.5;padding:8px 0">아직 질문이 없어요. 무엇이든 물어보세요!</div>';
+      el.innerHTML='<div class="qa-empty">아직 질문이 없어요. 무엇이든 물어보세요!</div>';
       return;
     }
-    el.innerHTML = qaHistory.slice().reverse().map((qa,i)=>`
-      <div class="qa-item">
-        <div class="qa-q">❓ ${qa.q}</div>
-        <div class="qa-a">${qa.a}</div>
-        <div class="qa-meta">${new Date(qa.ts).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
-      </div>`).join('');
+    // 최신순 정렬, 첫 항목(최신)은 기본 열림
+    el.innerHTML = qaHistory.slice().reverse().map((qa, i)=>{
+      const timeStr = new Date(qa.ts).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      return `<div class="qa-item${i===0?' open':''}">
+        <div class="qa-toggle">
+          <span class="qa-arrow">▶</span>
+          <span class="qa-q-text">${qa.q.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>
+          <span class="qa-time">${timeStr}</span>
+        </div>
+        <div class="qa-body">${markdownToHtml(qa.a)}</div>
+      </div>`;
+    }).join('');
+    // 토글 이벤트 (이벤트 위임)
+    el.querySelectorAll('.qa-toggle').forEach(t=>{
+      t.addEventListener('click', ()=> t.closest('.qa-item').classList.toggle('open'));
+    });
   }
   renderQaHistory();
 

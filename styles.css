@@ -527,11 +527,44 @@
 
   /* ── AI Q&A ── */
   .qa-wrap{margin:10px 0}
-  .qa-history{max-height:340px;overflow-y:auto;margin-bottom:10px}
-  .qa-item{border-left:3px solid var(--teal);padding:8px 10px;margin-bottom:8px;background:rgba(47,107,107,.06);border-radius:0 4px 4px 0}
-  .qa-q{font-weight:600;font-size:12.5px;margin-bottom:4px}
-  .qa-a{font-size:12.5px;line-height:1.6;white-space:pre-wrap}
-  .qa-meta{font-size:10px;opacity:.45;font-family:'Space Mono',monospace;margin-top:5px}
+  .qa-history{
+    max-height:400px;overflow-y:auto;margin-bottom:10px;
+    border:1.5px solid var(--line);border-radius:6px;
+  }
+  .qa-empty{font-size:11.5px;opacity:.5;padding:14px 12px}
+  /* 아코디언 아이템 */
+  .qa-item{border-bottom:1px solid var(--line)}
+  .qa-item:last-child{border-bottom:none}
+  .qa-toggle{
+    display:flex;align-items:flex-start;gap:7px;
+    padding:10px 12px;cursor:pointer;user-select:none;
+  }
+  .qa-toggle:hover{background:rgba(47,107,107,.05)}
+  .qa-arrow{
+    font-size:8px;color:var(--teal);flex-shrink:0;
+    margin-top:3px;transition:transform .18s ease;
+  }
+  .qa-item.open .qa-arrow{transform:rotate(90deg)}
+  .qa-q-text{flex:1;font-size:12.5px;font-weight:600;line-height:1.45}
+  .qa-time{font-size:9.5px;opacity:.4;font-family:'Space Mono',monospace;flex-shrink:0;margin-top:2px}
+  /* 답변 영역 (열릴 때만 표시) */
+  .qa-body{
+    display:none;
+    padding:2px 14px 14px 27px;
+    font-size:12.5px;line-height:1.7;color:var(--ink);
+    border-top:1px solid rgba(0,0,0,.06);
+  }
+  .qa-item.open .qa-body{display:block}
+  /* 마크다운 렌더링 요소 */
+  .qa-body h3,.qa-body h4,.qa-body h5{margin:.65em 0 .25em;font-size:13px;font-weight:700}
+  .qa-body ul,.qa-body ol{padding-left:1.4em;margin:.3em 0}
+  .qa-body li{margin:.2em 0}
+  .qa-body p{margin:.3em 0}
+  .qa-body br{display:block;content:'';margin:.15em 0}
+  .qa-body strong{font-weight:700}
+  .qa-body em{font-style:italic}
+  .qa-body code{background:rgba(0,0,0,.07);padding:1px 5px;border-radius:3px;font-family:'Space Mono',monospace;font-size:10.5px}
+  /* 입력 영역 */
   .qa-input-row{display:flex;gap:8px;align-items:flex-end}
   .qa-input{flex:1;padding:8px 10px;border:1.5px solid var(--line);border-radius:4px;font-family:'Archivo',sans-serif;font-size:12.5px;resize:vertical;min-height:50px}
   .qa-input:focus{outline:none;border-color:var(--teal)}
