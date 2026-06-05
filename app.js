@@ -1587,13 +1587,16 @@ async function addFestSelected(){
       skippedTitles.push(ev.title.slice(0,16));
       return;
     }
+    const _tParts = ev.time.split('-');
     const newIt = {
-      time: ev.time.split('-')[0],
+      time: _tParts[0].trim(),
       title: ev.title,
       note: `${ev.venue} · ${ev.address} · ${ev.desc}`,
       dist: ev.district,
       _user: true, _addedBy: currentUser,
       _personal: false, _with: ['miju','sanghyo'],
+      _lockedTime: true,
+      ...(_tParts[1] ? {_timeEnd: _tParts[1].trim()} : {}),
     };
     plan[di].items.push(newIt);
     sortDayByTime(di);
@@ -1785,20 +1788,21 @@ function renderPlan(){
       const gmapIcon = it._runningCourse ? '🗺' : (it._gmapsUrl ? '🔗' : (it.title&&it.title.includes('→')?'🧭':'📍'));
 
       row.innerHTML = `
-        ${it._fixed?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
+        ${(it._fixed||it._lockedTime)?'':`<span class="drag-handle" title="드래그로 순서 변경">⠿</span>`}
         <input type="checkbox" class="item-sel-cb" ${selectedPlanKey===`${di}-${ii}`?'checked':''} title="지도에서 선택/해제">
-        <div class="item-time${it._fixed?'':' item-time-edit'}" title="${it._fixed?'':'클릭하여 시간 선택'}">${it.time||''}</div>
+        <div class="item-time${(it._fixed||it._lockedTime)?'':' item-time-edit'}" title="${(it._fixed||it._lockedTime)?'':'클릭하여 시간 선택'}">${it.time||''}</div>
         <div class="item-main">
           <div class="item-title" contenteditable spellcheck="false">${it.title||''}</div>
           <div class="item-note" contenteditable spellcheck="false">${it.note||''}</div>
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
           ${(()=>{ const tag=it._catTag||inferTag(it); return tag?`<span class="item-cat-tag">${tag}</span>`:''; })()}
-          ${it._user?`<span class="item-src">＋ 내가 추가</span>`:''}
+          ${it._user&&!it._lockedTime?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
+          ${it._lockedTime?`<span class="item-src lock">🕐 ${it.time}${it._timeEnd?' – '+it._timeEnd:''} · 시간고정</span>`:''}
           ${tagsHtml}${warnHtml}
         </div>
         <a class="item-gmap" href="${gmapHref}" target="_blank" title="Google Maps로 열기" onclick="event.stopPropagation()">${gmapIcon}</a>
-        <button class="item-x" title="${it._fixed?'고정 일정':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
+        <button class="item-x" title="${it._fixed?'고정 일정':it._lockedTime?'시간고정 (삭제 가능)':'삭제'}" ${it._fixed?'disabled':''}>${it._fixed?'🔒':'×'}</button>`;
 
       // 선택 체크박스 — 단일/다중 모드 분기
       const selCb = row.querySelector('.item-sel-cb');
@@ -1856,7 +1860,7 @@ function renderPlan(){
       n.addEventListener('input',()=>{plan[di].items[ii].note=n.textContent;savePlan()});
 
       // 시간 필드 — 클릭 시 30분 단위 피커 팝업
-      if(!it._fixed){
+      if(!it._fixed && !it._lockedTime){
         const tm=row.querySelector('.item-time-edit');
         if(tm){
           tm.addEventListener('click', e=>{
@@ -3034,6 +3038,8 @@ function openExhEvModal(ev, ex){
       dist: ex.district||'',
       _user:true, _addedBy:currentUser, _personal:false, _with:['miju','sanghyo'],
       _dk: exhDkToPlanDk(ex.district),
+      _lockedTime: true,
+      ...(ev.end ? {_timeEnd: ev.end} : {}),
     });
     sortDayByTime(festDayIdx); savePlan();
     btn.textContent='✓ 일정에 추가됨'; btn.classList.add('done');
@@ -3451,6 +3457,8 @@ function buildExhCard(ex, q){
               _personal: false,
               _with: ['miju','sanghyo'],
               _dk: exhDkToPlanDk(ex.district),
+              _lockedTime: true,
+              ...(ev.end ? {_timeEnd: ev.end} : {}),
             });
             sortDayByTime(di);
             savePlan();
@@ -3492,6 +3500,21 @@ function openExhVenueModal(ex){
   const officialUrl = ex.slug ? `https://www.3daysofdesign.dk/exhibition/${ex.slug}` : '';
   const defaultDi = 2; // 기본 6/10
 
+  // 날짜별 운영 시간 계산 (이벤트의 start/end로 추정)
+  const _hoursMap = {};
+  (ex.events||[]).forEach(ev=>{
+    if(!ev.start) return;
+    const d = ev.day;
+    if(!_hoursMap[d]) _hoursMap[d] = {start:ev.start, end:ev.end||ev.start};
+    else {
+      if(ev.start < _hoursMap[d].start) _hoursMap[d].start = ev.start;
+      if((ev.end||ev.start) > _hoursMap[d].end) _hoursMap[d].end = ev.end||ev.start;
+    }
+  });
+  const _hoursHtml = Object.entries(_hoursMap).sort(([a],[b])=>+a-+b)
+    .map(([day,h])=>`<b>6/${day}</b> ${h.start}${h.end&&h.end!==h.start?'–'+h.end:''}`)
+    .join(' &nbsp;·&nbsp; ');
+
   const overlay = document.createElement('div');
   overlay.className = 'exh-venue-overlay';
   overlay.innerHTML = `
@@ -3503,7 +3526,8 @@ function openExhVenueModal(ex){
           <span class="exh-dist-badge" style="background:${distD.color}">${ex.district||'–'}</span>
           ${prodBadges}
         </div>
-        ${ex.address?`<div class="exh-venue-addr">📍 ${ex.address}${gmapsUrl?` <a href="${gmapsUrl}" target="_blank" rel="noopener" style="font-size:10px;color:var(--teal);text-decoration:none">↗ 지도</a>`:''}</div>`:''}
+        ${ex.address?`<div class="exh-venue-addr">📍 ${ex.address}${gmapsUrl?` <a href="${gmapsUrl}" target="_blank" rel="noopener" style="font-size:10px;color:var(--rust);text-decoration:none">↗ 지도</a>`:''}</div>`:''}
+        ${_hoursHtml?`<div style="font-size:10.5px;margin-top:5px;color:rgba(247,245,242,.8)">🕐 ${_hoursHtml}</div>`:''}
       </div>
       <div class="exh-venue-body">
         ${ex.desc?`<div class="exh-venue-desc">${ex.desc}</div>`:''}
@@ -3728,8 +3752,9 @@ function autoSmartSchedule(di, movedIdx){
   if(tag && !it._catTag) it._catTag = tag;
   else if(tag) it._catTag = tag; // 드래그마다 갱신
 
-  // ── 고정 항목은 시간 건드리지 않음 ──
+  // ── 고정 항목 / 시간잠금 항목은 시간 건드리지 않음 ──
   if(it._fixed) return { timeChanged:false, tag };
+  if(it._lockedTime) return { timeChanged:false, tag };
 
   // ── 앞쪽: 구체 시간 있는 가장 가까운 이전 항목 ──
   let prevEndMin = null;
@@ -3770,7 +3795,7 @@ function autoSmartSchedule(di, movedIdx){
   let curEndMin = timeToMin(it.time) + inferDuration(it);
   for(let i = movedIdx + 1; i < items.length; i++){
     const nx = items[i];
-    if(nx._fixed) break; // 고정 항목에서 멈춤
+    if(nx._fixed || nx._lockedTime) break; // 고정/시간잠금 항목에서 멈춤
     const nt = timeToMin(nx.time);
     if(nt < 9000 && nt < curEndMin - 5){
       const adjusted = roundTo5(curEndMin + 5);
@@ -4797,8 +4822,9 @@ async function runSmartAdd(){
       const sys = `You are a Copenhagen trip plan editor. Given the current plan JSON and a modification request (Korean or English), output ONLY the updated full plan JSON array. No markdown, no explanation.
 Trip: June 8–16 2026. 3 Days of Design festival: June 10–12 only (Day 2–4). Free days: June 13–15 (Day 5–7).
 Rules:
-- Never delete _fixed:true items; preserve _user,_fixed,_lat,_lng,_dk fields.
-- Time change ("10시로 변경", "change time to 14:00") → update the item's time field; keep on same day. Sort by time after.
+- Never delete _fixed:true items; preserve _user,_fixed,_lat,_lng,_dk,_lockedTime fields.
+- Never change the time field of items with _lockedTime:true (festival/exhibition events have fixed times).
+- Time change ("10시로 변경", "change time to 14:00") → update the item's time field ONLY if _lockedTime is not true; keep on same day. Sort by time after.
 - Same-day reorder ("A를 B 뒤로", "B 앞으로 이동", "move after X") → reposition items within the same day array; do NOT change their time fields unless asked.
 - Cross-day move ("6/13 일정을 6/14로", "다음날로 옮겨줘", "move to June 14") → remove from source day array, insert into target day array; preserve the item's time value.
 - Content edit ("제목 바꿔줘", "메모 추가") → update title/note fields only.`;
@@ -4806,6 +4832,7 @@ Rules:
         date:day.date,tag:day.tag,fest:day.fest,
         items:day.items.map(it=>({time:it.time,title:it.title,note:it.note,dist:it.dist,
           _fixed:it._fixed||undefined,_user:it._user||undefined,
+          _lockedTime:it._lockedTime||undefined,
           _lat:it._lat||undefined,_lng:it._lng||undefined,_dk:it._dk||undefined}))
       })));
       const resp = await fetch('/api/extract',{method:'POST',headers:{'Content-Type':'application/json'},
@@ -5300,8 +5327,9 @@ async function _drawerCommand(raw,di,ii,item,input,btn,st){
   const sys=`You are a Copenhagen trip plan editor. The user selected a specific item and made a request about it (Korean or English). Apply the change to the full plan and output ONLY the updated full plan JSON array. No markdown, no explanation.
 Trip: June 8–16 2026. 3 Days of Design festival: June 10–12 only (Day 2–4). Free days: June 13–15 (Day 5–7). Departure: June 16 (Day 8).
 Rules:
-- Never delete _fixed:true items. Preserve _user, _fixed, _lat, _lng, _dk fields on all items.
-- Time change ("10시로 변경", "change time to 15:00") → update the item's time field; keep on same day. Sort by time after.
+- Never delete _fixed:true items. Preserve _user, _fixed, _lat, _lng, _dk, _lockedTime fields on all items.
+- Never change the time field of items with _lockedTime:true (festival/exhibition events have fixed times).
+- Time change ("10시로 변경", "change time to 15:00") → update the item's time field ONLY if _lockedTime is not true; keep on same day. Sort by time after.
 - Same-day reorder ("A 뒤로", "B 앞에", "move after X") → reposition within the same day array; do NOT change time fields unless asked.
 - Cross-day move ("6/14로 옮겨줘", "다음날로", "move to June 13") → remove from source day array, insert into target day array; preserve the item's time value.
 - Content edit ("제목 수정", "메모 추가") → update title/note fields only.
@@ -5312,6 +5340,7 @@ Rules:
     items:day.items.map(it=>({
       time:it.time,title:it.title,note:it.note,dist:it.dist,
       _fixed:it._fixed||undefined,_user:it._user||undefined,
+      _lockedTime:it._lockedTime||undefined,
       _lat:it._lat||undefined,_lng:it._lng||undefined,_dk:it._dk||undefined
     }))
   })));
