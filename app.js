@@ -5356,8 +5356,10 @@ ${todayList}
         savePlan(); renderPlan();
         st.className='drawer-status show ok';
         st.textContent=`🚌 이동 항목 추가됨 — ${newItem.title}`;
-        resp.innerHTML=''; resp.classList.remove('show');
-        if(text){ document.getElementById('drawerRespIntro').textContent=text; resp.classList.add('show'); }
+        resp.classList.remove('show');
+        const _ri=document.getElementById('drawerRespIntro'),_ro=document.getElementById('drawerOptions'),_ra=document.getElementById('drawerRespActions'),_rf=document.getElementById('drawerFollowup');
+        if(_ri)_ri.innerHTML=''; if(_ro)_ro.innerHTML=''; if(_ra)_ra.innerHTML=''; if(_rf)_rf.style.display='none';
+        if(text&&_ri){ _ri.textContent=text; resp.classList.add('show'); }
         input.value='';
         btn.disabled=false; btn.textContent='전송';
         return;
