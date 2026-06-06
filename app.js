@@ -2608,7 +2608,10 @@ function renderRecommend(){
           ? `<span style="font-size:10px;color:var(--teal);margin-left:4px;opacity:.7" title="지도에서 확인 가능">📍</span>`
           : '';
 
+        row.dataset.recDay = day.dayIdx;
+        row.dataset.recIdx = i;
         row.innerHTML = `
+          <span class="rec-drag-handle" title="길게 눌러 드래그 → 날짜 선택으로 일정 추가">⠿</span>
           <input type="checkbox" class="rec-item-cb" ${isChecked?'checked':''} title="일정에 추가">
           <span class="rec-item-time">${it.time}</span>
           <div class="rec-item-main">
@@ -2692,6 +2695,24 @@ function renderRecommend(){
 
         itemsEl.appendChild(row);
       });
+
+      // 드래그 → 날짜 선택으로 일정 추가 (모바일 지원)
+      if(typeof Sortable !== 'undefined'){
+        Sortable.create(itemsEl, {
+          sort: false,
+          group: {name:'rec-day-pick', pull:false, put:false},
+          handle: '.rec-drag-handle',
+          animation: 120,
+          delay: 200,
+          delayOnTouchOnly: true,
+          touchStartThreshold: 3,
+          onStart: evt => { evt.item._recIt = visibleItems.find(x=>x.i===+evt.item.dataset.recIdx)?.it; },
+          onEnd: evt => {
+            const recIt = evt.item._recIt;
+            if(recIt) showRecDayPicker(recIt, day.dayIdx);
+          }
+        });
+      }
     }
 
     dayEl.appendChild(head);
@@ -2724,6 +2745,45 @@ function updateRecFooter(){
   document.getElementById('recCount').textContent = n > 0 ? `${n}개 선택` : '';
   document.getElementById('recApplyBtn').textContent = n > 0 ? `내 일정에 추가 →` : '항목을 선택하세요';
   document.getElementById('recApplyBtn').disabled = n === 0;
+}
+
+function showRecDayPicker(it, suggestedDi){
+  const overlay = document.createElement('div');
+  overlay.className = 'rec-day-overlay';
+  const modal = document.createElement('div');
+  modal.className = 'rec-day-modal';
+  modal.innerHTML = `
+    <div class="rec-day-modal-title">어느 날에 추가할까요?</div>
+    <div class="rec-day-modal-item">${it.title}</div>
+    <div class="rec-day-modal-days">${
+      plan.map((d,di)=>`<button class="rec-day-modal-btn${di===suggestedDi?' suggested':''}" data-di="${di}" type="button">${d.date} · ${d.tag||'일정'}</button>`).join('')
+    }</div>
+    <button class="rec-day-cancel" type="button">취소</button>`;
+  overlay.appendChild(modal);
+  modal.querySelector('.rec-day-cancel').addEventListener('click', ()=>overlay.remove());
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
+  modal.querySelectorAll('.rec-day-modal-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const di = +btn.dataset.di;
+      if(!plan[di]) return;
+      if(plan[di].items.some(p=>p.title===it.title)){ overlay.remove(); return; }
+      plan[di].items.push({
+        time: it.time, title: it.title, note: it.note,
+        dist: it.tag||'', _user: true,
+        _lat: it._lat||undefined, _lng: it._lng||undefined,
+        _addedBy: currentUser, _personal: false, _with: ['miju','sanghyo'],
+      });
+      sortDayByTime(di);
+      savePlan();
+      overlay.remove();
+      const toast = document.createElement('div');
+      toast.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#2e6b2e;color:#fff;padding:9px 18px;border-radius:6px;font-size:12px;font-family:Space Mono,monospace;z-index:9999;pointer-events:none;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.2)';
+      toast.textContent=`✓ ${it.title} → ${plan[di].date}에 추가됨`;
+      document.body.appendChild(toast);
+      setTimeout(()=>toast.remove(),2500);
+    });
+  });
+  document.body.appendChild(overlay);
 }
 
 async function applyRecItems(){
@@ -5046,8 +5106,8 @@ function openDrawer(di, ii, title){
   document.getElementById('drawerRespActions').innerHTML = '';
   _currentOptNote = '';
   document.getElementById('itemDrawer').classList.add('open');
-  // 모바일: 드로어 공간 확보를 위해 지도를 peek(10%)으로
-  if(window.innerWidth<=820 && window._mapSnap) window._mapSnap(0,true);
+  // 모바일: 지도 half(44%) 유지 — peek(10%)으로 줄이면 44px 핀이 가려짐
+  if(window.innerWidth<=820 && window._mapSnap) window._mapSnap(1,true);
   updateDrawerPrivacy();
 
   const it = plan[di]?.items[ii];

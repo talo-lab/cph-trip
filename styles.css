@@ -1076,16 +1076,54 @@
   .rec-day-add:hover{background:var(--rust);color:#fff}
   .rec-day-add.done{background:var(--slate);border-color:var(--slate);color:#fff}
   .rec-items{padding:5px 0 8px}
+  .rec-drag-handle{
+    cursor:grab;touch-action:none;user-select:none;
+    font-size:13px;color:var(--slate);opacity:.35;
+    padding:2px 0;flex-shrink:0;align-self:center;
+    -webkit-user-select:none;
+  }
+  .rec-drag-handle:active{cursor:grabbing}
   .rec-item{
     display:flex;gap:10px;padding:10px 14px;
     cursor:pointer;transition:box-shadow .15s ease, border-color .15s ease;
-    align-items:flex-start;background:var(--cream);
+    align-items:flex-start;background:var(--cream);touch-action:manipulation;
     margin:0 10px 5px;border:1px solid var(--line);border-radius:2px;
   }
   .rec-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);border-color:rgba(0,0,0,.08)}
   .rec-item.added{background:rgba(93,116,86,.08)}
   .rec-item.map-active{background:rgba(200,64,42,.08);border-left:3px solid var(--rust);padding-left:17px}
   .rec-item.map-prev{background:rgba(200,64,42,.03);border-left:3px solid rgba(200,64,42,.2);padding-left:17px}
+
+  /* 추천 → 날짜 선택 드래그 피커 */
+  .rec-day-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.5);
+    z-index:10000;display:flex;align-items:flex-end;
+  }
+  .rec-day-modal{
+    background:var(--paper);width:100%;max-height:72vh;overflow-y:auto;
+    border-radius:12px 12px 0 0;padding:20px 16px 32px;
+  }
+  .rec-day-modal-title{
+    font-family:var(--font-mono);font-size:11px;font-weight:700;
+    color:var(--rust);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;
+  }
+  .rec-day-modal-item{
+    font-size:14px;font-weight:600;margin-bottom:14px;
+    border-bottom:1px solid var(--line);padding-bottom:10px;line-height:1.4;
+  }
+  .rec-day-modal-days{display:flex;flex-direction:column;gap:5px}
+  .rec-day-modal-btn{
+    background:var(--cream);border:1px solid var(--line);border-radius:4px;
+    padding:10px 14px;text-align:left;font-size:12.5px;cursor:pointer;
+    font-family:var(--font-mono);transition:background .12s,border-color .12s;
+  }
+  .rec-day-modal-btn:hover,.rec-day-modal-btn.suggested{
+    background:var(--rust);color:#fff;border-color:var(--rust);
+  }
+  .rec-day-cancel{
+    margin-top:12px;width:100%;background:none;border:1px solid var(--line);
+    border-radius:4px;padding:9px;cursor:pointer;font-size:12px;color:var(--slate);
+  }
 
   /* 동선 비교 패널 / 장소 정보 패널 */
   .rec-route-panel{
