@@ -1792,8 +1792,28 @@ function renderPlan(){
       const di = +slot.dataset.di;
       const w = wmap[di];
       if(!w) return;
-      slot.innerHTML=`<span class="day-weather-icon">${w.icon}</span><span class="day-weather-temp">${w.max}°/${w.min}°</span>`;
-      slot.title=`${w.label}${w.rain>0?' · 강수 '+w.rain+'mm':''}`;
+      const hasH = w.hourly?.length > 0;
+      slot.innerHTML=`<span class="day-weather-icon">${w.icon}</span><span class="day-weather-temp">${w.max}°/${w.min}°</span>${hasH?'<span class="dwh-toggle">▾</span>':''}`;
+      slot.title=`${w.label}${w.rain>0?' · 강수 '+w.rain+'mm':''}${hasH?' (탭하면 시간별 예보)':''}`;
+      if(!hasH) return;
+      slot.classList.add('has-hourly');
+      slot.addEventListener('click', e=>{
+        e.stopPropagation();
+        const dayEl=slot.closest('.day'); if(!dayEl) return;
+        const existing=dayEl.querySelector('.day-weather-hourly');
+        const tog=slot.querySelector('.dwh-toggle');
+        if(existing){ existing.remove(); if(tog) tog.textContent='▾'; return; }
+        if(tog) tog.textContent='▴';
+        const hEl=document.createElement('div');
+        hEl.className='day-weather-hourly';
+        hEl.innerHTML=w.hourly.map(h=>`<span class="dwh-slot">
+          <span class="dwh-time">${String(h.h).padStart(2,'0')}:00</span>
+          <span class="dwh-icon">${WMO_ICON[h.c]||'🌡'}</span>
+          <span class="dwh-temp">${h.t}°</span>
+          ${h.r>=20?`<span class="dwh-rain">🌂${h.r}%</span>`:''}
+        </span>`).join('');
+        dayEl.querySelector('.day-head').insertAdjacentElement('afterend', hEl);
+      });
     });
   });
 
@@ -2867,6 +2887,11 @@ function renderInfo(){
     </ul>
     <p style="font-size:11.5px;color:var(--rust-deep)"><b>주의:</b> 출국일(6/16) 김미주 16:40 먼저 출발 → 14:30경 공항 이동. 박상효는 23:55 출발이라 오후~저녁 도심 자유시간 있음.</p>
 
+    <h3>🗺 오프라인 지도 저장</h3>
+    <p>코펜하겐 중심부 지도(줌 13~15)를 미리 저장하면 로밍 없이도 지도를 사용할 수 있어요.</p>
+    <button id="offlineTileBtn" class="add-btn" style="margin-top:4px;margin-bottom:4px">${localStorage.getItem('cph_tiles_cached')?'🔄 지도 업데이트':'🗺 코펜하겐 지도 오프라인 저장'}</button>
+    <div id="offlineTileProg" style="font-size:11px;color:var(--slate);min-height:16px;font-family:var(--font-mono)"></div>
+
     <h3>🚇 지하철 · 버스 이용 팁</h3>
     <ul>
       <li><b>메트로 (Metro)</b> · M1/M2 24시간 운행 · Rejsekort(교통카드) 또는 티켓 구매 · 2존 기준 편도 26 DKK</li>
@@ -2930,6 +2955,10 @@ function renderInfo(){
       });
     });
   }
+
+  // ── 오프라인 타일 버튼 ──
+  const offBtn = document.getElementById('offlineTileBtn');
+  if(offBtn) offBtn.addEventListener('click', precacheTiles);
 
   // ── AI 여행 어시스턴트 Q&A ──
   const QA_KEY = 'cph_qa_history';
@@ -6162,6 +6191,48 @@ document.getElementById('gpsBtn').addEventListener('click',()=>{
   );
 });
 
+/* ---------- OFFLINE TILE PRE-CACHE ---------- */
+function _lonToTile(lon,z){ return Math.floor((lon+180)/360*Math.pow(2,z)); }
+function _latToTile(lat,z){
+  const r=lat*Math.PI/180;
+  return Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z));
+}
+
+async function precacheTiles(){
+  if(!('caches' in window)){ alert('이 브라우저는 오프라인 캐싱을 지원하지 않아요.'); return; }
+  const btn=document.getElementById('offlineTileBtn');
+  const prog=document.getElementById('offlineTileProg');
+  if(!btn||!prog) return;
+  btn.disabled=true; btn.textContent='저장 중...'; prog.textContent='타일 목록 계산 중...';
+
+  // 코펜하겐 중심부 bbox, zoom 13~15
+  const tiles=[];
+  for(let z=13;z<=15;z++){
+    const x1=_lonToTile(12.45,z), x2=_lonToTile(12.65,z);
+    const y1=_latToTile(55.73,z), y2=_latToTile(55.62,z);
+    for(let x=x1;x<=x2;x++) for(let y=y1;y<=y2;y++) tiles.push({z,x,y});
+  }
+
+  let done=0;
+  const cache=await caches.open('cph-tiles');
+  const BATCH=8;
+  for(let i=0;i<tiles.length;i+=BATCH){
+    await Promise.allSettled(tiles.slice(i,i+BATCH).map(async({z,x,y})=>{
+      const url=`https://a.basemaps.cartocdn.com/light_all/${z}/${x}/${y}.png`;
+      try{
+        const hit=await cache.match(url);
+        if(!hit){ const res=await fetch(url); if(res.ok) await cache.put(url,res); }
+      }catch(e){}
+      done++;
+      prog.textContent=`타일 저장 중 ${done}/${tiles.length}...`;
+    }));
+  }
+  const mb=(tiles.length*18/1024).toFixed(1);
+  btn.disabled=false; btn.textContent='🔄 지도 업데이트';
+  prog.textContent=`✓ 코펜하겐 오프라인 지도 저장됨 (${tiles.length}개 타일 · 약 ${mb}MB)`;
+  localStorage.setItem('cph_tiles_cached','1');
+}
+
 /* ---------- WEATHER ---------- */
 // WMO 날씨 코드 → 이모지 + 한국어
 const WMO_ICON = {
@@ -6184,7 +6255,7 @@ const WMO_LABEL = {
 };
 
 let weatherCache = null;
-const WEATHER_LS_KEY = 'cph_weather_v1';
+const WEATHER_LS_KEY = 'cph_weather_v2'; // v2: hourly 데이터 추가
 const WEATHER_LS_TTL = 3 * 60 * 60 * 1000; // 3시간 — 로밍 절약
 // 여행 날짜 배열 (DEFAULT_PLAN과 동기화)
 const TRIP_DATES = ['2026-06-08','2026-06-09','2026-06-10','2026-06-11','2026-06-12','2026-06-13','2026-06-14','2026-06-15','2026-06-16'];
@@ -6218,6 +6289,7 @@ async function fetchWeather(){
     const url = 'https://api.open-meteo.com/v1/forecast'
       + '?latitude=55.676&longitude=12.568'
       + '&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode'
+      + '&hourly=temperature_2m,precipitation_probability,weathercode'
       + '&timezone=Europe%2FCopenhagen'
       + `&start_date=${TRIP_DATES[0]}&end_date=${TRIP_DATES[TRIP_DATES.length-1]}`;
     const ctrl = new AbortController();
@@ -6239,6 +6311,22 @@ async function fetchWeather(){
         rain: +(data.daily.precipitation_sum[i]||0).toFixed(1),
       };
     });
+    // hourly 파싱 — 06, 09, 12, 15, 18, 21시
+    const TARGET_H = new Set([6,9,12,15,18,21]);
+    const hrMap = {};
+    (data.hourly?.time||[]).forEach((dt,i)=>{
+      const sep = dt.indexOf('T');
+      if(sep<0) return;
+      const date=dt.slice(0,sep), hour=parseInt(dt.slice(sep+1));
+      if(!TARGET_H.has(hour)) return;
+      const di=TRIP_DATES.indexOf(date);
+      if(di<0) return;
+      if(!hrMap[di]) hrMap[di]=[];
+      hrMap[di].push({h:hour, t:Math.round(data.hourly.temperature_2m[i]),
+        c:data.hourly.weathercode[i], r:data.hourly.precipitation_probability?.[i]||0});
+    });
+    Object.keys(hrMap).forEach(di=>{ if(map[di]) map[di].hourly=hrMap[+di]; });
+
     weatherCache = map;
     _saveWeatherLS(map);
     return map;
