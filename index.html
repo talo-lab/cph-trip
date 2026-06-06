@@ -41,13 +41,13 @@
     </div>
 
     <div class="tabs" role="tablist" aria-label="여행 플래너 메뉴">
-      <button class="tab active" type="button" role="tab" aria-selected="true"  data-tab="plan">일정</button>
-      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="rec">추천</button>
-      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="exh">쇼룸</button>
-      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="fest">3DoD</button>
-      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="add">＋장소</button>
-      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="dist">지구</button>
-      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="info">정보</button>
+      <button class="tab active" type="button" role="tab" aria-selected="true"  data-tab="plan"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x=".5" y="2" width="11" height="9.5" rx=".7"/><path d="M.5 5.5h11M3.5.5v3M8.5.5v3"/></svg><span>일정</span></button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="rec"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6,1 7.4,4.6 11.1,4.6 8.3,7.1 9.3,11 6,8.9 2.7,11 3.7,7.1 .9,4.6 4.6,4.6"/></svg><span>추천</span></button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="exh"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 11.5V6.2L6 1.5l4.5 4.7v5.3"/><rect x="4" y="7.5" width="4" height="4"/></svg><span>쇼룸</span></button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="fest"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6,1 11,5 6,11 1,5"/><path d="M1,5h10"/></svg><span>3DoD</span></button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="add"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 3 3.5 6.5 3.5 6.5s3.5-3.5 3.5-6.5C9.5 2.5 8 1 6 1z"/><path d="M4.5 4.5h3M6 3v3"/></svg><span>＋장소</span></button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="dist"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 2.5l3.5 1.3v7.5L1 10zM4.5 3.8l3-1.3v7.5l-3 1.3zM7.5 2.5l3.5 1.5v7.5L7.5 10z"/></svg><span>지구</span></button>
+      <button class="tab"        type="button" role="tab" aria-selected="false" data-tab="info"><svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="5.2"/><path d="M6 5.5v3.5M6 3.5v.7"/></svg><span>정보</span></button>
     </div>
 
     <div class="scroll" id="scroll" role="tabpanel" aria-live="polite"></div>
@@ -60,7 +60,7 @@
       <div class="drawer-head">
         <span class="drawer-icon">✦ AI</span>
         <span class="drawer-label" id="drawerLabel"></span>
-        <button class="drawer-action" id="drawerMapBtn" type="button" title="지도에서 경로 보기" aria-label="지도에서 경로 보기">🗺</button>
+        <button class="drawer-action" id="drawerMapBtn" type="button" title="지도에서 경로 보기" aria-label="지도에서 경로 보기"><svg viewBox="0 0 14 14" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 2.5l4 1.5v8.5L1 11zM5 4l4-1.5v8.5L5 12.5zM9 2.5l4 1.5v8.5L9 11z"/></svg></button>
         <a class="drawer-action drawer-gmap-btn is-hidden" id="drawerGmapBtn" href="#" target="_blank" rel="noopener" title="Google Maps로 열기" aria-label="Google Maps로 열기">G</a>
         <button class="drawer-action muted" id="drawerLocToggle" type="button" title="위치 링크 편집" aria-label="위치 링크 편집">📍</button>
         <button class="drawer-action danger is-hidden" id="drawerDeleteBtn" type="button" title="이 일정 삭제" aria-label="이 일정 삭제">🗑</button>
@@ -88,9 +88,9 @@
         <button class="drawer-loc-reset" id="drawerPinReset" type="button" title="핀 위치 재검색 (제목 기반)">📍↺</button>
       </div>
       <div class="drawer-quick-chips" id="drawerQuickChips">
-        <button class="drawer-qchip" type="button" data-q="이 곳에 어떻게 가는지, 소요시간은 얼마나 잡아야 하는지, 추천 여행 팁을 알려줘">🗺 여행 팁</button>
-        <button class="drawer-qchip" type="button" data-q="이 장소의 영업시간, 입장료, 예약 필요 여부를 알려줘">🕐 운영 정보</button>
-        <button class="drawer-qchip" type="button" data-q="이 일정 다음에 근처에서 점심이나 커피 마시기 좋은 곳을 추천해줘">☕ 근처 식당</button>
+        <button class="drawer-qchip" type="button" data-q="이 곳에 어떻게 가는지, 소요시간은 얼마나 잡아야 하는지, 추천 여행 팁을 알려줘"><svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 2.5l3.5 1.3v7.5L1 10zM4.5 3.8l3-1.3v7.5l-3 1.3zM7.5 2.5l3.5 1.5v7.5L7.5 10z"/></svg> 여행 팁</button>
+        <button class="drawer-qchip" type="button" data-q="이 장소의 영업시간, 입장료, 예약 필요 여부를 알려줘"><svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="5.2"/><path d="M6 3.5v3l2 1.2"/></svg> 운영 정보</button>
+        <button class="drawer-qchip" type="button" data-q="이 일정 다음에 근처에서 점심이나 커피 마시기 좋은 곳을 추천해줘"><svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2v3.5c0 1.93 1.57 3.5 3.5 3.5h1c1.93 0 3.5-1.57 3.5-3.5V2"/><path d="M8 2c.7 0 1.5.3 1.5 1.5S8.7 5 8 5"/><path d="M5 9v1.5M3.5 10.5h5"/></svg> 근처 식당</button>
       </div>
       <div class="drawer-row">
         <textarea class="drawer-input" id="drawerInput" rows="2" placeholder="이 일정에 대해 자유롭게 요청하세요..."></textarea>
