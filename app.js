@@ -6614,6 +6614,10 @@ function clearFestMarkers(){
     snap(best, true);
   },{passive:true});
 
+  // touchcancel 시 dragging 플래그 초기화 (미처리 시 이후 패널 스크롤이 맵 드래그로 오인됨)
+  window.addEventListener('touchcancel', ()=>{ dragging=false; },{passive:true});
+  hdl.addEventListener('touchcancel', ()=>{ dragging=false; },{passive:true});
+
   // 탭: 다음 단계로 순환
   hdl.addEventListener('click', ()=>{
     if(!isMobile()) return;
