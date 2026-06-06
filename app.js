@@ -1006,19 +1006,25 @@ async function fetchTransit(fromLat, fromLng, toLat, toLng){
   try{
     // 출발지 정류장 검색
     const fromR = await fetch(`/api/transit?type=location&lat=${fromLat}&lng=${fromLng}`);
+    if(!fromR.ok) throw new Error(`정류장 조회 실패 (${fromR.status})`);
     const fromD = await fromR.json();
+    if(!fromD || typeof fromD !== 'object') throw new Error('응답 형식 오류 — 다시 경로를 눌러주세요');
     const fromStop = fromD.LocationList?.StopLocation?.[0] || fromD.CoordLocation?.[0];
 
     // 도착지 정류장 검색
     const toR = await fetch(`/api/transit?type=location&lat=${toLat}&lng=${toLng}`);
+    if(!toR.ok) throw new Error(`정류장 조회 실패 (${toR.status})`);
     const toD = await toR.json();
+    if(!toD || typeof toD !== 'object') throw new Error('응답 형식 오류 — 다시 경로를 눌러주세요');
     const toStop = toD.LocationList?.StopLocation?.[0] || toD.CoordLocation?.[0];
 
     if(!fromStop || !toStop) throw new Error('정류장 없음');
 
     // 경로 조회
     const tripR = await fetch(`/api/transit?type=trip&originId=${fromStop.id}&destId=${toStop.id}`);
+    if(!tripR.ok) throw new Error(`경로 조회 실패 (${tripR.status})`);
     const tripD = await tripR.json();
+    if(!tripD || typeof tripD !== 'object') throw new Error('응답 형식 오류 — 다시 경로를 눌러주세요');
     const leg = tripD.TripList?.Trip?.[0]?.Leg;
     const legs = Array.isArray(leg) ? leg : (leg ? [leg] : []);
 
@@ -3933,7 +3939,7 @@ function autoSmartSchedule(di, movedIdx){
     const nt = timeToMin(items[i].time);
     if(nt < 9000){
       if(nextStartMin === null) nextStartMin = nt;
-      if(items[i]._fixed && nextFixedStartMin === null) nextFixedStartMin = nt;
+      if((items[i]._fixed || items[i]._lockedTime) && nextFixedStartMin === null) nextFixedStartMin = nt;
     }
   }
 
@@ -5022,10 +5028,13 @@ Rules:
       const txt = (data.text||'').replace(/```json|```/g,'').trim();
       const updated = JSON.parse(txt);
       if(!Array.isArray(updated)) throw new Error('형식 오류');
+      const ltMap={};
+      plan.forEach(day=>{ day.items.forEach(it=>{ if(it._lockedTime) ltMap[it.title]={time:it.time,_timeEnd:it._timeEnd}; }); });
       updated.forEach((day,di)=>{
         if(!plan[di]) return;
         const fixed = plan[di].items.filter(it=>it._fixed);
-        plan[di].items = day.items;
+        plan[di].items = day.items||[];
+        plan[di].items.forEach(it=>{ if(it._lockedTime && ltMap[it.title]){ it.time=ltMap[it.title].time; if(ltMap[it.title]._timeEnd) it._timeEnd=ltMap[it.title]._timeEnd; } });
         fixed.forEach(fi=>{ if(!plan[di].items.some(it=>it.title===fi.title)) plan[di].items.push(fi); });
         sortDayByTime(di);
       });
@@ -5546,6 +5555,10 @@ Rules:
   const dayLabel=plan[di]?.date+' · '+plan[di]?.tag;
   const ctx=`Selected item: "${item.title}" on ${dayLabel}\nFull plan JSON:\n${planJson}\n\nUser request: ${raw}`;
 
+  // AI 호출 전 _lockedTime 항목 시간 스냅샷 (AI가 잘못 변경해도 복원)
+  const lockedTimeMap={};
+  plan.forEach(day=>{ day.items.forEach(it=>{ if(it._lockedTime) lockedTimeMap[it.title]={time:it.time,_timeEnd:it._timeEnd}; }); });
+
   try{
     const r=await fetch('/api/extract',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({system:sys,input:ctx,max_tokens:4000})});
@@ -5559,6 +5572,8 @@ Rules:
       if(!plan[i]) return;
       const fixed=plan[i].items.filter(it=>it._fixed);
       plan[i].items=day.items||[];
+      // _lockedTime 항목 시간 강제 복원 (공식 행사 시간 보호)
+      plan[i].items.forEach(it=>{ if(it._lockedTime && lockedTimeMap[it.title]){ it.time=lockedTimeMap[it.title].time; if(lockedTimeMap[it.title]._timeEnd) it._timeEnd=lockedTimeMap[it.title]._timeEnd; } });
       fixed.forEach(fi=>{ if(!plan[i].items.some(it=>it.title===fi.title)) plan[i].items.push(fi); });
       sortDayByTime(i);
     });
@@ -5682,6 +5697,8 @@ Important:
     if(m){ try{ review = JSON.parse(m[1].trim()); }catch(e){ console.warn('review parse error', e, m[1].trim().slice(0,300)); } }
     // fallback: <review> 태그 없이 JSON만 반환한 경우
     if(!review){ try{ review = JSON.parse(stripped); }catch(e){} }
+    // fallback 2: 응답 내 첫 번째 JSON 객체 추출 (AI가 텍스트를 앞뒤로 감쌀 때)
+    if(!review){ const jm=stripped.match(/\{[\s\S]*\}/); if(jm){ try{ review=JSON.parse(jm[0]); }catch(e){} } }
 
     if(!review){ throw new Error('응답 형식 오류 — 다시 검토를 눌러주세요'); }
 
