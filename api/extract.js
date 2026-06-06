@@ -32,7 +32,7 @@ export default async function handler(req, res) {
           messages:   [{ role: 'user', content: String(input) }],
         }),
       },
-      30_000, // Anthropic은 최대 30초 허용
+      55_000, // Vercel maxDuration:60 — 여유 5초 남김
     );
 
     if (!r.ok) {

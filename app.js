@@ -5589,7 +5589,7 @@ Important:
   try{
     const r = await fetch('/api/extract', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({system:sys, input:ctx, max_tokens:1500})
+      body: JSON.stringify({system:sys, input:ctx, max_tokens:1000})
     });
     if(!r.ok){
       let msg = '서버 '+r.status;
