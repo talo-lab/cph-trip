@@ -1478,6 +1478,7 @@
       position:absolute;top:0;left:0;right:0;
       border-right:none;border-bottom:1px solid var(--line);
       overflow:hidden;max-width:100vw;
+      z-index:1;
     }
     .scroll{overflow-x:hidden}
     .map-wrap{
