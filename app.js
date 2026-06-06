@@ -5517,16 +5517,17 @@ async function triggerPlanReview(){
     <div class="pr-loading"><span class="spin"></span> 9일치 일정을 시뮬레이션하고 있어요…</div>
   </div>`;
 
-  // 전체 플랜 텍스트 생성
+  // 전체 플랜 텍스트 생성 (달리기·토큰 절약)
   const planDesc = plan.map((day, di) => {
     const items = day.items
       .filter(it => !(it._personal && it._addedBy && it._addedBy !== currentUser))
+      .filter(it => !it._runningCourse) // 달리기는 매일 동일 → 생략
       .map(it => {
         const timeRange = it.time + (it._timeEnd ? '–' + it._timeEnd : '');
-        const coords = getItemCoords(it);
-        return `    [${timeRange||'미정'}] ${it.title}${it.note ? ' | ' + it.note.slice(0,60) : ''}${it._lockedTime?' [공식행사]':it._fixed?' [고정]':''}`;
+        return `  [${timeRange||'미정'}] ${it.title}${it.note ? ' ('+it.note.slice(0,40)+')' : ''}${it._lockedTime?' [공식]':it._fixed?' [확정]':''}`;
       }).join('\n');
-    return `## ${day.date} (${day.tag})\n${items || '    (항목 없음)'}`;
+    const runNote = day.items.some(it=>it._runningCourse) ? '  [07:00] 아침 달리기 (매일)' : '';
+    return `## ${day.date} ${day.tag}\n${runNote}${runNote&&items?'\n':''}${items || '  (항목 없음)'}`;
   }).join('\n\n');
 
   // 이동 거리 요약 (코펜하겐 날짜만)
@@ -5580,14 +5581,21 @@ Important:
 - tips: 이 일정 특화 실용 팁 3–4개.
 - grade: A=완성도 높음, B=좋으나 조정 필요, C=큰 개선 필요, D=재구성 필요`;
 
-  const ctx = `전체 일정:\n\n${planDesc}\n\n주요 이동 거리 (1.5km 이상):\n${travelSummary.join('\n') || '(좌표 부족으로 계산 불가)'}`;
+  // 총 입력 길이 제한 (토큰 절약 — 약 4000자 이내)
+  let ctx = `전체 일정:\n\n${planDesc}`;
+  if(travelSummary.length) ctx += `\n\n주요 이동 (1.5km↑):\n${travelSummary.slice(0,8).join('\n')}`;
+  if(ctx.length > 3800) ctx = ctx.slice(0, 3800) + '\n...(이하 생략)';
 
   try{
     const r = await fetch('/api/extract', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({system:sys, input:ctx, max_tokens:2000})
+      body: JSON.stringify({system:sys, input:ctx, max_tokens:1500})
     });
-    if(!r.ok) throw new Error('서버 '+r.status);
+    if(!r.ok){
+      let msg = '서버 '+r.status;
+      try{ const d=await r.json(); if(d.error) msg=d.error; }catch(e){}
+      throw new Error(msg);
+    }
     const data = await r.json();
     let text = (data.text||'').trim();
 

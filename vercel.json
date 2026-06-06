@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/extract.js": { "maxDuration": 60 },
+    "api/plan.js":    { "maxDuration": 15 },
+    "api/auth.js":    { "maxDuration": 10 },
+    "api/geocode.js": { "maxDuration": 10 },
+    "api/transit.js": { "maxDuration": 15 },
+    "api/resolve-gmaps.js": { "maxDuration": 15 }
+  }
+}
