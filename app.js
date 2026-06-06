@@ -780,6 +780,36 @@ function renderPlanMarkers(di){
     m._planKey = `${di}-${ii}`; // 선택 하이라이트용 키
     m.bindPopup(`<div class="pop-name">${catIcon} ${it.title}</div><div class="pop-desc">${it.time?`<b>${it.time}</b> · `:''}${it.note||''}<br><span style="display:inline-block;margin-top:4px;background:${pinColor};color:#fff;padding:1px 6px;font-family:'Space Mono',monospace;font-size:10px;border-radius:1px">${plan[di].date}</span></div>`);
     planPinLayer.push(m);
+
+    // 마커 클릭 → 일정 탭 해당 항목으로 스크롤 + 하이라이트
+    m.on('click', ()=>{
+      const [mDi, mIi] = m._planKey.split('-').map(Number);
+      const doScroll = ()=>{
+        requestAnimationFrame(()=>{
+          const row = document.querySelector(`.item[data-di="${mDi}"][data-ii="${mIi}"]`);
+          if(!row) return;
+          // 선택 상태 설정
+          if(selectedPlanKey && selectedPlanKey !== m._planKey){
+            const [pdi,pii] = selectedPlanKey.split('-').map(Number);
+            const prev = document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
+            if(prev){ prev.querySelector('.item-sel-cb').checked=false; prev.classList.remove('sel-active'); }
+          }
+          selectedPlanKey = m._planKey;
+          row.classList.add('sel-active');
+          const cb = row.querySelector('.item-sel-cb'); if(cb) cb.checked = true;
+          // 스크롤 + 하이라이트
+          row.scrollIntoView({behavior:'smooth', block:'center'});
+          row.classList.add('pin-highlight');
+          setTimeout(()=>row.classList.remove('pin-highlight'), 1600);
+        });
+      };
+      if(activeTab !== 'plan'){
+        setTab('plan');
+        setTimeout(doScroll, 250); // renderPlan 완료 대기
+      } else {
+        doScroll();
+      }
+    });
   });
 
   // 달리기 코스 경로 폴리라인 자동 표시
@@ -1735,6 +1765,20 @@ function renderDayJumpBar(el, container) {
   else el.insertBefore(bar, el.firstChild);
 }
 
+/* ── 예약 필요 여부 감지 → 'confirmed' | 'required' | null ── */
+function needsBooking(it){
+  if(it._fixed) return 'confirmed';
+  const t=`${it.title||''} ${it.note||''}`;
+  // 이미 예약 완료
+  if(/예약\s*완료|QR코드.*보유|사전.*예약.*완료/i.test(t)) return 'confirmed';
+  // 예약 필수 (가격 태그, 명시적 키워드)
+  if(/\d{3}\s*DKK|예약\s*필수|사전\s*등록\s*필수|티켓\s*필요|사전등록\s*권장/i.test(t)) return 'required';
+  if(/reservation\s*required|booking\s*required|ticket\s*required|advanced\s*booking/i.test(t)) return 'required';
+  // 3DoD 유료 행사 유형
+  if(it._lockedTime && /롱테이블|long\s*table\s*dinner|심포지엄|symposium|design\s*walk|디자인\s*워크/i.test(t)) return 'required';
+  return null;
+}
+
 function renderPlan(){
   const el = document.getElementById('scroll');
   el.innerHTML = '';
@@ -1803,6 +1847,7 @@ function renderPlan(){
           <div class="item-note" ${(it._fixed||it._lockedTime)?'':'contenteditable'} spellcheck="false">${it.note||''}</div>
           ${it.dist?`<span class="item-dist">${it.dist}</span>`:''}
           ${(()=>{ const tag=it._catTag||inferTag(it); return tag?`<span class="item-cat-tag">${tag}</span>`:''; })()}
+          ${(()=>{ const bk=needsBooking(it); return bk?`<span class="item-badge item-badge-${bk}">${bk==='confirmed'?'확정':'예약'}</span>`:''; })()}
           ${it._user&&!it._lockedTime?`<span class="item-src">＋ 내가 추가</span>`:''}
           ${it._fixed?`<span class="item-src lock">🔒 예약 확정 · 고정</span>`:''}
           ${it._lockedTime?`<span class="item-src lock">🕐 ${it.time}${it._timeEnd?' – '+it._timeEnd:''}${(()=>{const d=fmtEventDuration(it.time,it._timeEnd);return d?' · '+d:''})()}· 공식일정고정</span>`:''}
@@ -4941,7 +4986,17 @@ function updateDrawerPrivacy(){
 
 function openDrawer(di, ii, title){
   drawerContext = {di, ii};
-  document.getElementById('drawerLabel').textContent = title;
+  const labelEl = document.getElementById('drawerLabel');
+  labelEl.textContent = title;
+  const it = plan[di]?.items[ii];
+  const bk = it ? needsBooking(it) : null;
+  if(bk){
+    const badge = document.createElement('span');
+    badge.className = `item-badge item-badge-${bk}`;
+    badge.textContent = bk === 'confirmed' ? '확정' : '예약';
+    badge.style.cssText = 'margin-left:6px;vertical-align:middle;font-style:normal;opacity:.9';
+    labelEl.appendChild(badge);
+  }
   document.getElementById('drawerInput').value = '';
   document.getElementById('drawerStatus').className = 'drawer-status';
   // 이전 응답 초기화

@@ -806,6 +806,13 @@
   }
   .quick button:hover{border-color:var(--rust);color:var(--rust)}
   .item.user-added{background:linear-gradient(90deg,rgba(200,64,42,.07),transparent)}
+  /* ── 예약 배지 ── */
+  .item-badge{display:inline-block;font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.05em;padding:1px 5px;border-radius:2px;margin-top:3px;margin-right:3px;vertical-align:middle;line-height:1.6}
+  .item-badge-required{color:var(--rust);border:1px solid var(--rust);background:transparent}
+  .item-badge-confirmed{color:var(--color-sanghyo);border:1px solid var(--color-sanghyo);background:transparent}
+  /* ── 지도 핀→사이드바 하이라이트 ── */
+  .pin-highlight{animation:pinPulse 1.6s ease forwards!important}
+  @keyframes pinPulse{0%,8%{box-shadow:0 0 0 2px var(--rust);background-color:rgba(200,64,42,.09)}65%{box-shadow:0 0 0 2px rgba(200,64,42,.35);background-color:rgba(200,64,42,.04)}100%{box-shadow:none;background-color:transparent}}
   .item-src{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--slate);margin-top:3px;opacity:.7}
   /* 드래그 스마트 스케줄링 — 카테고리 태그 뱃지 */
   .item-cat-tag{
