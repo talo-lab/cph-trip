@@ -5017,15 +5017,6 @@ function openDrawer(di, ii, title){
   drawerContext = {di, ii};
   const labelEl = document.getElementById('drawerLabel');
   labelEl.textContent = title;
-  const it = plan[di]?.items[ii];
-  const bk = it ? needsBooking(it) : null;
-  if(bk){
-    const badge = document.createElement('span');
-    badge.className = `item-badge item-badge-${bk}`;
-    badge.textContent = bk === 'confirmed' ? '확정' : '예약';
-    badge.style.cssText = 'margin-left:6px;vertical-align:middle;font-style:normal;opacity:.9';
-    labelEl.appendChild(badge);
-  }
   document.getElementById('drawerInput').value = '';
   document.getElementById('drawerStatus').className = 'drawer-status';
   // 이전 응답 초기화
@@ -5043,6 +5034,16 @@ function openDrawer(di, ii, title){
   updateDrawerPrivacy();
 
   const it = plan[di]?.items[ii];
+
+  // 예약 배지 — 기존 const it 선언 이후에 추가
+  const _bk = it ? needsBooking(it) : null;
+  if(_bk){
+    const _badge = document.createElement('span');
+    _badge.className = `item-badge item-badge-${_bk}`;
+    _badge.textContent = _bk === 'confirmed' ? '확정' : '예약';
+    _badge.style.cssText = 'margin-left:6px;vertical-align:middle;font-style:normal;opacity:.9';
+    labelEl.appendChild(_badge);
+  }
 
   // Google Maps G 버튼
   const gmapBtn = document.getElementById('drawerGmapBtn');
