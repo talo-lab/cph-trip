@@ -5090,21 +5090,25 @@ function updateDrawerPrivacy(){
     b.classList.toggle('active', b.dataset.vis===visVal));
 }
 
+function clearResp(){
+  const resp = document.getElementById('drawerResponse');
+  resp.classList.remove('show');
+  resp.innerHTML =
+    '<div class="drawer-resp-intro" id="drawerRespIntro"></div>' +
+    '<div class="drawer-options" id="drawerOptions"></div>' +
+    '<div class="drawer-followup" id="drawerFollowup" style="display:none"></div>' +
+    '<div class="drawer-resp-actions" id="drawerRespActions"></div>';
+  document.getElementById('drawerConfirmBar').className = 'drawer-confirm-bar';
+  _currentOptNote = '';
+}
+
 function openDrawer(di, ii, title){
   drawerContext = {di, ii};
   const labelEl = document.getElementById('drawerLabel');
   labelEl.textContent = title;
   document.getElementById('drawerInput').value = '';
   document.getElementById('drawerStatus').className = 'drawer-status';
-  // 이전 응답 초기화
-  const resp = document.getElementById('drawerResponse');
-  resp.classList.remove('show');
-  document.getElementById('drawerRespIntro').innerHTML = '';
-  document.getElementById('drawerOptions').innerHTML = '';
-  document.getElementById('drawerFollowup').style.display = 'none';
-  document.getElementById('drawerConfirmBar').className = 'drawer-confirm-bar';
-  document.getElementById('drawerRespActions').innerHTML = '';
-  _currentOptNote = '';
+  clearResp();
   document.getElementById('itemDrawer').classList.add('open');
   // 모바일: 지도 half(44%) 유지 — peek(10%)으로 줄이면 44px 핀이 가려짐
   if(window.innerWidth<=820 && window._mapSnap) window._mapSnap(1,true);
@@ -5248,14 +5252,15 @@ async function sendDrawerMsg(){
 
   btn.disabled=true; btn.textContent='...';
   st.className='drawer-status show'; st.textContent='생각 중...';
-  resp.classList.remove('show');
+  clearResp();
 
-  if(isQuestion(raw)) await _drawerQuestion(raw,di,ii,item,input,btn,st,resp);
+  if(isQuestion(raw)) await _drawerQuestion(raw,di,ii,item,input,btn,st);
   else                await _drawerCommand(raw,di,ii,item,input,btn,st);
 }
 
 /* ── 질문 모드: 선택형 카드 UI ── */
-async function _drawerQuestion(raw,di,ii,item,input,btn,st,resp){
+async function _drawerQuestion(raw,di,ii,item,input,btn,st){
+  const resp = document.getElementById('drawerResponse');
   const dayLabel = plan[di]?.date+' · '+plan[di]?.tag;
   const todayList = plan[di].items.map(it=>`  ${it.time||'?'} ${it.title}`).join('\n') || '  없음';
   const gpsStr = currentPos
@@ -5356,10 +5361,11 @@ ${todayList}
         savePlan(); renderPlan();
         st.className='drawer-status show ok';
         st.textContent=`🚌 이동 항목 추가됨 — ${newItem.title}`;
-        resp.classList.remove('show');
-        const _ri=document.getElementById('drawerRespIntro'),_ro=document.getElementById('drawerOptions'),_ra=document.getElementById('drawerRespActions'),_rf=document.getElementById('drawerFollowup');
-        if(_ri)_ri.innerHTML=''; if(_ro)_ro.innerHTML=''; if(_ra)_ra.innerHTML=''; if(_rf)_rf.style.display='none';
-        if(text&&_ri){ _ri.textContent=text; resp.classList.add('show'); }
+        clearResp();
+        if(text){
+          document.getElementById('drawerRespIntro').textContent=text;
+          document.getElementById('drawerResponse').classList.add('show');
+        }
         input.value='';
         btn.disabled=false; btn.textContent='전송';
         return;
@@ -5379,7 +5385,7 @@ ${todayList}
     }
 
     // 렌더링
-    _renderDrawerOptions(text, options, singleAdd, di, resp, st, input);
+    _renderDrawerOptions(text, options, singleAdd, di, st);
     resp.classList.add('show');
     st.className='drawer-status';
     input.value='';
@@ -5390,8 +5396,9 @@ ${todayList}
   }
 }
 
-function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input){
-  // 서두 텍스트
+function _renderDrawerOptions(introText, options, singleAdd, di, st){
+  const resp  = document.getElementById('drawerResponse');
+  // 서두 텍스트 (clearResp() 이후 항상 존재)
   const introEl = document.getElementById('drawerRespIntro');
   introEl.innerHTML = introText ? introText.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>') : '';
 
@@ -5399,9 +5406,6 @@ function _renderDrawerOptions(introText, options, singleAdd, di, resp, st, input
   const fuEl    = document.getElementById('drawerFollowup');
   const barEl   = document.getElementById('drawerConfirmBar');
   const actEl   = document.getElementById('drawerRespActions');
-  optEl.innerHTML=''; fuEl.style.display='none'; fuEl.innerHTML='';
-  barEl.className='drawer-confirm-bar';
-  actEl.innerHTML='';
 
   // 닫기 버튼
   const closeBtn = document.createElement('button');
