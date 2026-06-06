@@ -4856,12 +4856,22 @@ function renderConflictBanner(el){
   if(!conflicts.length) return;
   const banner = document.createElement('div');
   banner.style.cssText='margin:8px 16px;padding:10px 12px;background:#fff3e0;border-left:3px solid #e65100;font-size:12px;line-height:1.5';
-  banner.innerHTML=`<b>⚠ 시간 여유 부족 ${conflicts.length}건</b><br>`
-    + conflicts.slice(0,3).map(c=>{
-        const travelNote = c.travelMins>0 ? ` (이동 ${c.travelMins}분 포함)` : '';
-        return `${c.day}: <b>${c.a.title}</b> → <b>${c.b.title}</b> — 여유 ${Math.max(0,c.gap)}분 · ${c.needed}분 필요${travelNote}`;
-      }).join('<br>')
-    + (conflicts.length>3 ? `<br><span style="opacity:.7">...외 ${conflicts.length-3}건</span>` : '');
+  const rows = conflicts.map(c=>{
+    const travelNote = c.travelMins>0 ? ` (이동 ${c.travelMins}분 포함)` : '';
+    return `${c.day}: <b>${c.a.title}</b> → <b>${c.b.title}</b> — 여유 ${Math.max(0,c.gap)}분 · ${c.needed}분 필요${travelNote}`;
+  });
+  const previewHtml = rows.slice(0,3).join('<br>');
+  const restHtml   = rows.slice(3).join('<br>');
+  const toggleId   = 'conflictToggle';
+  const extraId    = 'conflictExtra';
+  banner.innerHTML = `<b>⚠ 시간 여유 부족 ${conflicts.length}건</b><br>${previewHtml}`
+    + (conflicts.length>3
+        ? `<div id="${extraId}" style="display:none;margin-top:4px">${restHtml}</div>`
+          + `<br><span id="${toggleId}" style="opacity:.7;cursor:pointer;text-decoration:underline" onclick="(function(){`
+          + `var e=document.getElementById('${extraId}'),t=document.getElementById('${toggleId}');`
+          + `if(e.style.display==='none'){e.style.display='';t.textContent='▲ 접기';}else{e.style.display='none';t.textContent='▼ 나머지 ${conflicts.length-3}건 보기';}`
+          + `})()">▼ 나머지 ${conflicts.length-3}건 보기</span>`
+        : '');
   el.insertBefore(banner, el.firstChild);
 }
 
