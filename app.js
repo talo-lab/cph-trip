@@ -788,15 +788,22 @@ function renderPlanMarkers(di){
         requestAnimationFrame(()=>{
           const row = document.querySelector(`.item[data-di="${mDi}"][data-ii="${mIi}"]`);
           if(!row) return;
-          // 선택 상태 설정
-          if(selectedPlanKey && selectedPlanKey !== m._planKey){
-            const [pdi,pii] = selectedPlanKey.split('-').map(Number);
-            const prev = document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
-            if(prev){ prev.querySelector('.item-sel-cb').checked=false; prev.classList.remove('sel-active'); }
+          if(planMultiMode){
+            // ── 다중선택 모드: cb.click()으로 change 이벤트 발생 → updateMultiSel() 호출
+            const cb = row.querySelector('.item-sel-cb');
+            if(cb) cb.click();
+          } else {
+            // ── 단일 모드: 이전 선택 해제 + 이 항목 선택 + 지도 라우트
+            if(selectedPlanKey && selectedPlanKey !== m._planKey){
+              const [pdi,pii] = selectedPlanKey.split('-').map(Number);
+              const prev = document.querySelector(`.item[data-di="${pdi}"][data-ii="${pii}"]`);
+              if(prev){ prev.querySelector('.item-sel-cb').checked=false; prev.classList.remove('sel-active'); }
+            }
+            selectedPlanKey = m._planKey;
+            row.classList.add('sel-active');
+            const cb = row.querySelector('.item-sel-cb'); if(cb) cb.checked = true;
+            showItemRoute(mDi, mIi);
           }
-          selectedPlanKey = m._planKey;
-          row.classList.add('sel-active');
-          const cb = row.querySelector('.item-sel-cb'); if(cb) cb.checked = true;
           // 스크롤 + 하이라이트
           row.scrollIntoView({behavior:'smooth', block:'center'});
           row.classList.add('pin-highlight');
