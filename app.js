@@ -5599,7 +5599,7 @@ Important:
   try{
     const r = await fetch('/api/extract', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({system:sys, input:ctx, max_tokens:1000})
+      body: JSON.stringify({system:sys, input:ctx, max_tokens:1200})
     });
     if(!r.ok){
       let msg = '서버 '+r.status;
@@ -5609,11 +5609,15 @@ Important:
     const data = await r.json();
     let text = (data.text||'').trim();
 
+    // 마크다운 코드 펜스 제거 후 파싱
+    const stripped = text.replace(/```json\s*/gi,'').replace(/```\s*/gi,'');
     let review = null;
-    const m = text.match(/<review>([\s\S]*?)<\/review>/);
-    if(m){ try{ review = JSON.parse(m[1].trim()); }catch(e){ console.warn('review parse error', e); } }
+    const m = stripped.match(/<review>([\s\S]*?)<\/review>/);
+    if(m){ try{ review = JSON.parse(m[1].trim()); }catch(e){ console.warn('review parse error', e, m[1].trim().slice(0,300)); } }
+    // fallback: <review> 태그 없이 JSON만 반환한 경우
+    if(!review){ try{ review = JSON.parse(stripped); }catch(e){} }
 
-    if(!review){ throw new Error('응답 형식 오류'); }
+    if(!review){ throw new Error('응답 형식 오류 — 다시 검토를 눌러주세요'); }
 
     const gradeColor = {A:'#2e7d32', B:'#1565c0', C:'#e65100', D:'#c62828'}[review.grade] || '#555';
     const severityLabel = {high:'🔴 주의', mid:'🟡 확인', low:'🔵 참고'};
