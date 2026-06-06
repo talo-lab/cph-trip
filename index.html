@@ -101,19 +101,20 @@
         <div class="drawer-resp-intro" id="drawerRespIntro"></div>
         <div class="drawer-options" id="drawerOptions"></div>
         <div class="drawer-followup" id="drawerFollowup" style="display:none"></div>
-        <div class="drawer-confirm-bar" id="drawerConfirmBar">
-          <div class="confirm-bar-label">✦ 일정에 추가</div>
-          <div class="confirm-bar-row">
-            <input class="confirm-title-input" id="confirmTitle" type="text" placeholder="장소명">
-            <input class="confirm-time-input" id="confirmTime" type="text" placeholder="시간" maxlength="5">
-            <select class="confirm-day-sel" id="confirmDay"></select>
-          </div>
-          <div class="confirm-bar-row">
-            <button class="confirm-add-btn" id="confirmAddBtn" type="button">＋ 일정 추가</button>
-            <button class="drawer-dismiss-btn" id="drawerDismiss2" type="button">닫기</button>
-          </div>
-        </div>
         <div class="drawer-resp-actions" id="drawerRespActions"></div>
+      </div>
+    </div>
+    <!-- 일정 추가 확정 바: 패널 하단 플로팅 (스크롤 무관하게 항상 접근 가능) -->
+    <div class="drawer-confirm-bar" id="drawerConfirmBar">
+      <div class="confirm-bar-label">✦ 일정에 추가</div>
+      <div class="confirm-bar-row">
+        <input class="confirm-title-input" id="confirmTitle" type="text" placeholder="장소명">
+        <input class="confirm-time-input" id="confirmTime" type="text" placeholder="시간" maxlength="5">
+        <select class="confirm-day-sel" id="confirmDay"></select>
+      </div>
+      <div class="confirm-bar-row">
+        <button class="confirm-add-btn" id="confirmAddBtn" type="button">＋ 일정 추가</button>
+        <button class="drawer-dismiss-btn" id="drawerDismiss2" type="button">닫기</button>
       </div>
     </div>
   </aside>
