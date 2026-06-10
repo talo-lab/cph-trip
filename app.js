@@ -1636,6 +1636,7 @@ async function addFestSelected(){
       title: ev.title,
       note: `${ev.venue} · ${ev.address} · ${ev.desc}`,
       dist: ev.district,
+      _dk: exhDkToPlanDk(ev.district),
       _user: true, _addedBy: currentUser,
       _personal: false, _with: ['miju','sanghyo'],
       _lockedTime: true,
@@ -1647,6 +1648,10 @@ async function addFestSelected(){
     if(firstDi===null) firstDi=di;
     const w = getVenueWarning(newIt, di);
     if(w) hoursWarnings.push(`⚠ ${ev.title.slice(0,20)}: ${w.msg}`);
+    // 배경에서 정확한 좌표 지오코딩 (festGeoCache 적극 활용)
+    geocodeFestEvent(ev).then(c=>{
+      if(c && !newIt._lat){ newIt._lat=c.lat; newIt._lng=c.lng; savePlan(); if(activeTab==='plan') renderPlanMarkers(currentVisDay); }
+    });
   });
 
   if(hoursWarnings.length) showHoursToast(hoursWarnings);
@@ -5197,7 +5202,8 @@ document.getElementById('drawerLocSave').addEventListener('click', async ()=>{
   const gmapBtn = document.getElementById('drawerGmapBtn');
   if(gmapBtn) gmapBtn.href = it._gmapsUrl || gMapsUrlForItem(it);
   renderPlan();
-  // 저장 후 지도에 반영
+  // 저장 후 지도에 반영 — 마커 즉시 재생성 후 flyTo
+  renderPlanMarkers(di);
   if(it._lat) showItemRoute(di, ii);
 });
 
