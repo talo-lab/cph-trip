@@ -2094,13 +2094,41 @@ function renderPlan(){
         const fromDi=+evt.item.dataset.di;
         const fromIdx=+evt.item.dataset.ii;
         const toDi=+evt.to.dataset.di;
+        if(Number.isNaN(fromDi)||Number.isNaN(fromIdx)||Number.isNaN(toDi)) return;
+
+        // 렌더된 .item 형제 목록 (숨겨진 다른 사람의 _personal 항목은 DOM에 없음).
+        // 각 형제의 data-ii = plan[toDi].items의 '실제 배열 인덱스'이므로,
+        // DOM 드롭 위치를 배열 인덱스로 환산해야 숨겨진 항목이 있어도 splice 위치가 어긋나지 않는다.
+        // (evt.item 자신의 data-ii는 '출발지' 기준이라 삽입 기준으로 쓰면 안 됨 → 이웃 형제 기준 사용)
         const siblings=[...evt.to.querySelectorAll(':scope > .item')];
-        const toIdx=siblings.indexOf(evt.item);
-        if(toIdx<0||(fromDi===toDi&&fromIdx===toIdx)) return;
+        const domPos=siblings.indexOf(evt.item);
+        if(domPos<0) return;
+
+        let insertAt;
+        const afterEl=siblings[domPos+1];
+        if(afterEl){
+          insertAt=+afterEl.dataset.ii;              // 바로 뒤 형제 '앞'에 삽입
+        } else {
+          const beforeEl=siblings[domPos-1];          // 맨 끝에 드롭 → 앞 형제 '뒤'
+          insertAt=beforeEl ? +beforeEl.dataset.ii+1 : plan[toDi].items.length;
+        }
+        if(!Number.isFinite(insertAt)) insertAt=plan[toDi].items.length;
+
+        // 같은 날 제자리 드롭이면 변경 없음 (불필요한 시간 자동조정 방지)
+        if(fromDi===toDi){
+          const finalIdx = fromIdx<insertAt ? insertAt-1 : insertAt;
+          if(finalIdx===fromIdx) return;
+        }
+
         const planItem=plan[fromDi].items.splice(fromIdx,1)[0];
-        plan[toDi].items.splice(toIdx,0,planItem);
-        // 스마트 스케줄링: 시간 자동 조정 + 태그 추론
-        const result = autoSmartSchedule(toDi, toIdx);
+        if(!planItem) return;
+        // 같은 날 & 제거 위치가 삽입 기준보다 앞이면 인덱스가 한 칸 당겨짐 → 보정
+        if(fromDi===toDi && fromIdx<insertAt) insertAt--;
+        insertAt=Math.max(0, Math.min(insertAt, plan[toDi].items.length));
+        plan[toDi].items.splice(insertAt,0,planItem);
+
+        // 스마트 스케줄링: 실제 배열 인덱스 기준으로 시간 자동 조정 + 태그 추론
+        const result = autoSmartSchedule(toDi, insertAt);
         // 이동 메모 재계산: 원본 날짜 + 대상 날짜 모두
         recalcTransitNotes(toDi);
         if(fromDi !== toDi) recalcTransitNotes(fromDi);
