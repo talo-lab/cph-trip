@@ -6337,7 +6337,10 @@ async function precacheTiles(){
   const BATCH=8;
   for(let i=0;i<tiles.length;i+=BATCH){
     await Promise.allSettled(tiles.slice(i,i+BATCH).map(async({z,x,y})=>{
-      const url=`https://a.basemaps.cartocdn.com/light_all/${z}/${x}/${y}.png`;
+      // Leaflet은 서브도메인을 abc[(x+y)%3]로 회전 선택한다. 여기서 고정 'a'로 저장하면
+      // 지도가 b/c 서브도메인으로 요청하는 타일은 오프라인에서 캐시 미스가 난다 → 동일 규칙으로 저장.
+      const sub='abc'[Math.abs(x+y)%3];
+      const url=`https://${sub}.basemaps.cartocdn.com/light_all/${z}/${x}/${y}.png`;
       try{
         const hit=await cache.match(url);
         if(!hit){ const res=await fetch(url); if(res.ok) await cache.put(url,res); }
@@ -6687,6 +6690,8 @@ function updateTicker(items) {
 }
 
 async function loadNewsTicker() {
+  // 오프라인이 확실하면 네트워크 시도를 건너뛴다 (로밍 데이터 절약 — 15분마다 호출됨)
+  if (navigator.onLine === false) return;
   try {
     const r = await fetch('/api/news');
     if (!r.ok) return;

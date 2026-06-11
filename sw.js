@@ -1,18 +1,24 @@
 // Service Worker — CPH Trip Planner
 // 전략: Cache First (오프라인/로밍 우선) + 백그라운드 revalidation
-const VERSION = 'cph-v7';
+const VERSION = 'cph-v8';
 const WEATHER_CACHE = 'cph-weather';
 // 1시간 — SW 레이어 TTL (app.js localStorage TTL 3시간과 독립)
 const WEATHER_TTL = 60 * 60 * 1000;
 
-const STATIC = [
+// 동일 출처 핵심 자산 — 반드시 캐시되어야 함 (install 단계에서 보장)
+const CORE = [
   '/',
   '/index.html',
   '/app.js',
   '/styles.css',
+];
+// 외부 CDN 자산 — best-effort. 로밍 중 일부 CDN이 실패해도 install 자체는 성공시킨다.
+// (폰트 URL은 index.html이 실제로 로드하는 Playfair/Inter/Space Mono와 일치시킴)
+const EXTERNAL = [
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
-  'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap',
+  'https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js',
+  'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap',
 ];
 
 /* fetch + 타임아웃 헬퍼 */
@@ -23,10 +29,17 @@ function fetchWithTimeout(req, ms) {
 }
 
 // 설치: 핵심 파일 사전 캐시
+// addAll은 원자적(하나라도 실패하면 전체 실패)이라, 로밍 중 CDN 한 곳이 흔들리면
+// 동일 출처 핵심 자산까지 캐시되지 않는다. 핵심/외부를 분리해 install 견고성을 확보.
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(VERSION).then(c => c.addAll(STATIC)).then(() => self.skipWaiting())
-  );
+  e.waitUntil((async () => {
+    const c = await caches.open(VERSION);
+    await c.addAll(CORE); // 실패하면 install 재시도 (핵심 자산은 반드시 필요)
+    await Promise.allSettled(EXTERNAL.map(async url => {
+      try { const r = await fetch(url, { mode: 'cors' }); if (r.ok) await c.put(url, r); } catch (_) {}
+    }));
+    await self.skipWaiting();
+  })());
 });
 
 // 활성화: 이전 캐시 삭제 (날씨 캐시는 버전 무관하게 보존)
